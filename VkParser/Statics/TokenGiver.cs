@@ -7,6 +7,8 @@ namespace VkParse.Statics
     {
         #region Fields
         private string _token;
+
+        string _appToken;
         #endregion
 
         #region Protected Properties
@@ -22,6 +24,19 @@ namespace VkParse.Statics
                 return _token;
             }
         }
+
+        public string AppToken
+        {
+            get
+            {
+                if (_appToken == null)
+                {
+                    SetAppToken();
+                }
+
+                return _appToken;
+            }
+        }
         #endregion
 
         #region Help Methods
@@ -34,6 +49,18 @@ namespace VkParse.Statics
             if (File.Exists(tokenFilePath))
             {
                 _token =  File.ReadAllText(tokenFilePath);
+            }
+        }
+
+        private void SetAppToken()
+        {
+            string filesDir = HostingEnvironment.MapPath("~/Files");
+
+            string tokenFilePath = $"{filesDir}/vkApp_token.txt";
+
+            if (File.Exists(tokenFilePath))
+            {
+                _appToken = File.ReadAllText(tokenFilePath);
             }
         }
         #endregion

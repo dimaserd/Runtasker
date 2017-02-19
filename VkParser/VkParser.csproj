@@ -67,6 +67,7 @@
     <Compile Include="Entities\VkGroup.cs" />
     <Compile Include="Entities\VkKeyWord.cs" />
     <Compile Include="Entities\VkPostLookUp.cs" />
+    <Compile Include="Enumerations\VkTokenType.cs" />
     <Compile Include="Enumerations\WordType.cs" />
     <Compile Include="Extensions\String\VkStringExtensions.cs" />
     <Compile Include="MessageSenders\VkMessageSender.cs" />

@@ -132,13 +132,14 @@ namespace Runtasker.Controllers
         {
             return View();
         }
-
+        [AllowAnonymous]
         public ActionResult GetToken(string code)
         {
             UpdateVkToken(code);
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult GetAppToken(string code)
         {
             UpdateVkAppToken(code);
@@ -455,7 +456,7 @@ namespace Runtasker.Controllers
             int client_id = 5335054;
             string client_secret = "T06kZfxtM5sKrAz5AE47";
 
-            string redirectUri = @"https://runtasker.ru/VkOrders/GetVkAppToken";
+            string redirectUri = @"https://runtasker.ru/VkOrders/GetAppToken";
             string url = @"https://oauth.vk.com/access_token"
                     + $"?client_id={client_id}&client_secret={client_secret}" +
                     $"&{redirectUri}&code={code}";

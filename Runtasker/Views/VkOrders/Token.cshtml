@@ -11,11 +11,13 @@
             + $"?client_id={client_id}&display=page&redirect_uri={vkAppRedirectUri}"
             + $"&group_ids={runtaskerGroupId}&scope=messages&response_type=code&v=5.62";
 
+    string vkUrl = @"https://oauth.vk.com/authorize"
+ + $"?client_id={client_id}&display=page&redirect_uri=https://runtasker.ru/VkOrders/GetToken&scope=groups&response_type=code&v=5.60";
 }
 
 <h2>Token</h2>
 
-<a class="btn btn-success" href="https://oauth.vk.com/authorize?client_id=5335054&display=page&redirect_uri=https://runtasker.ru/VkOrders/GetToken&scope=groups&response_type=code&v=5.60">
+<a class="btn btn-success" href="@vkUrl">
     Получить токен
 </a>
 

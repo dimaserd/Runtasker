@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using VkParse.Statics;
+using VkParser.Enumerations;
 
 namespace VkParser.Workers.Api
 {
@@ -34,6 +35,18 @@ namespace VkParser.Workers.Api
                 return _tokenGiver.Token;
             }
         }
+
+        public string GetToken(VkTokenType tokenType)
+        {
+            if (tokenType == VkTokenType.Marina)
+            {
+                return _tokenGiver.Token;
+            }
+            else
+            {
+                return _tokenGiver.AppToken;
+            }
+        }
         #endregion
 
         #region Constants
@@ -44,12 +57,16 @@ namespace VkParser.Workers.Api
         #endregion
         
         #region Api calls
-        public JObject Request(string method, string paramsString)
+        
+        public JObject Request(string method, string paramsString, VkTokenType tokenType = VkTokenType.Marina)
         {
             string resp = string.Empty;
 
+            string access_token = GetToken(tokenType);
+            
+
             string url = @"https://api.vk.com/method/" + $"{method}"
-                + $"?access_token={Token}&{paramsString}";
+                + $"?access_token={access_token}&{paramsString}";
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
@@ -64,6 +81,7 @@ namespace VkParser.Workers.Api
             JObject json = JObject.Parse(resp);
             return json;
         }
+
 
         public async Task<JObject> RequestAsync(string method, string paramsString)
         {

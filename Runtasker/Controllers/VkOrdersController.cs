@@ -16,6 +16,8 @@ using VkParser.Contexts;
 using System;
 using VkParser.Models;
 using Logic.Extensions.Models;
+using VkParser.MessageSenders;
+using VkParser.Models.MessageSenderModels;
 
 namespace Runtasker.Controllers
 {
@@ -102,7 +104,21 @@ namespace Runtasker.Controllers
         #endregion
 
         #region Test methods
-        
+        public string TestVkMessage()
+        {
+            using (VkMessageSender sender = new VkMessageSender())
+            {
+                VkMessage mes = new VkMessage
+                {
+                    Text = "testText",
+                    UserDomain = "dimaserd"
+                };
+                sender.SendMessageToVkUser(mes);
+                return "готово";
+            }
+        }
+
+
         public async Task<ActionResult> Test()
         {
             var model = await _vkContext.VkKeyWords
@@ -119,8 +135,14 @@ namespace Runtasker.Controllers
 
         public ActionResult GetToken(string code)
         {
-            UpdateToken(code);
+            UpdateVkToken(code);
             return View();
+        }
+
+        public ActionResult GetAppToken(string code)
+        {
+            UpdateVkAppToken(code);
+            return View(viewName: "GetToken");
         }
         #endregion
 
@@ -386,7 +408,7 @@ namespace Runtasker.Controllers
         #region Help Methods
 
         #region Token methods
-        void UpdateToken(string code)
+        void UpdateVkToken(string code)
         {
             string filesDir = HostingEnvironment.MapPath("~/Files");
 
@@ -405,9 +427,64 @@ namespace Runtasker.Controllers
 
         }
 
+        void UpdateVkAppToken(string code)
+        {
+            string filesDir = HostingEnvironment.MapPath("~/Files");
+
+            string tokenFilePath = $"{filesDir}/vkApp_token.txt";
+
+            //если файл существует то удаляем его
+            if (System.IO.File.Exists(tokenFilePath))
+            {
+                System.IO.File.Delete(tokenFilePath);
+            }
+
+            string fileContents = GetVkAppToken(code);
+
+            //заполняем новым содержимым
+            System.IO.File.AppendAllText(tokenFilePath, fileContents);
+
+        }
+
+
+        
+
+        #region Методы получающие токены через code от сервера
+        string GetVkAppToken(string code)
+        {
+            int client_id = 5335054;
+            string client_secret = "T06kZfxtM5sKrAz5AE47";
+
+            string redirectUri = @"https://runtasker.ru/VkOrders/GetVkAppToken";
+            string url = @"https://oauth.vk.com/access_token"
+                    + $"?client_id={client_id}&client_secret={client_secret}" +
+                    $"&{redirectUri}&code={code}";
+
+            JObject response = JsonRequest(url);
+
+            if (!response["access_token"].IsNullOrEmpty())
+            {
+                return response["access_token"].ToString();
+            }
+
+            return null;
+
+        }
+
+
         string GetVkToken(string code)
         {
-            JObject response = JsonRequest(code);
+            int client_id = 5335054;
+            string client_secret = "T06kZfxtM5sKrAz5AE47";
+            string uri = @"https://runtasker.ru/VkOrders/GetToken";
+
+            string resp = string.Empty;
+
+            string url = @"https://oauth.vk.com/access_token"
+        + $"?client_id={client_id}&client_secret={client_secret}&redirect_uri={uri}&code={code}";
+
+
+            JObject response = JsonRequest(url);
 
             if(!response["access_token"].IsNullOrEmpty())
             {
@@ -418,16 +495,13 @@ namespace Runtasker.Controllers
             
         }
 
-        JObject JsonRequest(string code)
+        #endregion
+
+        JObject JsonRequest(string url)
         {
-            int client_id = 5335054;
-            string client_secret = "T06kZfxtM5sKrAz5AE47";
-            string uri = @"https://runtasker.ru/VkOrders/GetToken";
+            
 
             string resp = string.Empty;
-
-            string url = @"https://oauth.vk.com/access_token"
-        + $"?client_id={client_id}&client_secret={client_secret}&redirect_uri={uri}&code={code}";
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
@@ -442,6 +516,8 @@ namespace Runtasker.Controllers
             JObject json = JObject.Parse(resp);
             return json;
         }
+
+        
         #endregion
 
         #region AddErrors methods

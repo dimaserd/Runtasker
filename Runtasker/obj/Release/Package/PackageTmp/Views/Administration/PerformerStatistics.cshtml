@@ -17,7 +17,9 @@
 
 
 <div class="row">
-    <h2 class="sub-header">Статистика исполнителя @Model.MainInfo.Name</h2>
+    <h2 class="sub-header">
+        Статистика исполнителя @Model.MainInfo.Name
+    </h2>
 
     <!--User Profile-->
     <div class="row">
@@ -78,7 +80,7 @@
                 </li>
                 <li>
                     <a href="#" class="btn btn-default btn-filter" data-target="messages">
-                        Сообщения @GISigns.Count(Model.Messages.Count()).ToHtml()
+                        Сообщения @GISigns.Count(Model.MainInfo.Messages.Count()).ToHtml()
                     </a>
                 </li>
                 <li>
@@ -159,6 +161,7 @@
     </div>
 </div>
 <!--/Заказы-->
+
 <!--Сообщения-->
 <div class="row statPanel" data-status="messages">
     <h3>Сообщения</h3>
@@ -187,7 +190,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (Message m in Model.Messages)
+                @foreach (Message m in Model.MainInfo.Messages)
             {
                     <tr class="active">
                         <td>
@@ -257,6 +260,14 @@
     </div>
 </div>
 <!--/Транзакции-->
+
+<!--Выполняемые предметы-->
+<h3>Выполняемые предметы</h3>
+@foreach(Subject subject in Model.Subjects)
+{
+    <p>@subject.ToDescriptionString()</p>
+}
+<!--/Выполняемые предметы-->
 
 @section scripts{
     <!--Filter scripts-->

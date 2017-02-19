@@ -69,7 +69,9 @@
     <Compile Include="Entities\VkPostLookUp.cs" />
     <Compile Include="Enumerations\WordType.cs" />
     <Compile Include="Extensions\String\VkStringExtensions.cs" />
+    <Compile Include="MessageSenders\VkMessageSender.cs" />
     <Compile Include="Models\KeyWord.cs" />
+    <Compile Include="Models\MessageSenderModels\VkMessage.cs" />
     <Compile Include="Models\VkParserModels.cs" />
     <Compile Include="Models\VkPostLookUpModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

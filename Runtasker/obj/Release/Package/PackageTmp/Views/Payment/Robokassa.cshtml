@@ -1,0 +1,85 @@
+﻿@using Runtasker.Logic.Models
+@using System.Text
+@using System.Security.Cryptography
+@using HtmlExtensions.Renderers
+@using Extensions.String
+@using Runtasker.LocaleBuilders.Models
+
+@model RoboKassaPaymentModel
+@{
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
+    ViewBag.Title = localeModel["Title"];
+
+    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
+    HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
+    string sMrchLogin = "runtasker";
+    string sMrchPass1 = "An74vPBpNK4Z5YkgRn6i";
+
+    // number of order
+    int nInvId = Model.PaymentId;
+
+
+    string sDesc = localeModel["ActionDesc"];
+
+    // сумма заказа
+    // sum of order
+    string sOutSum = Model.Amount.ToString();
+
+    // тип товара
+    // code of goods
+    //string sShpItem = "1";
+
+
+    string lang = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+    string sCulture = (lang == "ru-RU")? "ru" : "en";
+
+    string sEncoding = "utf-8";
+
+    // generate signature
+    //"{0}:{1}:{2}:{3}:shp_Item={4}"
+    string sCrcBase = string.Format("{0}:{1}:{2}:{3}",
+                sMrchLogin, sOutSum, nInvId, sMrchPass1);
+
+    MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+    byte[] bSignature = md5.ComputeHash(Encoding.UTF8.GetBytes(sCrcBase));
+
+    StringBuilder sbSignature = new StringBuilder();
+    foreach (byte b in bSignature)
+    {
+        sbSignature.AppendFormat("{0:x2}", b);
+    }
+
+
+    string sCrc = sbSignature.ToString();
+
+    //all my parameters must be sorted by alphabet and go after main parameters after being sorted
+    string script_src = "https://auth.robokassa.ru/Merchant/PaymentForm/FormMS.js?" +
+                            "MerchantLogin=" + sMrchLogin +
+                            "&OutSum=" + sOutSum +
+                            "&InvoiceID=" + nInvId +
+                            //"&shp_Item=" + sShpItem +
+                            "&SignatureValue=" + sCrc +
+                            "&Description=" + sDesc +
+                            "&Culture=" + sCulture +
+                            "&Encoding=" + sEncoding;
+
+
+    string actionDesc = localeModel["ActionDesc"];
+}
+
+
+<div class="page-header">
+    <h1>@actionDesc.ToHtml()<small>@localeModel["ActionDescMini"]</small></h1>
+</div>
+
+
+
+<script src="@script_src"></script>
+
+<h5 class="info">
+    @localeModel["Info"].ToHtml()
+</h5>
+
+<a href="@Url.Action("Index", "Payment", new { sumToPay = Model.Amount})" class="btn btn-default">
+    @FASigns.DoubleBack.Lg().ToHtml() @localeModel["BackToPM"]
+</a>

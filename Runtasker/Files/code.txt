@@ -1,0 +1,1 @@
+var res;var a0 = API.wall.get({"owner_id" : "-58897819", "count" : "100", "offset" : "0", "extended" : "1" }); res += a0; var a1 = API.wall.get({"owner_id" : "-61055670", "count" : "100", "offset" : "0", "extended" : "1" }); res += a1; return res;

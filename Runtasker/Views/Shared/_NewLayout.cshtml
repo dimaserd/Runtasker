@@ -1,0 +1,196 @@
+﻿@using Runtasker.Resources.Views.Shared.NewLayout
+@using Runtasker.HtmlExtensions
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title – Runtasker.ru</title>
+    <meta name="keywords" content="HTML5,CSS3,Template" />
+    <meta name="description" content="" />
+    <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
+
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+    <!-- WEB FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet" type="text/css" />
+
+
+    <!-- CORE CSS -->
+    @Styles.Render("~/bootstrap/css")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+
+    @Styles.Render("~/blog/css")
+    @Styles.Render("~/owl-carousel/css")
+
+    
+
+    @Styles.Render("~/animate/css", "~/magnific-popup/css", "~/superslides/css")
+
+
+    <!-- THEME CSS -->
+    @Styles.Render("~/NewDesign/Essentials")
+
+    @Styles.Render("~/ColorTheme/darkblue")
+
+    @*@Styles.Render("~/DarkLayout")*@
+    
+    <!--VK Scripts-->
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?137"></script>
+    
+    <!-- Morenizr -->
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+
+
+<body>
+    <!-- Yandex.Metrika counter -->
+    @ViewExtensions.GetYandexMetrika()
+    <!-- /Yandex.Metrika counter -->
+
+    
+    <!-- Top Bar -->
+    <header id="topHead" class="fixed">
+        <div class="container">
+
+            <!-- PHONE/EMAIL Not implemented yet-->
+            <span class="quick-contact pull-left">
+                @*<i class="fa fa-phone"></i> 8-916-604-49-60 &bull;*@
+                <a class="" href="mailto:contact@runtasker.ru">contact@runtasker.ru</a>
+            </span>
+            <!-- /PHONE/EMAIL -->
+            <!-- LANGUAGE -->
+            @{Html.RenderAction("Index", "Language");}
+            <!-- /LANGUAGE -->
+            <!-- SIGN IN -->
+            @{Html.RenderAction("Signin", "Account");}
+            <!-- /SIGN IN -->
+            <!-- LINKS -->
+            <div class="pull-right nav hidden-xs">
+                <!--Not implemented aboutPage-->
+                @*<a href="/Home/AboutUs" alt="About us">
+                        <i class="fa fa-angle-right"></i> @NewLayoutRes.About
+                    </a>*@
+
+                <a href="/Home/Contact" alt="Contact">
+                    <i class="fa fa-angle-right"></i> @NewLayoutRes.Contact
+                </a>
+
+            </div>
+            <!-- /LINKS -->
+
+        </div>
+    </header>
+    <!-- /Top Bar -->
+    <!-- TOP NAV -->
+    <header id="topNav" class="topHead">
+        <!-- remove class="topHead" if no topHead used! -->
+        <div class="container">
+
+            @if (Request.IsAuthenticated)
+            {
+            <!-- Mobile Menu Button -->
+            <button class="btn btn-mobile" id="dick">
+                <i class="fa fa-bars"></i>
+            </button>
+            }
+
+
+            <!-- Logo text or image -->
+            <a class="logo" href="/Home/Index">
+                <span class="glyphicon glyphicon-education"></span>RUNTASKER
+            </a>
+
+@if (Request.IsAuthenticated)
+{
+   {Html.RenderAction("Menu", "Home");}
+}
+        </div>
+
+    </header>
+
+    <!-- /TOP NAV -->
+    <!-- WRAPPER -->
+    <div id="wrapper">
+        <div class="container">
+            <section class="container">
+                @{ Html.RenderAction("Modal", "Message");}
+                @*{ Html.RenderAction("Index", "Notification");}*@
+                
+                <div id="notification-wrapper"></div>
+
+                <div style="margin-top:15px;">
+                    
+                    <!-- VK Widget -->
+                    @Html.GetVKContactChat()
+                    <!--/ VK Widget-->
+                    
+                    @RenderBody()
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <!-- /WRAPPER -->
+    <!-- FOOTER -->
+    <footer>
+
+        <!-- copyright , scrollTo Top -->
+        <div class="footer-bar">
+            <div class="container">
+                <span class="copyright">Copyright &copy; RUNTASKER.RU @DateTime.Now.Year, LLC . @NewLayoutRes.AllRightsRes.</span>
+                <a class="toTop" href="#topNav">@NewLayoutRes.BackToTop <i class="fa fa-arrow-circle-up"></i></a>
+            </div>
+        </div>
+        <!-- copyright , scrollTo Top -->
+
+
+    </footer>
+    <!-- /FOOTER -->
+    <!-- JAVASCRIPT FILES -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!--jquery via cdn-->
+    @Scripts.Render("~/NewDesign/Jquery")
+
+    @Scripts.Render("~/bundles/bootstrap")
+    <!--bootstrap-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.stellar/0.6.2/jquery.stellar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.superslides/0.6.2/jquery.superslides.min.js"></script>
+
+    @Scripts.Render("~/NewDesign/Scripts")
+
+    <script>
+        $("#dick").click(function () {
+            $("#NavMenu").collapse("toggle");
+        })
+    </script>
+    @if (Request.IsAuthenticated)
+    {
+        <!--Notification Scripts-->
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                $('#notification-wrapper').load('/Notification/GetNotificationAsync'); 
+          
+                }, false);
+        </script>
+        <!--/Notification Scripts-->
+    }
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

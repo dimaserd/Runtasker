@@ -1,0 +1,67 @@
+﻿@using System.Text;
+@using System.Security.Cryptography;
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = null;
+
+
+
+    // регистрационная информация (логин, пароль #1)
+    // registration info (login, password #1)
+    string sMrchLogin = "runtasker";
+    string sMrchPass1 = "hWaHRYTqaEAky127eU66";
+
+    // номер заказа
+    // number of order
+    int nInvId = 0;
+
+    // описание заказа
+    // order description
+    string sDesc = "Balance recharge on Runtasker";
+
+    // сумма заказа
+    // sum of order
+    string sOutSum = "3.00";
+
+    // тип товара
+    // code of goods
+    string sShpItem = "1";
+
+    // язык
+    // language
+    string sCulture = "en";
+
+    // кодировка
+    // encoding
+    string sEncoding = "utf-8";
+
+    // формирование подписи
+    // generate signature
+    string sCrcBase = string.Format("{0}:{1}:{2}:{3}:shp_Item={4}",
+                        sMrchLogin, sOutSum, nInvId, sMrchPass1, sShpItem);
+
+    MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+    byte[] bSignature = md5.ComputeHash(Encoding.UTF8.GetBytes(sCrcBase));
+
+    StringBuilder sbSignature = new StringBuilder();
+    foreach (byte b in bSignature)
+    {
+        sbSignature.AppendFormat("{0:x2}", b);
+    }
+
+
+    string sCrc = sbSignature.ToString();
+
+    string script_src = "https://auth.robokassa.ru/Merchant/PaymentForm/FormMS.js?" +
+                            "MerchantLogin=" + sMrchLogin +
+                            "&OutSum=" + sOutSum +
+                            "&InvoiceID=" + nInvId +
+                            "&shp_Item=" + sShpItem +
+                            "&SignatureValue=" + sCrc +
+                            "&Description=" + sDesc +
+                            "&Culture=" + sCulture +
+                            "&Encoding=" + sEncoding;
+}
+
+<script src="@script_src"></script>

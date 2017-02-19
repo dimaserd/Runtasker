@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8F9A8021-202A-4FDB-8377-AB6F9F605CF1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Runtasker.Logic</RootNamespace>
+    <AssemblyName>Runtasker.Logic</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FakeDbSet, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FakeDbSet.1.4.0.0\lib\net40\FakeDbSet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenPop, Version=2.0.6.1120, Culture=neutral, PublicKeyToken=6bdb97f144b7efc8, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenPop.NET.2.0.6.1120\lib\net40\OpenPop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VkNet, Version=1.21.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VkNet.1.25.0\lib\net40\VkNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\PopOverInfoAttribute.cs" />
+    <Compile Include="Attributes\RatingSizeAttribute.cs" />
+    <Compile Include="Attributes\SpecifyDropdownAttribute.cs" />
+    <Compile Include="Contexts\ApplicationDbContext.cs" />
+    <Compile Include="Contexts\Enumerations\ContextType.cs" />
+    <Compile Include="Contexts\Fake\FakeMyDbContext.cs" />
+    <Compile Include="Contexts\Interfaces\IApplicationDbContext.cs" />
+    <Compile Include="Contexts\Interfaces\IMyDbContext.cs" />
+    <Compile Include="Entities\Attachment.cs" />
+    <Compile Include="Entities\Invitation.cs" />
+    <Compile Include="Entities\Message.cs" />
+    <Compile Include="Entities\Notification.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\OtherUserInfo.cs" />
+    <Compile Include="Entities\Payment.cs" />
+    <Compile Include="Entities\PaymentTransaction.cs" />
+    <Compile Include="Enumerations\DisposingInternalObjectsSetting.cs" />
+    <Compile Include="Enumerations\OrderWorker\OrderCreationType.cs" />
+    <Compile Include="Migrations\201701181757587_init.cs" />
+    <Compile Include="Migrations\201701181757587_init.Designer.cs">
+      <DependentUpon>201701181757587_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702112029545_t.cs" />
+    <Compile Include="Migrations\201702112029545_t.Designer.cs">
+      <DependentUpon>201702112029545_t.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702121848484_manytoMany.cs" />
+    <Compile Include="Migrations\201702121848484_manytoMany.Designer.cs">
+      <DependentUpon>201702121848484_manytoMany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702172038384_usersSpec.cs" />
+    <Compile Include="Migrations\201702172038384_usersSpec.Designer.cs">
+      <DependentUpon>201702172038384_usersSpec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702181054045_d.cs" />
+    <Compile Include="Migrations\201702181054045_d.Designer.cs">
+      <DependentUpon>201702181054045_d.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
+    <Compile Include="Models\Orders\AnonymousModels.cs" />
+    <Compile Include="Models\Orders\ApiModels.cs" />
+    <Compile Include="Models\WokerResults\WorkerPropertyResult.cs" />
+    <Compile Include="Workers\Admin\Users\AdminUserCreation.cs" />
+    <Compile Include="Workers\Notifications\NewCustomerOrderNotificationMethods.cs" />
+    <Compile Include="Workers\Notifications\Orders\PerformerNotificationCreator.cs" />
+    <Compile Include="Workers\Orders\KnowPriceWorker.cs" />
+    <Compile Include="Workers\Orders\NewCustomerOrderWorker.cs" />
+    <Compile Include="HtmlConstantEmails\AccountEmailConstants.cs" />
+    <Compile Include="HtmlConstantEmails\CustomerEmailConstants.cs" />
+    <Compile Include="HtmlConstantEmails\Models\EmailModel.cs" />
+    <Compile Include="HtmlConstantEmails\PerformerEmailConstants.cs" />
+    <Compile Include="IdentityClasses.cs" />
+    <Compile Include="IdentityModels.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AdminModels.cs" />
+    <Compile Include="Models\HomeViewModels.cs" />
+    <Compile Include="Models\InvitationModels.cs" />
+    <Compile Include="Models\ManageModels.cs" />
+    <Compile Include="Models\MessageViewModels.cs" />
+    <Compile Include="Models\Orders\CustomerOrderModels.cs" />
+    <Compile Include="Models\NotificationModels.cs" />
+    <Compile Include="Models\PaymentModels.cs" />
+    <Compile Include="Models\PerformerViewModels.cs" />
+    <Compile Include="Contexts\MyDbContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\NotificationRepository.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
+    <Compile Include="ViewModelBuilders\Payment\PaymentViewsLocaleHelper.cs" />
+    <Compile Include="ViewModelBuilders\ViewModelLocaleHelperBase.cs" />
+    <Compile Include="Workers\AccountWorker.cs" />
+    <Compile Include="Workers\Admin\AdminCustomerMethods.cs" />
+    <Compile Include="Workers\Admin\AdminDeleteMethods.cs" />
+    <Compile Include="Workers\Admin\Email\AdminEmailGetter.cs" />
+    <Compile Include="Workers\Admin\Email\AdminEmailSender.cs" />
+    <Compile Include="Workers\Attachments\AttachmentWorkerBase.cs" />
+    <Compile Include="Workers\Attachments\ContactAttachmentWorker.cs" />
+    <Compile Include="Workers\Attachments\CustomerAttachmentWorker.cs" />
+    <Compile Include="Workers\Attachments\PerformerAttachmentMethods.cs" />
+    <Compile Include="Workers\AvatarWorker.cs" />
+    <Compile Include="Workers\BaseWorkers\BaseContextWorker.cs" />
+    <Compile Include="Workers\ContactWorker.cs" />
+    <Compile Include="Workers\Developer\DataBaseMethods.cs" />
+    <Compile Include="Workers\Developer\DeveloperLogs.cs" />
+    <Compile Include="Workers\Developer\DeveloperMoqMethods.cs" />
+    <Compile Include="Workers\Developer\DeveloperResetWorker.cs" />
+    <Compile Include="Workers\Developer\DeveloperRoleWorker.cs" />
+    <Compile Include="Workers\Developer\DeveloperWorker.cs" />
+    <Compile Include="Workers\Email\AccountEmailMethods.cs" />
+    <Compile Include="Workers\Email\ContactEmailMethods.cs" />
+    <Compile Include="Workers\Email\CustomerEmailMethods.cs" />
+    <Compile Include="Workers\Email\EmailSettings.cs" />
+    <Compile Include="Workers\Email\EmailWorkerBase.cs" />
+    <Compile Include="Workers\Email\InvitationEmailMethods.cs" />
+    <Compile Include="Workers\Email\PaymentEmailMethods.cs" />
+    <Compile Include="Workers\Email\PerformerEmailMethods.cs" />
+    <Compile Include="Workers\Files\AvatarFileWorker.cs" />
+    <Compile Include="Workers\Files\CustomerFileMethods.cs" />
+    <Compile Include="Workers\Files\DeveloperFileMethods.cs" />
+    <Compile Include="Workers\Files\DirectoryExstensions.cs" />
+    <Compile Include="Workers\Files\FileControllerMethods.cs" />
+    <Compile Include="Workers\Files\FileWorker.cs" />
+    <Compile Include="Workers\Files\FileWorkerBase.cs" />
+    <Compile Include="Workers\Files\PerformerFileMethods.cs" />
+    <Compile Include="Workers\Info\AccountInfoModels.cs" />
+    <Compile Include="Workers\Info\Invitations\InvitationWorker.cs" />
+    <Compile Include="Workers\LogWorker.cs" />
+    <Compile Include="Workers\Message\Interfaces.cs" />
+    <Compile Include="Workers\Message\MessageOrderWorker.cs" />
+    <Compile Include="Workers\Message\MessageWorker.cs" />
+    <Compile Include="Workers\Message\MessageWorkerBase.cs" />
+    <Compile Include="Workers\Message\PerformerMessageOrderWorker.cs" />
+    <Compile Include="Workers\Notifications\AccountNotificationMethods.cs" />
+    <Compile Include="Workers\Notifications\Orders\CustomerOrderNotificationErrorMethods.cs" />
+    <Compile Include="Workers\Notifications\Orders\CustomerOrderNotificationMethods.cs" />
+    <Compile Include="Workers\Notifications\FileControllerNotificationMethods.cs" />
+    <Compile Include="Workers\Notifications\InvitationNotificationMethods.cs" />
+    <Compile Include="Workers\Notifications\NotificationWorkerBase.cs" />
+    <Compile Include="Workers\Notifications\PaymentNotificationMethods.cs" />
+    <Compile Include="Workers\Notifications\PerformerNotificationMethods.cs" />
+    <Compile Include="Workers\Notifications\RegistrationNotificationMethods.cs" />
+    <Compile Include="Workers\Orders\CustomerOrderErrorEvents.cs" />
+    <Compile Include="Workers\Orders\CustomerOrderWorker.cs" />
+    <Compile Include="Workers\Orders\OrdersWorker.cs" />
+    <Compile Include="Workers\Orders\OrdersWorkerBase.cs" />
+    <Compile Include="Workers\Orders\PerformerOrderWorker.cs" />
+    <Compile Include="Workers\Payments\AccountPaymentMethods.cs" />
+    <Compile Include="Workers\Payments\CustomerOrderPaymentMethods.cs" />
+    <Compile Include="Workers\Payments\InvitationPaymentMethods.cs" />
+    <Compile Include="Workers\Payments\RobokassaPaymentMethods.cs" />
+    <Compile Include="Workers\Payments\ServicePaymentMethodsBase.cs" />
+    <Compile Include="Workers\Payments\YandexPaymentWorker.cs" />
+    <Compile Include="Workers\Notifications\WebUINotificater.cs" />
+    <Compile Include="Workers\PaymentTransactions\PaymentTransactionsLogger.cs" />
+    <Compile Include="Workers\PaymentTransactions\PaymentTransactionsWorker.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Extensions\Extensions.csproj">
+      <Project>{22c11b93-35d0-462a-8bde-27c8a8479741}</Project>
+      <Name>Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HtmlExtensions\HtmlExtensions.csproj">
+      <Project>{9b995fdd-54bd-444d-b54d-dddcf305ed0d}</Project>
+      <Name>HtmlExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logic.Extensions\Logic.Extensions.csproj">
+      <Project>{56e8aac3-927b-469d-8c78-cb0d74209018}</Project>
+      <Name>Logic.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Runtaker.LocaleBuiders\Runtasker.LocaleBuilders.csproj">
+      <Project>{0fa9116e-7f85-41ec-adca-acf122e0ef21}</Project>
+      <Name>Runtasker.LocaleBuilders</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Runtasker.Resources\Runtasker.Resources.csproj">
+      <Project>{575b4616-8bfd-424b-b3fb-517aa4e86d17}</Project>
+      <Name>Runtasker.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Runtasker.Settings\Runtasker.Settings.csproj">
+      <Project>{70630F62-8278-44C2-B24A-089356EEEB8A}</Project>
+      <Name>Runtasker.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VkParser\VkParser.csproj">
+      <Project>{C41AED5C-A0E0-4648-95D3-FB36E4225927}</Project>
+      <Name>VkParser</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201701181757587_init.resx">
+      <DependentUpon>201701181757587_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702112029545_t.resx">
+      <DependentUpon>201702112029545_t.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702121848484_manytoMany.resx">
+      <DependentUpon>201702121848484_manytoMany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702172038384_usersSpec.resx">
+      <DependentUpon>201702172038384_usersSpec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702181054045_d.resx">
+      <DependentUpon>201702181054045_d.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Menu\" />
+    <Folder Include="Workers\RestoreData\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

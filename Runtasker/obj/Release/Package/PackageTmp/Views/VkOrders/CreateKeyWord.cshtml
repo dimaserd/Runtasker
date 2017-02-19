@@ -1,0 +1,75 @@
+﻿@using Runtasker.HtmlExtensions
+@using VkParser.Entities
+@using VkParser.Enumerations
+@model VkKeyWord
+@{
+    ViewBag.Title = "CreateKeyWord";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    List<SelectListItem> subjects = new List<SelectListItem>();
+
+    foreach (WordType item in Enum.GetValues(typeof(WordType)))
+    {
+        subjects.Add(new SelectListItem { Selected = (int)item == 0, Text = item.ToString(), Value = ((int)item).ToString() });
+    }
+}
+
+<h2>Создать ключевое слово</h2>
+
+@using (Html.BeginForm("CreateKeyWord", "VkOrders", FormMethod.Post, htmlAttributes: new { id = "myForm", enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        @Html.ValidationErrorsToAlerts()
+        @Html.AntiForgeryToken()
+        
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MainForm, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.MainForm,
+                    htmlAttributes: new
+                    {
+                        @class = "form-control",
+                        placeholder = "Начальная форма"
+                    })
+            </div>
+        </div>
+        
+        
+        
+        <!--Decription-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.OtherWordForms, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextAreaFor(model => model.OtherWordForms,
+                    htmlAttributes: new
+                    {
+                        @class = "form-control",
+                        rows = "3",
+                        placeholder = "Укажите разные формы слова"
+                    })
+             </div>
+        </div>
+        <!--/Description-->
+
+        <!--SubjectList-->
+        <div class="form-group">
+            @Html.LabelFor(m => m.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    @Html.DropDownListFor(m => m.Subject, subjects, htmlAttributes: new { id = "mydropdownlist", @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <!--/SubjectList-->
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Создать" class="btn-lg btn btn-primary">
+                
+            </div>
+        </div>
+        
+    </div>
+}

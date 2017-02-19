@@ -1,0 +1,36 @@
+﻿@using Runtasker.Logic
+@model ApplicationUser
+@{
+    ViewBag.Title = "DeleteUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Удаление поьзователя из Runtasker</h2>
+
+<div class="row">
+    <p class="h4 text-info">
+        Email : @Model.Email
+    </p>
+</div>
+
+<div class="row">
+    <p class="h4 text-info">
+        Дата регистрации: @Model.RegistrationDate
+    </p>
+</div>
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-horizontal">
+        
+
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.UserName)
+        @Html.HiddenFor(m => m.RegistrationDate)
+
+        @Html.HiddenFor(m => m.Name)
+
+        <input type="submit" value="Удалить пользователя" class="btn-lg btn btn-danger" />
+    </div>
+}

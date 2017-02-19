@@ -1,0 +1,313 @@
+﻿@using Runtasker.HtmlExtensions
+@using HtmlExtensions.Renderers
+@using Extensions.String
+@using Runtasker.Resources.Views.Orders.Create
+
+@model Runtasker.Logic.Models.OrderCreateModel
+@{
+    ViewBag.Title = Create.Title;
+
+    //получаем листы по перечислениям
+    List<SelectListItem> subjects = StaticHtmlClassesHelper.GetSortedSubjectEnumList().ToList();
+    List<SelectListItem> workTypes = StaticHtmlClassesHelper.GetWorkTypeEnumList().ToList();
+
+
+    int count = subjects.Count - 1;
+    int whichSubject = (int)Model.Subject - 1;
+
+    whichSubject = (whichSubject == 0) ? count : whichSubject;
+
+    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
+
+    //for datetime picker
+    string langCode = StaticHtmlClassesHelper.GetLangCode();
+}
+
+
+<!-- PAGE TITLE -->
+<header id="page-title">
+    <div class="container">
+        <h1>@ViewBag.Title</h1>
+        <ul class="breadcrumb">
+            <li><a href="/Home/Index">@Create.HomeNav</a></li>
+            <li><a href="/Orders/Index">@Create.MyOrdersNav</a></li>
+            <li class="active">@Create.CreateNav</li>
+        </ul>
+    </div>
+</header>
+
+<div class="page-header">
+    <h1>
+        @Create.Header 
+        <small>@Create.MiniHeader</small>
+    </h1>
+</div>
+
+@using (Html.BeginForm("Create", "Orders", FormMethod.Post, htmlAttributes: new { id="myForm", enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        @Html.ValidationErrorsToAlerts()
+        @Html.AntiForgeryToken()
+
+
+        <!--WorkTypeList-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.WorkType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <div class="input-group">
+                    @Html.DropDownListFor(m => m.WorkType, workTypes)
+                    <div class="input-group-btn">
+                        @Html.PopoverInfoFor(model => model.WorkType)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/WorkTypeList-->
+
+        <!--SubjectsList-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <div class="input-group">
+                    @Html.DropDownListFor(m => m.Subject, selectList: subjects, htmlAttributes: new {id = "subjectList", @class = "form-control" })
+                    <div class="input-group-btn">
+                        @Html.PopoverInfoFor(model => model.Subject)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/SubjectList-->
+
+        <!--UserSubjectForm-->
+        @Html.LabelAndEditorFor(model => model.OtherSubject, htmlAttributes : new { @class = "hidden", id = "userSubjectForm" })
+        <!--/UserSubjectForm-->
+        
+        <!--DateTime Picker-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.FinishDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="date col-md-5">
+                <!--input-group date-->
+                <input type="text" class="form-control" id="datetimepicker1" name="FinishDate" value="@Model.FinishDate.ToShortDateString()" />
+            </div>
+        </div>
+        <!--End of DateTimePicker-->
+        
+        <!--FilesUpload-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.FileUpload, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <p>
+                    <div class='input-group'>
+                        @Html.TextBoxFor(model => model.FileUpload, htmlAttributes: new { id = "fileUpload", type = "file", multiple = "" })
+                        <div class='input-group-btn'>
+                            <div class="pull-right">
+                                @Html.PopoverInfoFor(model => model.FileUpload, htmlAttributes: new {@class = "circle"})
+                                <style>
+                                    .circle {
+                                        border: solid 1px #000;
+                                        border-radius: 45%;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                        </div>
+                </p>              
+            </div>
+        </div>
+        <!--/FilesUpload-->
+
+        <!--Decription-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextAreaFor(model => model.Description,
+                    htmlAttributes : new { @class = "form-control",
+                        rows = "3",
+                        placeholder = Create.DescriptionPlaceholder } )
+                @Html.ValidationMessageFor(model => model.Description, "", new { id = "descriptionError", @class = "text-danger" })
+            </div>
+        </div>
+        <!--/Description-->
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button id="fakeCreate" type="button" class="btn-lg btn btn-primary">
+                    @Create.CreateOrder
+                </button>
+            </div>
+        </div>
+        <input id="realCreate" type="submit" class="hidden" />
+    </div>
+}
+
+<!--Upload Progress Bar-->
+<div class="row">
+    <div id="uploadProgress" class="hidden col-md-5">
+        <div class="row">
+            <p class="h4">@Create.FileUploading</p>
+            @FASigns.CircleONotch.X2().Animate().ToHtml()
+        </div>
+    </div>
+</div>
+<!--/Upload Progress Bar-->
+
+<!---->
+<hr/>
+<!--Back to List-->
+<div>
+    <a href="@Url.Action("Index", "Orders")" class="btn btn-default">
+        @FASigns.DoubleBack.ToHtml() @Create.BackToList
+    </a>
+</div>
+<!--/Back to List/-->
+
+@section scripts
+{
+    <!--Defaults-->
+    <script>
+        var defaults = function () {
+            console.log($("#subjectList").get(0).selectedIndex);
+            $("#subjectList").get(0).selectedIndex = 0;
+            
+        }();
+    </script>
+    <!--/Defaults-->
+    <!--Popover activator-->
+    <script>
+        var popoverBtns = $(".popoverBtn");
+
+        var activator = function()
+        {
+            popoverBtns.popover();
+        }();
+
+        function HidePopovers()
+        {
+            popoverBtns.popover('hide');
+        }
+        
+    </script>
+    <!--/Tooltip activator-->
+    
+    <!--DateTimePicker-->
+    @Html.GetDateTimeScriptsAndStyles(langCode)
+    <!--/DateTimePicker-->
+
+    <!--Other Subject Scripts-->
+    <script>
+        var subjectList = $('#subjectList');
+        var userSubjectForm = $('#userSubjectForm');
+        var hiddenSubject = $('#hiddenSubject');
+        var otherSubject = $('#OtherSubject');
+
+        subjectList.change(function () {
+            hiddenSubject.val($(this).val());
+            if($(this).val() == (0))
+            {
+                otherSubject.val('');
+                ShowObject(userSubjectForm);
+            }
+            else
+            {
+                HideObject(userSubjectForm);
+            }
+        });
+
+        function ShowObject(obj)
+        {
+            if($(obj).hasClass('hidden'))
+            {
+                $(obj).removeClass('hidden');
+            }
+        }
+
+        function HideObject(obj)
+        {
+            if(!$(obj).hasClass('hidden'))
+            {
+                $(obj).addClass('hidden');
+            }
+        }
+    </script>
+    <!--/Other Subject Scripts-->
+
+    
+
+    <!--SendOrderScripts-->    
+    <script>
+        var realCreate = $('#realCreate');
+        var fakeCreate = $('#fakeCreate');
+        var hiddenSubject = $('#hiddenSubject');
+        var otherSubject = $('#OtherSubject');
+        var myForm = $('#myForm');
+        var uploadProgress = $('#uploadProgress');
+
+
+
+        fakeCreate.click(function(){
+            if(hiddenSubject.val() != (@count))
+            {
+                console.log('yes')
+                otherSubject.attr('value', 'selected');
+            }
+
+            if(hasFilesToUpload())
+            {
+
+                console.log("has files");
+                uploadProgress.removeClass('hidden');
+            }
+            realCreate.click();
+        });
+    </script>
+    <!--/SendOrderScripts-->
+
+    <!--Files uploading Scripts-->
+    <script>
+        var bar = $('.bar');
+        var percent = $('.percent');
+        var progressBar = $('.progress-bar');
+        var uploadProgress = $('#uploadProgress');
+
+
+
+        function progressBarChanger(percentComplete)
+        {
+            progressBar.attr('aria-valuenow', percentComplete);
+            progressBar.html(percentComplete + '%');
+            progressBar.attr('style', 'width: ' + percentComplete + '%;')
+        }
+
+        function hasFilesToUpload()
+        {
+            return (document.getElementById('fileUpload').files.length > 0);
+        }
+    </script>
+    <!--/Files uploading Scripts-->
+
+    <!--Restore Condition Scripts-->
+<script>
+        console.log("restore");
+
+        var userSubjectForm = $('#userSubjectForm');
+        var subjectList = $("#subjectList");
+
+        var RestoreCondition = function()
+        {
+            console.log(@whichSubject);
+            if(@whichSubject == (0))
+            {
+                ShowObject(userSubjectForm);
+            }
+            if(@whichSubject != -1)
+            {
+                subjectList.get(0).selectedIndex = @whichSubject;
+            }
+
+
+        }();
+</script>
+    <!--/Restore Condition Scripts-->
+
+    
+}

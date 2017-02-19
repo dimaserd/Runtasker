@@ -1,0 +1,92 @@
+﻿@using Runtasker.Logic.Models
+@using Runtasker.Resources.Views.Account.Login;
+@using Runtasker.HtmlExtensions
+@using Runtasker.LocaleBuilders.Models
+@using Extensions.String
+@model LoginModel
+@{
+    LocaleViewModel viewModel = ViewData["viewModel"] as LocaleViewModel;
+    ViewBag.Title = viewModel["Title"];
+}
+
+    
+
+    
+
+
+<!-- PAGE TITLE -->
+<header id="page-title">
+    <div class="container">
+        <h1>@viewModel["Title"]</h1>
+
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index", "Home")">@viewModel["HomeNav"]</a></li>
+            <li class="active">@viewModel["ActiveNav"]</li>
+        </ul>
+    </div>
+</header>
+
+
+<section class="container">
+    <div class="row">
+        <!-- LOGIN -->
+        <div class="col-md-6">
+            @viewModel["htmlHeader"].ToHtml()
+            
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post, htmlAttributes: new { @class = "white-row" }))
+            {
+                @Html.FirstValidationErrorToAlert()
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email)
+                            @Html.TextBoxFor(model => model.Email, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password)
+                            @Html.PasswordFor(m => m.Password, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="remember-box checkbox">
+                            <label for="rememberme">                               
+                                @Html.CheckBoxFor(model => model.RememberMe) @viewModel["RememberMe"].ToHtml()
+                            </label>
+                        </span>
+                        <a href="@Url.Action("ForgotPassword", "Account")">
+                            @viewModel["ForgotYourPass"].ToHtml()
+                        </a>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <input type="submit" value="@viewModel["SignIn"]" class="btn btn-primary pull-right pull-bottom" data-loading-text="Loading...">
+                    </div>
+                </div>
+       
+            }
+        </div>
+        <!-- /LOGIN -->
+
+        <!-- PASSWORD -->
+        <div class="col-md-6">
+            @viewModel["htmlSocialSignIn"].ToHtml()
+            <div class="white-row">
+                @Html.Partial("BlockLoginList", new ExternalLoginListModel { ReturnUrl = ViewBag.ReturnUrl, VerbWith = Login.VerbWith})
+            </div>
+        </div>
+        <!-- /PASSWORD -->
+
+    </div>
+
+
+    <p class="white-row">
+        @viewModel["htmlWithoutAccount"].ToHtml()
+    </p>
+
+</section>    

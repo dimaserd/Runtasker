@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Админ панель</h2>
+
+<a href="@Url.Action("Users", "Administration")">Пользователи сайта</a>
+<p></p>
+
+<a href="@Url.Action("Customers", "Administration")">Заказчики сайта</a>
+<p></p>
+
+<a href="@Url.Action("Performers", "Administration")">Исполнители сайта</a>
+<p></p>
+
+<a href="@Url.Action("CreateUser", "Administration")">Создать пользователя</a>

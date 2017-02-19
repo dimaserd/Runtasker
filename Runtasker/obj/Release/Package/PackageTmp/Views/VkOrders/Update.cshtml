@@ -1,0 +1,54 @@
+﻿@using VkParser.Entities
+@using VkParser.Enumerations
+@using Runtasker.HtmlExtensions
+@using Runtasker.Logic.Entities
+@model VkKeyWord
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int currentCode = (int)Model.Subject;
+
+    List<SelectListItem> subjects = new List<SelectListItem>();
+
+    foreach(WordSubject item in Enum.GetValues(typeof(WordSubject)))
+    {
+        subjects.Add(new SelectListItem { Selected = (int)item == currentCode, Text = item.ToString(), Value = ((int)item).ToString() });
+    }
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        @Html.HiddenFor(m => m.Id)
+
+        @Html.LabelAndEditorFor(m => m.MainForm)
+
+        @Html.LabelAndEditorFor(m => m.OtherWordForms)
+
+        <!--SubjectList-->
+        <div class="form-group">
+            @Html.LabelFor(m => m.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    @Html.DropDownListFor(m => m.Subject, subjects, htmlAttributes: new {id = "mydropdownlist", @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <!--/SubjectList-->
+
+        
+        
+        <input type="submit" value="Сохранить" class="btn btn-success"/>
+    </div>
+}
+
+@section scripts{
+    <script>
+        var defaults = function () {
+            console.log(@currentCode);
+            $("#mydropdownlist").get(0).selectedIndex = @currentCode;
+        }();
+    </script>
+}

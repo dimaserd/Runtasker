@@ -1,0 +1,116 @@
+﻿@using System.Web.Hosting
+@using HtmlExtensions.Renderers
+@using Extensions.String
+@{
+    Layout = null;
+    GlyphiconRenderer GISigns = new GlyphiconRenderer();
+
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title – приложение ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    @{ Html.RenderAction("Modal", "Message");}
+    @*{ Html.RenderAction("Index", "Notification");}*@
+    <div id="notification-wrapper"></div>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("RUNTASKER", "Index", "Performer", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                
+                <ul class="nav navbar-nav">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Free Orders", "Index", "Orders")</li>
+                    }
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+    </div>        
+
+    <div class="container body-content">
+        <div class="container-fluid">
+            <div class="row">
+
+                <!--Боковая панель-->
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <ul class="nav nav-sidebar">
+                        <li class="active"><a href="/Home/Index">На главную</a></li>
+                        <li><a href="@Url.Action("Index", "Performer")">Заказы на сайте</a></li>
+                        <li><a href="@Url.Action("Index", "VkOrders")">Заказы из вк</a></li>
+                        @{ 
+
+                            string filesDir = HostingEnvironment.MapPath("~/Files");
+                            string tokenFilePath = $"{filesDir}/vk_token.txt";
+                            bool isGoodToken = File.GetCreationTime(tokenFilePath) >= DateTime.Now.AddDays(-1);
+                        }
+
+                        @if(isGoodToken)
+                        {
+                            <li>@GISigns.Ok.ToHtml() Токен нормальный</li>
+                        }
+                        else
+                        {
+                            <li class="alert"><a href="@Url.Action("Token", "VkOrders")">@GISigns.Refresh.ToHtml() Обновите токен</a></li>
+                        }
+                        
+                    </ul>
+                    <hr />
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <ul class="nav nav-sidebar">
+                            <li><a href="@Url.Action("Users", "Administration")">Пользователи сайта</a></li>
+                            <li><a href="@Url.Action("Customers", "Administration")">Заказчики сайта</a></li>
+                            <li><a href="@Url.Action("Performers", "Administration")">Исполнители сайта</a></li>
+                        </ul>
+                    }
+                    
+                </div>
+                <!--Конец боковой панели-->
+                <div class="col-sm-9 col-md-10 main">
+                    @RenderBody()
+                </div>
+            </div><!--row-->
+        </div><!--contatiner-fluid-->
+    </div><!--container body-content-->
+      
+    <!--Notification and Other db Scrits-->
+    <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                $('#notification-wrapper').load('/Notification/GetNotificationAsync')
+                //$('#ordersMiniPanel').load('/Orders/MiniPanelAsync')
+                //$('#messageMiniPanel').load('/Message/ActivePanelAsync')
+            }, false);
+    </script>
+    <!--/Notification Scrits-->          
+        
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

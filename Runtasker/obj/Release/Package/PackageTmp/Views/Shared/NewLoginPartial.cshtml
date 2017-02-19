@@ -1,0 +1,182 @@
+﻿@using Runtasker.Logic
+@using Microsoft.AspNet.Identity;
+@using HtmlExtensions.Renderers
+@using Extensions.String
+@using Runtasker.Resources.Views.Shared.NewLoginPartial
+
+@if (Request.IsAuthenticated)
+{
+    string userGuid = User.Identity.GetUserId();
+    string imageLink = $"/File/GetAvatar?userGuid={userGuid}";
+    HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
+    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
+
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a id="openMiniPanel" href="#">
+                @NewLoginPartial.Hello, @User.Identity.GetName()!
+                <b class="caret"></b>
+            </a>
+            <ul id="miniPanel" class="dropdown-menu">
+                <li>
+                    <style>
+                        .whiteText{
+
+                        }
+                    </style>
+                    <div class="navbar-content">
+                        <div class="row">
+                            <!--Avatar-->
+                            <div class="col-md-5">
+                                <img src="@imageLink"
+                                     alt="Alternate Text" class="img-circle img-120" />
+                            </div>
+                            <!--/Avatar-->
+                            
+                            <!--Information Block-->
+                            <div class="col-md-6">
+                                <span>@User.Identity.GetName()</span>
+                                <p class="text-muted small">
+                                    @User.Identity.GetEmail()
+                                </p>
+                                <div class="divider">
+                                </div>
+                                <p class="text-muted small">
+                                    @NewLoginPartial.YourBalance @User.Identity.GetBalance()@HtmlSigns.Rouble.ToHtml()
+                                    <a href="@Url.Action("Index", "Payment")">                                       
+                                        @NewLoginPartial.Recharge
+                                    </a>
+                                </p>
+                                
+                                    <a href="@Url.Action("Profile", "Manage")" class="costyl-view-button btn btn-primary btn-sm active">
+                                        @NewLoginPartial.ViewProfile
+                                    </a>
+                                    <style>
+                                        .costyl-view-button{
+                                            margin-bottom : 10px;
+                                        }
+                                    </style>
+                                
+                            </div>
+                            <!--/Information Block-->
+                        </div>
+                    </div>
+                    <!--Action Buttons-->
+                    <div class="navbar-footer">
+                        <div class="navbar-footer-content">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-6">
+                                    <form class="">
+                                        @if (User.Identity.HasPassword())
+                                        {
+                                            <a href="@Url.Action("Index", "Manage")" class="btn btn-default btn-sm">
+                                                @FASigns.Configuration.Lg().Animate().ToHtml() @Runtasker.Resources.Views.Shared.NewLoginPartial.NewLoginPartial.Settings
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            @Html.RouteLink(NewLoginPartial.SetPassword, new { controller = "Manage", action = "SetPassword" }, new { @class = "btn btn-default btn-sm" })
+
+                                        }
+                                    </form>
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "pull-right"  }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                            <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger btn-sm pull-right">
+                                                <span class="glyphicon glyphicon-off"> </span> @NewLoginPartial.SignOut
+                                            </a>
+                                    }
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/Action Buttons-->
+                </li>
+            </ul>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink(NewLoginPartial.Register, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        
+        <li>
+            <a id="loginLink" href="@Url.Action("Login", "Account", routeValues: null)">
+                <span class="glyphicon glyphicon-log-in"></span> @NewLoginPartial.Login
+            </a>
+        </li>
+    </ul> 
+}
+<!--Styles-->
+<style>
+    /* Special class on .container surrounding .navbar, used for positioning it into place. */
+.costyl{
+    margin-right : 0px;
+}
+
+.img-120 {
+    width: 120px;
+    height: auto;
+}
+
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  margin-top: 20px;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navbar-wrapper .navbar {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.navbar-content
+{
+    width:320px;
+    padding: 15px;
+    padding-bottom:0px;
+}
+.navbar-content:before, .navbar-content:after
+{
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.navbar-nav.navbar-right:last-child {
+margin-right: 15px !important;
+}
+.navbar-footer 
+{
+    background-color:#DDD;
+}
+.navbar-footer-content { padding:15px 15px 15px 15px; }
+.dropdown-menu {
+padding: 0px;
+overflow: hidden;
+}
+</style>
+<!--/Styles-->
+
+<!--Scripts-->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        $('#openMiniPanel').click(function (e) {
+            e.preventDefault();
+            $('#miniPanel').collapse('toggle')
+        });
+    })
+</script>
+<!--/Scripts-->

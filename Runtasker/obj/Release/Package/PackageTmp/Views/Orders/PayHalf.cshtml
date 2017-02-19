@@ -1,0 +1,57 @@
+﻿@using Runtasker.Logic.Models
+@using Runtasker.Resources.Views.Orders.Pay
+@using Runtasker.HtmlExtensions
+@model PayHalfModel
+@{
+    ViewBag.Title = $"{PayRes.PayHalf}{Model.OrderId}";
+}
+
+
+<!-- PAGE TITLE -->
+<header id="page-title">
+    <div class="container">
+        <h1>@ViewBag.Title</h1>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">@PayRes.HomeNav</a></li>
+            <li><a href="@Url.Action("Index","Orders")">@PayRes.MyOrdersNav</a></li>
+            <li class="active">@PayRes.Pay</li>
+        </ul>
+    </div>
+</header>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <!--HalfOfOrderSum-->
+        <div class="form-group">
+            @Html.ValidationErrorsToAlerts()
+            @Html.LabelFor(model => model.Sum, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.Sum,
+                htmlAttributes: new {  id="halfOfOrderSum", @class = "form-control",
+                    type = "number", value = Model.Sum })
+            </div>
+            @Html.ValidationMessageFor(model => model.Sum, "", new { @class = "text-danger" })
+        </div>
+        <!--/HalfOfOrderSum-->
+
+        @Html.HiddenFor(model => model.OrderId)
+        @Html.HiddenFor(model => model.RequiredSum)
+       
+        <button class="btn btn-lg btn-success">@PayRes.Pay</button>
+    </div>
+}
+
+@section scripts{
+    <script>
+        var halfOfOrderSum = $('#halfOfOrderSum');
+        var Nadezhda = function () {
+            halfOfOrderSum.val(@Model.RequiredSum);
+        }();
+
+        halfOfOrderSum.change(function(e)
+        {
+            $(halfOfOrderSum).val(@Model.RequiredSum);
+        })
+    </script>
+}

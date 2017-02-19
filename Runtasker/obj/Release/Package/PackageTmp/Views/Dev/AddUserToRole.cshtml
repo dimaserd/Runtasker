@@ -1,0 +1,25 @@
+﻿@model string
+@{
+    ViewBag.Title = "AddUserToRole";
+}
+
+<h2>Добавление пользователю роли</h2>
+
+<h4>Параметры запроса</h4>
+<p>{pass}, {email}, {role}</p>
+
+<h4>Результат операции</h4>
+<p>
+    @{
+        string response = "";
+        if (string.IsNullOrEmpty(Model))
+        {
+            response = "Укажите пароль!";
+        }
+        else
+        {
+            response = Model;
+        }
+    }
+    @response
+</p>

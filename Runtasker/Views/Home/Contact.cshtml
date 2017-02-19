@@ -1,0 +1,121 @@
+﻿@using Runtasker.Logic
+@using Runtasker.Resources.Views.Home.Contact
+@model Runtasker.Logic.Models.ContactViewModel
+@{
+    ViewBag.Title = "Contact";
+}
+
+@*
+    TO DO Screenshots file input
+*@
+
+@{ 
+    string Email = "";
+    string Name = "";
+    string Text = "";
+    if (User.Identity.IsAuthenticated)
+    {
+        Email = User.Identity.GetEmail();
+        Name = User.Identity.GetName();
+    }
+
+    if(!string.IsNullOrEmpty(Model.Email))
+    {
+        Email = Model.Email;
+    }
+
+    if(!string.IsNullOrEmpty(Model.Name))
+    {
+        Name = Model.Name;
+    }
+
+    if(!string.IsNullOrEmpty(Model.Text))
+    {
+        Text = Model.Text;
+    }
+
+}
+
+<hr/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="well well-sm">
+                <form class="form-horizontal" action="" method="post">
+                    <fieldset>
+                        <legend class="text-center">@ContactRes.ContactUs</legend>
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <!-- Name input-->
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Name, htmlAttributes: new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @if (string.IsNullOrEmpty(Name))
+                                {
+                                    <input id="name" name="Name" type="text" placeholder="@ContactRes.NamePlaceholder" class="form-control">
+                                }
+                                else
+                                {
+                                    <input id="name" name="Name" type="text" value="@Name" class="form-control">
+                                }
+
+                            </div>
+                        </div>
+
+                        <!-- Email input-->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="email">Your E-mail</label>
+                            <div class="col-md-9">
+                                @if (!string.IsNullOrEmpty(Email))
+                                {
+                                    <input id="email" name="Email" type="text" value="@Email" class="form-control">
+                                }
+                                else
+                                {
+                                    <input id="email" name="Email" type="text" value="@Email"  placeholder="@ContactRes.EmailPlaceholder" class="form-control">
+                                }
+                                </div>
+                        </div>
+
+                        <!-- Message body -->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="message">@ContactRes.YourMessage</label>
+                            <div class="col-md-9">
+                                @if (string.IsNullOrEmpty(Text))
+                                {
+                                    <textarea class="form-control" id="message" name="Text" placeholder="@ContactRes.MessagePlaceholder" rows="5"></textarea>
+                                }
+                                else
+                                {
+                                    <textarea class="form-control" id="message" name="Text" rows="5">@Text</textarea>
+                                }
+                            </div>
+                        </div>
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    @ContactRes.SendMessage
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@*
+    <address>
+        One Microsoft Way<br />
+        Redmond, WA 98052-6399<br />
+        <abbr title="Phone">P:</abbr>
+        425.555.0100
+    </address>
+
+    <address>
+        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    </address>
+*@

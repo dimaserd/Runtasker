@@ -1,0 +1,325 @@
+﻿@using VkParser.Entities
+@using VkParser.Enumerations
+@using HtmlExtensions.Renderers
+@using Extensions.String
+@using VkParser.Extensions.String
+@model List<VkFoundPost>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    GlyphiconRenderer GISigns = new GlyphiconRenderer();
+}
+
+<h2>Найденные посты из сообществ</h2>
+
+@{ 
+    
+
+    List<VkGroup> uniqueGroups = new List<VkGroup>();
+
+    foreach(VkFoundPost post in Model)
+    {
+        if(!uniqueGroups.Any(s => s.GroupId == post.InGroup.GroupId))
+        {
+            uniqueGroups.Add(new VkGroup { GroupId = post.InGroup.GroupId, Name = post.InGroup.Name });
+        }
+    }
+
+    Dictionary<WordType,int> subjectInts = new Dictionary<WordType, int>();
+
+    foreach(WordType subj in Enum.GetValues(typeof(WordType)))
+    {
+        subjectInts.Add(subj, Model.Count(p => p.Subject == subj));
+    }
+}
+
+<!--Sort Panel-->
+
+<!--ByGroup Sort-->
+<div class="col-md-12">
+    <div class="">
+        <div class="btn-group">
+            <ul class="pager">
+                @*foreach (VkGroup group in uniqueGroups)
+    {
+        <li>
+            <a href="#" class="btn btn-default btn-filter-group" data-group="@group.GroupId">
+                @group.Name @GISigns.Count(Model.Count(p => p.InGroup.GroupId == group.GroupId)).ToHtml()
+            </a>
+        </li>
+    }  *@             
+            </ul>
+        </div>
+    </div>
+</div>
+<!--/ByGroup Sort-->
+
+<hr/>
+<h2>По предметам:</h2>
+
+<!--BySubject Sort-->
+<div class="col-md-12">
+    <div class="">
+        <div class="btn-group">
+            <ul class="pager">
+                @foreach (WordType subj in Enum.GetValues(typeof(WordType)))
+                {
+                    if (subjectInts.ContainsKey(subj))
+                    {
+                        int enumCode = (int)subj;
+                        <li>
+                            <a href="#" class="btn btn-default btn-filter-subject" data-subject="@enumCode">
+                                @subj.ToDescriptionString() @GISigns.Count(subjectInts[subj]).ToHtml()
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+<!--/BySubject Sort-->
+
+<!--/Sort Panel-->
+
+<!--Navigation Panel-->
+<div class="row">
+    <div class="col-md-6">
+        <a href="@Url.Action("Groups", "VkOrders")" class="btn btn-default">
+            Сообщества
+        </a>
+        <a href="@Url.Action("KeyWords", "VkOrders")" class="btn btn-default">
+            Ключевые слова
+        </a>
+    </div>
+
+    <div class="col-md-6">
+        <a id="deleteBtn" href="#" class="btn btn-danger pull-right">
+            @GISigns.Trash.ToHtml() Удалить выделенные
+        </a>
+        <a href="@Url.Action("Refresh", "VkOrders")" class="btn btn-info pull-right">
+           @GISigns.Refresh.ToHtml() Обновить
+        </a>
+        
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <a id="markBtn" href="#" class="btn btn-default">
+            Выделить/убрать все
+        </a>
+        <a href="@Url.Action("DeleteOldPosts", "VkOrders")" class="btn btn-default">
+            @GISigns.Trash.ToHtml() Удалить старые посты
+        </a>
+    </div>
+
+</div>
+<!--/Navigation Panel-->
+
+<style>
+    mark {
+        background-color: yellow !important;
+    }
+</style>
+
+<!--Main Data-->
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Дата публикации
+                    </th>
+                    <th>
+                        Текст
+                    </th>
+                    <th>
+                        Имя Группы
+                    </th>
+                    <th>
+                        Действия
+                    </th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                
+                
+
+                @foreach (VkFoundPost post in Model)
+                {
+                    string linkToPost = VkStringExtensions.GetLinkToPost(post);
+
+                    int enumCode = (int)post.Subject;
+
+                    <tr class="vkPost active" data-group-value="@post.InGroup.GroupId" data-subject-value="@enumCode">
+                                      
+                        <td>
+                            <input id="@post.Id" class="vkPostCheckBox" type="checkbox"
+                                   name="a" data-group-value="@post.InGroup.GroupId" 
+                                   data-subject-value="@enumCode" value="@post.Id">
+                        </td>
+                        <td>
+                            @post.PublishDate
+                        </td>
+                        <td>
+                            @post.Text.MarkManyText(post.FoundKeyWords).ToHtml()
+                        </td>
+                        <td>
+                            @post.InGroup.Name
+                        </td>
+                        @{
+                           bool hasOwner = !string.IsNullOrEmpty(post.PostOwnerId);
+                        }
+                    
+                        <td>
+                            <a title="Перейти к посту" class="icon" href="@linkToPost">
+                                @GISigns.Login.ToHtml()
+                            </a>
+                            @{ 
+                                string link = $"https://vk.com/id" + $"{post.PostOwnerId}";
+                            }
+                            @if (hasOwner)
+                            {
+                                <a title="Найти человека в вк" class="icon" href="@link">
+                                    @GISigns.User.ToHtml()
+                                </a>
+                            }
+                            
+                            <a title="Удалить пост" class="icon" href="/VkOrders/DeleteFoundPost/@post.Id">
+                                @GISigns.Trash.ToHtml()
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--/Main Data-->
+
+@section scripts{
+    <!--Deletion scripts-->
+    <script>
+        var deleteBtn = $("#deleteBtn");
+
+        
+
+        deleteBtn.click(function (e) {
+            var array = $("input.vkPostCheckBox:checkbox");
+            //console.log(array);
+
+            var deletionString = "";
+            for(i = 0; i < array.length; i++)
+            {
+                var id = $(array[i]).attr('id');
+                if ($(array[i]).is(":checked"))
+                {
+                    deletionString += id + ".";
+                }
+                
+                
+            }
+            //че то с ним сделать
+            console.log(deletionString);
+            var link = "/VkOrders/DeleteMany?deletion=" + deletionString
+            window.location.href = link;
+        })
+    </script>
+    <!--/Deletion scripts-->
+
+    <!--Filter scripts-->
+    <script>
+        //переменные по которым можно определить
+        //что выделять в чекбоксах
+        var activeSort;
+        var sortByGroup;
+        var sortBySubject;
+
+        var markBtn = $("#markBtn");
+
+        //Сортировка по группам
+        $(document).ready(function () {
+            var filterBtns = $('.btn-filter-group');
+
+            filterBtns.on('click', function () {
+                var $target = $(this).data('group');
+
+                sortByGroup = $target;
+                activeSort = "group";
+
+                filterBtns.removeClass('active');
+                $(this).addClass('active');
+
+                if ($target != 'all') {
+                    $('.vkPost').css('display', 'none');
+                    $('.vkPost[data-group-value="' + $target + '"]').fadeIn('slow');
+                    
+                } else {
+                    $('.vkPost').css('display', 'none').fadeIn('slow');
+                }
+            });
+
+
+
+        });
+
+        //Сортировка по предметам
+        $(document).ready(function () {
+            var subjectFilterBtns = $('.btn-filter-subject');
+
+            subjectFilterBtns.on('click', function () {
+                var $target = $(this).data('subject');
+                
+                sortBySubject = $target;
+                activeSort = "subject";
+
+                subjectFilterBtns.removeClass('active');
+                $(this).addClass('active');
+
+                if ($target != 'all') {
+                    $('.vkPost').css('display', 'none');
+                    $('.vkPost[data-subject-value="' + $target + '"]').fadeIn('slow');
+                } else {
+                    $('.vkPost').css('display', 'none').fadeIn('slow');
+                }
+            });
+
+
+
+        });
+    </script>
+    <!--/Filter scripts-->
+
+    <!--Mark Scripts-->
+    <script>
+
+        markBtn.click(function (e) {
+            
+            if(activeSort == "subject")
+            {
+                $('.vkPostCheckBox[data-subject-value="' + sortBySubject + '"]').attr('checked', true);
+            }
+            else if(activeSort == "group")
+            {
+                $('.vkPostCheckBox[data-group-value="' + sortByGroup + '"]').attr('checked', true);
+            }
+        })
+    </script>
+    <!--/Mark Scripts-->
+
+    <!--Btn Rename Scripts-->
+    <script>
+
+    </script>
+    <!--/Btn Rename Scripts-->
+}

@@ -1,0 +1,35 @@
+﻿@using Runtasker.Logic.Models
+@model SendInvitationModel
+
+@{
+    ViewBag.Title = "Invite new User";
+}
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("InviteUser", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Enter email.</h4>
+        <hr />
+        @Html.HiddenFor(m => m.UserGuid)
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group in">
+            @Html.LabelFor(m => m.ReceiverEmail, new { @class = "col-md-2 control-label input-lg" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.ReceiverEmail, new { @class = "form-control input-lg" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default btn-lg" value="Send Invitation" />
+            </div>
+        </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+

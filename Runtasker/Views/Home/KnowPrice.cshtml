@@ -1,0 +1,571 @@
+﻿@using Runtasker.Resources.Views.Home.Contact
+@using Runtasker.Logic.Models.Orders
+@model AnonymousKnowThePrice
+@using Runtasker.HtmlExtensions
+@using Runtasker.Resources.Views.Home.Contact
+@using Runtasker.LocaleBuilders.Models
+@using HtmlExtensions.Renderers
+@using Extensions.String
+@{ 
+    //получаем списки для выпадающих меню
+    List<SelectListItem> subjectsList = StaticHtmlClassesHelper.GetSortedSubjectEnumList().ToList();
+    List<SelectListItem> workTypesList = StaticHtmlClassesHelper.GetWorkTypeEnumList().ToList();
+
+
+    string langCode = StaticHtmlClassesHelper.GetLangCode();
+
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
+    MvcHtmlString header = MvcHtmlString.Create($"<h2>{localeModel["HtmlActionDesc"]}</h2>");
+    GlyphiconRenderer GISigns = new GlyphiconRenderer();
+
+    ViewBag.Title = localeModel["ActionDescMini"];
+}
+  
+
+
+<!-- WRAPPER -->
+<div>
+
+    <!-- PAGE TITLE -->
+    <header id="page-title">
+        <div class="container">
+            <h1>@localeModel["ActionDescMini"]</h1>
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index","Home")">@localeModel["HomeNav"]</a></li>
+                <li class="active">@localeModel["ActiveNav"]</li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="contact" class="container">
+        @Html.ValidationErrorsToAlerts()
+        <div class="row">
+            <!-- FORM -->
+            <div class="col-md-12">
+                @header
+
+                @using (Html.BeginForm("KnowPrice", "Home", FormMethod.Post, htmlAttributes: new { id = "contactForm", @class = "white-row", enctype = "multipart/form-data" }))
+                {
+                    <div class="row">
+                        
+                        @Html.ValidationErrorsToAlerts()
+                        
+                        <div id="bigError" class="alert alert-danger">
+                            <i class="fa fa-frown-o"></i>
+                            <strong id="bigErrorText"></strong>
+                        </div>
+
+                        <div class="form-group">
+                            <div id="NameForm" class="col-md-6">
+                                @Html.LabelFor(m => m.Name)
+                                
+                                @Html.TextBoxFor(m => m.Name, htmlAttributes: new { @class = "form-control", id = "NameField" })
+                                <p id="NameError" class="text-danger">
+                                    Teкст ошибки
+                                </p>
+                            </div>
+                        
+                            <div id="EmailForm" class="col-md-6">
+                                @Html.LabelFor(m => m.Email)
+                                @Html.TextBoxFor(m => m.Email, htmlAttributes: new { @class = "form-control", id = "EmailField" })
+                                <p id="EmailError" class="text-danger">
+                                    Текст ошибки
+                                </p>
+                            </div>
+                        
+                            @*<div class="col-md-4">
+                                @Html.LabelFor(m => m.PhoneNumber)
+                                @Html.TextBoxFor(m => m.PhoneNumber, htmlAttributes: new { @class = "form-control", type = "tel", id = "PhoneNumber" })
+                            </div>*@
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div id="WorkTypeForm" class="col-md-6">
+                                @Html.LabelFor(m => m.WorkType)
+                                @Html.DropDownListFor(m => m.WorkType, selectList: workTypesList, htmlAttributes: new { @class = "form-control", id = "WorkTypeField" })
+                                
+                            </div>
+
+                            <div id ="SubjectForm" class="col-md-6">
+                                @Html.LabelFor(m => m.Subject)
+                                @Html.DropDownListFor(m => m.Subject, selectList: subjectsList, htmlAttributes: new { @class = "form-control", id = "subjectList" })
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="OtherSubjectForm" class="row">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.LabelFor(m => m.OtherSubject)
+                                @Html.TextBoxFor(m => m.OtherSubject, htmlAttributes: new {id = "OtherSubject", @class = "form-control" })
+                                <p id="OtherSubjectError" class="text-danger">
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                 
+
+                    <div class="row">
+                        <div class="form-group">
+                            <!--DateTime Picker-->
+                            <div id="DateForm" class="col-md-6">
+                                @Html.LabelFor(model => model.CompletionDate )
+                                <div class="date">
+                                    <!--input-group date-->
+                                    <input type="text" class="form-control" id="datetimepicker1" name="CompletionDate" value="@Model.CompletionDate.ToShortDateString()" />
+                                </div>
+                            </div>
+                            <!--End of DateTimePicker-->
+                            <style>
+                                #FilesForm{
+                                    padding-top: 15px;
+                                }
+                            </style>
+
+                            <div id="FilesForm" class="col-md-6">
+                                @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.Files, htmlAttributes: new { id = "fileUpload", type = "file", multiple = "" })
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div id="DescriptionForm" class="col-md-12">
+                                @Html.LabelFor(m => m.Description)
+                                @Html.TextAreaFor(m => m.Description,
+                                htmlAttributes: new
+                                {
+                                    maxlength = "5000",
+                                    rows = "10",
+                                    @class = "form-control",
+                                    placeholder = localeModel["DescriptionPlaceholder"],
+                                    id = "DescriptionField"
+                                })
+                                <p id="DescriptionError" class="text-danger">
+                                    Текст ошибки
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input id="realSubmit" class="hidden" type="submit" />
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="pull-right">
+                                <!-- captcha -->
+                            </span>
+                            <div id="fakeSendBtn" class="btn btn-info">
+                                @GISigns.PlusSign.ToHtml() @localeModel["BtnText"]
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <!-- /FORM -->
+        </div>
+    </section>
+</div>
+<!-- /WRAPPER -->
+
+@section scripts{
+    @Html.GetDateTimeScriptsAndStyles(langCode);
+                                    
+    <!--Глобальный переменные-->
+    <script>
+        
+    </script>
+    <!--Глобальные переменные-->
+
+    <!--Defaults Subject Scripts-->
+    <script>
+        var defaultsSubject = function () {
+                                        
+            $("#subjectList").get(0).selectedIndex = 0;
+
+            $("#OtherSubjectForm").hide();
+                                    }();
+    </script>
+    <!--/Defaults Subject Scripts-->
+
+    <!--Date Scripts-->
+    <script>
+        //сделай 
+        @Html.GetParseDateJSFunction()
+
+        function daydiff(dateToCompare)
+        {
+            var dateNow = new Date();
+            return Math.round((dateToCompare - dateNow) / (1000 * 60 * 60 * 24)) + 1;
+        }
+
+    </script>
+    <!--/Date Scripts-->
+    
+
+    <!--Обработчики предмета-->
+    <script>
+        var subjectList = $('#subjectList');
+        var otherSubjectForm = $('#OtherSubjectForm');
+        var hiddenSubject = $('#hiddenSubject');
+        var otherSubject = $('#OtherSubject');
+
+        subjectList.change(function () {
+            hiddenSubject.val($(this).val());
+            if($(this).val() == (0)) {
+                otherSubject.val('');
+                otherSubjectForm.show();
+                //повторяем цвет класса как в дополнителном предмете
+                CheckColorClasses();
+            }
+            else {
+                AddSuccessToForm("#Subject")
+                otherSubjectForm.hide();
+            }
+        });
+
+        otherSubject.change(function (){
+            CheckOtherSubject();
+        })
+
+        function CheckOtherSubject() {
+            ClearClasses("#OtherSubjectForm");
+            ClearClasses("#SubjectForm")
+
+            HideError("#OtherSubject");
+
+            
+
+            if (otherSubject.val().length < 3 && subjectList.val() == 0) {
+                AddErrorToForm("#OtherSubject");
+                ShowError("#OtherSubject", "Предмет укажи бля!")
+                //повторяем цвет класса как в дополнителном предмете
+                CheckColorClasses();
+
+                return false;
+            }
+            else
+            {
+                AddSuccessToForm("#OtherSubject")
+                //повторяем цвет класса как в дополнителном предмете
+                CheckColorClasses();
+                return true;
+            }
+
+        }
+
+        function CheckColorClasses() {
+            //повторяем цвет класса как в дополнителном предмете
+            if (otherSubjectForm.hasClass("has-success")) {
+                AddSuccessToForm("#Subject");
+            }
+            else if (otherSubjectForm.hasClass("has-error")) {
+                AddErrorToForm("#Subject");
+            }
+        }
+
+    </script>
+    <!--/Обработчики предмета-->
+
+    <!--Validation Coloring And Error Showing-->
+    <script>
+        //функции которые подсвечивают правильный и неправильный ввод
+        function ClearClasses(object) {
+                                        var classNames = ["has-success", "has-error"]
+            for (i = 0; i < classNames.length; i++) {
+                                            if ($(object).hasClass(classNames[i])) {
+                    $(object).removeClass(classNames[i]);
+                                        }
+                                    }
+                                }
+
+                                function AddErrorToForm(object)
+                                {
+                                    var objectForm = object + "Form";
+                                    ClearClasses(objectForm)
+                                    $(objectForm).addClass("has-error");
+                                }
+
+                                function AddSuccessToForm(object)
+                                {
+                                    var objectForm = object + "Form";
+                                    ClearClasses(objectForm);
+            $(objectForm).addClass("has-success");
+                                }
+
+                                //функции которые показывают и скрывают ошибку при вводе
+                                function ShowError(object, errorText) {
+                                    var objectError = object + "Error";
+            
+
+            $(objectError).html(errorText);
+
+            $(objectError).show();
+
+                                }
+
+                                function HideError(object) {
+                                    var objectError = object + "Error";
+
+            $(objectError).hide();
+                                }
+    </script>
+    <!--/Validation Coloring And Error Showing-->
+
+    <!--Big Error Scripts-->
+    <script>
+        var bigError = $("#bigError");
+        var bigErrorText = $("#bigErrorText")
+
+        function ShowBigError(errorDesc) {
+            bigErrorText.html(errorDesc);
+            bigError.show();
+        }
+
+        function HideBigError() {
+            bigError.hide();
+        }
+    </script>
+    <!--/Big Error Scripts-->
+
+    <!--Подготовительные скрипты по закрашиванию полей-->
+    <script>
+        var dataFields = ["#Name", "#Email", "#Description"];
+
+                                var defaultsFields = function () {
+            for (i = 0; i < dataFields.length; i++) {
+
+
+                ClearClasses((dataFields[i] + "Form"));
+                $(dataFields[i] + "Error").hide();
+            }
+
+            $("#NameError").hide();
+            $("#EmailError").hide();
+            $("#bigError").hide();
+        }()
+    </script>
+    <!--/Подготовительные скрипты по закрашиванию полей-->
+
+    <!--Обработчики имени и эмейла-->
+    <script>
+        
+        //обработчик имени
+        var Name = "#Name";
+
+        $(Name + "Field").change(function (e) {
+            CheckNameField();
+        })
+
+        function CheckNameField() {
+
+            if ($(Name + "Field").val().length < 3) {
+                AddErrorToForm(Name);
+                ShowError(Name, "@localeModel["NameError"]");
+                return false;
+            }
+            else {
+                AddSuccessToForm(Name);
+                HideError(Name);
+                return true;
+            }
+        }
+
+        //обработчик электронной почты
+        var Email = "#Email";
+
+        $(Email + "Field").change(function (e) {
+            CheckEmailField();
+        })
+
+        function CheckEmailField() {
+            
+            if (isValidEmail($(Email + "Field").val())) {
+                
+                AddSuccessToForm(Email);
+                $(Email + "Error").hide();
+                return true;
+            }
+            else {
+                
+                AddErrorToForm(Email);
+                ShowError(Email, "@localeModel["EmailError"]");
+                return false;
+            }
+        }
+        //функция проверки эмейла
+        function isValidEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+        
+    </script>
+    <!--/Обработчики имени и эмейла-->
+
+    <!--Обработчики даты и типа работы-->
+    <script>
+        var datetimepicker1 = $("#datetimepicker1");
+        var workTypeField = $("#WorkTypeField");
+
+        //обработчики будут одинаковыми
+        datetimepicker1.change(function (e) {
+            e.preventDefault();
+            dateAndWorkTypeCheck();
+        });
+
+        workTypeField.change(function (e) {
+            e.preventDefault();
+            dateAndWorkTypeCheck();
+        })
+
+        function dateAndWorkTypeCheck()
+        {
+            var days = parseInt(daydiff(parseDate(datetimepicker1.val())))
+            var workType = parseInt(workTypeField.val());
+
+            ClearClasses("#WorkTypeForm");
+            ClearClasses("#DateForm");
+
+
+            return CheckDaysForWorkType(days, workType)
+        }
+            
+
+            function CheckDaysForWorkType(days, workType)
+            {
+                console.log("days : " + days + " workType : " + workType);
+
+                HideBigError();
+
+                switch (workType) {
+                    case 0:
+                        if (days < 3) {
+                            ShowBigError("@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary");
+                            AddErrorToForm("#WorkType");
+                            AddErrorToForm("#Date");
+                            return false;
+                        }
+                        else
+                        {
+                            AddSuccessToForm("#WorkType");
+                            AddSuccessToForm("#Date");
+                            return true;
+                        }
+                        break;
+                    case 1:
+                        if (days < 7) {
+
+                            ShowBigError("@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorEssay");
+                            AddErrorToForm("#WorkType");
+                            AddErrorToForm("#Date");
+                            return false;
+                        }
+                        else
+                        {
+                            AddSuccessToForm("#WorkType");
+                            AddSuccessToForm("#Date");
+                            return true;
+                        }
+                        break;
+                    case 2:
+                        if (days < 30)
+                        {
+                            ShowBigError("@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorCourseWork");
+                            AddErrorToForm("#WorkType");
+                            AddErrorToForm("#Date");
+                            return false;
+                        }
+                        else
+                        {
+                            AddSuccessToForm("#WorkType");
+                            AddSuccessToForm("#Date");
+                            return true;
+                        }
+                        break;
+                    default:
+                        alert('Я таких значений не знаю');
+                }
+            }
+            
+
+
+       
+    </script>
+    <!--/Обработчики даты и типа работы-->
+
+    <!--Обработчики Описания заказа-->
+    <script>
+        var descriptionForm = $("#DescriptionForm");
+        var descriptionField = $("#DescriptionField");
+        var descriptionError = $("#DescriptionError");
+
+        descriptionField.change(function (e) {
+            CheckDescription();
+            
+        })
+
+        function CheckDescription()
+        {
+            if (descriptionField.val().length < 5) {
+                ShowError("#Description", "@localeModel["DescriptionError"]");
+                AddErrorToForm("#Description");
+                return false;
+            }
+            else {
+                AddSuccessToForm("#Description")
+                HideError("#Description");
+                return true;
+            }
+        }
+
+    </script>
+    <!--/Обработчики Описания заказа-->
+
+    <!--Обработчики перед отправкой-->
+    <script>
+        var fakeSendBtn = $("#fakeSendBtn");
+        var realSubmit = $("#realSubmit");
+
+        fakeSendBtn.click(function (e) {
+            e.preventDefault();
+
+            console.log("fakeBtn clicked");
+
+            var count = 0;
+            
+            //isOk = CheckOtherSubject();
+            console.log("Name " + CheckNameField())
+            console.log("Email " + CheckEmailField())
+            console.log("OtherSubject " + CheckOtherSubject())
+            console.log("date and workType " + dateAndWorkTypeCheck())
+            console.log("description " + CheckDescription())
+
+
+            //logging
+            count = (CheckNameField()) ? count + 1 : count;
+            count = (CheckEmailField()) ? count + 1 : count;
+            count = (CheckOtherSubject()) ? count + 1 : count;
+            count = (dateAndWorkTypeCheck()) ? count + 1 : count;
+            count = (CheckDescription()) ? count + 1 : count;
+
+            if(count == 5)
+            {
+                realSubmit.click();
+            }
+        })
+
+    </script>
+    <!--/Обработчики перед отправкой-->
+}
+

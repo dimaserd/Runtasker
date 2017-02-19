@@ -1,0 +1,60 @@
+﻿@using Runtasker.Logic.Models
+@using HtmlExtensions.Renderers
+@using Runtasker.Resources.Views.Orders.Pay
+@using Runtasker.HtmlExtensions
+@model PayAnotherHalfModel
+
+@{
+    ViewBag.Title = $"Pay {Model.RequiredSum} roubles";
+    //Font Awesome Signs Collection
+    FontAwesomeRenderer FASC = new FontAwesomeRenderer();
+
+    MvcHtmlString title = MvcHtmlString.Create($"{PayRes.Pay} {Model.RequiredSum}{FASC.Rouble}");
+
+}
+
+<header id="page-title">
+    <div class="container">
+        <h1>@title</h1>
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">@PayRes.HomeNav</a></li>
+            <li><a href="@Url.Action("Index","Orders")">@PayRes.MyOrdersNav</a></li>
+            <li class="active">@PayRes.Pay</li>
+        </ul>
+    </div>
+</header>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        @Html.ValidationErrorsToAlerts()
+        <!--Sum-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sum, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                 @Html.TextBoxFor(model => model.Sum, htmlAttributes: new { id = "halfOfOrderSum", @class = "form-control", type = "number", value = Model.Sum })
+             </div>
+        </div>
+        @Html.ValidationMessageFor(model => model.Sum, "", new { @class = "text-danger" })
+        <!--/Sum-->
+
+        @Html.HiddenFor(model => model.OrderId)
+        @Html.HiddenFor(model => model.RequiredSum)
+
+        <button class="btn btn-lg btn-success">@PayRes.Pay</button>
+    </div>
+}
+
+@section scripts{
+    <script>
+        var halfOfOrderSum = $("#halfOfOrderSum");
+
+        var changer = function () {
+            halfOfOrderSum.val(parseInt("@Model.RequiredSum"));
+        }();
+
+        halfOfOrderSum.change(function (e) {
+            halfOfOrderSum.val(parseInt(@Model.RequiredSum));
+        })
+    </script>
+}

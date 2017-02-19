@@ -1,0 +1,4 @@
+C:\Runtasker\Runtasker.Settings\bin\Release\Runtasker.Settings.dll
+C:\Runtasker\Runtasker.Settings\bin\Release\Runtasker.Settings.pdb
+C:\Runtasker\Runtasker.Settings\obj\Release\Runtasker.Settings.dll
+C:\Runtasker\Runtasker.Settings\obj\Release\Runtasker.Settings.pdb

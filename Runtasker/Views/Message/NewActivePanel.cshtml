@@ -1,0 +1,70 @@
+﻿@using Runtasker.Logic.Models
+@using Runtasker.Resources.Views.Message.ActivePanel
+@model PanelViewModel
+@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+    bool hasMessages = Model.OrderChatLinks.Count() > 0;
+}
+
+@if (hasMessages)
+{
+
+    foreach (OrderChatLink o in Model.OrderChatLinks)
+    {
+        <li>
+            <a href="" class="chatLink" id="@o.OrderId">
+                @ActivePanel.ChatLinkText1@o.OrderId @ActivePanel.ChatLinkText2 <span class="badge">@o.UnreadMessages</span>
+            </a>
+        </li>
+    }
+
+}
+else
+{
+    <li>
+        <a href="">
+            @ActivePanel.NoNewMessages
+        </a>
+    </li>
+}
+
+
+@section scripts{
+    <!--chatLink Scripts-->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var chatLinks = $('.chatLink');
+        var modalBody = $('#modalBody');
+        var myModal = $('#myModal');
+
+        
+        $(document.body).on("click", ".chatLink", function (e) {
+            e.preventDefault();
+            $('#NavMenu').collapse('hide');
+            myModal.modal('show');
+            console.log('chatLink click');
+            var id = $(this).attr('id');
+            GetModalData(id);
+        });
+
+        function GetModalData(id) {
+            console.log('getmodalData');
+            $.ajax({
+                type: "GET",
+                url: '/Message/ChatAboutOrder?orderId=' + id,
+                contentType: false,
+                processData: false,
+                async: true,
+                data: null,
+                success: function (result) {
+                    modalBody.html(result);
+                },
+                error: function (xhr, status, p3) {
+                    alert(xhr.responseText);
+                }
+            });
+        }
+    }, false);
+    </script>
+    <!--chatLink Scripts-->
+}

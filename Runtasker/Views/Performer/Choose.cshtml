@@ -1,0 +1,14 @@
+﻿@using Runtasker.Logic.Models
+@model ChooseOrderModel
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.OrderId)
+    @Html.HiddenFor(model => model.PerformerGuid)
+    
+    <h3 class="info">Вы выбираете заказ №@Model.OrderId</h3>
+    <button class="btn btn-lg btn-success">Подтвердить</button>
+}
+
+

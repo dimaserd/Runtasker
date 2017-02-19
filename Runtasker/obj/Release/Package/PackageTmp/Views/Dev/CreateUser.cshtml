@@ -1,0 +1,15 @@
+﻿@model string
+@{
+    ViewBag.Title = "Create User";
+}
+
+<h2>Создать пользователя</h2>
+
+@if (string.IsNullOrEmpty(Model))
+{
+    <p>Параметры запроса: pass</p>
+}
+else
+{
+    <p>@Model</p>
+}

@@ -1,0 +1,88 @@
+﻿@using Runtasker.Logic.Models
+@using Runtasker.Resources.Views.Orders.AddFiles
+@model OrderAddFilesModel
+@{
+    ViewBag.Title = AddFilesRes.Title;
+}
+
+@using (Html.BeginForm("AddFiles", "Orders", FormMethod.Post, htmlAttributes: new { id = "myForm", enctype = "multipart/form-data" }))
+{
+
+    <!-- PAGE TITLE -->
+    <header id="page-title">
+        <div class="container">
+            <h1>@ViewBag.Title</h1>
+
+            <ul class="breadcrumb">
+                <li><a href="/Home/Index">@AddFilesRes.HomeNav</a></li>
+                <li><a href="/Orders/Index">@AddFilesRes.OrdersNav</a></li>
+                <li class="active">@AddFilesRes.ActiveNav</li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="form-horizontal">
+        <h2>@AddFilesRes.FormTitle</h2>
+        
+        <!--Hidden OrderId-->
+        <input type="hidden" name="OrderId" value="@Model.OrderId" />
+        <!--/Hidden OrderId-->
+
+        <div id="error" class="hidden alert alert-danger">
+            <i class="fa fa-frown-o"></i>
+            <strong>
+                @AddFilesRes.NullFilesError
+            </strong>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <p><input id="upload" type="file" multiple name="Files" /></p>
+                @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <input id="realUpload" type="submit" class="hidden" value="submit" />
+
+        <button id="fakeUpload" class="btn btn-lg btn-success">
+            <span class="glyphicon glyphicon-upload"></span>@AddFilesRes.Title
+        </button>
+    </div>
+}
+
+@section scripts{
+    <script>
+        var fakeUpload = $("#fakeUpload");
+        var realUpload = $("#realUpload");
+        var upload = $("#upload");
+        var error = $("#error");
+
+        fakeUpload.click(function (e) {
+            e.preventDefault();
+            if (document.getElementById('upload').files.length <= 0) {
+                ShowError();
+            }
+            else
+            {
+                realUpload.click();
+            }
+        });
+
+        upload.change(function () {
+            if (document.getElementById('upload').files.length > 0) {
+                HideError();
+            }
+        })
+
+        function ShowError()
+        {
+            error.removeClass("hidden");
+        }
+
+        function HideError()
+        {
+            error.addClass("hidden");
+        }
+    </script>
+}

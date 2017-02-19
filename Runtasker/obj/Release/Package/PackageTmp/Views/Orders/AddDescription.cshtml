@@ -1,0 +1,92 @@
+﻿@using Runtasker.Logic.Models
+@using Runtasker.Resources.Views.Orders.AddDescription
+@model AddDescriptionModel
+@{
+    ViewBag.Title = AddDescriptionRes.Title;
+}
+
+<!-- PAGE TITLE -->
+<header id="page-title">
+    <div class="container">
+        <h1>@ViewBag.Title</h1>
+
+        <ul class="breadcrumb">
+            <li><a href="/Home/Index">@AddDescriptionRes.HomeNav</a></li>
+            <li><a href="/Orders/Index">@AddDescriptionRes.OrdersNav</a></li>
+            <li class="active">@AddDescriptionRes.ActiveNav</li>
+        </ul>
+    </div>
+</header>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@AddDescriptionRes.ChangeDescription</h4>
+        
+        <div id="error" class="hidden alert alert-danger">
+            <i class="fa fa-frown-o"></i>
+            <strong>
+                @AddDescriptionRes.ErrorText
+            </strong>
+        </div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextAreaFor(model => model.Description, htmlAttributes: new { id = "newDescription", @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger", maxlength = 500, rows = 5 })
+        </div>
+
+        @Html.HiddenFor(model => model.OrderId)
+
+        <input id="realChange" type="submit" class="hidden" value="submit" />
+
+        <button id="fakeChange" class="btn btn-lg btn-success">
+            @AddDescriptionRes.ChangeDescription
+        </button>
+        
+    </div>
+}
+
+
+@section scripts{
+    <script>
+        var fakeChange = $("#fakeChange");
+        var realChange = $("#realChange");
+        var newDescription = $("#newDescription");
+        var error = $("#error");
+
+        fakeChange.click(function (e) {
+            e.preventDefault();
+            if (newDescription.val().length == 0)
+            {
+                ShowError();
+            }
+            else
+            {
+                realChange.click();
+            }
+        });
+
+        newDescription.change(function () {
+            if (newDescription.val().length > 0)
+            {
+                HideError();
+            }
+        })
+
+        function ShowError()
+        {
+            error.removeClass("hidden");
+        }
+
+        function HideError()
+        {
+            error.addClass("hidden");
+        }
+    </script>
+}

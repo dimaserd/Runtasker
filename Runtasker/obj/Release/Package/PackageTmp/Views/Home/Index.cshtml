@@ -1,0 +1,25 @@
+﻿@using Runtasker.Resources.Views.Home.Index
+@{
+    ViewBag.Title = Index.Title;
+    string lang = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+
+<script>
+    console.log("@lang");
+</script>
+
+<div class="jumbotron">
+    <h1><span class="glyphicon glyphicon-education hidden-xs"></span>RUNTASKER.RU</h1>
+    <p class="lead">
+        @Index.Greeting
+    </p>
+    <p>
+        <a href="@Url.Action("Create", "Orders")" class="btn btn-primary btn-lg">
+            @Index.TryOurServices1 <span class="hidden-xs">@Index.TryOurServices2</span> &raquo;
+        </a>
+    </p>
+</div>
+
+<hr/>
+
+@{ Html.RenderAction("Comments", "Home");}

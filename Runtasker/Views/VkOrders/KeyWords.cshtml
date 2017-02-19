@@ -1,0 +1,91 @@
+﻿@using VkParser.Entities
+@using Extensions.String
+@using HtmlExtensions.Renderers
+@using Runtasker.Logic.Entities
+@model List<VkKeyWord>
+@{
+    ViewBag.Title = "KeyWords";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    GlyphiconRenderer GISigns = new GlyphiconRenderer();
+}
+
+<h2>Имеющиеся ключевые слова</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <a href="@Url.Action("CreateKeyWord", "VkOrders")" class="btn btn-default">
+            Добавить новое
+        </a>
+        <a href="" class="btn btn-default">
+            Еще функция
+        </a>
+    </div>
+
+    <div class="col-md-6">
+        <a href="@Url.Action("Index", "VkOrders")" class="pull-right btn btn-default">
+            Назад к постам
+        </a>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Главная форма
+                    </th>
+                    <th>
+                        Различные формы
+                    </th>
+                    <th>
+                        Предмет
+                    </th>
+                    <th>
+                        Действия
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (VkKeyWord word in Model)
+                {
+
+                    <tr class="active">
+                        <td>
+                            @word.Id
+                        </td>
+                        <td>
+                            @word.MainForm
+                        </td>
+                        <td>
+                            @word.OtherWordForms
+                        </td>
+                        <td>
+                            @word.Subject.ToString()
+                        </td>
+
+                        <td>
+                            <a title="Настроить" class="icon" href="/VkOrders/Update/@word.Id">
+                                @GISigns.Configuration.ToHtml()
+                            </a>
+
+                            <a title="Удалить" class="icon" href="/VkOrders/DeleteKeyWord/@word.Id">
+                                @GISigns.Trash.ToHtml()
+                            </a>
+                            
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,142 @@
+﻿@using Runtasker.HtmlExtensions
+@model Runtasker.Logic.Entities.Order
+
+@{
+    ViewBag.Title = "DeleteOrder";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>DeleteOrder</h2>
+
+<h3>Вы действительно хотите удалить это?</h3>
+
+@Html.ValidationErrorsToAlerts()
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ErrorType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ErrorType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PerformerGuid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PerformerGuid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OtherSubject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OtherSubject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Attachments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Attachments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinishDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinishDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublishDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaidSum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaidSum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить заказ" class="btn btn-default" /> |
+            @Html.ActionLink("Назад к списку", "Index")
+        </div>
+    }
+</div>

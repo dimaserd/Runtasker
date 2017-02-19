@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C41AED5C-A0E0-4648-95D3-FB36E4225927}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VkParser</RootNamespace>
+    <AssemblyName>VkParser</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contexts\VkParseContext.cs" />
+    <Compile Include="Entities\VkFoundPost.cs" />
+    <Compile Include="Entities\VkGroup.cs" />
+    <Compile Include="Entities\VkKeyWord.cs" />
+    <Compile Include="Entities\VkPostLookUp.cs" />
+    <Compile Include="Enumerations\WordType.cs" />
+    <Compile Include="Extensions\String\VkStringExtensions.cs" />
+    <Compile Include="Models\KeyWord.cs" />
+    <Compile Include="Models\VkParserModels.cs" />
+    <Compile Include="Models\VkPostLookUpModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Base\BaseVkRepository.cs" />
+    <Compile Include="Repositories\VkFoundPostRepository.cs" />
+    <Compile Include="Repositories\VkGroupRepository.cs" />
+    <Compile Include="Statics\TokenGiver.cs" />
+    <Compile Include="Workers\Api\VkApiWorkerBase.cs" />
+    <Compile Include="Workers\Api\VkPostRequestWorker.cs" />
+    <Compile Include="Extensions\VKAPIExtensions.cs" />
+    <Compile Include="Workers\Base\BaseVkParseContextWorker.cs" />
+    <Compile Include="Workers\KeyWords\NewKeyWordsChecker.cs" />
+    <Compile Include="Workers\Parse\JsonPostParser.cs" />
+    <Compile Include="Workers\PostFinders\VkPostFinder.cs" />
+    <Compile Include="Workers\Post\NewVkPostParseWorker.cs" />
+    <Compile Include="Workers\Post\VkPostChecker.cs" />
+    <Compile Include="Workers\Post\VkPostLookUper.cs" />
+    <Compile Include="Workers\Post\VkPostParseWorker.cs" />
+    <Compile Include="Workers\VkFoundPostWorker.cs" />
+    <Compile Include="Workers\VkGroupWorker.cs" />
+    <Compile Include="Workers\VkKeyWordsChecker.cs" />
+    <Compile Include="Workers\VkKeyWordsWorker.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Extensions\Extensions.csproj">
+      <Project>{22C11B93-35D0-462A-8BDE-27C8A8479741}</Project>
+      <Name>Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logic.Extensions\Logic.Extensions.csproj">
+      <Project>{56e8aac3-927b-469d-8c78-cb0d74209018}</Project>
+      <Name>Logic.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Runtasker.Settings\Runtasker.Settings.csproj">
+      <Project>{70630F62-8278-44C2-B24A-089356EEEB8A}</Project>
+      <Name>Runtasker.Settings</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Notifications\" />
+    <Folder Include="Workers\Notificators\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

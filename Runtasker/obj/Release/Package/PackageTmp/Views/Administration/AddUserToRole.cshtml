@@ -1,0 +1,33 @@
+﻿@using Runtasker.HtmlExtensions
+@using Runtasker.Logic.Models.AdministrationUsers
+@model AddUserToRoleModel
+@{
+    ViewBag.Title = "AddUserToRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Добавление новой роли пользователю</h2>
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-horizontal">
+        @Html.ValidationErrorsToAlerts()
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(x => x.User)
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoleName, "RoleName", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.RoleName, ViewBag.Roles as SelectList, htmlAttributes: new { @class = "form=control" })
+                @Html.ValidationMessageFor(model => model.RoleName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        
+
+
+
+        <input value="Добавить роль пользователю" type="submit" class="btn-lg btn btn-primary" />
+    </div>
+}

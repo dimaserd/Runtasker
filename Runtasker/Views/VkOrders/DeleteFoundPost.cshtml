@@ -1,0 +1,81 @@
+﻿@using Runtasker.HtmlExtensions
+@using VkParser.Entities
+@model VkFoundPost
+@{
+    ViewBag.Title = "DeleteFoundPost";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<hr/>
+<div class="row">
+    <div class="col-md-6">
+        <a href="@Url.Action("Groups", "VkOrders")" class="btn btn-default">
+            К списку групп
+        </a>
+        <a href="@Url.Action("KeyWords", "VkOrders")" class="btn btn-default">
+            К списку слов
+        </a>
+    </div>
+
+    <div class="col-md-6">
+        <a href="@Url.Action("Index", "VkOrders")" class="btn btn-default">
+            К списку постов
+        </a>
+
+    </div>
+</div>
+
+<hr/>
+
+
+<h2>Вы действительно хотите удалить этот пост из найденных?</h2>
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <p class="h4 text-info">
+            @Model.Text
+        </p>
+    </div>
+
+    <div class="row">
+        <p class="h4 text-info">
+            Дата поста: @Model.PublishDate
+        </p>
+    </div>
+    
+    string link = $"https://vk.com/id" + $"{Model.PostOwnerId}";
+    
+
+    <div class="row">
+        
+    @if (string.IsNullOrEmpty(Model.PostOwnerId))
+    {
+        <p class="h4 text-info">
+            Пост выложен анонимно
+        </p>
+    }
+    else
+    {
+        <p class="h4 text-info">
+            Автор поста: <a href="@link">@link</a>
+        </p>
+    }        
+    </div>
+
+
+    <div class="form-horizontal">
+        @Html.ValidationErrorsToAlerts()
+
+        
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.PostIdInGroup)
+        @Html.HiddenFor(m => m.PublishDate)
+        
+        @Html.HiddenFor(m => m.VkLink)
+
+        <input type="submit" value="Удалить пост" class="btn-lg btn btn-danger" />
+    </div>
+}

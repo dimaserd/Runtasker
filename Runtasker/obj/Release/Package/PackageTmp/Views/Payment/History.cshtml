@@ -1,0 +1,45 @@
+﻿@using Runtasker.Logic.Entities
+@using HtmlExtensions.Renderers
+@using Extensions.String
+@model IEnumerable<PaymentTransaction>
+@{
+    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
+}
+
+<h2>Payment Transactions List</h2>
+<div class="row">
+    <div class="col-md-6 col-md-push-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Sum
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Pt in Model)
+            {
+                    <tr class="@Pt.Type.ToBootTableClass()">
+                        <td>
+                            @Pt.Sum@FASigns.Rouble.ToHtml()
+                        </td>
+                        <td>
+                            @Pt.Description
+                        </td>
+                        <td>
+                            @Pt.Date
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

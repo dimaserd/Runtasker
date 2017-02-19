@@ -1,0 +1,20 @@
+﻿@using VkParser.Models
+@model DeleteManyModel
+@{
+    ViewBag.Title = "DeleteMany";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Вы действительно хотите удалить посты?</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(m => m.Deletion)
+
+        <input type="submit" value="Удалить посты" class="btn-lg btn btn-primary" />
+    </div>
+}

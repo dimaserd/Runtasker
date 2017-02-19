@@ -1,0 +1,18 @@
+﻿@model string
+@{
+    ViewBag.Title = "Reset";
+}
+
+<h2>Reset</h2>
+
+@if (string.IsNullOrEmpty(Model))
+{
+    <p>Параметры запроса: pass, q</p>
+    <p>где q может быть равен messages, orders, users</p>
+}
+else
+{
+    <p>Очищена таблица @Model</p>
+}
+
+

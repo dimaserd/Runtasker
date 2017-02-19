@@ -1,0 +1,38 @@
+﻿@using Runtasker.Logic.Models
+@using Runtasker.HtmlExtensions
+@model CreateUserModel
+@{
+    ViewBag.Title = "CreateUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Создаем пользователя</h2>
+
+@using (Html.BeginForm())
+{
+    
+    <div class="form-horizontal">
+        @Html.ValidationErrorsToAlerts()
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserRoles, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <div class="input-group">
+                   @Html.ListBoxFor(i => Model.UserRoles, selectList: Model.UserRolesList, htmlAttributes: new { @class = "multiselect form-control", multiple = "multiple" })
+                </div>
+            </div>
+        </div>
+      
+        <!--UserSubjectForm-->
+        @Html.LabelAndEditorFor(model => model.Name, htmlAttributes: null)
+        @Html.LabelAndEditorFor(model => model.Email, htmlAttributes: null)
+        @Html.LabelAndEditorFor(model => model.Password, htmlAttributes: null)
+        <!--/UserSubjectForm-->
+        
+
+        
+        <input value="Создать пользователя" type="submit" class="btn-lg btn btn-primary" />
+    </div>
+}
+

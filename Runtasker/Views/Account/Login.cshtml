@@ -1,0 +1,103 @@
+﻿@using Runtasker.Logic.Models
+@using Runtasker.Resources.Views.Account.Login;
+@model LoginModel
+@{
+    ViewBag.Title = "Sign In";
+}
+
+<div class="page-header">
+    <h1>@Login.SignIn <small>@Login.TakesSeconds</small></h1>
+</div>
+
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                   @Html.LabelFor(m => m.Email, htmlAttributes : new { @class = "control-label"})
+                   @Html.TextBoxFor(m => m.Email, htmlAttributes : new { autofocus = "", @class="form-control input-lg", id="email", type="email" })
+            </div>
+
+            @Html.LabelFor(m => m.Password, htmlAttributes: new { @class = "control-label" })
+            <div class="input-group input-group-lg">
+                @Html.TextBoxFor(m => m.Password, htmlAttributes : new { autocomplete = "off", @class="form-control", id="password", type="password" })
+                <span class="input-group-btn">
+                    <button id="passwordShow" class="btn btn-default btn-password-show">
+                        <span id="eye" class="glyphicon glyphicon-eye-open"></span>
+                    </button>
+                </span>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="controls">
+                <button type="submit" class="btn btn-block btn-lg btn-primary btn-loading" data-loading-text="<span class='fa fa-spin fa-spinner'></span> Please wait..">
+                    @Login.SignIn
+                </button>
+            </div>
+
+            <div class="form-group">
+                <div class="btn-group btn-group-justified form-control-static">
+                    @Html.ActionLink($"{Login.ForgotYourPass}?", "ForgotPassword", null, htmlAttributes: new { @class = "btn btn-link btn-xs ellipsis" })
+                    @Html.ActionLink(Login.RegisterNew, "Register", null, htmlAttributes: new { @class = "btn btn-link btn-xs ellipsis" })                                  
+                </div>
+            </div>
+        }         
+        <h3 class="text-muted text-center">or</h3>
+        <div class="socials">
+            @Html.Partial("NewLoginList", new ExternalLoginListModel { ReturnUrl = ViewBag.ReturnUrl })
+        </div>
+        <style>
+            .socials
+            {
+                border-bottom : 1px solid #eee;
+                border-top : 1px solid #eee;
+            }
+            .remember
+            {
+                text-align : center;
+            }
+            .text-bold
+            {
+                font-weight : bolder !important;
+            }
+        </style>
+        
+        <div class="checkbox text-center">
+            <label class="text-bold">
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Login.KeepMeSignedIn
+            </label>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        var password = $('#password');
+        var passwordShow = false;
+        var showPassBtn = $("#passwordShow");
+        var eye = $("#eye");
+
+        showPassBtn.click(
+            function (e)
+            {
+                e.preventDefault();
+                passwordShow = !passwordShow;
+                if(passwordShow)
+                {
+                    password.attr('type', 'text');
+                    eye.removeClass("glyphicon-eye-open");
+                    eye.addClass("glyphicon-eye-close");
+                }
+                else
+                {
+                    password.attr('type', 'password');
+                    eye.removeClass("glyphicon-eye-close");
+                    eye.addClass("glyphicon-eye-open");                   
+                }
+            });
+    </script>
+}

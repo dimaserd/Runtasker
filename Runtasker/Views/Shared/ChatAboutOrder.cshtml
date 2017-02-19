@@ -1,0 +1,413 @@
+﻿@using Runtasker.Logic.Entities
+@using Runtasker.ExtensionsUI.UIExtensions
+@using Runtasker.Resources.Views.Shared.Chat
+@using Extensions.String
+@model IEnumerable<Message>
+@{
+
+    Layout = "~/Views/Shared/_ModalLayout.cshtml";
+    List<Message> messages;
+    if (Model == null)
+    {
+        messages = null;
+    }
+    else
+    {
+        messages = Model.ToList();
+    }
+    string userGuid = ViewData["userGuid"] as string;
+    //нужен хидден для отправки сообщений
+    string toGuid = ViewData["toGuid"] as string;
+    string senderName = ViewData["senderName"] as string;
+    string receiverName = ViewData["receiverName"] as string;
+    string orderId = ViewData["orderId"] as string;
+}
+@*Styles.Render("~/Content/css")*@
+@Styles.Render("~/Chat")
+
+<!--Chat Body-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading" id="accordion">
+                    <span class="glyphicon glyphicon-comment"></span> @ChatRes.ChatWith @receiverName.GetShortName() <span class="hidden-xs">@ChatRes.AboutOrder №@orderId</span>
+                    <div class="btn-group pull-right">
+                        <button id="chevron-down" class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="collapseOne">
+                    <div id="chatbody" class="chatContent">
+                        <ul class="chat">
+                            @if (messages != null)
+                            {
+                                foreach (Message m in messages)
+                                {
+                                    HtmlMessage hm = new HtmlMessage(m, userGuid, senderName, receiverName);
+                                    @MvcHtmlString.Create(hm.ToString())
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input id="btn-input" type="text" class="form-control input-sm" placeholder="@ChatRes.PlaceHolder" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-warning btn-sm" id="btn-chat">
+                                    @ChatRes.Send
+                                </button>
+                            </span>
+
+                        </div>
+                        <!--File downloading-->
+                        <p>
+                            <input type="file" id="uploadFile" multiple />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--/Chat Body-->
+
+
+<style type="text/css">
+    .unread {
+        background-color: rgba(153,217,234, 0.25);
+        border-radius: 5px;
+    }
+
+    .img-50 {
+        width: 50px;
+        height : auto;
+    }
+</style>
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.signalR-2.2.1.js"></script>
+<script src="~/signalr/hubs"></script>
+
+
+<!--AudioSound-->
+<audio id="audioSound" src="~/assets/sounds/vk-1-zvuki-mp3.com_.mp3" type="audio/mp3"></audio>
+<!--/AudioSound-->
+
+<!--Hidden Fields For ChatHub-->
+<!--btn-input btn-send-->
+<input id="userGuid" type="hidden" value="@userGuid" />
+<input id="toGuid" type="hidden" value="@toGuid" />
+<input id="senderName" type="hidden" value="@senderName" />
+<input id="receiverName" type="hidden" value="@receiverName" />
+<input id="attachments" type="hidden"/>
+ <!--Will be set after attachment function-->
+<input id="orderId" type="hidden" value="@orderId"/>
+<!--btn-input : Text-->
+<!--/Hidden Fields For ChatHub-->
+
+<!--Scrolling Chat Body-->
+<script>
+    var chatHidden = true;
+    //чат скрыт
+    function FocusSetter()
+    {
+        $('#btn-input').focus();
+    }
+
+    function ShowHideChatBody()
+    {
+        $('#collapseOne').collapse('toggle');
+        if(chatHidden)
+        {
+            chatHidden = !chatHidden;
+            setTimeout(function() {scrollDownChatBody(900)}, 1);
+        }
+        else
+        {
+            chatHidden = !chatHidden;
+        }
+    }
+
+    $('#chevron-down').on('click', function (e) {
+        ShowHideChatBody();
+    })
+
+    function scrollDownChatBody(duration) {   //stop()
+        $('#chatbody').stop().animate({
+            scrollTop: $('#chatbody')[0].scrollHeight,
+        }, duration, FocusSetter());
+    }
+
+</script>
+<!--/Scrolling Chat Body-->
+
+<!--Message Builder-->
+<script>
+    function buildMessageFromData(Data)
+    {
+        console.log("buildMessageFromData");
+        console.log(Data);
+        buildMessage(Data.Id, Data.Text, Data.Attachmnets, Data.SenderGuid, Data.NickName, Data.Date)
+    }
+
+    function buildMessage(id, text, filesUrl, senderGuid, nickname, date) {
+
+
+        var userGuid = $('#userGuid').val();
+        var toGuid = $('#toGuid').val();
+        var NickName = nickname;
+
+
+        function GetStarted() {
+            var result = `<li id='${id}' date='${date}' class='mes `;
+            if (senderGuid == userGuid) { //сообщение принято?
+                result += "right clearfix'><span class='chat-img pull-right ";
+            }
+            else {
+                $('#audioSound').get(0).play();
+                result += "unread left clearfix'><span class='chat-img pull-left ";
+            }
+            result += " clearfix'>";
+            return result;
+        }
+
+        function GetNickAndTime() {
+            var time = "Just now"
+            if (senderGuid != userGuid) {
+                return `<strong class='primary-font'>${NickName}</strong>`
+                    + "<small class='pull-right text-muted timeSpan'>"
+                 + `<span class='glyphicon glyphicon-time'></span>${time}</small>`;
+            }
+            else {
+                return "<small class='text-muted timeSpan'>"
+                 + `<span class='glyphicon glyphicon-time'></span>${time}</small>`
+                 + `<strong class='pull-right primary-font'>${NickName}</strong>`;
+            }
+        }
+
+        function GetImage() {
+            return `<img src='/File/GetAvatar?userGuid=${senderGuid}' alt='User Avatar'`
+                + "class='img-circle img-50'/>";
+            
+        }
+
+        function GetAttachmentsLink() {
+            if (filesUrl != "") {
+                if (senderGuid != userGuid) {
+                    return "<p class='pull-right'><a href='"
+                    + filesUrl + "'>@ChatRes.DownloadFiles<span class='glyphicon glyphicon-cloud-download'></span></a></p>";
+                }
+                else {
+                    return "<p class='pull-left'><a href='"
+                     + filesUrl + "'>@ChatRes.DownloadFiles<span class='glyphicon glyphicon-cloud-download'></span></a></p>";
+                }
+            }
+            else {
+                return "";
+            }
+        }
+
+        var result = "";
+
+        result += GetStarted() + GetImage() + "</span><div class='chat-body clearfix'><div class='header'>"
+        + GetNickAndTime() + "</div>" + "<p>" + text + "</p>" + GetAttachmentsLink() + "</div></li>";
+
+        return result;
+
+    }
+</script>
+<!--/Message Builder-->
+
+<!--OrderChatHub-->
+<script>
+    var chat = $.connection.aboutOrderChatHub;
+
+    //(client functions)
+    chat.client.onMessageMarked = function (id) {
+        $('#' + id).removeClass("unread");
+    }
+
+    chat.client.onNewMessage = function (data) {
+        var mes = buildMessage(data.Id, data.Text, data.Attachments, data.SenderGuid, data.NickName, data.Date);
+        //get html from Data
+        $("#chatbody ul").append(mes);
+        //Append html to chat
+        scrollDownChatBody(600);
+    }
+    //(\client functions\)
+    
+        $.connection.hub.start().done(function () {
+            //в дальнейшем оптимизируй хотя бы через метод регистрации
+            //$(document.body).on('click', '.update' ,function(){
+                $(document.body).on("mouseenter", ".unread",function () {
+                    if ($(this).hasClass('unread')) {
+                        console.log($(this).attr('id'));
+                        //call to server function
+                        chat.server.onMessageRead($(this).attr('id'));
+                    }
+                }
+            );
+
+                $(document.body).on("click", ".unread", function () {
+                    if ($(this).hasClass('unread')) {
+                        console.log($(this).attr('id'));
+                        //call to server function
+                        chat.server.onMessageRead($(this).attr('id'));
+                    }
+                }
+            );
+
+            function SendMessageWithData() {
+                
+                $('#attachments').val('');
+                var Data =
+                {
+                    OrderId: $('#orderId').val(),
+                    Text: $('#btn-input').val(),
+                    UserGuid: $('#userGuid').val(),
+                    ToGuid: $('#toGuid').val(),
+                    SenderName: $('#senderName').val(),
+                    ReceiverName: $('#receiverName').val(),
+                    //Data created without attachments field
+                }
+
+                var files = document.getElementById('uploadFile').files;
+                if (files.length > 0) {
+                    if (window.FormData !== undefined) {
+                        var data = new FormData();
+                        for (var x = 0; x < files.length; x++) {
+                            data.append("file" + x, files[x]);
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("Upload", "File")',
+                            contentType: false,
+                            processData: false,
+                            data: data,
+                            success: function (result) {
+                                $('#attachments').val(result);
+                                Data.Attachments = $('#attachments').val();
+                                SendMessage(Data);
+                            },
+                            error: function (xhr, status, p3) {
+                                //alert(xhr.responseText);
+                                SendMessage(Data);
+                            }
+                        });
+                    }
+                    else {
+                        Data.Attachments = "";
+                        SendMessage(Data);
+                    }
+                }
+                else {
+                    Data.Attachments = "";
+                    SendMessage(Data);
+                }
+            }
+
+
+            function SendMessage(Data)
+            {
+                chat.server.sendMessageAboutOrder(Data);
+            }
+
+
+            
+            //Events for chat
+            $('#btn-chat').click(function (e) {
+                SendMessageWithData();
+                $('#btn-input').val('');
+                $('#uploadFile').val('');
+            });
+
+            $("#btn-input").keyup(function (e) {
+
+                var code = e.which; // recommended to use e.which, it's normalized across browsers
+                if (code == 13 && $('#btn-input').val() !== '') {
+                    $("#btn-chat").click();
+                }
+            });
+        }) //the end of the hub.ready()
+
+        </script>
+<!--/OrderChatHub-->
+
+<!--DateCarerScripts-->   
+<script>
+        //Dynamic Message Date Changer functions
+        function DateCarer() {
+            var messages = $('.mes');
+            for (i = 0; i < messages.length; i++) {
+                id = $(messages[i]).attr('id');
+
+                TimeSpanChanger(id);
+            }
+        }
+
+        function TimeSpanChanger(id) {
+            var today = new Date();
+
+            var date = $('#' + id).attr('date'); //getting message date
+            var diffMs = (+today - date) + (1000 * 60 * 60 * 3); // milliseconds between now & message date
+
+            $('#' + id + ' .timeSpan').html("<span class='glyphicon glyphicon-time'></span>" + GetTimeSpan());
+
+            function inDays() {
+                return Math.round(inHours() / 24);
+            }
+
+            function inHours() {
+                return Math.round(inMins() / 60);
+            }
+
+            function inMins() {
+                return Math.round(inSecs() / 60);
+
+            }
+
+            function inSecs() {
+                return Math.round(diffMs / 1000);
+            }
+
+            function GetTimeSpan() {
+                var time = "";
+                if (inMins() < 1) {
+                    //time = "Just now";
+                    time = inSecs() + " seconds ago";
+                }
+                else if (inHours() < 1) {
+                    time = inMins() + " mins ago";
+                }
+                else if (inHours() < 24 && new Date(date).getUTCDate() != today.getUTCDate())//kosyak TODO
+                {
+                    time = "Yesterday";
+                }
+                else if (inHours() < 24) {
+                    time = inHours() + " hours ago";
+                }
+                else {
+                    var month = new Date(date).getUTCMonth() + 1; //months from 1-12
+                    var day = new Date(date).getUTCDate();
+                    var year = new Date(date).getUTCFullYear();
+
+                    time = day + "/" + month + "/" + year;
+                }
+
+
+                return time;
+            }
+
+
+
+        }
+
+        //\Dynamic Message Date Changer functions
+        setInterval(DateCarer, 300);
+</script>
+<!--/DateCarerScripts--> 
+

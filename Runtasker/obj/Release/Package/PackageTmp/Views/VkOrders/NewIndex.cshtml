@@ -1,0 +1,20 @@
+﻿@using VkParser.Entities
+@using Extensions.String
+@model IEnumerable<VkKeyWord>
+@{
+    ViewBag.Title = "NewIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Тест нового индекса</h2>
+
+@foreach(VkKeyWord vkKeyWord in Model)
+{
+    <h4>Id: @vkKeyWord.Id, @vkKeyWord.MainForm</h4>
+    <h4>@vkKeyWord.OtherWordForms</h4>
+    foreach(VkFoundPost vkPost in vkKeyWord.VkFoundPosts)
+    {
+        <p>@vkPost.Text.MarkManyText(vkPost.FoundKeyWords).ToHtml()</p>
+    }
+}
+

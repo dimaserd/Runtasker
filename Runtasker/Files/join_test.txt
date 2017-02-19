@@ -1,0 +1,20 @@
+{
+  "error": {
+    "error_code": 15,
+    "error_msg": "Access denied: no access to call this method",
+    "request_params": [
+      {
+        "key": "oauth",
+        "value": "1"
+      },
+      {
+        "key": "method",
+        "value": "groups.join"
+      },
+      {
+        "key": "group_id",
+        "value": "101090981"
+      }
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+﻿@using Runtasker.Resources.Views.Home.Comments
+@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class='col-md-offset-2 col-md-8 text-center'>
+            <h2>@CommentsRes.Header</h2>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-offset-2 col-md-8'>
+            <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                <!-- Bottom Carousel Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#quote-carousel" data-slide-to="1"></li>
+                    <li data-target="#quote-carousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Carousel Slides / Quotes -->
+                <div class="carousel-inner">
+
+                    <div class="item">
+                        <blockquote>
+                            <div class="row">
+                                <div class="col-sm-3 text-center">
+                                    <img class="img-circle" src="/File/GetFileToSite?filename=derek.jpg" style="width: 100px;height:100px;" />
+                                </div>
+                                <div class="col-sm-9">
+                                    <p>@CommentsRes.CommentText2</p>
+                                    <small>@CommentsRes.DerekName</small>
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+
+                    <!--Quote 2-->
+                    <div class="item">
+                        <blockquote>
+                            <div class="row">
+                                <div class="col-sm-3 text-center">
+                                    <img class="img-circle" src="/File/GetFileToSite?filename=jerry.jpg" style="width: 100px;height:100px;" />
+                                </div>
+                                <div class="col-sm-9">
+                                    <p>@CommentsRes.CommentText1</p>
+                                    <small>@CommentsRes.JerryName</small>
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+
+                    <!-- Quote 3 -->
+                    <div class="item active">
+                        <blockquote>
+                            <div class="row">
+                                <div class="col-sm-3 text-center">
+                                    <img class="img-circle" src="/File/GetFileToSite?filename=alina.jpg" style="width: 100px;height:100px;" />
+                                </div>
+                                <div class="col-sm-9">
+                                    <p>@CommentsRes.CommentText3</p>
+                                    <small>@CommentsRes.ThirdName</small>
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+                    <!-- Quote 2 -->
+                    
+                    <!-- Quote 3 -->
+                    
+                </div>
+
+                <!-- Carousel Buttons Next/Prev -->
+                <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+                <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $('#quote-carousel').carousel({
+                pause: true,
+                interval: 9000,
+            });
+        });
+    </script>
+    @Styles.Render("~/Comments")
+}

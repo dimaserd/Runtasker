@@ -1,0 +1,40 @@
+﻿@using VkParser.Models
+@using Runtasker.HtmlExtensions
+@model VkAddGroupModel
+@{
+    ViewBag.Title = "AddGroup";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Добавление группы</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <a href="@Url.Action("Groups", "VkOrders")" class="btn btn-default">
+            К списку групп
+        </a>
+        <a href="@Url.Action("KeyWords", "VkOrders")" class="btn btn-default">
+            К списку слов
+        </a>
+    </div>
+
+    <div class="col-md-6">
+        <a href="@Url.Action("Index", "VkOrders")" class="btn btn-default">
+            К списку постов
+        </a>
+
+    </div>
+</div>
+
+<hr/>
+
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        @Html.ValidationErrorsToAlerts()
+
+        @Html.LabelAndEditorFor(m => m.GroupName)
+        
+        <input type="submit" value="Добавить группу" class="btn-lg btn btn-primary" />
+    </div>
+}

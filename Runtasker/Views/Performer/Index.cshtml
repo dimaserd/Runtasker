@@ -1,0 +1,137 @@
+﻿@using Runtasker.ExtensionsUI.UIExtensions.Orders
+@using Runtasker.Logic.Entities
+@using HtmlExtensions.Renderers
+@using Extensions.String
+@model List<Order>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    GlyphiconRenderer GISigns = new GlyphiconRenderer();
+}
+        
+<h1 class="page-header">Dashboard</h1>
+
+<div class="row placeholders">
+    <div class="col-xs-6 col-sm-3 placeholder">
+        <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEwMCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojZmZmO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEzcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjAweDIwMDwvdGV4dD48L3N2Zz4=">
+        <h4>Label</h4>
+        <span class="text-muted">Something else</span>
+    </div>
+    <div class="col-xs-6 col-sm-3 placeholder">
+        <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEwMCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojMUUyOTJDO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEzcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjAweDIwMDwvdGV4dD48L3N2Zz4=">
+        <h4>Label</h4>
+        <span class="text-muted">Something else</span>
+    </div>
+    <div class="col-xs-6 col-sm-3 placeholder">
+        <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEwMCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojZmZmO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEzcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjAweDIwMDwvdGV4dD48L3N2Zz4=">
+        <h4>Label</h4>
+        <span class="text-muted">Something else</span>
+    </div>
+    <div class="col-xs-6 col-sm-3 placeholder">
+        <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEwMCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojMUUyOTJDO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEzcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjAweDIwMDwvdGV4dD48L3N2Zz4=">
+        <h4>Label</h4>
+        <span class="text-muted">Something else</span>
+    </div>
+</div>
+
+<div class="row">
+    <h2 class="sub-header">Заказы на сайте</h2>
+
+    <!--Sort Panel-->
+    <div class="pull-right">
+        <div class="btn-group">
+            <ul class="pager">
+                <li>
+                    <a href="#" class="btn btn-default btn-filter" data-target="active">
+                        Активные @GISigns.Count(Model.Count(o => o.Status.GetActiveStatus() == "active")).ToHtml()
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="btn btn-default btn-filter" data-target="finished">
+                        Завершенные @GISigns.Count(Model.Count(o => o.Status.GetActiveStatus() == "finished")).ToHtml()
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="btn active btn-default btn-filter" data-target="all">
+                        Все @GISigns.Count(Model.Count()).ToHtml()
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--/Sort Panel-->
+</div>
+
+@Styles.Render("~/OrdersList")
+@foreach (Order order in Model)
+{
+    @MvcHtmlString.Create(new PerformerOrderHtmlEntity(order).ToString())
+}
+
+@section scripts{
+    <!--Chat Toggler Scripts-->
+    <script>
+        var chatTogglers = $('.orderChat');
+
+        var modalBody = $('#modalBody');
+        var myModal = $('#myModal');
+
+        chatTogglers.click(function (e) {
+            e.preventDefault();
+
+            var id = $(this).attr('id');
+            myModal.modal('show');
+            //$('#chatMenu').collapse('hide');
+            GetModalData(id);
+        });
+
+        function GetModalData(id)
+        {
+            $.ajax({
+                type: "GET",
+                url: '/Performer/ChatAboutOrder/' + id,
+                contentType: false,
+                processData: false,
+                async: true,
+                data: null,
+                success: function (result) {
+                    modalBody.html(result);
+                },
+                error: function (xhr, status, p3) {
+                    alert(xhr.responseText);
+                }
+            });
+        }
+    </script>
+    <!--/Chat Toggler Scripts-->
+
+    <!--Filter scripts-->
+        <script>
+        $(document).ready(function () {
+
+            
+            var filterBtns = $('.btn-filter');
+
+            filterBtns.on('click', function () {
+                var $target = $(this).data('target');
+
+                filterBtns.removeClass('active');
+                $(this).addClass('active');
+
+                if ($target != 'all') {
+                    $('.bs-calltoaction').css('display', 'none');
+                    $('.bs-calltoaction[data-status="' + $target + '"]').fadeIn('slow');
+                } else {
+                    $('.bs-calltoaction').css('display', 'none').fadeIn('slow');
+                }
+            });
+
+
+
+        });
+</script>
+    <!--/Filter scripts-->
+}
+        
+

@@ -1,0 +1,286 @@
+﻿@using Runtasker.Logic.Models
+@using Runtasker.Logic.Entities
+@using HtmlExtensions.Renderers
+@using Extensions.Decimal
+@using Extensions.String
+
+@model PerformerInfo
+@{
+    ViewBag.Title = "PerformerStatistics";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
+    HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
+    GlyphiconRenderer GISigns = new GlyphiconRenderer();
+}
+
+
+
+<div class="row">
+    <h2 class="sub-header">Статистика исполнителя @Model.MainInfo.Name</h2>
+
+    <!--User Profile-->
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="/File/GetAvatar?userGuid=@Model.MainInfo.Id" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            @Model.MainInfo.Name
+                        </h4>
+                        <small>
+                            <cite title="San Francisco, USA">
+                                San Francisco, USA <i class="glyphicon glyphicon-map-marker">
+                                </i>
+                            </cite>
+                        </small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>@Model.MainInfo.Email
+                            <br />
+                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>@Model.MainInfo.RegistrationDate
+                        </p>
+                        <!-- Split button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary">
+                                Действия
+                            </button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span><span class="sr-only"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="@Url.Action("DeleteFinishedOrders", "Administration", new { id = Model.MainInfo.Id})">Удалить завершенные заказы</a></li>
+                                <li><a href="/Administration/DeleteAllOrders/@Model.MainInfo.Id">Удалить все заказы</a></li>
+                                <li class="divider"></li>
+                                <li class="has-warning"><a href="/Administration/DeleteUser/@Model.MainInfo.Id">Удалить пользователя</a></li>
+                            </ul>
+                        </div>
+                        <!--/Split button-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/User Profile-->
+    <!--Sort Panel-->
+    <div class="pull-right">
+        <div class="btn-group">
+            <ul class="pager">
+                <li>
+                    <a href="#" class="btn btn-default btn-filter" data-target="orders">
+                        Заказы @GISigns.Count(Model.MainInfo.Orders.Count()).ToHtml()
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="btn btn-default btn-filter" data-target="messages">
+                        Сообщения @GISigns.Count(Model.Messages.Count()).ToHtml()
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="btn active btn-default btn-filter" data-target="transactions">
+                        Транзакции @GISigns.Count(Model.MainInfo.PaymentTransactions.Count()).ToHtml()
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--/Sort Panel-->
+</div>
+
+<!--Заказы-->
+<div class="row statPanel" data-status="orders">
+    <h3>Заказы</h3>
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Статус
+                    </th>
+                    <th>
+                        Сумма
+                    </th>
+                    <th>
+                        Предмет
+                    </th>
+                    <th>
+                        Дата публикации
+                    </th>
+                    <th>
+                        Deadline
+                    </th>
+                    <th>
+                        Оценка
+                    </th>
+                    <th>
+                        Действия
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Order order in Model.MainInfo.Orders)
+            {
+                    <tr class="active">
+                        <td>
+                            @order.Status.ToDescriptionString()
+                        </td>
+                        <td>
+                            @order.Sum.ToMoney()@HtmlSigns.Rouble.ToHtml()
+                        </td>
+                        <td>
+                            @order.Subject.ToDescriptionString()
+                        </td>
+                        <td>
+                            @order.PublishDate.ToShortDateString()
+                        </td>
+                        <td>
+                            @order.FinishDate.ToShortDateString()
+                        </td>
+                        <td>
+                            @order.Rating
+                        </td>
+
+                        <td>
+                            <a title="Удалить заказ" class="icon" href="/Administration/DeleteOrder/@order.Id">
+                                @GISigns.Trash.ToHtml()
+                            </a>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--/Заказы-->
+<!--Сообщения-->
+<div class="row statPanel" data-status="messages">
+    <h3>Сообщения</h3>
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Отправитель
+                    </th>
+                    <th>
+                        Получатель
+                    </th>
+                    <th>
+                        Дата отправления
+                    </th>
+                    <th>
+                        Текст
+                    </th>
+                    <th>
+                        Статус
+                    </th>
+                    <th>
+                        Действия
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Message m in Model.Messages)
+            {
+                    <tr class="active">
+                        <td>
+                            @m.Sender.Email
+                        </td>
+                        <td>
+                            @m.Receiver.Email
+                        </td>
+                        <td>
+                            @m.Date
+                        </td>
+                        <td>
+                            @m.Text
+                        </td>
+                        <td>
+                            @m.Status
+                        </td>
+                        <td>
+                            <a title="Удалить сообщение" class="icon" href="/Administration/DeleteMessage/@m.Id">
+                                @GISigns.Trash.ToHtml()
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--/Сообщения-->
+<!--Транзакции-->
+<div class="row statPanel" data-status="transactions">
+    <h3>Транзакции</h3>
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Сумма
+                    </th>
+                    <th>
+                        Дата
+                    </th>
+                    <th>
+                        Описание
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (PaymentTransaction pt in Model.MainInfo.PaymentTransactions)
+                {
+                    <tr class="active">
+                        <td>
+                            @pt.Sum.ToMoney()@HtmlSigns.Rouble.ToHtml()
+                        </td>
+                        <td>
+                            @pt.Date
+                        </td>
+                        <td>
+                            @pt.Description
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--/Транзакции-->
+
+@section scripts{
+    <!--Filter scripts-->
+    <script>
+        $(document).ready(function () {
+
+
+            var filterBtns = $('.btn-filter');
+
+            filterBtns.on('click', function () {
+                var $target = $(this).data('target');
+
+                filterBtns.removeClass('active');
+                $(this).addClass('active');
+
+                $('.statPanel').css('display', 'none');
+                $('.statPanel[data-status="' + $target + '"]').fadeIn('slow');
+
+
+            });
+
+
+
+        });
+    </script>
+    <!--/Filter scripts-->
+}

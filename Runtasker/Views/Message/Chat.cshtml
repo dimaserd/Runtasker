@@ -1,0 +1,344 @@
+﻿@using Runtasker.Logic.Entities
+@using Runtasker.ExtensionsUI.UIExtensions
+@model IEnumerable<Message>
+@{
+
+    Layout = null;
+    List<Message> messages;
+    if (Model == null)
+    {
+        messages = null;
+    }
+    else
+    {
+        messages = Model.ToList();
+    }
+    string userGuid = ViewData["userGuid"] as string;
+    //нужен хидден для отправки сообщений
+    string toGuid = ViewData["toGuid"] as string;
+    string senderName = ViewData["senderName"] as string;
+    string receiverName = ViewData["receiverName"] as string;
+}
+@Styles.Render("~/Content/css")
+@Styles.Render("~/Chat")
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="panel panel-primary">
+                <div class="panel-heading" id="accordion">
+                    <span class="glyphicon glyphicon-comment"></span> Chat with @receiverName
+                    <div class="btn-group pull-right">
+                        <a type="button"  id="chevron-down" class="btn btn-default btn-xs" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="collapseOne">
+                    <div id="chatbody" class="panel-body">
+                        <ul class="chat">
+                            @if (messages != null)
+                            {
+                                foreach (Message m in messages)
+                                {
+                                    HtmlMessage hm = new HtmlMessage(m, userGuid, senderName, receiverName);
+                                    @MvcHtmlString.Create(hm.ToString())
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                            <span class="input-group-btn">
+                                <button class="btn btn-warning btn-sm" id="btn-chat">
+                                    Send
+                                </button>
+                            </span>
+                            
+                        </div>
+                        <!--File downloading-->
+                        <p>
+                            <input type="file" id="uploadFile" multiple />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<style type="text/css">
+    .unread{
+        background-color : rgba(153,217,234, 0.25);
+        border-radius : 5px;
+    }
+</style>
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@*Scripts.Render("~/SignalR")*@
+<script src="~/Scripts/jquery.signalR-2.2.1.js"></script>
+<script src="~/signalr/hubs"></script>
+<!--Поля для Чата-->
+<!--btn-input btn-send-->
+<input id="userGuid" type="hidden" value="@userGuid"/>
+<input id="toGuid" type="hidden" value="@toGuid"/>
+<input id="senderName" type="hidden" value="@senderName"/>
+<input id="receiverName" type="hidden" value="@receiverName"/>
+
+<script>
+
+    $('#chevron-down').on('click', function (e) {
+        setTimeout(function () { scrollDownChatBody(900) }, 1);
+    })
+
+    function scrollDownChatBody(duration) {   //stop()
+        $('#chatbody').stop().animate({
+            scrollTop: $('#chatbody')[0].scrollHeight
+        }, duration);
+    }
+
+    function buildMessage(id, text, filesUrl, senderGuid, nickname, date) {
+        var userGuid = $('#userGuid').val();
+        var toGuid = $('#toGuid').val();
+        var NickName = nickname;
+
+
+        function GetStarted() {
+            var result = `<li id='${id}' date='${date}' class='mes `;
+            if (senderGuid == userGuid) { //сообщение принято?
+                result += "right clearfix'><span class='chat-img pull-right ";
+            }
+            else {
+                result += "unread left clearfix'><span class='chat-img pull-left ";
+            }
+            result += " clearfix'>";
+
+
+
+            return result;
+        }
+
+        function GetNickAndTime() {
+            var time = "Just now"
+            if (senderGuid != userGuid) {
+                return `<strong class='primary-font'>${NickName}</strong>`
+                    + "<small class='pull-right text-muted timeSpan'>"
+                 + `<span class='glyphicon glyphicon-time'></span>${time}</small>`;
+            }
+            else {
+                return "<small class='text-muted timeSpan'>"
+                 + `<span class='glyphicon glyphicon-time'></span>${time}</small>`
+                 + `<strong class='pull-right primary-font'>${NickName}</strong>`;
+            }
+        }
+
+        function GetImage() {
+            if (senderGuid == userGuid) {
+                return `<img src = 'http://placehold.it/50/FA6F57/fff&text=${NickName.toUpperCase()[0]}' alt = 'User Avatar'`
+                + "class='img-circle'/>";
+            }
+            else {
+                return `<img src='http://placehold.it/50/55C1E7/fff&text=${NickNametoUpperCase()[0]}' alt='User Avatar'`
+                + "class='img-circle'/>";
+
+            }
+        }
+
+        function GetAttachmentsLink() {
+            if (filesUrl != "") {
+                if (senderGuid != userGuid) {
+                    return "<p class='pull-right'><a href='"
+                    + filesUrl + "'>Download files<span class='glyphicon glyphicon-cloud-download'></span></a></p>";
+                }
+                else {
+                    return "<p class='pull-left'><a href='"
+                     + filesUrl + "'>Download files<span class='glyphicon glyphicon-cloud-download'></span></a></p>";
+                }
+            }
+            else {
+                return "";
+            }
+        }
+
+        var result = "";
+
+        result += GetStarted() + GetImage() + "</span><div class='chat-body clearfix'><div class='header'>"
+        + GetNickAndTime() + "</div>" + "<p>" + text + "</p>" + GetAttachmentsLink() + "</div></li>";
+
+        return result;
+
+    }
+
+
+    var chat = $.connection.chatHub;
+
+
+    //обработка сообений
+    chat.client.onNewMessage = function (id, text, filesUrl, senderGuid, nickname, date) {
+        htmlmessage = buildMessage(id, text, filesUrl, senderGuid, nickname, date);
+        $("#chatbody ul").append(htmlmessage);
+        scrollDownChatBody(600);
+    }
+
+    chat.client.onMessageMarked = function(id)
+    {
+        $('#' + id).removeClass("unread");
+    }
+
+    //коннектиться к серверу
+    $.connection.hub.start().done(function () {
+        //в дальнейшем оптимизируй хотя бы через метод регистрации
+        $(".unread").on({
+            mouseenter: function () {
+                if ($(this).hasClass('unread'))
+                {
+                    console.log($(this).attr('id'));
+                    chat.server.messageIsRead($(this).attr('id'), $('#userGuid').val(), $('#toGuid').val());
+                }
+            }
+        });
+
+        function SendMessage()
+        {
+            var attachString = "";
+            var files = document.getElementById('uploadFile').files;
+            //если есть файлы то отправляем
+            if (files.length > 0) {
+                console.log('came to files');
+                if (window.FormData !== undefined) {
+                    var data = new FormData();
+                    for (var x = 0; x < files.length; x++) {
+                        data.append("file" + x, files[x]);
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Upload", "File")',
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (result) {
+                            console.log(result);
+
+                            chat.server.sendMessage($('#btn-input').val(), $('#userGuid').val(), $('#toGuid').val(), $('#senderName').val(), $('#receiverName').val(), null, result)
+                            //очистка текста и файлов
+                            $("#btn-input").val('');
+                            $("#uploadFile").val('');
+                        },
+                        error: function (xhr, status, p3) {
+                            alert(xhr.responseText);
+                        }
+                    });
+                } else {
+                    alert("Браузер не поддерживает загрузку файлов HTML5!");
+                }
+            }
+            else {
+                //сообщение без вложений
+                chat.server.sendMessage($('#btn-input').val(), $('#userGuid').val(), $('#toGuid').val(), $('#senderName').val(), $('#receiverName').val(), null, null)
+                //очистка текста и файлов
+                $("#btn-input").val('');
+                $("#uploadFile").val('');
+            }
+
+        };
+
+        $('#btn-chat').click(function (e) {
+            SendMessage();
+        });
+
+        $("#btn-input").keyup(function (e) {
+            var code = e.which; // recommended to use e.which, it's normalized across browsers
+            if (code == 13)
+            {
+                SendMessage();
+            }
+        });
+    })
+
+    //Функции для динамического изменения временной отметки
+
+function DateCarer()
+{
+    var messages = $('.mes');
+    for(i = 0; i < messages.length; i++)
+    {
+        id = $(messages[i]).attr('id');
+
+        TimeSpanChanger(id);
+    }
+}
+
+function TimeSpanChanger(id) {
+    var today = new Date();
+
+    var date = $('#' + id).attr('date'); //getting message date
+    var diffMs = (+today - date) + (1000 * 60 * 60  * 3); // milliseconds between now & message date
+
+    $('#' + id + ' .timeSpan').html("<span class='glyphicon glyphicon-time'></span>" + GetTimeSpan());
+
+    function inDays() {
+        return Math.round(inHours() / 24);
+    }
+
+    function inHours() {
+        return Math.round(inMins() / 60);
+    }
+
+    function inMins() {
+        return Math.round(inSecs() / 60);
+
+    }
+
+    function inSecs()
+    {
+        return Math.round(diffMs / 1000);
+    }
+
+    function GetTimeSpan()
+    {
+        var time = "";
+        if (inMins() < 1)
+        {
+            //time = "Just now";
+            time = inSecs() + " seconds ago";
+        }
+        else if (inHours() < 1)
+        {
+            time = inMins() + " mins ago";
+        }
+        else if (inHours() < 24 && new Date(date).getUTCDate() != today.getUTCDate())//kosyak TODO
+        {
+            time =  "Yesterday";
+        }
+        else if(inHours() < 24)
+        {
+            time = inHours() + " hours ago";
+        }
+        else
+        {
+            var month = new Date(date).getUTCMonth() + 1; //months from 1-12
+            var day = new Date(date).getUTCDate();
+            var year = new Date(date).getUTCFullYear();
+
+            time = day + "/" + month + "/" + year;
+        }
+
+
+        return time;
+    }
+
+
+
+}
+
+setInterval(DateCarer, 300);
+
+</script>
+@*Scripts.Render("~/ChatScript")*@

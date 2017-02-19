@@ -1,0 +1,192 @@
+﻿@using Runtasker.Logic
+@using Microsoft.AspNet.Identity
+@using Runtasker.Resources.Views.Manage.Profile
+@using HtmlExtensions.Renderers
+@{
+    ViewBag.Title = ProfilePageRes.Title;
+    string avatarPath = ViewData["avatarPath"] as string;
+    string userGuid = User.Identity.GetUserId();
+    avatarPath = $"/File/GetAvatar?userGuid={userGuid}";
+    string userName = User.Identity.GetName();
+
+    string actionName = (User.Identity.HasPassword()) ? "ChangePassword" : "SetPassword";
+    string actionNameForUser = (actionName == "ChangePassword") ? ProfilePageRes.ChangePass : ProfilePageRes.SetPass;
+    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
+}
+
+@*
+Можно придумать получение размеров и через него замутить но это дичь ебаная    
+*@
+
+<style>
+    .avatar-div
+    {
+        width : 200px;
+        height : auto;
+    }
+
+    .img-preloader
+    {
+        width : 28px;
+        height : auto;
+    }
+    
+</style>
+
+<!--PageHeader-->
+<div class="page-header">
+    <div class="pull-right">
+        <div class="btn-group">
+            <a class="btn btn-default btn-lg" href="@Url.Action(actionName, "Manage")">
+                <span class="fa fa-lock fa-fw"></span>
+                @actionNameForUser
+            </a>
+        </div>
+    </div>
+    <h1>
+        @userName
+    </h1>
+</div>
+<!--/PageHeader-->
+
+
+<div class="row">
+    <div class="col-xs-5 col-sm-4 col-md-3">
+        <!--JennyAvatar-->
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-new thumbnail avatar-div">
+                <img src="@avatarPath" alt="..." class="img-responsive">
+            </div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+            <div>
+                <!--was span-->
+                <span class="btn btn-default btn-file">
+                    <span class="fileinput-new">@ProfilePageRes.SelectNewAvatar</span>
+                    <span class="fileinput-exists">@ProfilePageRes.Change</span>
+                    <input id="uploadAvatar" type="file" name="..." accept="image/*">
+                </span>
+                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">
+                    @ProfilePageRes.Remove
+                </a>
+            </div>
+        </div>
+        <!--/JennyAvatar-->
+        <!--MyPreloaderButton-->
+        <div class="row">
+            <span class="input-group-btn">
+                <button class="btn btn-lg btn-default hidden" id="uploadButton">
+                    <span id="uploadBtnText">@ProfilePageRes.SaveNewAvatar</span>
+                </button>
+            </span>
+        </div>
+        <!--/MyPreloaderButton-->
+    </div>
+
+    <!--User Fields-->
+    <div class="col-xs-12 col-sm-8  col-md-9 ">
+        <h3 title="@ProfilePageRes.Name"><span class="fa fa-user fa-fw"></span> @User.Identity.GetName()</h3>
+        <h3 title="@ProfilePageRes.UserName"><span class="fa fa-at fa-fw"></span> @User.Identity.GetEmail()</h3>
+        <h3 title="@ProfilePageRes.Email">
+            <span class="fa fa-envelope-o fa-fw"></span> [@ProfilePageRes.NoNewMessages]
+        </h3>
+        <h3>
+            @ProfilePageRes.Balance: @User.Identity.GetBalance()<span class="fa fa-rub"></span>
+            <a href="@Url.Action("Index", "Payment")">[@ProfilePageRes.Recharge]</a>
+        </h3>
+        <h3>
+            <a href="@Url.Action("ManageLogins", "Manage")">
+                [<span class="fa fa-user"></span> @ProfilePageRes.ManageLogins]
+            </a>
+        </h3>
+        
+        <hr>
+        <h3 class="text-muted" title="Available sign in options">
+            <a href="@Url.Action("Contact","Home")">
+                <span class="fa fa-sign-in fa-fw"></span>
+                @ProfilePageRes.HaveQuestions
+            </a>
+        </h3>
+    </div>
+    <!--/User Fields-->
+
+</div>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
+@section scripts{
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+
+    <script>
+
+        var avatar = $('#uploadAvatar');
+        var uploadButton = $('#uploadButton');
+        var preloader = $('#preloader');
+        var uploadBtnText = $('#uploadBtnText');
+
+        //if File is selected showing some button to upload an avatar
+        avatar.change(function () {
+            console.log('change')
+            if (HasUpload()) {
+                console.log('has upload')
+                ShowObject(uploadButton);
+            }
+            else
+            {
+                HideObject(uploadButton);
+            }
+
+        });
+
+        function HasUpload()
+        {
+            return (document.getElementById('uploadAvatar').files.length > 0);
+        }
+
+        function ShowObject(object)
+        {
+            if($(object).hasClass('hidden'))
+            {
+                $(object).removeClass('hidden');
+            }
+        }
+
+        function HideObject(object)
+        {
+            if(!$(object).hasClass('hidden'))
+            {
+                $(object).addClass('hidden');
+            }
+        }
+      
+
+        //change text on button show some span with animated preloader
+        uploadButton.click(function(e)
+        {
+            if(uploadButton.hasClass('hidden'))
+            {
+                return;
+            }
+            e.preventDefault();
+            uploadBtnText.html('@ProfilePageRes.AvatarUploading');
+            ShowObject(preloader);
+            uploadButton.prop('disabled', true);
+            ChangeAvatar();
+        })
+
+        function ChangeAvatar()
+        {
+            var xhr = new XMLHttpRequest();
+            var fd = new FormData();
+            fd.append("file", document.getElementById('uploadAvatar').files[0]);
+            xhr.open("POST", "@Url.Action("UploadAvatar", "File")", true);
+            xhr.send(fd);
+            xhr.addEventListener("load", function (event) {
+                location.reload();
+            }, false);
+        }
+
+        
+    </script>
+}

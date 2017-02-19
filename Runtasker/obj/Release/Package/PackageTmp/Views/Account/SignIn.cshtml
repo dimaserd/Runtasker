@@ -1,0 +1,177 @@
+﻿@using Runtasker.Logic.Models
+@using Runtasker.Logic
+@using Microsoft.AspNet.Identity;
+@using HtmlExtensions.Renderers
+@using Extensions.String
+@using Runtasker.Resources.Views.Shared.NewLoginPartial
+@model LoginModel
+@{
+    Layout = null;
+    string userGuid = User.Identity.GetUserId();
+    string imageLink = $"/File/GetAvatar?userGuid={userGuid}";
+    HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
+    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
+}
+@if (!Request.IsAuthenticated)
+{
+    <div class="pull-right nav signin-dd">
+        <a id="quick_sign_in" href="#">
+            <i class="fa fa-users"></i><span class="hidden-xs"> @NewLoginPartial.SignIn</span>
+        </a>
+        <div class="dropdown-menu" role="menu">
+
+            <h4>@NewLoginPartial.SignIn</h4>
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+            <div class="form-group">
+                @Html.TextBoxFor(model => model.Email,
+                        htmlAttributes: new { @class = "form-control", placeholder = NewLoginPartial.Email, required="", type = "email" })
+            </div>
+
+            <div class="input-group">
+
+                <!-- password -->
+
+                @Html.TextBoxFor(model => model.Password,
+                        htmlAttributes: new { @class = "form-control", placeholder = NewLoginPartial.Password, required="", type = "password" })
+                <!-- submit button -->
+                <span class="input-group-btn">
+                    <button class="btn btn-primary">@NewLoginPartial.SignIn</button>
+                </span>
+
+            </div>
+
+            <div class="checkbox">
+                <!-- remmember -->
+                <label>
+                    @Html.CheckBoxFor(m => m.RememberMe) @NewLoginPartial.RememberMe &bull;
+                </label>
+            </div>
+
+            <a href="@Url.Action("ForgotPassword", "Account")">@NewLoginPartial.ForgotPass?</a>
+
+
+            }
+
+            <hr style="margin-top:0;" />
+
+            @Html.Partial("BlockLoginList", new ExternalLoginListModel { ReturnUrl = ViewBag.ReturnUrl, VerbWith = NewLoginPartial.VerbWith })
+
+            <p class="bottom-create-account">
+                <a href="@Url.Action("Register", "Account")">@NewLoginPartial.CreateAccount</a>
+            </p>
+        </div>
+    </div>
+}
+else
+{
+    <style>
+        .whiteText p,.whiteText a{
+            color : white !important;
+            line-height:26px!important;
+        }
+        .low-marg{
+            margin-bottom: 0px;
+        }
+    </style>
+
+    <div class="pull-right nav signin-dd">
+        <a id="quick_sign_in" href="#"><i class="fa fa-users"></i><span class="hidden-xs"> @NewLoginPartial.Hello, @User.Identity.GetName()!</span></a>
+        <div class="dropdown-menu whiteText" role="menu">
+            <div class="navbar-content">
+                <!--Avatar-->
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <img src="@imageLink"
+                             alt="Alternate Text" class="pull-left img-circle img-100" />
+                    </div>
+                </div>
+                <!--/Avatar-->
+                <!--Information Block-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>@User.Identity.GetName()</span>
+                        <p class="text-muted small">
+                            @User.Identity.GetEmail()
+                        </p>
+                        <div class="divider">
+                        </div>
+                        <p class="text-muted small low-marg">
+                            @NewLoginPartial.YourBalance @User.Identity.GetBalance()@HtmlSigns.Rouble.ToHtml()
+                        </p>
+                        <p>
+                            <a href="@Url.Action("Index", "Payment")">
+                                [@NewLoginPartial.Recharge]
+                            </a>
+                        </p>
+
+
+
+                        <style>
+                            
+                            .img-100{
+                                height : 140px;
+                                width : auto;
+                            }
+                        </style>
+
+                    </div>
+                    <!--/Information Block-->
+                    
+                    <div class="col-md-12 text-center">
+                        <a href="@Url.Action("Profile", "Manage")" class="btn btn-primary btn-sm active" style="padding-right: inherit;">
+                            @NewLoginPartial.ViewProfile
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!--Action Buttons-->
+            <div class="navbar-footer">
+                <div class="navbar-footer-content">
+                    <div class="row">
+                        @if (!User.Identity.HasPassword())
+                        {
+                            <div class="col-md-12 col-xs-12">
+                                @Html.RouteLink(NewLoginPartial.SetPassword, new { controller = "Manage", action = "SetPassword" }, new { @class = "btn btn-default btn-sm" })
+                            </div>
+                        }
+                        <div class="col-md-12 col-xs-12">
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "pull-right", style = "margin-top: 8px;" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger btn-sm btn-block">
+                                    <span class="glyphicon glyphicon-off"> </span> @NewLoginPartial.SignOut
+                                </a>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/Action Buttons-->
+
+        </div>
+    </div>
+
+}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        $("#quick_sign_in").click(function () {
+            if ($(this).parent().hasClass("open")) {
+                $(this).parent().removeClass("open");
+            }
+            else {
+                if ($("#langToogler").parent().hasClass("open")) {
+                    $("#langToogler").parent().removeClass("open")
+                }
+                $(this).parent().addClass("open");
+            }
+        })
+
+
+    }, false);
+</script>

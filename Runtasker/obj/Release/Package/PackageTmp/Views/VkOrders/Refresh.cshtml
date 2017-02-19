@@ -1,0 +1,62 @@
+﻿@using VkParser.Entities
+@model List<VkGroup>
+@{
+    ViewBag.Title = "Refresh";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    int countOfGroups = 424;
+
+    int count = (Model != null)? Model.Count : 0;
+
+    bool needSearch = count > 0;
+
+    DateTime lastCheckDate = DateTime.Now;
+
+
+    decimal part = (decimal)1 - ( (decimal)count / (decimal)(countOfGroups) );
+    int percents = ((int)(part * 100));
+}
+
+
+<h2>Обновление выполнено @percents%</h2>
+
+@if (count > 0)
+{
+    <!--Заполнение модели для передачи методу контроллера-->
+    using (Html.BeginForm())
+    {
+        for (int i = 0; i < Model.Count(); i++)
+        {
+            @Html.HiddenFor(m => Model[i].GroupId)
+            @Html.HiddenFor(m => Model[i].Id)
+            @Html.HiddenFor(m => Model[i].IsMember)
+            @Html.HiddenFor(m => Model[i].LastCheckDate)
+            @Html.HiddenFor(m => Model[i].LastCheckedPostId)
+            @Html.HiddenFor(m => Model[i].Name)
+            @Html.HiddenFor(m => Model[i].ScreenName)
+        }
+        if (needSearch)
+        {
+            <input id="search" type="submit" value="Идет обновление" class="btn btn-success" />
+        }
+        
+
+    }
+    <!--/Заполнение модели-->
+}
+@if (!needSearch)
+{
+    <input id="search" type="submit" value="Данные обновлены" disabled class="btn btn-success" />
+}
+@section scripts{
+    <script>
+        var search = $("#search");
+
+        var count = @count;
+
+        if(count > 0)
+        {
+            search.click();
+        }
+    </script>
+}

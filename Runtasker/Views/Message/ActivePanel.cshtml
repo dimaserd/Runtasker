@@ -1,0 +1,93 @@
+﻿@using Runtasker.Logic.Models
+@using Runtasker.Resources.Views.Message.ActivePanel
+@model PanelViewModel
+@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+    bool hasMessages = Model.OrderChatLinks.Count() > 0;
+    string disabled = hasMessages ? "" : "disabled";
+    
+}
+
+<li class="dropdown" @MvcHtmlString.Create(disabled)>
+    <a href="">
+        <span class="glyphicon glyphicon-envelope"> </span> @ActivePanel.Inbox <span class="badge">@Model.InboxCount</span> 
+        @if (hasMessages)
+        {
+            <b class="caret"></b>
+        }
+    </a>
+@if (hasMessages)
+{
+    <ul id="chatMenu" class="dropdown-menu">
+        
+        <li class="divider"></li>
+            @foreach (OrderChatLink o in Model.OrderChatLinks)
+            {
+                <li>
+                    <a href="" class="chatLink" id="@o.OrderId">
+                        @ActivePanel.ChatLinkText1@o.OrderId @ActivePanel.ChatLinkText2 <span class="badge">@o.UnreadMessages</span>
+                    </a>
+                </li>
+                <li class="divider"></li>
+            }
+        
+        
+    </ul>
+}
+else
+{
+    
+
+        <li class="divider"></li>
+
+        <li>
+            <a href="" class="chatLink">
+                Нет новых сообщений <span class="badge">0</span>
+            </a>
+        </li>
+
+
+   
+}
+@section scripts{
+    
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var chatLinks = $('.chatLink');
+        var modalBody = $('#modalBody');
+        var myModal = $('#myModal');
+
+        
+
+        chatLinks.click(function (e) {
+            //e.preventDefault();
+            console.log("dima chlen");
+            $('#NavMenu').collapse('hide');
+            myModal.modal({ backdrop: 'static' });
+            myModal.modal("show");
+            console.log('click');
+            var id = $(this).attr('id');
+            GetModalData(id);
+        })
+
+
+        function GetModalData(id) {
+            console.log('getmodalData');
+            $.ajax({
+                type: "POST",
+                url: '/Message/ChatAboutOrder?orderId=' + id,
+                contentType: false,
+                processData: false,
+                async: true,
+                data: null,
+                success: function (result) {
+                    modalBody.html(result);
+                },
+                error: function (xhr, status, p3) {
+                    alert(xhr.responseText);
+                }
+            });
+        }
+    }, false);
+</script>
+}

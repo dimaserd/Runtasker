@@ -1,0 +1,8 @@
+C:\Runtasker\Runtasker.Settings\bin\Debug\Runtasker.Settings.dll
+C:\Runtasker\Runtasker.Settings\bin\Debug\Runtasker.Settings.pdb
+C:\Runtasker\Runtasker.Settings\obj\Debug\Runtasker.Settings.dll
+C:\Runtasker\Runtasker.Settings\obj\Debug\Runtasker.Settings.pdb
+\\Mac\Home\Desktop\Runtasker\Runtasker.Settings\bin\Debug\Runtasker.Settings.dll
+\\Mac\Home\Desktop\Runtasker\Runtasker.Settings\bin\Debug\Runtasker.Settings.pdb
+\\Mac\Home\Desktop\Runtasker\Runtasker.Settings\obj\Debug\Runtasker.Settings.dll
+\\Mac\Home\Desktop\Runtasker\Runtasker.Settings\obj\Debug\Runtasker.Settings.pdb

@@ -1,0 +1,28 @@
+﻿@using Runtasker.Logic.Entities
+@model List<Order>
+@{
+    ViewBag.Title = "DeleteOrders";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Удаление заказов</h2>
+@using (Html.BeginForm("DeleteOrders", "Performer", FormMethod.Post))
+{
+
+    string orders = "";
+    for (int i = 0; i < Model.Count(); i++)
+    {
+        orders += $" {Model[i].Id}";
+
+
+        @Html.HiddenFor(m => m[i].Id);
+        @Html.HiddenFor(m => m[i].Status);
+        @Html.HiddenFor(m => m[i].PublishDate);
+        @Html.HiddenFor(m => m[i].Sum)
+                }
+    <h4 class="info">Вы удаляете заказы @orders !</h4>
+
+    <div class="form-horizontal">
+        <input type="submit" value="Удалить заказы" class="btn-lg btn btn-danger" />
+    </div>
+}

@@ -1,0 +1,70 @@
+﻿@using Runtasker.Resources.Views.Shared.ModalLayout
+@{
+    Layout = null;
+}
+
+<!--Modal must be before anything-->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container">
+                        <!--Brand-->
+                        <div class="navbar-header">
+                            @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#modalNavbar">*@
+                                <button type="button" class="navbar-toggle hidden-xs" data-toggle="#modalNavbar" data-target="#modalNavbar">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-education"></span> RUNTASKER mini</a>
+                        </div>
+                        <!--/Brand-->
+                        <!--Panel-->
+                        <div id="#modalNavbar" class="navbar-collapse collapse hidden-xs">
+                            <ul class="nav navbar-nav">
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("Index", "Orders")">
+                                            <span class="glyphicon glyphicon-th-list"></span> @ModalRes.MyOrders
+                                        </a>
+                                    </li>
+                                }
+                                <li>
+                                    <a href="@Url.Action("Contact", "Home")">
+                                        <span class="glyphicon glyphicon-send"></span> @ModalRes.Contact
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--/Panel-->
+                    </div>
+                </div>   
+            </div>
+            <!--ModalBody-->
+            <style>
+                #modalBody
+                {
+                    margin-top : 40px;
+                }
+            </style>
+            <div class="modal-body">
+                
+                
+                <div id="modalBody" class="body-content">
+                    
+                </div>
+            </div>
+            <!--/ModalBody-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"></span> @ModalRes.Close
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!--/Modal-->

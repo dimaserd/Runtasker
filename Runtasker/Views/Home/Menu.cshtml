@@ -1,0 +1,130 @@
+﻿@using Runtasker.Resources.Views.Orders.MiniPanel
+@using Runtasker.Resources.Views.Message.ActivePanel
+@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<!-- Top Nav -->
+<div id="NavMenu" class="navbar-collapse nav-main-collapse collapse pull-right">
+    <nav class="nav-main mega-menu">
+        <ul class="nav nav-pills nav-main scroll-menu" id="topMain">
+            <li id="ordersMiniPanel" class="dropdown mega-menu-item">
+                <a id="orderPanelLink" class="dropdown-toggle" href="#">
+                    @MiniPanelRes.MyOrders <i class="fa fa-angle-down hidden-lg hidden-md"></i>
+                </a>
+                <ul id="orderPanelMenu" class="dropdown-menu">
+
+                </ul>
+
+            </li>
+
+            <li id="messageMiniPanel" class="dropdown mega-menu-item">
+                <a class="dropdown-toggle" href="#">
+                    <span class="glyphicon glyphicon-envelope"> </span> @ActivePanel.Inbox <span id="unreadCount" class="badge">0</span>
+                    <i class="fa fa-angle-down hidden-lg hidden-md"></i>
+                </a>
+                <ul id="messagePanelMenu" class="dropdown-menu">
+                    
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
+<!-- /Top Nav -->
+
+@section scripts{
+    <!--Building Scripts-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var GetData = function()
+            {
+                $.ajax({
+                    type: "GET",
+                    url: "/api/Menu/GetOrders",
+                    data: null,
+                    success: DataGetter,
+                });
+            }();
+
+            function DataGetter(data)
+            {
+
+                var orderLi = "";
+                var messageLis = "";
+
+                if(!data.HasOrders)
+                {
+                    orderLi = "<li>" + "<a href=\"/Orders/Create\">"
+                        + "<span class=\"fa fa-fa-plus-square\"></span>"
+                     + "@MiniPanelRes.NoOrdersMes" + "</a></li>";
+                }
+                else
+                {
+                    orderLi = "<li>" + "<a href=\"/Orders\">"
+                        + "<span class=\"fa fa-fa-plus-square\"></span>"
+                     + "@MiniPanelRes.GoToOrders" + "</a></li>";
+
+                    
+                    if (data.OrderMessageInfos.length != 0)
+                    {
+                        for (i = 0; i < data.OrderMessageInfos.length; i++)
+                        {
+                            messageLis = messageLis + "<li>" +
+                            "<a href=\"#\" class=\"chatLink\" id=\"" + data.OrderMessageInfos[i].Id + "\">" +
+                            "@ActivePanel.ChatLinkText1" + data.OrderMessageInfos[i].Id + " @ActivePanel.ChatLinkText2" +
+                            "<span class=\"badge\">" + data.OrderMessageInfos[i].UnreadCount + "</span></a></li>";
+
+                        }
+
+                    }
+                    else
+                    {
+                        messageLis = "<li>" + "<a href=\"\">" +
+                            "@ActivePanel.NoNewMessages" + "</a></li>"
+                    }
+
+                }
+                document.getElementById("messagePanelMenu").innerHTML = messageLis;
+                document.getElementById("orderPanelMenu").innerHTML = orderLi;
+                document.getElementById("unreadCount").innerHTML = data.UnreadCount;
+
+            }
+        })
+    </script>
+    <!--/Building Scripts-->
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+            var modalBody = $('#modalBody');
+            var myModal = $('#myModal');
+
+            $(document).on("click", ".chatLink", function (e) {
+
+                console.log("клик ебаный")
+                e.preventDefault();
+
+                var id = $(this).attr('id');
+                myModal.modal('show');
+                GetModalDataFromMenu(id);
+            })
+
+            function GetModalDataFromMenu(id) {
+                
+                $.ajax({
+                    type: "GET",
+                    url: '/Message/ChatAboutOrder/?orderId=' + id,
+                    contentType: false,
+                    processData: false,
+                    async: true,
+                    data: null,
+                    success: function (result) {
+                        modalBody.html(result);
+                    },
+                    error: function (xhr, status, p3) {
+                        alert(xhr.responseText);
+                    }
+                });
+            }
+      });
+</script>
+}

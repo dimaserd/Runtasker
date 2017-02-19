@@ -1,0 +1,27 @@
+﻿@using Runtasker.Logic.Entities
+@using Runtasker.Resources.Views.Orders.MiniPanel
+@model IEnumerable<Order>
+@{ 
+    Layout = null;
+}
+
+        @if (Model.Count() == 0)
+        {
+            <li>
+                <a href="/Orders/Create">
+                    <i class="fa fa-fa-plus-square"></i> @MiniPanelRes.NoOrdersMes
+                </a>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a href="/Orders">
+                    <i class="fa fa-check-square-o"></i> @MiniPanelRes.GoToOrders
+                </a>
+            </li>
+        }
+
+
+
+

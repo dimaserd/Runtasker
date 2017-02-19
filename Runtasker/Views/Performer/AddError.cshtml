@@ -1,0 +1,63 @@
+﻿@using Runtasker.Logic.Models
+@using Runtasker.Logic.Entities
+@model AddErrorToOrderModel
+@{
+    List<SelectListItem> errors = new List<SelectListItem>();
+    foreach (OrderErrorType item in Enum.GetValues(typeof(OrderErrorType)))
+    {
+        errors.Add(new SelectListItem { Value = ((int)item).ToString(), Text = item.ToDescriptionString(), Selected = (int)item == 0 });
+    }
+    int count = errors.Count - 1;
+}
+
+@using (Html.BeginForm("AddError", "Performer", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        <h2>Add Order</h2>
+        <hr />
+
+        <!--ErrorsList-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.ErrorType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.DropDownList(name: "subjects", selectList: errors, htmlAttributes: new { id = "errorsList", @class = "form-control" })
+            </div>
+        </div>
+        <!--/ErrorsList-->
+
+        <!--Hiddens-->
+        @Html.HiddenFor(model => model.OrderId)
+        @Html.HiddenFor(model => model.ErrorType, htmlAttributes: new { id = "errorType"})
+        <!--/Hiddens-->
+
+        <!--FakeButtonTrick-->
+        <input id="hiddenSubmit" type="submit" class="hidden"/>
+
+        <button id="fakeButton" class="btn btn-lg btn-default" >Указать на ошибку</button>
+        <!--FakeButtonTrick-->
+    </div>
+}
+
+<!--Scripts-->
+@section scripts{
+<script>
+    var errorsList = $('#errorsList');
+    var errorType = $('#errorType');
+    var fakeButton = $('#fakeButton');
+    var hiddenSubmit = $('#hiddenSubmit');
+
+    fakeButton.click(function (e) {
+        e.preventDefault();
+        GetValueToHidden();
+        hiddenSubmit.click();
+    })
+
+    function GetValueToHidden()
+    {
+        errorType.val(errorsList.val());
+    }
+
+</script>
+}
+<!--/Scripts-->
+

@@ -1,0 +1,19 @@
+﻿@using Runtasker.Logic.Entities
+@using Runtasker.ExtensionsUI.UIExtensions.Alerts
+@model Notification
+@{
+    Layout = null;
+}
+@if (Model != null)
+{
+    if (Model.AboutType == NotificationAboutType.Balance)
+    {
+        @*Re Sign In User to change his balance*@
+    { Html.RenderAction("ReSignIn", "Account"); }
+}
+<div class="row">
+    <div class="col-md-12">
+        @MvcHtmlString.Create(AlertBuilder.BuildAlertFromNotification(Model))
+    </div>
+</div>
+}

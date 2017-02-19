@@ -443,17 +443,10 @@ namespace Runtasker.Controllers
 
             string fileContents = GetVkAppToken(code);
             
-            //Логгирование
-            using (LoggingWorker logger = new LoggingWorker())
-            {
-                string fileText = "Зашли в метод\n";
-                fileText += $"token={fileContents}";
+            
 
-                logger.LogTextToFile("vkApiTest.txt", fileText);
-            }
-
-                //заполняем новым содержимым
-                System.IO.File.AppendAllText(tokenFilePath, fileContents);
+            //заполняем новым содержимым
+            System.IO.File.AppendAllText(tokenFilePath, fileContents);
 
         }
 
@@ -473,17 +466,11 @@ namespace Runtasker.Controllers
 
             JObject response = JsonRequest(url);
 
-            using (LoggingWorker logger = new LoggingWorker())
-            {
-                string fileText = "Зашли в метод \n";
-                fileText += $"{response.ToString()}";
+            int runtaskerGroupId = 137750954;
 
-                logger.LogTextToFile("vkApiTest.txt", fileText);
-            }
-
-            if (!response["access_token"].IsNullOrEmpty())
+            if (!response[$"access_token_{runtaskerGroupId}"].IsNullOrEmpty())
             {
-                return response["access_token"].ToString();
+                return response[$"access_token_{runtaskerGroupId}"].ToString();
             }
 
             return null;

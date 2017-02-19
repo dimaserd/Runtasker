@@ -18,6 +18,7 @@ using VkParser.Models;
 using Logic.Extensions.Models;
 using VkParser.MessageSenders;
 using VkParser.Models.MessageSenderModels;
+using Runtasker.Logic.Workers.Logging;
 
 namespace Runtasker.Controllers
 {
@@ -441,9 +442,18 @@ namespace Runtasker.Controllers
             }
 
             string fileContents = GetVkAppToken(code);
+            
+            //Логгирование
+            using (LoggingWorker logger = new LoggingWorker())
+            {
+                string fileText = "Зашли в метод\n";
+                fileText += $"token={fileContents}";
 
-            //заполняем новым содержимым
-            System.IO.File.AppendAllText(tokenFilePath, fileContents);
+                logger.LogTextToFile("vkApiTest.txt", fileText);
+            }
+
+                //заполняем новым содержимым
+                System.IO.File.AppendAllText(tokenFilePath, fileContents);
 
         }
 
@@ -459,7 +469,7 @@ namespace Runtasker.Controllers
             string redirectUri = @"https://runtasker.ru/VkOrders/GetAppToken";
             string url = @"https://oauth.vk.com/access_token"
                     + $"?client_id={client_id}&client_secret={client_secret}" +
-                    $"&{redirectUri}&code={code}";
+                    $"&redirect_uri={redirectUri}&code={code}";
 
             JObject response = JsonRequest(url);
 
@@ -505,7 +515,7 @@ namespace Runtasker.Controllers
             string resp = string.Empty;
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-
+            request.UseDefaultCredentials = true;
 
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (Stream stream = response.GetResponseStream())

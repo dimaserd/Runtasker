@@ -473,6 +473,14 @@ namespace Runtasker.Controllers
 
             JObject response = JsonRequest(url);
 
+            using (LoggingWorker logger = new LoggingWorker())
+            {
+                string fileText = "Зашли в метод \n";
+                fileText += $"{response.ToString()}";
+
+                logger.LogTextToFile("vkApiTest.txt", fileText);
+            }
+
             if (!response["access_token"].IsNullOrEmpty())
             {
                 return response["access_token"].ToString();

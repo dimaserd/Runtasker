@@ -10,4 +10,3 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Settings\bin\Debug\Run
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Settings\bin\Debug\Runtasker.Settings.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Settings\obj\Debug\Runtasker.Settings.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Settings\obj\Debug\Runtasker.Settings.pdb
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Settings\obj\Debug\Runtasker.Settings.csprojResolveAssemblyReference.cache

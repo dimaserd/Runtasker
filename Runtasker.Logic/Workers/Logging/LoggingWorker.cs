@@ -34,7 +34,7 @@ namespace Runtasker.Logic.Workers.Logging
             sb.Append($"{DateTime.Now}___________________________________________\n")
             .Append(fileContents)
             .Append("\n")
-            .Append("___________________________________________\n");
+            .Append("_________________________________________________________________\n");
 
             File.AppendAllText(filePath, sb.ToString());
 

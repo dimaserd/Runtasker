@@ -230,7 +230,6 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Vi
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Runtasker.Resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Runtasker.Resources.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\ru-RU\Runtasker.Resources.resources.dll
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.csprojResolveAssemblyReference.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Controllers.Account.AccountRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Email.Account.AccountEmRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Email.OrderCustomer.CustEmailNotRes.resources

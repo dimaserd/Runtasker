@@ -162,11 +162,11 @@ namespace Runtasker.Controllers
                         if(role.Name == "Admin")
                         {
                             //если не существует инфы то создаем ее
-                            if(!db.OtherUserInfos.Any(info => info.UserId == user.Id))
+                            if(!db.OtherUserInfos.Any(info => info.Id == user.Id))
                             {
                                 db.OtherUserInfos.Add(new Logic.Entities.OtherUserInfo
                                 {
-                                    UserId = user.Id,
+                                    Id = user.Id,
                                     Specialization = "0,1,2,3,4,5,6,7,8,9",
 
                                 });
@@ -174,11 +174,11 @@ namespace Runtasker.Controllers
                         }
                         else if(role.Name == "Performer")
                         {
-                            if (!db.OtherUserInfos.Any(info => info.UserId == user.Id))
+                            if (!db.OtherUserInfos.Any(info => info.Id == user.Id))
                             {
                                 db.OtherUserInfos.Add(new Logic.Entities.OtherUserInfo
                                 {
-                                    UserId = user.Id,
+                                    Id = user.Id,
                                     Specialization = "0",
                                 });
                             }

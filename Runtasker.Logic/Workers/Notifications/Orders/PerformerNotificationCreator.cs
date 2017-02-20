@@ -51,7 +51,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
 
             foreach(OtherUserInfo info in PerformersAndAdminsInfos)
             {
-                if (WhoShouldKnowUsers.Any(x => x.Id == info.UserId))
+                if (WhoShouldKnowUsers.Any(x => x.Id == info.Id))
                 {
                     result.Add(info);
                 }
@@ -187,7 +187,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
             return PerformersAndAdmins.Select(x =>
             {
                 OtherUserInfo userInfo = PerformersAndAdminsInfos
-                    .FirstOrDefault(info => info.UserId == x.Id);
+                    .FirstOrDefault(info => info.Id == x.Id);
 
                 if( (userInfo != null) && (userInfo.Specialization.Contains(orderSubjectEnum)) )
                 {

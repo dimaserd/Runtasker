@@ -89,9 +89,9 @@ namespace Runtasker.Logic.Workers.Admin.Users
 
                 OtherUserInfo userInfo = new OtherUserInfo
                 {
-                    Id = Guid.NewGuid().ToString(),
+                    Id = user.Id,
                     Specialization = GetSpecializationString(model.Subjects),
-                    UserId = user.Id 
+                    
                 };
 
                 //добавляем дополнительную информацию о пользователе

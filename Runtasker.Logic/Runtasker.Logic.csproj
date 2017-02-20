@@ -167,29 +167,9 @@
     <Compile Include="Enumerations\DisposingInternalObjectsSetting.cs" />
     <Compile Include="Enumerations\OrderWorker\OrderCreationType.cs" />
     <Compile Include="Handlers\DbEntityValidationExceptionHandler.cs" />
-    <Compile Include="Migrations\201701181757587_init.cs" />
-    <Compile Include="Migrations\201701181757587_init.Designer.cs">
-      <DependentUpon>201701181757587_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702112029545_t.cs" />
-    <Compile Include="Migrations\201702112029545_t.Designer.cs">
-      <DependentUpon>201702112029545_t.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702121848484_manytoMany.cs" />
-    <Compile Include="Migrations\201702121848484_manytoMany.Designer.cs">
-      <DependentUpon>201702121848484_manytoMany.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702172038384_usersSpec.cs" />
-    <Compile Include="Migrations\201702172038384_usersSpec.Designer.cs">
-      <DependentUpon>201702172038384_usersSpec.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702181054045_d.cs" />
-    <Compile Include="Migrations\201702181054045_d.Designer.cs">
-      <DependentUpon>201702181054045_d.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702200910448_otherInfos.cs" />
-    <Compile Include="Migrations\201702200910448_otherInfos.Designer.cs">
-      <DependentUpon>201702200910448_otherInfos.cs</DependentUpon>
+    <Compile Include="Migrations\201702202121227_init.cs" />
+    <Compile Include="Migrations\201702202121227_init.Designer.cs">
+      <DependentUpon>201702202121227_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
@@ -328,28 +308,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701181757587_init.resx">
-      <DependentUpon>201701181757587_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702112029545_t.resx">
-      <DependentUpon>201702112029545_t.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702121848484_manytoMany.resx">
-      <DependentUpon>201702121848484_manytoMany.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702172038384_usersSpec.resx">
-      <DependentUpon>201702172038384_usersSpec.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702181054045_d.resx">
-      <DependentUpon>201702181054045_d.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702200910448_otherInfos.resx">
-      <DependentUpon>201702200910448_otherInfos.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Models\Menu\" />
     <Folder Include="Workers\RestoreData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702202121227_init.resx">
+      <DependentUpon>201702202121227_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

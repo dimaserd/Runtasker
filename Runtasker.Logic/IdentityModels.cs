@@ -80,6 +80,8 @@ namespace Runtasker.Logic
 
         public DateTime? RegistrationDate { get; set; }
 
+        public OtherUserInfo OtherInfo { get; set; }
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

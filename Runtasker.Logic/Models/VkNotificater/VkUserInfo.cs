@@ -28,7 +28,7 @@ namespace Runtasker.Logic.Models.VkNotificater
 
             foreach(ApplicationUser user in users)
             {
-                OtherUserInfo info = infos.FirstOrDefault(x => x.UserId == user.Id);
+                OtherUserInfo info = infos.FirstOrDefault(x => x.Id == user.Id);
                 if (info != null)
                 {
                     result.Add(new VkUserInfo

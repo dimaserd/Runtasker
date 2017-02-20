@@ -124,7 +124,7 @@ namespace Runtasker.Logic.Workers.Admin
                                                 select pt).ToListAsync();
 
                 OtherUserInfo info = await db.OtherUserInfos
-                    .FirstOrDefaultAsync(x => x.UserId == id);
+                    .FirstOrDefaultAsync(x => x.Id == id);
 
                 return new PerformerInfo(user, messages, orders, pts, info);
                 

@@ -73,13 +73,10 @@ namespace Runtasker.Logic.Entities
 
     public class OtherUserInfo
     {
-        public OtherUserInfo()
-        {
-            Id = Guid.NewGuid().ToString();
-        }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [ForeignKey("User")]
+        [StringLength(128)]
         public string Id { get; set; }
 
         public string VkDomain { get; set; }
@@ -88,10 +85,6 @@ namespace Runtasker.Logic.Entities
 
         public string Specialization { get; set; }
 
-        [Required]
-        [StringLength(128)]
-        [ForeignKey("User")]
-        public string UserId { get; set; }
 
         [JsonIgnore]
         public virtual ApplicationUser User { get; set; }

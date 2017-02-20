@@ -238,7 +238,7 @@ namespace Runtasker.Logic.Workers.Orders
 
         public async Task<List<Order>> GetOrdersAsync()
         {
-            OtherUserInfo performerInfo = await Context.OtherUserInfos.FirstOrDefaultAsync(i => i.UserId == UserGuid);
+            OtherUserInfo performerInfo = await Context.OtherUserInfos.FirstOrDefaultAsync(i => i.Id == UserGuid);
             List<Order> allOrders =  Context.Orders.Include(x => x.Messages).ToList();
 
             return performerInfo

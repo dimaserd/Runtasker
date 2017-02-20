@@ -23,8 +23,8 @@
         @Html.LabelAndEditorFor(model => model.Specialization, htmlAttributes: null)
         <!--/UserSubjectForm-->
 
-
-
+        @Html.HiddenFor(model => model.Id)
+        
         <input value="Обновить дополнительную информацию" type="submit" class="btn-lg btn btn-primary" />
     </div>
 

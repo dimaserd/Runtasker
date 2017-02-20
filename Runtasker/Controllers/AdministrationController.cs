@@ -14,6 +14,7 @@ using Logic.Extensions.Models;
 using Runtasker.Logic.Workers.Admin.Users;
 using System.Data.Entity.Validation;
 using Runtasker.Logic.Handlers;
+using System.Data.Entity.Migrations;
 
 namespace Runtasker.Controllers
 {
@@ -94,8 +95,9 @@ namespace Runtasker.Controllers
         [HttpGet]
         public async Task<ActionResult> UpdatePerformerInfo(string id)
         {
+            
             OtherUserInfo model = await db.OtherUserInfos
-                .FirstOrDefaultAsync(x => x.UserId == id);
+                   .Where(x => x.Id == id).FirstOrDefaultAsync();
 
             if(model == null)
             {
@@ -108,17 +110,15 @@ namespace Runtasker.Controllers
         [HttpPost]
         public async Task<ActionResult> UpdatePerformerInfo(OtherUserInfo model)
         {
+            OtherUserInfo infoToUpdate = await db.OtherUserInfos.FirstOrDefaultAsync(x => x.Id == model.Id);
+
+            infoToUpdate.Specialization = model.Specialization;
+            infoToUpdate.VkDomain = model.VkDomain;
+            infoToUpdate.VkId = model.VkId;
+
             
-            db.OtherUserInfos.Attach(model);
-            db.Entry(model).State = EntityState.Modified;
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbEntityValidationException e)
-            {
-                new DbEntityValidationExceptionHandler().CatchException(e);
-            }
+            await db.SaveChangesAsync();
+            
             
 
             return RedirectToAction("Performers");

@@ -5,11 +5,11 @@ namespace Runtasker.Logic.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<MyDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Runtasker.Logic.MyDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Runtasker.Logic.MyDbContext context)

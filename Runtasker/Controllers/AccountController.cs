@@ -17,6 +17,7 @@ using Runtaker.LocaleBuiders.Views.Account;
 using System;
 using Runtasker.Logic.Workers.Orders;
 using Runtasker.Logic.Workers.Email;
+using Runtasker.Logic.Entities;
 
 namespace Runtasker.Controllers
 {
@@ -197,7 +198,7 @@ namespace Runtasker.Controllers
         {
             string[] roles = new string[]
             {
-                "Admin", "Customer", "Performer"
+                "Admin", "Customer", "Performer", "VkPerformer"
             };
             foreach (string role in roles)
             {
@@ -212,8 +213,8 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public string Dev()
         {
-            
 
+            #region Добавление ролей в систему
             string[] roles = new string[]
             {
                 "Admin", "Customer", "Performer", "VkPerformer"
@@ -225,6 +226,7 @@ namespace Runtasker.Controllers
                     _roleManager.Create(new IdentityRole(role) { Name = role});
                 }
             }
+            #endregion
 
             string customerEmail = "dimaserd96@yandex.ru";
             string performerEmail = "dimaserd84@gmail.com";
@@ -266,13 +268,36 @@ namespace Runtasker.Controllers
                 UserManager.Create(performer, "testpass");
                 UserManager.AddToRole(performer.Id, "Admin");
                 UserManager.AddToRole(performer.Id, "Performer");
+
+                OtherUserInfo info = new OtherUserInfo
+                {
+                    Id = performer.Id,
+                    VkDomain = "dimaserd",
+                    Specialization = "0,1,2,3,4,5,6,7,8,9"
+                };
+                Context.OtherUserInfos.Add(info);
+                Context.SaveChanges();
             }
             else
             {
                 UserManager.AddToRole(maybePerformer.Id, "Admin");
                 UserManager.AddToRole(maybePerformer.Id, "Performer");
+
+                if(!Context.OtherUserInfos.Any(x => x.Id == maybePerformer.Id))
+                {
+                    OtherUserInfo info = new OtherUserInfo
+                    {
+                        Id = maybePerformer.Id,
+                        VkDomain = "dimaserd",
+                        Specialization = "0,1,2,3,4,5,6,7,8,9"
+                    };
+                    Context.OtherUserInfos.Add(info);
+                    Context.SaveChanges();
+                }
+                
             }
 
+            
 
 
                 

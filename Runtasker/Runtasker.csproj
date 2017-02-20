@@ -277,6 +277,7 @@
     <Compile Include="Controllers\NewOrderController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\OtherInfo.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\PerformerController.cs" />
     <Compile Include="Controllers\RestoreDataController.cs" />

@@ -195,6 +195,7 @@
     <Compile Include="Workers\Logging\LoggingWorker.cs" />
     <Compile Include="Workers\Notifications\NewCustomerOrderNotificationMethods.cs" />
     <Compile Include="Workers\Notifications\Orders\PerformerNotificationCreator.cs" />
+    <Compile Include="Workers\Notifications\Orders\VkNotifications\CustomerOrderMethodsVkNotificater.cs" />
     <Compile Include="Workers\Orders\KnowPriceWorker.cs" />
     <Compile Include="Workers\Orders\NewCustomerOrderWorker.cs" />
     <Compile Include="HtmlConstantEmails\AccountEmailConstants.cs" />

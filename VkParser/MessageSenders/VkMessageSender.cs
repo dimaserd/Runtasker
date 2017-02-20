@@ -1,5 +1,7 @@
 ﻿using Logic.Extensions.Models;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Threading;
 using VkParser.Enumerations;
 using VkParser.Models.MessageSenderModels;
 using VkParser.Workers.Api;
@@ -36,6 +38,24 @@ namespace VkParser.MessageSenders
                 Succeeded = true
             };
 
+        }
+
+        public WorkerResult SendMessagesToVkUsers(IEnumerable<VkMessage> messages)
+        {
+            foreach(VkMessage message in messages)
+            {
+                Thread.Sleep(250);
+                WorkerResult sendingResult = SendMessageToVkUser(message);
+                if(!sendingResult.Succeeded)
+                {
+                    return sendingResult;
+                }
+            }
+
+            return new WorkerResult
+            {
+                Succeeded = true
+            };
         }
     }
 }

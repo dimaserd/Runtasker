@@ -76,6 +76,8 @@ namespace Runtasker.Logic.Workers.Notifications
             Context.Notifications.Add(customerN);
             Context.SaveChanges();
             
+            
+
             //методы рассылки почты должны вызываться по разному для двух видов заказа
             if(creationType == OrderCreationType.ToKnowPrice)
             {
@@ -274,6 +276,7 @@ namespace Runtasker.Logic.Workers.Notifications
                        "то предложите пользователю какой-либо бонус!",
                 Link = null,
             };
+
             Context.Notifications.Add(cutomerN);
             Context.Notifications.Add(performerN);
             Context.SaveChanges();

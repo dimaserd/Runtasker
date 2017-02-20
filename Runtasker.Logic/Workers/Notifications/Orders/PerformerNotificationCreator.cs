@@ -38,6 +38,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
         /// </summary>
         List<ApplicationUser> WhoShouldKnowUsers { get; set; }
 
+        List<OtherUserInfo> WhoShoulKnowUserInfos { get; set; }
         
         #endregion
 
@@ -46,6 +47,8 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
         {
             return WhoShouldKnowUsers.Select(x => x.Email).ToList();
         }
+
+        public List<Dictionary<string, string>> GetInfo
 
         /// <summary>
         /// Возвращает список уведомлений для пользователей 

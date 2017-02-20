@@ -2,8 +2,7 @@
 {
     public class VkMessage
     {
-        public string Id { get; set; }
-
+        
         public string UserId { get; set; }
         /// <summary>
         /// короткий адрес пользователя (например, illarionov).

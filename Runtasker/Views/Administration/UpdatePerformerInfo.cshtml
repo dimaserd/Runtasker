@@ -1,0 +1,39 @@
+﻿@model Runtasker.Logic.Entities.OtherUserInfo
+@using Runtasker.HtmlExtensions
+@using Runtasker.Logic.Entities
+@{
+    ViewBag.Title = "UpdatePerformerInfo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Изменить дополнительную информацию о пользователе</h2>
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-horizontal">
+        
+        @Html.AntiForgeryToken()
+
+        
+
+        <!--UserSubjectForm-->
+        @Html.LabelAndEditorFor(model => model.VkDomain, htmlAttributes: null)
+        @Html.LabelAndEditorFor(model => model.VkId, htmlAttributes: null)
+        @Html.LabelAndEditorFor(model => model.Specialization, htmlAttributes: null)
+        <!--/UserSubjectForm-->
+
+
+
+        <input value="Обновить дополнительную информацию" type="submit" class="btn-lg btn btn-primary" />
+    </div>
+
+    <h3>Предметы нужно указывать через запятую</h3>
+    foreach(Subject subject in Enum.GetValues(typeof(Subject)))
+    {
+        int code = (int)subject;
+        <p>@subject.ToDescriptionString() код: @code</p>
+    }
+}
+
+

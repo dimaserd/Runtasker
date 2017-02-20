@@ -86,6 +86,36 @@ namespace Runtasker.Controllers
         {
             return View();
         }
+        #region OtherInfo Methods
+        [HttpGet]
+        public async Task<ActionResult> UpdatePerformerInfo(string id)
+        {
+            OtherUserInfo model = await db.OtherUserInfos
+                .FirstOrDefaultAsync(x => x.UserId == id);
+
+            if(model == null)
+            {
+                model = new OtherUserInfo
+                {
+                    Specialization = "новое инфо"
+                };
+            }
+            return View(model);
+        }
+
+
+        [HttpGet]
+        public async Task<ActionResult> UpdatePerformerInfo(OtherUserInfo model)
+        {
+            
+            db.OtherUserInfos.Attach(model);
+            db.Entry(model).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+
+            return RedirectToAction("Performers");
+        }
+
+        #endregion
         #region CreateUser Methods
         [HttpGet]
         public async Task<ActionResult> CreateUser()

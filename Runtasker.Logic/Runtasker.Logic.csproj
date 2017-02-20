@@ -186,16 +186,21 @@
     <Compile Include="Migrations\201702181054045_d.Designer.cs">
       <DependentUpon>201702181054045_d.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702200910448_otherInfos.cs" />
+    <Compile Include="Migrations\201702200910448_otherInfos.Designer.cs">
+      <DependentUpon>201702200910448_otherInfos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
     <Compile Include="Models\Orders\AnonymousModels.cs" />
     <Compile Include="Models\Orders\ApiModels.cs" />
+    <Compile Include="Models\VkNotificater\VkUserInfo.cs" />
     <Compile Include="Models\WokerResults\WorkerPropertyResult.cs" />
     <Compile Include="Workers\Admin\Users\AdminUserCreation.cs" />
     <Compile Include="Workers\Logging\LoggingWorker.cs" />
     <Compile Include="Workers\Notifications\NewCustomerOrderNotificationMethods.cs" />
     <Compile Include="Workers\Notifications\Orders\PerformerNotificationCreator.cs" />
-    <Compile Include="Workers\Notifications\Orders\VkNotifications\CustomerOrderMethodsVkNotificater.cs" />
+    <Compile Include="Workers\Notifications\Orders\VkNotifications\VkPerformerNotificater.cs" />
     <Compile Include="Workers\Orders\KnowPriceWorker.cs" />
     <Compile Include="Workers\Orders\NewCustomerOrderWorker.cs" />
     <Compile Include="HtmlConstantEmails\AccountEmailConstants.cs" />
@@ -336,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702181054045_d.resx">
       <DependentUpon>201702181054045_d.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702200910448_otherInfos.resx">
+      <DependentUpon>201702200910448_otherInfos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

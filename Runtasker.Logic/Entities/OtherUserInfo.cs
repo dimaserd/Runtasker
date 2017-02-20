@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -77,9 +78,13 @@ namespace Runtasker.Logic.Entities
             Id = Guid.NewGuid().ToString();
         }
 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string Id { get; set; }
 
-        public string VkLink { get; set; }
+        public string VkDomain { get; set; }
+
+        public string VkId { get; set; }
 
         public string Specialization { get; set; }
 
@@ -88,6 +93,7 @@ namespace Runtasker.Logic.Entities
         [ForeignKey("User")]
         public string UserId { get; set; }
 
+        [JsonIgnore]
         public virtual ApplicationUser User { get; set; }
     }
 }

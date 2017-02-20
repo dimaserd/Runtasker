@@ -511,6 +511,7 @@
     <Content Include="Views\VkOrders\DeleteKeyWord.cshtml" />
     <Content Include="Views\HtmlViewExtensions.cshtml" />
     <Content Include="App_Code\ViewExtensions.cshtml" />
+    <Content Include="Views\Administration\UpdatePerformerInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

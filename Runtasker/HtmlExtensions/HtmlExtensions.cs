@@ -26,25 +26,8 @@ namespace Runtasker.HtmlExtensions
 
             sb.Append(Scripts.Render("~/DateTimePicker"));
             sb.Append(Styles.Render("~/DateTimePickerCss"));
-
-            //body of script
-            sb.Append("<script>")
-            .Append("$(function () {");
-            //установка идентификатора для скрипта
-            if (string.IsNullOrEmpty(dateTimePickerId))
-            {
-                sb.Append("$('#datetimepicker1').datetimepicker({ pickTime: false, defaultDate: new Date(), minDate: new Date(),");
-            }
-            else
-            {
-                sb.Append($"$('#{dateTimePickerId}')")
-                .Append("datetimepicker({ pickTime: false, defaultDate: new Date(), minDate: new Date(),");
-            }
-            //http://itchief.ru/lessons/bootstrap-3/113-bootstrap-3-datetimepicker
-            sb.Append($"language: '{lang}'" + " })")
-            .Append("})")
-            .Append("</script>");
-
+            
+            
             return MvcHtmlString.Create(sb.ToString());
         }
         #endregion
@@ -59,7 +42,7 @@ namespace Runtasker.HtmlExtensions
                 case "Русский (Россия)":
                     sb.Append("function parseDate(str){")
                     .Append("var dmy = str.split('.');\n")
-                    .Append("var date = new Date(dmy[2], dmy[1] - 1, dmy[0])\n")
+                    .Append("var date = new Date(20 + dmy[2], dmy[1] - 1, dmy[0])\n")
                     .Append("return date;}\n");
                     break;
 

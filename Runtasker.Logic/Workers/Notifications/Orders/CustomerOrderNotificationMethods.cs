@@ -4,8 +4,10 @@ using Runtasker.LocaleBuilders.Models;
 using Runtasker.LocaleBuilders.Notification;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations.OrderWorker;
+using Runtasker.Logic.Models.VkNotificater;
 using Runtasker.Logic.Workers.Email;
 using Runtasker.Logic.Workers.Notifications.Orders;
+using Runtasker.Logic.Workers.Notifications.Orders.VkNotifications;
 using Runtasker.Resources.Notifications.CustomerOrderMethods;
 using System;
 using System.Collections.Generic;
@@ -75,11 +77,18 @@ namespace Runtasker.Logic.Workers.Notifications
 
             Context.Notifications.Add(customerN);
             Context.SaveChanges();
-            
-            
+
+            //получаем список тех кого нужно оповестить
+            IEnumerable<VkUserInfo> vkUserInfos = PerformerNotificationGetter.GetVkUserInfos();
+            //методы рассылки исполнителям в вк
+            using (VkPerformerNotificater vkNotificater = new VkPerformerNotificater(vkUserInfos))
+            {
+                vkNotificater.OnCustomerAddedOrder(order);
+            }
+
 
             //методы рассылки почты должны вызываться по разному для двух видов заказа
-            if(creationType == OrderCreationType.ToKnowPrice)
+            if (creationType == OrderCreationType.ToKnowPrice)
             {
                 //посылается письмо для подтверждения адреса электронной почты 
                 using (AccountEmailMethods accountEmailer = new AccountEmailMethods())
@@ -88,7 +97,7 @@ namespace Runtasker.Logic.Workers.Notifications
                 }
 
             }
-            else if(creationType == OrderCreationType.Ordinary)
+            else if (creationType == OrderCreationType.Ordinary)
             {
                 //сообщение о добавленном заказе у них будет одинаковым
                 Emailer.OnCustomerAddedOrder(order, GetCustomer(order), GetAdminsEmails(order));
@@ -349,6 +358,11 @@ namespace Runtasker.Logic.Workers.Notifications
             return PerformerNotificationGetter.GetEmailsWhoShouldKnowAboutThisOrder(order);
         }
 
+        string GetEmailByGuid(string guid)
+        {
+            return Context.Users.FirstOrDefault(u => u.Id == guid).Email;
+        }
+
         string GetPerformerEmail()
         {
             return "dimaserd84@gmail.com";
@@ -382,6 +396,7 @@ namespace Runtasker.Logic.Workers.Notifications
             return Context.Users.Find(order.UserGuid);
         }
 
+        #region Guid Getters
         string GetAdminGuid(Order order)
         {
             string email = "dimaserd84@gmail.com";
@@ -401,10 +416,8 @@ namespace Runtasker.Logic.Workers.Notifications
             
         }
 
-        string GetEmailByGuid(string guid)
-        {
-            return Context.Users.FirstOrDefault(u => u.Id == guid).Email;
-        }
+        #endregion
+
         #endregion
     }
 }

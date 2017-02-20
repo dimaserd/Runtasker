@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Entities;
+using Runtasker.Logic.Models.VkNotificater;
 
 namespace Runtasker.Logic.Workers.Notifications.Orders
 {
@@ -48,8 +45,29 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
             return WhoShouldKnowUsers.Select(x => x.Email).ToList();
         }
 
-        public List<Dictionary<string, string>> GetInfo
+        public List<OtherUserInfo> GetOtherUsersInfo()
+        {
+            List<OtherUserInfo> result = new List<OtherUserInfo>();
 
+            foreach(OtherUserInfo info in PerformersAndAdminsInfos)
+            {
+                if (WhoShouldKnowUsers.Any(x => x.Id == info.UserId))
+                {
+                    result.Add(info);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Получает список
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<VkUserInfo> GetVkUserInfos()
+        {
+            return WhoShouldKnowUsers.ToVkUserInfoList(PerformersAndAdminsInfos);
+        }
         /// <summary>
         /// Возвращает список уведомлений для пользователей 
         /// которым нужно узнать о созданном заказе

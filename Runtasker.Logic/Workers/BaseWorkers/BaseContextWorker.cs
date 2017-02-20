@@ -1,10 +1,15 @@
-﻿using System;
+﻿using Runtasker.Logic.Enumerations;
+using System;
 
 namespace Runtasker.Logic.Workers.BaseWorkers
 {
     //Класс Worker должен содержать в себе репзиторий
     public class BaseContextWorker : IDisposable
     {
+        #region Fields
+        public DisposingInternalObjectsSetting DisposeInternals = DisposingInternalObjectsSetting.Yes;
+        #endregion
+
         #region Constructors
         public BaseContextWorker(MyDbContext context)
         {
@@ -18,6 +23,7 @@ namespace Runtasker.Logic.Workers.BaseWorkers
         #endregion
 
         #region Properties
+
         protected MyDbContext Context { get; set; }
         #endregion
 
@@ -28,15 +34,16 @@ namespace Runtasker.Logic.Workers.BaseWorkers
         {
             if (!disposedValue)
             {
-                if (disposing)
+                if (disposing && DisposeInternals == DisposingInternalObjectsSetting.Yes)
                 {
                     // TODO: освободить управляемое состояние (управляемые объекты).
                     Context.Dispose();
+                    Context = null;
                 }
 
                 // TODO: освободить неуправляемые ресурсы (неуправляемые объекты) и переопределить ниже метод завершения.
                 // TODO: задать большим полям значение NULL.
-                Context = null;
+                
 
                 disposedValue = true;
             }

@@ -105,12 +105,7 @@ namespace Runtasker.Logic.Workers.Notifications
 
         }
 
-        //все проходит точно так же только слегка отличаются 
-        //уведомления по почте, а обычные пока не знаю
-        public void OnCustomerSubmittedToKnowThePrice(Order order)
-        {
-
-        }
+        
         #endregion
 
         /// <summary>
@@ -149,22 +144,22 @@ namespace Runtasker.Logic.Workers.Notifications
                 Link = null
             };
 
-            Notification performerN = new Notification
-            {
-                AboutType = NotificationAboutType.Ordinary,
-                Text = $"В заказе №{order.Id} было изменено описание, проверьте",
-                Title = $"Пользователь изменил описание заказа по вашей просьбе! "
-                + $"Проверьте и помните, что его нужно выполнить {order.FinishDate.ToString("d MMM yyyy")}",
-                Type = NotificationType.Info,
-                UserGuid = GetAdminGuid(),
-                Link = null
-            };
             
             Context.Notifications.Add(customerN);
-            Context.Notifications.Add(performerN);
-            //тестируем
-            //Context.SaveChanges();
             
+            List<Notification> performersNotifications = PerformerNotificationGetter
+                .GetNotificationsListForOrderDescriptionChanged(order);
+            Context.Notifications.AddRange(performersNotifications);
+
+
+            //получаем список тех кого нужно оповестить
+            IEnumerable<VkUserInfo> vkUserInfos = PerformerNotificationGetter.GetVkUserInfos();
+            //методы рассылки исполнителям в вк
+            using (VkPerformerNotificater vkNotificater = new VkPerformerNotificater(vkUserInfos))
+            {
+                vkNotificater.OnCustomerChangedOrderDescription(order);
+            }
+
             Emailer.OnCustomerChangedDescription(order, GetAdminEmail(order));
         }
 
@@ -181,22 +176,26 @@ namespace Runtasker.Logic.Workers.Notifications
                 UserGuid = order.UserGuid,
                 Link = null
             };
-            //TODo make a link to new file attachments
-            Notification performerN = new Notification
-            {
-                AboutType = NotificationAboutType.Ordinary,
-                Title = $"Заказчик добавил файлы к заказу №{order.Id}",
-                Text = $"Проверьте работу и приступайте к выполнению работы," +
-                $"помните, что работа должна быть выполнена к сроку {order.FinishDate.ToString("d MMM yyyy")}",
-                Type = NotificationType.Info,
-                UserGuid = GetAdminGuid(),
-                Link = null
-            };
-
-            Context.Notifications.Add(customerN);
-            Context.Notifications.Add(performerN);
-            Context.SaveChanges();
             
+            
+            Context.Notifications.Add(customerN);
+            
+            
+
+            List<Notification> performersNotifications = PerformerNotificationGetter
+                .GetNotificationsListForFilesAddedToOrder(order);
+            Context.Notifications.AddRange(performersNotifications);
+
+            Context.SaveChanges();
+
+            //получаем список тех кого нужно оповестить
+            IEnumerable<VkUserInfo> vkUserInfos = PerformerNotificationGetter.GetVkUserInfos();
+            //методы рассылки исполнителям в вк
+            using (VkPerformerNotificater vkNotificater = new VkPerformerNotificater(vkUserInfos))
+            {
+                vkNotificater.OnCustomerAddedFiles(order);
+            }
+
             Emailer.OnCustomerAddedNewFilesToOrder(order, GetAdminEmail(order));
 
         }
@@ -215,19 +214,20 @@ namespace Runtasker.Logic.Workers.Notifications
                 Link = null
             };
 
-            Notification performerN = new Notification
-            {
-                AboutType = NotificationAboutType.Ordinary,
-                Title = "Пользователь оплатил половину заказа",
-                Text = $"Заказ №{order.Id} оплачен наполовину, приступайте немедленно и успейте к сроку {order.FinishDate}",
-                Type = NotificationType.Success,
-                UserGuid = GetAdminGuid(order),
-                Link = null
-            };
+            Notification performerN = PerformerNotificationGetter
+                .GetNotificationForHalfPaidOrder(order);
 
             Context.Notifications.Add(performerN);
             Context.Notifications.Add(customerN);
             Context.SaveChanges();
+
+            //получаем список тех кого нужно оповестить
+            IEnumerable<VkUserInfo> vkUserInfos = PerformerNotificationGetter.GetVkUserInfos();
+            //методы рассылки исполнителям в вк
+            using (VkPerformerNotificater vkNotificater = new VkPerformerNotificater(vkUserInfos))
+            {
+                vkNotificater.OnCustomerPaidFirstHalf(order);
+            }
 
             //Email notifications switched off
             //Emailer.OnCustomerPaidAHalfOfAnOrder(order, GetCustomer(order), GetPerformerEmail());

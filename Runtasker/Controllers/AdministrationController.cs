@@ -12,6 +12,8 @@ using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers.Admin;
 using Logic.Extensions.Models;
 using Runtasker.Logic.Workers.Admin.Users;
+using System.Data.Entity.Validation;
+using Runtasker.Logic.Handlers;
 
 namespace Runtasker.Controllers
 {
@@ -87,6 +89,8 @@ namespace Runtasker.Controllers
             return View();
         }
         #region OtherInfo Methods
+
+        #region UpdatePerformerInfo methods
         [HttpGet]
         public async Task<ActionResult> UpdatePerformerInfo(string id)
         {
@@ -95,25 +99,32 @@ namespace Runtasker.Controllers
 
             if(model == null)
             {
-                model = new OtherUserInfo
-                {
-                    Specialization = "новое инфо"
-                };
+                throw new Exception("Не существует информации об исполнителе!");
             }
             return View(model);
         }
 
 
-        [HttpGet]
+        [HttpPost]
         public async Task<ActionResult> UpdatePerformerInfo(OtherUserInfo model)
         {
             
             db.OtherUserInfos.Attach(model);
             db.Entry(model).State = EntityState.Modified;
-            await db.SaveChangesAsync();
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException e)
+            {
+                new DbEntityValidationExceptionHandler().CatchException(e);
+            }
+            
 
             return RedirectToAction("Performers");
         }
+        
+        #endregion
 
         #endregion
         #region CreateUser Methods

@@ -166,6 +166,7 @@
     <Compile Include="Entities\PaymentTransaction.cs" />
     <Compile Include="Enumerations\DisposingInternalObjectsSetting.cs" />
     <Compile Include="Enumerations\OrderWorker\OrderCreationType.cs" />
+    <Compile Include="Handlers\DbEntityValidationExceptionHandler.cs" />
     <Compile Include="Migrations\201701181757587_init.cs" />
     <Compile Include="Migrations\201701181757587_init.Designer.cs">
       <DependentUpon>201701181757587_init.cs</DependentUpon>

@@ -28,6 +28,8 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
         #endregion
 
         #region Public methods
+
+        #region Методы для еще свободного заказа
         public void OnCustomerAddedOrder(Order order)
         {
             List<VkMessage> messages = new List<VkMessage>();
@@ -51,6 +53,72 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
             
 
         }
+
+        public void OnCustomerChangedOrderDescription(Order order)
+        {
+            List<VkMessage> messages = new List<VkMessage>();
+            foreach (VkUserInfo vkInfo in VkInfoList)
+            {
+                VkMessage message = new VkMessage
+                {
+                    Text = $"В заказе №{order.Id} было изменено описание, проверьте\n"
+                    + $"Пользователь изменил описание заказа по вашей просьбе! "
+                + $"Проверьте и помните, что его нужно выполнить {order.FinishDate.ToString("d MMM yyyy")}",
+                    UserDomain = vkInfo.VkDomain,
+                    UserId = vkInfo.VkId,
+                };
+                messages.Add(message);
+            }
+
+            using (VkMessageSender sender = new VkMessageSender())
+            {
+                sender.SendMessagesToVkUsers(messages);
+            }
+
+
+        }
+
+        public void OnCustomerAddedFiles(Order order)
+        {
+            List<VkMessage> messages = new List<VkMessage>();
+            foreach (VkUserInfo vkInfo in VkInfoList)
+            {
+                VkMessage message = new VkMessage
+                {
+                    Text =  $"Заказчик добавил файлы к заказу №{order.Id}\n" 
+                    + $"Проверьте работу и приступайте к выполнению работы," +
+                $"помните, что работа должна быть выполнена к сроку {order.FinishDate.ToString("d MMM yyyy")}",
+                    UserDomain = vkInfo.VkDomain,
+                    UserId = vkInfo.VkId,
+                };
+                messages.Add(message);
+            }
+
+            using (VkMessageSender sender = new VkMessageSender())
+            {
+                sender.SendMessagesToVkUsers(messages);
+            }
+
+
+        }
+
+        public void OnCustomerPaidFirstHalf(Order order)
+        {
+            List<VkMessage> messages = new List<VkMessage>();
+            foreach (VkUserInfo vkInfo in VkInfoList)
+            {
+                VkMessage message = new VkMessage
+                {
+                    Text = "Пользователь оплатил половину заказа\n"
+                    + $"Заказ №{order.Id} оплачен наполовину, приступайте немедленно и успейте к сроку {order.FinishDate}",
+                    UserDomain = vkInfo.VkDomain,
+                    UserId = vkInfo.VkId,
+                };
+                messages.Add(message);
+            }
+        }
+        #endregion
+
 
 
         #endregion

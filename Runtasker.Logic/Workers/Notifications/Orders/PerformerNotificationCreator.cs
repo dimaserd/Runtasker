@@ -95,6 +95,60 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
                 };
             }).ToList();
         }
+
+        public List<Notification> GetNotificationsListForOrderDescriptionChanged(Order order)
+        {
+            WhoShouldKnowUsers = GetUsersWhoShouldKnowAboutThisOrder(order);
+
+
+            return WhoShouldKnowUsers.Select(x =>
+            {
+                return new Notification
+                {
+                    AboutType = NotificationAboutType.Ordinary,
+                    Text = $"В заказе №{order.Id} было изменено описание, проверьте",
+                    Title = $"Пользователь изменил описание заказа по вашей просьбе! "
+                + $"Проверьте и помните, что его нужно выполнить {order.FinishDate.ToString("d MMM yyyy")}",
+                    Type = NotificationType.Info,
+                    UserGuid = x.Id,
+                    Link = null
+                };
+            }).ToList();
+        }
+
+        public List<Notification> GetNotificationsListForFilesAddedToOrder(Order order)
+        {
+            WhoShouldKnowUsers = GetUsersWhoShouldKnowAboutThisOrder(order);
+
+
+            return WhoShouldKnowUsers.Select(x =>
+            {
+                return new Notification
+                {
+                    AboutType = NotificationAboutType.Ordinary,
+                    Title = $"Заказчик добавил файлы к заказу №{order.Id}",
+                    Text = $"Проверьте работу и приступайте к выполнению работы," +
+                $"помните, что работа должна быть выполнена к сроку {order.FinishDate.ToString("d MMM yyyy")}",
+                    Type = NotificationType.Info,
+                    UserGuid = x.Id,
+                    Link = null
+                };
+            }).ToList();
+        }
+
+        public Notification GetNotificationForHalfPaidOrder(Order order)
+        {
+            WhoShouldKnowUsers = GetUsersWhoShouldKnowAboutThisOrder(order);
+            return new Notification
+            {
+                AboutType = NotificationAboutType.Ordinary,
+                Title = "Пользователь оплатил половину заказа",
+                Text = $"Заказ №{order.Id} оплачен наполовину, приступайте немедленно и успейте к сроку {order.FinishDate}",
+                Type = NotificationType.Success,
+                UserGuid = order.PerformerGuid,
+                Link = null
+            };
+        }
         #endregion
 
         #region Help Methods
@@ -123,6 +177,13 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
         {
             string orderSubjectEnum = ((int)order.Subject).ToString();
 
+            //если заказ не свободен то о нем должен знать только его исполнитель
+            if(!order.IsFree())
+            {
+                return PerformersAndAdmins
+                    .Where(x => x.Id == order.PerformerGuid).ToList();
+            }
+
             return PerformersAndAdmins.Select(x =>
             {
                 OtherUserInfo userInfo = PerformersAndAdminsInfos
@@ -138,6 +199,8 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
                 }
             }).Where(x => x != null).ToList();
         }
+
+
         #endregion
     }
 }

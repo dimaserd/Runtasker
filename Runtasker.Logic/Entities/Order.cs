@@ -11,6 +11,8 @@ using Extensions.Attributes;
 namespace Runtasker.Logic.Entities
 {
     #region Enums with extensions
+
+    #region Enumerations
     public enum OrderStatus
     {
         [Description("Новый")]
@@ -88,8 +90,23 @@ namespace Runtasker.Logic.Entities
         Projecting
     }
 
+    #endregion
+
     public static class OrderExtensions
     {
+        public static bool IsFree(this Order order)
+        {
+            if( (order.Status == OrderStatus.New ||
+                order.Status == OrderStatus.HasError ||
+                order.Status == OrderStatus.Valued) 
+                && order.PerformerGuid == order.UserGuid )
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         #region Subject Extensions
         public static string GetSpecifyDropdownInfo(this Subject val)
         {
@@ -251,13 +268,7 @@ namespace Runtasker.Logic.Entities
         [JsonIgnore]
         public virtual ICollection<Message> Messages { get; set; }
 
-        #region Methods
-        public bool IsFree()
-        {
-            return (this.PerformerGuid == this.UserGuid &&
-                (this.Status == OrderStatus.New || this.Status == OrderStatus.Valued));
-        }
-        #endregion
+        
 
     }
 

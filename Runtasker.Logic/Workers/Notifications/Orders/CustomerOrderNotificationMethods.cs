@@ -2,6 +2,7 @@
 using HtmlExtensions.Renderers;
 using Runtasker.LocaleBuilders.Models;
 using Runtasker.LocaleBuilders.Notification;
+using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations.OrderWorker;
 using Runtasker.Logic.Models.VkNotificater;

@@ -24,13 +24,7 @@ namespace Runtasker.Logic.Workers.Orders
         #endregion
 
         #region Protected Methods
-        public Order GetOrder(int id)
-        {
-            using (MyDbContext context = new MyDbContext())
-            {
-                return context.Orders.FirstOrDefault(o => o.Id == id && o.UserGuid == UserGuid);
-            }
-        }
+        
 
 
 

@@ -156,6 +156,7 @@
     <Compile Include="Contexts\Fake\FakeMyDbContext.cs" />
     <Compile Include="Contexts\Interfaces\IApplicationDbContext.cs" />
     <Compile Include="Contexts\Interfaces\IMyDbContext.cs" />
+    <Compile Include="Contexts\MyNewDbContext.cs" />
     <Compile Include="Entities\Attachment.cs" />
     <Compile Include="Entities\Invitation.cs" />
     <Compile Include="Entities\Message.cs" />
@@ -309,6 +310,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Menu\" />
+    <Folder Include="Statics\" />
     <Folder Include="Workers\RestoreData\" />
   </ItemGroup>
   <ItemGroup>

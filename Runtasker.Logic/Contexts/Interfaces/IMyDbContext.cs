@@ -1,16 +1,17 @@
 ﻿using Runtasker.Logic.Entities;
 using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace Runtasker.Logic.Contexts.Interfaces
 {
     public interface IMyDbContext
     {
-        #region From IApplicationDbContext
-        //DbSet<ApplicationUser> Users { get; set; }
+        
+        IDbSet<ApplicationUser> Users { get; set; }
 
-        //DbSet<IdentityRole> Roles { get; set; }
+        IDbSet<OtherUserInfo> OtherUserInfos { get; set; }
 
-        #endregion
+        
 
         IDbSet<Order> Orders { get; set; }
 
@@ -26,15 +27,9 @@ namespace Runtasker.Logic.Contexts.Interfaces
 
         IDbSet<PaymentTransaction> PaymentTransactions { get; set; }
 
-        #region VkParse
-        //IDbSet<VkGroup> VkGroups { get; set; }
+        void SaveChanges();
 
-        //IDbSet<VkFoundPost> VkFoundPosts { get; set; }
-
-        //IDbSet<VkKeyWord> VkKeyWords { get; set; }
-
-        //IDbSet<VkPostLookUp> VkPostLookUps { get; set; }
-
-        #endregion
+        Task<int> SaveChangesAsync();
+        
     }
 }

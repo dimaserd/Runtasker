@@ -350,55 +350,9 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region Edit Methods
+        
 
-        public ActionResult Edit(int id)
-        {
-            Order order = OrderWorker.GetOrder(id);
-            if (order == null)
-            {
-                return RedirectToAction("Index");
-            }
-            
-            return View(order);
-        }
-
-        //Method with context
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Status,UserGuid,Subject,Description,Date")] Order order)
-        {
-            if (ModelState.IsValid)
-            {
-                _db.Entry(order).State = EntityState.Modified;
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(order);
-        }
-
-        #endregion
-
-        #region Delete Methods
-        public ActionResult Delete(int id)
-        {
-            Order order = OrderWorker.GetOrder(id);
-            if (order == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            return View(order);
-        }
-
-        // POST: Orders/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Order order = OrderWorker.DeleteOrder(id);
-            return RedirectToAction("Index");
-        }
-        #endregion
+        
 
         public ActionResult DownloadSolution(int id)
         {

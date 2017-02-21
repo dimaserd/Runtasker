@@ -5,7 +5,7 @@ using VkParser.Entities;
 
 namespace Runtasker.Logic
 {
-    public class MyDbContext : ApplicationDbContext//, IMyDbContext
+    public class MyDbContext : ApplicationDbContext
     {
         #region Constructors
         public MyDbContext() : base()
@@ -15,7 +15,7 @@ namespace Runtasker.Logic
 
         public MyDbContext(string connection) : base(connection)
         {
-
+            
         }
         #endregion
 

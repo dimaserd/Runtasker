@@ -1,5 +1,7 @@
 ﻿using HtmlExtensions.Renderers;
 using Logic.Extensions.Models;
+using Runtasker.Logic.Contexts;
+using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations.OrderWorker;
 using Runtasker.Logic.Models;
@@ -66,11 +68,9 @@ namespace Runtasker.Logic.Workers.Orders
 
         public string GetAdminGuid()
         {
-            using (MyDbContext context = new MyDbContext())
-            {
-                
-                return context.Users.FirstOrDefault(u => u.Email == "dimaserd84@gmail.com").Id;
-            }
+            
+            return Context.Users.FirstOrDefault(u => u.Email == "dimaserd84@gmail.com").Id;
+            
         }
 
         #region Balance methods
@@ -91,29 +91,27 @@ namespace Runtasker.Logic.Workers.Orders
 
         public void CheckForAnInvitation(Order order)
         {
-            using (MyDbContext context = new MyDbContext())
+            Invitation I = Context.Invitations.FirstOrDefault(i => i.ReceiverGuid == order.UserGuid);
+
+            if (I == null)
             {
-                Invitation I = context.Invitations.FirstOrDefault(i => i.ReceiverGuid == order.UserGuid);
-
-                if (I == null)
-                {
-                    return;
-                }
-
-                if (I.Status == InvitationStatus.Paid)
-                {
-                    return;
-                }
-
-                I.Status = InvitationStatus.Paid;
-                context.SaveChanges();
-
-                //Payment methods
-                Paymenter.OnInvitedCustomerFinishedOrder(I);
-
-                //Notifications methods
-                Notificater.OnInvitedCustomerRatedAnOrderSolution(I);
+                return;
             }
+
+            if (I.Status == InvitationStatus.Paid)
+            {
+                return;
+            }
+
+            I.Status = InvitationStatus.Paid;
+            Context.SaveChanges();
+
+            //Payment methods
+            Paymenter.OnInvitedCustomerFinishedOrder(I);
+
+            //Notifications methods
+            Notificater.OnInvitedCustomerRatedAnOrderSolution(I);
+
         }
         #endregion
 

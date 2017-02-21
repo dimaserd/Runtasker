@@ -479,7 +479,6 @@
     <Content Include="Views\Account\NewLogin.cshtml" />
     <Content Include="Views\Message\NewActivePanel.cshtml" />
     <Content Include="Views\Home\NewContact.cshtml" />
-    <Content Include="Views\Orders\NewCreate.cshtml" />
     <Content Include="Views\VkOrders\Index.cshtml" />
     <Content Include="Views\VkOrders\KeyWords.cshtml" />
     <Content Include="Views\VkOrders\Groups.cshtml" />

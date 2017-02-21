@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models.VkNotificater;
+using Runtasker.Logic.Contexts.Interfaces;
 
 namespace Runtasker.Logic.Workers.Notifications.Orders
 {
@@ -19,7 +20,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
             Db = db;
             PerformersAndAdmins = GetPerformersAndAdmins();
             PerformersAndAdminsInfos = Db.OtherUserInfos.ToList();
-        } 
+        }
         #endregion
 
         #region Properties

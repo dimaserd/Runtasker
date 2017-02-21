@@ -1,6 +1,8 @@
 ﻿using Runtasker.Logic.Contexts;
+using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using System.Data.Entity;
+using System.Threading.Tasks;
 using VkParser.Entities;
 
 namespace Runtasker.Logic
@@ -12,6 +14,12 @@ namespace Runtasker.Logic
         {
 
         }
+
+        public static MyDbContext CreateContextForTesting()
+        {
+            return new MyDbContext("LocalTestConnection");
+        }
+        
 
         public MyDbContext(string connection) : base(connection)
         {
@@ -34,6 +42,8 @@ namespace Runtasker.Logic
         public DbSet<Invitation> Invitations { get; set; }
 
         public DbSet<PaymentTransaction> PaymentTransactions { get; set; }
+        
+       
 
         #region VkParse
         public DbSet<VkGroup> VkGroups { get; set; }

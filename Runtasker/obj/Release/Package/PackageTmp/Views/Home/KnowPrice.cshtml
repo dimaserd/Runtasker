@@ -116,7 +116,7 @@
                                 @Html.LabelFor(model => model.CompletionDate )
                                 <div class="date">
                                     <!--input-group date-->
-                                    <input type="text" class="form-control" id="datetimepicker1" name="CompletionDate" value="@Model.CompletionDate.ToShortDateString()" />
+                                    <input type="text" class="form-control" id="datetimepicker1" name="CompletionDate" />
                                 </div>
                             </div>
                             <!--End of DateTimePicker-->
@@ -179,13 +179,11 @@
 <!-- /WRAPPER -->
 
 @section scripts{
-    @Html.GetDateTimeScriptsAndStyles(langCode);
+    @Html.GetDateTimeScriptsAndStyles(langCode)
+
+    @ViewExtensions.GetDateTimeScriptsAndStyles(null)
                                     
-    <!--Глобальный переменные-->
-    <script>
-        
-    </script>
-    <!--Глобальные переменные-->
+    
 
     <!--Defaults Subject Scripts-->
     <script>
@@ -194,21 +192,19 @@
             $("#subjectList").get(0).selectedIndex = 0;
 
             $("#OtherSubjectForm").hide();
-                                    }();
+        }();
     </script>
     <!--/Defaults Subject Scripts-->
 
     <!--Date Scripts-->
-    <script>
-        //сделай 
-        @Html.GetParseDateJSFunction()
+    @ViewExtensions.GetDateParseScripts()
 
+    <script>
         function daydiff(dateToCompare)
         {
             var dateNow = new Date();
             return Math.round((dateToCompare - dateNow) / (1000 * 60 * 60 * 24)) + 1;
         }
-
     </script>
     <!--/Date Scripts-->
     

@@ -190,10 +190,6 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Release\VkNe
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Release\ru-RU\Runtasker.Resources.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.csprojResolveAssemblyReference.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.init.resources
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.t.resources
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.manytoMany.resources
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.usersSpec.resources
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.d.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.csproj.GenerateResource.Cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.pdb

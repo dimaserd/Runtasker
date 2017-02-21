@@ -116,6 +116,10 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
                 };
                 messages.Add(message);
             }
+            using (VkMessageSender sender = new VkMessageSender())
+            {
+                sender.SendMessagesToVkUsers(messages);
+            }
         }
         #endregion
 

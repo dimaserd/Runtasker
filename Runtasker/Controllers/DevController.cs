@@ -6,6 +6,7 @@ using Runtasker.Logic.Workers.Developer;
 using Runtasker.Logic.Workers.Files;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -192,6 +193,19 @@ namespace Runtasker.Controllers
 
                 return "готово";
             }
+        }
+
+        public string DeleteAllFiles(string pass = null)
+        {
+            if(CheckForPassword(pass))
+            {
+                string dirPath = System.Web.Hosting.HostingEnvironment.MapPath("~/Files");
+                DirectoryInfo d = new DirectoryInfo(dirPath);
+                d.Clear();
+                
+            }
+            return "готово";
+            
         }
         #endregion
 

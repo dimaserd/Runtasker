@@ -215,10 +215,10 @@ namespace Runtasker.Logic.Workers.Notifications
                 Link = null
             };
 
-            Notification performerN = PerformerNotificationGetter
-                .GetNotificationForHalfPaidOrder(order);
+            List<Notification> performersN = PerformerNotificationGetter
+                .GetNotificationsForHalfPaidOrder(order);
 
-            Context.Notifications.Add(performerN);
+            Context.Notifications.AddRange(performersN);
             Context.Notifications.Add(customerN);
             Context.SaveChanges();
 

@@ -137,10 +137,10 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
             }).ToList();
         }
 
-        public Notification GetNotificationForHalfPaidOrder(Order order)
+        public List<Notification> GetNotificationsForHalfPaidOrder(Order order)
         {
             WhoShouldKnowUsers = GetUsersWhoShouldKnowAboutThisOrder(order);
-            return new Notification
+            var a = new Notification
             {
                 AboutType = NotificationAboutType.Ordinary,
                 Title = "Пользователь оплатил половину заказа",
@@ -149,6 +149,19 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
                 UserGuid = order.PerformerGuid,
                 Link = null
             };
+
+            return WhoShouldKnowUsers.Select(x =>
+            {
+                return new Notification
+                {
+                    AboutType = NotificationAboutType.Ordinary,
+                    Title = "Пользователь оплатил половину заказа",
+                    Text = $"Заказ №{order.Id} оплачен наполовину, приступайте немедленно и успейте к сроку {order.FinishDate}",
+                    Type = NotificationType.Success,
+                    UserGuid = x.Id,
+                    Link = null
+                };
+            }).ToList();
         }
         #endregion
 

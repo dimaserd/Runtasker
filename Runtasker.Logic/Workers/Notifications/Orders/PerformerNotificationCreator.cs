@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models.VkNotificater;
 using Runtasker.Logic.Contexts.Interfaces;
+using System.Data.Entity;
 
 namespace Runtasker.Logic.Workers.Notifications.Orders
 {
@@ -18,8 +19,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
         public PerformerNotificationCreator(MyDbContext db)
         {
             Db = db;
-            PerformersAndAdmins = GetPerformersAndAdmins();
-            PerformersAndAdminsInfos = Db.OtherUserInfos.ToList();
+            PerformersAndAdmins = GetPerformersAndAdminsWithInfo();
         }
         #endregion
 
@@ -28,7 +28,6 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
 
         List<ApplicationUser> PerformersAndAdmins { get; set; }
 
-        List<OtherUserInfo> PerformersAndAdminsInfos { get; set; }
         /// <summary>
         /// Свойство создано для того чтобы не проходить заново
         /// по пользователям в поиске тех кто должен знать о заказе
@@ -36,7 +35,6 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
         /// </summary>
         List<ApplicationUser> WhoShouldKnowUsers { get; set; }
 
-        List<OtherUserInfo> WhoShoulKnowUserInfos { get; set; }
         
         #endregion
 
@@ -46,20 +44,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
             return WhoShouldKnowUsers.Select(x => x.Email).ToList();
         }
 
-        public List<OtherUserInfo> GetOtherUsersInfo()
-        {
-            List<OtherUserInfo> result = new List<OtherUserInfo>();
-
-            foreach(OtherUserInfo info in PerformersAndAdminsInfos)
-            {
-                if (WhoShouldKnowUsers.Any(x => x.Id == info.Id))
-                {
-                    result.Add(info);
-                }
-            }
-
-            return result;
-        }
+        
 
         /// <summary>
         /// Получает список
@@ -67,7 +52,12 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
         /// <returns></returns>
         public IEnumerable<VkUserInfo> GetVkUserInfos()
         {
-            return WhoShouldKnowUsers.ToVkUserInfoList(PerformersAndAdminsInfos);
+            return WhoShouldKnowUsers
+                .ToVkUserInfoList
+                (
+                PerformersAndAdmins
+                .Select(x => x.OtherInfo)
+                );
         }
         /// <summary>
         /// Возвращает список уведомлений для пользователей 
@@ -140,15 +130,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
         public List<Notification> GetNotificationsForHalfPaidOrder(Order order)
         {
             WhoShouldKnowUsers = GetUsersWhoShouldKnowAboutThisOrder(order);
-            var a = new Notification
-            {
-                AboutType = NotificationAboutType.Ordinary,
-                Title = "Пользователь оплатил половину заказа",
-                Text = $"Заказ №{order.Id} оплачен наполовину, приступайте немедленно и успейте к сроку {order.FinishDate}",
-                Type = NotificationType.Success,
-                UserGuid = order.PerformerGuid,
-                Link = null
-            };
+            
 
             return WhoShouldKnowUsers.Select(x =>
             {
@@ -166,7 +148,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
         #endregion
 
         #region Help Methods
-        List<ApplicationUser> GetPerformersAndAdmins()
+        List<ApplicationUser> GetPerformersAndAdminsWithInfo()
         {
             RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(Db));
 
@@ -176,7 +158,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
                                   from user in role.Users
                                   select user.UserId).ToList();
 
-            List<ApplicationUser> allUsers = Db.Users.ToList();
+            List<ApplicationUser> allUsers = Db.Users.Include(x => x.OtherInfo).ToList();
 
             return allUsers.Where(applicationUser => selectedUserIds.Contains(applicationUser.Id)).ToList();
             
@@ -200,10 +182,9 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
 
             return PerformersAndAdmins.Select(x =>
             {
-                OtherUserInfo userInfo = PerformersAndAdminsInfos
-                    .FirstOrDefault(info => info.Id == x.Id);
+                
 
-                if( (userInfo != null) && (userInfo.Specialization.Contains(orderSubjectEnum)) )
+                if( (x.OtherInfo != null) && (x.OtherInfo.Specialization.Contains(orderSubjectEnum)) )
                 {
                     return x;
                 }

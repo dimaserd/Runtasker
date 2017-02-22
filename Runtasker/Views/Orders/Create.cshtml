@@ -2,10 +2,12 @@
 @using HtmlExtensions.Renderers
 @using Extensions.String
 @using Runtasker.Resources.Views.Orders.Create
+@using Runtasker.LocaleBuilders.Models
 
 @model Runtasker.Logic.Models.OrderCreateModel
 @{
-    ViewBag.Title = Create.Title;
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
+    ViewBag.Title = localeModel["Title"];
 
     //получаем листы по перечислениям
     List<SelectListItem> subjects = StaticHtmlClassesHelper.GetSortedSubjectEnumList().ToList();
@@ -29,17 +31,17 @@
     <div class="container">
         <h1>@ViewBag.Title</h1>
         <ul class="breadcrumb">
-            <li><a href="/Home/Index">@Create.HomeNav</a></li>
-            <li><a href="/Orders/Index">@Create.MyOrdersNav</a></li>
-            <li class="active">@Create.CreateNav</li>
+            <li><a href="/Home/Index">@localeModel["HomeNav"]</a></li>
+            <li><a href="/Orders/Index">@localeModel["MyOrdersNav"]</a></li>
+            <li class="active">@localeModel["CreateNav"]</li>
         </ul>
     </div>
 </header>
 
 <div class="page-header">
     <h1>
-        @Create.Header 
-        <small>@Create.MiniHeader</small>
+        @localeModel["Header"]
+        <small>@localeModel["MiniHeader"]</small>
     </h1>
 </div>
 
@@ -123,7 +125,7 @@
                 @Html.TextAreaFor(model => model.Description,
                     htmlAttributes : new { @class = "form-control",
                         rows = "3",
-                        placeholder = Create.DescriptionPlaceholder } )
+                        placeholder = localeModel["DescriptionPlaceholder"] } )
                 @Html.ValidationMessageFor(model => model.Description, "", new { id = "descriptionError", @class = "text-danger" })
             </div>
         </div>
@@ -132,7 +134,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button id="fakeCreate" type="button" class="btn-lg btn btn-primary">
-                    @Create.CreateOrder
+                    @localeModel["CreateOrder"]
                 </button>
             </div>
         </div>
@@ -144,7 +146,7 @@
 <div class="row">
     <div id="uploadProgress" class="hidden col-md-5">
         <div class="row">
-            <p class="h4">@Create.FileUploading</p>
+            <p class="h4">@localeModel["FileUploading"]</p>
             @FASigns.CircleONotch.X2().Animate().ToHtml()
         </div>
     </div>
@@ -156,7 +158,7 @@
 <!--Back to List-->
 <div>
     <a href="@Url.Action("Index", "Orders")" class="btn btn-default">
-        @FASigns.DoubleBack.ToHtml() @Create.BackToList
+        @FASigns.DoubleBack.ToHtml() @localeModel["BackToList"]
     </a>
 </div>
 <!--/Back to List/-->
@@ -232,7 +234,32 @@
     </script>
     <!--/Other Subject Scripts-->
 
-    
+    <!--Date Scripts-->
+    @ViewExtensions.GetDateParseScripts()
+
+    <script>
+        function daydiff(dateToCompare) {
+            var dateNow = new Date();
+            return Math.round((dateToCompare - dateNow) / (1000 * 60 * 60 * 24)) + 1;
+        }
+    </script>
+    <!--/Date Scripts-->
+
+    <!--Validation Coloring And Error Showing-->
+@OrderScripts.GetValidationColoringAndErrorShowing()
+<!--/Validation Coloring And Error Showing-->
+<!--Big Error Scripts-->
+@OrderScripts.GetBigErrorScripts()
+<!--/Big Error Scripts-->
+<!--Подготовительные скрипты по закрашиванию полей-->
+@OrderScripts.GetPreparingScripts()
+<!--/Подготовительные скрипты по закрашиванию полей-->
+<!--Обработчики имени и эмейла-->
+@OrderScripts.GetEmailHandler(localeModel)
+<!--/Обработчики имени и эмейла-->
+<!--Обработчики даты и типа работы-->
+@OrderScripts.GetDateAndWorkTypeHandlers()
+<!--/Обработчики даты и типа работы-->
 
     <!--SendOrderScripts-->    
     <script>
@@ -258,7 +285,20 @@
                 console.log("has files");
                 uploadProgress.removeClass('hidden');
             }
-            realCreate.click();
+
+            var count = 0;
+            //logging
+            
+            count = (CheckEmailField()) ? count + 1 : count;
+            count = (CheckOtherSubject()) ? count + 1 : count;
+            count = (dateAndWorkTypeCheck()) ? count + 1 : count;
+            count = (CheckDescription()) ? count + 1 : count;
+
+            if (count == 4) {
+                realCreate.click();
+            }
+
+            
         });
     </script>
     <!--/SendOrderScripts-->

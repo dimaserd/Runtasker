@@ -98,7 +98,10 @@ namespace Runtasker.Logic.Entities
         {
             if( (order.Status == OrderStatus.New ||
                 order.Status == OrderStatus.HasError ||
-                order.Status == OrderStatus.Valued) 
+                order.Status == OrderStatus.Valued ||
+                //полуоплаченный заказ еще не занят
+                order.Status == OrderStatus.HalfPaid
+                )
                 && order.PerformerGuid == order.UserGuid )
             {
                 return true;

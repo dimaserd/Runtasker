@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Runtaker.LocaleBuiders.Statics;
+using System;
 using System.Threading;
 
 namespace Runtasker.LocaleBuilders.Models
@@ -10,7 +11,7 @@ namespace Runtasker.LocaleBuilders.Models
         {
             get
             {
-                return Thread.CurrentThread.CurrentCulture.DisplayName;
+                return LanguageStatic.LanguageCode;
             }
         }
         #endregion

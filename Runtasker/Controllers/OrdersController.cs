@@ -1,6 +1,4 @@
-﻿using System.Data.Entity;
-using System.Net;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System;
 using Runtasker.Logic;
@@ -11,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Logic.Extensions.Models;
+using Runtaker.LocaleBuiders.Views.Order;
 
 namespace Runtasker.Controllers
 {
@@ -24,6 +23,8 @@ namespace Runtasker.Controllers
         MyDbContext _db = new MyDbContext();
 
         CustomerOrderErrorEvents _errorWorker;
+
+        OrderViewModelBuilder _modelBuilder;
         #endregion
 
         #region Properties
@@ -51,6 +52,17 @@ namespace Runtasker.Controllers
             }
         }
 
+        OrderViewModelBuilder ModelBuilder
+        {
+            get
+            {
+                if(_modelBuilder == null)
+                {
+                    _modelBuilder = new OrderViewModelBuilder();
+                }
+                return _modelBuilder;
+            }
+        }
         string UserGuid
         {
             get { return User.Identity.GetUserId(); }
@@ -294,7 +306,8 @@ namespace Runtasker.Controllers
                 ErrorWorker.OnCustomerTriedToAddAnOrderWithUnconfirmedAccount();
                 return RedirectToAction("Index", "Home");
             }
-            
+            ViewData["localeModel"] = ModelBuilder.CreateOrderView();
+
             return View(model : new OrderCreateModel() { FinishDate = DateTime.Now});
         }
 
@@ -344,7 +357,7 @@ namespace Runtasker.Controllers
                 
             }
 
-            
+            ViewData["localeModel"] = ModelBuilder.CreateOrderView();
             return View(model: createOrder);
         
         }
@@ -361,21 +374,24 @@ namespace Runtasker.Controllers
 
         protected override void Dispose(bool disposing)
         {
+            IDisposable[] toDisposes = new IDisposable[]
+            {
+                _db, _orderWorker, _modelBuilder
+            };
+
             if (disposing)
             {
-                if(_db != null)
+                for(int i = 0; i < toDisposes.Length; i++)
                 {
-                    _db.Dispose();
-                }
-                
-                if(_orderWorker != null)
-                {
-                    _orderWorker.Dispose(disposing);
+                    if(toDisposes[i] != null)
+                    {
+                        toDisposes[i].Dispose();
+                        toDisposes[i] = null;
+                    }
                 }
                 
 
-                _db = null;
-                _orderWorker = null;
+                
             }
             base.Dispose(disposing);
         }

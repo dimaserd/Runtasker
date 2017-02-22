@@ -62,6 +62,7 @@
     <Compile Include="Statics\LanguageStatic.cs" />
     <Compile Include="Views\Account\AccountViewModelBuilder.cs" />
     <Compile Include="Views\Home\HomeViewModelBuilder.cs" />
+    <Compile Include="Views\Order\OrderViewModelBuilder.cs" />
     <Compile Include="Views\Payment\PaymentViewModelBuilder.cs" />
   </ItemGroup>
   <ItemGroup>

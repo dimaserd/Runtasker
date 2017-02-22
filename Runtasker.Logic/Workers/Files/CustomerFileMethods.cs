@@ -86,11 +86,18 @@ namespace Runtasker.Logic.Workers.Files
         #region Public Methods
         public string CreateOrderDirectory(int orderId)
         {
-            if (!Directory.Exists($"{RootDirectory}/Orders/{orderId}"))
+            //если директория не существует то все норм создаем новую
+            //иначе вычистить всю старую
+            string orderDirPath = $"{RootDirectory}/Orders/{orderId}";
+            if (!Directory.Exists(orderDirPath))
             {
-                Directory.CreateDirectory($"{RootDirectory}/Orders/{orderId}");
+                Directory.CreateDirectory(orderDirPath);
             }
-            return $"{RootDirectory}/Orders/{orderId}";
+            else
+            {
+                new DirectoryInfo($"{RootDirectory}/Orders/{orderId}").Clear();
+            }
+            return orderDirPath;
         }
 
         

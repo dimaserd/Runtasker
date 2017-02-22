@@ -13,3 +13,9 @@
 19.01.2017 23:26:01 RequestIsAuthenticated : True
 (User == null) : False
 (User.IsInRole("Admin")) : False 
+22.02.17 18:51:41 RequestIsAuthenticated : True
+(User == null) : False
+(User.IsInRole("Admin")) : True 
+22.02.17 18:52:07 RequestIsAuthenticated : True
+(User == null) : False
+(User.IsInRole("Admin")) : False 

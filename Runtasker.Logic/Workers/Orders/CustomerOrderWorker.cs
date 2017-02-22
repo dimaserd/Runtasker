@@ -494,58 +494,54 @@ namespace Runtasker.Logic.Workers.Orders
         /// </returns>
         public async Task<Order> CreateOrderSubMethodAsync(OrderCreationType creationType, OrderCreateModel orderModel)
         {
-            using (MyDbContext context = new MyDbContext())
+            Order order = new Order
             {
-                Order order = new Order
-                {
-                    Description = orderModel.Description,
-                    FinishDate = orderModel.FinishDate,
-                    Status = OrderStatus.New,
-                    PublishDate = DateTime.Now,
-                    WorkType = orderModel.WorkType,
-                    Subject = orderModel.Subject,
-                    OtherSubject = orderModel.OtherSubject,
-                    UserGuid = UserGuid,
-                    PerformerGuid = UserGuid
-                };
-                context.Orders.Add(order);
+                Description = orderModel.Description,
+                FinishDate = orderModel.FinishDate,
+                Status = OrderStatus.New,
+                PublishDate = DateTime.Now,
+                WorkType = orderModel.WorkType,
+                Subject = orderModel.Subject,
+                OtherSubject = orderModel.OtherSubject,
+                UserGuid = UserGuid,
+                PerformerGuid = UserGuid
+            };
+            Context.Orders.Add(order);
 
-                try
-                {
-                    // Your code...
-                    // Could also be before try if you know the exception occurs in SaveChanges
-
-                    await context.SaveChangesAsync();
-                }
-                catch (DbEntityValidationException e)
-                {
-                    foreach (var eve in e.EntityValidationErrors)
-                    {
-                        System.Diagnostics.Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                        foreach (var ve in eve.ValidationErrors)
-                        {
-                            System.Diagnostics.Debug.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                                ve.PropertyName, ve.ErrorMessage);
-                        }
-                    }
-                    throw;
-                }
-                
-
-                //записываем файлы заказа
-                Filer.OnCustomerCreatedAnOrder(orderModel.FileUpload, order);
-
-                if (creationType == OrderCreationType.Ordinary)
-                {
-                    //вызываем класс отвечающий за создание уведомлений
-                    Notificater.OnCustomerAddedOrder(order, OrderCreationType.Ordinary);
-                }
-
-
-                return order;
+            try
+            {
+                await Context.SaveChangesAsync();
             }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    System.Diagnostics.Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+
+
+            //записываем файлы заказа
+            Filer.OnCustomerCreatedAnOrder(orderModel.FileUpload, order);
+
+            if (creationType == OrderCreationType.Ordinary)
+            {
+                //вызываем класс отвечающий за создание уведомлений
+                Notificater.OnCustomerAddedOrder(order, OrderCreationType.Ordinary);
+            }
+
+
+            return order;
+
         }
+        
         
         #endregion
         #endregion

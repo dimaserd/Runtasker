@@ -158,5 +158,14 @@ namespace Runtasker.Resources.Views.Home.KnowPrice {
                 return ResourceManager.GetString("NameError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Please enter your subject or select an existing one from the list!.
+        /// </summary>
+        public static string OtherSubjectError {
+            get {
+                return ResourceManager.GetString("OtherSubjectError", resourceCulture);
+            }
+        }
     }
 }

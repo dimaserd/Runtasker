@@ -150,4 +150,7 @@
   <data name="NameError" xml:space="preserve">
     <value>Your name is too short, please enter your full name or nickname!</value>
   </data>
+  <data name="OtherSubjectError" xml:space="preserve">
+    <value>Please enter your subject or select an existing one from the list!</value>
+  </data>
 </root>

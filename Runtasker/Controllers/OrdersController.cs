@@ -323,21 +323,21 @@ namespace Runtasker.Controllers
             switch (createOrder.WorkType)
             {
                 case OrderWorkType.Ordinary:
-                    if ((createOrder.FinishDate - DateTime.Now).TotalDays < 3)
+                    if ((createOrder.FinishDate - DateTime.Now).TotalDays < 3 -1)
                     {
                         ModelState.AddModelError("", Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary);
                     }
                     break;
 
                 case OrderWorkType.Essay:
-                    if ((createOrder.FinishDate - DateTime.Now).TotalDays < 7)
+                    if ((createOrder.FinishDate - DateTime.Now).TotalDays < 7 - 1)
                     {
                         ModelState.AddModelError("", Resources.Views.Orders.Create.Create.FinishDateErrorEssay);
                     }
                     break;
 
                 case OrderWorkType.CourseWork:
-                    if ((createOrder.FinishDate - DateTime.Now).TotalDays < 30)
+                    if ((createOrder.FinishDate - DateTime.Now).TotalDays < 30 - 1)
                     {
                         ModelState.AddModelError("", Resources.Views.Orders.Create.Create.FinishDateErrorCourseWork);
                     }

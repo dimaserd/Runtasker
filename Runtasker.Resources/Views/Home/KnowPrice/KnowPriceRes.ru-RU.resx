@@ -150,4 +150,7 @@
   <data name="NameError" xml:space="preserve">
     <value>Слишком короткое имя, пожалуйста, введите свое полное имя или псевдоним!</value>
   </data>
+  <data name="OtherSubjectError" xml:space="preserve">
+    <value>Пожалуйста, укажите ваш предмет, или выберите существующий из списка!</value>
+  </data>
 </root>

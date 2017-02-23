@@ -14,6 +14,7 @@ namespace Runtaker.LocaleBuiders.Views.Home
                     rusResult.Add("NameError", KnowPriceRes.NameError);
                     rusResult.Add("EmailError", KnowPriceRes.EmailError);
                     rusResult.Add("DescriptionError", KnowPriceRes.DescriptionError);
+                    rusResult.Add("OtherSubjectError", KnowPriceRes.OtherSubjectError);
                     rusResult.Add("BtnText", KnowPriceRes.BtnText);
                     rusResult.Add("HomeNav", KnowPriceRes.HomeNav);
                     rusResult.Add("ActiveNav", KnowPriceRes.ActiveNav);
@@ -28,6 +29,7 @@ namespace Runtaker.LocaleBuiders.Views.Home
                     result.Add("NameError", KnowPriceRes.NameError);
                     result.Add("EmailError", KnowPriceRes.EmailError);
                     result.Add("DescriptionError", KnowPriceRes.DescriptionError);
+                    result.Add("OtherSubjectError", KnowPriceRes.OtherSubjectError);
                     result.Add("BtnText", KnowPriceRes.BtnText);
                     result.Add("HomeNav", KnowPriceRes.HomeNav);
                     result.Add("ActiveNav", KnowPriceRes.ActiveNav);

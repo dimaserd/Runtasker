@@ -51,13 +51,17 @@
         @Html.ValidationErrorsToAlerts()
         @Html.AntiForgeryToken()
 
+        <div id="bigError" class="alert alert-danger">
+            <i class="fa fa-frown-o"></i>
+            <strong id="bigErrorText"></strong>
+        </div>
 
         <!--WorkTypeList-->
-        <div class="form-group">
+        <div class="form-group" id="WorkTypeForm">
             @Html.LabelFor(model => model.WorkType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
                 <div class="input-group">
-                    @Html.DropDownListFor(m => m.WorkType, workTypes)
+                    @Html.DropDownListFor(m => m.WorkType, workTypes, htmlAttributes: new { id="WorkTypeField",  @class = "form-control" })
                     <div class="input-group-btn">
                         @Html.PopoverInfoFor(model => model.WorkType)
                     </div>
@@ -67,7 +71,7 @@
         <!--/WorkTypeList-->
 
         <!--SubjectsList-->
-        <div class="form-group">
+        <div id="SubjectForm" class="form-group">
             @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
                 <div class="input-group">
@@ -81,11 +85,24 @@
         <!--/SubjectList-->
 
         <!--UserSubjectForm-->
-        @Html.LabelAndEditorFor(model => model.OtherSubject, htmlAttributes : new { @class = "hidden", id = "userSubjectForm" })
+        <div class="form-group" id="OtherSubjectForm">
+            @Html.LabelFor(model => model.OtherSubject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.OtherSubject, htmlAttributes: new { id = "OtherSubject", @class = "form-control" })
+                    <div class="input-group-btn">
+                        @Html.PopoverInfoFor(m => m.OtherSubject)
+                    </div>
+                </div>
+                <p id="OtherSubjectError" class="text-danger">
+
+                </p>
+            </div>
+        </div>
         <!--/UserSubjectForm-->
         
         <!--DateTime Picker-->
-        <div class="form-group">
+        <div class="form-group" id="DateForm">
             @Html.LabelFor(model => model.FinishDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="date col-md-5">
                 <!--input-group date-->
@@ -119,14 +136,18 @@
         <!--/FilesUpload-->
 
         <!--Decription-->
-        <div class="form-group">
+        <div class="form-group" id="DescriptionForm">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
                 @Html.TextAreaFor(model => model.Description,
                     htmlAttributes : new { @class = "form-control",
                         rows = "3",
+                        id = "DescriptionField",
                         placeholder = localeModel["DescriptionPlaceholder"] } )
                 @Html.ValidationMessageFor(model => model.Description, "", new { id = "descriptionError", @class = "text-danger" })
+                <p id="DescriptionError" class="text-danger">
+
+                </p>
             </div>
         </div>
         <!--/Description-->
@@ -174,6 +195,7 @@
         }();
     </script>
     <!--/Defaults-->
+
     <!--Popover activator-->
     <script>
         var popoverBtns = $(".popoverBtn");
@@ -197,41 +219,7 @@
     <!--/DateTimePicker-->
 
     <!--Other Subject Scripts-->
-    <script>
-        var subjectList = $('#subjectList');
-        var userSubjectForm = $('#userSubjectForm');
-        var hiddenSubject = $('#hiddenSubject');
-        var otherSubject = $('#OtherSubject');
-
-        subjectList.change(function () {
-            hiddenSubject.val($(this).val());
-            if($(this).val() == (0))
-            {
-                otherSubject.val('');
-                ShowObject(userSubjectForm);
-            }
-            else
-            {
-                HideObject(userSubjectForm);
-            }
-        });
-
-        function ShowObject(obj)
-        {
-            if($(obj).hasClass('hidden'))
-            {
-                $(obj).removeClass('hidden');
-            }
-        }
-
-        function HideObject(obj)
-        {
-            if(!$(obj).hasClass('hidden'))
-            {
-                $(obj).addClass('hidden');
-            }
-        }
-    </script>
+    @OrderScripts.GetSubjectCheckers(localeModel)
     <!--/Other Subject Scripts-->
 
     <!--Date Scripts-->
@@ -245,21 +233,29 @@
     </script>
     <!--/Date Scripts-->
 
-    <!--Validation Coloring And Error Showing-->
+<!--Validation Coloring And Error Showing-->
 @OrderScripts.GetValidationColoringAndErrorShowing()
 <!--/Validation Coloring And Error Showing-->
+
 <!--Big Error Scripts-->
 @OrderScripts.GetBigErrorScripts()
 <!--/Big Error Scripts-->
+
 <!--Подготовительные скрипты по закрашиванию полей-->
 @OrderScripts.GetPreparingScripts()
 <!--/Подготовительные скрипты по закрашиванию полей-->
+
 <!--Обработчики имени и эмейла-->
 @OrderScripts.GetEmailHandler(localeModel)
 <!--/Обработчики имени и эмейла-->
+
 <!--Обработчики даты и типа работы-->
 @OrderScripts.GetDateAndWorkTypeHandlers()
 <!--/Обработчики даты и типа работы-->
+
+<!--Обработчики описания-->
+@OrderScripts.GetDescriptionHandlers(localeModel)
+<!--/Обработчики описания-->
 
     <!--SendOrderScripts-->    
     <script>
@@ -273,15 +269,9 @@
 
 
         fakeCreate.click(function(){
-            if(hiddenSubject.val() != (@count))
-            {
-                console.log('yes')
-                otherSubject.attr('value', 'selected');
-            }
-
+ 
             if(hasFilesToUpload())
             {
-
                 console.log("has files");
                 uploadProgress.removeClass('hidden');
             }
@@ -289,12 +279,11 @@
             var count = 0;
             //logging
             
-            count = (CheckEmailField()) ? count + 1 : count;
             count = (CheckOtherSubject()) ? count + 1 : count;
             count = (dateAndWorkTypeCheck()) ? count + 1 : count;
             count = (CheckDescription()) ? count + 1 : count;
 
-            if (count == 4) {
+            if (count == 3) {
                 realCreate.click();
             }
 
@@ -327,7 +316,7 @@
     <!--/Files uploading Scripts-->
 
     <!--Restore Condition Scripts-->
-<script>
+    <script>
         console.log("restore");
 
         var userSubjectForm = $('#userSubjectForm');
@@ -347,8 +336,11 @@
 
 
         }();
-</script>
+    </script>
     <!--/Restore Condition Scripts-->
 
+    <!--Скрипты по умолчанию для предмета-->
+    @OrderScripts.GetDefaultSubjectScripts()
+    <!--/Скрипты по умолчанию для предмета-->
     
 }

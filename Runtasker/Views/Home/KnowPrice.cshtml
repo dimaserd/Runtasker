@@ -87,7 +87,7 @@
                                 
                             </div>
 
-                            <div id ="SubjectForm" class="col-md-6">
+                            <div id="SubjectForm" class="col-md-6">
                                 @Html.LabelFor(m => m.Subject)
                                 @Html.DropDownListFor(m => m.Subject, selectList: subjectsList, htmlAttributes: new { @class = "form-control", id = "subjectList" })
                             </div>
@@ -95,19 +95,19 @@
                     </div>
 
 
-                    <div id="OtherSubjectForm" class="row">
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                @Html.LabelFor(m => m.OtherSubject)
-                                @Html.TextBoxFor(m => m.OtherSubject, htmlAttributes: new {id = "OtherSubject", @class = "form-control" })
-                                <p id="OtherSubjectError" class="text-danger">
 
-                                </p>
-                            </div>
+                    <div id="OtherSubjectForm" class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.OtherSubject)
+                            @Html.TextBoxFor(m => m.OtherSubject, htmlAttributes: new { id = "OtherSubject", @class = "form-control" })
+                            <p id="OtherSubjectError" class="text-danger">
+
+                            </p>
                         </div>
                     </div>
 
-                 
+
+
 
                     <div class="row">
                         <div class="form-group">
@@ -186,14 +186,7 @@
     
 
     <!--Defaults Subject Scripts-->
-    <script>
-        var defaultsSubject = function () {
-                                        
-            $("#subjectList").get(0).selectedIndex = 0;
-
-            $("#OtherSubjectForm").hide();
-        }();
-    </script>
+    @OrderScripts.GetDefaultSubjectScripts()
     <!--/Defaults Subject Scripts-->
 
     <!--Date Scripts-->
@@ -210,67 +203,7 @@
     
 
     <!--Обработчики предмета-->
-    <script>
-        var subjectList = $('#subjectList');
-        var otherSubjectForm = $('#OtherSubjectForm');
-        var hiddenSubject = $('#hiddenSubject');
-        var otherSubject = $('#OtherSubject');
-
-        subjectList.change(function () {
-            hiddenSubject.val($(this).val());
-            if($(this).val() == (0)) {
-                otherSubject.val('');
-                otherSubjectForm.show();
-                //повторяем цвет класса как в дополнителном предмете
-                CheckColorClasses();
-            }
-            else {
-                AddSuccessToForm("#Subject")
-                otherSubjectForm.hide();
-            }
-        });
-
-        otherSubject.change(function (){
-            CheckOtherSubject();
-        })
-
-        function CheckOtherSubject() {
-            ClearClasses("#OtherSubjectForm");
-            ClearClasses("#SubjectForm")
-
-            HideError("#OtherSubject");
-
-            
-
-            if (otherSubject.val().length < 3 && subjectList.val() == 0) {
-                AddErrorToForm("#OtherSubject");
-                ShowError("#OtherSubject", "Предмет укажи бля!")
-                //повторяем цвет класса как в дополнителном предмете
-                CheckColorClasses();
-
-                return false;
-            }
-            else
-            {
-                AddSuccessToForm("#OtherSubject")
-                //повторяем цвет класса как в дополнителном предмете
-                CheckColorClasses();
-                return true;
-            }
-
-        }
-
-        function CheckColorClasses() {
-            //повторяем цвет класса как в дополнителном предмете
-            if (otherSubjectForm.hasClass("has-success")) {
-                AddSuccessToForm("#Subject");
-            }
-            else if (otherSubjectForm.hasClass("has-error")) {
-                AddErrorToForm("#Subject");
-            }
-        }
-
-    </script>
+    @OrderScripts.GetSubjectCheckers()
     <!--/Обработчики предмета-->
 
     <!--Validation Coloring And Error Showing-->

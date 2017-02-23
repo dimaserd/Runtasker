@@ -27,6 +27,7 @@ namespace Runtaker.LocaleBuiders.Views.Order
                     result.Add("NameError", KnowPriceRes.NameError);
                     result.Add("EmailError", KnowPriceRes.EmailError);
                     result.Add("DescriptionError", KnowPriceRes.DescriptionError);
+                    result.Add("OtherSubjectError", KnowPriceRes.OtherSubjectError);
                     break;
 
                 default:
@@ -44,6 +45,7 @@ namespace Runtaker.LocaleBuiders.Views.Order
                     result.Add("NameError", KnowPriceRes.NameError);
                     result.Add("EmailError", KnowPriceRes.EmailError);
                     result.Add("DescriptionError", KnowPriceRes.DescriptionError);
+                    result.Add("OtherSubjectError", KnowPriceRes.OtherSubjectError);
                     break;
             }
 

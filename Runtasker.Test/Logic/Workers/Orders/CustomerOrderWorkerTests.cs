@@ -13,8 +13,8 @@ namespace Runtasker.Test.Logic.Workers.Orders
         [TestMethod]
         public void TestOrderCreation()
         {
-            Assert.AreEqual(2, db.Users.Count());
-            db.Attachments.Local.Where
+            //Assert.AreEqual(2, db.Users.Count());
+            //db.Attachments.Local.Where
             
 
 

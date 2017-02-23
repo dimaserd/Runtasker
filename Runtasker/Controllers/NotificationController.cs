@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNet.Identity;
+using Runtasker.Logic;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers.Notifications;
+using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -11,10 +13,11 @@ namespace Runtasker.Controllers
     public class NotificationController : Controller
     {
         #region Private Fields
+        MyDbContext _db = new MyDbContext();
 
-        private WebUINotificater _notificater;
+        WebUINotificater _notificater;
 
-        public string UserGuid
+        string UserGuid
         {
             get
             {
@@ -34,8 +37,15 @@ namespace Runtasker.Controllers
         #region Properties
         public WebUINotificater Notificater
         {
-            get { return _notificater ?? new WebUINotificater(UserGuid); }
-            set { _notificater = value; }
+            get
+            {
+                if(_notificater == null)
+                {
+                    _notificater = new WebUINotificater(UserGuid, _db);
+                }
+                return _notificater;
+            }
+            
         }
         #endregion
         // GET: Notification
@@ -66,10 +76,20 @@ namespace Runtasker.Controllers
         #region Dispose
         protected override void Dispose(bool disposing)
         {
-            if(_notificater != null)
+            if(disposing)
             {
-                _notificater.Dispose(disposing);
-                _notificater = null;
+                IDisposable[] toDisposes = new IDisposable[]
+                {
+                    _notificater, _db
+                };
+                for(int i = 0; i < toDisposes.Length; i++)
+                {
+                    if(toDisposes[i] != null)
+                    {
+                        toDisposes[i].Dispose();
+                        toDisposes[i] = null;
+                    }
+                }
             }
             
             base.Dispose(disposing);

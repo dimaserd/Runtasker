@@ -11,7 +11,7 @@ namespace Runtasker.Logic.Contexts
         
 
         #region Properties
-        public new IDbSet<ApplicationUser> Users
+        public new DbSet<ApplicationUser> Users
         {
             get
             {
@@ -24,7 +24,7 @@ namespace Runtasker.Logic.Contexts
             }
         }
 
-        public new IDbSet<IdentityRole> Roles
+        public new DbSet<IdentityRole> Roles
         {
             get
             {
@@ -37,7 +37,7 @@ namespace Runtasker.Logic.Contexts
             }
         }
 
-        public new IDbSet<OtherUserInfo> OtherUserInfos
+        public new DbSet<OtherUserInfo> OtherUserInfos
         {
             get
             {
@@ -49,7 +49,7 @@ namespace Runtasker.Logic.Contexts
             }
         }
 
-        public new IDbSet<Order> Orders
+        public new DbSet<Order> Orders
         {
             get
             {
@@ -62,7 +62,7 @@ namespace Runtasker.Logic.Contexts
             }
         }
 
-        public new IDbSet<Message> Messages
+        public new DbSet<Message> Messages
         {
             get
             {
@@ -75,7 +75,7 @@ namespace Runtasker.Logic.Contexts
             }
         }
 
-        public new IDbSet<Attachment> Attachments
+        public new DbSet<Attachment> Attachments
         {
             get
             {
@@ -88,7 +88,7 @@ namespace Runtasker.Logic.Contexts
             }
         }
 
-        public new IDbSet<Payment> Payments
+        public new DbSet<Payment> Payments
         {
             get
             {
@@ -101,7 +101,7 @@ namespace Runtasker.Logic.Contexts
             }
         }
 
-        public new IDbSet<Notification> Notifications
+        public new DbSet<Notification> Notifications
         {
             get
             {
@@ -114,7 +114,7 @@ namespace Runtasker.Logic.Contexts
             }
         }
 
-        public new IDbSet<Invitation> Invitations
+        public new DbSet<Invitation> Invitations
         {
             get
             {
@@ -127,7 +127,7 @@ namespace Runtasker.Logic.Contexts
             }
         }
 
-        public new IDbSet<PaymentTransaction> PaymentTransactions
+        public new DbSet<PaymentTransaction> PaymentTransactions
         {
             get
             {

@@ -9,7 +9,7 @@ namespace Runtasker.Logic.Workers.Notifications
     public class WebUINotificater : IDisposable
     {
         #region Constructors
-        public WebUINotificater(string userGuid, IMyDbContext context)
+        public WebUINotificater(string userGuid, MyDbContext context)
         {
             UserGuid = userGuid;
             Context = context;
@@ -26,7 +26,7 @@ namespace Runtasker.Logic.Workers.Notifications
         #endregion
 
         #region Private Properties
-        IMyDbContext Context { get; set; }
+        MyDbContext Context { get; set; }
         private string UserGuid { get; set; }
         #endregion
 
@@ -47,11 +47,11 @@ namespace Runtasker.Logic.Workers.Notifications
         public async Task<Notification> GetNotificationAsync()
         {
 
-            Notification Note = context.Notifications.FirstOrDefault(n => n.UserGuid == UserGuid);
+            Notification Note = Context.Notifications.FirstOrDefault(n => n.UserGuid == UserGuid);
             if (Note != null)
             {
-                context.Notifications.Remove(Note);
-                await context.SaveChangesAsync();
+                Context.Notifications.Remove(Note);
+                await Context.SaveChangesAsync();
             }
             return Note;
 

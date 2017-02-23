@@ -10,36 +10,36 @@ namespace Runtasker.Logic.Contexts.Fake
     public class FakeMyDbContext : IMyDbContext
     {
         #region Fields
-        InMemoryDbSet<ApplicationUser> _users;
+        DbSet<ApplicationUser> _users;
 
-        InMemoryDbSet<IdentityRole> _roles;
+        DbSet<IdentityRole> _roles;
 
-        InMemoryDbSet<OtherUserInfo> _otherUserInfos;
+        DbSet<OtherUserInfo> _otherUserInfos;
 
-        InMemoryDbSet<Order> _orders;
+        DbSet<Order> _orders;
 
-        InMemoryDbSet<Message> _messages;
+        DbSet<Message> _messages;
 
-        InMemoryDbSet<Attachment> _attachments;
+        DbSet<Attachment> _attachments;
 
-        InMemoryDbSet<Payment> _payments;
+        DbSet<Payment> _payments;
 
-        InMemoryDbSet<Notification> _notifications;
+        DbSet<Notification> _notifications;
 
-        InMemoryDbSet<Invitation> _invitations;
+        DbSet<Invitation> _invitations;
 
-        InMemoryDbSet<PaymentTransaction> _paymentTransactions;
+        DbSet<PaymentTransaction> _paymentTransactions;
 
         #endregion
 
         #region Properties
-        public IDbSet<ApplicationUser> Users
+        public DbSet<ApplicationUser> Users
         {
             get
             {
                 if(_users == null)
                 {
-                    _users = new InMemoryDbSet<ApplicationUser>();
+                    _users = new FakeDbSet<ApplicationUser>();
                 }
                 return _users;
             }
@@ -50,7 +50,7 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public IDbSet<IdentityRole> Roles
+        public DbSet<IdentityRole> Roles
         {
             get
             {
@@ -63,11 +63,11 @@ namespace Runtasker.Logic.Contexts.Fake
 
             set
             {
-                _roles = null;
+                _roles = new InMemoryDbSet<IdentityRole>();
             }
         }
 
-        public IDbSet<OtherUserInfo> OtherUserInfos
+        public DbSet<OtherUserInfo> OtherUserInfos
         {
             get
             {
@@ -84,7 +84,7 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public IDbSet<Order> Orders
+        public DbSet<Order> Orders
         {
             get
             {
@@ -101,7 +101,7 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public IDbSet<Message> Messages
+        public DbSet<Message> Messages
         {
             get
             {
@@ -118,7 +118,7 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public IDbSet<Attachment> Attachments
+        public DbSet<Attachment> Attachments
         {
             get
             {
@@ -135,7 +135,7 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public IDbSet<Payment> Payments
+        public DbSet<Payment> Payments
         {
             get
             {
@@ -152,7 +152,7 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public IDbSet<Notification> Notifications
+        public DbSet<Notification> Notifications
         {
             get
             {
@@ -169,7 +169,7 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public IDbSet<Invitation> Invitations
+        public DbSet<Invitation> Invitations
         {
             get
             {
@@ -186,7 +186,7 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public IDbSet<PaymentTransaction> PaymentTransactions
+        public DbSet<PaymentTransaction> PaymentTransactions
         {
             get
             {

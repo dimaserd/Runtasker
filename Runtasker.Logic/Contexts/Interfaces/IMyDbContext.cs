@@ -7,25 +7,25 @@ namespace Runtasker.Logic.Contexts.Interfaces
     public interface IMyDbContext
     {
         
-        IDbSet<ApplicationUser> Users { get; set; }
+        DbSet<ApplicationUser> Users { get; set; }
 
-        IDbSet<OtherUserInfo> OtherUserInfos { get; set; }
+        DbSet<OtherUserInfo> OtherUserInfos { get; set; }
 
         
 
-        IDbSet<Order> Orders { get; set; }
+        DbSet<Order> Orders { get; set; }
 
-        IDbSet<Message> Messages { get; set; }
+        DbSet<Message> Messages { get; set; }
 
-        IDbSet<Attachment> Attachments { get; set; }
+        DbSet<Attachment> Attachments { get; set; }
 
-        IDbSet<Payment> Payments { get; set; }
+        DbSet<Payment> Payments { get; set; }
 
-        IDbSet<Notification> Notifications { get; set; }
+        DbSet<Notification> Notifications { get; set; }
 
-        IDbSet<Invitation> Invitations { get; set; }
+        DbSet<Invitation> Invitations { get; set; }
 
-        IDbSet<PaymentTransaction> PaymentTransactions { get; set; }
+        DbSet<PaymentTransaction> PaymentTransactions { get; set; }
 
         void SaveChanges();
 

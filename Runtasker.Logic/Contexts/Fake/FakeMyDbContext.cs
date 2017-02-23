@@ -1,14 +1,49 @@
-﻿using FakeDbSet;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Runtasker.Logic.Contexts.Interfaces;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Entities;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
-using System.Threading.Tasks;
 
 namespace Runtasker.Logic.Contexts.Fake
 {
-    public class FakeMyDbContext : IMyDbContext
+    public class FakeMyDbContext : MyDbContext
     {
+        #region Methods
+        public static FakeMyDbContext CreateDatabase()
+        {
+            FakeMyDbContext db = new FakeMyDbContext();
+
+            ApplicationUser performer = new ApplicationUser
+            {
+                Id = Guid.NewGuid().ToString(),
+                Email = "dimaserd84@gmail.com",
+                EmailConfirmed = true,
+                UserName = "dimaserd84@gmail.com",
+                Name = "Dmitry"
+
+            };
+
+            ApplicationUser customer = new ApplicationUser
+            {
+                Id = Guid.NewGuid().ToString(),
+                Email = "dimaserd96@yandex.ru",
+                EmailConfirmed = true,
+                UserName = "dimaserd96@yandex.ru",
+                Name = "Dmitry",
+                Balance = 300
+                
+            };
+
+            List<ApplicationUser> users = new List<ApplicationUser>();
+            users.Add(performer);
+            users.Add(customer);
+
+            db.Users.AddRange(users);
+
+            return db;
+        }
+        #endregion
+
         #region Fields
         DbSet<ApplicationUser> _users;
 
@@ -33,7 +68,7 @@ namespace Runtasker.Logic.Contexts.Fake
         #endregion
 
         #region Properties
-        public DbSet<ApplicationUser> Users
+        public new DbSet<ApplicationUser> Users
         {
             get
             {
@@ -50,30 +85,30 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public DbSet<IdentityRole> Roles
+        public new DbSet<IdentityRole> Roles
         {
             get
             {
                 if(_roles == null)
                 {
-                    _roles = new InMemoryDbSet<IdentityRole>();
+                    _roles = new FakeDbSet<IdentityRole>();
                 }
                 return _roles;
             }
 
             set
             {
-                _roles = new InMemoryDbSet<IdentityRole>();
+                _roles = new FakeDbSet<IdentityRole>();
             }
         }
 
-        public DbSet<OtherUserInfo> OtherUserInfos
+        public new DbSet<OtherUserInfo> OtherUserInfos
         {
             get
             {
                 if(_otherUserInfos == null)
                 {
-                    _otherUserInfos = new InMemoryDbSet<OtherUserInfo>();
+                    _otherUserInfos = new FakeDbSet<OtherUserInfo>();
                 }
                 return _otherUserInfos;
             }
@@ -84,13 +119,13 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public DbSet<Order> Orders
+        public new DbSet<Order> Orders
         {
             get
             {
                 if(_orders == null)
                 {
-                    _orders = new InMemoryDbSet<Order>();
+                    _orders = new FakeDbSet<Order>();
                 }
                 return _orders;
             }
@@ -101,13 +136,13 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public DbSet<Message> Messages
+        public new DbSet<Message> Messages
         {
             get
             {
                 if(_messages == null)
                 {
-                    _messages = new InMemoryDbSet<Message>();
+                    _messages = new FakeDbSet<Message>();
                 }
                 return _messages;
             }
@@ -118,13 +153,13 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public DbSet<Attachment> Attachments
+        public new DbSet<Attachment> Attachments
         {
             get
             {
                 if(_attachments == null)
                 {
-                    _attachments = new InMemoryDbSet<Attachment>();
+                    _attachments = new FakeDbSet<Attachment>();
                 }
                 return _attachments;
             }
@@ -135,13 +170,13 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public DbSet<Payment> Payments
+        public new DbSet<Payment> Payments
         {
             get
             {
                 if(_payments == null)
                 {
-                    _payments = new InMemoryDbSet<Payment>();
+                    _payments = new FakeDbSet<Payment>();
                 }
                 return _payments;
             }
@@ -152,13 +187,13 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public DbSet<Notification> Notifications
+        public new DbSet<Notification> Notifications
         {
             get
             {
                 if(_notifications == null)
                 {
-                    _notifications = new InMemoryDbSet<Notification>();
+                    _notifications = new FakeDbSet<Notification>();
                 }
                 return _notifications;
             }
@@ -169,13 +204,13 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public DbSet<Invitation> Invitations
+        public new DbSet<Invitation> Invitations
         {
             get
             {
                 if(_invitations == null)
                 {
-                    _invitations = new InMemoryDbSet<Invitation>();
+                    _invitations = new FakeDbSet<Invitation>();
                 }
                 return _invitations;
             }
@@ -186,13 +221,13 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public DbSet<PaymentTransaction> PaymentTransactions
+        public new DbSet<PaymentTransaction> PaymentTransactions
         {
             get
             {
                 if(_paymentTransactions == null)
                 {
-                    _paymentTransactions = new InMemoryDbSet<PaymentTransaction>();
+                    _paymentTransactions = new FakeDbSet<PaymentTransaction>();
                 }
                 return _paymentTransactions;
             }
@@ -204,15 +239,6 @@ namespace Runtasker.Logic.Contexts.Fake
         }
         #endregion
 
-        public void SaveChanges()
-        {
-            
-        }
-
-        public async Task<int> SaveChangesAsync()
-        {
-            await Task.FromResult(0);
-            return 0;
-        }
+        
     }
 }

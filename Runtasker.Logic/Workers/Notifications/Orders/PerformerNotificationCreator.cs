@@ -150,6 +150,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
         #region Help Methods
         List<ApplicationUser> GetPerformersAndAdminsWithInfo()
         {
+            //ЗДесь приходиться возвращаться к обычному контексту
             RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(Db));
 
 

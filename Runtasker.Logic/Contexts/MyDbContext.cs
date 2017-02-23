@@ -4,6 +4,7 @@ using Runtasker.Logic.Entities;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using VkParser.Entities;
+using System;
 
 namespace Runtasker.Logic
 {
@@ -26,6 +27,12 @@ namespace Runtasker.Logic
             
         }
         #endregion
+
+        /// <summary>
+        /// Здесь почему то IDbSet
+        /// </summary>
+        
+
 
         public DbSet<OtherUserInfo> OtherUserInfos { get; set; }
 
@@ -54,6 +61,7 @@ namespace Runtasker.Logic
 
         public DbSet<VkPostLookUp> VkPostLookUps { get; set; }
 
+        
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -70,6 +78,7 @@ namespace Runtasker.Logic
             base.OnModelCreating(modelBuilder);
         }
 
+        
     }
 
 

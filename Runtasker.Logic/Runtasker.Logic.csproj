@@ -155,8 +155,8 @@
     <Compile Include="Contexts\Enumerations\ContextType.cs" />
     <Compile Include="Contexts\Fake\FakeDbSet.cs" />
     <Compile Include="Contexts\Fake\FakeMyDbContext.cs" />
-    <Compile Include="Contexts\Fake\FakeMyDbContextWithDbSet.cs" />
-    <Compile Include="Contexts\Fake\LocalDbContext.cs" />
+    <Compile Include="Contexts\Fake\TestDbContext.cs" />
+    <Compile Include="Contexts\Fake\TestDbSet.cs" />
     <Compile Include="Contexts\Interfaces\IApplicationDbContext.cs" />
     <Compile Include="Contexts\Interfaces\IMyDbContext.cs" />
     <Compile Include="Contexts\Interfaces\IMyDbContextWithDbSet.cs" />

@@ -8,7 +8,13 @@ using System.Linq.Expressions;
 
 namespace Runtasker.Logic.Contexts.Fake
 {
-    public class FakeDbSet<T> : DbSet<T> where T : class, IEnumerable//,IEnumerator
+    /// <summary>
+    /// This is an in-memory, List backed implementation of
+    /// Entity Framework's System.Data.Entity.IDbSet to use
+    /// for testing.
+    /// </summary>
+    /// <typeparam name="T">The type of entity to store.</typeparam>
+    public class FakeDbSet<T> : DbSet<T>, IDbSet<T> where T : class
     {
         private readonly List<T> _data;
 
@@ -22,40 +28,10 @@ namespace Runtasker.Logic.Contexts.Fake
             _data = new List<T>(entities);
         }
 
-        int index = -1;
-
-        // Реализуем интерфейс IEnumerable
-        public IEnumerator GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
-            return this as IEnumerator;
+            return _data.GetEnumerator();
         }
-
-        // Реализуем интерфейс IEnumerator
-        public bool MoveNext()
-        {
-            if (index == _data.Count - 1)
-            {
-                Reset();
-                return false;
-            }
-
-            index++;
-            return true;
-        }
-
-        public void Reset()
-        {
-            index = -1;
-        }
-
-        public object Current
-        {
-            get
-            {
-                return _data[index];
-            }
-        }
-
 
         IEnumerator IEnumerable.GetEnumerator()
         {

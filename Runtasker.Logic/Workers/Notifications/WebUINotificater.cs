@@ -1,4 +1,5 @@
-﻿using Runtasker.Logic.Entities;
+﻿using Runtasker.Logic.Contexts.Interfaces;
+using Runtasker.Logic.Entities;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,9 +9,10 @@ namespace Runtasker.Logic.Workers.Notifications
     public class WebUINotificater : IDisposable
     {
         #region Constructors
-        public WebUINotificater(string userGuid)
+        public WebUINotificater(string userGuid, IMyDbContext context)
         {
             UserGuid = userGuid;
+            Context = context;
             Preparations();
         }
         #endregion
@@ -24,7 +26,7 @@ namespace Runtasker.Logic.Workers.Notifications
         #endregion
 
         #region Private Properties
-        
+        IMyDbContext Context { get; set; }
         private string UserGuid { get; set; }
         #endregion
 
@@ -33,30 +35,26 @@ namespace Runtasker.Logic.Workers.Notifications
         //returned value could be null
         public Notification GetNotification()
         {
-            using (MyDbContext context = new MyDbContext())
+            Notification Note = Context.Notifications.FirstOrDefault(n => n.UserGuid == UserGuid);
+            if (Note != null)
             {
-                Notification Note = context.Notifications.FirstOrDefault(n => n.UserGuid == UserGuid);
-                if (Note != null)
-                {
-                    context.Notifications.Remove(Note);
-                    context.SaveChanges();
-                }
-                return Note;
+                Context.Notifications.Remove(Note);
+                Context.SaveChanges();
             }
+            return Note;
         }
 
         public async Task<Notification> GetNotificationAsync()
         {
-            using (MyDbContext context = new MyDbContext())
+
+            Notification Note = context.Notifications.FirstOrDefault(n => n.UserGuid == UserGuid);
+            if (Note != null)
             {
-                Notification Note = context.Notifications.FirstOrDefault(n => n.UserGuid == UserGuid);
-                if (Note != null)
-                {
-                    context.Notifications.Remove(Note);
-                    await context.SaveChangesAsync();
-                }
-                return Note;
+                context.Notifications.Remove(Note);
+                await context.SaveChangesAsync();
             }
+            return Note;
+
         }
         #endregion
 

@@ -172,7 +172,6 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.RepairConsole\bin\Debu
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.RepairConsole\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.RepairConsole\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.RepairConsole\bin\Debug\OpenPop.dll
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.RepairConsole\bin\Debug\FakeDbSet.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.RepairConsole\bin\Debug\Runtasker.Settings.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.RepairConsole\bin\Debug\Microsoft.Owin.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.RepairConsole\bin\Debug\System.Web.Optimization.dll

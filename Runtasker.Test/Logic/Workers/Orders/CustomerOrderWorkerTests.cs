@@ -1,20 +1,21 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Runtasker.Logic;
 using Runtasker.Logic.Contexts.Fake;
+using System.Linq;
 
 namespace Runtasker.Test.Logic.Workers.Orders
 {
     [TestClass]
     public class CustomerOrderWorkerTests
     {
-        LocalDbContext db = new LocalDbContext();
+        FakeMyDbContext db = FakeMyDbContext.CreateDatabase();
 
         [TestMethod]
         public void TestOrderCreation()
         {
+            Assert.AreEqual(2, db.Users.Count());
+            db.Attachments.Local.Where
             
-            //db.Users.Add()
-            
-            //CustomerOrderWorker orderWorker = new CustomerOrderWorker()
 
 
         }

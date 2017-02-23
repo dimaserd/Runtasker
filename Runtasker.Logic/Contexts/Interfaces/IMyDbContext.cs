@@ -7,7 +7,7 @@ namespace Runtasker.Logic.Contexts.Interfaces
     public interface IMyDbContext
     {
         
-        DbSet<ApplicationUser> Users { get; set; }
+        IDbSet<ApplicationUser> Users { get; }
 
         DbSet<OtherUserInfo> OtherUserInfos { get; set; }
 

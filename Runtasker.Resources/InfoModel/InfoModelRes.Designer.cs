@@ -61,20 +61,56 @@ namespace Runtasker.Resources.InfoModel {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Please, check your email, we sent you a confirmation message just click the link, it will confirm you automatically! We have prepared a little surprise  for you! It is waiting for your confirmation!.
+        ///   Ищет локализованную строку, похожую на So we have prepared a little surprise for you!.
         /// </summary>
-        public static string RegisterText {
+        public static string RegisterSurpriseText1 {
             get {
-                return ResourceManager.GetString("RegisterText", resourceCulture);
+                return ResourceManager.GetString("RegisterSurpriseText1", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на You have successfully registered on Runtasker.ru!.
+        ///   Ищет локализованную строку, похожую на Please check your email, we have sent you a confirmation email..
         /// </summary>
-        public static string RegisterTitle {
+        public static string RegisterText1 {
             get {
-                return ResourceManager.GetString("RegisterTitle", resourceCulture);
+                return ResourceManager.GetString("RegisterText1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на We are waiting for your account confirmation on.
+        /// </summary>
+        public static string RegisterText2 {
+            get {
+                return ResourceManager.GetString("RegisterText2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на There is one little step and you will join the.
+        /// </summary>
+        public static string RegisterTitle1 {
+            get {
+                return ResourceManager.GetString("RegisterTitle1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на community.
+        /// </summary>
+        public static string RegisterTitle2 {
+            get {
+                return ResourceManager.GetString("RegisterTitle2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Runtasker.
+        /// </summary>
+        public static string Runtasker {
+            get {
+                return ResourceManager.GetString("Runtasker", resourceCulture);
             }
         }
     }

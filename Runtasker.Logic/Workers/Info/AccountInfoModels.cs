@@ -1,22 +1,41 @@
-﻿
-
+﻿using Extensions.String;
+using Runtasker.LocaleBuilders.Models;
 using Runtasker.Logic.Models;
 using Runtasker.Resources.InfoModel;
 
 namespace Runtasker.Logic.Workers.Info
 {
     //a bunch of prepared InfoModels
-    public class AccountInfoModels
+    public class AccountInfoModels : UICultureSwitcher
     {
         public InfoModel ToConfirmEmail
         {
             get
             {
-                return new InfoModel
+                switch(UICultureName)
                 {
-                    Title = InfoModelRes.RegisterTitle,
-                    Text = InfoModelRes.RegisterText
-                };
+                    case "ru-RU":
+                        return new InfoModel
+                        {
+                            Title = InfoModelRes.RegisterTitle1 + 
+                            $" {InfoModelRes.Runtasker.WrapToStrong()}",
+                            Text = $"{InfoModelRes.RegisterText1} " + 
+                            $"{InfoModelRes.RegisterSurpriseText1.WrapToStrong().WrapToEm()} " +
+                            $"{InfoModelRes.RegisterText2} {InfoModelRes.Runtasker.WrapToStrong().WrapToEm()}!"
+                        };
+
+                    default:
+                        return new InfoModel
+                        {
+                            Title = InfoModelRes.RegisterTitle1 + 
+                            $" {InfoModelRes.Runtasker.WrapToStrong()} " +
+                            InfoModelRes.RegisterTitle2,
+                            Text = $"{InfoModelRes.RegisterText1} " +
+                            $"{InfoModelRes.RegisterSurpriseText1.WrapToStrong().WrapToEm()} " +
+                            $"{InfoModelRes.RegisterText2} {InfoModelRes.Runtasker.WrapToStrong().WrapToEm()}!"
+                        };
+                }
+                
             }
         }
     }

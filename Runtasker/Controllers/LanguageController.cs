@@ -35,7 +35,7 @@ namespace Runtasker.Controllers
         // GET: Language
         public ActionResult Index()
         {
-            return View();
+            return View("NewIndex");
         }
 
         public ActionResult Change(string LanguageAbbrevation)
@@ -51,6 +51,26 @@ namespace Runtasker.Controllers
             }
             
             
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult ChangeWithRedirect(string LanguageAbbrevation, string returnUrl)
+        {
+            if (LanguageAbbrevation != null && IsCorrectLang(LanguageAbbrevation))
+            {
+                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(LanguageAbbrevation);
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(LanguageAbbrevation);
+
+                HttpCookie cookie = new HttpCookie("Language");
+                cookie.Value = LanguageAbbrevation;
+                Response.Cookies.Add(cookie);
+            }
+
+            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
 
             return RedirectToAction("Index", "Home");
         }

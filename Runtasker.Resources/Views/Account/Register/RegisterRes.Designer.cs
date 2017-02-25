@@ -160,7 +160,7 @@ namespace Runtasker.Resources.Views.Account.Register {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Place here your homework assignments..
+        ///   Ищет локализованную строку, похожую на Join the Runtasker community.
         /// </summary>
         public static string RegPlus1 {
             get {
@@ -178,7 +178,7 @@ namespace Runtasker.Resources.Views.Account.Register {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Get bonus 300 roubles.
+        ///   Ищет локализованную строку, похожую на Place your assignments on Runtasker.
         /// </summary>
         public static string RegPlus3 {
             get {
@@ -187,11 +187,29 @@ namespace Runtasker.Resources.Views.Account.Register {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Connect with the Runtasker community.
+        ///   Ищет локализованную строку, похожую на Get discounts on Runtasker.
         /// </summary>
         public static string RegPlus4 {
             get {
                 return ResourceManager.GetString("RegPlus4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Get detailed consultation on Runtasker.
+        /// </summary>
+        public static string RegPlus5 {
+            get {
+                return ResourceManager.GetString("RegPlus5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Get 300 bonus roubles on Runtasker.
+        /// </summary>
+        public static string RegPlus6 {
+            get {
+                return ResourceManager.GetString("RegPlus6", resourceCulture);
             }
         }
         

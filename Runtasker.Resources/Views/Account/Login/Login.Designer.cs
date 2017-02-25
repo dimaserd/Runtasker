@@ -151,6 +151,15 @@ namespace Runtasker.Resources.Views.Account.Login {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Runtasker.
+        /// </summary>
+        public static string Runtasker {
+            get {
+                return ResourceManager.GetString("Runtasker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Sign in.
         /// </summary>
         public static string SignIn {
@@ -169,7 +178,7 @@ namespace Runtasker.Resources.Views.Account.Login {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Sign In.
+        ///   Ищет локализованную строку, похожую на Sign in.
         /// </summary>
         public static string Title {
             get {
@@ -201,6 +210,15 @@ namespace Runtasker.Resources.Views.Account.Login {
         public static string ViaSocials2 {
             get {
                 return ResourceManager.GetString("ViaSocials2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Welcome to.
+        /// </summary>
+        public static string WelcomeTitle1 {
+            get {
+                return ResourceManager.GetString("WelcomeTitle1", resourceCulture);
             }
         }
     }

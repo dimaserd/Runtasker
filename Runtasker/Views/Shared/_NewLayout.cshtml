@@ -105,9 +105,7 @@
 
 
             <!-- Logo text or image -->
-            <a class="logo" href="/Home/Index">
-                <span class="glyphicon glyphicon-education"></span>RUNTASKER
-            </a>
+            @LogoHelper.GetLogoWithImage()
 
 @if (Request.IsAuthenticated)
 {

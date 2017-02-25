@@ -117,6 +117,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="LocaleBuilders\" />
     <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Choose>

@@ -117,10 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RegisterText" xml:space="preserve">
-    <value>Пожалуйста, проверьте вашу электронную почту, мы отправили вам подверждающее письмо, нажмите на ссылку, это подтвердит вас автоматически! Так же мы приготовили для вас небольшой сюрприз! Ждем подтверждения вашей учетной записи на Runtasker!</value>
+  <data name="RegisterSurpriseText1" xml:space="preserve">
+    <value>Так же мы приготовили для вас небольшой сюрприз!</value>
+  </data>
+  <data name="RegisterText1" xml:space="preserve">
+    <value>Пожалуйста, проверьте вашу электронную почту, мы отправили вам подтверждающие письмо.</value>
+  </data>
+  <data name="RegisterText2" xml:space="preserve">
+    <value>Ждем подтверждения вашей учетной записи на</value>
   </data>
   <data name="RegisterTitle" xml:space="preserve">
-    <value>Вы успешно зарегистрировались на Runtasker!</value>
+    <value>Остался последний шаг, и вы станете частью сообщества</value>
+  </data>
+  <data name="Runtasker" xml:space="preserve">
+    <value>Runtasker</value>
   </data>
 </root>

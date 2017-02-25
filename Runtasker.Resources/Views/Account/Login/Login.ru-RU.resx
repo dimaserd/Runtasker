@@ -150,8 +150,8 @@
   <data name="TakesSeconds" xml:space="preserve">
     <value>это займет всего несколько секунд</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>Войти на сайт</value>
+  <data name="WelcomeTitle1" xml:space="preserve">
+    <value>Добро пожаловать на</value>
   </data>
   <data name="VerbWith" xml:space="preserve">
     <value>Войти с</value>
@@ -160,9 +160,15 @@
     <value>Войти</value>
   </data>
   <data name="ViaSocials2" xml:space="preserve">
-    <value>через социальные сети</value>
+    <value>через аккаунты в социальных сетях</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Запомнить меня</value>
+  </data>
+  <data name="Runtasker" xml:space="preserve">
+    <value>Runtasker</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Войти на сайт</value>
   </data>
 </root>

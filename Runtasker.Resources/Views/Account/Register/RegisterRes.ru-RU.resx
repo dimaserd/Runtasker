@@ -154,24 +154,30 @@
     <value>Зарегистрироваться</value>
   </data>
   <data name="RegPlus1" xml:space="preserve">
-    <value>Размещать здесь свои домашние задания</value>
-  </data>
-  <data name="RegPlus2" xml:space="preserve">
-    <value>Получать бесплатную поддержку в чате</value>
-  </data>
-  <data name="RegPlus3" xml:space="preserve">
-    <value>Получить бонусные 300 рублей</value>
-  </data>
-  <data name="RegPlus4" xml:space="preserve">
     <value>Присоединиться к сообществу Runtasker</value>
   </data>
+  <data name="RegPlus2" xml:space="preserve">
+    <value>Получать поддержку в сообществе Runtasker</value>
+  </data>
+  <data name="RegPlus3" xml:space="preserve">
+    <value>Заказывать работы на Runtasker</value>
+  </data>
+  <data name="RegPlus4" xml:space="preserve">
+    <value>Получать скидки на Runtasker</value>
+  </data>
   <data name="RegPlusesHeader" xml:space="preserve">
-    <value>Как только вы зарегистрировались вы можете:</value>
+    <value>Зарегистрированные пользователи могут:</value>
   </data>
   <data name="WhyToReg" xml:space="preserve">
-    <value>Для чего регистрироваться?</value>
+    <value>Какие плюсы Вам даёт регистрация?</value>
   </data>
   <data name="WhyToRegDesc" xml:space="preserve">
-    <value>Регистрация на Runtasker - это просто, быстро и бесплатно.</value>
+    <value>Регистрация на Runtasker –это просто, быстро и полезно.</value>
+  </data>
+  <data name="RegPlus5" xml:space="preserve">
+    <value>Получить подробную консультацию на Runtasker</value>
+  </data>
+  <data name="RegPlus6" xml:space="preserve">
+    <value>Получить бонусные 300 рублей на Runtasker</value>
   </data>
 </root>

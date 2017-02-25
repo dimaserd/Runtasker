@@ -9,15 +9,11 @@
     ViewBag.Title = viewModel["Title"];
 }
 
-    
-
-    
-
 
 <!-- PAGE TITLE -->
 <header id="page-title">
     <div class="container">
-        <h1>@viewModel["Title"]</h1>
+        <h1>@viewModel["WelcomeHtml"].ToHtml()</h1>
 
         <ul class="breadcrumb">
             <li><a href="@Url.Action("Index", "Home")">@viewModel["HomeNav"]</a></li>

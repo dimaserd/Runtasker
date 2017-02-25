@@ -1,0 +1,87 @@
+﻿@using Extensions.String
+@{
+    Layout = null;
+    string lang = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+    string rus = "Русский";
+    string eng = "English";
+}
+
+<div class="btn-group pull-right hidden-xs">
+    <button id="langToogler" class="dropdown-toggle language" type="button">
+        @if (lang == "ru-RU")
+        {
+            <img src="~/assets/images/flags/ru.png" width="16" height="11" alt="RUS Язык" />
+            @rus
+            <span class="caret"></span>
+        }
+        else
+        {
+            <img src="~/assets/images/flags/gb.png" width="16" height="11" alt="EN Language" />
+            @eng
+            <span class="caret"></span>
+        }
+
+    </button>
+
+    <ul class="dropdown-menu">
+        <li>
+            <a id="engBtn">
+                <img src="~/assets/images/flags/gb.png" width="16" height="11" alt="EN Language" /> [GB] English
+            </a>
+        </li>
+        <li>
+            <a id="ruBtn">
+                <img src="~/assets/images/flags/ru.png" width="16" height="11" alt="RU Language" /> [RUS] Русский
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--Скрипт раскрывалки-->
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            $("#langToogler").click(function () {
+                if ($(this).parent().hasClass("open"))
+                {
+                    $(this).parent().removeClass("open");
+                }
+                else
+                {
+                    if ($("#quick_sign_in").parent().hasClass("open"))
+                    {
+                        $("#quick_sign_in").parent().removeClass("open")
+                    }
+                    $(this).parent().addClass("open");
+                }
+            })
+
+
+        }, false);
+</script>
+<!--/Скрипт раскрывалки-->
+
+<!--Скрипт посыла на смену языка-->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        var ruBtn = $("#ruBtn");
+
+        var engBtn = $("#engBtn");
+
+        ruBtn.click(function (e) {
+            e.preventDefault();
+            var returnUrl = window.location.pathname;
+            var link = "/Language/ChangeWithRedirect?LanguageAbbrevation=ru-RU&returnUrl=" + returnUrl;
+            window.location.href = link;
+        });
+
+        engBtn.click(function (e) {
+            e.preventDefault();
+            var returnUrl = window.location.pathname;
+            var link = "/Language/ChangeWithRedirect?LanguageAbbrevation=en&returnUrl=" + returnUrl;
+            window.location.href = link;
+        });
+    })
+</script>
+<!--/Скрипт посыла на смену языка-->

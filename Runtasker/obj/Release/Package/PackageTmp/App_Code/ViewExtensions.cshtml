@@ -37,7 +37,7 @@
 
 @helper GetDateParseScripts()
 {
-string langCode = System.Threading.Thread.CurrentThread.CurrentCulture.DisplayName;
+string langCode = Runtasker.LocaleBuiders.Statics.LanguageStatic.LanguageCode;
 
 switch (langCode)
 {
@@ -65,7 +65,7 @@ switch (langCode)
 
 @helper GetDateTimeScriptsAndStyles(string dateTimePickerId)
 {
-string langCode = Runtaker.LocaleBuiders.Statics.LanguageStatic.JSLangCode;
+string langCode = Runtasker.LocaleBuiders.Statics.LanguageStatic.JSLangCode;
 DateTime dateNow = DateTime.Now;
 if (string.IsNullOrEmpty(dateTimePickerId))
 {

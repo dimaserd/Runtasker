@@ -1,6 +1,5 @@
-﻿using Runtaker.LocaleBuiders.Statics;
+﻿using Runtasker.LocaleBuiders.Statics;
 using System;
-using System.Threading;
 
 namespace Runtasker.LocaleBuilders.Models
 {

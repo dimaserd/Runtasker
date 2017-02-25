@@ -236,7 +236,6 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\System.Web.WebPage
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\VkNet.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\VkParser.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\WebGrease.dll
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\FakeDbSet.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\OpenPop.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\Extensions.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\HtmlExtensions.pdb

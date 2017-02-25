@@ -5,10 +5,10 @@
     </a>
 }
 
-@helper GetLogoLinkWithImage()
+@helper GetLogoLinkWithImage(int pixels)
 {
     <a class="logo" href="/Home/Index">
-        <img height="50" width="50" src="~/assets/logo/logo.png"/>RUNTASKER
+        <img height="@pixels" width="@pixels" src="~/assets/logo/logo.png"/>RUNTASKER
     </a>
 }
 
@@ -19,6 +19,6 @@
 
 @helper GetLogoWithImage(int pixels)
 {
-    <img height="@pixels" width="@pixels" src="~/assets/logo/logo.png" />
+    <img height="@pixels" width="@pixels" class="hidden-xs" src="~/assets/logo/logo.png" />
 }
 

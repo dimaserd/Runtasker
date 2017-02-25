@@ -131,7 +131,6 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Relea
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\Runtaker.LocaleBuiders.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\Logic.Extensions.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\Microsoft.AspNet.Identity.Owin.dll
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\FakeDbSet.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\OpenPop.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\Runtasker.Settings.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\System.Web.Razor.dll

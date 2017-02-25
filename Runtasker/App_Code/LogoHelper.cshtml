@@ -1,13 +1,24 @@
-﻿@helper GetLogo()
+﻿@helper GetLogoLink()
 {
     <a class="logo" href="/Home/Index">
         <span class="glyphicon glyphicon-education"></span>RUNTASKER
     </a>
 }
 
-@helper GetLogoWithImage()
+@helper GetLogoLinkWithImage()
 {
     <a class="logo" href="/Home/Index">
-        <img height="30" width="30" src="~/assets/logo/logo.png"/>RUNTASKER
+        <img height="50" width="50" src="~/assets/logo/logo.png"/>RUNTASKER
     </a>
 }
+
+@helper GetLogo()
+{
+    <span class="glyphicon glyphicon-education hidden-xs"></span>
+}
+
+@helper GetLogoWithImage(int pixels)
+{
+    <img height="@pixels" width="@pixels" src="~/assets/logo/logo.png" />
+}
+

@@ -1,4 +1,4 @@
-﻿using Runtasker.LocaleBuiders.Statics;
+﻿using Runtasker.LocaleBuilders.Statics;
 using System;
 
 namespace Runtasker.LocaleBuilders.Models

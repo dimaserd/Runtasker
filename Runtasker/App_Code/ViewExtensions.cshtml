@@ -37,11 +37,11 @@
 
 @helper GetDateParseScripts()
 {
-string langCode = Runtasker.LocaleBuiders.Statics.LanguageStatic.LanguageCode;
+string langCode = Runtasker.LocaleBuilders.Statics.LanguageStatic.LanguageCode;
 
 switch (langCode)
 {
-    case "Русский (Россия)":
+    case "ru-RU":
     <script>
         function parseDate(str) {
             var dmy = str.split('.');
@@ -65,8 +65,7 @@ switch (langCode)
 
 @helper GetDateTimeScriptsAndStyles(string dateTimePickerId)
 {
-string langCode = Runtasker.LocaleBuiders.Statics.LanguageStatic.JSLangCode;
-DateTime dateNow = DateTime.Now;
+string langCode = Runtasker.LocaleBuilders.Statics.LanguageStatic.JSLangCode;
 if (string.IsNullOrEmpty(dateTimePickerId))
 {
     <script>

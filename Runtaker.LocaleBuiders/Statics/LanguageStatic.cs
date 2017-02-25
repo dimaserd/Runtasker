@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace Runtasker.LocaleBuiders.Statics
+namespace Runtasker.LocaleBuilders.Statics
 {
     public static class LanguageStatic
     {

@@ -74,5 +74,11 @@ namespace Runtasker.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        public string TestLangCodes()
+        {
+            return $"Resource LangCode: {LocaleBuilders.Statics.LanguageStatic.LanguageCode}\n" +
+                $"JS LangCode: {LocaleBuilders.Statics.LanguageStatic.JSLangCode}";
+        }
     }
 }

@@ -77,7 +77,9 @@ namespace Runtasker.Controllers
 
         public string TestLangCodes()
         {
-            return $"Resource LangCode: {LocaleBuilders.Statics.LanguageStatic.LanguageCode}\n" +
+
+            return $"ThreadCode: {Thread.CurrentThread.CurrentCulture.DisplayName}\n" + 
+                $"Resource LangCode: {LocaleBuilders.Statics.LanguageStatic.LanguageCode}\n" +
                 $"JS LangCode: {LocaleBuilders.Statics.LanguageStatic.JSLangCode}";
         }
     }

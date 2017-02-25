@@ -12,7 +12,11 @@ namespace Runtasker.LocaleBuilders.Statics
                 string langText = Thread.CurrentThread.CurrentCulture.DisplayName;
                 switch(langText)
                 {
+                    
                     case "Русский (Россия)":
+                        return "ru-RU";
+
+                    case "Russian(Russia)":
                         return "ru-RU";
 
                     default:

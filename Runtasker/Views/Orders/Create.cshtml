@@ -269,7 +269,12 @@
 
 
         fakeCreate.click(function(){
- 
+
+            if (subjectList.val() != 0)
+            {
+                otherSubject.val("Selected");
+            }
+
             if(hasFilesToUpload())
             {
                 console.log("has files");

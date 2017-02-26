@@ -16,7 +16,7 @@ namespace Runtasker.LocaleBuilders.Statics
                     case "Русский (Россия)":
                         return "ru-RU";
 
-                    case "Russian(Russia)":
+                    case "Russian (Russia)":
                         return "ru-RU";
 
                     default:

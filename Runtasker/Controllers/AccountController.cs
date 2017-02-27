@@ -733,9 +733,7 @@ namespace Runtasker.Controllers
 
                     SendConfirmationEmail(user, providerName: model.ProviderName);
 
-                    InfoModel infoModel = InfoModels.ToConfirmEmail;
-
-                    return RedirectToAction("Info", "Notification", routeValues: infoModel);
+                    return RedirectToAction("Info", "Notification", routeValues: new { type = "toConfirmEmail"});
                 }
 
                 AddErrors(result);

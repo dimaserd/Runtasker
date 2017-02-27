@@ -126,8 +126,11 @@
   <data name="RegisterText2" xml:space="preserve">
     <value>Ждем подтверждения вашей учетной записи на</value>
   </data>
-  <data name="RegisterTitle" xml:space="preserve">
+  <data name="RegisterTitle1" xml:space="preserve">
     <value>Остался последний шаг, и вы станете частью сообщества</value>
+  </data>
+  <data name="RegisterTitle2" xml:space="preserve">
+    <value />
   </data>
   <data name="Runtasker" xml:space="preserve">
     <value>Runtasker</value>

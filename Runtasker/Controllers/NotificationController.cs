@@ -4,6 +4,7 @@ using Runtasker.Logic.Contexts;
 using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
+using Runtasker.Logic.Workers.Info;
 using Runtasker.Logic.Workers.Notifications;
 using System;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace Runtasker.Controllers
     {
         #region Private Fields
         IMyDbContext _db = new MyDbContext();
+
+        AccountInfoModels _infoModels;
 
         WebUINotificater _notificater;
 
@@ -49,9 +52,21 @@ namespace Runtasker.Controllers
             }
             
         }
+
+        AccountInfoModels InfoModels
+        {
+            get
+            {
+                if(_infoModels == null)
+                {
+                    _infoModels = new AccountInfoModels();
+                }
+                return _infoModels;
+            }
+        }
         #endregion
         // GET: Notification
-        
+
         public ActionResult Index()
         {
             Notification model = Notificater.GetNotification();
@@ -70,9 +85,15 @@ namespace Runtasker.Controllers
             return PartialView(viewName: "Index", model: model);
         }
 
-        public ActionResult Info(InfoModel model)
+        public ActionResult Info(string type)
         {
-            return View(model);
+            if(type == "toConfirmEmail")
+            {
+                InfoModel infoModel = InfoModels.ToConfirmEmail;
+                return View(infoModel);
+            }
+
+            return RedirectToAction("Index", "Home");
         }
 
         #region Dispose

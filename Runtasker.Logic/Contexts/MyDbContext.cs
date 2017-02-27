@@ -2,13 +2,12 @@
 using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using System.Data.Entity;
-using System.Threading.Tasks;
 using VkParser.Entities;
 using System;
 
 namespace Runtasker.Logic
 {
-    public class MyDbContext : ApplicationDbContext
+    public class MyDbContext : ApplicationDbContext, IMyDbContext
     {
         #region Constructors
         public MyDbContext() : base()
@@ -28,11 +27,7 @@ namespace Runtasker.Logic
         }
         #endregion
 
-        /// <summary>
-        /// Здесь почему то IDbSet
-        /// </summary>
         
-
 
         public DbSet<OtherUserInfo> OtherUserInfos { get; set; }
 
@@ -78,7 +73,10 @@ namespace Runtasker.Logic
             base.OnModelCreating(modelBuilder);
         }
 
-        
+        void IMyDbContext.SaveChanges()
+        {
+            base.SaveChanges();
+        }
     }
 
 

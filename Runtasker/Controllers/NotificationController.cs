@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Runtasker.Logic;
+using Runtasker.Logic.Contexts;
+using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers.Notifications;
@@ -13,7 +15,7 @@ namespace Runtasker.Controllers
     public class NotificationController : Controller
     {
         #region Private Fields
-        MyDbContext _db = new MyDbContext();
+        IMyDbContext _db = new MyDbContext();
 
         WebUINotificater _notificater;
 

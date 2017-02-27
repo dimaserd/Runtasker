@@ -1,158 +1,124 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using Runtasker.Logic.Contexts.Interfaces;
+﻿using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using System.Data.Entity;
 using System.Threading.Tasks;
 
 namespace Runtasker.Logic.Contexts
 {
-    public class MyNewDbContext : MyDbContext, IMyDbContext
-    {
+    //public class MyNewDbContext : MyDbContext, IMyDbContext
+    //{
+    //    #region Fiels
+    //    DbSet<Notification> _notifications;
+    //    #endregion
+
+    //    #region Properties
+    //    public override IDbSet<ApplicationUser> Users
+    //    {
+    //        get
+    //        {
+    //            return base.Users;
+    //        }
+
+            
+    //    }
+
         
 
-        #region Properties
-        public new DbSet<ApplicationUser> Users
-        {
-            get
-            {
-                return Users;
-            }
+    //    public override DbSet<OtherUserInfo> OtherUserInfos
+    //    {
+    //        get
+    //        {
+    //            return base.OtherUserInfos;
+    //        }
+            
+    //    }
 
-            set
-            {
-                Users = value;
-            }
-        }
+    //    public override DbSet<Order> Orders
+    //    {
+    //        get
+    //        {
+    //            return base.Orders;
+    //        }
 
-        public new DbSet<IdentityRole> Roles
-        {
-            get
-            {
-                return Roles;
-            }
+            
+    //    }
 
-            set
-            {
-                Roles = value;
-            }
-        }
+    //    public override DbSet<Message> Messages
+    //    {
+    //        get
+    //        {
+    //            return base.Messages;
+    //        }
 
-        public new DbSet<OtherUserInfo> OtherUserInfos
-        {
-            get
-            {
-                return OtherUserInfos;
-            }
-            set
-            {
-                OtherUserInfos = value;
-            }
-        }
+            
+    //    }
 
-        public new DbSet<Order> Orders
-        {
-            get
-            {
-                return Orders;
-            }
+    //    public override DbSet<Attachment> Attachments
+    //    {
+    //        get
+    //        {
+    //            return base.Attachments;
+    //        }
 
-            set
-            {
-                Orders = value;
-            }
-        }
+            
+    //    }
 
-        public new DbSet<Message> Messages
-        {
-            get
-            {
-                return Messages;
-            }
+    //    public override DbSet<Payment> Payments
+    //    {
+    //        get
+    //        {
+    //            return base.Payments;
+    //        }
 
-            set
-            {
-                Messages = value;
-            }
-        }
+            
+    //    }
 
-        public new DbSet<Attachment> Attachments
-        {
-            get
-            {
-                return Attachments;
-            }
+    //    public new DbSet<Notification> Notifications
+    //    {
+    //        get
+    //        {
+    //            if(_notifications == null)
+    //            {
+                    
+    //            }
+    //            return base.Notifications;
+    //        }
 
-            set
-            {
-                Attachments = value;
-            }
-        }
+            
+    //    }
 
-        public new DbSet<Payment> Payments
-        {
-            get
-            {
-                return Payments;
-            }
+    //    public override DbSet<Invitation> Invitations
+    //    {
+    //        get
+    //        {
+    //            return Invitations;
+    //        }
 
-            set
-            {
-                Payments = value;
-            }
-        }
+            
+    //    }
 
-        public new DbSet<Notification> Notifications
-        {
-            get
-            {
-                return Notifications;
-            }
+    //    public override DbSet<PaymentTransaction> PaymentTransactions
+    //    {
+    //        get
+    //        {
+    //            return PaymentTransactions;
+    //        }
 
-            set
-            {
-                Notifications = value;
-            }
-        }
-
-        public new DbSet<Invitation> Invitations
-        {
-            get
-            {
-                return Invitations;
-            }
-
-            set
-            {
-                Invitations = value;
-            }
-        }
-
-        public new DbSet<PaymentTransaction> PaymentTransactions
-        {
-            get
-            {
-                return PaymentTransactions;
-            }
-
-            set
-            {
-                PaymentTransactions = value;
-            }
-        }
+    //    }
 
 
-        #endregion
+    //    #endregion
 
-        #region Methods
-        public new void SaveChanges()
-        {
-            SaveChanges();
-        }
+    //    #region Methods
+    //    public new void SaveChanges()
+    //    {
+    //        base.SaveChanges();
+    //    }
 
-        public new Task<int> SaveChangesAsync()
-        {
-            return SaveChangesAsync();
-        }
-        #endregion
-    }
+    //    public override Task<int> SaveChangesAsync()
+    //    {
+    //        return base.SaveChangesAsync();
+    //    }
+    //    #endregion
+    //}
 }

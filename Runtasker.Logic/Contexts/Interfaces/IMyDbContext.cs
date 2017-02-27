@@ -1,31 +1,32 @@
 ﻿using Runtasker.Logic.Entities;
+using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
 
 namespace Runtasker.Logic.Contexts.Interfaces
 {
-    public interface IMyDbContext
+    public interface IMyDbContext: IDisposable
     {
         
         IDbSet<ApplicationUser> Users { get; }
 
-        DbSet<OtherUserInfo> OtherUserInfos { get; set; }
+        DbSet<OtherUserInfo> OtherUserInfos { get; }
 
         
 
-        DbSet<Order> Orders { get; set; }
+        DbSet<Order> Orders { get;  }
 
-        DbSet<Message> Messages { get; set; }
+        DbSet<Message> Messages { get;  }
 
-        DbSet<Attachment> Attachments { get; set; }
+        DbSet<Attachment> Attachments { get; }
 
-        DbSet<Payment> Payments { get; set; }
+        DbSet<Payment> Payments { get; }
 
-        DbSet<Notification> Notifications { get; set; }
+        DbSet<Notification> Notifications { get; }
 
-        DbSet<Invitation> Invitations { get; set; }
+        DbSet<Invitation> Invitations { get; }
 
-        DbSet<PaymentTransaction> PaymentTransactions { get; set; }
+        DbSet<PaymentTransaction> PaymentTransactions { get; }
 
         void SaveChanges();
 

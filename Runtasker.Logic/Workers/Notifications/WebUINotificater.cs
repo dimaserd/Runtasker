@@ -9,7 +9,7 @@ namespace Runtasker.Logic.Workers.Notifications
     public class WebUINotificater : IDisposable
     {
         #region Constructors
-        public WebUINotificater(string userGuid, MyDbContext context)
+        public WebUINotificater(string userGuid, IMyDbContext context)
         {
             UserGuid = userGuid;
             Context = context;
@@ -26,7 +26,7 @@ namespace Runtasker.Logic.Workers.Notifications
         #endregion
 
         #region Private Properties
-        MyDbContext Context { get; set; }
+        IMyDbContext Context { get; set; }
         private string UserGuid { get; set; }
         #endregion
 

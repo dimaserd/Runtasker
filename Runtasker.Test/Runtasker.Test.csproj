@@ -80,6 +80,7 @@
     <Compile Include="HtmlExtensionsTest.cs" />
     <Compile Include="HtmlExtensionTest.cs" />
     <Compile Include="LocaleCostylsTests.cs" />
+    <Compile Include="Logic\Workers\Notifications\NotificationsTestClass.cs" />
     <Compile Include="Logic\Workers\Orders\CustomerOrderWorkerTests.cs" />
     <Compile Include="MessageWorkerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

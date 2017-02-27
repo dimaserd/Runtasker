@@ -2,6 +2,7 @@
 using HtmlExtensions.Renderers;
 using Runtasker.LocaleBuilders.Models;
 using Runtasker.LocaleBuilders.Notification;
+using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations.OrderWorker;
 using Runtasker.Logic.Models.VkNotificater;
@@ -19,7 +20,7 @@ namespace Runtasker.Logic.Workers.Notifications
     public class CustomerOrderNotificationMethods
     {
         #region Constructors
-        public CustomerOrderNotificationMethods(MyDbContext context)
+        public CustomerOrderNotificationMethods(IMyDbContext context)
         {
             Context = context;
             Construct();
@@ -47,7 +48,7 @@ namespace Runtasker.Logic.Workers.Notifications
 
         CustomerOrderNotificationBuilder ModelBuilder { get; set; }
 
-        MyDbContext Context { get; set; }
+        IMyDbContext Context { get; set; }
         #endregion
 
         #region Public Methods

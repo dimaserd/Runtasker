@@ -1,4 +1,5 @@
-﻿using Runtasker.Logic.Entities;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Runtasker.Logic.Entities;
 using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace Runtasker.Logic.Contexts.Interfaces
     {
         
         IDbSet<ApplicationUser> Users { get; }
+
+        IDbSet<IdentityRole> Roles { get; }
 
         DbSet<OtherUserInfo> OtherUserInfos { get; }
 

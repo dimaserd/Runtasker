@@ -1,5 +1,6 @@
 ﻿using HtmlExtensions.Renderers;
 using Logic.Extensions.Models;
+using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations.OrderWorker;
 using Runtasker.Logic.Models;
@@ -19,7 +20,7 @@ namespace Runtasker.Logic.Workers.Orders
     public class CustomerOrderWorker : OrdersWorkerBase
     {
         #region Constructors
-        public CustomerOrderWorker(MyDbContext context, string userGuid) : base(userGuid)
+        public CustomerOrderWorker(IMyDbContext context, string userGuid) : base(userGuid)
         {
             Context = context;
             Construct();
@@ -39,7 +40,7 @@ namespace Runtasker.Logic.Workers.Orders
         #endregion
 
         #region Properties
-        MyDbContext Context { get; set; }
+        IMyDbContext Context { get; set; }
 
         CustomerOrderNotificationMethods Notificater { get; set; }
 
@@ -131,7 +132,8 @@ namespace Runtasker.Logic.Workers.Orders
 
             return new AddDescriptionModel
             {
-                OrderId = order.Id
+                OrderId = order.Id,
+                Description = order.Description
             };
         }
 

@@ -1,4 +1,5 @@
-﻿using Runtasker.Logic.Entities;
+﻿using Runtasker.Logic.Contexts.Interfaces;
+using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers.Files;
 using System;
@@ -170,7 +171,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
     public class ChatHubMethods
     {
         #region Constructors
-        public ChatHubMethods(MyDbContext context, SuperFileWorker fileworker)
+        public ChatHubMethods(IMyDbContext context, SuperFileWorker fileworker)
         {
             Context = context;
             FileWorker = fileworker;
@@ -178,9 +179,9 @@ namespace Runtasker.Logic.Workers.MessageWorker
         #endregion
 
         #region Private Fields
-        private MyDbContext Context { get; set; }
+        IMyDbContext Context { get; set; }
 
-        private SuperFileWorker FileWorker { get; set; }
+        SuperFileWorker FileWorker { get; set; }
         #endregion
 
         #region Public Methods

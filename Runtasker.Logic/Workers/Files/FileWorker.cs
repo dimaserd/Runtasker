@@ -1,4 +1,5 @@
-﻿using Runtasker.Logic.Workers.Attachments;
+﻿using Runtasker.Logic.Contexts.Interfaces;
+using Runtasker.Logic.Workers.Attachments;
 using System.IO;
 
 namespace Runtasker.Logic.Workers.Files
@@ -6,7 +7,7 @@ namespace Runtasker.Logic.Workers.Files
     public class SuperFileWorker
     {
         #region Constructors
-        public SuperFileWorker(MyDbContext context)
+        public SuperFileWorker(IMyDbContext context)
         {
             RootDirectory = System.Web.Hosting.HostingEnvironment.MapPath("~/Files");
             Context = context;
@@ -19,7 +20,7 @@ namespace Runtasker.Logic.Workers.Files
         #region Fields
         public string RootDirectory { get; private set; }
 
-        MyDbContext Context { get; set; }
+        IMyDbContext Context { get; set; }
 
         public AttachmentWorkerBase AttachmentWorker { get; private set; }
 

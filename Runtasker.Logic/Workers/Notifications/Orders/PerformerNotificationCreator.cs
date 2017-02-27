@@ -16,7 +16,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
     public class PerformerNotificationCreator
     {
         #region Constructors
-        public PerformerNotificationCreator(MyDbContext db)
+        public PerformerNotificationCreator(IMyDbContext db)
         {
             Db = db;
             PerformersAndAdmins = GetPerformersAndAdminsWithInfo();
@@ -24,7 +24,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
         #endregion
 
         #region Properties
-        MyDbContext Db { get; set; }
+        IMyDbContext Db { get; set; }
 
         List<ApplicationUser> PerformersAndAdmins { get; set; }
 
@@ -150,11 +150,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
         #region Help Methods
         List<ApplicationUser> GetPerformersAndAdminsWithInfo()
         {
-            //ЗДесь приходиться возвращаться к обычному контексту
-            RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(Db));
-
-
-            List<string> selectedUserIds = (from role in roleManager.Roles
+            List<string> selectedUserIds = (from role in Db.Roles
                                   where role.Name == "Admin" || role.Name == "Performer"
                                   from user in role.Users
                                   select user.UserId).ToList();
@@ -183,8 +179,6 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
 
             return PerformersAndAdmins.Select(x =>
             {
-                
-
                 if( (x.OtherInfo != null) && (x.OtherInfo.Specialization.Contains(orderSubjectEnum)) )
                 {
                     return x;

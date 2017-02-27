@@ -1,4 +1,5 @@
 ﻿using Logic.Extensions.Namers;
+using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
     public class MessageOrderWorker : MessageWorkerBase
     {
         #region Contructors
-        public MessageOrderWorker(string userGuid, MyDbContext context) : base(context)
+        public MessageOrderWorker(string userGuid, IMyDbContext context) : base(context)
         {
             Construct(0, userGuid);
         }

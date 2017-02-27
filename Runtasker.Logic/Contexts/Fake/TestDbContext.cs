@@ -55,20 +55,15 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public DbSet<IdentityRole> Roles
+        public IDbSet<IdentityRole> Roles
         {
             get
             {
-                if (_roles == null)
+                if(_roles == null)
                 {
                     _roles = new TestDbSet<IdentityRole>();
                 }
                 return _roles;
-            }
-
-            set
-            {
-                _roles = new TestDbSet<IdentityRole>();
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using Runtasker.Logic.Entities;
+﻿using Runtasker.Logic.Contexts.Interfaces;
+using Runtasker.Logic.Entities;
 using System;
 using System.Collections.Generic;
 
@@ -55,7 +56,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
             _context = new MyDbContext();
         }
 
-        public MessageWorkerBase(MyDbContext context)
+        public MessageWorkerBase(IMyDbContext context)
         {
             _context = context;
         }
@@ -63,12 +64,12 @@ namespace Runtasker.Logic.Workers.MessageWorker
 
         #region Private Fields
 
-        private MyDbContext _context;
+        private IMyDbContext _context;
 
         #endregion
 
         #region Public Properties
-        public MyDbContext Context { get { return _context; } }
+        public IMyDbContext Context { get { return _context; } }
         #endregion
 
         #region Virtual Methods

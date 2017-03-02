@@ -1,6 +1,7 @@
 ﻿@using Runtasker.Logic.Models
+@using Extensions.String
 @model InfoModel
 
-<h2>@Model.Title</h2>
-<h3 class="info">@Model.Text</h3>
+<h2>@Model.Title.ToHtml()</h2>
+<h3 class="info">@Model.Text.ToHtml()</h3>
 

@@ -154,6 +154,18 @@ namespace Runtasker.Controllers
             return View();
         }
 
+        #region Landing
+        public ActionResult Landing()
+        {
+            if(!User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
+        #endregion
+
         #region KnowPrice methods
         [HttpGet]
         [Route("Home/KnowPrice")]

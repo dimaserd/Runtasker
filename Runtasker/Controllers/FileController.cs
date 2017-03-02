@@ -3,7 +3,6 @@ using Logic.Extensions.Models;
 using Microsoft.AspNet.Identity;
 using Runtasker.Logic;
 using Runtasker.Logic.Entities;
-using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers;
 using Runtasker.Logic.Workers.Files;
 using System;
@@ -17,7 +16,7 @@ using System.Web.Mvc;
 
 namespace Runtasker.Controllers
 {
-    
+
     public class FileController : Controller
     {
         #region Constructors
@@ -73,10 +72,19 @@ namespace Runtasker.Controllers
         {
             get { return User.Identity.GetUserId(); }
         }
+
         #region Directories
         string FilesDir
         {
             get { return System.Web.Hosting.HostingEnvironment.MapPath("~/Files"); }
+        }
+
+        string AssetsDir
+        {
+            get
+            {
+                return System.Web.Hosting.HostingEnvironment.MapPath("~/assets");
+            }
         }
 
         string SiteFilesDirectory
@@ -196,6 +204,20 @@ namespace Runtasker.Controllers
             return File(solution.FilePath, MimeMapping.GetMimeMapping(solution.FilePath), solution.FileName);
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult GetFileFromAssets(string path)
+        {
+            string filePath = $"{AssetsDir}/{path}";
+            string fileName = path.Split(separator: new string[] { "/" }, options: StringSplitOptions.RemoveEmptyEntries).Last();
+            if(System.IO.File.Exists(filePath))
+            {
+                return File(filePath, MimeMapping.GetMimeMapping(filePath), fileName);
+
+            }
+            
+            return new HttpStatusCodeResult(404);
+        }
         #endregion
 
         

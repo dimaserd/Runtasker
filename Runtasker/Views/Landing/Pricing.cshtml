@@ -1,12 +1,18 @@
-﻿
+﻿@using HtmlExtensions.Renderers
+@using Extensions.String
 @{
     Layout = null;
+    HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
+
+    string firstPrice = $"от 50{HtmlSigns.Rouble}";
+    string secondPrice = $"от 200{HtmlSigns.Rouble}";
+    string thirdPrice = $"от 500{HtmlSigns.Rouble}";
 }
 
 <section id="pricing" class="padding100 special-row">
     <div class="container">
 
-        <h1 class="text-center">Atropos <strong>Pricing</strong></h1>
+        <h1 class="text-center">RUNTASKER <strong>@*Pricing*@Наши цены</strong></h1>
         <div class="divider">
             <!-- divider -->
             <i class="fa fa-star"></i>
@@ -24,77 +30,70 @@
             For more info about bootstrap grid
             http://getbootstrap.com/css/#grid
         -->
+
+
         <!-- FOUR COLUMNS -->
         <div class="row pricetable-container">
 
-            <div class="col-md-3 price-table">
-                <h3>START</h3>
+            <div class="col-md-4 price-table">
+                <h3>Обычное задание</h3>
                 <p>
-                    $3.9
-                    <span>Per month</span>
+                    @firstPrice.ToHtml()
+                    <span>за одно задание</span>
                 </p>
 
                 <ul>
-                    <li>12GB Bandwidth</li>
-                    <li>750 MB Storage</li>
-                    <li>3 Domains</li>
+                    <li>Возможность оплатить бонусными деньгами</li>
+                    <li>Возможность обсудить работу напрямую с исполнителем</li>
+                    <li>Бесплатные доработки</li>
                     <li>Unlimited Subdomains</li>
                     <li>10 Databases</li>
                     <li>Free Setup</li>
                 </ul>
-                <a href="#" class="btn btn-primary btn-sm">SIGN UP</a>
+                <a href="#" class="btn btn-primary btn-sm">
+                    Узнать цену моей работы
+                </a>
             </div>
 
-            <div class="col-md-3 price-table popular">
-                <h3>PREMIUM</h3>
+            <div class="col-md-4 price-table popular">
+                <h3>Эссе/Реферат</h3>
                 <p>
-                    $3.9
+                    @secondPrice.ToHtml()
                     <span>Per month</span>
                 </p>
                 <ul>
-                    <li>12GB Bandwidth</li>
-                    <li>750 MB Storage</li>
-                    <li>3 Domains</li>
+                    <li>Возможность оплатить бонусными деньгами</li>
+                    <li>Возможность обсудить работу напрямую с исполнителем</li>
+                    <li>Бесплатные доработки</li>
                     <li>Unlimited Subdomains</li>
                     <li>10 Databases</li>
                     <li>Free Setup</li>
                 </ul>
-                <a href="#" class="btn btn-default btn-sm">SIGN UP</a>
+                <a href="#" class="btn btn-default btn-sm">
+                    Узнать цену моей работы
+                </a>
             </div>
 
-            <div class="col-md-3 price-table">
-                <h3>PROFESSIONAL</h3>
+            <div class="col-md-4 price-table">
+                <h3>Курсовая работа</h3>
                 <p>
-                    $3.9
+                    @thirdPrice.ToHtml()
                     <span>Per month</span>
                 </p>
                 <ul class="pricetable-items">
-                    <li>12GB Bandwidth</li>
-                    <li>750 MB Storage</li>
-                    <li>3 Domains</li>
+                    <li>Возможность оплатить бонусными деньгами</li>
+                    <li>Возможность обсудить работу напрямую с исполнителем</li>
+                    <li>Бесплатные доработки</li>
                     <li>Unlimited Subdomains</li>
                     <li>10 Databases</li>
                     <li>Free Setup</li>
                 </ul>
-                <a href="#" class="btn btn-primary btn-sm">SIGN UP</a>
+                <a href="#" class="btn btn-primary btn-sm">
+                    Узнать цену моей работы
+                </a>
             </div>
 
-            <div class="col-md-3 price-table">
-                <h3>ULTIMATE</h3>
-                <p>
-                    $3.9
-                    <span>Per month</span>
-                </p>
-                <ul>
-                    <li>12GB Bandwidth</li>
-                    <li>750 MB Storage</li>
-                    <li>3 Domains</li>
-                    <li>Unlimited Subdomains</li>
-                    <li>10 Databases</li>
-                    <li>Free Setup</li>
-                </ul>
-                <a href="#" class="btn btn-primary btn-sm">SIGN UP</a>
-            </div>
+            
 
         </div>
         <!-- /FOUR COLUMNS -->

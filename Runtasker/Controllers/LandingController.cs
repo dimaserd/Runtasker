@@ -44,6 +44,11 @@ namespace Runtasker.Controllers
         {
             return View();
         }
+
+        public ActionResult Team()
+        {
+            return View();
+        }
         #endregion
     }
 }

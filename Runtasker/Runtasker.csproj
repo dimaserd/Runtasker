@@ -3525,6 +3525,7 @@
     <Content Include="Views\Landing\Counters.cshtml" />
     <Content Include="Views\Landing\Parallax.cshtml" />
     <Content Include="Views\Landing\Pricing.cshtml" />
+    <Content Include="Views\Landing\Team.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

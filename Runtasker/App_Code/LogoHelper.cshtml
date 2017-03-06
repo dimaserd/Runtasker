@@ -5,11 +5,36 @@
     </a>
 }
 
-@helper GetLogoLinkWithImage(int pixels)
+@helper GetLogoLinkWithImage(int pixels, bool? padding = null)
 {
-    <a class="logo" href="/Home/Index">
-        <img height="@pixels" width="@pixels" src="~/assets/logo/logo.png"/>RUNTASKER
-    </a>
+    if(padding == true)
+    {
+        <style>
+            #runtaskerLogo {
+                color: #333;
+                text-decoration: none;
+                font-size: 35px;
+                display: inline-block;
+                height: 60px;
+                line-height: 50px;
+                font-weight: 600;
+                letter-spacing: -2px;
+                position: absolute;
+                top:-6px;
+            }
+        </style>
+        <a id="runtaskerLogo" href="/Home/Index">
+            <img height="@pixels" width="@pixels" src="~/assets/logo/logo.png" />RUNTASKER
+        </a>
+    }
+    else
+    {
+        <a class="logo" href="/Home/Index">
+            <img height="@pixels" width="@pixels" src="~/assets/logo/logo.png" />RUNTASKER
+        </a>
+    }
+
+
 }
 
 @helper GetLogo()

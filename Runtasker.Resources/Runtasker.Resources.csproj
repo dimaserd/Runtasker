@@ -365,6 +365,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KnowPriceRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Landing\Index\Index.ru-RU.Designer.cs">
+      <DependentUpon>Index.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Landing\Index\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Manage\ChangePassword\ChangePassRes.ru-RU.Designer.cs">
       <DependentUpon>ChangePassRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -821,6 +831,14 @@
     <EmbeddedResource Include="Views\Home\KnowPrice\KnowPriceRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>KnowPriceRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Index\Index.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Index\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\ChangePassword\ChangePassRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

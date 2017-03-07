@@ -58,8 +58,39 @@
 </head>
 <body>
     <!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
+    
+    <!-- Top Bar -->
+    <header id="topHead" class="fixed">
+        <div class="container">
+
+            <!-- PHONE/EMAIL Not implemented yet-->
+            <span class="quick-contact pull-left">
+                @*<i class="fa fa-phone"></i> 8-916-604-49-60 &bull;*@
+                <a class="" href="mailto:contact@runtasker.ru">contact@runtasker.ru</a>
+            </span>
+            <!-- /PHONE/EMAIL -->
+            <!-- LANGUAGE -->
+            @{Html.RenderAction("Index", "Language");}
+            <!-- /LANGUAGE -->
+            <!-- SIGN IN -->
+            @{Html.RenderAction("Signin", "Account");}
+            <!-- /SIGN IN -->
+            <!-- LINKS -->
+            <div class="pull-right nav hidden-xs">
+
+                <a href="/Home/Contact" alt="Contact">
+                    <i class="fa fa-angle-right"></i> Связаться
+                </a>
+
+            </div>
+            <!-- /LINKS -->
+
+        </div>
+    </header>
+    <!-- /Top Bar -->
+
     <!-- TOP NAV -->
-    <header id="topNav">
+    <header id="topNav" class="topHead">
         <div class="container">
 
             <!-- Mobile Menu Button -->
@@ -78,13 +109,17 @@
             <div class="navbar-collapse nav-main-collapse collapse pull-right">
                 <nav class="nav-main mega-menu">
                     <ul class="nav nav-pills nav-main scroll-menu" id="topMain">
-                        <li class="active"><a href="#wrapper">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#team">Team</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li class="active"><a href="#wrapper">Главная@*Home*@</a></li>
+                        <li><a href="#about">О нас@*About Us*@</a></li>
+                        <li><a href="#portfolio">Примеры работ@*Portfolio*@</a></li>
+                        <li><a href="#pricing">Наши цены@*Pricing*@</a></li>
+                        @*<li><a href="#team">Команда Team</a></li>*@
+                        @*<li> Хер знает что тут нужно делать
+
+                            @{ Html.RenderAction("Index", "Language");}
+                        </li>*@
                     </ul>
+                    
                 </nav>
             </div>
             <!-- /Top Nav -->
@@ -124,107 +159,12 @@
         <!-- /PRICING -->
 
         <!-- MEET THE TEAM -->
-        @{Html.RenderAction("Team", "Landing");}
+        @*{Html.RenderAction("Team", "Landing");}*@
         <!-- /MEET THE TEAM -->
-
-        <!-- CONTACT -->
-        <section id="contact" class="special-row padding100 margin-footer">
-            <div class="container">
-
-                <h1 class="text-center">Drop us a line or just say <strong><em>Hello!</em></strong></h1>
-                <div class="divider">
-                    <!-- divider -->
-                    <i class="fa fa-star"></i>
-                </div>
-
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                <div class="row margin-top60">
-
-                    <!-- FORM -->
-                    <div class="col-md-8">
-
-                        <h2>Don't be shy! Today we don't bite!</h2>
-
-                        <form class="white-row" action="#" method="post">
-                            <div class="row">
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <label>Full Name *</label>
-                                        <input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>E-mail Address *</label>
-                                        <input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <label>Subject</label>
-                                        <input type="text" value="" data-msg-required="Please enter the subject." maxlength="100" class="form-control" name="subject" id="subject">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <label>Message *</label>
-                                        <textarea maxlength="5000" data-msg-required="Please enter your message." rows="10" class="form-control" name="message" id="message"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <br />
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <input type="submit" value="Send Message" class="btn btn-primary btn-lg" data-loading-text="Loading...">
-                                </div>
-                            </div>
-                        </form>
-
-                    </div>
-                    <!-- /FORM -->
-                    <!-- INFO -->
-                    <div class="col-md-4">
-
-                        <h2>Visit Us</h2>
-
-                        <div class="white-row">
-                            <div id="gmap"><!-- google map --></div>
-                            <script type="text/javascript">
-									var	$googlemap_latitude 	= -37.812344,
-										$googlemap_longitude	= 144.968900,
-										$googlemap_zoom			= 13;
-                            </script>
-
-                            <div class="divider white half-margins">
-                                <!-- divider -->
-                                <i class="fa fa-star"></i>
-                            </div>
-
-                            <p class="nomargin-bottom">
-                                <span class="block"><strong><i class="fa fa-map-marker"></i> Address:</strong> Street Name, City Name, Country</span>
-                                <span class="block"><strong><i class="fa fa-phone"></i> Phone:</strong> 1800-555-1234</span>
-                                <span class="block"><strong><i class="fa fa-envelope"></i> Email:</strong> <a href="mailto:mail@yourdomain.com">mail@yourdomain.com</a></span>
-                            </p>
-
-                        </div>
-
-
-                    </div>
-                    <!-- /INFO -->
-
-                </div>
-
-            </div>
-        </section>
-        <!-- /CONTACT -->
 
     </div>
     <!-- /WRAPPER -->
+
     <!-- FOOTER -->
     <footer>
 

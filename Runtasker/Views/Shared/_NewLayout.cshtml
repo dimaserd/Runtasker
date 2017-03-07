@@ -75,10 +75,6 @@
             <!-- /SIGN IN -->
             <!-- LINKS -->
             <div class="pull-right nav hidden-xs">
-                <!--Not implemented aboutPage-->
-                @*<a href="/Home/AboutUs" alt="About us">
-                        <i class="fa fa-angle-right"></i> @NewLayoutRes.About
-                    </a>*@
 
                 <a href="/Home/Contact" alt="Contact">
                     <i class="fa fa-angle-right"></i> @NewLayoutRes.Contact
@@ -90,6 +86,7 @@
         </div>
     </header>
     <!-- /Top Bar -->
+
     <!-- TOP NAV -->
     <header id="topNav" class="topHead">
         <!-- remove class="topHead" if no topHead used! -->
@@ -114,14 +111,13 @@
         </div>
 
     </header>
-
     <!-- /TOP NAV -->
+
     <!-- WRAPPER -->
     <div id="wrapper">
         <div class="container">
             <section class="container">
                 @{ Html.RenderAction("Modal", "Message");}
-                @*{ Html.RenderAction("Index", "Notification");}*@
                 
                 <div id="notification-wrapper"></div>
 

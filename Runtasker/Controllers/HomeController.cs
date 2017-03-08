@@ -136,6 +136,10 @@ namespace Runtasker.Controllers
         //Get Home/Index
         public ActionResult Index()
         { 
+            if(!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Landing");
+            }
             return View();
         }
 
@@ -169,7 +173,7 @@ namespace Runtasker.Controllers
         #region KnowPrice methods
         [HttpGet]
         [Route("Home/KnowPrice")]
-        public ActionResult KnowPrice()
+        public ActionResult KnowPrice(int? workTypeId = null)
         {
             if (User.IsInRole("Performer") || User.IsInRole("Admin") || User.IsInRole("VkPerformer"))
             {
@@ -184,7 +188,16 @@ namespace Runtasker.Controllers
             //отдаем локализованную модель в представление
             ViewData["localeModel"] = ModelBuilder.KnowPriceView();
 
-            return View(new AnonymousKnowThePrice() { CompletionDate = DateTime.Now.AddDays(3)});
+            AnonymousKnowThePrice model = new AnonymousKnowThePrice()
+            {
+                CompletionDate = DateTime.Now.AddDays(3)
+            };
+            if (workTypeId.HasValue && workTypeId.Value >= 0 && workTypeId.Value <= 2)
+            {
+                OrderWorkType workTypeFromInt = (OrderWorkType)workTypeId.Value;
+                model.WorkType = workTypeFromInt;
+            }
+            return View(model);
         }
 
         [HttpPost]

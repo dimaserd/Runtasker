@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Hosting;
+using VkParser.Constants;
 using VkParser.Contexts;
 using VkParser.Entities;
 using VkParser.Models;
@@ -56,22 +58,9 @@ namespace VkParser.Workers
 
             //если пользователь принадлежит сообществу то
             if (info != null)
-            {
-                
-                VkGroup vkGroup = new VkGroup
-                {
-                    Id = 0,
-                    GroupId = info.Id,
-                    ScreenName = info.ScreenName,
-                    IsMember = info.IsMember,
-                    Name = info.Name,
-                    LastCheckDate = DateTime.Now,
-                    
-                    LastCheckedPostId = 0
-                };
-
+            {                
                 //добавляем информацию в базу
-                Context.VkGroups.Add(vkGroup);
+                Context.VkGroups.Add(info.ToVkGroup());
                 Context.SaveChanges();
 
                 //проверяем сообщество на новые посты
@@ -89,6 +78,34 @@ namespace VkParser.Workers
         }
         #endregion
 
+        #region Recovery methods
+        public async Task<WorkerResult> DeleteAllGroupsAndGetFromVk()
+        {
+            //удаляем группы и все найденные посты
+            Context.VkFoundPosts.RemoveRange(Context.VkFoundPosts);
+            await Context.SaveChangesAsync();
+            Context.VkGroups.RemoveRange(Context.VkGroups);
+            await Context.SaveChangesAsync();
+
+            //получили список из групп по токену
+            JObject response;
+            List<VkGroupInfo> vkGroupInfos = GetVkGroupsInfosFromVkPage(out response)
+                .ToList();
+
+            foreach(VkGroupInfo info in vkGroupInfos)
+            {
+                Context.VkGroups.Add(info.ToVkGroup());
+            }
+
+            await Context.SaveChangesAsync();
+
+            return new WorkerResult
+            {
+                Succeeded = true
+            };
+        }
+
+        #endregion
         #endregion
 
         #region Help Methods
@@ -163,6 +180,42 @@ namespace VkParser.Workers
                 };
             }
             return null;
+        }
+
+        IEnumerable<VkGroupInfo> GetVkGroupsInfosFromVkPage(out JObject response)
+        {
+            string method = "groups.get";
+            string paramsString = $"version=5.62&extended=true&user_id={VkConstants.UserId}";
+
+            response = Request(method: method, paramsString: paramsString);
+
+
+            if (!response["error"].IsNullOrEmpty())
+            {
+                return null;
+            }
+
+            List<VkGroupInfo> result = new List<VkGroupInfo>();
+
+            JToken groups = response["response"];
+            
+            foreach(JToken group in groups)
+            {
+                if(group.Type == JTokenType.Integer)
+                {
+                    continue;
+                }
+
+                result.Add(new VkGroupInfo
+                {
+                    Id = int.Parse(group["gid"].ToString()),
+                    ScreenName = group["screen_name"].ToString(),
+                    Name = group["name"].ToString(),
+                    IsMember = true
+                });
+            }
+
+            return result;
         }
         #endregion
 

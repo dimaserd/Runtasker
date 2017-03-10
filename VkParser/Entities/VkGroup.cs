@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using VkParser.Models;
 
 namespace VkParser.Entities
 {
@@ -35,5 +36,23 @@ namespace VkParser.Entities
 
 
         public virtual ICollection<VkFoundPost> Posts { get; set; }
+    }
+
+    public static class VkGroupExtensions
+    {
+        public static VkGroup ToVkGroup(this VkGroupInfo info)
+        {
+            return new VkGroup
+            {
+                Id = 0,
+                GroupId = info.Id,
+                ScreenName = info.ScreenName,
+                IsMember = info.IsMember,
+                Name = info.Name,
+                LastCheckDate = DateTime.Now,
+
+                LastCheckedPostId = 0
+            };
+        }
     }
 }

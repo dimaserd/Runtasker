@@ -18,7 +18,6 @@ using VkParser.Models;
 using Logic.Extensions.Models;
 using VkParser.MessageSenders;
 using VkParser.Models.MessageSenderModels;
-using Runtasker.Logic.Workers.Logging;
 
 namespace Runtasker.Controllers
 {
@@ -405,6 +404,18 @@ namespace Runtasker.Controllers
         }
         #endregion
 
+        #endregion
+
+        #region Recovery methods
+        [HttpGet]
+        public async Task<string> GroupsRecovery(string pass = null)
+        {
+            if(pass == "566762332")
+            {
+                await VkGroupWorker.DeleteAllGroupsAndGetFromVk();
+            }
+            return "готово";
+        }
         #endregion
 
         #region Help Methods

@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\VkConstants.cs" />
     <Compile Include="Contexts\VkParseContext.cs" />
     <Compile Include="Entities\VkFoundPost.cs" />
     <Compile Include="Entities\VkGroup.cs" />

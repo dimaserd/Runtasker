@@ -54,7 +54,7 @@ namespace Extensions.String
             {
                 foreach (var prop in attributes.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
                 {
-                    result += $" {prop.Name}='{prop.GetValue(attributes, null)}'";
+                    result += $" {prop.Name}=\"{prop.GetValue(attributes, null)}\"";
                 }
             }
 
@@ -137,6 +137,12 @@ namespace Extensions.String
         public static string WrapToA(this string s, string href)
         {
             return $"<a href=\"{href}\">{s}</a>";
+        }
+
+        public static string WrapToA(this string s, object htmlAttributes)
+        {
+            string keyValueAttributesPair = RenderAttributesKeyValuePair(htmlAttributes);
+            return $"<a{keyValueAttributesPair}>{s}</a>";
         }
 
         public static string WrapToH1(this string s)

@@ -3353,6 +3353,7 @@
     <Content Include="assets\images\logo_dark.fla" />
     <Content Include="assets\images\logo_footer.fla" />
     <Content Include="assets\images\buy.fla" />
+    <Content Include="App_Code\PortfolioHelper.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Scripts\bootstrap.js" />

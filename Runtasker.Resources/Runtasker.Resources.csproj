@@ -375,6 +375,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Landing\Portfolio\PortfolioRes.ru-RU.Designer.cs">
+      <DependentUpon>PortfolioRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Landing\Portfolio\PortfolioRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PortfolioRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Manage\ChangePassword\ChangePassRes.ru-RU.Designer.cs">
       <DependentUpon>ChangePassRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -839,6 +849,14 @@
     <EmbeddedResource Include="Views\Landing\Index\Index.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Portfolio\PortfolioRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PortfolioRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Portfolio\PortfolioRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PortfolioRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\ChangePassword\ChangePassRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

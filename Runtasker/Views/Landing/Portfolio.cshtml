@@ -1,22 +1,26 @@
-﻿
+﻿@using Runtasker.LocaleBuilders.Models
+@using Extensions.String
 @{
     Layout = null;
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
 }
 
 
 <section id="portfolio" class="special-row padding100">
 
-    <h1 class="text-center">Примеры выполненных работ на <strong>Runtasker</strong></h1>
+    <h1 class="text-center">
+        @localeModel["HeaderHtml"].ToHtml()
+    </h1>
     <div class="divider">
         <!-- divider -->
         <i class="fa fa-star"></i>
     </div>
 
     <ul class="nav nav-pills isotope-filter isotope-filter" data-sort-id="isotope-list" data-option-key="filter">
-        <li data-option-value="*" class="active"><a href="#">Show All</a></li>
-        <li data-option-value=".development" class=""><a href="#">Development</a></li>
-        <li data-option-value=".photography" class=""><a href="#">Photography</a></li>
-        <li data-option-value=".design" class=""><a href="#">Design</a></li>
+        <li data-option-value="*" class="active"><a href="#">@localeModel["ShowAll"]</a></li>
+        <li data-option-value=".development" class=""><a href="#">@localeModel["Physics"]</a></li>
+        <li data-option-value=".photography" class=""><a href="#">@localeModel["Mathematics"]</a></li>
+        <li data-option-value=".design" class=""><a href="#">@localeModel["Programming"]</a></li>
     </ul>
 
 
@@ -32,7 +36,7 @@
                             <span class="overlay color2"></span>
                             <span class="inner">
                                 <span class="block fa fa-plus fsize20"></span>
-                                <strong>VIEW</strong> IMAGE
+                                @localeModel["ViewImageHmtl"].ToHtml()
                             </span>
                         </a>
                         <img class="img-responsive" src="~/assets/images/demo/portfolio/scouter-600x403.jpg" width="260" height="260" alt="">
@@ -48,7 +52,7 @@
                             <span class="overlay color2"></span>
                             <span class="inner">
                                 <span class="block fa fa-plus fsize20"></span>
-                                <strong>VIEW</strong> IMAGE
+                                @localeModel["ViewImageHmtl"].ToHtml()
                             </span>
                         </a>
                         <img class="img-responsive" src="~/assets/images/demo/portfolio/black-kitty-600x403.jpg" width="260" height="260" alt="">
@@ -64,7 +68,7 @@
                             <span class="overlay color2"></span>
                             <span class="inner">
                                 <span class="block fa fa-plus fsize20"></span>
-                                <strong>VIEW</strong> IMAGE
+                                @localeModel["ViewImageHmtl"].ToHtml()
                             </span>
                         </a>
                         <img class="img-responsive" src="~/assets/images/demo/portfolio/merchant2-600x403.jpg" width="260" height="260" alt="">
@@ -80,7 +84,7 @@
                             <span class="overlay color2"></span>
                             <span class="inner">
                                 <span class="block fa fa-plus fsize20"></span>
-                                <strong>VIEW</strong> IMAGE
+                                @localeModel["ViewImageHmtl"].ToHtml()
                             </span>
                         </a>
                         <img class="img-responsive" src="~/assets/images/demo/portfolio/flippin-the-bird1-600x403.jpg" width="260" height="260" alt="">
@@ -96,7 +100,7 @@
                             <span class="overlay color2"></span>
                             <span class="inner">
                                 <span class="block fa fa-plus fsize20"></span>
-                                <strong>VIEW</strong> IMAGE
+                                @localeModel["ViewImageHmtl"].ToHtml()
                             </span>
                         </a>
                         <img class="img-responsive" src="~/assets/images/demo/portfolio/night_to_remember1-600x403.jpg" width="260" height="260" alt="">
@@ -112,7 +116,7 @@
                             <span class="overlay color2"></span>
                             <span class="inner">
                                 <span class="block fa fa-plus fsize20"></span>
-                                <strong>VIEW</strong> IMAGE
+                                @localeModel["ViewImageHmtl"].ToHtml()
                             </span>
                         </a>
                         <img class="img-responsive" src="~/assets/images/demo/portfolio/spacebound-600x403.jpg" width="260" height="260" alt="">
@@ -128,7 +132,7 @@
                             <span class="overlay color2"></span>
                             <span class="inner">
                                 <span class="block fa fa-plus fsize20"></span>
-                                <strong>VIEW</strong> IMAGE
+                                @localeModel["ViewImageHmtl"].ToHtml()
                             </span>
                         </a>
                         <img class="img-responsive" src="~/assets/images/demo/portfolio/be-my-guest1-600x403.jpg" width="260" height="260" alt="">
@@ -144,7 +148,7 @@
                             <span class="overlay color2"></span>
                             <span class="inner">
                                 <span class="block fa fa-plus fsize20"></span>
-                                <strong>VIEW</strong> IMAGE
+                                @localeModel["ViewImageHmtl"].ToHtml()
                             </span>
                         </a>
                         <img class="img-responsive" src="~/assets/images/demo/portfolio/black-box5-600x403.jpg" width="260" height="260" alt="">
@@ -160,7 +164,7 @@
                             <span class="overlay color2"></span>
                             <span class="inner">
                                 <span class="block fa fa-plus fsize20"></span>
-                                <strong>VIEW</strong> IMAGE
+                                @localeModel["ViewImageHmtl"].ToHtml()
                             </span>
                         </a>
                         <img class="img-responsive" src="~/assets/images/demo/portfolio/weather-app-600x403.jpg" width="260" height="260" alt="">
@@ -176,7 +180,7 @@
                             <span class="overlay color2"></span>
                             <span class="inner">
                                 <span class="block fa fa-plus fsize20"></span>
-                                <strong>VIEW</strong> IMAGE
+                                @localeModel["ViewImageHmtl"].ToHtml()
                             </span>
                         </a>
                         <img class="img-responsive" src="~/assets/images/demo/portfolio/theMoose-600x403.jpg" width="260" height="260" alt="">
@@ -192,7 +196,7 @@
                             <span class="overlay color2"></span>
                             <span class="inner">
                                 <span class="block fa fa-plus fsize20"></span>
-                                <strong>VIEW</strong> IMAGE
+                                @localeModel["ViewImageHmtl"].ToHtml()
                             </span>
                         </a>
                         <img class="img-responsive" src="~/assets/images/demo/portfolio/tumblr_mopqj9QUeq1st5lhmo1_12801-600x403.jpg" width="260" height="260" alt="">
@@ -208,7 +212,7 @@
                             <span class="overlay color2"></span>
                             <span class="inner">
                                 <span class="block fa fa-plus fsize20"></span>
-                                <strong>VIEW</strong> IMAGE
+                                @localeModel["ViewImageHmtl"].ToHtml()
                             </span>
                         </a>
                         <img class="img-responsive" src="~/assets/images/demo/portfolio/scouter-600x403.jpg" width="260" height="260" alt="">
@@ -221,7 +225,9 @@
     </div><!-- /.masonry-container -->
     <!-- CALLOUT -->
     <div class="bs-callout text-center nomargin-bottom">
-        <h3>Нравится качество наших работ? <a href="/Home/KnowPrice" target="_blank" class="btn btn-primary btn-lg">Да, хочу сделать заказ!</a></h3>
+        <h3>
+            @localeModel["CallOutBtnHtmlLink"].ToHtml()
+        </h3>
     </div>
     <!-- /CALLOUT -->
 

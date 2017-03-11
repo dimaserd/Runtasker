@@ -1,7 +1,7 @@
 ﻿using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Views.Home.KnowPrice;
 
-namespace Runtaker.LocaleBuiders.Views.Home
+namespace Runtasker.LocaleBuilders.Views.Home
 {
     public class HomeViewModelBuilder : UICultureSwitcher
     {

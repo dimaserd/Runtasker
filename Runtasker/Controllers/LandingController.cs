@@ -1,9 +1,27 @@
-﻿using System.Web.Mvc;
+﻿using Runtasker.LocaleBuilders.Views.Landing;
+using System.Web.Mvc;
 
 namespace Runtasker.Controllers
 {
     public class LandingController : Controller
     {
+        #region Properties
+        LandingLocaleViewModelBuilder ModelBuilder
+        {
+            get
+            {
+                if(_modelBuilder == null)
+                {
+                    _modelBuilder = new LandingLocaleViewModelBuilder();
+                }
+                return _modelBuilder;
+            }
+        }
+        #endregion
+
+        #region Fields
+        LandingLocaleViewModelBuilder _modelBuilder;
+        #endregion
         // GET: Landing
         public ActionResult Index()
         {
@@ -24,6 +42,7 @@ namespace Runtasker.Controllers
 
         public ActionResult Portfolio()
         {
+            ViewData["localeModel"] = ModelBuilder.PortfolioView();
             return View();
         }
 

@@ -134,10 +134,6 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru-RU\Runtask
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Debug\VkParser.csprojResolveAssemblyReference.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Debug\VkParser.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Debug\VkParser.pdb
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Views\Payment\Robokassa\RkassaRes.resx
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.resx
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Views\Payment\Robokassa\RkassaRes.Designer.cs
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.Designer.cs
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\roslyn\csc.exe
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\roslyn\csc.exe.config
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\roslyn\csc.rsp

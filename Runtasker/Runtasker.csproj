@@ -2860,6 +2860,10 @@
     <Content Include="assets\images\patterns\pattern7.png" />
     <Content Include="assets\images\patterns\pattern8.png" />
     <Content Include="assets\images\patterns\pattern9.png" />
+    <Content Include="assets\images\Portfolio\физика1.png" />
+    <Content Include="assets\images\Portfolio\физика2.png" />
+    <Content Include="assets\images\Portfolio\физика3.png" />
+    <Content Include="assets\images\Portfolio\физика4.png" />
     <Content Include="assets\images\slider_pagebullet.png" />
     <Content Include="assets\images\transparent.png" />
     <Content Include="assets\js\contact_ajax.js" />

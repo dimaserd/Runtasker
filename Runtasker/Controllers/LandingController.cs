@@ -32,6 +32,7 @@ namespace Runtasker.Controllers
         #region Sections
         public ActionResult Slider()
         {
+            ViewData["localeModel"] = ModelBuilder.SliderView();
             return View();
         }
 
@@ -48,6 +49,7 @@ namespace Runtasker.Controllers
 
         public ActionResult Counters()
         {
+            ViewData["localeModel"] = ModelBuilder.CountersView();
             return View();
         }
 

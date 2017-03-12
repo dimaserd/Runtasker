@@ -365,6 +365,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KnowPriceRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Landing\Counters\CountersRes.ru-RU.Designer.cs">
+      <DependentUpon>CountersRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Landing\Counters\CountersRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CountersRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Landing\Index\Index.ru-RU.Designer.cs">
       <DependentUpon>Index.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -384,6 +394,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PortfolioRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Landing\Slider\SliderRes.ru-RU.Designer.cs">
+      <DependentUpon>SliderRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Landing\Slider\SliderRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SliderRes.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\Manage\ChangePassword\ChangePassRes.ru-RU.Designer.cs">
       <DependentUpon>ChangePassRes.ru-RU.resx</DependentUpon>
@@ -842,6 +862,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>KnowPriceRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Counters\CountersRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CountersRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Counters\CountersRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CountersRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Landing\Index\Index.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.ru-RU.Designer.cs</LastGenOutput>
@@ -857,6 +885,14 @@
     <EmbeddedResource Include="Views\Landing\Portfolio\PortfolioRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PortfolioRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Slider\SliderRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SliderRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Slider\SliderRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SliderRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\ChangePassword\ChangePassRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -1,6 +1,7 @@
-﻿
+﻿@using Runtasker.LocaleBuilders.Models
 @{
     Layout = null;
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
 }
 
 <section id="slider" class="full-screen" data-autoplay="7500" data-mouseover-stop="true">
@@ -18,19 +19,13 @@
         <li>
             <div class="image-caption">
                 <div class="inner text-left">
-                    <!-- text center , text-left or text-right -->
-                    
-                    
-                    @*<div class="block" style="margin-top:10%">
-                        <h1 class="dark" style="color:black">RUNTASKER</h1>
-                    </div>*@
 
                     <div class="block text-center" style="margin-top:95%">
-                        <h3>Первый Международный Российский</h3>
+                        <h3>@localeModel["MainHeader"]</h3>
                     </div>
 
                     <div class="block text-right">
-                        <p class="dark">сервис помощи студентам</p>
+                        <p class="dark">@localeModel["ForMainHeader"]</p>
                     </div>
 
                 </div>
@@ -51,7 +46,7 @@
                     </div>*@
                     <div class="block">
                         
-                        <h2>БЫСТРО . КАЧЕСТВЕННО . ДОСТУПНО</h2>
+                        <h2>@localeModel["Slogan"]</h2>
                     </div>
 
                 </div>

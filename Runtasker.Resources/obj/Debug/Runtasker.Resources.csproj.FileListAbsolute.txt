@@ -340,3 +340,7 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Ru
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Landing.Index.Index.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Landing.Portfolio.PortfolioRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Landing.Portfolio.PortfolioRes.ru-RU.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Landing.Slider.SliderRes.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Landing.Slider.SliderRes.ru-RU.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Landing.Counters.CountersRes.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Landing.Counters.CountersRes.ru-RU.resources

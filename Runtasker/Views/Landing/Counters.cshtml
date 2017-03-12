@@ -1,6 +1,7 @@
-﻿
+﻿@using Runtasker.LocaleBuilders.Models
 @{
     Layout = null;
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
 }
 
 <section class="paddings styleBackground">
@@ -10,24 +11,24 @@
             
             <div class="col-md-3">
                 <strong data-to="3">0</strong>
-                <label>Года работы</label>
+                <label>@localeModel["YearsInBusiness"]</label>
             </div>
 
             <div class="col-md-3">
                 <strong data-to="79">0</strong>
-                <label>Исполнителей</label>
+                <label>@localeModel["Performers"]</label>
             </div>
 
             <div class="col-md-3">
-                <strong data-to="3472">0</strong>
-                <label>Выполненных заказа</label>
+                <strong data-to="5474">0</strong>
+                <label>@localeModel["ExecutedWorks"]</label>
             </div>
-
-            
+     
             <div class="col-md-3">
                 <strong data-to="758">0</strong>
-                <label>Довольных клиентов</label>
+                <label>@localeModel["HappyClients"]</label>
             </div>
+
         </div>
     </div>
 </section>

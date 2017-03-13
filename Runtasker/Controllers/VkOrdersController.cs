@@ -18,6 +18,7 @@ using VkParser.Models;
 using Logic.Extensions.Models;
 using VkParser.MessageSenders;
 using VkParser.Models.MessageSenderModels;
+using VkParser.Constants;
 
 namespace Runtasker.Controllers
 {
@@ -118,6 +119,17 @@ namespace Runtasker.Controllers
             }
         }
 
+        public string TestVkWallMessage()
+        {
+            using (WallPostWorker poster = new WallPostWorker())
+            {
+                string text = "test";
+                int groupId = 137750954;
+                poster.WriteTextOnGroupWall(text, groupId);
+                poster.WriteTextOnGroupWallTest();
+                return "готово";
+            }
+        }
 
         public async Task<ActionResult> Test()
         {
@@ -467,8 +479,8 @@ namespace Runtasker.Controllers
         #region Методы получающие токены через code от сервера
         string GetVkAppToken(string code)
         {
-            int client_id = 5335054;
-            string client_secret = "T06kZfxtM5sKrAz5AE47";
+            int client_id = VkConstants.ClientId;
+            string client_secret = VkConstants.ClientSecret;
 
             string redirectUri = @"https://runtasker.ru/VkOrders/GetAppToken";
             string url = @"https://oauth.vk.com/access_token"
@@ -477,7 +489,7 @@ namespace Runtasker.Controllers
 
             JObject response = JsonRequest(url);
 
-            int runtaskerGroupId = 137750954;
+            int runtaskerGroupId = VkConstants.RuntaskerGroupId;
 
             if (!response[$"access_token_{runtaskerGroupId}"].IsNullOrEmpty())
             {
@@ -491,8 +503,8 @@ namespace Runtasker.Controllers
 
         string GetVkToken(string code)
         {
-            int client_id = 5335054;
-            string client_secret = "T06kZfxtM5sKrAz5AE47";
+            int client_id = VkConstants.ClientId;
+            string client_secret = VkConstants.ClientSecret;
             string uri = @"https://runtasker.ru/VkOrders/GetToken";
 
             string resp = string.Empty;

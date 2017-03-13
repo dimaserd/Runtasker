@@ -173,3 +173,8 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Relea
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\obj\Release\Runtasker.ExtensionsUI.csprojResolveAssemblyReference.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\obj\Release\Runtasker.ExtensionsUI.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\obj\Release\Runtasker.ExtensionsUI.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\VkNet.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\HtmlAgilityPack.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\VkNet.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\HtmlAgilityPack.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\HtmlAgilityPack.xml

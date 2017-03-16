@@ -270,3 +270,4 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtas
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.init.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.csproj.GenerateResource.Cache
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\zh-CN\Runtasker.Resources.resources.dll

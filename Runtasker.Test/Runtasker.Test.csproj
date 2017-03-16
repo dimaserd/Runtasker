@@ -118,7 +118,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="LocaleBuilders\" />
+    <Folder Include="LocaleBuilders\Chinese\" />
     <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Choose>

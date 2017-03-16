@@ -1,7 +1,9 @@
 ﻿using Extensions.String;
+using Runtaker.LocaleBuiders.Enumerations;
 using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Views.Account.Login;
 using Runtasker.Resources.Views.Account.Register;
+using Runtasker.Resources.Views.Shared.NewLoginPartial;
 
 namespace Runtaker.LocaleBuiders.Views.Account
 {
@@ -39,6 +41,37 @@ namespace Runtaker.LocaleBuiders.Views.Account
                     return result;
             }
             
+        }
+
+        public LocaleViewModel SignInView(string userName)
+        {
+            LocaleViewModel result = new LocaleViewModel();
+
+            //общие 
+            result.Add("SignIn", NewLoginPartial.SignIn);
+            result.Add("Email", NewLoginPartial.Email);
+            result.Add("Password", NewLoginPartial.Password);
+            result.Add("Recharge", NewLoginPartial.Recharge);
+            result.Add("ViewProfile", NewLoginPartial.ViewProfile);
+            result.Add("SignOut", NewLoginPartial.SignOut);
+
+            switch (UILang)
+            {
+                case (Lang.English):
+                    
+                    result.Add("HelloUser", $"{NewLoginPartial.Hello}, {userName}!");
+                    
+                    break;
+
+                case (Lang.Russian):
+                    result.Add("HelloUser", $"{NewLoginPartial.Hello}, {userName}!");
+                    break;
+
+                case (Lang.Chinese):
+                    result.Add("HelloUser", $"{NewLoginPartial.Hello}, {userName}!");
+                    break;
+            }
+            return result;
         }
 
         public LocaleViewModel RegisterView()

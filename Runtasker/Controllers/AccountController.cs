@@ -321,6 +321,7 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult Signin()
         {
+            ViewData["localeModel"] = ViewModelBuilder.SignInView(userName: User.Identity.GetName());
             return PartialView();
         }
 

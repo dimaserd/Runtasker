@@ -169,6 +169,24 @@ namespace Runtasker.Resources.Views.Shared.NewLoginPartial {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Sign in with.
+        /// </summary>
+        public static string SignInWith1 {
+            get {
+                return ResourceManager.GetString("SignInWith1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на sf.
+        /// </summary>
+        public static string SignInWith2 {
+            get {
+                return ResourceManager.GetString("SignInWith2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Sign Out.
         /// </summary>
         public static string SignOut {

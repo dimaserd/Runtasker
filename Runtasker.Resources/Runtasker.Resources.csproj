@@ -587,6 +587,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModalRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Shared\NewLayout\NewLayoutRes.zh-CN.Designer.cs">
+      <DependentUpon>NewLayoutRes.zh-CN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Shared\NewLayout\NewLayoutRes.ru-RU.Designer.cs">
       <DependentUpon>NewLayoutRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -596,6 +601,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NewLayoutRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\NewLoginPartial\NewLoginPartial.zh-CN.Designer.cs">
+      <DependentUpon>NewLoginPartial.zh-CN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Shared\NewLoginPartial\NewLoginPartial.ru-RU.Designer.cs">
       <DependentUpon>NewLoginPartial.ru-RU.resx</DependentUpon>
@@ -1040,6 +1050,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ModalRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\NewLayout\NewLayoutRes.zh-CN.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NewLayoutRes.zh-CN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Shared\NewLayout\NewLayoutRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>NewLayoutRes.ru-RU.Designer.cs</LastGenOutput>
@@ -1047,6 +1061,10 @@
     <EmbeddedResource Include="Views\Shared\NewLayout\NewLayoutRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>NewLayoutRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\NewLoginPartial\NewLoginPartial.zh-CN.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NewLoginPartial.zh-CN.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Shared\NewLoginPartial\NewLoginPartial.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

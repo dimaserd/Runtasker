@@ -1,8 +1,9 @@
 ﻿@using Extensions.String
 @{
     Layout = null;
-    string lang = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+    string lang = Runtasker.LocaleBuilders.Statics.LanguageStatic.LanguageCode;
     string rus = "Русский";
+    string chinese = "中文(简体)";
     string eng = "English";
 }
 
@@ -12,6 +13,12 @@
         {
             <img src="~/assets/images/flags/ru.png" width="16" height="11" alt="RUS Язык" />
             @rus
+            <span class="caret"></span>
+        }
+        else if (lang == "zh-CN")
+        {
+            <img src="~/assets/images/flags/cn.png" width="16" height="11" alt="@chinese" />
+            @chinese
             <span class="caret"></span>
         }
         else
@@ -25,15 +32,23 @@
 
     <ul class="dropdown-menu">
         <li>
-            <a id="engBtn">
+            <a id="engBtn" language="en" class="languageBtn">
                 <img src="~/assets/images/flags/gb.png" width="16" height="11" alt="EN Language" /> [GB] English
             </a>
         </li>
         <li>
-            <a id="ruBtn">
+            <a id="ruBtn" language="ru-RU" class="languageBtn">
                 <img src="~/assets/images/flags/ru.png" width="16" height="11" alt="RU Language" /> [RUS] Русский
             </a>
         </li>
+        @if (User.IsInRole("Admin"))
+        {
+            <li>
+                <a id="chineseBtn" language="zh-CN" class="languageBtn">
+                    <img src="~/assets/images/flags/cn.png" width="16" height="11" alt="RU Language" /> [CN] 中文(简体)
+                </a>
+            </li>
+        }
     </ul>
 </div>
 
@@ -69,19 +84,30 @@
 
         var engBtn = $("#engBtn");
 
-        ruBtn.click(function (e) {
-            e.preventDefault();
-            var returnUrl = window.location.pathname;
-            var link = "/Language/ChangeWithRedirect?LanguageAbbrevation=ru-RU&returnUrl=" + returnUrl;
-            window.location.href = link;
-        });
+        var languageBtns = $(".languageBtn");
 
-        engBtn.click(function (e) {
+        languageBtns.click(function (e) {
             e.preventDefault();
+            var langCode = $(this).attr("language");
             var returnUrl = window.location.pathname;
-            var link = "/Language/ChangeWithRedirect?LanguageAbbrevation=en&returnUrl=" + returnUrl;
+            var link = "/Language/ChangeWithRedirect?LanguageAbbrevation=" + langCode + "&returnUrl=" + returnUrl;
             window.location.href = link;
-        });
+
+        })
+
+        //ruBtn.click(function (e) {
+        //    e.preventDefault();
+        //    var returnUrl = window.location.pathname;
+        //    var link = "/Language/ChangeWithRedirect?LanguageAbbrevation=ru-RU&returnUrl=" + returnUrl;
+        //    window.location.href = link;
+        //});
+
+        //engBtn.click(function (e) {
+        //    e.preventDefault();
+        //    var returnUrl = window.location.pathname;
+        //    var link = "/Language/ChangeWithRedirect?LanguageAbbrevation=en&returnUrl=" + returnUrl;
+        //    window.location.href = link;
+        //});
     })
 </script>
 <!--/Скрипт посыла на смену языка-->

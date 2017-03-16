@@ -79,3 +79,4 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\ru-RU
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\obj\Debug\Logic.Extensions.csprojResolveAssemblyReference.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\obj\Debug\Logic.Extensions.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\obj\Debug\Logic.Extensions.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\zh-CN\Runtasker.Resources.resources.dll

@@ -153,6 +153,12 @@
   <data name="SignIn" xml:space="preserve">
     <value>Войти</value>
   </data>
+  <data name="SignInWith1" xml:space="preserve">
+    <value>Войти с</value>
+  </data>
+  <data name="SignInWith2" xml:space="preserve">
+    <value />
+  </data>
   <data name="SignOut" xml:space="preserve">
     <value>Выйти</value>
   </data>

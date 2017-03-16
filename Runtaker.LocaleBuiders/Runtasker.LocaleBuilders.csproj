@@ -50,7 +50,8 @@
   <ItemGroup>
     <Compile Include="Email\CallToAction\AccounEmailCallToActionModelBuilder.cs" />
     <Compile Include="Email\CallToAction\CustomerEmailCallToActionModelBuilder.cs" />
-    <Compile Include="Models\EmailCallToActionModelBuilderBase.cs" />
+    <Compile Include="Enumerations\Lang.cs" />
+    <Compile Include="Models\UICultureSwitcher.cs" />
     <Compile Include="Email\CallToAction\PerformerEmailCallToActionModelBuilder.cs" />
     <Compile Include="Models\BuilderModels.cs" />
     <Compile Include="Models\LocaleViewModel.cs" />

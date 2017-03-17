@@ -135,6 +135,9 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Pattern" xml:space="preserve">
+    <value>Sign in with {0}</value>
+  </data>
   <data name="Recharge" xml:space="preserve">
     <value>Top up balance</value>
   </data>
@@ -168,7 +171,7 @@
   <data name="ViewProfile" xml:space="preserve">
     <value>View Profile</value>
   </data>
-  <data name="YourBalance" xml:space="preserve">
+  <data name="YourBalance1" xml:space="preserve">
     <value>Your balance is</value>
   </data>
 </root>

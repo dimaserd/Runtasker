@@ -18,6 +18,7 @@ using System;
 using Runtasker.Logic.Workers.Orders;
 using Runtasker.Logic.Workers.Email;
 using Runtasker.Logic.Entities;
+using HtmlExtensions.Renderers;
 
 namespace Runtasker.Controllers
 {
@@ -36,6 +37,11 @@ namespace Runtasker.Controllers
         AccountWorker _accountWorker;
         KnowPriceWorker _knowPriceWorker;
         AccountViewModelBuilder _viewModelBuilder;
+
+        #region Signs
+        HtmlSignsRenderer _htmlSigns;
+        #endregion
+
         #endregion
 
         #endregion
@@ -121,6 +127,18 @@ namespace Runtasker.Controllers
                     _knowPriceWorker = new KnowPriceWorker(UserManager, Context);
                 }
                 return _knowPriceWorker;
+            }
+        }
+
+        HtmlSignsRenderer HtmlSigns
+        {
+            get
+            {
+                if(_htmlSigns == null)
+                {
+                    _htmlSigns = new HtmlSignsRenderer();
+                }
+                return _htmlSigns;
             }
         }
         #endregion
@@ -321,7 +339,12 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult Signin()
         {
-            ViewData["localeModel"] = ViewModelBuilder.SignInView(userName: User.Identity.GetName());
+            ViewData["localeModel"] = ViewModelBuilder
+                .SignInView(
+                userName: User.Identity.GetName(),
+                balance: User.Identity.GetBalance(), 
+                roubleSign: HtmlSigns.Rouble
+                );
             return PartialView();
         }
 
@@ -433,7 +456,7 @@ namespace Runtasker.Controllers
         public ActionResult Register()
         {
             ViewData["viewModel"] = ViewModelBuilder.RegisterView();
-            return View(viewName: "NewRegister");
+            return View();
         }
 
        

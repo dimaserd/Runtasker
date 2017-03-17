@@ -124,16 +124,16 @@
     <value>Chemistry</value>
   </data>
   <data name="CourseWork" xml:space="preserve">
-    <value>Course Work</value>
+    <value>CourseWork</value>
   </data>
   <data name="ErrorTypeNeedDesc" xml:space="preserve">
-    <value>needs more description</value>
+    <value>need more description</value>
   </data>
   <data name="ErrorTypeNeedFiles" xml:space="preserve">
-    <value>needs more attached files</value>
+    <value>need more files</value>
   </data>
   <data name="ErrorTypeNone" xml:space="preserve">
-    <value>No errors</value>
+    <value>no errors</value>
   </data>
   <data name="Essay" xml:space="preserve">
     <value>Essay</value>
@@ -143,11 +143,9 @@
   </data>
   <data name="LangDropdownParams" xml:space="preserve">
     <value />
-    <comment>не указано так как мы не имеем выбора иностранного языка для иностранцев </comment>
   </data>
   <data name="LangLabel" xml:space="preserve">
     <value />
-    <comment>он один и это русский язык</comment>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Russian Language</value>

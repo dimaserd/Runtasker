@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
@@ -18,17 +19,7 @@ namespace Runtasker.Controllers
         #region Help Methods
         bool IsCorrectLang(string language)
         {
-            bool result = false;
-            foreach(string lang in langs)
-            {
-                if(language == lang)
-                {
-                    result = true;
-                    break;
-                }
-            }
-
-            return result;
+            return langs.ToList().Any(x => x == language);
         }
         #endregion
 

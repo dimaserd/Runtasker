@@ -1,5 +1,4 @@
-﻿@using Runtasker.Resources.Views.Account.NewLoginList
-
+﻿
 @model Runtasker.Logic.Models.ExternalLoginListModel
 @using Microsoft.Owin.Security
 @{
@@ -25,8 +24,9 @@
                 }
                 string className = $"btn-{caption.ToLower()}";
                 string className2 = $"fa-{caption.ToLower()}";
+                string textSocial = string.Format(Model.Pattern, p.Caption);
 
-                <button type="submit" class="btn btn-lg btn-social-icon @className" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="@NewLoginList.SignUpWith @p.Caption">
+                <button type="submit" class="btn btn-lg btn-social-icon @className" id="@p.AuthenticationType" name="provider" value="@textSocial">
                     <span class="fa @className2"></span>
                 </button>
             }

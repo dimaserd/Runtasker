@@ -41,7 +41,7 @@
                 <img src="~/assets/images/flags/ru.png" width="16" height="11" alt="RU Language" /> [RUS] Русский
             </a>
         </li>
-        @if (User.IsInRole("Admin"))
+        @if (Runtasker.Settings.Settings.AppSetting == Runtasker.Settings.Enumerations.ApplicationSettingType.Debug)
         {
             <li>
                 <a id="chineseBtn" language="zh-CN" class="languageBtn">

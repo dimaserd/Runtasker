@@ -117,61 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CreateAccount" xml:space="preserve">
-    <value>Зарегистрироваться</value>
+  <data name="AdvancedMathematics" xml:space="preserve">
+    <value>高等数学</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Email</value>
+  <data name="Chemistry" xml:space="preserve">
+    <value>Chemistry</value>
   </data>
-  <data name="ForgotPass" xml:space="preserve">
-    <value>Забыли пароль</value>
+  <data name="CourseWork" xml:space="preserve">
+    <value>学年论文</value>
   </data>
-  <data name="Hello" xml:space="preserve">
-    <value>Здравствуйте</value>
+  <data name="ErrorTypeNeedDesc" xml:space="preserve">
+    <value>needs more description</value>
   </data>
-  <data name="Login" xml:space="preserve">
-    <value>Войти</value>
+  <data name="ErrorTypeNeedFiles" xml:space="preserve">
+    <value>needs more attached files</value>
   </data>
-  <data name="Password" xml:space="preserve">
-    <value>Пароль</value>
+  <data name="ErrorTypeNone" xml:space="preserve">
+    <value>No errors</value>
   </data>
-  <data name="Pattern" xml:space="preserve">
-    <value>Войти с {0}</value>
+  <data name="Essay" xml:space="preserve">
+    <value>随笔 / 专题报告</value>
   </data>
-  <data name="Recharge" xml:space="preserve">
-    <value>Пополнить</value>
+  <data name="Informatics" xml:space="preserve">
+    <value>信息学</value>
   </data>
-  <data name="Register" xml:space="preserve">
-    <value>Зарегистрироваться</value>
+  <data name="LangDropdownParams" xml:space="preserve">
+    <value />
+    <comment>не указано так как мы не имеем выбора иностранного языка для иностранцев </comment>
   </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>Запомнить меня</value>
+  <data name="LangLabel" xml:space="preserve">
+    <value />
+    <comment>он один и это русский язык</comment>
   </data>
-  <data name="SetPassword" xml:space="preserve">
-    <value>Установить пароль</value>
+  <data name="Language" xml:space="preserve">
+    <value>俄语</value>
   </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Настройки</value>
-  </data>
-  <data name="SignIn" xml:space="preserve">
-    <value>Войти</value>
-  </data>
-  <data name="SignInWith1" xml:space="preserve">
-    <value>Войти с</value>
-  </data>
-  <data name="SignInWith2" xml:space="preserve">
+  <data name="LanguagePopover" xml:space="preserve">
     <value />
   </data>
-  <data name="SignOut" xml:space="preserve">
-    <value>Выйти</value>
+  <data name="Ordinary" xml:space="preserve">
+    <value>普通作业</value>
+    <comment>Обычное задание</comment>
   </data>
-  <data name="VerbWith" xml:space="preserve">
-    <value>Войти с</value>
+  <data name="Other" xml:space="preserve">
+    <value>别的学科</value>
   </data>
-  <data name="ViewProfile" xml:space="preserve">
-    <value>Просмотреть профиль</value>
+  <data name="Physics" xml:space="preserve">
+    <value>物理学</value>
   </data>
-  <data name="YourBalance1" xml:space="preserve">
-    <value>Ваш баланс</value>
+  <data name="Programming" xml:space="preserve">
+    <value>程序设计</value>
+  </data>
+  <data name="Projecting" xml:space="preserve">
+    <value>设计</value>
+  </data>
+  <data name="StrengthOfMaterials" xml:space="preserve">
+    <value>材料力学</value>
+  </data>
+  <data name="TheoreticalMechanics" xml:space="preserve">
+    <value>纯粹力学</value>
   </data>
 </root>

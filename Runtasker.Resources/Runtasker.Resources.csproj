@@ -89,15 +89,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PerformerOrderEmRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Order\OrderResource.Designer.cs">
+      <DependentUpon>OrderResource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Entities\Order\OrderResource.ru-RU.Designer.cs">
       <DependentUpon>OrderResource.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Entities\Order\OrderResource.Designer.cs">
+    <Compile Include="Entities\Order\OrderResource.zh-CN.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OrderResource.resx</DependentUpon>
+      <DependentUpon>OrderResource.zh-CN.resx</DependentUpon>
     </Compile>
     <Compile Include="HtmlEmail\SocialAndContact\SocContactRes.ru-RU.Designer.cs">
       <DependentUpon>SocContactRes.ru-RU.resx</DependentUpon>
@@ -651,13 +656,17 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PerformerOrderEmRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Order\OrderResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrderResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Entities\Order\OrderResource.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OrderResource.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entities\Order\OrderResource.resx">
+    <EmbeddedResource Include="Entities\Order\OrderResource.zh-CN.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>OrderResource.Designer.cs</LastGenOutput>
+      <LastGenOutput>OrderResource.zh-CN.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="HtmlEmail\SocialAndContact\SocContactRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -3419,7 +3419,6 @@
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
@@ -3487,7 +3486,7 @@
     <Content Include="Views\Account\Signin.cshtml" />
     <Content Include="Views\Account\BlockLoginList.cshtml" />
     <Content Include="Views\Orders\MiniPanel.cshtml" />
-    <Content Include="Views\Account\NewRegister.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\NewLogin.cshtml" />
     <Content Include="Views\Message\NewActivePanel.cshtml" />
     <Content Include="Views\Home\NewContact.cshtml" />

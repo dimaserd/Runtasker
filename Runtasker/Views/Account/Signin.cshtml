@@ -47,21 +47,21 @@
             <div class="checkbox">
                 <!-- remmember -->
                 <label>
-                    @Html.CheckBoxFor(m => m.RememberMe) @NewLoginPartial.RememberMe &bull;
+                    @Html.CheckBoxFor(m => m.RememberMe) @localeModel["RememberMe"] &bull;
                 </label>
             </div>
 
-            <a href="@Url.Action("ForgotPassword", "Account")">@NewLoginPartial.ForgotPass?</a>
+            <a href="@Url.Action("ForgotPassword", "Account")">@localeModel["ForgotPass"]</a>
 
 
             }
 
             <hr style="margin-top:0;" />
             <!--Список социальных сетей-->
-            @Html.Partial("BlockLoginList", new ExternalLoginListModel { ReturnUrl = ViewBag.ReturnUrl, VerbWith = NewLoginPartial.VerbWith })
+            @Html.Partial("BlockLoginList", new ExternalLoginListModel { ReturnUrl = ViewBag.ReturnUrl, Pattern = localeModel["Pattern"] })
 
             <p class="bottom-create-account">
-                <a href="@Url.Action("Register", "Account")">@NewLoginPartial.CreateAccount</a>
+                <a href="@Url.Action("Register", "Account")">@localeModel["CreateAccount"]</a>
             </p>
         </div>
     </div>
@@ -101,13 +101,18 @@ else
                         <div class="divider">
                         </div>
                         <p class="text-muted small low-marg">
-                            @NewLoginPartial.YourBalance @User.Identity.GetBalance()@HtmlSigns.Rouble.ToHtml()
+                            @localeModel["YourBalanceHtml"].ToHtml()
                         </p>
-                        <p>
-                            <a href="@Url.Action("Index", "Payment")">
-                                [@localeModel["Recharge"]]
-                            </a>
-                        </p>
+
+                        @if (User.IsInRole("Customer"))
+                        {
+                            <p>
+                                <a href="@Url.Action("Index", "Payment")">
+                                    [@localeModel["Recharge"]]
+                                </a>
+                            </p>
+                        }
+                        
 
 
 
@@ -137,7 +142,7 @@ else
                         @if (!User.Identity.HasPassword())
                         {
                             <div class="col-md-12 col-xs-12">
-                                @Html.RouteLink(NewLoginPartial.SetPassword, new { controller = "Manage", action = "SetPassword" }, new { @class = "btn btn-default btn-sm" })
+                                @Html.RouteLink(localeModel["SetPassword"], new { controller = "Manage", action = "SetPassword" }, new { @class = "btn btn-default btn-sm" })
                             </div>
                         }
                         <div class="col-md-12 col-xs-12">

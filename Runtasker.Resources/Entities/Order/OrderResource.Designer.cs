@@ -79,7 +79,7 @@ namespace Runtasker.Resources.Entities.Order {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Course Work.
+        ///   Ищет локализованную строку, похожую на CourseWork.
         /// </summary>
         public static string CourseWork {
             get {
@@ -88,7 +88,7 @@ namespace Runtasker.Resources.Entities.Order {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на needs more description.
+        ///   Ищет локализованную строку, похожую на need more description.
         /// </summary>
         public static string ErrorTypeNeedDesc {
             get {
@@ -97,7 +97,7 @@ namespace Runtasker.Resources.Entities.Order {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на needs more attached files.
+        ///   Ищет локализованную строку, похожую на need more files.
         /// </summary>
         public static string ErrorTypeNeedFiles {
             get {
@@ -106,7 +106,7 @@ namespace Runtasker.Resources.Entities.Order {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на No errors.
+        ///   Ищет локализованную строку, похожую на no errors.
         /// </summary>
         public static string ErrorTypeNone {
             get {

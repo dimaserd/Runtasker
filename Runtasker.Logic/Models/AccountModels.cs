@@ -27,6 +27,12 @@ namespace Runtasker.Logic.Models
         public string ReturnUrl { get; set; }
 
         public string VerbWith { get; set; }
+
+        /// <summary>
+        /// По нему определяется куда нужно вставлять имя социальной сети
+        /// например $"{0}{socialName}{1}"
+        /// </summary>
+        public string Pattern { get; set; }
     }
 
     public class SendCodeModel

@@ -118,14 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CreateAccount" xml:space="preserve">
-    <value>Зарегистрироваться</value>
+    <value>注册</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>电子邮件地址</value>
     <comment>Email</comment>
   </data>
   <data name="ForgotPass" xml:space="preserve">
-    <value>Забыли пароль</value>
+    <value>忘记密码？</value>
   </data>
   <data name="Hello" xml:space="preserve">
     <value>您好</value>
@@ -137,6 +137,9 @@
   </data>
   <data name="Password" xml:space="preserve">
     <value>输入密码</value>
+  </data>
+  <data name="Pattern" xml:space="preserve">
+    <value>用 {0}登录</value>
   </data>
   <data name="Recharge" xml:space="preserve">
     <value>充值</value>
@@ -179,7 +182,7 @@
     <value>查看主页</value>
     <comment>Просмотреть профиль</comment>
   </data>
-  <data name="YourBalance" xml:space="preserve">
+  <data name="YourBalance1" xml:space="preserve">
     <value>Ваш баланс</value>
     <comment>Ваш баланс</comment>
   </data>

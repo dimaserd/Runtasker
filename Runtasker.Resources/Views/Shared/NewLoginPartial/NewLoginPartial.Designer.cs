@@ -115,6 +115,15 @@ namespace Runtasker.Resources.Views.Shared.NewLoginPartial {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Sign in with {0}.
+        /// </summary>
+        public static string Pattern {
+            get {
+                return ResourceManager.GetString("Pattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Top up balance.
         /// </summary>
         public static string Recharge {
@@ -216,9 +225,9 @@ namespace Runtasker.Resources.Views.Shared.NewLoginPartial {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Your balance is.
         /// </summary>
-        public static string YourBalance {
+        public static string YourBalance1 {
             get {
-                return ResourceManager.GetString("YourBalance", resourceCulture);
+                return ResourceManager.GetString("YourBalance1", resourceCulture);
             }
         }
     }

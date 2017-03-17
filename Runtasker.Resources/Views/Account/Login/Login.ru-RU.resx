@@ -171,4 +171,15 @@
   <data name="Title" xml:space="preserve">
     <value>Войти на сайт</value>
   </data>
+  <data name="ContactTextPattern" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ViaSocialsPattern" xml:space="preserve">
+    <value>Войти {0}</value>
+    <comment>Войти {через аккаунты в социальных сетях}</comment>
+  </data>
+  <data name="WelcomeTitlePattern" xml:space="preserve">
+    <value>Добро пожаловать на {0}</value>
+    <comment>Добро пожаловать на {Runtasker}</comment>
+  </data>
 </root>

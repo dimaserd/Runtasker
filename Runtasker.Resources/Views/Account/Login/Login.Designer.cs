@@ -61,6 +61,15 @@ namespace Runtasker.Resources.Views.Account.Login {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string ContactTextPattern {
+            get {
+                return ResourceManager.GetString("ContactTextPattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Forgot your password?.
         /// </summary>
         public static string ForgotYourPass {
@@ -214,11 +223,29 @@ namespace Runtasker.Resources.Views.Account.Login {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Sign in {0}.
+        /// </summary>
+        public static string ViaSocialsPattern {
+            get {
+                return ResourceManager.GetString("ViaSocialsPattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Welcome to.
         /// </summary>
         public static string WelcomeTitle1 {
             get {
                 return ResourceManager.GetString("WelcomeTitle1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Welcome to {Runtasker}.
+        /// </summary>
+        public static string WelcomeTitlePattern {
+            get {
+                return ResourceManager.GetString("WelcomeTitlePattern", resourceCulture);
             }
         }
     }

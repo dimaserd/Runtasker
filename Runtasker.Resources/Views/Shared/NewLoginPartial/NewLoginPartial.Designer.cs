@@ -79,7 +79,7 @@ namespace Runtasker.Resources.Views.Shared.NewLoginPartial {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Forgot Password.
+        ///   Ищет локализованную строку, похожую на Forgot Password?.
         /// </summary>
         public static string ForgotPass {
             get {
@@ -88,11 +88,11 @@ namespace Runtasker.Resources.Views.Shared.NewLoginPartial {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Hello.
+        ///   Ищет локализованную строку, похожую на Hello, {0}!.
         /// </summary>
-        public static string Hello {
+        public static string HelloUserPattern {
             get {
-                return ResourceManager.GetString("Hello", resourceCulture);
+                return ResourceManager.GetString("HelloUserPattern", resourceCulture);
             }
         }
         
@@ -178,38 +178,11 @@ namespace Runtasker.Resources.Views.Shared.NewLoginPartial {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Sign in with.
-        /// </summary>
-        public static string SignInWith1 {
-            get {
-                return ResourceManager.GetString("SignInWith1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на sf.
-        /// </summary>
-        public static string SignInWith2 {
-            get {
-                return ResourceManager.GetString("SignInWith2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Sign Out.
         /// </summary>
         public static string SignOut {
             get {
                 return ResourceManager.GetString("SignOut", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Sign in with.
-        /// </summary>
-        public static string VerbWith {
-            get {
-                return ResourceManager.GetString("VerbWith", resourceCulture);
             }
         }
         
@@ -223,11 +196,11 @@ namespace Runtasker.Resources.Views.Shared.NewLoginPartial {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Your balance is.
+        ///   Ищет локализованную строку, похожую на Your balance is {0}{1}.
         /// </summary>
-        public static string YourBalance1 {
+        public static string YourBalancePattern {
             get {
-                return ResourceManager.GetString("YourBalance1", resourceCulture);
+                return ResourceManager.GetString("YourBalancePattern", resourceCulture);
             }
         }
     }

@@ -173,4 +173,14 @@
     <value>Sign in</value>
     <comment>Войти на сайт</comment>
   </data>
+  <data name="ContactTextPattern" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ViaSocialsPattern" xml:space="preserve">
+    <value>Sign in {0}</value>
+    <comment>Sign in {via social providers}</comment>
+  </data>
+  <data name="WelcomeTitlePattern" xml:space="preserve">
+    <value>Welcome to {Runtasker}</value>
+  </data>
 </root>

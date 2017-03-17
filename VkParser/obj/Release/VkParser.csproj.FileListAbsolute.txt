@@ -74,6 +74,11 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\ru-RU\Runta
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Release\VkParser.csprojResolveAssemblyReference.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Release\VkParser.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Release\VkParser.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\AngleSharp.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\VkNet.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\AngleSharp.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\VkNet.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\zh-CN\Runtasker.Resources.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\roslyn\csc.exe
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\roslyn\csc.exe.config
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\roslyn\csc.rsp
@@ -100,7 +105,3 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\roslyn\vbc.
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\roslyn\vbc.rsp
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\roslyn\VBCSCompiler.exe
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\roslyn\VBCSCompiler.exe.config
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\AngleSharp.dll
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\VkNet.dll
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\AngleSharp.xml
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\VkNet.xml

@@ -124,10 +124,11 @@
     <value>Email</value>
   </data>
   <data name="ForgotPass" xml:space="preserve">
-    <value>Забыли пароль</value>
+    <value>Забыли пароль?</value>
   </data>
-  <data name="Hello" xml:space="preserve">
-    <value>Здравствуйте</value>
+  <data name="HelloUserPattern" xml:space="preserve">
+    <value>Здравствуйте, {0}!</value>
+    <comment>Здравствуйте, {имя пользователя}!</comment>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Войти</value>
@@ -156,12 +157,6 @@
   <data name="SignIn" xml:space="preserve">
     <value>Войти</value>
   </data>
-  <data name="SignInWith1" xml:space="preserve">
-    <value>Войти с</value>
-  </data>
-  <data name="SignInWith2" xml:space="preserve">
-    <value />
-  </data>
   <data name="SignOut" xml:space="preserve">
     <value>Выйти</value>
   </data>
@@ -171,7 +166,8 @@
   <data name="ViewProfile" xml:space="preserve">
     <value>Просмотреть профиль</value>
   </data>
-  <data name="YourBalance1" xml:space="preserve">
-    <value>Ваш баланс</value>
+  <data name="YourBalancePattern" xml:space="preserve">
+    <value>Ваш баланс {0}{1}</value>
+    <comment>Ваш баланс {сумма}{знак рубля}</comment>
   </data>
 </root>

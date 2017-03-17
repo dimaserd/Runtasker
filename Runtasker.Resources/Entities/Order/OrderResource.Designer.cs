@@ -88,7 +88,7 @@ namespace Runtasker.Resources.Entities.Order {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на need more description.
+        ///   Ищет локализованную строку, похожую на needs more description.
         /// </summary>
         public static string ErrorTypeNeedDesc {
             get {
@@ -97,7 +97,7 @@ namespace Runtasker.Resources.Entities.Order {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на need more files.
+        ///   Ищет локализованную строку, похожую на needs more attached files.
         /// </summary>
         public static string ErrorTypeNeedFiles {
             get {

@@ -79,20 +79,20 @@ namespace Runtasker.Resources.Views.Home.Index {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Try.
+        ///   Ищет локализованную строку, похожую на our sevices.
         /// </summary>
-        public static string TryOurServices1 {
+        public static string TryOurServicesMini {
             get {
-                return ResourceManager.GetString("TryOurServices1", resourceCulture);
+                return ResourceManager.GetString("TryOurServicesMini", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на our sevices.
+        ///   Ищет локализованную строку, похожую на Try {0} {1}.
         /// </summary>
-        public static string TryOurServices2 {
+        public static string TryOurServicesPattern {
             get {
-                return ResourceManager.GetString("TryOurServices2", resourceCulture);
+                return ResourceManager.GetString("TryOurServicesPattern", resourceCulture);
             }
         }
     }

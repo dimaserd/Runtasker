@@ -123,10 +123,7 @@
   <data name="ClickToSI" xml:space="preserve">
     <value>Click to Sign In</value>
   </data>
-  <data name="ContactText1" xml:space="preserve">
-    <value>If you're looking for more help or have a question to ask, please</value>
-  </data>
-  <data name="ContactText2" xml:space="preserve">
+  <data name="ContactLinkText" xml:space="preserve">
     <value>contact us</value>
   </data>
   <data name="ContCustSup" xml:space="preserve">
@@ -187,5 +184,8 @@
   <data name="RegPlus6" xml:space="preserve">
     <value>Get 300 bonus roubles on Runtasker</value>
     <comment>Получить бонусные 300 рублей на Runtasker</comment>
+  </data>
+  <data name="ContactTextPattern" xml:space="preserve">
+    <value>If you're looking for more help or have a question to ask, please {0}.</value>
   </data>
 </root>

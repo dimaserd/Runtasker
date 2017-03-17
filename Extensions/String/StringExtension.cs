@@ -123,49 +123,26 @@ namespace Extensions.String
             return MvcHtmlString.Create(s);
         }
 
-        #region Wrappers
-        /// <summary>
-        /// Заворачивает входную строку в тег strong
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public static string WrapToStrong(this string s)
+        public static string MarkManyText(this string Text, string toMarkMany)
         {
-            return $"<strong>{s}</strong>";
+            string[] words = toMarkMany.Split(separator: new string[] { "," }, options: StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string word in words)
+            {
+                Text = Text.MarkText(word);
+            }
+            return Text;
         }
 
-        public static string WrapToA(this string s, string href)
+        public static string MarkText(this string Text, string toMark)
         {
-            return $"<a href=\"{href}\">{s}</a>";
-        }
+            int start = Text.IndexOf(toMark);
 
-        public static string WrapToA(this string s, object htmlAttributes)
-        {
-            string keyValueAttributesPair = RenderAttributesKeyValuePair(htmlAttributes);
-            return $"<a{keyValueAttributesPair}>{s}</a>";
-        }
-
-        public static string WrapToH1(this string s)
-        {
-            return $"<h1>{s}</h1>";
-        }
-        public static string WrapToH2(this string s)
-        {
-            return $"<h2>{s}</h2>";
-        }
-        public static string WrapToH3(this string s)
-        {
-            return $"<h3>{s}</h3>";
-        }
-        /// <summary>
-        /// Заворачивает входную строку в HTML-тег em
-        /// который наклоняет текст
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public static string WrapToEm(this string s)
-        {
-            return $"<em>{s}</em>";
+            if (start == -1)
+            {
+                return Text;
+            }
+            return $"{Text.Substring(0, start)}<mark>{Text.Substring(start, toMark.Length)}</mark>{Text.Substring(start + toMark.Length)}";
         }
 
         public static string WrapUrls(this string Text)
@@ -185,34 +162,13 @@ namespace Extensions.String
             return Text;
         }
 
-        public static string MarkManyText(this string Text, string toMarkMany)
-        {
-            string[] words = toMarkMany.Split(separator: new string[] { "," }, options: StringSplitOptions.RemoveEmptyEntries);
-
-            foreach(string word in words)
-            {
-                Text = Text.MarkText(word);
-            }
-            return Text;
-        }
-
-        public static string MarkText(this string Text, string toMark)
-        {
-            int start = Text.IndexOf(toMark);
-
-            if(start == -1)
-            {
-                return Text;
-            }
-            return $"{Text.Substring(0, start)}<mark>{Text.Substring(start, toMark.Length)}</mark>{Text.Substring(start + toMark.Length)}";
-        }
 
         public static string WrapEmails(this string Text)
         {
             Regex urlRegex = new Regex(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
             foreach (Match ItemMatch in urlRegex.Matches(Text))
             {
-                Uri uri = new Uri(ItemMatch.Value);  
+                Uri uri = new Uri(ItemMatch.Value);
                 //creating a uri object from spotted email
                 string n = $"<a href='{ItemMatch}'>{uri.Host}</a>";
                 Text = Text.Substring(0, ItemMatch.Index) + n + Text.Substring(ItemMatch.Index + ItemMatch.Length);
@@ -220,7 +176,6 @@ namespace Extensions.String
 
             return Text;
         }
-        #endregion
 
         #region Lefters
         public static List<string> leftJustNames(this List<string> filenames)

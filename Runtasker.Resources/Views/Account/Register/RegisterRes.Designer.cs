@@ -88,20 +88,20 @@ namespace Runtasker.Resources.Views.Account.Register {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на If you&apos;re looking for more help or have a question to ask, please.
+        ///   Ищет локализованную строку, похожую на contact us.
         /// </summary>
-        public static string ContactText1 {
+        public static string ContactLinkText {
             get {
-                return ResourceManager.GetString("ContactText1", resourceCulture);
+                return ResourceManager.GetString("ContactLinkText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на contact us.
+        ///   Ищет локализованную строку, похожую на If you&apos;re looking for more help or have a question to ask, please {0}..
         /// </summary>
-        public static string ContactText2 {
+        public static string ContactTextPattern {
             get {
-                return ResourceManager.GetString("ContactText2", resourceCulture);
+                return ResourceManager.GetString("ContactTextPattern", resourceCulture);
             }
         }
         

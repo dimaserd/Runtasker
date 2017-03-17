@@ -137,6 +137,7 @@ namespace Runtasker.Controllers
             {
                 return RedirectToAction("Index", "Landing");
             }
+            ViewData["localeModel"] = ModelBuilder.HomeView();
             return View();
         }
 
@@ -152,6 +153,7 @@ namespace Runtasker.Controllers
 
         public ActionResult Comments()
         {
+            ViewData["localeModel"] = ModelBuilder.CommentsView();
             return View();
         }
 

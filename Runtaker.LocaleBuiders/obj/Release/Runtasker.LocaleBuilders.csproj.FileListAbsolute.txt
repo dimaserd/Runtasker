@@ -52,6 +52,7 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Relea
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\obj\Release\Runtasker.LocaleBuilders.csprojResolveAssemblyReference.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\obj\Release\Runtaker.LocaleBuiders.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\obj\Release\Runtaker.LocaleBuiders.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Release\zh-CN\Runtasker.Resources.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Release\roslyn\csc.exe
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Release\roslyn\csc.exe.config
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Release\roslyn\csc.rsp

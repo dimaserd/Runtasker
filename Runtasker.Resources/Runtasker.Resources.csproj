@@ -330,6 +330,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AboutUsRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Home\Comments\CommentsRes.zh-CN.Designer.cs">
+      <DependentUpon>CommentsRes.zh-CN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Home\Comments\CommentsRes.ru-RU.Designer.cs">
       <DependentUpon>CommentsRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -352,6 +357,11 @@
     </Compile>
     <Compile Include="Views\Home\Index\Index.Designer.cs">
       <DependentUpon>Index.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Home\Index\Index.zh-CN.Designer.cs">
+      <DependentUpon>Index.zh-CN.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -849,6 +859,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AboutUsRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\Comments\CommentsRes.zh-CN.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommentsRes.zh-CN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\Comments\CommentsRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CommentsRes.ru-RU.Designer.cs</LastGenOutput>
@@ -868,6 +882,10 @@
     <EmbeddedResource Include="Views\Home\Index\Index.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\Index\Index.zh-CN.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.zh-CN.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\Index\Index.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

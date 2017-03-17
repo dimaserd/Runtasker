@@ -9,7 +9,6 @@ namespace Runtaker.LocaleBuiders.Views.Account
 {
     public class AccountViewModelBuilder : UICultureSwitcher
     {
-        
 
         public LocaleViewModel LoginView()
         {
@@ -22,12 +21,12 @@ namespace Runtaker.LocaleBuiders.Views.Account
             result.Add("SignIn", Login.SignIn);
             result.Add("ForgotYourPass", Login.ForgotYourPass);
             result.Add("Pattern", NewLoginPartial.Pattern);
+            result.Add("WelcomeHtml", string.Format( Login.WelcomeTitlePattern, Login.Runtasker.WrapToStrong().WrapToEm()) );
 
 
             switch (UILang)
             {
                 case Lang.Russian:
-                    result.Add("WelcomeHtml", $"{Login.WelcomeTitle1} {Login.Runtasker.WrapToStrong().WrapToEm()}"); 
                     result.Add("htmlHeader", $"{Login.htmlHeader1} {Login.htmlHeader2.WrapToStrong().WrapToEm()}".WrapToH2());
                     result.Add("htmlSocialSignIn", $"{Login.ViaSocials1} {Login.ViaSocials2.WrapToStrong().WrapToEm()}".WrapToH2());
                     result.Add("htmlWithoutAccount", $"{Login.htmlWithoutAccount1} {Login.htmlWithoutAccount2.WrapToA("/Account/Register")}, {Login.htmlWithoutAccount3}");
@@ -35,11 +34,9 @@ namespace Runtaker.LocaleBuiders.Views.Account
                     return result;
 
                 default:
-                    result.Add("WelcomeHtml", $"{Login.WelcomeTitle1} {Login.Runtasker.WrapToStrong().WrapToEm()}");
                     result.Add("htmlHeader", $"{Login.htmlHeader1} {Login.htmlHeader2.WrapToStrong().WrapToEm()}".WrapToH2());
                     result.Add("htmlSocialSignIn", $"{Login.ViaSocials1} {Login.ViaSocials2.WrapToStrong().WrapToEm()}".WrapToH2());
                     result.Add("htmlWithoutAccount", $"{Login.htmlWithoutAccount1} {Login.htmlWithoutAccount2.WrapToA("/Account/Register")}, {Login.htmlWithoutAccount3}");
-                    
                     return result;
             }
             
@@ -60,32 +57,11 @@ namespace Runtaker.LocaleBuiders.Views.Account
             result.Add("CreateAccount", NewLoginPartial.CreateAccount);
             result.Add("SetPassword", NewLoginPartial.SetPassword);
             result.Add("Pattern", NewLoginPartial.Pattern);
+            result.Add("HelloUser", string.Format(NewLoginPartial.HelloUserPattern, userName));
+            result.Add("ForgotPass", NewLoginPartial.ForgotPass);
+            result.Add("YourBalanceHtml", string.Format(NewLoginPartial.YourBalancePattern, balance, roubleSign));
 
-            switch (UILang)
-            {
-                case (Lang.English):
-                    
-                    result.Add("HelloUser", $"{NewLoginPartial.Hello}, {userName}!");
-                    result.Add("ForgotPass", $"{NewLoginPartial.ForgotPass}?");
-                    result.Add("YourBalanceHtml", $"{NewLoginPartial.YourBalance1} {balance}{roubleSign}");
-
-                    break;
-
-                case (Lang.Russian):
-                    result.Add("HelloUser", $"{NewLoginPartial.Hello}, {userName}!");
-                    result.Add("ForgotPass", $"{NewLoginPartial.ForgotPass}?");
-                    result.Add("YourBalanceHtml", $"{NewLoginPartial.YourBalance1} {balance}{roubleSign}");
-
-                    break;
-
-                case (Lang.Chinese):
-                    result.Add("HelloUser", $"{NewLoginPartial.Hello}, {userName}!");
-                    result.Add("ForgotPass", $"{NewLoginPartial.ForgotPass}");
-                    //не сделано!
-                    result.Add("YourBalanceHtml", $"{NewLoginPartial.YourBalance1} {balance}{roubleSign}");
-
-                    break;
-            }
+            
             return result;
         }
 
@@ -105,36 +81,18 @@ namespace Runtaker.LocaleBuiders.Views.Account
             result.Add("RegPlus5", RegisterRes.RegPlus5);
             result.Add("RegPlus6", RegisterRes.RegPlus6);
 
-            switch (UILang)
-            {
-                case Lang.Russian:
-                    
-                    
-                    result.Add("htmlHeader", $"<h2>{RegisterRes.htmlHeader1} <strong>{RegisterRes.htmlHeader2}</strong></h2>");
-                    result.Add("htmlHeader2", $"<h2>{RegisterRes.Register}</h2>");
-                    result.Add("registerBtn", RegisterRes.Register);
-                    result.Add("WhyToReg", RegisterRes.WhyToReg);
-                    result.Add("WhyToRegDesc", RegisterRes.WhyToRegDesc);
-                    result.Add("AlreadyHaveAc", RegisterRes.AlreadyHaveAc);
-                    result.Add("ClickToSI", RegisterRes.ClickToSI);
-                    result.Add("ContCustSup", RegisterRes.ContCustSup);
-                    result.Add("htmlContactField", $"{RegisterRes.ContactText1} {RegisterRes.ContactText2.WrapToA(href: "/Home/Contact")}.");
-                    break;
-
-                default:
-                    result.Add("htmlHeader", $"{RegisterRes.htmlHeader1} {RegisterRes.htmlHeader2.WrapToStrong()}".WrapToH2());
-                    result.Add("htmlHeader2", RegisterRes.Register.WrapToH2());
-                    result.Add("registerBtn", RegisterRes.Register);
-                    result.Add("WhyToReg", RegisterRes.WhyToReg);
-                    result.Add("WhyToRegDesc", RegisterRes.WhyToRegDesc);        
-                    result.Add("AlreadyHaveAc", RegisterRes.AlreadyHaveAc);
-                    result.Add("ClickToSI", RegisterRes.ClickToSI);
-                    result.Add("ContCustSup", RegisterRes.ContCustSup);
-                    result.Add("htmlContactField", $"{RegisterRes.ContactText1} {RegisterRes.ContactText2.WrapToA(href: "/Home/Contact")}.");
-                    break;
-            }
+            result.Add("htmlHeader", $"{RegisterRes.htmlHeader1} {RegisterRes.htmlHeader2.WrapToStrong()}".WrapToH2());
+            result.Add("htmlHeader2", RegisterRes.Register.WrapToH2());
+            result.Add("registerBtn", RegisterRes.Register);
+            result.Add("WhyToReg", RegisterRes.WhyToReg);
+            result.Add("WhyToRegDesc", RegisterRes.WhyToRegDesc);
+            result.Add("AlreadyHaveAc", RegisterRes.AlreadyHaveAc);
+            result.Add("ClickToSI", RegisterRes.ClickToSI);
+            result.Add("ContCustSup", RegisterRes.ContCustSup);
+            result.Add("htmlContactField", string.Format(RegisterRes.ContactTextPattern, RegisterRes.ContactLinkText.WrapToA(href: "/Home/Contact")));
 
             return result;
         }
+
     }
 }

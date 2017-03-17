@@ -127,10 +127,10 @@
     <value>CourseWork</value>
   </data>
   <data name="ErrorTypeNeedDesc" xml:space="preserve">
-    <value>need more description</value>
+    <value>needs more description</value>
   </data>
   <data name="ErrorTypeNeedFiles" xml:space="preserve">
-    <value>need more files</value>
+    <value>needs more attached files</value>
   </data>
   <data name="ErrorTypeNone" xml:space="preserve">
     <value>no errors</value>

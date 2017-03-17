@@ -127,9 +127,9 @@
   <data name="ForgotPass" xml:space="preserve">
     <value>忘记密码？</value>
   </data>
-  <data name="Hello" xml:space="preserve">
-    <value>您好</value>
-    <comment>您好， {имя пользователя}</comment>
+  <data name="HelloUserPattern" xml:space="preserve">
+    <value>您好，{0}!</value>
+    <comment>您好，{имя пользователя}!</comment>
   </data>
   <data name="Login" xml:space="preserve">
     <value>登录</value>
@@ -145,7 +145,7 @@
     <value>充值</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>Зарегистрироваться</value>
+    <value>注册</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>下次自动登录</value>
@@ -163,27 +163,16 @@
     <value>登录</value>
     <comment>Войти</comment>
   </data>
-  <data name="SignInWith1" xml:space="preserve">
-    <value>用</value>
-    <comment>用 {имя социальной сети}登录</comment>
-  </data>
-  <data name="SignInWith2" xml:space="preserve">
-    <value>登录</value>
-  </data>
   <data name="SignOut" xml:space="preserve">
     <value>退出</value>
     <comment>Выйти</comment>
-  </data>
-  <data name="VerbWith" xml:space="preserve">
-    <value>Войти с</value>
-    <comment>Войти с</comment>
   </data>
   <data name="ViewProfile" xml:space="preserve">
     <value>查看主页</value>
     <comment>Просмотреть профиль</comment>
   </data>
-  <data name="YourBalance1" xml:space="preserve">
-    <value>Ваш баланс</value>
-    <comment>Ваш баланс</comment>
+  <data name="YourBalancePattern" xml:space="preserve">
+    <value>Your balance is {0}{1}</value>
+    <comment>Ваш баланс {сумма}{знак рубля}</comment>
   </data>
 </root>

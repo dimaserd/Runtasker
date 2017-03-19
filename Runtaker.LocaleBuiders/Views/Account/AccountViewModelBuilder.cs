@@ -42,6 +42,13 @@ namespace Runtaker.LocaleBuiders.Views.Account
             
         }
 
+        /// <summary>
+        /// Завершенный метод
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="balance"></param>
+        /// <param name="roubleSign"></param>
+        /// <returns></returns>
         public LocaleViewModel SignInView(string userName, string balance, string roubleSign)
         {
             LocaleViewModel result = new LocaleViewModel();
@@ -65,6 +72,10 @@ namespace Runtaker.LocaleBuiders.Views.Account
             return result;
         }
 
+        /// <summary>
+        /// Завершенный метод
+        /// </summary>
+        /// <returns></returns>
         public LocaleViewModel RegisterView()
         {
             LocaleViewModel result = new LocaleViewModel();

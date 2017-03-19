@@ -1,4 +1,5 @@
-﻿using Runtasker.LocaleBuilders.Models;
+﻿using Runtaker.LocaleBuiders.Enumerations;
+using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Views.Payment.Index;
 using Runtasker.Resources.Views.Payment.Robokassa;
 using Runtasker.Resources.Views.Payment.Yandex;
@@ -9,9 +10,9 @@ namespace Runtasker.LocaleBuilders.Views.Payment
     {
         public LocaleViewModel Index()
         {
-            switch (UICultureName)
+            switch (UILang)
             {
-                case "ru-RU":
+                case Lang.Russian:
                     LocaleViewModel rusResult = new LocaleViewModel();
                     rusResult.Add("ActionDesc", IndexRes.ActionDesc);
                     rusResult.Add("ActionDescMini", IndexRes.ActionDescMini);
@@ -44,9 +45,9 @@ namespace Runtasker.LocaleBuilders.Views.Payment
 
         public LocaleViewModel Robokassa(decimal amount, decimal withdrawAmount, string roubleSign)
         {
-            switch(UICultureName)
+            switch(UILang)
             {
-                case "ru-RU":
+                case Lang.Russian:
                     LocaleViewModel rusResult = new LocaleViewModel();
                     rusResult.Add("Title", RkassaRes.Title1);
                     rusResult.Add("ActionDesc", $"{RkassaRes.ActionDesc1} {amount}{roubleSign}");
@@ -68,9 +69,9 @@ namespace Runtasker.LocaleBuilders.Views.Payment
 
         public LocaleViewModel Yandex()
         {
-            switch(UICultureName)
+            switch(UILang)
             {
-                case "ru-RU":
+                case Lang.Russian:
                     LocaleViewModel rusResult = new LocaleViewModel();
                     rusResult.Add("ActionDesc", YandexRes.ActionDesc);
                     rusResult.Add("ActionDescMini", YandexRes.ActionDescMini);

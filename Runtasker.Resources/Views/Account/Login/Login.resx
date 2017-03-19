@@ -150,18 +150,8 @@
   <data name="TakesSeconds" xml:space="preserve">
     <value>It only takes 8 seconds</value>
   </data>
-  <data name="WelcomeTitle1" xml:space="preserve">
-    <value>Welcome to</value>
-    <comment>Добро пожаловать на</comment>
-  </data>
   <data name="VerbWith" xml:space="preserve">
     <value>Login with</value>
-  </data>
-  <data name="ViaSocials1" xml:space="preserve">
-    <value>Sign in</value>
-  </data>
-  <data name="ViaSocials2" xml:space="preserve">
-    <value>via social providers</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Remember Me</value>

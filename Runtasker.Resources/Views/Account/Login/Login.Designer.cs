@@ -205,38 +205,11 @@ namespace Runtasker.Resources.Views.Account.Login {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Sign in.
-        /// </summary>
-        public static string ViaSocials1 {
-            get {
-                return ResourceManager.GetString("ViaSocials1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на via social providers.
-        /// </summary>
-        public static string ViaSocials2 {
-            get {
-                return ResourceManager.GetString("ViaSocials2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Sign in {0}.
         /// </summary>
         public static string ViaSocialsPattern {
             get {
                 return ResourceManager.GetString("ViaSocialsPattern", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Welcome to.
-        /// </summary>
-        public static string WelcomeTitle1 {
-            get {
-                return ResourceManager.GetString("WelcomeTitle1", resourceCulture);
             }
         }
         

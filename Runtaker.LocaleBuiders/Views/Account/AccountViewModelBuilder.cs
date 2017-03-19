@@ -21,7 +21,7 @@ namespace Runtaker.LocaleBuiders.Views.Account
             result.Add("SignIn", Login.SignIn);
             result.Add("ForgotYourPass", Login.ForgotYourPass);
             result.Add("Pattern", NewLoginPartial.Pattern);
-            result.Add("WelcomeHtml", string.Format( Login.WelcomeTitlePattern, Login.Runtasker.WrapToStrong().WrapToEm()) );
+            result.Add("WelcomeHtml", string.Format(Login.WelcomeTitlePattern, Login.Runtasker.WrapToStrong().WrapToEm()) );
 
 
             switch (UILang)

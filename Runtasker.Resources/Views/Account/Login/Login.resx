@@ -123,21 +123,6 @@
   <data name="HomeNav" xml:space="preserve">
     <value>Home</value>
   </data>
-  <data name="htmlHeader1" xml:space="preserve">
-    <value>Sign</value>
-  </data>
-  <data name="htmlHeader2" xml:space="preserve">
-    <value>In</value>
-  </data>
-  <data name="htmlWithoutAccount1" xml:space="preserve">
-    <value>Don't have an account yet?</value>
-  </data>
-  <data name="htmlWithoutAccount2" xml:space="preserve">
-    <value>Click to create one</value>
-  </data>
-  <data name="htmlWithoutAccount3" xml:space="preserve">
-    <value>it's free!</value>
-  </data>
   <data name="KeepMeSignedIn" xml:space="preserve">
     <value>Keep me signed in</value>
   </data>
@@ -171,6 +156,28 @@
     <comment>Sign in {via social providers}</comment>
   </data>
   <data name="WelcomeTitlePattern" xml:space="preserve">
-    <value>Welcome to {Runtasker}</value>
+    <value>Welcome to {0}</value>
+    <comment>Welcome to {Runtasker}</comment>
+  </data>
+  <data name="HeaderFormat" xml:space="preserve">
+    <value>Sign {0}</value>
+    <comment>Sign {in}</comment>
+  </data>
+  <data name="HeaderToMark" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="SocialSignInFormat" xml:space="preserve">
+    <value>Sign in {0}</value>
+    <comment>Sign in {via social providers}</comment>
+  </data>
+  <data name="SocialSignInToMark" xml:space="preserve">
+    <value>via social providers</value>
+  </data>
+  <data name="WithoutAccountFormat" xml:space="preserve">
+    <value>Don't have an account yet? {0} it's free!</value>
+    <comment>Don't have an account yet? {Click to create one} it's free!</comment>
+  </data>
+  <data name="WithoutAccountLinkText" xml:space="preserve">
+    <value>Click to create one</value>
   </data>
 </root>

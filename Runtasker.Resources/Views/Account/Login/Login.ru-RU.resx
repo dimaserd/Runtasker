@@ -123,21 +123,6 @@
   <data name="HomeNav" xml:space="preserve">
     <value>Главная</value>
   </data>
-  <data name="htmlHeader1" xml:space="preserve">
-    <value>Войти</value>
-  </data>
-  <data name="htmlHeader2" xml:space="preserve">
-    <value>на сайт</value>
-  </data>
-  <data name="htmlWithoutAccount1" xml:space="preserve">
-    <value>Еще не зарегистрированы?</value>
-  </data>
-  <data name="htmlWithoutAccount2" xml:space="preserve">
-    <value>нажмите, чтобы зарегистрироваться</value>
-  </data>
-  <data name="htmlWithoutAccount3" xml:space="preserve">
-    <value>это бесплатно!</value>
-  </data>
   <data name="KeepMeSignedIn" xml:space="preserve">
     <value>Запомнить меня</value>
   </data>
@@ -172,5 +157,26 @@
   <data name="WelcomeTitlePattern" xml:space="preserve">
     <value>Добро пожаловать на {0}</value>
     <comment>Добро пожаловать на {Runtasker}</comment>
+  </data>
+  <data name="HeaderFormat" xml:space="preserve">
+    <value>Войти {0}</value>
+    <comment>Войти {на сайт}</comment>
+  </data>
+  <data name="HeaderToMark" xml:space="preserve">
+    <value>на сайт</value>
+  </data>
+  <data name="SocialSignInFormat" xml:space="preserve">
+    <value>Войти {0}</value>
+    <comment>Войти {через аккаунты в социальных сетях}</comment>
+  </data>
+  <data name="SocialSignInToMark" xml:space="preserve">
+    <value>через аккаунты в социальных сетях</value>
+  </data>
+  <data name="WithoutAccountFormat" xml:space="preserve">
+    <value>Еще не зарегистрированы? {0} это бесплатно!</value>
+    <comment>Еще не зарегистрированы? {нажмите, чтобы зарегистрироваться} это бесплатно!</comment>
+  </data>
+  <data name="WithoutAccountLinkText" xml:space="preserve">
+    <value>Нажмите, чтобы зарегистрироваться</value>
   </data>
 </root>

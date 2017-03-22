@@ -22,24 +22,14 @@ namespace Runtaker.LocaleBuiders.Views.Account
             result.Add("ForgotYourPass", Login.ForgotYourPass);
             result.Add("Pattern", NewLoginPartial.Pattern);
             result.Add("WelcomeHtml", string.Format(Login.WelcomeTitlePattern, Login.Runtasker.WrapToStrong().WrapToEm()) );
+            result.Add("htmlHeader", string.Format(Login.HeaderFormat, Login.HeaderToMark.WrapToStrong().WrapToEm())
+                .WrapToH2());
+            result.Add("htmlSocialSignIn", string.Format(Login.SocialSignInFormat, Login.SocialSignInToMark.WrapToStrong().WrapToEm()).WrapToH2());
+            result.Add("htmlWithoutAccount", string.Format(Login.WithoutAccountFormat, Login.WithoutAccountLinkText.WrapToA("/Account/Register")) );
 
 
-            switch (UILang)
-            {
-                case Lang.Russian:
-                    result.Add("htmlHeader", $"{Login.htmlHeader1} {Login.htmlHeader2.WrapToStrong().WrapToEm()}".WrapToH2());
-                    result.Add("htmlSocialSignIn", $"{Login.ViaSocials1} {Login.ViaSocials2.WrapToStrong().WrapToEm()}".WrapToH2());
-                    result.Add("htmlWithoutAccount", $"{Login.htmlWithoutAccount1} {Login.htmlWithoutAccount2.WrapToA("/Account/Register")}, {Login.htmlWithoutAccount3}");
-                    
-                    return result;
-
-                default:
-                    result.Add("htmlHeader", $"{Login.htmlHeader1} {Login.htmlHeader2.WrapToStrong().WrapToEm()}".WrapToH2());
-                    result.Add("htmlSocialSignIn", $"{Login.ViaSocials1} {Login.ViaSocials2.WrapToStrong().WrapToEm()}".WrapToH2());
-                    result.Add("htmlWithoutAccount", $"{Login.htmlWithoutAccount1} {Login.htmlWithoutAccount2.WrapToA("/Account/Register")}, {Login.htmlWithoutAccount3}");
-                    return result;
-            }
             
+            return result;
         }
 
         /// <summary>

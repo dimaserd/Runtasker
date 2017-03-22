@@ -153,6 +153,9 @@
   <data name="LanguagePopover" xml:space="preserve">
     <value>Укажите иностранный язык в этом списке</value>
   </data>
+  <data name="OnlineHelp" xml:space="preserve">
+    <value>Онлайн-помощь</value>
+  </data>
   <data name="Ordinary" xml:space="preserve">
     <value>Обычное задание</value>
   </data>

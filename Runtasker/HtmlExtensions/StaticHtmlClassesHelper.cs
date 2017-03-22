@@ -42,7 +42,10 @@ namespace Runtasker.HtmlExtensions
             List<SelectListItem> workTypes = new List<SelectListItem>();
             foreach (OrderWorkType item in Enum.GetValues(typeof(OrderWorkType)))
             {
-                workTypes.Add(new SelectListItem { Value = ((int)item).ToString(), Text = item.ToDescriptionString(), Selected = (int)item == 0 });
+                if(item != OrderWorkType.OnlineHelp)
+                {
+                    workTypes.Add(new SelectListItem { Value = ((int)item).ToString(), Text = item.ToDescriptionString(), Selected = (int)item == 0 });
+                }
             }
 
             return workTypes;

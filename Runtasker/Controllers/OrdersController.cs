@@ -288,6 +288,7 @@ namespace Runtasker.Controllers
         #endregion
 
         #region Create Methods
+
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Create()
@@ -361,6 +362,12 @@ namespace Runtasker.Controllers
             ViewData["localeModel"] = ModelBuilder.CreateOrderView();
             return View(model: createOrder);
         
+        }
+        
+        [HttpGet]
+        public ActionResult OnlineHelp()
+        {
+            return View();
         }
         #endregion
 

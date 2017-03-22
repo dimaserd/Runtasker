@@ -180,6 +180,7 @@
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
     <Compile Include="Models\Orders\AnonymousModels.cs" />
     <Compile Include="Models\Orders\ApiModels.cs" />
+    <Compile Include="Models\Orders\OnlineOrderRequest.cs" />
     <Compile Include="Models\VkNotificater\VkUserInfo.cs" />
     <Compile Include="Models\WokerResults\WorkerPropertyResult.cs" />
     <Compile Include="Workers\Admin\Users\AdminUserCreation.cs" />

@@ -155,6 +155,9 @@
   <data name="LanguagePopover" xml:space="preserve">
     <value />
   </data>
+  <data name="OnlineHelp" xml:space="preserve">
+    <value />
+  </data>
   <data name="Ordinary" xml:space="preserve">
     <value>普通作业</value>
     <comment>Обычное задание</comment>

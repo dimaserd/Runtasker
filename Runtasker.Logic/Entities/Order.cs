@@ -52,7 +52,9 @@ namespace Runtasker.Logic.Entities
         [MyDescription(typeof(OrderResource), "Essay")]
         Essay,
         [MyDescription(typeof(OrderResource), "CourseWork")]
-        CourseWork
+        CourseWork,
+        [MyDescription(typeof(OrderResource), "OnlineHelp")]
+        OnlineHelp
     }
 
     public enum Subject

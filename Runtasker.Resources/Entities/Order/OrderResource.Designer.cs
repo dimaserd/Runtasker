@@ -169,6 +169,15 @@ namespace Runtasker.Resources.Entities.Order {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Online Help.
+        /// </summary>
+        public static string OnlineHelp {
+            get {
+                return ResourceManager.GetString("OnlineHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Ordinary.
         /// </summary>
         public static string Ordinary {

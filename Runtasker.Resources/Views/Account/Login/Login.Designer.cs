@@ -79,56 +79,29 @@ namespace Runtasker.Resources.Views.Account.Login {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Sign {0}.
+        /// </summary>
+        public static string HeaderFormat {
+            get {
+                return ResourceManager.GetString("HeaderFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на in.
+        /// </summary>
+        public static string HeaderToMark {
+            get {
+                return ResourceManager.GetString("HeaderToMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Home.
         /// </summary>
         public static string HomeNav {
             get {
                 return ResourceManager.GetString("HomeNav", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Sign.
-        /// </summary>
-        public static string htmlHeader1 {
-            get {
-                return ResourceManager.GetString("htmlHeader1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на In.
-        /// </summary>
-        public static string htmlHeader2 {
-            get {
-                return ResourceManager.GetString("htmlHeader2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Don&apos;t have an account yet?.
-        /// </summary>
-        public static string htmlWithoutAccount1 {
-            get {
-                return ResourceManager.GetString("htmlWithoutAccount1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Click to create one.
-        /// </summary>
-        public static string htmlWithoutAccount2 {
-            get {
-                return ResourceManager.GetString("htmlWithoutAccount2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на it&apos;s free!.
-        /// </summary>
-        public static string htmlWithoutAccount3 {
-            get {
-                return ResourceManager.GetString("htmlWithoutAccount3", resourceCulture);
             }
         }
         
@@ -178,6 +151,24 @@ namespace Runtasker.Resources.Views.Account.Login {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Sign in {0}.
+        /// </summary>
+        public static string SocialSignInFormat {
+            get {
+                return ResourceManager.GetString("SocialSignInFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на via social providers.
+        /// </summary>
+        public static string SocialSignInToMark {
+            get {
+                return ResourceManager.GetString("SocialSignInToMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на It only takes 8 seconds.
         /// </summary>
         public static string TakesSeconds {
@@ -214,11 +205,29 @@ namespace Runtasker.Resources.Views.Account.Login {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Welcome to {Runtasker}.
+        ///   Ищет локализованную строку, похожую на Welcome to {0}.
         /// </summary>
         public static string WelcomeTitlePattern {
             get {
                 return ResourceManager.GetString("WelcomeTitlePattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Don&apos;t have an account yet? {0} it&apos;s free!.
+        /// </summary>
+        public static string WithoutAccountFormat {
+            get {
+                return ResourceManager.GetString("WithoutAccountFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Click to create one.
+        /// </summary>
+        public static string WithoutAccountLinkText {
+            get {
+                return ResourceManager.GetString("WithoutAccountLinkText", resourceCulture);
             }
         }
     }

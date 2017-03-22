@@ -1,4 +1,4 @@
-﻿using Runtaker.LocaleBuiders.Enumerations;
+﻿using Runtasker.LocaleBuilders.Enumerations;
 using Runtasker.LocaleBuilders.Statics;
 using System;
 

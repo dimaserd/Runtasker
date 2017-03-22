@@ -1,5 +1,5 @@
 ﻿using Extensions.String;
-using Runtaker.LocaleBuiders.Enumerations;
+using Runtasker.LocaleBuilders.Enumerations;
 using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Views.Payment.Index;
 using Runtasker.Resources.Views.Payment.Robokassa;

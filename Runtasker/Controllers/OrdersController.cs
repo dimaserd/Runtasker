@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Logic.Extensions.Models;
 using Runtaker.LocaleBuiders.Views.Order;
-using Runtasker.Logic.Contexts.Interfaces;
+using Runtasker.Logic.Models.Orders;
 
 namespace Runtasker.Controllers
 {
@@ -366,6 +366,18 @@ namespace Runtasker.Controllers
         
         [HttpGet]
         public ActionResult OnlineHelp()
+        {
+            if(Settings.Settings.AppSetting != Settings.Enumerations.ApplicationSettingType.Debug)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ViewData["localeModel"] = ModelBuilder.OnlineHelpView();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult OnlineHelp(OnlineOrderRequest model)
         {
             return View();
         }

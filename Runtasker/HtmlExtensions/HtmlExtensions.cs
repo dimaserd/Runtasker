@@ -20,7 +20,7 @@ namespace Runtasker.HtmlExtensions
         #region Styles and Scripts
         
         #region DateTime styles scripts
-        public static MvcHtmlString GetDateTimeScriptsAndStyles(this HtmlHelper html, string lang, string dateTimePickerId = null)
+        public static MvcHtmlString GetDateTimeScriptsAndStyles(this HtmlHelper html)
         {
             StringBuilder sb = new StringBuilder();
 

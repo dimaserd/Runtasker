@@ -1,7 +1,195 @@
 ﻿@using Runtasker.Logic.Models.Orders
+@using HtmlExtensions.HtmlEntities;
+@using Runtasker.HtmlExtensions;
+@using Runtasker.LocaleBuilders.Models
 @model OnlineOrderRequest
 @{
-    
+    List<SelectListItem> subjects = StaticHtmlClassesHelper.GetSortedSubjectEnumList().ToList();
+
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
 }
 
 
+<!-- PAGE TITLE -->
+<header id="page-title">
+    <div class="container">
+        <h1>@localeModel["Header"]</h1>
+        <ul class="breadcrumb">
+            <li><a href="/Home/Index">@localeModel["HomeNav"]</a></li>
+            <li><a href="/Orders/Index">@localeModel["MyOrdersNav"]</a></li>
+            <li class="active">@localeModel["ActiveNav"]</li>
+        </ul>
+    </div>
+</header>
+
+@using (Html.BeginForm("OnlineHelp", "Orders", FormMethod.Post, htmlAttributes: new { id = "myForm", enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        @Html.ValidationErrorsToAlerts()
+        @Html.AntiForgeryToken()
+
+        <div id="bigError" class="alert alert-danger">
+            <i class="fa fa-frown-o"></i>
+            <strong id="bigErrorText"></strong>
+        </div>
+
+        @Html.HiddenFor(m => m.OnlineHelpWorkType)
+
+        <!--SubjectsList-->
+        <div id="SubjectForm" class="form-group">
+            @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <div class="input-group">
+                    @Html.DropDownListFor(m => m.Subject, selectList: subjects, htmlAttributes: new { id = "subjectList", @class = "form-control" })
+                    <div class="input-group-btn">
+                        @Html.PopoverInfoFor(model => model.Subject)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/SubjectList-->
+
+        <!--UserSubjectForm-->
+        <div class="form-group" id="OtherSubjectForm">
+            @Html.LabelFor(model => model.OtherSubject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.OtherSubject, htmlAttributes: new { id = "OtherSubject", @class = "form-control" })
+                    <div class="input-group-btn">
+                        @Html.PopoverInfoFor(m => m.OtherSubject)
+                    </div>
+                </div>
+                <p id="OtherSubjectError" class="text-danger">
+
+                </p>
+            </div>
+        </div>
+        <!--/UserSubjectForm-->
+
+        <!--DateTime Picker-->
+        <div class="form-group" id="DateForm">
+            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="date col-md-5">
+                <!--input-group date-->
+                <input type="text" class="form-control" id="datetimepicker1" name="StartDate" />
+                <div class="input-group-btn">
+                    @Html.PopoverInfoFor(m => m.StartDate)
+                </div>
+            </div>
+        </div>         
+        <!--End of DateTimePicker-->
+
+        <!--FilesUpload-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.FileUpload, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <p>
+                    <div class='input-group'>
+                        @Html.TextBoxFor(model => model.FileUpload, htmlAttributes: new { id = "fileUpload", type = "file", multiple = "" })
+                        <div class='input-group-btn'>
+                            <div class="pull-right">
+                                @Html.PopoverInfoFor(model => model.FileUpload, htmlAttributes: new { @class = "circle" })
+                                <style>
+                                    .circle {
+                                        border: solid 1px #000;
+                                        border-radius: 45%;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+        <!--/FilesUpload-->
+
+        <!--Decription-->
+        <div class="form-group" id="DescriptionForm">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextAreaFor(model => model.Description,
+                    htmlAttributes: new
+                    {
+                        @class = "form-control",
+                        rows = "3",
+                        id = "DescriptionField",
+                        placeholder = localeModel["DescriptionPlaceholder"]
+                    })
+                @Html.ValidationMessageFor(model => model.Description, "", new { id = "descriptionError", @class = "text-danger" })
+                <p id="DescriptionError" class="text-danger">
+
+                </p>
+            </div>
+        </div>
+        <!--/Description-->
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button id="fakeCreate" type="button" class="btn-lg btn btn-primary">
+                    @localeModel["SubmitBtnText"]
+                </button>
+            </div>
+        </div>
+        <input id="realCreate" type="submit" class="hidden" />
+    </div>
+}
+
+@section scripts{
+    
+    <!--Validation Coloring And Error Showing-->
+    @OrderScripts.GetValidationColoringAndErrorShowing()
+    <!--/Validation Coloring And Error Showing-->
+
+
+    <script>
+        var fakeCreate = $("#fakeCreate");
+
+        var realCreate = $("#realCreate");
+
+        fakeCreate.click(function (e) {
+            e.preventDefault();
+
+            realCreate.click();
+        })
+    </script>
+
+
+    @OrderScripts.GetPreparingScripts()
+
+    
+    <!--Big Error Scripts-->
+    @OrderScripts.GetBigErrorScripts()
+    <!--/Big Error Scripts-->
+
+    <!--DateTimePicker-->
+    @Html.GetDateTimeScriptsAndStyles()
+    @ViewExtensions.GetDateTimeScriptsAndStyles(null, true)
+    <!--/DateTimePicker-->
+
+    <!--Скрипты по умолчанию для предмета-->
+    @OrderScripts.GetDefaultSubjectScripts()
+    <!--/Скрипты по умолчанию для предмета-->
+
+    <!--Popover activator-->
+    <script>
+        var popoverBtns = $(".popoverBtn");
+
+        var activator = function()
+        {
+            popoverBtns.popover();
+        }();
+
+        function HidePopovers()
+        {
+            popoverBtns.popover('hide');
+        }
+
+    </script>
+    <!--/Tooltip activator-->
+
+    <!--Other Subject Scripts-->
+    @OrderScripts.GetSubjectCheckers(localeModel)
+    <!--/Other Subject Scripts-->
+
+
+}

@@ -1,5 +1,4 @@
 ﻿using Extensions.String;
-using Runtaker.LocaleBuiders.Enumerations;
 using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Views.Account.Login;
 using Runtasker.Resources.Views.Account.Register;

@@ -88,6 +88,24 @@ namespace Runtasker.Resources.Views.Orders.OnlineHelp {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на After you submit this application, we will tell you the price of our help. Notice that you must pay full price before..
+        /// </summary>
+        public static string HelpAlertText {
+            get {
+                return ResourceManager.GetString("HelpAlertText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Attention, please..
+        /// </summary>
+        public static string HelpAlertTitle {
+            get {
+                return ResourceManager.GetString("HelpAlertTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Home.
         /// </summary>
         public static string HomeNav {

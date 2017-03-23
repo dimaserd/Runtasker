@@ -35,4 +35,20 @@ namespace Runtasker.Logic.Models.Orders
         [PopoverInfo(typeof(CreateOrder), resourceName: "OtherSubjectInfo")]
         public string OtherSubject { get; set; }
     }
+
+    public static class OnlineOrderRequestExtensions
+    {
+        public static OrderCreateModel ToOrderCreateModel(this OnlineOrderRequest online)
+        {
+            return new OrderCreateModel
+            {
+                Subject = online.Subject,
+                OtherSubject = online.OtherSubject,
+                FinishDate = online.StartDate,
+                FileUpload = online.FileUpload,
+                Description = online.Description,
+                WorkType = online.OnlineHelpWorkType
+            };
+        }
+    }
 }

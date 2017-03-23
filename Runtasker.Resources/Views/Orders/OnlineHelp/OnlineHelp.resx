@@ -126,6 +126,12 @@
   <data name="Header" xml:space="preserve">
     <value>An application for online-help</value>
   </data>
+  <data name="HelpAlertText" xml:space="preserve">
+    <value>After you submit this application, we will tell you the price of our help. Notice that you must pay full price before.</value>
+  </data>
+  <data name="HelpAlertTitle" xml:space="preserve">
+    <value>Attention, please.</value>
+  </data>
   <data name="HomeNav" xml:space="preserve">
     <value>Home</value>
   </data>

@@ -169,6 +169,33 @@ namespace Runtasker.Resources.Views.Orders.Create {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на If you want to get an online-help, you can submit an application by clickong this button..
+        /// </summary>
+        public static string OnlineHelpAlertText {
+            get {
+                return ResourceManager.GetString("OnlineHelpAlertText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Attention, you can order online-help..
+        /// </summary>
+        public static string OnlineHelpAlertTitle {
+            get {
+                return ResourceManager.GetString("OnlineHelpAlertTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Online-Help.
+        /// </summary>
+        public static string OnlineHelpBtnText {
+            get {
+                return ResourceManager.GetString("OnlineHelpBtnText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Create new order.
         /// </summary>
         public static string Title {

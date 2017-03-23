@@ -153,6 +153,15 @@
   <data name="MyOrdersNav" xml:space="preserve">
     <value>Мои заказы</value>
   </data>
+  <data name="OnlineHelpAlertText" xml:space="preserve">
+    <value>Если вы хотите получить помощь онлайн, то можете оставить заявку, кликнув по кнопке.</value>
+  </data>
+  <data name="OnlineHelpAlertTitle" xml:space="preserve">
+    <value>Внимание, мы оказываем онлайн помощь!</value>
+  </data>
+  <data name="OnlineHelpBtnText" xml:space="preserve">
+    <value>Онлайн-помощь</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Создать новый заказ</value>
   </data>

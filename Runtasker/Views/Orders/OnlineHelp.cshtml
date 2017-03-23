@@ -1,5 +1,4 @@
 ﻿@using Runtasker.Logic.Models.Orders
-@using HtmlExtensions.HtmlEntities;
 @using Runtasker.HtmlExtensions;
 @using Runtasker.LocaleBuilders.Models
 @model OnlineOrderRequest
@@ -9,6 +8,7 @@
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
 }
 
+@AlertHelper.GetAlert(localeModel["HelpAlertTitle"], localeModel["HelpAlertText"])
 
 <!-- PAGE TITLE -->
 <header id="page-title">
@@ -149,14 +149,24 @@
         fakeCreate.click(function (e) {
             e.preventDefault();
 
-            realCreate.click();
+            var count = 0;
+            //logging
+
+            count = (CheckOtherSubject()) ? count + 1 : count;
+            count = (CheckDescription()) ? count + 1 : count;
+
+            if (count == 2) {
+                realCreate.click();
+            }
+            
         })
     </script>
 
 
     @OrderScripts.GetPreparingScripts()
 
-    
+    @OrderScripts.GetDescriptionHandlers(localeModel)
+
     <!--Big Error Scripts-->
     @OrderScripts.GetBigErrorScripts()
     <!--/Big Error Scripts-->

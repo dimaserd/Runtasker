@@ -319,8 +319,7 @@ namespace Runtasker.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Subject,WorkType,Description,FinishDate,FileUpload,Attachments,OtherSubject")] OrderCreateModel createOrder)
-        {
-            
+        {    
             //для каждого задания свои сроки выполнения
             switch (createOrder.WorkType)
             {
@@ -349,9 +348,6 @@ namespace Runtasker.Controllers
                     break;
             }
 
-
-            
-
             if (ModelState.IsValid)
             {
                 Order order = await OrderWorker.CreateOrderAsync(createOrder);
@@ -377,9 +373,15 @@ namespace Runtasker.Controllers
         }
 
         [HttpPost]
-        public ActionResult OnlineHelp(OnlineOrderRequest model)
+        public async Task<ActionResult> OnlineHelp(OnlineOrderRequest model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                Order order = await OrderWorker.CreateOrderAsync(model.ToOrderCreateModel());
+                return RedirectToAction("Index");
+
+            }
+            return View(model);
         }
         #endregion
 

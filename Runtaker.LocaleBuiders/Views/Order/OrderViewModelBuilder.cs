@@ -22,22 +22,19 @@ namespace Runtaker.LocaleBuiders.Views.Order
             result.Add("CreateOrder", Create.CreateOrder);
             result.Add("FileUploading", Create.FileUploading);
             result.Add("BackToList", Create.BackToList);
+
+            //для подсказочного уведомления
+            result.Add("OnlineHelpAlertTitle", Create.OnlineHelpAlertTitle);
+            result.Add("OnlineHelpAlertText", Create.OnlineHelpAlertText);
+            result.Add("OnlineHelpBtnText", Create.OnlineHelpBtnText);
+
             //Стащено с другого файла ресурсов
             result.Add("NameError", KnowPriceRes.NameError);
             result.Add("EmailError", KnowPriceRes.EmailError);
             result.Add("DescriptionError", KnowPriceRes.DescriptionError);
             result.Add("OtherSubjectError", KnowPriceRes.OtherSubjectError);
 
-            switch (UILang)
-            {
-                case Lang.Russian:
-                    
-                    
-                    break;
-
-                default:
-                    break;
-            }
+            
 
             return result;
         }
@@ -54,7 +51,8 @@ namespace Runtaker.LocaleBuiders.Views.Order
             result.Add("ActiveNav", OnlineHelp.ActiveNav);
             result.Add("SubmitBtnText", OnlineHelp.SubmitBtnText);
             result.Add("Header", OnlineHelp.Header);
-
+            result.Add("HelpAlertTitle", OnlineHelp.HelpAlertTitle);
+            result.Add("HelpAlertText", OnlineHelp.HelpAlertText);
             //не сделанное или стащенное
 
             result.Add("MiniHeader", Create.MiniHeader);

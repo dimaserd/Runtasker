@@ -6,5 +6,11 @@
     public static class UISettings
     {
         public static int RegistrationBonus = 300;
+
+        public static int OrdinaryFromPrice = 50;
+
+        public static int EssayFromPrice = 200;
+
+        public static int CourseWorkFromPrice = 500;
     }
 }

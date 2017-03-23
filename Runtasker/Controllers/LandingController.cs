@@ -1,5 +1,6 @@
 ﻿using HtmlExtensions.Renderers;
 using Runtasker.LocaleBuilders.Views.Landing;
+using Runtasker.Settings;
 using System.Web.Mvc;
 
 namespace Runtasker.Controllers
@@ -55,6 +56,7 @@ namespace Runtasker.Controllers
 
         public ActionResult AboutUs()
         {
+            ViewData["localeModel"] = ModelBuilder.AboutUsView();
             return View();
         }
 
@@ -77,7 +79,7 @@ namespace Runtasker.Controllers
 
         public ActionResult Pricing()
         {
-            ViewData["localeModel"] = ModelBuilder.PricingView(50, 200, 500, HtmlSigns.Rouble);
+            ViewData["localeModel"] = ModelBuilder.PricingView(UISettings.OrdinaryFromPrice, UISettings.EssayFromPrice, UISettings.CourseWorkFromPrice, HtmlSigns.Rouble);
             return View();
         }
 

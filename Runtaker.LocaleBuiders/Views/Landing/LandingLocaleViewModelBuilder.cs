@@ -2,6 +2,7 @@
 using Runtasker.LocaleBuilders.Enumerations;
 using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Entities.Order;
+using Runtasker.Resources.Views.Landing.AboutUs;
 using Runtasker.Resources.Views.Landing.Counters;
 using Runtasker.Resources.Views.Landing.Portfolio;
 using Runtasker.Resources.Views.Landing.Pricing;
@@ -47,6 +48,27 @@ namespace Runtasker.LocaleBuilders.Views.Landing
             result.Add("Slogan", SliderRes.Slogan);
 
             
+            return result;
+        }
+
+        public LocaleViewModel AboutUsView()
+        {
+            LocaleViewModel result = new LocaleViewModel();
+
+            result.Add("HeaderHtml", string.Format(AboutUsRes.HeaderFormat, AboutUsRes.Runtasker.WrapToStrong()));
+            result.Add("MiniDescription", AboutUsRes.MiniDescription);
+            result.Add("RuntaskerSlogan", AboutUsRes.Slogan);
+            result.Add("TextParagraph", AboutUsRes.TextParagraph);
+            result.Add("WhyOrderFromUsHtml", string.Format(AboutUsRes.WhyOrderFromUsFormat, AboutUsRes.OrderFromUsToMark.WrapToStrong()));
+            result.Add("WorksQuality", AboutUsRes.WorksQuality);
+            result.Add("WorksQualityText", AboutUsRes.WorksQualityText);
+            result.Add("StrictTimetables", AboutUsRes.StrictTimetables);
+            result.Add("StrictTimetablesText", AboutUsRes.StrictTimetablesText);
+            result.Add("EditingAndFinilizing", AboutUsRes.EditingAndFinilizing);
+            result.Add("EditingAndFinilizingText", AboutUsRes.EditingAndFinilizingText);
+            result.Add("TechnicalSupport", AboutUsRes.TechnicalSupport);
+            result.Add("TechnicalSupportText", AboutUsRes.TechnicalSupportText);
+
             return result;
         }
 

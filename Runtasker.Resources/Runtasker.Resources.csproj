@@ -390,6 +390,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KnowPriceRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Landing\AboutUs\AboutUsRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AboutUsRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Landing\Counters\CountersRes.ru-RU.Designer.cs">
       <DependentUpon>CountersRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -936,6 +941,10 @@
     <EmbeddedResource Include="Views\Home\KnowPrice\KnowPriceRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>KnowPriceRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\AboutUs\AboutUsRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutUsRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Landing\Counters\CountersRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

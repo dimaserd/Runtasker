@@ -1,12 +1,17 @@
-﻿
+﻿@using Extensions.String
+@using Runtasker.LocaleBuilders.Models
 @{
     Layout = null;
+
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
 }
 
 <section id="about" class="padding100">
     <div class="container">
 
-        <h1 class="text-center">Добро пожаловать на <strong>Runtasker</strong></h1>
+        <h1 class="text-center">
+            @localeModel["HeaderHtml"].ToHtml()
+        </h1>
         <div class="divider">
             <!-- divider -->
             <i class="fa fa-star"></i>
@@ -15,7 +20,7 @@
         
         <p class="lead h2">
             <strong>
-                Runtasker – это мультиязычное веб-приложение, мы постоянно стремимся к добавлению новых языков. Нам важно, что бы наши заказчики при взаимодействии с нами чувствовали себя максимально комфортно. А что может быть более удочным, чем общение на родном языке?
+                @localeModel["MiniDescription"]
             </strong>
         </p>
 
@@ -36,8 +41,9 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-6">
-                <h3>Runtasker : создан чтобы помогать</h3>
+                <h3>@localeModel["RuntaskerSlogan"]</h3>
                 <p>
                     Наверняка вы задумывались, что куча времени уходит на выполнение рутинных заданий, однотипных рефератов и прочих работ которые нужны только для «галочки»? МЫ ТОЖЕ! В Runtasker считают это недопустимой тратой времени! Поэтому всю вашу рутину мы берём на себя. НО! Как же курсовые и дипломные – это громоздкие, нудные проекты, от которых часто хочется спать? ЭТО МЫ ТОЖЕ БЕРЁМ НА СЕБЯ! Вам больше не надо тратить на это время!  Всё что вам нужно - это написать нам тему и описать ваши пожелания, и мы сделаем всё за вас! Runtasker - ваше время важно для нас!
                 </p>
@@ -52,43 +58,43 @@
         <article class="row margin-top60">
             <div class="col-md-6">
                 <h3>
-                    Почему лучше заказывать на <strong>Runtasker?</strong>
+                    @localeModel["WhyOrderFromUsHtml"].ToHtml()
                 </h3>
 
                 <div class="toogle">
 
                     <div class="toggle">
-                        <label>Качество работ</label>
+                        <label>@localeModel["WorksQuality"]</label>
                         <div class="toggle-content">
                             <p>
-                                Качество работ - компания Runtasker выполняет работы высочайшего качества. Обеспечивается это за счёт того, что над вашими заданиями трудятся настоящие профессионалы своего дела, серьезно относящиеся к своим обязанностям.
+                                @localeModel["WorksQualityText"]
                             </p>
                         </div>
                     </div>
 
                     <div class="toggle">
-                        <label>Строгие сроки выполнения</label>
+                        <label>@localeModel["StrictTimetables"]</label>
                         <div class="toggle-content">
                             <p>
-                                Строгие сроки выполнения– компания Runtasker, проект, который и вовремя выполняет взятые на себя обязательства. Для нас важна наша репутация.
+                                @localeModel["StrictTimetablesText"]
                             </p>
                         </div>
                     </div>
 
                     <div class="toggle">
-                        <label>Правки и доработки</label>
+                        <label>@localeModel["EditingAndFinilizing"]</label>
                         <div class="toggle-content">
                             <p>
-                                Правки и доработки – Runtasker заботиться о своих клиентах, поэтому сопровождение ваших работ осуществляются бесплатно во время ее выполнения.
+                                @localeModel["EditingAndFinilizingText"]
                             </p>
                         </div>
                     </div>
 
                     <div class="toggle">
-                        <label>Техническая поддержка</label>
+                        <label>@localeModel["TechnicalSupport"]</label>
                         <div class="toggle-content">
                             <p>
-                                Техподдержка – копания Runtasker, думает о вас и вашем времени, поэтому, наша техподдержка, всегда готова вам помочь.
+                                @localeModel["TechnicalSupportText"]
                             </p>
                         </div>
                     </div>
@@ -96,6 +102,7 @@
                 </div>
             </div>
 
+            <!--В процентах не сделано и не переведено-->
             <div class="col-md-6">
                 <h3>Runtasker в процентах</h3>
 
@@ -137,6 +144,7 @@
                 </div>
 
             </div>
+            <!--/В процентах не сделано и не переведено-->
         </article>
         <!-- /WHO WE ARE and SKILLS -->
 

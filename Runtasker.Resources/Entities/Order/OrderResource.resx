@@ -124,7 +124,7 @@
     <value>Chemistry</value>
   </data>
   <data name="CourseWork" xml:space="preserve">
-    <value>CourseWork</value>
+    <value>Course Work</value>
   </data>
   <data name="ErrorTypeNeedDesc" xml:space="preserve">
     <value>needs more description</value>
@@ -157,7 +157,7 @@
     <value>Online Help</value>
   </data>
   <data name="Ordinary" xml:space="preserve">
-    <value>Ordinary</value>
+    <value>Ordinary assignment</value>
   </data>
   <data name="Other" xml:space="preserve">
     <value>Other</value>

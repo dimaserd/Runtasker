@@ -79,7 +79,7 @@ namespace Runtasker.Resources.Entities.Order {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на CourseWork.
+        ///   Ищет локализованную строку, похожую на Course Work.
         /// </summary>
         public static string CourseWork {
             get {
@@ -178,7 +178,7 @@ namespace Runtasker.Resources.Entities.Order {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Ordinary.
+        ///   Ищет локализованную строку, похожую на Ordinary assignment.
         /// </summary>
         public static string Ordinary {
             get {

@@ -1,7 +1,11 @@
 ﻿@using HtmlExtensions.Renderers
 @using Extensions.String
+@using Runtasker.LocaleBuilders.Models
 @{
     Layout = null;
+
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
+
     HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
 
     string firstPrice = $"от 50{HtmlSigns.Rouble}";
@@ -12,7 +16,7 @@
 <section id="pricing" class="padding100 special-row">
     <div class="container">
 
-        <h1 class="text-center">RUNTASKER <strong>@*Pricing*@Наши цены</strong></h1>
+        <h1 class="text-center">RUNTASKER <strong>@localeModel["Title"]</strong></h1>
         <div class="divider">
             <!-- divider -->
             <i class="fa fa-star"></i>
@@ -33,55 +37,55 @@
         <div class="row pricetable-container">
 
             <div class="col-md-4 price-table">
-                <h3>Обычное задание</h3>
+                <h3>@localeModel["Ordinary"]</h3>
                 <p>
-                    @firstPrice.ToHtml()
+                    @localeModel["OrdinaryFromPrice"].ToHtml()
                     @*<span>за одно задание</span>*@
                 </p>
 
                 <ul>
-                    <li>Возможность оплатить бонусными деньгами</li>
-                    <li>Возможность обсудить работу напрямую с исполнителем</li>
-                    <li>Бесплатные доработки</li>
-                    <li>Выполнение вашего заказа в очень сжатые сроки</li>
-                    <li>Гарантия возврата средств при неудаче исполнителя</li>
+                    <li>@localeModel["PayWithBonusMoney"]</li>
+                    <li>@localeModel["DiscussWithPerformer"]</li>
+                    <li>@localeModel["FreeCorrections"]</li>
+                    <li>@localeModel["ShortTimeExecution"]</li>
+                    <li>@localeModel["ReturningFundsWarranty"]</li>
                 </ul>
                 <a href="/Home/KnowPrice?workTypeId=0" class="btn btn-primary btn-sm">
-                    Узнать цену моей работы
+                    @localeModel["FindOutThePrice"]
                 </a>
             </div>
 
             <div class="col-md-4 price-table popular">
-                <h3>Эссе/Реферат</h3>
+                <h3>@localeModel["Essay"]</h3>
                 <p>
-                    @secondPrice.ToHtml()          
+                    @localeModel["EssayFromPrice"].ToHtml()          
                 </p>
                 <ul>
-                    <li>Возможность оплатить бонусными деньгами</li>
-                    <li>Возможность обсудить работу напрямую с исполнителем</li>
-                    <li>Бесплатные доработки</li>
-                    <li>Бесплатное повышение уникальности текста</li>
-                    <li>Гарантия возврата средств при неудаче исполнителя</li>
+                    <li>@localeModel["PayWithBonusMoney"]</li>
+                    <li>@localeModel["DiscussWithPerformer"]</li>
+                    <li>@localeModel["FreeCorrections"]</li>
+                    <li>@localeModel["FreeUniqueTextUpgrade"]</li>
+                    <li>@localeModel["ReturningFundsWarranty"]</li>
                 </ul>
                 <a href="/Home/KnowPrice?workTypeId=1" class="btn btn-default btn-sm">
-                    Узнать цену моей работы
+                    @localeModel["FindOutThePrice"]
                 </a>
             </div>
 
             <div class="col-md-4 price-table">
-                <h3>Курсовая работа</h3>
+                <h3>@localeModel["CourseWork"]</h3>
                 <p>
-                    @thirdPrice.ToHtml()
+                    @localeModel["CourseWorkFromPrice"].ToHtml()
                 </p>
                 <ul class="pricetable-items">
-                    <li>Возможность оплатить бонусными деньгами</li>
-                    <li>Возможность обсудить работу напрямую с исполнителем</li>
-                    <li>Бесплатные доработки</li>
-                    <li>Бесплатное повышение уникальности текста</li>
-                    <li>Гарантия возврата средств при неудаче исполнителя</li>
+                    <li>@localeModel["PayWithBonusMoney"]</li>
+                    <li>@localeModel["DiscussWithPerformer"]</li>
+                    <li>@localeModel["FreeCorrections"]</li>
+                    <li>@localeModel["FreeUniqueTextUpgrade"]</li>
+                    <li>@localeModel["ReturningFundsWarranty"]</li>
                 </ul>
                 <a href="/Home/KnowPrice?workTypeId=2" class="btn btn-primary btn-sm">
-                    Узнать цену моей работы
+                    @localeModel["FindOutThePrice"]
                 </a>
             </div>
 

@@ -420,6 +420,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PortfolioRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Landing\Pricing\PricingRes.ru-RU.Designer.cs">
+      <DependentUpon>PricingRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Landing\Pricing\PricingRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PricingRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Landing\Slider\SliderRes.ru-RU.Designer.cs">
       <DependentUpon>SliderRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -950,6 +960,14 @@
     <EmbeddedResource Include="Views\Landing\Portfolio\PortfolioRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PortfolioRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Pricing\PricingRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PricingRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Pricing\PricingRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PricingRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Landing\Slider\SliderRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

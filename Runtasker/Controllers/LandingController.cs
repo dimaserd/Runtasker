@@ -1,4 +1,5 @@
-﻿using Runtasker.LocaleBuilders.Views.Landing;
+﻿using HtmlExtensions.Renderers;
+using Runtasker.LocaleBuilders.Views.Landing;
 using System.Web.Mvc;
 
 namespace Runtasker.Controllers
@@ -6,6 +7,18 @@ namespace Runtasker.Controllers
     public class LandingController : Controller
     {
         #region Properties
+        HtmlSignsRenderer HtmlSigns
+        {
+            get
+            {
+                if(_htmlSigns == null)
+                {
+                    _htmlSigns = new HtmlSignsRenderer();
+                }
+                return _htmlSigns;
+            }
+        }
+
         LandingLocaleViewModelBuilder ModelBuilder
         {
             get
@@ -21,7 +34,11 @@ namespace Runtasker.Controllers
 
         #region Fields
         LandingLocaleViewModelBuilder _modelBuilder;
+
+        HtmlSignsRenderer _htmlSigns;
         #endregion
+
+        #region Http methods
         // GET: Landing
         public ActionResult Index()
         {
@@ -60,6 +77,7 @@ namespace Runtasker.Controllers
 
         public ActionResult Pricing()
         {
+            ViewData["localeModel"] = ModelBuilder.PricingView(50, 200, 500, HtmlSigns.Rouble);
             return View();
         }
 
@@ -67,6 +85,8 @@ namespace Runtasker.Controllers
         {
             return View();
         }
+        #endregion
+
         #endregion
     }
 }

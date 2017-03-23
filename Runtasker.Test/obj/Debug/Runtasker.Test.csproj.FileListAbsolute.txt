@@ -244,3 +244,8 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\ru\Micr
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\obj\Debug\Runtasker.Test.csprojResolveAssemblyReference.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\obj\Debug\Runtasker.Test.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\obj\Debug\Runtasker.Test.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\VkNet.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\AngleSharp.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\VkNet.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\AngleSharp.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\zh-CN\Runtasker.Resources.resources.dll

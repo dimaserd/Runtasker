@@ -19,6 +19,7 @@ using Runtasker.Logic.Workers.Orders;
 using Runtasker.Logic.Workers.Email;
 using Runtasker.Logic.Entities;
 using HtmlExtensions.Renderers;
+using Runtasker.Settings;
 
 namespace Runtasker.Controllers
 {
@@ -256,7 +257,7 @@ namespace Runtasker.Controllers
                 {
                     Email = customerEmail,
                     EmailConfirmed = true,
-                    Balance = 300.00m,
+                    Balance = UISettings.RegistrationBonus,
                     Language = "ru-RU",
                     Name = "Dmitry",
                     UserName = customerEmail
@@ -277,7 +278,7 @@ namespace Runtasker.Controllers
                 {
                     Email = performerEmail,
                     EmailConfirmed = true,
-                    Balance = 300.00m,
+                    Balance = UISettings.RegistrationBonus,
                     Language = "ru-RU",
                     Name = "Dmitry",
                     UserName = performerEmail

@@ -66,17 +66,7 @@ namespace Runtaker.LocaleBuiders.Views.Order
             result.Add("DescriptionError", KnowPriceRes.DescriptionError);
             result.Add("OtherSubjectError", KnowPriceRes.OtherSubjectError);
 
-            switch (UILang)
-            {
-                case Lang.Russian:
-
-
-                    break;
-
-                default:
-                    break;
-            }
-
+            
             return result;
         }
 

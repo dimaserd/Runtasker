@@ -132,11 +132,9 @@
   <data name="RegisteredButtonText" xml:space="preserve">
     <value>Создать Заказ</value>
   </data>
-  <data name="RegisteredText1" xml:space="preserve">
-    <value>Мы дарим вам</value>
-  </data>
-  <data name="RegisteredText2" xml:space="preserve">
-    <value>Вперед, создайте свой первый заказ!</value>
+  <data name="RegisteredTextFormat" xml:space="preserve">
+    <value>Мы дарим вам {0}{1}! Вперед, создайте свой первый заказ!</value>
+    <comment>Мы дарим вам {сумма}{знак рубля}! Вперед, создайте свой первый заказ!</comment>
   </data>
   <data name="RegisteredTitle" xml:space="preserve">
     <value>Поздравляем! Вы зарегистрировались на Runtasker!</value>

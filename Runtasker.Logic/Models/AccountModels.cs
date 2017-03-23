@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Runtasker.Resources.Models.Account.LoginModel;
+using Runtasker.Settings;
+using System;
+using System.Threading;
 
 namespace Runtasker.Logic.Models
 {
@@ -106,11 +109,30 @@ namespace Runtasker.Logic.Models
         public string ConfirmPassword { get; set; }
     }
 
+    
     public class RegisterByInvitationModel : RegisterModel
     {
         public string InvitationId { get; set; }
     }
 
+    public static class RegisterModelExtensionMethods
+    {
+        public static ApplicationUser ToCustomer(this RegisterModel model)
+        {
+            return new ApplicationUser
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                Name = model.Name,
+                EmailConfirmed = false,
+                Balance = UISettings.RegistrationBonus,
+                RegistrationDate = DateTime.Now,
+                Language = Thread.CurrentThread.CurrentCulture.Name
+            };
+        }
+        
+
+    }
     #endregion
 
     public class ResetPasswordModel

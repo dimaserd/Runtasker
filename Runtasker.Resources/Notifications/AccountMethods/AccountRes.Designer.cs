@@ -106,20 +106,11 @@ namespace Runtasker.Resources.Notifications.AccountMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на We gift you.
+        ///   Ищет локализованную строку, похожую на We gift you {0}{1}! Go and create your first order!.
         /// </summary>
-        public static string RegisteredText1 {
+        public static string RegisteredTextFormat {
             get {
-                return ResourceManager.GetString("RegisteredText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Go and create your first order!.
-        /// </summary>
-        public static string RegisteredText2 {
-            get {
-                return ResourceManager.GetString("RegisteredText2", resourceCulture);
+                return ResourceManager.GetString("RegisteredTextFormat", resourceCulture);
             }
         }
         

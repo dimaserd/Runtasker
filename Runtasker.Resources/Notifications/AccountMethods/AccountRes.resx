@@ -132,11 +132,8 @@
   <data name="RegisteredButtonText" xml:space="preserve">
     <value>Create Order</value>
   </data>
-  <data name="RegisteredText1" xml:space="preserve">
-    <value>We gift you</value>
-  </data>
-  <data name="RegisteredText2" xml:space="preserve">
-    <value>Go and create your first order!</value>
+  <data name="RegisteredTextFormat" xml:space="preserve">
+    <value>We gift you {0}{1}! Go and create your first order!</value>
   </data>
   <data name="RegisteredTitle" xml:space="preserve">
     <value>Congratulations! You have registered on Runtasker!</value>

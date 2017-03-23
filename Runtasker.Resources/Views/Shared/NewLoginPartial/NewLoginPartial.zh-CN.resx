@@ -152,11 +152,11 @@
     <comment>Запомнить меня</comment>
   </data>
   <data name="SetPassword" xml:space="preserve">
-    <value>Установить пароль</value>
+    <value>设置密码</value>
     <comment>Установить пароль</comment>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Настройки</value>
+    <value>设置</value>
     <comment>Настройки</comment>
   </data>
   <data name="SignIn" xml:space="preserve">
@@ -172,7 +172,7 @@
     <comment>Просмотреть профиль</comment>
   </data>
   <data name="YourBalancePattern" xml:space="preserve">
-    <value>Your balance is {0}{1}</value>
-    <comment>Ваш баланс {сумма}{знак рубля}</comment>
+    <value>您的话费余额为 {0}{1}</value>
+    <comment>您的话费余额为 {200,00}{₽}</comment>
   </data>
 </root>

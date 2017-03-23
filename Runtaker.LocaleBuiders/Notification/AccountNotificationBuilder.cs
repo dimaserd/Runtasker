@@ -5,13 +5,13 @@ namespace Runtasker.LocaleBuilders.Notification
 {
     public class AccountNotificationBuilder
     {
-        public ForNotification UserConfirmedEmail(int Bonus, string roubleSign, string AddOrderSign)
+        public ForNotification UserConfirmedEmail(int bonus, string roubleSign, string AddOrderSign)
         {
             return new ForNotification
             {
                 Title = AccountRes.RegisteredTitle,
-                Text = $"{AccountRes.RegisteredText1}! {AccountRes.RegisteredText2} "
-                        + AccountRes.RuntaskerWish,
+                Text = string.Format(AccountRes.RegisteredTextFormat, bonus, roubleSign)
+                        + $" {AccountRes.RuntaskerWish}",
                 ActionBtnText = $"{AddOrderSign} {AccountRes.RegisteredButtonText}"
             };
         }

@@ -334,7 +334,6 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Ru
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\ru-RU\Runtasker.Resources.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.pdb
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.csprojResolveAssemblyReference.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Landing.Index.Index.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Landing.Index.Index.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Landing.Portfolio.PortfolioRes.resources
@@ -353,3 +352,5 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Ru
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Home.Index.Index.zh-CN.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Models.OrderModels.OnlineOrder.OnlineOrderRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Orders.OnlineHelp.OnlineHelp.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Orders.OnlineHelp.OnlineHelp.ru-RU.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Models.OrderModels.OnlineOrder.OnlineOrderRes.ru-RU.resources

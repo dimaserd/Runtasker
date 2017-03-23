@@ -129,12 +129,6 @@
   <data name="RegistrationSubject" xml:space="preserve">
     <value>Подтвердите свою учетную запись</value>
   </data>
-  <data name="RegistrationText1" xml:space="preserve">
-    <value>Спасибо, за регистрацию на Runtasker! Мы надеемся, вам понравится наш сервис! После того как вы нажмете на кнопку, вы получите</value>
-  </data>
-  <data name="RegistrationText2" xml:space="preserve">
-    <value>которые вы cможете потратить на свой первый заказ.</value>
-  </data>
   <data name="RegWithOrderBtnText" xml:space="preserve">
     <value>Подтвердите вашу учетную запись</value>
   </data>
@@ -167,5 +161,20 @@
   </data>
   <data name="RuntaskerWish" xml:space="preserve">
     <value>С наилучшими пожеланиями от Runtasker!</value>
+  </data>
+  <data name="GreetingFormat" xml:space="preserve">
+    <value>Здравствуйте, {0}!</value>
+    <comment>Здравствуйте, {имя пользователя}!</comment>
+  </data>
+  <data name="LoginViaProviderFormat" xml:space="preserve">
+    <value>Чтобы войти на сайт, используйте кнопку {0}.</value>
+    <comment>Чтобы войти на сайт, используйте кнопку {имя соцсети}.</comment>
+  </data>
+  <data name="RegistrationTextFormat" xml:space="preserve">
+    <value>Спасибо, за регистрацию на Runtasker! Мы надеемся, вам понравится наш сервис! После того как вы нажмете на кнопку, вы получите {0}{1}, которые вы cможете потратить на свой первый заказ.</value>
+    <comment>Спасибо, за регистрацию на Runtasker! Мы надеемся, вам понравится наш сервис! После того как вы нажмете на кнопку, вы получите {сумма}{знак рубля}, которые вы cможете потратить на свой первый заказ.</comment>
+  </data>
+  <data name="SocialRegistrationTextFormat" xml:space="preserve">
+    <value>Спасибо, за регистрацию на Runtasker! Мы надеемся, вам понравится наш сервис! После того как вы нажмете на кнопку, вы получите {0}{1}, которые вы cможете потратить на свой первый заказ.</value>
   </data>
 </root>

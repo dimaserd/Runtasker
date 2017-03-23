@@ -174,6 +174,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CreateOrder.resx</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderModels\OnlineOrder\OnlineOrderRes.ru-RU.Designer.cs">
+      <DependentUpon>OnlineOrderRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Models\OrderModels\OnlineOrder\OnlineOrderRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -525,6 +530,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MiniPanelRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Orders\OnlineHelp\OnlineHelp.ru-RU.Designer.cs">
+      <DependentUpon>OnlineHelp.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Orders\OnlineHelp\OnlineHelp.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -753,6 +763,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountRes.Designer.cs</LastGenOutput>
     </None>
+    <EmbeddedResource Include="Models\OrderModels\OnlineOrder\OnlineOrderRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OnlineOrderRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\OrderModels\OnlineOrder\OnlineOrderRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OnlineOrderRes.Designer.cs</LastGenOutput>
@@ -1024,6 +1038,10 @@
     <EmbeddedResource Include="Views\Orders\MiniPanel\MiniPanelRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MiniPanelRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orders\OnlineHelp\OnlineHelp.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OnlineHelp.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orders\OnlineHelp\OnlineHelp.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

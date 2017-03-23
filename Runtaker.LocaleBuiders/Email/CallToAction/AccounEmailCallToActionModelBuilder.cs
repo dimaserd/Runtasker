@@ -1,4 +1,5 @@
-﻿using Runtasker.LocaleBuilders.Models;
+﻿using Runtasker.LocaleBuilders.Enumerations;
+using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Email.Account;
 
 namespace Runtasker.LocaleBuilders.Email.CallToAction
@@ -7,58 +8,39 @@ namespace Runtasker.LocaleBuilders.Email.CallToAction
     {
         public ForEmailCallToAction UsualRegistration(string userName, int bonus, string roubleSign)
         {
-            switch(UICultureName)
+            return new ForEmailCallToAction
             {
-                case "ru-RU":
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{AccountEmRes.Greeting} {userName}!",
-                        BigText = $"{AccountEmRes.RegistrationText1} {bonus}{roubleSign} " + 
-                        $"{AccountEmRes.RegistrationText2} {AccountEmRes.RuntaskerWish}",
-                        ActionBtnText = AccountEmRes.RegistrationButtonText
-                    };
-
-                default:
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{AccountEmRes.Greeting}, {userName}!",
-                        BigText = $"{AccountEmRes.RegistrationText1} {bonus}{roubleSign} " +
-                        $"{AccountEmRes.RegistrationText2} {AccountEmRes.RuntaskerWish}",
-                        ActionBtnText = AccountEmRes.RegistrationButtonText
-                    };
-            }
-            
+                Header = string.Format(AccountEmRes.GreetingFormat, userName),
+                BigText = string.Format(AccountEmRes.RegistrationTextFormat, bonus, roubleSign) +
+                        $" {AccountEmRes.RuntaskerWish}",
+                ActionBtnText = AccountEmRes.RegistrationButtonText
+            };
         }
 
         public ForEmailCallToAction SocialRegistration(string userName, string provider, int bonus, string roubleSign)
         {
-            switch(UICultureName)
+            return new ForEmailCallToAction
             {
-                case "ru-RU":
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{AccountEmRes.Greeting} {userName}!",
-                        BigText = $"{AccountEmRes.RegistrationText1} {bonus}{roubleSign}." +
-                                 $"{AccountEmRes.HowToLoginViaProvider} : {provider}. {AccountEmRes.RuntaskerWish}",
-                        ActionBtnText = AccountEmRes.RegistrationButtonText
-                    };
-
-                default:
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{AccountEmRes.Greeting} {userName}!",
-                        BigText = $"{AccountEmRes.RegistrationText1} {bonus}{roubleSign}." +
-                                 $"{AccountEmRes.HowToLoginViaProvider} : {provider}. {AccountEmRes.RuntaskerWish}",
-                        ActionBtnText = AccountEmRes.RegistrationButtonText
-                    };
-            }
+                Header = string.Format(AccountEmRes.GreetingFormat, userName),
+                BigText = string.Format(AccountEmRes.SocialRegistrationTextFormat, bonus, roubleSign) +
+                                 $" {string.Format(AccountEmRes.LoginViaProviderFormat, provider)} {AccountEmRes.RuntaskerWish}",
+                ActionBtnText = AccountEmRes.RegistrationButtonText
+            };
         }
 
+        /// <summary>
+        /// Не доделано
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <param name="roubleSign"></param>
+        /// <returns></returns>
         public ForEmailCallToAction RegistrationWithCreatedOrder(string userName, string email, string password, string roubleSign)
         {
-            switch(UICultureName)
+            switch(UILang)
             {
-                case "ru-RU":
+                case Lang.Russian:
                     return new ForEmailCallToAction
                     {
                         Header = $"{AccountEmRes.Greeting}, {userName}!",

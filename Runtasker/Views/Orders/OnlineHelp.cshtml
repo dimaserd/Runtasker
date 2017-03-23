@@ -3,9 +3,12 @@
 @using Runtasker.LocaleBuilders.Models
 @model OnlineOrderRequest
 @{
+
+
     List<SelectListItem> subjects = StaticHtmlClassesHelper.GetSortedSubjectEnumList().ToList();
 
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
+    ViewBag.Title = localeModel["Title"];
 }
 
 @AlertHelper.GetAlert(localeModel["HelpAlertTitle"], localeModel["HelpAlertText"])

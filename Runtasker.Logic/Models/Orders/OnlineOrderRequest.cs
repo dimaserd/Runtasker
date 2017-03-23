@@ -33,6 +33,7 @@ namespace Runtasker.Logic.Models.Orders
         /// ПОдсказка взята из другого ресурса
         /// </summary>
         [PopoverInfo(typeof(CreateOrder), resourceName: "OtherSubjectInfo")]
+        [Display(ResourceType = typeof(CreateOrder), Name = "OtherSubject")]
         public string OtherSubject { get; set; }
     }
 

@@ -129,12 +129,6 @@
   <data name="RegistrationSubject" xml:space="preserve">
     <value>Confirm your account</value>
   </data>
-  <data name="RegistrationText1" xml:space="preserve">
-    <value>Thank you for registration on Runtasker! We hope you will love our services! So, after you click a button you will get</value>
-  </data>
-  <data name="RegistrationText2" xml:space="preserve">
-    <value>which you can spend on your first order.</value>
-  </data>
   <data name="RegWithOrderBtnText" xml:space="preserve">
     <value>Confirm your account</value>
   </data>
@@ -167,5 +161,20 @@
   </data>
   <data name="RuntaskerWish" xml:space="preserve">
     <value>Best wishes from the Runtasker team!</value>
+  </data>
+  <data name="GreetingFormat" xml:space="preserve">
+    <value>Hello {0}!</value>
+    <comment>Hello {name}!</comment>
+  </data>
+  <data name="LoginViaProviderFormat" xml:space="preserve">
+    <value>To log on the site use {0} button.</value>
+    <comment>To log on the site use {имя соцсети} button.</comment>
+  </data>
+  <data name="RegistrationTextFormat" xml:space="preserve">
+    <value>Thank you for registration on Runtasker! We hope you will love our services! So, after you click a button you will get {0}{1} which you can spend on your first order.</value>
+    <comment>Thank you for registration on Runtasker! We hope you will love our services! So, after you click a button you will get {bonus}{знак рубля} which you can spend on your first order.</comment>
+  </data>
+  <data name="SocialRegistrationTextFormat" xml:space="preserve">
+    <value>Thank you for registration on Runtasker! We hope you will love our services! So, after you click a button you will get {0}{1} which you can spend on your first order.</value>
   </data>
 </root>

@@ -5,6 +5,7 @@ using Runtasker.LocaleBuilders.Email.CallToAction;
 using Runtasker.LocaleBuilders.Models;
 using Runtasker.Logic.HtmlConstantEmails.Models;
 using Runtasker.Resources.Email.Account;
+using Runtasker.Settings;
 
 namespace Runtasker.Logic.HtmlConstantEmails
 {
@@ -60,7 +61,7 @@ namespace Runtasker.Logic.HtmlConstantEmails
 
         public EmailModel GetEmailForRegistration(ApplicationUser user, string callBackUrl)
         {
-            ForEmailCallToAction model = ModelBuilder.UsualRegistration(user.Name, 300, HtmlSigns.Rouble);
+            ForEmailCallToAction model = ModelBuilder.UsualRegistration(user.Name, UISettings.RegistrationBonus, HtmlSigns.Rouble);
             string Text = new HtmlEmailBase
                 (
                     callToAction: new BigEmailCallToActionBase
@@ -86,7 +87,7 @@ namespace Runtasker.Logic.HtmlConstantEmails
 
         public EmailModel GetEmailForRegistrationFromSocialProvider(ApplicationUser user, string callBackUrl, string provider)
         {
-            ForEmailCallToAction model = ModelBuilder.SocialRegistration(user.Name, provider, 300, HtmlSigns.Rouble);
+            ForEmailCallToAction model = ModelBuilder.SocialRegistration(user.Name, provider, UISettings.RegistrationBonus, HtmlSigns.Rouble);
             string Text =  new HtmlEmailBase
                 (
                     callToAction: new BigEmailCallToActionBase

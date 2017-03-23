@@ -6,6 +6,7 @@ using Runtasker.Logic.Enumerations;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers.Notifications;
 using Runtasker.Logic.Workers.Payments;
+using Runtasker.Settings;
 using System;
 using System.Linq;
 using System.Threading;
@@ -61,16 +62,8 @@ namespace Runtasker.Logic.Workers
         public ApplicationUser RegisterCustomer(RegisterModel model, out IdentityResult iResult)
         {
             //создание объекта пользователя
-            var user = new ApplicationUser
-            {
-                UserName = model.Email,
-                Email = model.Email,
-                Name = model.Name,
-                EmailConfirmed = false,
-                Balance = 300.00m,
-                RegistrationDate = DateTime.Now,
-                Language = GetLanguage()
-            };
+            var user = model.ToCustomer();
+
             //создание пользователя с введенным паролем из модели
             IdentityResult result = UserManager.Create(user, model.Password);
             if (result.Succeeded)
@@ -93,7 +86,7 @@ namespace Runtasker.Logic.Workers
             {
                 UserName = model.Email,
                 Email = model.Email,
-                Balance = 300.00m,
+                Balance = UISettings.RegistrationBonus,
                 EmailConfirmed = false,
                 RegistrationDate = DateTime.Now,
                 Name = info.DefaultUserName.GetNameAndSurname(),
@@ -161,7 +154,7 @@ namespace Runtasker.Logic.Workers
                 Email = model.Email,
                 Name = model.Name,
                 EmailConfirmed = false,
-                Balance = 300.00m
+                Balance = UISettings.RegistrationBonus
             };
             var result = UserManager.Create(user, model.Password);
             if (result.Succeeded)
@@ -234,7 +227,7 @@ namespace Runtasker.Logic.Workers
                 Email = model.Email,
                 Name = model.Name,
                 EmailConfirmed = false,
-                Balance = 300.00m,
+                Balance = UISettings.RegistrationBonus,
                 RegistrationDate = DateTime.Now,
                 Language = GetLanguage()
             };

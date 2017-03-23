@@ -70,11 +70,29 @@ namespace Runtasker.Resources.Email.Account {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Hello {0}!.
+        /// </summary>
+        public static string GreetingFormat {
+            get {
+                return ResourceManager.GetString("GreetingFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на To log on the site use the button.
         /// </summary>
         public static string HowToLoginViaProvider {
             get {
                 return ResourceManager.GetString("HowToLoginViaProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на To log on the site use {0} button..
+        /// </summary>
+        public static string LoginViaProviderFormat {
+            get {
+                return ResourceManager.GetString("LoginViaProviderFormat", resourceCulture);
             }
         }
         
@@ -97,20 +115,11 @@ namespace Runtasker.Resources.Email.Account {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Thank you for registration on Runtasker! We hope you will love our services! So, after you click a button you will get.
+        ///   Ищет локализованную строку, похожую на Thank you for registration on Runtasker! We hope you will love our services! So, after you click a button you will get {0}{1} which you can spend on your first order..
         /// </summary>
-        public static string RegistrationText1 {
+        public static string RegistrationTextFormat {
             get {
-                return ResourceManager.GetString("RegistrationText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на which you can spend on your first order..
-        /// </summary>
-        public static string RegistrationText2 {
-            get {
-                return ResourceManager.GetString("RegistrationText2", resourceCulture);
+                return ResourceManager.GetString("RegistrationTextFormat", resourceCulture);
             }
         }
         
@@ -210,6 +219,15 @@ namespace Runtasker.Resources.Email.Account {
         public static string RuntaskerWish {
             get {
                 return ResourceManager.GetString("RuntaskerWish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Thank you for registration on Runtasker! We hope you will love our services! So, after you click a button you will get {0}{1} which you can spend on your first order..
+        /// </summary>
+        public static string SocialRegistrationTextFormat {
+            get {
+                return ResourceManager.GetString("SocialRegistrationTextFormat", resourceCulture);
             }
         }
     }

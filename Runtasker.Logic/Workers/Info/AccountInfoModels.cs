@@ -1,4 +1,5 @@
 ﻿using Extensions.String;
+using Runtasker.LocaleBuilders.Enumerations;
 using Runtasker.LocaleBuilders.Models;
 using Runtasker.Logic.Models;
 using Runtasker.Resources.InfoModel;
@@ -12,9 +13,9 @@ namespace Runtasker.Logic.Workers.Info
         {
             get
             {
-                switch(UICultureName)
+                switch(UILang)
                 {
-                    case "ru-RU":
+                    case Lang.Russian:
                         return new InfoModel
                         {
                             Title = InfoModelRes.RegisterTitle1 + 

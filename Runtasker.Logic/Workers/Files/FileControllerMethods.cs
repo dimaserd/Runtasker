@@ -63,7 +63,7 @@ namespace Runtasker.Logic.Workers.Files
                 result = new WorkerResult("Order which solution you attempted to download not found!");
             }
 
-            if (order.Status == OrderStatus.Paid 
+            if (order.Status == OrderStatus.FullPaid 
                     || order.Status == OrderStatus.Downloaded
                     || order.Status == OrderStatus.Appreciated)
             {
@@ -85,7 +85,7 @@ namespace Runtasker.Logic.Workers.Files
             //Изменения полей в заказе должны идти после того как 
             //будут отправлены уведомления 
             //так как метод выше используюет свойство статус заказа
-            if (order.Status == OrderStatus.Paid)
+            if (order.Status == OrderStatus.FullPaid)
             {
                  //если пользователь в первый раз скачивает решение заказа
                  //и его заказ оплачен значит он сможет скачать решение заказа

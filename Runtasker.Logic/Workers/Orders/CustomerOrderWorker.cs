@@ -4,6 +4,7 @@ using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations.OrderWorker;
 using Runtasker.Logic.Models;
+using Runtasker.Logic.Models.Orders.Pay;
 using Runtasker.Logic.Workers.Attachments;
 using Runtasker.Logic.Workers.Files;
 using Runtasker.Logic.Workers.Notifications;
@@ -342,7 +343,7 @@ namespace Runtasker.Logic.Workers.Orders
             }
             //Changing order properties
             order.PaidSum += model.Sum;
-            order.Status = OrderStatus.Paid;
+            order.Status = OrderStatus.FullPaid;
 
             Context.SaveChanges();
 
@@ -357,6 +358,60 @@ namespace Runtasker.Logic.Workers.Orders
             {
                 Succeeded = true
             };
+        }
+        #endregion
+
+        #region Pay OnlineHelp methods
+
+        public async Task<PayOnlineHelp> GetPayOnlineHelpModel(int orderId)
+        {
+            Order order = await Context.Orders
+                .FirstOrDefaultAsync(x => x.Id == orderId &&
+                x.PaidSum == 0 && 
+                x.UserGuid == UserGuid &&
+                x.WorkType == OrderWorkType.OnlineHelp &&
+                x.Status == OrderStatus.Valued
+                );
+
+            if(order != null)
+            {
+                return new PayOnlineHelp
+                {
+                    OrderId = order.Id,
+                    Sum = order.Sum
+                };
+            }
+
+            return null;
+        }
+
+        public async Task<WorkerResult> PayOnlineHelp(PayOnlineHelp model)
+        {
+            Order order = await Context.Orders
+                .FirstOrDefaultAsync(x => x.Id == model.OrderId &&
+                x.Sum == model.Sum &&
+                x.PaidSum == 0 &&
+                x.UserGuid == UserGuid &&
+                x.WorkType == OrderWorkType.OnlineHelp &&
+                x.Status == OrderStatus.Valued
+                );
+
+            if(order == null)
+            {
+                return new WorkerResult("Произошла ошибка при оплате онлайн-помощи!");
+            }
+
+            //изменяем данные о заказе
+            order.Status = OrderStatus.FullPaid;
+            order.PaidSum = model.Sum;
+
+            await Context.SaveChangesAsync();
+
+            return new WorkerResult
+            {
+                Succeeded = true
+            };
+
         }
         #endregion
 

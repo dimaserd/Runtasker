@@ -26,13 +26,14 @@ namespace Runtasker.Logic.Entities
         [Description("Выполнен")]
         Finished,
         [Description("Полностью оплачен")]
-        Paid,
+        FullPaid,
         [Description("Скачан пользователем")]
         Downloaded,
         [Description("Оценен пользователем")]
         Appreciated,
         [Description("Обнаружена ошибка")]
-        HasError
+        HasError,
+        
     }
 
     public enum OrderErrorType
@@ -98,6 +99,7 @@ namespace Runtasker.Logic.Entities
     {
         public static bool IsFree(this Order order)
         {
+            
             if( (order.Status == OrderStatus.New ||
                 order.Status == OrderStatus.HasError ||
                 order.Status == OrderStatus.Valued ||
@@ -176,7 +178,7 @@ namespace Runtasker.Logic.Entities
                     result += "success";
                     break;
 
-                case OrderStatus.Paid:
+                case OrderStatus.FullPaid:
                     result += "success";
                     break;
 
@@ -198,7 +200,14 @@ namespace Runtasker.Logic.Entities
 
         public static string GetActiveStatus(this OrderStatus val)
         {
-            return ((int)val < (int)OrderStatus.Downloaded || val == OrderStatus.HasError) ? "active" : "finished";
+            if(val == OrderStatus.New || val == OrderStatus.HasError || val == OrderStatus.Valued
+                || val == OrderStatus.HalfPaid || val == OrderStatus.FullPaid ||
+                val == OrderStatus.Executing)
+            {
+                return "active";
+            }
+
+            return "finished";
         }
         #endregion
 

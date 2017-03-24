@@ -68,7 +68,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                     result += "success";
                     break;
 
-                case OrderStatus.Paid:
+                case OrderStatus.FullPaid:
                     result += "success";
                     break;
 

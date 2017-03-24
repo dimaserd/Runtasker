@@ -61,27 +61,7 @@ namespace Runtasker.Logic.Models
     }
     #endregion
 
-    #region Pay Models
-    public class PayHalfModel
-    {
-        [Display(Name = "Sum", ResourceType = typeof(CustOrderModelsRes))]
-        public decimal Sum { get; set; }
-
-        public int OrderId { get; set; }
-
-        public decimal RequiredSum { get; set; }
-    }
-
-    public class PayAnotherHalfModel
-    {
-        public int OrderId { get; set; }
-
-        [Display(Name = "Sum", ResourceType = typeof(CustOrderModelsRes))]
-        public decimal Sum { get; set; }
-
-        public decimal RequiredSum { get; set; }
-    }
-    #endregion
+    
 
     public class RatingOrderModel
     {

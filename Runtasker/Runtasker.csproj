@@ -3537,6 +3537,7 @@
     <Content Include="Views\Landing\Team.cshtml" />
     <Content Include="App_Code\MenuHelper.cshtml" />
     <Content Include="Views\Orders\OnlineHelp.cshtml" />
+    <Content Include="Views\Orders\PayOnlineHelp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

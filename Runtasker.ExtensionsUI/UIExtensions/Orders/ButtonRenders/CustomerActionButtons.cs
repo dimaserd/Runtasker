@@ -214,7 +214,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                     buttons = GetButtonsForFinishedOrder();
                     break;
 
-                case OrderStatus.Paid:
+                case OrderStatus.FullPaid:
                     buttons = GetButtonsForPaidOrder();
                     break;
 

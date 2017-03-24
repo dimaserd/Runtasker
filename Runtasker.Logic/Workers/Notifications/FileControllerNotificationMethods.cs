@@ -26,7 +26,7 @@ namespace Runtasker.Logic.Workers.Notifications
         #region Methods like Events
         public void OnCustomerTriedToDownloadSolution(WorkerResult result, Order order)
         {
-            if(order.Status == OrderStatus.Paid)
+            if(order.Status == OrderStatus.FullPaid)
             {
                 Notification N = new Notification
                 {

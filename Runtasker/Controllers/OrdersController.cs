@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Logic.Extensions.Models;
 using Runtaker.LocaleBuiders.Views.Order;
 using Runtasker.Logic.Models.Orders;
+using Runtasker.Logic.Models.Orders.Pay;
 
 namespace Runtasker.Controllers
 {
@@ -101,45 +102,7 @@ namespace Runtasker.Controllers
             return View(viewName: "MiniPanel", model:model);
         }
 
-        #region PayHalf Methods
-        //Orders should be paid only if current user
-        //has money on his balance 
-        //if not redirect him to Payment Controller Methods
-        [HttpGet]
-        public ActionResult PayHalf(int id)
-        {
-            PayHalfModel model = OrderWorker.GetPayHalfModel(id);
-            if (model == null)
-            {
-                return RedirectToAction("Index");
-            }
-
-            return View(model);
-        }
-
-        //TODO
-        [HttpPost]
-        public ActionResult PayHalf(PayHalfModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            WorkerResult result = OrderWorker.PayHalfOfOrder(model);
-
-            if (!result.Succeeded)
-            {
-                foreach (string error in result.ErrorsList)
-                {
-                    ModelState.AddModelError("", error);
-                }
-                return View(model);
-            }
-
-            return RedirectToAction("Index");
-        }
-        #endregion
+        
 
         #region Add Files Methods
 
@@ -216,9 +179,50 @@ namespace Runtasker.Controllers
         }
         #endregion
 
+        #region Pay methods
+        #region PayHalf Methods
+        //Orders should be paid only if current user
+        //has money on his balance 
+        //if not redirect him to Payment Controller Methods
+        [HttpGet]
+        public ActionResult PayHalf(int id)
+        {
+            PayHalfModel model = OrderWorker.GetPayHalfModel(id);
+            if (model == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+
+        //TODO
+        [HttpPost]
+        public ActionResult PayHalf(PayHalfModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            WorkerResult result = OrderWorker.PayHalfOfOrder(model);
+
+            if (!result.Succeeded)
+            {
+                foreach (string error in result.ErrorsList)
+                {
+                    ModelState.AddModelError("", error);
+                }
+                return View(model);
+            }
+
+            return RedirectToAction("Index");
+        }
+        #endregion
+
         #region PayAnotherHalf Methods
 
-        
+
         [HttpGet]
         public ActionResult PayAnotherHalf(int id)
         {
@@ -254,6 +258,13 @@ namespace Runtasker.Controllers
         }
         #endregion
 
+        #region Pay OnlineHelp Methods
+        public ActionResult PayOnlineHelp(int id)
+        {
+            return View();
+        }
+        #endregion
+        #endregion
         //TODO
         #region Rating Methods
         [HttpGet]

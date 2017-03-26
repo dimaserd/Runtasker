@@ -117,14 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddedSubject1" xml:space="preserve">
-    <value>Вы добавили заказ №</value>
+  <data name="AddedSubjectFormat" xml:space="preserve">
+    <value>о заказе №{0}.</value>
+    <comment>о заказе №{номер заказа}.</comment>
   </data>
-  <data name="AddedText1" xml:space="preserve">
-    <value>Вы создали заказ №</value>
-  </data>
-  <data name="AddedText2" xml:space="preserve">
-    <value>Мы его получили, наши администраторы уже проверяют его, мы сообщим вам цену по электронной почте!</value>
+  <data name="AddedTextFormat" xml:space="preserve">
+    <value>Уважаемый/ая, {0}, вы создали заказ №{1}. Мы его получили, наши администраторы уже проверяют его, мы сообщим вам цену по электронной почте.</value>
+    <comment>Уважаемый, {имя пользователя}, вы создали заказ №{0}. Мы его получили, наши администраторы уже проверяют его, мы сообщим вам цену по электронной почте.</comment>
   </data>
   <data name="Dear" xml:space="preserve">
     <value>Уважаемый/ая</value>
@@ -132,29 +131,25 @@
   <data name="DownloadedBtnText" xml:space="preserve">
     <value>Перейти к моим заказам!</value>
   </data>
-  <data name="DownloadedSubject1" xml:space="preserve">
-    <value>Вы скачали решение.</value>
+  <data name="DownloadedSubjectFormat" xml:space="preserve">
+    <value>Вы только что скачали решение заказа {0}.</value>
+    <comment>Вы только что скачали решение заказа {номер заказа}.</comment>
   </data>
-  <data name="DownloadedText1" xml:space="preserve">
-    <value>Вы скачали решение заказа</value>
+  <data name="DownloadedTextFormat" xml:space="preserve">
+    <value>Уважаемый/ая, {0}, вы скачали решение заказа №{1}. ! Расскажите нам о результате. Мы не торопим вас с этим. Сделайте это тогда, когда вам удобно. Надеемся увидеть вас снова на Runtasker!</value>
+    <comment>Уважаемый/ая, {имя пользователя}, вы скачали решение заказа №{номер заказа}. ! Расскажите нам о результате. Мы не торопим вас с этим. Сделайте это тогда, когда вам удобно. Надеемся увидеть вас снова на Runtasker!</comment>
   </data>
-  <data name="DownloadedText2" xml:space="preserve">
-    <value>! Расскажите нам о результате! Мы не торопим вас с этим! Сделайте это тогда, когда вам удобно! Надеемся увидеть вас снова на Runtasker!</value>
+  <data name="FirstPaidSubjectFormat" xml:space="preserve">
+    <value>Вы оплатили половину заказа №{0}</value>
+    <comment>Вы оплатили половину заказа №{номер заказа}</comment>
   </data>
-  <data name="FirstPaidSubject1" xml:space="preserve">
-    <value>Вы оплатили половину заказа №</value>
+  <data name="FirstPaidTextFormat" xml:space="preserve">
+    <value>Уважаемый/ая, {0}, вы оплатили половину заказа №{1}. Наша команда скоро начнет выполнять его! Вы получите решение к {2} или ранее. Мы сообщим вам, как только закончим!</value>
+    <comment>Уважаемый, {имя пользователя}, вы оплатили половину заказа №{номер заказа}. Наша команда скоро начнет выполнять его! Вы получите решение к {дата завершения} или ранее. Мы сообщим вам, как только закончим!</comment>
   </data>
-  <data name="FirstPaidText1" xml:space="preserve">
-    <value>вы оплатили половину заказа</value>
-  </data>
-  <data name="FirstPaidText2" xml:space="preserve">
-    <value>Наша команда скоро начнет выполнять его! Вы получите решение к</value>
-  </data>
-  <data name="FirstPaidText3" xml:space="preserve">
-    <value>или ранее. Мы сообщим вам по почте, когда закончим!</value>
-  </data>
-  <data name="Hello" xml:space="preserve">
-    <value>Здравствуйте,</value>
+  <data name="HelloFormat" xml:space="preserve">
+    <value>Здравствуйте, {0}.</value>
+    <comment>Здравствуйте, {имя пользователя}.</comment>
   </data>
   <data name="InvFinishedBtnText" xml:space="preserve">
     <value>Потратить мои деньги!</value>

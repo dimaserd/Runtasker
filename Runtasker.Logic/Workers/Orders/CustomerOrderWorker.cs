@@ -21,7 +21,7 @@ namespace Runtasker.Logic.Workers.Orders
     public class CustomerOrderWorker : OrdersWorkerBase
     {
         #region Constructors
-        public CustomerOrderWorker(IMyDbContext context, string userGuid) : base(userGuid)
+        public CustomerOrderWorker(MyDbContext context, string userGuid) : base(userGuid)
         {
             Context = context;
             Construct();
@@ -32,7 +32,9 @@ namespace Runtasker.Logic.Workers.Orders
             Filer = new CustomerFileMethods();
             Notificater = new CustomerOrderNotificationMethods(Context);
             Attachmenter = new CustomerAttachmentWorker();
-            Paymenter = new CustomerOrderPaymentMethods(UserGuid);
+            
+            //здесь все упирается в UserManger
+            Paymenter = new CustomerOrderPaymentMethods(UserGuid, Context);
             ErrorHandler = new CustomerOrderErrorEvents(UserGuid);
 
             FASigns = new FontAwesomeRenderer();
@@ -41,7 +43,7 @@ namespace Runtasker.Logic.Workers.Orders
         #endregion
 
         #region Properties
-        IMyDbContext Context { get; set; }
+        MyDbContext Context { get; set; }
 
         CustomerOrderNotificationMethods Notificater { get; set; }
 
@@ -253,13 +255,14 @@ namespace Runtasker.Logic.Workers.Orders
                 return new WorkerResult("No order matched!");
             }
 
+            decimal sumThatUserNeedToPay = order.Sum / 2;
 
-            if (model.Sum != (order.Sum / 2))
+            if (model.Sum != sumThatUserNeedToPay)
             {
                 return new WorkerResult("You should pay a half of an order!");
             }
 
-            if (GetUserBalance() < order.Sum / 2)
+            if (GetUserBalance() < sumThatUserNeedToPay)
             {
                 //we don't have an error message because we will show a notification
                 WorkerResult result = new WorkerResult
@@ -363,7 +366,7 @@ namespace Runtasker.Logic.Workers.Orders
 
         #region Pay OnlineHelp methods
 
-        public async Task<PayOnlineHelp> GetPayOnlineHelpModel(int orderId)
+        public async Task<PayOnlineHelp> GetPayOnlineHelpModelAsync(int orderId)
         {
             Order order = await Context.Orders
                 .FirstOrDefaultAsync(x => x.Id == orderId &&
@@ -385,7 +388,12 @@ namespace Runtasker.Logic.Workers.Orders
             return null;
         }
 
-        public async Task<WorkerResult> PayOnlineHelp(PayOnlineHelp model)
+        /// <summary>
+        /// Оплата онлайн помощи
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async Task<WorkerResult> PayOnlineHelpAsync(PayOnlineHelp model)
         {
             Order order = await Context.Orders
                 .FirstOrDefaultAsync(x => x.Id == model.OrderId &&
@@ -400,10 +408,18 @@ namespace Runtasker.Logic.Workers.Orders
             {
                 return new WorkerResult("Произошла ошибка при оплате онлайн-помощи!");
             }
+            
+            //регистрируем оплату
+            Paymenter.OnCutomerPaidOnlineHelp(order);
+
 
             //изменяем данные о заказе
             order.Status = OrderStatus.FullPaid;
             order.PaidSum = model.Sum;
+
+            //уведомления не сделаны
+            Notificater.OnCustomerPaidOnlineHelp(order);
+            
 
             await Context.SaveChangesAsync();
 
@@ -413,6 +429,8 @@ namespace Runtasker.Logic.Workers.Orders
             };
 
         }
+
+
         #endregion
 
         #endregion
@@ -498,6 +516,15 @@ namespace Runtasker.Logic.Workers.Orders
         {
             return await CreateOrderSubMethodAsync(OrderCreationType.Ordinary, orderModel);
             
+        }
+
+        /// <summary>
+        /// Не сделано нихрена
+        /// </summary>
+        /// <returns></returns>
+        public async Task<WorkerResult> CreateOnlineHelpOrderAsync()
+        {
+            return null;
         }
 
         #region Sub Methods

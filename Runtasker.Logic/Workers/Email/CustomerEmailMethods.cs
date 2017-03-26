@@ -84,6 +84,40 @@ namespace Runtasker.Logic.Workers.Email
             
         }
 
+        public void OnCustomerCreatedOnlineHelp(Order order, ApplicationUser customer, List<string> adminEmails)
+        {
+            EmailModel model = HtmlConstants.GetForCustomerAddedNewOrder(customer.Name, order);
+
+            List<IdentityMessage> emailMessages = new List<IdentityMessage>();
+
+            IdentityMessage customerM = new IdentityMessage
+            {
+                Body = model.Body,
+                Destination = customer.Email,
+                Subject = model.Subject
+            };
+
+            emailMessages.Add(customerM);
+
+            //формируем сообщения для администраторов сервиса
+            //и добавляем их в общий список
+            foreach (string adminEmail in adminEmails)
+            {
+                emailMessages.Add(new IdentityMessage
+                {
+                    Subject = $"У нас новый заказ №{order.Id}",
+                    Body = $"<p>Пользователь {customer.Email} добавил заказ по предмету {order.Subject.ToDescriptionString()}</p>" +
+                    $"<p>Вид работы : {order.WorkType.ToDescriptionString()}</p>" +
+                "<p>Проверьте заказ и установите цену, за которую мы его выполним!</p>",
+                    Destination = adminEmail
+                });
+            }
+
+            //посылаем все сообщения
+            SendEmails(emailMessages);
+
+        }
+
 
         public void OnCustomerAddedNewFilesToOrder(Order order, string performerEmail)
         {

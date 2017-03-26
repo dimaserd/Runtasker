@@ -61,29 +61,20 @@ namespace Runtasker.Resources.Email.OrderCustomer {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на about order #.
+        ///   Ищет локализованную строку, похожую на about order #{0}.
         /// </summary>
-        public static string AddedSubject1 {
+        public static string AddedSubjectFormat {
             get {
-                return ResourceManager.GetString("AddedSubject1", resourceCulture);
+                return ResourceManager.GetString("AddedSubjectFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на We have received your order #.
+        ///   Ищет локализованную строку, похожую на Dear {0}, we have received your order #{1}. Our administrators will process it and get back to you with the price..
         /// </summary>
-        public static string AddedText1 {
+        public static string AddedTextFormat {
             get {
-                return ResourceManager.GetString("AddedText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на that you created. Our administrators will process it and get back to you with the price..
-        /// </summary>
-        public static string AddedText2 {
-            get {
-                return ResourceManager.GetString("AddedText2", resourceCulture);
+                return ResourceManager.GetString("AddedTextFormat", resourceCulture);
             }
         }
         
@@ -106,74 +97,47 @@ namespace Runtasker.Resources.Email.OrderCustomer {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на You downloaded solution!.
+        ///   Ищет локализованную строку, похожую на You just downloaded the order #{0} solution..
         /// </summary>
-        public static string DownloadedSubject1 {
+        public static string DownloadedSubjectFormat {
             get {
-                return ResourceManager.GetString("DownloadedSubject1", resourceCulture);
+                return ResourceManager.GetString("DownloadedSubjectFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на You downloaded your order.
+        ///   Ищет локализованную строку, похожую на Dear {0}, you downloaded your order #{1} solution. Tell us about the result of our work. We&apos;re not hurring you up with that. Do that any time you want. Hope to see you again on Runtasker!.
         /// </summary>
-        public static string DownloadedText1 {
+        public static string DownloadedTextFormat {
             get {
-                return ResourceManager.GetString("DownloadedText1", resourceCulture);
+                return ResourceManager.GetString("DownloadedTextFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на solution! Tell us about the result of our work! We&apos;re not hurring you up with that! Do that any time you want! Hope to see you again on Runtasker!.
+        ///   Ищет локализованную строку, похожую на You paid a half of an order #{0}.
         /// </summary>
-        public static string DownloadedText2 {
+        public static string FirstPaidSubjectFormat {
             get {
-                return ResourceManager.GetString("DownloadedText2", resourceCulture);
+                return ResourceManager.GetString("FirstPaidSubjectFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на You paid a half of an order #.
+        ///   Ищет локализованную строку, похожую на Dear {0}, you paid a half of an order #{1}. Our team will start executing it immediately. You&apos;ll get the solution till {2} or earlier. We will inform you by email when it&apos;s done..
         /// </summary>
-        public static string FirstPaidSubject1 {
+        public static string FirstPaidTextFormat {
             get {
-                return ResourceManager.GetString("FirstPaidSubject1", resourceCulture);
+                return ResourceManager.GetString("FirstPaidTextFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на you paid a half of an order #.
+        ///   Ищет локализованную строку, похожую на Hello, {0}..
         /// </summary>
-        public static string FirstPaidText1 {
+        public static string HelloFormat {
             get {
-                return ResourceManager.GetString("FirstPaidText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Our team will start executing it immediately! You&apos;ll get the solution till.
-        /// </summary>
-        public static string FirstPaidText2 {
-            get {
-                return ResourceManager.GetString("FirstPaidText2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на or earlier. We will inform you by email when it&apos;s done!.
-        /// </summary>
-        public static string FirstPaidText3 {
-            get {
-                return ResourceManager.GetString("FirstPaidText3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Hello.
-        /// </summary>
-        public static string Hello {
-            get {
-                return ResourceManager.GetString("Hello", resourceCulture);
+                return ResourceManager.GetString("HelloFormat", resourceCulture);
             }
         }
         

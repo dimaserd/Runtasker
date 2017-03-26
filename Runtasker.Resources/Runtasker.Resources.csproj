@@ -194,6 +194,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RegAndCreateRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Namers\Payment\PaymentNamerRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentNamerRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Notifications\AccountMethods\AccountRes.ru-RU.Designer.cs">
       <DependentUpon>AccountRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -793,6 +798,10 @@
     <EmbeddedResource Include="Models\OrderModels\RegAndCreate\RegAndCreateRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RegAndCreateRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Namers\Payment\PaymentNamerRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PaymentNamerRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Notifications\CustomerOrderErrorMethods\CustOrderErrorRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

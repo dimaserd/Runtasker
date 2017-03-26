@@ -1,6 +1,5 @@
 ﻿using Logic.Extensions.Models;
 using Runtasker.Logic.Entities;
-using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers.Email;
 using Runtasker.Resources.Notifications.FileMethods;
 using System;

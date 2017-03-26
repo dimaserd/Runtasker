@@ -73,11 +73,14 @@
         <div class="form-group" id="DateForm">
             @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="date col-md-5">
-                <!--input-group date-->
-                <input type="text" class="form-control" id="datetimepicker1" name="StartDate" />
-                <div class="input-group-btn">
-                    @Html.PopoverInfoFor(m => m.StartDate)
+                <div class="input-group">
+                    <!--input-group date-->
+                    <input type="text" class="form-control" id="datetimepicker1" name="StartDate" />
+                    <div class="input-group-btn">
+                        @Html.PopoverInfoFor(m => m.StartDate)
+                    </div>
                 </div>
+                
             </div>
         </div>         
         <!--End of DateTimePicker-->

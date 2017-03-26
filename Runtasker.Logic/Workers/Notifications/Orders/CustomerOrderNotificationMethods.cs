@@ -10,6 +10,7 @@ using Runtasker.Logic.Workers.Email;
 using Runtasker.Logic.Workers.Notifications.Orders;
 using Runtasker.Logic.Workers.Notifications.Orders.VkNotifications;
 using Runtasker.Resources.Notifications.CustomerOrderMethods;
+using Runtasker.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,8 +31,10 @@ namespace Runtasker.Logic.Workers.Notifications
         void Construct()
         {
             Emailer = new CustomerEmailMethods();
+
             FASigns = new FontAwesomeRenderer();
             GISigns = new GlyphiconRenderer();
+            HtmlSigns = new HtmlSignsRenderer();
 
             ModelBuilder = new CustomerOrderNotificationBuilder();
             PerformerNotificationGetter = new PerformerNotificationCreator(Context);
@@ -43,9 +46,11 @@ namespace Runtasker.Logic.Workers.Notifications
 
         CustomerEmailMethods Emailer { get; set; }
 
+        #region Знаки
         FontAwesomeRenderer FASigns { get; set; }
         GlyphiconRenderer GISigns { get; set; }
-
+        HtmlSignsRenderer HtmlSigns { get; set; }
+        #endregion
         CustomerOrderNotificationBuilder ModelBuilder { get; set; }
 
         IMyDbContext Context { get; set; }
@@ -56,6 +61,7 @@ namespace Runtasker.Logic.Workers.Notifications
         #region Когда заказ еще не выбран исполнителем
 
         #region Adding Order Methods
+
         public void OnCustomerAddedOrder(Order order, OrderCreationType creationType, string callBackUrl = null)
         {
             ForNotification model = ModelBuilder.AddedOrder(order.Id);
@@ -106,7 +112,27 @@ namespace Runtasker.Logic.Workers.Notifications
 
         }
 
-        
+        public void OnCustomerAddedOnlineOrder(Order order, OrderCreationType creationType, string callBackUrl = null)
+        {
+            ForNotification model = ModelBuilder.AddedOnlineHelpOrder(order.Subject.ToDescriptionString());
+
+            Notification customerN = new Notification
+            {
+                Type = NotificationType.Info,
+                Title = model.Title,
+                Text = model.Text,
+                UserGuid = order.UserGuid,
+                Link = null,
+                AboutType = NotificationAboutType.Ordinary
+            };
+
+            if (creationType == OrderCreationType.Ordinary)
+            {
+                //сообщение о добавленном заказе у них будет одинаковым
+                Emailer.OnCustomerAddedOrder(order, GetCustomer(order), GetAdminsEmails(order));
+            }
+
+        }
         #endregion
 
         /// <summary>
@@ -236,7 +262,7 @@ namespace Runtasker.Logic.Workers.Notifications
 
         #endregion
 
-
+        #region Методы оплаты
         public void OnCustomerPaidAnotherHalfOfAnOrder(Order order)
         {
             ForNotification model = ModelBuilder.PaidSecondHalf(order.Id, GISigns.Save);
@@ -261,6 +287,24 @@ namespace Runtasker.Logic.Workers.Notifications
             Context.SaveChanges();
             
         }
+
+        public void OnCustomerPaidOnlineHelp(Order order)
+        {
+            ForNotification model = ModelBuilder.OnlineHelpPaid(order.Id);
+
+            Notification customerN = new Notification
+            {
+                AboutType = NotificationAboutType.Balance,
+                Title = model.Title,
+                Text = model.Text,
+                Type = NotificationType.Success,
+                UserGuid = order.UserGuid 
+            };
+
+            Context.Notifications.Add(customerN);
+            Context.SaveChanges();
+        }
+        #endregion
 
         public void OnCustomerRatedAnOrderSolution(Order order)
         {
@@ -294,7 +338,11 @@ namespace Runtasker.Logic.Workers.Notifications
             Emailer.OnCustomerRatedAnOrderSolution(order, GetPerformerEmail());
         }
 
-        //Not done not liasoned
+        /// <summary>
+        /// Вообще не сделано ни текст уведомления, ни связь с приложением
+        /// и нигде не используется
+        /// </summary>
+        /// <param name="I"></param>
         public void OnInvitedCustomerRatedAnOrderSolution(Invitation I)
         {
             string inviterEmail = GetEmailByGuid(I.SenderGuid);
@@ -304,10 +352,8 @@ namespace Runtasker.Logic.Workers.Notifications
                 AboutType = NotificationAboutType.Balance,
                 Type = NotificationType.Success,
                 UserGuid = I.SenderGuid,
-                Title = $"{CustomerOrder.InviterRatingTitle1} {I.ReceiverEmail} " +
-                CustomerOrder.InviterRatingTitle2,
-                Text = $"{CustomerOrder.InviterRatingText1} 300{FASigns.Rouble}! "
-                + CustomerOrder.InviterRatingText2,
+                Title = string.Format(CustomerOrder.InviterRatingTitleFormat, I.ReceiverEmail),
+                Text = string.Format(CustomerOrder.InviterRatingTextFormat, UISettings.RegistrationBonus, HtmlSigns.Rouble),
                 Link = new HtmlLink
                 (
                     hrefParam: "/Manage/InviteUser",
@@ -334,6 +380,7 @@ namespace Runtasker.Logic.Workers.Notifications
                     buttonTypeParam: HtmlButtonType.Success
                 ).ToString()
             };
+
             Context.Notifications.Add(inviterN);
             Context.Notifications.Add(invitedN);
             Context.SaveChanges();

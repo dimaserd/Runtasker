@@ -70,11 +70,11 @@ namespace Runtasker.Resources.Notifications.CustomerOrderMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на You have changed description in order #.
+        ///   Ищет локализованную строку, похожую на You have changed description in order #{0}..
         /// </summary>
-        public static string AddDescriptionTitle {
+        public static string AddDescriptionTitleFormat {
             get {
-                return ResourceManager.GetString("AddDescriptionTitle", resourceCulture);
+                return ResourceManager.GetString("AddDescriptionTitleFormat", resourceCulture);
             }
         }
         
@@ -88,11 +88,11 @@ namespace Runtasker.Resources.Notifications.CustomerOrderMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Thank you for adding new files to order #.
+        ///   Ищет локализованную строку, похожую на Thank you for adding new files to order #{0}..
         /// </summary>
-        public static string AddFilesTitle {
+        public static string AddFilesTitleFormat {
             get {
-                return ResourceManager.GetString("AddFilesTitle", resourceCulture);
+                return ResourceManager.GetString("AddFilesTitleFormat", resourceCulture);
             }
         }
         
@@ -106,20 +106,11 @@ namespace Runtasker.Resources.Notifications.CustomerOrderMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Order №.
+        ///   Ищет локализованную строку, похожую на Order #{0} successfully added!.
         /// </summary>
-        public static string AddOrderTitle1 {
+        public static string AddOrderTitleFormat {
             get {
-                return ResourceManager.GetString("AddOrderTitle1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на successfully added!.
-        /// </summary>
-        public static string AddOrderTitle2 {
-            get {
-                return ResourceManager.GetString("AddOrderTitle2", resourceCulture);
+                return ResourceManager.GetString("AddOrderTitleFormat", resourceCulture);
             }
         }
         
@@ -196,38 +187,20 @@ namespace Runtasker.Resources.Notifications.CustomerOrderMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на You have invited him/her! That&apos;s why you get your .
+        ///   Ищет локализованную строку, похожую на You have invited him/her! That&apos;s why you get your {0}{1}! You can also invite another one!.
         /// </summary>
-        public static string InviterRatingText1 {
+        public static string InviterRatingTextFormat {
             get {
-                return ResourceManager.GetString("InviterRatingText1", resourceCulture);
+                return ResourceManager.GetString("InviterRatingTextFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на You can invite another one!.
+        ///   Ищет локализованную строку, похожую на User {0} has completed his order..
         /// </summary>
-        public static string InviterRatingText2 {
+        public static string InviterRatingTitleFormat {
             get {
-                return ResourceManager.GetString("InviterRatingText2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на User.
-        /// </summary>
-        public static string InviterRatingTitle1 {
-            get {
-                return ResourceManager.GetString("InviterRatingTitle1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на has completed his order!.
-        /// </summary>
-        public static string InviterRatingTitle2 {
-            get {
-                return ResourceManager.GetString("InviterRatingTitle2", resourceCulture);
+                return ResourceManager.GetString("InviterRatingTitleFormat", resourceCulture);
             }
         }
         
@@ -237,6 +210,42 @@ namespace Runtasker.Resources.Notifications.CustomerOrderMethods {
         public static string Number {
             get {
                 return ResourceManager.GetString("Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Please wait a little, we will contact you soon..
+        /// </summary>
+        public static string OnlineHelpPaidText {
+            get {
+                return ResourceManager.GetString("OnlineHelpPaidText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на You have paid an online help for order #{0}..
+        /// </summary>
+        public static string OnlineHelpPaidTitleFormat {
+            get {
+                return ResourceManager.GetString("OnlineHelpPaidTitleFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Our team will consider your application within minutes. We will provide you information on the result..
+        /// </summary>
+        public static string OnlineOrderCreatedText {
+            get {
+                return ResourceManager.GetString("OnlineOrderCreatedText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на You&apos;ve aplied for Online-help for {0}..
+        /// </summary>
+        public static string OnlineOrderCreatedTitleFormat {
+            get {
+                return ResourceManager.GetString("OnlineOrderCreatedTitleFormat", resourceCulture);
             }
         }
         
@@ -259,47 +268,29 @@ namespace Runtasker.Resources.Notifications.CustomerOrderMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Now you can download order #.
+        ///   Ищет локализованную строку, похожую на Now you can download order #{0} solution..
         /// </summary>
-        public static string PaidAnotherHalfTitle1 {
+        public static string PaidAnotherHalfTitleFormat {
             get {
-                return ResourceManager.GetString("PaidAnotherHalfTitle1", resourceCulture);
+                return ResourceManager.GetString("PaidAnotherHalfTitleFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на solution.
+        ///   Ищет локализованную строку, похожую на Our team is about to start working on your order. You will have received the solution by {0} at the latest..
         /// </summary>
-        public static string PaidAnotherHalfTitle2 {
+        public static string PaidFirstHalfTextFormat {
             get {
-                return ResourceManager.GetString("PaidAnotherHalfTitle2", resourceCulture);
+                return ResourceManager.GetString("PaidFirstHalfTextFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Our team are about to start working on your order. You will have received the solution by.
+        ///   Ищет локализованную строку, похожую на You have paid a half of order #{0}..
         /// </summary>
-        public static string PaidFirstHalfText1 {
+        public static string PaidFirstHalfTitleFormat {
             get {
-                return ResourceManager.GetString("PaidFirstHalfText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на at the latest..
-        /// </summary>
-        public static string PaidFirstHalfText2 {
-            get {
-                return ResourceManager.GetString("PaidFirstHalfText2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на You have paid a half of order #.
-        /// </summary>
-        public static string PaidFirstHalfTitle1 {
-            get {
-                return ResourceManager.GetString("PaidFirstHalfTitle1", resourceCulture);
+                return ResourceManager.GetString("PaidFirstHalfTitleFormat", resourceCulture);
             }
         }
         

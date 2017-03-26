@@ -120,23 +120,23 @@
   <data name="AddDescriptionText" xml:space="preserve">
     <value>Спасибо, за ваши исправления! Мы проверим ваш заказ и сообщим вам о результате!</value>
   </data>
-  <data name="AddDescriptionTitle" xml:space="preserve">
-    <value>Вы поменяли описание в заказе №</value>
+  <data name="AddDescriptionTitleFormat" xml:space="preserve">
+    <value>Вы поменяли описание в заказе №{0}.</value>
+    <comment>Вы поменяли описание в заказе №{номер заказа}.</comment>
   </data>
   <data name="AddFilesText" xml:space="preserve">
     <value>Наша команда проверит ваш заказ, мы сообщим вам о цене вашего заказа по электронной почте! С наилучшими пожеланиями от Runtasker!</value>
   </data>
-  <data name="AddFilesTitle" xml:space="preserve">
-    <value>Спасибо, что добавили файлы в заказ №</value>
+  <data name="AddFilesTitleFormat" xml:space="preserve">
+    <value>Спасибо, что добавили файлы в заказ №{0}.</value>
+    <comment>Спасибо, что добавили файлы в заказ №{номер заказа}.</comment>
   </data>
   <data name="AddOrderText" xml:space="preserve">
     <value>Наша команда проверит ваш заказ, мы сообщим вам о цене вашего заказа по электронной почте! С наилучшими пожеланиями от Runtasker!</value>
   </data>
-  <data name="AddOrderTitle1" xml:space="preserve">
-    <value>Заказ №</value>
-  </data>
-  <data name="AddOrderTitle2" xml:space="preserve">
-    <value>успешно добавлен!</value>
+  <data name="AddOrderTitleFormat" xml:space="preserve">
+    <value>Заказ №{0} успешно добавлен.</value>
+    <comment>Заказ №{номер заказа} успешно добавлен.</comment>
   </data>
   <data name="BadRatingText1" xml:space="preserve">
     <value>Мы будем работать над нашим сервисом!</value>
@@ -153,29 +153,32 @@
   <data name="InvitedRatingText3" xml:space="preserve">
     <value>за каждого приглашенного друга! Вы тоже можете пригласить своих друзей к нам!</value>
   </data>
-  <data name="InvitedRatingTitle1" xml:space="preserve">
-    <value>Пользователь</value>
-  </data>
-  <data name="InvitedRatingTitle2" xml:space="preserve">
-    <value>приглашен</value>
-  </data>
   <data name="InviterRatingButtonText" xml:space="preserve">
     <value>Пригласить пользователя</value>
   </data>
-  <data name="InviterRatingText1" xml:space="preserve">
-    <value>Вы пригласили его/ee! Поэтому вы получаете ваши</value>
+  <data name="InviterRatingTextFormat" xml:space="preserve">
+    <value>Вы пригласили его/ee! Поэтому вы получаете {0}{1}! Также вы можете пригласить еще друзей!</value>
   </data>
-  <data name="InviterRatingText2" xml:space="preserve">
-    <value>Также вы можете пригласить еще друзей!</value>
-  </data>
-  <data name="InviterRatingTitle1" xml:space="preserve">
-    <value>Пользователь</value>
-  </data>
-  <data name="InviterRatingTitle2" xml:space="preserve">
-    <value>завершил свой заказ!</value>
+  <data name="InviterRatingTitleFormat" xml:space="preserve">
+    <value>Пользователь {0} завершил свой заказ!.</value>
+    <comment>Пользователь {еmail приглашенного} завершил свой заказ!.</comment>
   </data>
   <data name="Number" xml:space="preserve">
     <value>№</value>
+  </data>
+  <data name="OnlineHelpPaidText" xml:space="preserve">
+    <value>Пожалуйста, ожидайте. Мы скоро с вами свяжемся.</value>
+  </data>
+  <data name="OnlineHelpPaidTitleFormat" xml:space="preserve">
+    <value>Вы оплатили онлайн помощь, заказ №{0}.</value>
+    <comment>Вы оплатили онлайн помощь, заказ №{номер заказа}.</comment>
+  </data>
+  <data name="OnlineOrderCreatedText" xml:space="preserve">
+    <value>Наша команда в течение нескольких минут рассмотрит ее. Мы сообщим вам о результате.</value>
+  </data>
+  <data name="OnlineOrderCreatedTitleFormat" xml:space="preserve">
+    <value>Вы подали заявку на онлайн помощь по предмету {0}.</value>
+    <comment>Вы подали заявку на онлайн помощь по предмету {название предмета}.</comment>
   </data>
   <data name="PaidAnotherHalfButtonText" xml:space="preserve">
     <value>Скачать решение</value>
@@ -183,20 +186,16 @@
   <data name="PaidAnotherHalfText" xml:space="preserve">
     <value>Нам бы хотелось узнать ваше мнение о выполненной работе!</value>
   </data>
-  <data name="PaidAnotherHalfTitle1" xml:space="preserve">
-    <value>Теперь вы можете скачать решение заказа №</value>
+  <data name="PaidAnotherHalfTitleFormat" xml:space="preserve">
+    <value>Теперь вы можете скачать решение заказа №{0}.</value>
   </data>
-  <data name="PaidAnotherHalfTitle2" xml:space="preserve">
-    <value />
+  <data name="PaidFirstHalfTextFormat" xml:space="preserve">
+    <value>Наша команда вскоре приступит к выполнению вашего заказа!  Вы получите решение заказа к {0} или ранее.</value>
+    <comment>Наша команда вскоре приступит к выполнению вашего заказа!  Вы получите решение заказа к {дата завершения} или ранее.</comment>
   </data>
-  <data name="PaidFirstHalfText1" xml:space="preserve">
-    <value>Наша команда вскоре приступит к выполнению вашего заказа!  Вы получите решение заказа к</value>
-  </data>
-  <data name="PaidFirstHalfText2" xml:space="preserve">
-    <value>или раньше.</value>
-  </data>
-  <data name="PaidFirstHalfTitle1" xml:space="preserve">
-    <value>Вы оплатили половину стоимости заказа №</value>
+  <data name="PaidFirstHalfTitleFormat" xml:space="preserve">
+    <value>Вы оплатили половину стоимости заказа №{0}.</value>
+    <comment>Вы оплатили половину стоимости заказа №{номер заказа}.</comment>
   </data>
   <data name="RatingText2" xml:space="preserve">
     <value>Надеемся, что увидим вас снова!</value>

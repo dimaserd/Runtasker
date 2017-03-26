@@ -53,10 +53,33 @@ namespace Runtasker.Logic.HtmlConstantEmails
 
             return new EmailModel
             {
-                Subject = $"{CustEmailNotRes.AddedSubject1}{order.Id}",
+                Subject = string.Format(CustEmailNotRes.AddedSubjectFormat,order.Id),
                 Body = text
             };
         }
+
+        public EmailModel GetForCustomerApliedForOnlineHelp(string userName, Order order)
+        {
+            ForEmailCallToAction model = ModelBuilder.AddedOrder(userName, order.Id);
+
+            string text = new HtmlEmailBase
+                (
+                    callToAction: new BigEmailCallToActionBase
+                    (
+                        header: model.Header,
+                        littleHeader: null,
+                        bigText: model.BigText,
+                        link: null
+                    )
+                ).ToString();
+
+            return new EmailModel
+            {
+                Subject = string.Format(CustEmailNotRes.AddedSubjectFormat,order.Id),
+                Body = text
+            };
+        }
+
 
         public EmailModel GetForCustomerPaidFirstHalfOfAnOrder(string userName, Order order)
         {
@@ -76,7 +99,7 @@ namespace Runtasker.Logic.HtmlConstantEmails
             return new EmailModel
             {
                 Body = text,
-                Subject = $"{CustEmailNotRes.FirstPaidSubject1}{order.Id}"
+                Subject = string.Format(CustEmailNotRes.FirstPaidSubjectFormat,order.Id)
             };
         }
 
@@ -102,7 +125,7 @@ namespace Runtasker.Logic.HtmlConstantEmails
             return new EmailModel
             {
                 Body = text,
-                Subject = CustEmailNotRes.DownloadedSubject1
+                Subject = string.Format(CustEmailNotRes.DownloadedSubjectFormat, order.Id)
             };
         }
 
@@ -113,7 +136,7 @@ namespace Runtasker.Logic.HtmlConstantEmails
                 (
                     callToAction: new BigEmailCallToActionBase
                     (
-                        header: $"{CustEmailNotRes.Hello} {userName}!",
+                        header: string.Format(CustEmailNotRes.HelloFormat, userName),
                         littleHeader: null,
                         bigText:
                         $"{CustEmailNotRes.Dear} {userName}! {CustEmailNotRes.User} {invitedEmail} {CustEmailNotRes.InvFinishedText1} "

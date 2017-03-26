@@ -180,6 +180,7 @@ namespace Runtasker.Controllers
         #endregion
 
         #region Pay methods
+
         #region PayHalf Methods
         //Orders should be paid only if current user
         //has money on his balance 
@@ -259,9 +260,33 @@ namespace Runtasker.Controllers
         #endregion
 
         #region Pay OnlineHelp Methods
-        public ActionResult PayOnlineHelp(int id)
+        [HttpGet]
+        public async Task<ActionResult> PayOnlineHelp(int id)
         {
-            return View();
+            PayOnlineHelp model = await OrderWorker.GetPayOnlineHelpModelAsync(id);
+
+            if(model == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> PayOnlineHelp(PayOnlineHelp model)
+        {
+            if(ModelState.IsValid)
+            {
+                WorkerResult result = await OrderWorker.PayOnlineHelpAsync(model);
+
+                if(result.Succeeded)
+                {
+
+                }
+            }
+
+            return View(model);
         }
         #endregion
         #endregion

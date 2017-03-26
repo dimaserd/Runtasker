@@ -1,7 +1,6 @@
 ﻿using Logic.Extensions.Models;
 using Logic.Extensions.Namers;
 using Runtasker.Logic.Entities;
-using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers.Notifications;
 using System;
 using System.Linq;

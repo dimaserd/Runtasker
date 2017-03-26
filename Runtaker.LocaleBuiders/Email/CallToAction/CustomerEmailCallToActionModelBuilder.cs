@@ -1,4 +1,5 @@
-﻿using Runtasker.LocaleBuilders.Models;
+﻿using Runtasker.LocaleBuilders.Enumerations;
+using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Email.OrderCustomer;
 using System;
 
@@ -10,76 +11,33 @@ namespace Runtasker.LocaleBuilders.Email.CallToAction
 
         public ForEmailCallToAction AddedOrder(string userName, int orderId)
         {
-            switch(UICultureName)
+            return new ForEmailCallToAction
             {
-                case "ru-RU":
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{CustEmailNotRes.Hello} {userName}!",
-                        LittleHeader = null,
-                        BigText = $"{CustEmailNotRes.Dear} {userName}, {CustEmailNotRes.AddedText1} №{orderId}! " +
-                        $"{CustEmailNotRes.AddedText2} {CustEmailNotRes.RuntaskerWish}"
-                    };
-                //english checked
-                default:
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{CustEmailNotRes.Hello} {userName}!",
-                        LittleHeader = null,
-                        BigText = $"{CustEmailNotRes.Dear} {userName}, {CustEmailNotRes.AddedText1}{orderId} " +
-                        $"{CustEmailNotRes.AddedText2} {CustEmailNotRes.RuntaskerWish}"
-                    };
-            }
+                Header = string.Format(CustEmailNotRes.HelloFormat, userName),
+                LittleHeader = null,
+                BigText = $"{string.Format(CustEmailNotRes.AddedTextFormat, userName, orderId)} {CustEmailNotRes.RuntaskerWish}"
+            };
         }
 
         public ForEmailCallToAction PaidFirstHalf(string userName, int orderId, DateTime orderFinishDate)
         {
-            switch(UICultureName)
+            return new ForEmailCallToAction
             {
-                case "ru-RU":
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{CustEmailNotRes.Hello} {userName}!",
-                        BigText = $"{CustEmailNotRes.Dear} {userName}, {CustEmailNotRes.FirstPaidText1} №{orderId}. " +
-                        $"{CustEmailNotRes.FirstPaidText2} {orderFinishDate.ToString("d MMM yyyy")} " +
-                        $"{CustEmailNotRes.FirstPaidText3} {CustEmailNotRes.RuntaskerWish}",
-                    };
-                //english checked
-                default:
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{CustEmailNotRes.Hello} {userName}!",
-                        BigText = $"{CustEmailNotRes.Dear} {userName}, {CustEmailNotRes.FirstPaidText1}{orderId}. " +
-                        $"{CustEmailNotRes.FirstPaidText2} {orderFinishDate.ToString("d MMM yyyy")} " +
-                        $"{CustEmailNotRes.FirstPaidText3} {CustEmailNotRes.RuntaskerWish}",
-                    };
-            }
-            
+                Header = string.Format(CustEmailNotRes.HelloFormat, userName),
+                BigText = string.Format(CustEmailNotRes.FirstPaidTextFormat, userName, orderId, orderFinishDate.ToString("d MMM yyyy"))
+                         + $" {CustEmailNotRes.RuntaskerWish}",
+            };
         }
 
         public ForEmailCallToAction DownloadedSolution(string userName, int orderId)
         {
-            switch(UICultureName)
+            return new ForEmailCallToAction
             {
-                case "ru-RU":
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{CustEmailNotRes.Hello} {userName}!",
-                        BigText = $"{CustEmailNotRes.Dear} {userName}! {CustEmailNotRes.DownloadedText1} №{orderId} "
-                       + $"{CustEmailNotRes.DownloadedText2} {CustEmailNotRes.RuntaskerWish}",
-                        ActionBtnText = CustEmailNotRes.DownloadedBtnText
-                    };
-
-                default:
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{CustEmailNotRes.Hello} {userName}!",
-                        BigText = $"{CustEmailNotRes.Dear} {userName}! {CustEmailNotRes.DownloadedText1} №{orderId} "
-                       + $"{CustEmailNotRes.DownloadedText2} {CustEmailNotRes.RuntaskerWish}",
-                        ActionBtnText = CustEmailNotRes.DownloadedBtnText
-                    };
-            }
-           
+                Header = string.Format(CustEmailNotRes.HelloFormat, userName),
+                BigText = string.Format(CustEmailNotRes.DownloadedTextFormat, userName, orderId)
+                       + $" {CustEmailNotRes.RuntaskerWish}",
+                ActionBtnText = CustEmailNotRes.DownloadedBtnText
+            };
         }
 
         #endregion

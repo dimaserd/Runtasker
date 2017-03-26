@@ -1,43 +1,49 @@
 ﻿
+using Runtasker.Resources.Namers.Payment;
 using System;
 
 namespace Logic.Extensions.Namers
 {
     public class PaymentTransactionDescriptionNamer
     {
+        public string GetForPayOnlineHelp(int orderId)
+        {
+            return string.Format(PaymentNamerRes.OnlineOrderPaidFormat, orderId);
+        }
+
         public string GetForPayFirstHalfOfAnOrder(int orderId)
         {
-            return $"First half of an Order №{orderId} paid";
+            return string.Format(PaymentNamerRes.OrderFirstHalfPaidFormat, orderId);
         }
 
         public string GetForPayAnotherHalfOfAnOrder(int orderId)
         {
-            return $"Second half of an Order №{orderId} paid";
+            return string.Format(PaymentNamerRes.OrderSecondHalfPaidFormat, orderId);
         }
 
         public string GetForInvitedUser(string email)
         {
-            return $"For invited user {email}";
+            return string.Format(PaymentNamerRes.ForInvitedUserFormat, email);
         }
 
         public string PaymentWithRobokassaService()
         {
-            return $"Balance recharging via RoboKassa";
+            return string.Format(PaymentNamerRes.BalanceRechargingViaServiceFormat, "RoboKassa");
         }
 
         public string PaymentWithYandexMoneyFirstService()
         {
-            return $"Balance recharging via YandexMoney";
+            return string.Format(PaymentNamerRes.BalanceRechargingViaServiceFormat, "YandexMoney");
         }
 
         public string GetForRegisterBonus()
         {
-            return "Registration Bonus";
+            return PaymentNamerRes.RegistrationBonus;
         }
 
         public string GetForFeatureRevealed(string featureName)
         {
-            return $"Revealed feature : [{featureName}]";
+            return string.Format(PaymentNamerRes.RevealedFeatureFormat, featureName);
         }
 
         public string GetForBugBounty()

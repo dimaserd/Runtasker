@@ -1,7 +1,6 @@
 ﻿@using Runtasker.HtmlExtensions
 @using HtmlExtensions.Renderers
 @using Extensions.String
-@using Runtasker.Resources.Views.Orders.Create
 @using Runtasker.LocaleBuilders.Models
 
 @model Runtasker.Logic.Models.OrderCreateModel
@@ -25,6 +24,13 @@
     string langCode = StaticHtmlClassesHelper.GetLangCode();
 }
 
+@if(Runtasker.Settings.Settings.AppSetting == Runtasker.Settings.Enumerations.ApplicationSettingType.Debug)
+{
+    @AlertHelper.GetAlertWithActionBtn(
+        localeModel["OnlineHelpAlertTitle"],
+        localeModel["OnlineHelpAlertText"],
+        localeModel["OnlineHelpBtnText"].WrapToA(new { href = "/Orders/OnlineHelp", @class = "btn btn-success" }));
+}
 
 <!-- PAGE TITLE -->
 <header id="page-title">
@@ -214,8 +220,8 @@
     <!--/Tooltip activator-->
     
     <!--DateTimePicker-->
-    @Html.GetDateTimeScriptsAndStyles(langCode)
-    @ViewExtensions.GetDateTimeScriptsAndStyles(null)
+    @Html.GetDateTimeScriptsAndStyles()
+    @ViewExtensions.GetDateTimeScriptsAndStyles()
     <!--/DateTimePicker-->
 
     <!--Other Subject Scripts-->

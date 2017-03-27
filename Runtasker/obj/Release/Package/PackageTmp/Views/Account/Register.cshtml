@@ -1,63 +1,105 @@
 ﻿@using Runtasker.Logic.Models
 @using Runtasker.Resources.Views.Account.Register
+@using Runtasker.HtmlExtensions
+@using Runtasker.LocaleBuilders.Models
+@using Extensions.String
 @model RegisterModel
-@{
-    ViewBag.Title = RegisterRes.Register;
+@{ 
+    LocaleViewModel viewModel = ViewData["viewModel"] as LocaleViewModel;
+    ViewBag.Title = viewModel["Title"];
 }
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-        {
-            @Html.AntiForgeryToken()
-            <h4>@RegisterRes.RegisterNew</h4>
-            <hr />
-
-            @Html.ValidationSummary("", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-default" value="@RegisterRes.Register" />
-                </div>
-            </div>
-
-
-            
-
-        }
-
+<!-- PAGE TITLE -->
+<header id="page-title">
+    <div class="container">
+        <h1>@ViewBag.Title</h1>
+        <ul class="breadcrumb">
+            <li><a href="/Home/Index">@viewModel["HomeNav"]</a></li>
+            <li class="active">@viewModel["ActiveNav"]</li>
+        </ul>
     </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("NewLoginList", new ExternalLoginListModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
-</div>
+</header>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+<section class="container">
+    <div class="row">
+        <!-- REGISTER -->
+        <div class="col-md-6">
+            @viewModel["htmlHeader"].ToHtml()
+
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, htmlAttributes: new { @class = "white-row" }))
+            {
+                @Html.ValidationErrorsToAlerts()
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.Email)
+                            @Html.TextBoxFor(model => model.Email, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.Name)
+                            @Html.TextBoxFor(model => model.Name, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.Password)
+                            @Html.PasswordFor(model => model.Password, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.ConfirmPassword)
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="submit" value="@viewModel["registerBtn"]" class="btn btn-primary pull-right push-bottom" data-loading-text="Loading...">
+                    </div>
+                </div>
+            }
+
+        </div>
+        <!-- /REGISTER -->
+
+        <!-- WHY? -->
+        <div class="col-md-6">
+            <h2>@viewModel["WhyToReg"].ToHtml()</h2>
+            <div class="white-row">
+                <h4>@viewModel["WhyToRegDesc"].ToHtml()</h4>
+                <p>@viewModel["RegPlusesHeader"].ToHtml()</p>
+                <ul class="list-icon check">
+                    <li>@viewModel["RegPlus1"]</li>
+                    <li>@viewModel["RegPlus2"]</li>
+                    <li>@viewModel["RegPlus3"]</li>
+                    <li>@viewModel["RegPlus4"]</li>
+                    <li>@viewModel["RegPlus5"]</li>
+                    <li>@viewModel["RegPlus6"]</li>
+                </ul>
+
+                <hr class="half-margins" />
+
+                <p>
+                    @viewModel["AlreadyHaveAc"].ToHtml()
+                    <a href="@Url.Action("Login", "Account")">@viewModel["ClickToSI"]</a>
+                </p>
+            </div>
+
+            <div class="white-row">
+                <h4>@viewModel["ContCustSup"]</h4>
+                <p>
+                    @viewModel["htmlContactField"].ToHtml()
+                </p>
+            </div>
+
+        </div>
+        <!-- /WHY? -->
+    </div>
+</section>

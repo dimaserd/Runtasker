@@ -11,18 +11,19 @@
         @Html.AntiForgeryToken()
         <div id="socialLoginList" class="text-center">
             @foreach (AuthenticationDescription p in loginProviders)
-                {
+            {
 
-                    string caption = p.Caption;
-                    if (caption.ToLower() == "vkontakte")
-                    {
-                        caption = "vk";
-                    }
-                    string className = $"btn-{caption.ToLower()}";
-                    string className2 = $"fa-{caption.ToLower()}";
+                string caption = p.Caption;
+                if (caption.ToLower() == "vkontakte")
+                {
+                    caption = "vk";
+                }
+                string className = $"btn-{caption.ToLower()}";
+                string className2 = $"fa-{caption.ToLower()}";
+                string textSocial = string.Format(Model.Pattern, p.Caption);
 
                 <button type="submit" class="@className fullwidth radius3 btn-my-social" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="@Model.VerbWith @p.Caption">
-                    <i class="fa @className2"></i> @Model.VerbWith @p.Caption
+                    <i class="fa @className2"></i> @*@Model.VerbWith @p.Caption*@ @textSocial
                 </button>
             }
         </div>

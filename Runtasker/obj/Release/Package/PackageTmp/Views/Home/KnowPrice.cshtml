@@ -1,8 +1,6 @@
-﻿@using Runtasker.Resources.Views.Home.Contact
-@using Runtasker.Logic.Models.Orders
+﻿@using Runtasker.Logic.Models.Orders
 @model AnonymousKnowThePrice
 @using Runtasker.HtmlExtensions
-@using Runtasker.Resources.Views.Home.Contact
 @using Runtasker.LocaleBuilders.Models
 @using HtmlExtensions.Renderers
 @using Extensions.String
@@ -179,7 +177,7 @@
 <!-- /WRAPPER -->
 
 @section scripts{
-    @Html.GetDateTimeScriptsAndStyles(langCode)
+    @Html.GetDateTimeScriptsAndStyles()
 
     @ViewExtensions.GetDateTimeScriptsAndStyles(null)
                                     

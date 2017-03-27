@@ -1,10 +1,10 @@
-﻿
+﻿@using VkParser.Constants
 @{
     ViewBag.Title = "Token";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 
-    int client_id = 5335054;
-    int runtaskerGroupId = 137750954;
+    int client_id = VkConstants.ClientId;
+    int runtaskerGroupId = VkConstants.RuntaskerGroupId;
     string vkAppRedirectUri = @"https://runtasker.ru/VkOrders/GetAppToken";
 
     string vkAppUrl = @"https://oauth.vk.com/authorize"

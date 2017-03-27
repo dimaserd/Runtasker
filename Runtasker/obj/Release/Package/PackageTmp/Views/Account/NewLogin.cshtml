@@ -73,7 +73,7 @@
         <div class="col-md-6">
             @viewModel["htmlSocialSignIn"].ToHtml()
             <div class="white-row">
-                @Html.Partial("BlockLoginList", new ExternalLoginListModel { ReturnUrl = ViewBag.ReturnUrl, VerbWith = Login.VerbWith})
+                @Html.Partial("BlockLoginList", new ExternalLoginListModel { ReturnUrl = ViewBag.ReturnUrl, Pattern = viewModel["Pattern"]})
             </div>
         </div>
         <!-- /PASSWORD -->

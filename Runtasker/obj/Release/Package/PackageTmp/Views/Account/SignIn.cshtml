@@ -4,6 +4,7 @@
 @using HtmlExtensions.Renderers
 @using Extensions.String
 @using Runtasker.Resources.Views.Shared.NewLoginPartial
+@using Runtasker.LocaleBuilders.Models
 @model LoginModel
 @{
     Layout = null;
@@ -11,21 +12,23 @@
     string imageLink = $"/File/GetAvatar?userGuid={userGuid}";
     HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
     FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
+
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
 }
 @if (!Request.IsAuthenticated)
 {
     <div class="pull-right nav signin-dd">
         <a id="quick_sign_in" href="#">
-            <i class="fa fa-users"></i><span class="hidden-xs"> @NewLoginPartial.SignIn</span>
+            <i class="fa fa-users"></i><span class="hidden-xs"> @localeModel["SignIn"]</span>
         </a>
         <div class="dropdown-menu" role="menu">
 
-            <h4>@NewLoginPartial.SignIn</h4>
+            <h4>@localeModel["SignIn"]</h4>
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
             {
             <div class="form-group">
                 @Html.TextBoxFor(model => model.Email,
-                        htmlAttributes: new { @class = "form-control", placeholder = NewLoginPartial.Email, required="", type = "email" })
+                     htmlAttributes: new { @class = "form-control", placeholder = localeModel["Email"], required = "", type = "email" })
             </div>
 
             <div class="input-group">
@@ -33,10 +36,10 @@
                 <!-- password -->
 
                 @Html.TextBoxFor(model => model.Password,
-                        htmlAttributes: new { @class = "form-control", placeholder = NewLoginPartial.Password, required="", type = "password" })
+                     htmlAttributes: new { @class = "form-control", placeholder = localeModel["Password"], required = "", type = "password" })
                 <!-- submit button -->
                 <span class="input-group-btn">
-                    <button class="btn btn-primary">@NewLoginPartial.SignIn</button>
+                    <button class="btn btn-primary">@localeModel["SignIn"]</button>
                 </span>
 
             </div>
@@ -44,21 +47,21 @@
             <div class="checkbox">
                 <!-- remmember -->
                 <label>
-                    @Html.CheckBoxFor(m => m.RememberMe) @NewLoginPartial.RememberMe &bull;
+                    @Html.CheckBoxFor(m => m.RememberMe) @localeModel["RememberMe"] &bull;
                 </label>
             </div>
 
-            <a href="@Url.Action("ForgotPassword", "Account")">@NewLoginPartial.ForgotPass?</a>
+            <a href="@Url.Action("ForgotPassword", "Account")">@localeModel["ForgotPass"]</a>
 
 
             }
 
             <hr style="margin-top:0;" />
-
-            @Html.Partial("BlockLoginList", new ExternalLoginListModel { ReturnUrl = ViewBag.ReturnUrl, VerbWith = NewLoginPartial.VerbWith })
+            <!--Список социальных сетей-->
+            @Html.Partial("BlockLoginList", new ExternalLoginListModel { ReturnUrl = ViewBag.ReturnUrl, Pattern = localeModel["Pattern"] })
 
             <p class="bottom-create-account">
-                <a href="@Url.Action("Register", "Account")">@NewLoginPartial.CreateAccount</a>
+                <a href="@Url.Action("Register", "Account")">@localeModel["CreateAccount"]</a>
             </p>
         </div>
     </div>
@@ -76,7 +79,7 @@ else
     </style>
 
     <div class="pull-right nav signin-dd">
-        <a id="quick_sign_in" href="#"><i class="fa fa-users"></i><span class="hidden-xs"> @NewLoginPartial.Hello, @User.Identity.GetName()!</span></a>
+        <a id="quick_sign_in" href="#"><i class="fa fa-users"></i><span class="hidden-xs"> @localeModel["HelloUser"]</span></a>
         <div class="dropdown-menu whiteText" role="menu">
             <div class="navbar-content">
                 <!--Avatar-->
@@ -98,13 +101,18 @@ else
                         <div class="divider">
                         </div>
                         <p class="text-muted small low-marg">
-                            @NewLoginPartial.YourBalance @User.Identity.GetBalance()@HtmlSigns.Rouble.ToHtml()
+                            @localeModel["YourBalanceHtml"].ToHtml()
                         </p>
-                        <p>
-                            <a href="@Url.Action("Index", "Payment")">
-                                [@NewLoginPartial.Recharge]
-                            </a>
-                        </p>
+
+                        @if (User.IsInRole("Customer"))
+                        {
+                            <p>
+                                <a href="@Url.Action("Index", "Payment")">
+                                    [@localeModel["Recharge"]]
+                                </a>
+                            </p>
+                        }
+                        
 
 
 
@@ -121,7 +129,7 @@ else
                     
                     <div class="col-md-12 text-center">
                         <a href="@Url.Action("Profile", "Manage")" class="btn btn-primary btn-sm active" style="padding-right: inherit;">
-                            @NewLoginPartial.ViewProfile
+                            @localeModel["ViewProfile"]
                         </a>
                     </div>
                 </div>
@@ -134,7 +142,7 @@ else
                         @if (!User.Identity.HasPassword())
                         {
                             <div class="col-md-12 col-xs-12">
-                                @Html.RouteLink(NewLoginPartial.SetPassword, new { controller = "Manage", action = "SetPassword" }, new { @class = "btn btn-default btn-sm" })
+                                @Html.RouteLink(localeModel["SetPassword"], new { controller = "Manage", action = "SetPassword" }, new { @class = "btn btn-default btn-sm" })
                             </div>
                         }
                         <div class="col-md-12 col-xs-12">
@@ -142,7 +150,7 @@ else
                             {
                                 @Html.AntiForgeryToken()
                                 <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger btn-sm btn-block">
-                                    <span class="glyphicon glyphicon-off"> </span> @NewLoginPartial.SignOut
+                                    <span class="glyphicon glyphicon-off"> </span> @localeModel["SignOut"]
                                 </a>
                             }
 

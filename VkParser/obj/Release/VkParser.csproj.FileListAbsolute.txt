@@ -36,10 +36,6 @@ C:\Runtasker\VkParser\bin\Release\ru-RU\Runtasker.Resources.resources.dll
 C:\Runtasker\VkParser\obj\Release\VkParser.csprojResolveAssemblyReference.cache
 C:\Runtasker\VkParser\obj\Release\VkParser.dll
 C:\Runtasker\VkParser\obj\Release\VkParser.pdb
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\Views\Payment\Robokassa\RkassaRes.resx
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\Views\Payment\Robokassa\RkassaRes.ru-RU.resx
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\Views\Payment\Robokassa\RkassaRes.Designer.cs
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\Views\Payment\Robokassa\RkassaRes.ru-RU.Designer.cs
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\VkParser.dll.config
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\VkParser.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\VkParser.pdb

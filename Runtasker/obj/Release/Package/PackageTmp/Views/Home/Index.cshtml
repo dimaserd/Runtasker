@@ -1,7 +1,11 @@
-﻿@using Runtasker.Resources.Views.Home.Index
+﻿@using Extensions.String
+@using Runtasker.LocaleBuilders.Models
 @{
-    ViewBag.Title = Index.Title;
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
+
+    ViewBag.Title = localeModel["Title"];
     string lang = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+    
 }
 
 <script>
@@ -11,11 +15,11 @@
 <div class="jumbotron">
     <h1>@LogoHelper.GetLogoWithImage(100)RUNTASKER.RU</h1>
     <p class="lead">
-        @Index.Greeting
+        @localeModel["Greeting"]
     </p>
     <p>
         <a href="@Url.Action("Create", "Orders")" class="btn btn-primary btn-lg">
-            @Index.TryOurServices1 <span class="hidden-xs">@Index.TryOurServices2</span> &raquo;
+            @localeModel["TryOurServicesHtml"].ToHtml()
         </a>
     </p>
 </div>

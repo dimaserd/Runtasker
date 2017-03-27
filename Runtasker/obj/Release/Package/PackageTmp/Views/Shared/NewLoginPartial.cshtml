@@ -14,7 +14,7 @@
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a id="openMiniPanel" href="#">
-                @NewLoginPartial.Hello, @User.Identity.GetName()!
+                @string.Format(NewLoginPartial.HelloFormat, User.Identity.GetName())
                 <b class="caret"></b>
             </a>
             <ul id="miniPanel" class="dropdown-menu">

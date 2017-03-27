@@ -83,6 +83,9 @@
     <Compile Include="Renderers\FontAwesomeRender.cs" />
     <Compile Include="Renderers\GlyphiconRenderer.cs" />
     <Compile Include="Renderers\HtmlSignsRenderer.cs" />
+    <Compile Include="StaticRenderers\FontAwesomeRender.cs" />
+    <Compile Include="StaticRenderers\GlyphiconRenderer.cs" />
+    <Compile Include="StaticRenderers\HtmlSignsRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

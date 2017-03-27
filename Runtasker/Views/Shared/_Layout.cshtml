@@ -48,7 +48,7 @@
                         </a>
                     </li>
                 </ul>
-                @Html.Partial("NewLoginPartial")
+                @{Html.RenderAction("SignIn", "Account"); }
             </div>
             <!--/Panel-->
         </div>

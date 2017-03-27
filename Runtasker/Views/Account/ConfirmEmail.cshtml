@@ -1,20 +1,20 @@
 ﻿@using HtmlExtensions.Renderers
-@using Runtasker.Resources.Views.Account.ConfirmEmail;
+@using Runtasker.LocaleBuilders.Models
+@using Extensions.String
 @{
     GlyphiconRenderer GISigns = new GlyphiconRenderer();
-    ViewBag.Title = ConfirmEmail.Title;
-    MvcHtmlString loginBtnHtmlText = MvcHtmlString.Create($"{GISigns.Login} {ConfirmEmail.LoginBtnText}");
+
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
+    ViewBag.Title = localeModel["Title"];
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 <div>
     <h3>
-        @ConfirmEmail.Thanks
+        @localeModel["Thanks"]
     </h3>
+
     <h3>
-        @ConfirmEmail.Please, 
-        <a id="loginLink" class="btn btn-success btn-lg" href="@Url.Action("Login", "Account", routeValues: null)">
-            @loginBtnHtmlText
-        </a>
+        @localeModel["ClickToLoginLink"].ToHtml()
     </h3> 
 </div>

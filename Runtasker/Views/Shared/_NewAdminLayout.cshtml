@@ -1,0 +1,185 @@
+﻿@using System.Web.Hosting
+@using HtmlExtensions.Renderers
+@using Extensions.String
+@{
+    Layout = null;
+    GlyphiconRenderer GISigns = new GlyphiconRenderer();
+
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title – Runtasker.ru</title>
+    <meta name="keywords" content="HTML5,CSS3,Template" />
+    <meta name="description" content="" />
+    <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
+    <link rel="shortcut icon" type="image/ico" href="@Url.Content("~/favicon.ico")">
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+    <!-- WEB FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet" type="text/css" />
+
+
+    <!-- CORE CSS -->
+    @Styles.Render("~/bootstrap/css")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+
+    @Styles.Render("~/blog/css")
+    @Styles.Render("~/owl-carousel/css")
+
+
+
+    @Styles.Render("~/animate/css", "~/magnific-popup/css", "~/superslides/css")
+
+
+    <!-- THEME CSS -->
+    @Styles.Render("~/NewDesign/Essentials")
+
+    @Styles.Render("~/ColorTheme/darkblue")
+
+    @*@Styles.Render("~/DarkLayout")*@
+
+    <!--VK Scripts-->
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?137"></script>
+
+    <!-- Morenizr -->
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    @{ Html.RenderAction("Modal", "Message");}
+    @*{ Html.RenderAction("Index", "Notification");}*@
+    <div id="notification-wrapper"></div>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("RUNTASKER", "Index", "Performer", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Free Orders", "Index", "Orders")</li>
+                    }
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @{Html.RenderAction("SignIn", "Account"); }
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        <div class="container-fluid">
+            <div class="row">
+
+                <!--Боковая панель-->
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <ul class="nav nav-sidebar">
+                        <li class="active"><a href="/Home/Index">На главную</a></li>
+                        <li><a href="@Url.Action("Index", "Performer")">Заказы на сайте</a></li>
+                        <li><a href="@Url.Action("Index", "VkOrders")">Заказы из вк</a></li>
+                        @{
+
+                            string filesDir = HostingEnvironment.MapPath("~/Files");
+                            string tokenFilePath = $"{filesDir}/vk_token.txt";
+                            bool isGoodToken = File.GetCreationTime(tokenFilePath) >= DateTime.Now.AddDays(-1);
+                        }
+
+                        @if (isGoodToken)
+                        {
+                            <li>@GISigns.Ok.ToHtml() Токен нормальный</li>
+                        }
+                        else
+                        {
+                            <li class="alert"><a href="@Url.Action("Token", "VkOrders")">@GISigns.Refresh.ToHtml() Обновите токен</a></li>
+                        }
+
+                    </ul>
+                    <hr />
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <ul class="nav nav-sidebar">
+                            <li><a href="@Url.Action("Users", "Administration")">Пользователи сайта</a></li>
+                            <li><a href="@Url.Action("Customers", "Administration")">Заказчики сайта</a></li>
+                            <li><a href="@Url.Action("Performers", "Administration")">Исполнители сайта</a></li>
+                        </ul>
+                    }
+
+                </div>
+                <!--Конец боковой панели-->
+                <div class="col-sm-9 col-md-10 main">
+                    @RenderBody()
+                </div>
+            </div><!--row-->
+        </div><!--contatiner-fluid-->
+    </div><!--container body-content-->
+    <!--Notification and Other db Scrits-->
+    <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                $('#notification-wrapper').load('/Notification/GetNotificationAsync')
+                //$('#ordersMiniPanel').load('/Orders/MiniPanelAsync')
+                //$('#messageMiniPanel').load('/Message/ActivePanelAsync')
+            }, false);
+    </script>
+    <!--/Notification Scrits-->
+
+    @Scripts.Render("~/bundles/jquery")
+    
+
+
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!--jquery via cdn-->
+    @Scripts.Render("~/NewDesign/Jquery")
+
+    @Scripts.Render("~/bundles/bootstrap")
+    <!--bootstrap-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.stellar/0.6.2/jquery.stellar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.superslides/0.6.2/jquery.superslides.min.js"></script>
+
+    @Scripts.Render("~/NewDesign/Scripts")
+
+    <script>
+        $("#dick").click(function () {
+            $("#NavMenu").collapse("toggle");
+        })
+    </script>
+    @if (Request.IsAuthenticated)
+    {
+        <!--Notification Scripts-->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                $('#notification-wrapper').load('/Notification/GetNotificationAsync');
+
+            }, false);
+        </script>
+        <!--/Notification Scripts-->
+    }
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

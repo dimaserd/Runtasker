@@ -20,6 +20,7 @@ using Runtasker.Logic.Workers.Email;
 using Runtasker.Logic.Entities;
 using HtmlExtensions.Renderers;
 using Runtasker.Settings;
+using HtmlExtensions.StaticRenderers;
 
 namespace Runtasker.Controllers
 {
@@ -558,6 +559,7 @@ namespace Runtasker.Controllers
                 return View("Error");
             }
 
+            ViewData["localeModel"] = ViewModelBuilder.ConfirmEmailView(GISigns.Login);
             return View();
         }
 

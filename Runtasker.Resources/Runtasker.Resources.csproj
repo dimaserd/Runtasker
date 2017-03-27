@@ -184,6 +184,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OnlineOrderRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderModels\RegAndCreate\RegAndCreateRes.zh-CN.Designer.cs">
+      <DependentUpon>RegAndCreateRes.zh-CN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Models\OrderModels\RegAndCreate\RegAndCreateRes.ru-RU.Designer.cs">
       <DependentUpon>RegAndCreateRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -270,15 +275,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OrderEntityRes.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Account\ConfirmEmail\ConfirmEmail.ru-RU.Designer.cs">
-      <DependentUpon>ConfirmEmail.ru-RU.resx</DependentUpon>
+    <Compile Include="Views\Account\ConfirmEmail\ConfirmEmailRes.ru-RU.Designer.cs">
+      <DependentUpon>ConfirmEmailRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Account\ConfirmEmail\ConfirmEmail.Designer.cs">
+    <Compile Include="Views\Account\ConfirmEmail\ConfirmEmailRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConfirmEmail.resx</DependentUpon>
+      <DependentUpon>ConfirmEmailRes.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\Account\ExternalLoginConfirmation\ExtLoginConfirm.ru-RU.Designer.cs">
       <DependentUpon>ExtLoginConfirm.ru-RU.resx</DependentUpon>
@@ -791,6 +796,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OnlineOrderRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\OrderModels\RegAndCreate\RegAndCreateRes.zh-CN.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegAndCreateRes.zh-CN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\OrderModels\RegAndCreate\RegAndCreateRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RegAndCreateRes.ru-RU.Designer.cs</LastGenOutput>
@@ -851,13 +860,13 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OrderEntityRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Account\ConfirmEmail\ConfirmEmail.ru-RU.resx">
+    <EmbeddedResource Include="Views\Account\ConfirmEmail\ConfirmEmailRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ConfirmEmail.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>ConfirmEmailRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Account\ConfirmEmail\ConfirmEmail.resx">
+    <EmbeddedResource Include="Views\Account\ConfirmEmail\ConfirmEmailRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ConfirmEmail.Designer.cs</LastGenOutput>
+      <LastGenOutput>ConfirmEmailRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Account\ExternalLoginConfirmation\ExtLoginConfirm.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

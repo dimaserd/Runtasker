@@ -3,11 +3,27 @@ using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Views.Account.Login;
 using Runtasker.Resources.Views.Account.Register;
 using Runtasker.Resources.Views.Shared.NewLoginPartial;
+using Runtasker.Resources.Views.Account.ConfirmEmail;
 
 namespace Runtaker.LocaleBuiders.Views.Account
 {
     public class AccountViewModelBuilder : UICultureSwitcher
     {
+        public LocaleViewModel ConfirmEmailView(string loginSign)
+        {
+            LocaleViewModel result = new LocaleViewModel();
+
+            result.Add("Title", ConfirmEmailRes.Title);
+            result.Add("Thanks", ConfirmEmailRes.Thanks);
+            result.Add("ClickToLoginLink", 
+                string.Format(
+                    ConfirmEmailRes.PleaseClickToLoginWithBtnFormat, 
+                    string.Format(ConfirmEmailRes.LoginBtnTextFormat.WrapToA(new { href="/Account/Login", @class = "btn btn-success btn-lg" }), loginSign)
+                    )
+                );
+
+            return result;
+        }
 
         public LocaleViewModel LoginView()
         {

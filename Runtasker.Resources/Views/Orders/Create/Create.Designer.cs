@@ -169,7 +169,7 @@ namespace Runtasker.Resources.Views.Orders.Create {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на If you want to get an online-help, you can submit an application by clickong this button..
+        ///   Ищет локализованную строку, похожую на If you want to get an online-help, you can submit an application by clicking this button..
         /// </summary>
         public static string OnlineHelpAlertText {
             get {

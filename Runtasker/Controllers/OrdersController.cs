@@ -413,10 +413,12 @@ namespace Runtasker.Controllers
         {
             if (ModelState.IsValid)
             {
-                Order order = await OrderWorker.CreateOrderAsync(model.ToOrderCreateModel());
+                Order order = await OrderWorker.CreateOnlineHelpOrderAsync(model.ToOrderCreateModel());
+
                 return RedirectToAction("Index");
 
             }
+
             return View(model);
         }
         #endregion

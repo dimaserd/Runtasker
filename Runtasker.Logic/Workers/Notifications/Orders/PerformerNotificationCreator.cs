@@ -44,8 +44,6 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
             return WhoShouldKnowUsers.Select(x => x.Email).ToList();
         }
 
-        
-
         /// <summary>
         /// Получает список
         /// </summary>
@@ -59,6 +57,9 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
                 .Select(x => x.OtherInfo)
                 );
         }
+
+
+        #region Методы возвращающие уведомления
         /// <summary>
         /// Возвращает список уведомлений для пользователей 
         /// которым нужно узнать о созданном заказе
@@ -145,6 +146,27 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
                 };
             }).ToList();
         }
+
+        public List<Notification> GetNotificationsForOnlineHelpCreated(Order order)
+        {
+            WhoShouldKnowUsers = GetUsersWhoShouldKnowAboutThisOrder(order);
+
+
+            return WhoShouldKnowUsers.Select(x =>
+            {
+                return new Notification
+                {
+                    AboutType = NotificationAboutType.Ordinary,
+                    Title = $"Пользователь создал онлайн заявку по предмету {order.GetSubjectName()}",
+                    Text = $"Заказ №{order.Id} является заявкой на онлайн помощь, проверьте заявку и сообщите пользователю возьмемся ли мы за нее или нет.",
+                    Type = NotificationType.Success,
+                    UserGuid = x.Id,
+                    Link = null
+                };
+            }).ToList();
+        }
+        #endregion
+
         #endregion
 
         #region Help Methods

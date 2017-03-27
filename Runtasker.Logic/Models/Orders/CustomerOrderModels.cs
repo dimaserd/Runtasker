@@ -41,6 +41,25 @@ namespace Runtasker.Logic.Models
 
     }
 
+    public static class OrderCreateModelExtensions
+    {
+        public static Order ToOrder(this OrderCreateModel orderModel, string userGuid)
+        {
+            return new Order
+            {
+                Description = orderModel.Description,
+                FinishDate = orderModel.FinishDate,
+                Status = OrderStatus.New,
+                PublishDate = DateTime.Now,
+                WorkType = orderModel.WorkType,
+                Subject = orderModel.Subject,
+                OtherSubject = orderModel.OtherSubject,
+                UserGuid = userGuid,
+                PerformerGuid = userGuid
+            };
+        }
+    }
+
     #region Solve Error models
     public class OrderAddFilesModel
     {

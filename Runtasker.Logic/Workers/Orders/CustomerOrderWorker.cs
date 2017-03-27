@@ -3,6 +3,7 @@ using Logic.Extensions.Models;
 using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations.OrderWorker;
+using Runtasker.Logic.Handlers;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Models.Orders.Pay;
 using Runtasker.Logic.Workers.Attachments;
@@ -519,12 +520,13 @@ namespace Runtasker.Logic.Workers.Orders
         }
 
         /// <summary>
-        /// Не сделано нихрена
+        /// Вроде сделано
+        /// 
         /// </summary>
         /// <returns></returns>
-        public async Task<WorkerResult> CreateOnlineHelpOrderAsync()
+        public async Task<Order> CreateOnlineHelpOrderAsync(OrderCreateModel model)
         {
-            return null;
+            return await CreateOrderSubMethodAsync(OrderCreationType.Ordinary, model);
         }
 
         #region Sub Methods
@@ -576,18 +578,7 @@ namespace Runtasker.Logic.Workers.Orders
         /// </returns>
         public async Task<Order> CreateOrderSubMethodAsync(OrderCreationType creationType, OrderCreateModel orderModel)
         {
-            Order order = new Order
-            {
-                Description = orderModel.Description,
-                FinishDate = orderModel.FinishDate,
-                Status = OrderStatus.New,
-                PublishDate = DateTime.Now,
-                WorkType = orderModel.WorkType,
-                Subject = orderModel.Subject,
-                OtherSubject = orderModel.OtherSubject,
-                UserGuid = UserGuid,
-                PerformerGuid = UserGuid
-            };
+            Order order = orderModel.ToOrder(UserGuid);
             Context.Orders.Add(order);
 
             try
@@ -596,17 +587,7 @@ namespace Runtasker.Logic.Workers.Orders
             }
             catch (DbEntityValidationException e)
             {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    System.Diagnostics.Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        System.Diagnostics.Debug.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
+                MyExceptionHandler.CatchDbEntityValidationException(e);
             }
 
 
@@ -615,8 +596,18 @@ namespace Runtasker.Logic.Workers.Orders
 
             if (creationType == OrderCreationType.Ordinary)
             {
-                //вызываем класс отвечающий за создание уведомлений
-                Notificater.OnCustomerAddedOrder(order, OrderCreationType.Ordinary);
+                //если заказ является заявкой на онлайн помощь 
+                if(order.WorkType == OrderWorkType.OnlineHelp)
+                {
+                    //вызываем другой метод уведомлений
+                    Notificater.OnCustomerAddedOnlineOrder(order);
+                }
+                else
+                {
+                    //вызываем класс отвечающий за создание уведомлений
+                    Notificater.OnCustomerAddedOrder(order, OrderCreationType.Ordinary);
+                }
+                
             }
 
 

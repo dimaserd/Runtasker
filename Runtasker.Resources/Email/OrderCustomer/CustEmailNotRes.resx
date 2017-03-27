@@ -162,6 +162,10 @@
   <data name="InvFinishedText2" xml:space="preserve">
     <value>You invited him/her to us! That means you get your 300 roubles! Hope to see you and your friends on Runtasker!</value>
   </data>
+  <data name="OnlineHelpAppliedTextFormat" xml:space="preserve">
+    <value>Dear {0}, we have received your application for online-help for {1}. Our administrators will process it and get you the response.</value>
+    <comment>Dear {имя пользователя}, we have received your application for online-help for {название предмета}. Our administrators will process it and get you the response.</comment>
+  </data>
   <data name="RuntaskerWish" xml:space="preserve">
     <value>Best wishes from the Runtasker team!</value>
   </data>

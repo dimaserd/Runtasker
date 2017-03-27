@@ -154,7 +154,7 @@
     <value>My Orders</value>
   </data>
   <data name="OnlineHelpAlertText" xml:space="preserve">
-    <value>If you want to get an online-help, you can submit an application by clickong this button.</value>
+    <value>If you want to get an online-help, you can submit an application by clicking this button.</value>
   </data>
   <data name="OnlineHelpAlertTitle" xml:space="preserve">
     <value>Attention, you can order online-help.</value>

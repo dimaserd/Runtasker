@@ -115,6 +115,20 @@ namespace Runtasker.Logic.Entities
         }
 
         #region Subject Extensions
+
+        public static string GetSubjectName(this Order order)
+        {
+            if(order.Subject == Subject.Other)
+            {
+                return order.OtherSubject;
+            }
+            else
+            {
+                return order.Subject.ToDescriptionString();
+            }
+
+        }
+
         public static string GetSpecifyDropdownInfo(this Subject val)
         {
             SpecifyDropdownAttribute[] attributes = (SpecifyDropdownAttribute[])val.GetType().GetField(val.ToString()).GetCustomAttributes(typeof(SpecifyDropdownAttribute), false);

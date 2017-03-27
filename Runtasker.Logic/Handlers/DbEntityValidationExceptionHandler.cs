@@ -2,9 +2,9 @@
 
 namespace Runtasker.Logic.Handlers
 {
-    public class DbEntityValidationExceptionHandler
+    public static class MyExceptionHandler
     {
-        public void CatchException(DbEntityValidationException e)
+        public static void CatchDbEntityValidationException(DbEntityValidationException e)
         {
                 foreach (var eve in e.EntityValidationErrors)
                 {

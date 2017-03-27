@@ -84,12 +84,22 @@ namespace Runtasker.Logic.Workers.Email
             
         }
 
+        /// <summary>
+        /// Содержит пример и комментарии по алгоритму работы всех похожих на него методов
+        /// </summary>
+        /// <param name="order"></param>
+        /// <param name="customer"></param>
+        /// <param name="adminEmails"></param>
         public void OnCustomerCreatedOnlineHelp(Order order, ApplicationUser customer, List<string> adminEmails)
         {
-            EmailModel model = HtmlConstants.GetForCustomerAddedNewOrder(customer.Name, order);
-
+            //создаем список с электронными сообщениями чтобы передать классу
+            //который отправляет сообщения одним списком который заполним ниже
             List<IdentityMessage> emailMessages = new List<IdentityMessage>();
 
+            //получение модели для создания электронного сообщения для заказчика
+            EmailModel model = HtmlConstants.GetForCustomerApliedForOnlineHelp(customer.Name, order);
+            
+            //сообщение для заказчика
             IdentityMessage customerM = new IdentityMessage
             {
                 Body = model.Body,
@@ -97,6 +107,7 @@ namespace Runtasker.Logic.Workers.Email
                 Subject = model.Subject
             };
 
+            //добавляем сообщение в список тех, которые будем отправлять
             emailMessages.Add(customerM);
 
             //формируем сообщения для администраторов сервиса
@@ -106,7 +117,7 @@ namespace Runtasker.Logic.Workers.Email
                 emailMessages.Add(new IdentityMessage
                 {
                     Subject = $"У нас новый заказ №{order.Id}",
-                    Body = $"<p>Пользователь {customer.Email} добавил заказ по предмету {order.Subject.ToDescriptionString()}</p>" +
+                    Body = $"<p>Пользователь {customer.Email} добавил заказ по предмету {order.GetSubjectName()}</p>" +
                     $"<p>Вид работы : {order.WorkType.ToDescriptionString()}</p>" +
                 "<p>Проверьте заказ и установите цену, за которую мы его выполним!</p>",
                     Destination = adminEmail
@@ -117,7 +128,6 @@ namespace Runtasker.Logic.Workers.Email
             SendEmails(emailMessages);
 
         }
-
 
         public void OnCustomerAddedNewFilesToOrder(Order order, string performerEmail)
         {

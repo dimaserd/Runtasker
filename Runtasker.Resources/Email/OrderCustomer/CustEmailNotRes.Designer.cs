@@ -178,6 +178,15 @@ namespace Runtasker.Resources.Email.OrderCustomer {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Dear {0}, we have received your application for online-help for {1}. Our administrators will process it and get you the response..
+        /// </summary>
+        public static string OnlineHelpAppliedTextFormat {
+            get {
+                return ResourceManager.GetString("OnlineHelpAppliedTextFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Best wishes from the Runtasker team!.
         /// </summary>
         public static string RuntaskerWish {

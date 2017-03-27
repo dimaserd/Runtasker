@@ -192,7 +192,6 @@
     <Compile Include="Workers\Notifications\Orders\PerformerNotificationCreator.cs" />
     <Compile Include="Workers\Notifications\Orders\VkNotifications\VkPerformerNotificater.cs" />
     <Compile Include="Workers\Orders\KnowPriceWorker.cs" />
-    <Compile Include="Workers\Orders\NewCustomerOrderWorker.cs" />
     <Compile Include="HtmlConstantEmails\AccountEmailConstants.cs" />
     <Compile Include="HtmlConstantEmails\CustomerEmailConstants.cs" />
     <Compile Include="HtmlConstantEmails\Models\EmailModel.cs" />

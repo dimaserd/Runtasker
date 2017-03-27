@@ -60,7 +60,7 @@ namespace Runtasker.Logic.HtmlConstantEmails
 
         public EmailModel GetForCustomerApliedForOnlineHelp(string userName, Order order)
         {
-            ForEmailCallToAction model = ModelBuilder.AddedOrder(userName, order.Id);
+            ForEmailCallToAction model = ModelBuilder.OnlineHelpApplied(userName, order.GetSubjectName());
 
             string text = new HtmlEmailBase
                 (

@@ -60,7 +60,7 @@ namespace Runtasker.Logic.Workers.Notifications
 
         #region Когда заказ еще не выбран исполнителем
 
-        #region Adding Order Methods
+        #region Методы добавления заказа
 
         public void OnCustomerAddedOrder(Order order, OrderCreationType creationType, string callBackUrl = null)
         {
@@ -112,10 +112,13 @@ namespace Runtasker.Logic.Workers.Notifications
 
         }
 
-        public void OnCustomerAddedOnlineOrder(Order order, OrderCreationType creationType, string callBackUrl = null)
+        public void OnCustomerAddedOnlineOrder(Order order)
         {
+            //получаем модель для создания специального локализованного 
+            //уведомления для заказчика
             ForNotification model = ModelBuilder.AddedOnlineHelpOrder(order.Subject.ToDescriptionString());
 
+            //создаем уведоомление для заказчика
             Notification customerN = new Notification
             {
                 Type = NotificationType.Info,
@@ -126,12 +129,18 @@ namespace Runtasker.Logic.Workers.Notifications
                 AboutType = NotificationAboutType.Ordinary
             };
 
-            if (creationType == OrderCreationType.Ordinary)
-            {
-                //сообщение о добавленном заказе у них будет одинаковым
-                Emailer.OnCustomerAddedOrder(order, GetCustomer(order), GetAdminsEmails(order));
-            }
+            //получаем уведомления для исолнителей и администраторов
+            //и добавляем их в базу
+            List<Notification> performersNotifications = PerformerNotificationGetter.GetNotificationsForOnlineHelpCreated(order);
+            Context.Notifications.AddRange(performersNotifications);
 
+            //добавляем уведомление для исполнителя
+            Context.Notifications.Add(customerN);
+            Context.SaveChanges();
+
+            //Рассылка электронной почты 
+            //как для исполнителей и администраторов так и для заказчика
+            Emailer.OnCustomerCreatedOnlineHelp(order, GetCustomer(order), GetAdminsEmails(order));
         }
         #endregion
 
@@ -157,6 +166,8 @@ namespace Runtasker.Logic.Workers.Notifications
             
         }
 
+
+        #region Методы исправлений ошибок в заказе
         public void OnCustomerAddedNewDescription(Order order)
         {
             ForNotification model = ModelBuilder.AddedDescription(order.Id);
@@ -204,7 +215,6 @@ namespace Runtasker.Logic.Workers.Notifications
                 Link = null
             };
             
-            
             Context.Notifications.Add(customerN);
             
             
@@ -226,6 +236,11 @@ namespace Runtasker.Logic.Workers.Notifications
             Emailer.OnCustomerAddedNewFilesToOrder(order, GetAdminEmail(order));
 
         }
+        #endregion
+
+        #endregion
+
+        #region Методы оплаты
 
         public void OnCustomerPaidHalfOfAnOrder(Order order)
         {
@@ -260,9 +275,6 @@ namespace Runtasker.Logic.Workers.Notifications
             //Emailer.OnCustomerPaidAHalfOfAnOrder(order, GetCustomer(order), GetPerformerEmail());
         }
 
-        #endregion
-
-        #region Методы оплаты
         public void OnCustomerPaidAnotherHalfOfAnOrder(Order order)
         {
             ForNotification model = ModelBuilder.PaidSecondHalf(order.Id, GISigns.Save);
@@ -306,6 +318,7 @@ namespace Runtasker.Logic.Workers.Notifications
         }
         #endregion
 
+        #region Методы оценки выполненной работы
         public void OnCustomerRatedAnOrderSolution(Order order)
         {
             ForNotification model = ModelBuilder.RatedSolution(order.Rating);
@@ -388,6 +401,7 @@ namespace Runtasker.Logic.Workers.Notifications
             Emailer.OnInvitedCustomerRatedAnOrderSolution(GetUserByGuid(I.SenderGuid), I.ReceiverEmail);
         }
 
+        #endregion
 
         #endregion
 

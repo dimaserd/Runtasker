@@ -19,6 +19,16 @@ namespace Runtasker.LocaleBuilders.Email.CallToAction
             };
         }
 
+        public ForEmailCallToAction OnlineHelpApplied(string userName, string subjectName)
+        {
+            return new ForEmailCallToAction
+            {
+                Header = string.Format(CustEmailNotRes.HelloFormat, userName),
+                LittleHeader = null,
+                BigText = $"{string.Format(CustEmailNotRes.OnlineHelpAppliedTextFormat, userName, subjectName)} {CustEmailNotRes.RuntaskerWish}"
+            };
+        }
+
         public ForEmailCallToAction PaidFirstHalf(string userName, int orderId, DateTime orderFinishDate)
         {
             return new ForEmailCallToAction

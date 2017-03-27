@@ -1,6 +1,7 @@
 ﻿@using System.Web.Hosting
 @using HtmlExtensions.Renderers
 @using Extensions.String
+@using Runtasker.Resources.Views.Shared.NewLayout
 @{
     Layout = null;
     GlyphiconRenderer GISigns = new GlyphiconRenderer();
@@ -56,79 +57,121 @@
     @*{ Html.RenderAction("Index", "Notification");}*@
     <div id="notification-wrapper"></div>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <!-- Top Bar -->
+    <header id="topHead" class="fixed">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("RUNTASKER", "Index", "Performer", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
 
-                <ul class="nav navbar-nav">
-                    @if (Request.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("Free Orders", "Index", "Orders")</li>
-                    }
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @{Html.RenderAction("SignIn", "Account"); }
-                <form class="navbar-form navbar-right">
-                    <input type="text" class="form-control" placeholder="Search...">
-                </form>
+            <!-- PHONE/EMAIL Not implemented yet-->
+            <span class="quick-contact pull-left">
+                @*<i class="fa fa-phone"></i> 8-916-604-49-60 &bull;*@
+                <a class="" href="mailto:contact@runtasker.ru">contact@runtasker.ru</a>
+            </span>
+            <!-- /PHONE/EMAIL -->
+            <!-- LANGUAGE -->
+            @{Html.RenderAction("Index", "Language");}
+            <!-- /LANGUAGE -->
+            <!-- SIGN IN -->
+            @{Html.RenderAction("Signin", "Account");}
+            <!-- /SIGN IN -->
+            <!-- LINKS -->
+            <div class="pull-right nav hidden-xs">
+
+                <a href="/Home/Contact" alt="Contact">
+                    <i class="fa fa-angle-right"></i>@NewLayoutRes.Contact
+                </a>
+
             </div>
+            <!-- /LINKS -->
+
+        </div>
+    </header>
+    <!-- /Top Bar -->
+
+    <!-- TOP NAV -->
+    <header id="topNav" class="topHead">
+        <!-- remove class="topHead" if no topHead used! -->
+        <div class="container">
+
+            @if (Request.IsAuthenticated)
+            {
+            <!-- Mobile Menu Button -->
+                <button class="btn btn-mobile" id="dick">
+                    <i class="fa fa-bars"></i>
+                </button>
+            }
+
+
+            <!-- Logo text or image -->
+            @LogoHelper.GetLogoLinkWithImage(45)
+
+            @if (Request.IsAuthenticated)
+            {
+                { Html.RenderAction("Menu", "Home"); }
+            }
+        </div>
+
+    </header>
+    <!-- /TOP NAV -->
+
+    <!-- WRAPPER -->
+    <div id="wrapper">
+        <div class="container">
+            <section class="container">
+                @{ Html.RenderAction("Modal", "Message");}
+
+                <div id="notification-wrapper"></div>
+
+                <div style="margin-top:15px;">
+
+                    <!--Боковая панель-->
+                    <div class="col-sm-3 col-md-2 sidebar">
+                        <ul class="nav nav-sidebar">
+                            <li class="active"><a href="/Home/Index">На главную</a></li>
+                            <li><a href="@Url.Action("Index", "Performer")">Заказы на сайте</a></li>
+                            <li><a href="@Url.Action("Index", "VkOrders")">Заказы из вк</a></li>
+                            @{
+
+                                string filesDir = HostingEnvironment.MapPath("~/Files");
+                                string tokenFilePath = $"{filesDir}/vk_token.txt";
+                                bool isGoodToken = File.GetCreationTime(tokenFilePath) >= DateTime.Now.AddDays(-1);
+                            }
+
+                            @if (isGoodToken)
+                            {
+                                <li>@GISigns.Ok.ToHtml() Токен нормальный</li>
+                            }
+                            else
+                            {
+                                <li class="alert"><a href="@Url.Action("Token", "VkOrders")">@GISigns.Refresh.ToHtml() Обновите токен</a></li>
+                            }
+
+                        </ul>
+                        <hr />
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <ul class="nav nav-sidebar">
+                                <li><a href="@Url.Action("Users", "Administration")">Пользователи сайта</a></li>
+                                <li><a href="@Url.Action("Customers", "Administration")">Заказчики сайта</a></li>
+                                <li><a href="@Url.Action("Performers", "Administration")">Исполнители сайта</a></li>
+                            </ul>
+                        }
+
+                    </div>
+                    <!--Конец боковой панели-->
+                    <div class="col-sm-9 col-md-10 main">
+                        @RenderBody()
+                    </div>
+                    
+
+                    
+                </div>
+
+            </section>
         </div>
     </div>
+    <!-- /WRAPPER -->
 
-    <div class="container body-content">
-        <div class="container-fluid">
-            <div class="row">
 
-                <!--Боковая панель-->
-                <div class="col-sm-3 col-md-2 sidebar">
-                    <ul class="nav nav-sidebar">
-                        <li class="active"><a href="/Home/Index">На главную</a></li>
-                        <li><a href="@Url.Action("Index", "Performer")">Заказы на сайте</a></li>
-                        <li><a href="@Url.Action("Index", "VkOrders")">Заказы из вк</a></li>
-                        @{
-
-                            string filesDir = HostingEnvironment.MapPath("~/Files");
-                            string tokenFilePath = $"{filesDir}/vk_token.txt";
-                            bool isGoodToken = File.GetCreationTime(tokenFilePath) >= DateTime.Now.AddDays(-1);
-                        }
-
-                        @if (isGoodToken)
-                        {
-                            <li>@GISigns.Ok.ToHtml() Токен нормальный</li>
-                        }
-                        else
-                        {
-                            <li class="alert"><a href="@Url.Action("Token", "VkOrders")">@GISigns.Refresh.ToHtml() Обновите токен</a></li>
-                        }
-
-                    </ul>
-                    <hr />
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <ul class="nav nav-sidebar">
-                            <li><a href="@Url.Action("Users", "Administration")">Пользователи сайта</a></li>
-                            <li><a href="@Url.Action("Customers", "Administration")">Заказчики сайта</a></li>
-                            <li><a href="@Url.Action("Performers", "Administration")">Исполнители сайта</a></li>
-                        </ul>
-                    }
-
-                </div>
-                <!--Конец боковой панели-->
-                <div class="col-sm-9 col-md-10 main">
-                    @RenderBody()
-                </div>
-            </div><!--row-->
-        </div><!--contatiner-fluid-->
-    </div><!--container body-content-->
     <!--Notification and Other db Scrits-->
     <script>
             document.addEventListener('DOMContentLoaded', function(){

@@ -1,13 +1,11 @@
 ﻿@using VkParser.Entities
 @using Extensions.String
-@using HtmlExtensions.Renderers
-@using Runtasker.Logic.Entities
+@using HtmlExtensions.StaticRenderers
 @model List<VkKeyWord>
 @{
-    ViewBag.Title = "KeyWords";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
-
-    GlyphiconRenderer GISigns = new GlyphiconRenderer();
+    ViewBag.Title = "Ключевые слова";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+    
 }
 
 <h2>Имеющиеся ключевые слова</h2>

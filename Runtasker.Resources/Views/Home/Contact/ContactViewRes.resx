@@ -126,17 +126,8 @@
   <data name="HomeNav" xml:space="preserve">
     <value>Home</value>
   </data>
-  <data name="htmlHeader1" xml:space="preserve">
-    <value>Drop us a line or just say</value>
-  </data>
-  <data name="htmlHeader2" xml:space="preserve">
-    <value>Hello!</value>
-  </data>
   <data name="MessagePlaceholder" xml:space="preserve">
     <value>Please enter your message here...</value>
-  </data>
-  <data name="MessageSent" xml:space="preserve">
-    <value>Your message successfully sent</value>
   </data>
   <data name="NamePlaceholder" xml:space="preserve">
     <value>Your name</value>
@@ -147,7 +138,11 @@
   <data name="ThankYou" xml:space="preserve">
     <value>Thank you</value>
   </data>
-  <data name="YourMessage" xml:space="preserve">
-    <value>Your Message</value>
+  <data name="AlertFormat" xml:space="preserve">
+    <value>{0} Your message successfully sent.</value>
+    <comment>{Thank you!} Your message successfully sent.</comment>
+  </data>
+  <data name="AlertToMark" xml:space="preserve">
+    <value>Thank you!</value>
   </data>
 </root>

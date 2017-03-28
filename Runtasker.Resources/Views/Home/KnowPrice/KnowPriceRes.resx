@@ -117,17 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActionDesc1" xml:space="preserve">
-    <value>Here you can create your first</value>
-  </data>
-  <data name="ActionDesc2" xml:space="preserve">
-    <value>order</value>
-  </data>
-  <data name="ActionDesc3" xml:space="preserve">
-    <value>on Runtasker</value>
+  <data name="ActionDescFormat" xml:space="preserve">
+    <value>Here you can create your first {0} on Runtasker!</value>
+    <comment>Here you can create your first {order} on Runtasker!</comment>
   </data>
   <data name="ActionDescMini" xml:space="preserve">
     <value>Creating an order</value>
+  </data>
+  <data name="ActionDescToMark" xml:space="preserve">
+    <value>order</value>
   </data>
   <data name="ActiveNav" xml:space="preserve">
     <value>Create Order</value>

@@ -126,17 +126,8 @@
   <data name="HomeNav" xml:space="preserve">
     <value>Главная</value>
   </data>
-  <data name="htmlHeader1" xml:space="preserve">
-    <value>Напишите нам сообщение или просто скажите</value>
-  </data>
-  <data name="htmlHeader2" xml:space="preserve">
-    <value>Привет!</value>
-  </data>
   <data name="MessagePlaceholder" xml:space="preserve">
     <value>Введите текст вашего сообщения здесь...</value>
-  </data>
-  <data name="MessageSent" xml:space="preserve">
-    <value>Ваше сообщение отправлено</value>
   </data>
   <data name="NamePlaceholder" xml:space="preserve">
     <value>Ваше имя</value>
@@ -144,10 +135,14 @@
   <data name="SendMessage" xml:space="preserve">
     <value>Отправить сообщение</value>
   </data>
-  <data name="ThankYou" xml:space="preserve">
-    <value>Спасибо вам</value>
-  </data>
   <data name="YourMessage" xml:space="preserve">
     <value>Ваше сообщение</value>
+  </data>
+  <data name="AlertFormat" xml:space="preserve">
+    <value>{0} Ваше сообщение отправлено.</value>
+    <comment>{Спасибо вам!} Ваше сообщение отправлено.</comment>
+  </data>
+  <data name="AlertToMark" xml:space="preserve">
+    <value>Спасибо вам!</value>
   </data>
 </root>

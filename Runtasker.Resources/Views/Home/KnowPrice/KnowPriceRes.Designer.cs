@@ -61,29 +61,11 @@ namespace Runtasker.Resources.Views.Home.KnowPrice {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Here you can create your first.
+        ///   Ищет локализованную строку, похожую на Here you can create your first {0} on Runtasker!.
         /// </summary>
-        public static string ActionDesc1 {
+        public static string ActionDescFormat {
             get {
-                return ResourceManager.GetString("ActionDesc1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на order.
-        /// </summary>
-        public static string ActionDesc2 {
-            get {
-                return ResourceManager.GetString("ActionDesc2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на on Runtasker.
-        /// </summary>
-        public static string ActionDesc3 {
-            get {
-                return ResourceManager.GetString("ActionDesc3", resourceCulture);
+                return ResourceManager.GetString("ActionDescFormat", resourceCulture);
             }
         }
         
@@ -93,6 +75,15 @@ namespace Runtasker.Resources.Views.Home.KnowPrice {
         public static string ActionDescMini {
             get {
                 return ResourceManager.GetString("ActionDescMini", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на order.
+        /// </summary>
+        public static string ActionDescToMark {
+            get {
+                return ResourceManager.GetString("ActionDescToMark", resourceCulture);
             }
         }
         

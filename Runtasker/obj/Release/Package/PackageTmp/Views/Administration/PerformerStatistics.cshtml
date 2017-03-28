@@ -1,17 +1,13 @@
 ﻿@using Runtasker.Logic.Models
 @using Runtasker.Logic.Entities
-@using HtmlExtensions.Renderers
+@using HtmlExtensions.StaticRenderers
 @using Extensions.Decimal
 @using Extensions.String
 
 @model PerformerInfo
 @{
     ViewBag.Title = "PerformerStatistics";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
-
-    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
-    HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
-    GlyphiconRenderer GISigns = new GlyphiconRenderer();
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
 

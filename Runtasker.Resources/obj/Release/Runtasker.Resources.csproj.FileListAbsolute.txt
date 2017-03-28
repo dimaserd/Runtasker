@@ -248,3 +248,5 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Account.ConfirmEmail.ConfirmEmailRes.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Landing.Pricing.PricingRes.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Orders.OnlineHelp.OnlineHelp.ru-RU.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Account.ResetPasswordConfirmation.ResetPassConfRes.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Account.ResetPasswordConfirmation.ResetPassConfRes.ru-RU.resources

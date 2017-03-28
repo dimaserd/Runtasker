@@ -19,5 +19,13 @@
 
         public static int CourseWorkFromPrice = 500;
         #endregion
+
+        #region Сроки
+        public static int DaysForOrdinaryTask = 3;
+
+        public static int DaysForEssayTask = 7;
+
+        public static int DaysForCourseWorkTask = 30;
+        #endregion
     }
 }

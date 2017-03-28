@@ -1,6 +1,4 @@
-﻿@using Runtasker.Resources.Views.Account.LoginList
-
-@model Runtasker.Logic.Models.ExternalLoginListModel
+﻿@model Runtasker.Logic.Models.ExternalLoginListModel
 @using Microsoft.Owin.Security
 @{
     Layout = null;
@@ -23,7 +21,7 @@
                 string textSocial = string.Format(Model.Pattern, p.Caption);
 
                 <button type="submit" class="@className fullwidth radius3 btn-my-social" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="@Model.VerbWith @p.Caption">
-                    <i class="fa @className2"></i> @*@Model.VerbWith @p.Caption*@ @textSocial
+                    <i class="fa @className2"></i>  @textSocial
                 </button>
             }
         </div>

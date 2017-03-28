@@ -117,17 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActionDesc1" xml:space="preserve">
-    <value>Здесь вы можете сделать свой первый</value>
-  </data>
-  <data name="ActionDesc2" xml:space="preserve">
-    <value>заказ</value>
-  </data>
   <data name="ActionDesc3" xml:space="preserve">
     <value>на Runtasker</value>
   </data>
+  <data name="ActionDescFormat" xml:space="preserve">
+    <value>Здесь вы можете сделать свой первый {0} на Runtasker!</value>
+    <comment>Здесь вы можете сделать свой первый {заказ} на Runtasker!</comment>
+  </data>
   <data name="ActionDescMini" xml:space="preserve">
     <value>Создание заказа</value>
+  </data>
+  <data name="ActionDescToMark" xml:space="preserve">
+    <value>заказ</value>
   </data>
   <data name="ActiveNav" xml:space="preserve">
     <value>Создать заказ</value>

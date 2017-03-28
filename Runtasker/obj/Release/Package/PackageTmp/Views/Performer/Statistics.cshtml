@@ -2,14 +2,12 @@
 @using Runtasker.Logic.Entities
 @using Extensions.Decimal
 @using Extensions.String
-@using HtmlExtensions.Renderers
+@using HtmlExtensions.StaticRenderers
 @model CustomerInfo
 @{
     ViewBag.Title = "Statistics";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 
-    HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
-    GlyphiconRenderer GISigns = new GlyphiconRenderer();
 }
 
 <div class="row">

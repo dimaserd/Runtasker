@@ -1,6 +1,6 @@
 ﻿using Extensions.String;
-using Runtasker.LocaleBuilders.Enumerations;
 using Runtasker.LocaleBuilders.Models;
+using Runtasker.Resources.Views.Home.Contact;
 using Runtasker.Resources.Views.Home.Index;
 using Runtasker.Resources.Views.Home.KnowPrice;
 
@@ -8,6 +8,21 @@ namespace Runtasker.LocaleBuilders.Views.Home
 {
     public class HomeViewModelBuilder : UICultureSwitcher
     {
+        public LocaleViewModel ContactView()
+        {
+            LocaleViewModel result = new LocaleViewModel();
+
+            result.Add("Title", ContactViewRes.ContactUs);
+            result.Add("BtnText", ContactViewRes.SendMessage);
+            result.Add("HomeNav", ContactViewRes.HomeNav);
+            result.Add("ActiveNav", ContactViewRes.ContactUs);
+            result.Add("Header", ContactViewRes.ContactUs);
+            result.Add("AlertTextHtml", string.Format(ContactViewRes.AlertFormat, ContactViewRes.AlertToMark.WrapToStrong()));
+            result.Add("MessagePlaceholderText", ContactViewRes.MessagePlaceholder);
+            
+            return result;
+        }
+
         public LocaleViewModel KnowPriceView()
         {
             LocaleViewModel result = new LocaleViewModel();
@@ -20,22 +35,10 @@ namespace Runtasker.LocaleBuilders.Views.Home
             result.Add("HomeNav", KnowPriceRes.HomeNav);
             result.Add("ActiveNav", KnowPriceRes.ActiveNav);
             result.Add("ActionDescMini", KnowPriceRes.ActionDescMini);
+            result.Add("DescriptionPlaceholder", KnowPriceRes.DescriptionPlaceholder);
+            result.Add("ActionDescHtml", string.Format(KnowPriceRes.ActionDescFormat, KnowPriceRes.ActionDescToMark.WrapToEm().WrapToStrong()));
 
-            switch (UILang)
-            {
-                case Lang.Russian:
-
-                    result.Add("HtmlActionDesc", $"{KnowPriceRes.ActionDesc1} <strong><em>{KnowPriceRes.ActionDesc2}</em></strong> {KnowPriceRes.ActionDesc3}");
-                    result.Add("DescriptionPlaceholder", KnowPriceRes.DescriptionPlaceholder);
-                    break;
-
-                default:
-                    result.Add("HtmlActionDesc", $"{KnowPriceRes.ActionDesc1} <strong><em>{KnowPriceRes.ActionDesc2}</strong></em> {KnowPriceRes.ActionDesc3}");
-                    result.Add("DescriptionPlaceholder", KnowPriceRes.DescriptionPlaceholder);
-                    break;
-
-                    
-            }
+            
 
             return result;
         }

@@ -375,15 +375,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CommentsRes.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Home\Contact\ContactRes.ru-RU.Designer.cs">
-      <DependentUpon>ContactRes.ru-RU.resx</DependentUpon>
+    <Compile Include="Views\Home\Contact\ContactViewRes.ru-RU.Designer.cs">
+      <DependentUpon>ContactViewRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Home\Contact\ContactRes.Designer.cs">
+    <Compile Include="Views\Home\Contact\ContactViewRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ContactRes.resx</DependentUpon>
+      <DependentUpon>ContactViewRes.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\Home\Index\Index.Designer.cs">
       <DependentUpon>Index.resx</DependentUpon>
@@ -950,13 +950,13 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CommentsRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Home\Contact\ContactRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Home\Contact\ContactViewRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ContactRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>ContactViewRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Home\Contact\ContactRes.resx">
+    <EmbeddedResource Include="Views\Home\Contact\ContactViewRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ContactRes.Designer.cs</LastGenOutput>
+      <LastGenOutput>ContactViewRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\Index\Index.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

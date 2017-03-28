@@ -22,14 +22,14 @@ namespace Runtasker.Resources.Views.Home.Contact {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ContactRes {
+    public class ContactViewRes {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ContactRes() {
+        internal ContactViewRes() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Runtasker.Resources.Views.Home.Contact {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Runtasker.Resources.Views.Home.Contact.ContactRes", typeof(ContactRes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Runtasker.Resources.Views.Home.Contact.ContactViewRes", typeof(ContactViewRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,24 @@ namespace Runtasker.Resources.Views.Home.Contact {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {0} Your message successfully sent..
+        /// </summary>
+        public static string AlertFormat {
+            get {
+                return ResourceManager.GetString("AlertFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Thank you!.
+        /// </summary>
+        public static string AlertToMark {
+            get {
+                return ResourceManager.GetString("AlertToMark", resourceCulture);
             }
         }
         
@@ -88,38 +106,11 @@ namespace Runtasker.Resources.Views.Home.Contact {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Drop us a line or just say.
-        /// </summary>
-        public static string htmlHeader1 {
-            get {
-                return ResourceManager.GetString("htmlHeader1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Hello!.
-        /// </summary>
-        public static string htmlHeader2 {
-            get {
-                return ResourceManager.GetString("htmlHeader2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Please enter your message here....
         /// </summary>
         public static string MessagePlaceholder {
             get {
                 return ResourceManager.GetString("MessagePlaceholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Your message successfully sent.
-        /// </summary>
-        public static string MessageSent {
-            get {
-                return ResourceManager.GetString("MessageSent", resourceCulture);
             }
         }
         
@@ -147,15 +138,6 @@ namespace Runtasker.Resources.Views.Home.Contact {
         public static string ThankYou {
             get {
                 return ResourceManager.GetString("ThankYou", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Your Message.
-        /// </summary>
-        public static string YourMessage {
-            get {
-                return ResourceManager.GetString("YourMessage", resourceCulture);
             }
         }
     }

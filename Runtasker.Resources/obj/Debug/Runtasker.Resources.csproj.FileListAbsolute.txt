@@ -256,7 +256,6 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Ru
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Account.ResetPassword.ResetPassRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Home.AboutUs.AboutUsRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Home.Comments.CommentsRes.resources
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Home.Contact.ContactRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Home.Index.Index.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Home.KnowPrice.KnowPriceRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Manage.ChangePassword.ChangePassRes.resources
@@ -305,7 +304,6 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Ru
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Account.Register.RegisterRes.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Account.ResetPassword.ResetPassRes.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Home.Comments.CommentsRes.ru-RU.resources
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Home.Contact.ContactRes.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Home.Index.Index.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Home.KnowPrice.KnowPriceRes.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Manage.ChangePassword.ChangePassRes.ru-RU.resources
@@ -360,3 +358,7 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Ru
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Account.ConfirmEmail.ConfirmEmailRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Models.OrderModels.RegAndCreate.RegAndCreateRes.zh-CN.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Account.ConfirmEmail.ConfirmEmailRes.ru-RU.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Account.ResetPasswordConfirmation.ResetPassConfRes.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Account.ResetPasswordConfirmation.ResetPassConfRes.ru-RU.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Home.Contact.ContactViewRes.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Home.Contact.ContactViewRes.ru-RU.resources

@@ -281,9 +281,12 @@ namespace Runtasker.Controllers
         public ActionResult Contact(bool? messageSent = null)
         {
             ViewData["messageSent"] = messageSent;
-            ViewBag.Message = "Your contact page.";
 
-            return View(viewName: "NewContact",model: new ContactViewModel());
+            //отдаем локализованную модель в представление
+            ViewData["localeModel"] = ModelBuilder.ContactView();
+            
+
+            return View(new ContactViewModel());
         }
 
         [HttpPost]
@@ -291,14 +294,17 @@ namespace Runtasker.Controllers
         {
             if(ModelState.IsValid && await CheckCaptcha())
             {
-                
                 Contacter.OnContactMessageReceived(model);
+                
                 //message should be generated here or in ContactWorker
-                //but request might be not authenticate
+                //but request might be not authenticated
                 
                 return RedirectToAction("Contact", "Home", routeValues: new { messageSent = true });
             }
-            return View(viewName: "NewContact", model: model);
+
+            //отдаем локализованную модель в представление
+            ViewData["localeModel"] = ModelBuilder.ContactView();
+            return View(model);
         }
         #endregion
 

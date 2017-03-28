@@ -3412,7 +3412,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -3489,7 +3488,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\NewLogin.cshtml" />
     <Content Include="Views\Message\NewActivePanel.cshtml" />
-    <Content Include="Views\Home\NewContact.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\VkOrders\Index.cshtml" />
     <Content Include="Views\VkOrders\KeyWords.cshtml" />
     <Content Include="Views\VkOrders\Groups.cshtml" />

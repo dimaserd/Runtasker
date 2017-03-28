@@ -4,11 +4,63 @@ using Runtasker.Resources.Views.Account.Login;
 using Runtasker.Resources.Views.Account.Register;
 using Runtasker.Resources.Views.Shared.NewLoginPartial;
 using Runtasker.Resources.Views.Account.ConfirmEmail;
+using Runtasker.Resources.Views.Account.ExternalLoginConfirmation;
+using Runtasker.Resources.Views.Account.ForgotPassword;
+using Runtasker.Resources.Views.Account.ResetPassword;
+using Runtasker.Resources.Views.Account.ResetPasswordConfirmation;
 
 namespace Runtaker.LocaleBuiders.Views.Account
 {
     public class AccountViewModelBuilder : UICultureSwitcher
     {
+        public LocaleViewModel ResetPasswordConfirmationView()
+        {
+            LocaleViewModel result = new LocaleViewModel();
+
+            result.Add("Title", ResetPassConfRes.Title);
+            result.Add("ConfirmationText", ResetPassConfRes.ConfirmationText);
+            result.Add("BtnText", ResetPassConfRes.LoginLinkText);
+
+            return result;
+        }
+
+        public LocaleViewModel ResetPasswordView()
+        {
+            LocaleViewModel result = new LocaleViewModel();
+
+            result.Add("Title", ResetPassRes.Title);
+            result.Add("Header", ResetPassRes.Header);
+            result.Add("BtnText", ResetPassRes.Reset);
+
+            return result;
+        }
+
+        public LocaleViewModel ForgotPasswordView()
+        {
+            LocaleViewModel result = new LocaleViewModel();
+
+            result.Add("Title", ForgotPassRes.Title);
+            result.Add("HomeNav", ForgotPassRes.HomeNav);
+            result.Add("ActiveNav", ForgotPassRes.ActiveNav);
+            result.Add("HeaderHtml", string.Format(ForgotPassRes.HeaderFormat, ForgotPassRes.HeaderToMark.WrapToStrong()));
+            result.Add("AlertTextHtml", string.Format(ForgotPassRes.AlertFormat, ForgotPassRes.AlertToMark.WrapToStrong()));
+            result.Add("InstructionText", ForgotPassRes.Instruction);
+            result.Add("BtnText", ForgotPassRes.SendLink);
+
+            return result;
+        }
+
+        public LocaleViewModel ExternalLoginConfirmationView(string loginProvider)
+        {
+            LocaleViewModel result = new LocaleViewModel();
+            result.Add("Title", ExtLoginConfirm.Register);
+            result.Add("Header", string.Format(ExtLoginConfirm.HeaderFormat, loginProvider));
+            result.Add("InfoText", string.Format(ExtLoginConfirm.InfoTextFormat, loginProvider.WrapToStrong()));
+            result.Add("BtnText", ExtLoginConfirm.Register);
+
+            return result;
+        }
+
         public LocaleViewModel ConfirmEmailView(string loginSign)
         {
             LocaleViewModel result = new LocaleViewModel();
@@ -97,7 +149,7 @@ namespace Runtaker.LocaleBuiders.Views.Account
             result.Add("RegPlus5", RegisterRes.RegPlus5);
             result.Add("RegPlus6", RegisterRes.RegPlus6);
 
-            result.Add("htmlHeader", $"{RegisterRes.htmlHeader1} {RegisterRes.htmlHeader2.WrapToStrong()}".WrapToH2());
+            result.Add("htmlHeader", string.Format(RegisterRes.HeaderFormat, RegisterRes.HeaderToMark).WrapToH2());
             result.Add("htmlHeader2", RegisterRes.Register.WrapToH2());
             result.Add("registerBtn", RegisterRes.Register);
             result.Add("WhyToReg", RegisterRes.WhyToReg);

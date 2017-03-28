@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Runtasker.Resources.Views.Account.LoginList {
+namespace Runtasker.Resources.Views.Account.ResetPasswordConfirmation {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Runtasker.Resources.Views.Account.LoginList {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class LoginListRes {
+    public class ResetPassConfRes {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LoginListRes() {
+        internal ResetPassConfRes() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Runtasker.Resources.Views.Account.LoginList {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Runtasker.Resources.Views.Account.LoginList.LoginListRes", typeof(LoginListRes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Runtasker.Resources.Views.Account.ResetPasswordConfirmation.ResetPassConfRes", typeof(ResetPassConfRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,29 @@ namespace Runtasker.Resources.Views.Account.LoginList {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Connect With {0}.
+        ///   Ищет локализованную строку, похожую на Your password was reset..
         /// </summary>
-        public static string ConnectWithFormat {
+        public static string ConfirmationText {
             get {
-                return ResourceManager.GetString("ConnectWithFormat", resourceCulture);
+                return ResourceManager.GetString("ConfirmationText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Register With {0}.
+        ///   Ищет локализованную строку, похожую на Click here to log in.
         /// </summary>
-        public static string RegisterWithFormat {
+        public static string LoginLinkText {
             get {
-                return ResourceManager.GetString("RegisterWithFormat", resourceCulture);
+                return ResourceManager.GetString("LoginLinkText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Sign in With {0}.
+        ///   Ищет локализованную строку, похожую на Confirmation of resetting password.
         /// </summary>
-        public static string SignInWithFormat {
+        public static string Title {
             get {
-                return ResourceManager.GetString("SignInWithFormat", resourceCulture);
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }

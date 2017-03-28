@@ -335,6 +335,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RegisterRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Account\ResetPasswordConfirmation\ResetPassConfRes.ru-RU.Designer.cs">
+      <DependentUpon>ResetPassConfRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Account\ResetPasswordConfirmation\ResetPassConfRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResetPassConfRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Account\ResetPassword\ResetPassRes.ru-RU.Designer.cs">
       <DependentUpon>ResetPassRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -907,6 +917,14 @@
     <EmbeddedResource Include="Views\Account\Register\RegisterRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RegisterRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\ResetPasswordConfirmation\ResetPassConfRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPassConfRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\ResetPasswordConfirmation\ResetPassConfRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPassConfRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Account\ResetPassword\ResetPassRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

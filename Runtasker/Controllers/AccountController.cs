@@ -18,7 +18,6 @@ using System;
 using Runtasker.Logic.Workers.Orders;
 using Runtasker.Logic.Workers.Email;
 using Runtasker.Logic.Entities;
-using HtmlExtensions.Renderers;
 using Runtasker.Settings;
 using HtmlExtensions.StaticRenderers;
 
@@ -535,6 +534,7 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPassword(bool? emailSent)
         {
+            ViewData["localeModel"] = ViewModelBuilder.ForgotPasswordView();
             ViewData["emailSent"] = emailSent;
             return View();
         }
@@ -543,12 +543,14 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordModel model)
         {
+            ViewData["localeModel"] = ViewModelBuilder.ForgotPasswordView();
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     ModelState.AddModelError("error", $"User with email : {model.Email} not found!");
+                    
                     return View(model);
                 }
 
@@ -557,14 +559,13 @@ namespace Runtasker.Controllers
                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 string callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
 
-                //await UserManager.SendEmailAsync(user.Id, "Reset password", "Reset your password, by clicking <a href=\"" + callbackUrl + "\">здесь</a>");
                 Notificater.OnUserForgottenPassword(user, callbackUrl);
                 
-
                 return RedirectToAction("ForgotPassword", "Account", routeValues: new { emailSent = true });
             }
 
             // Появление этого сообщения означает наличие ошибки; повторное отображение формы
+            
             return View(model);
         }
 
@@ -582,7 +583,16 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return code == null ? View("Error") : View();
+            if(code == null)
+            {
+                return View("Error");
+            }
+            else
+            {
+                ViewData["localeModel"] = ViewModelBuilder.ResetPasswordView();
+                return View();
+            }
+            
         }
 
         
@@ -593,6 +603,7 @@ namespace Runtasker.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewData["localeModel"] = ViewModelBuilder.ResetPasswordView();
                 return View(model);
             }
             var user = await UserManager.FindByNameAsync(model.Email);
@@ -606,7 +617,9 @@ namespace Runtasker.Controllers
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
+
             AddErrors(result);
+            ViewData["localeModel"] = ViewModelBuilder.ResetPasswordView();
             return View();
         }
 
@@ -614,6 +627,7 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
+            ViewData["localeModel"] = ViewModelBuilder.ResetPasswordConfirmationView();
             return View();
         }
         #endregion
@@ -688,6 +702,7 @@ namespace Runtasker.Controllers
                     // Если у пользователя нет учетной записи, то ему предлагается создать ее
                     ViewBag.ReturnUrl = returnUrl;
 
+                    ViewData["localeModel"] = ViewModelBuilder.ExternalLoginConfirmationView(loginInfo.Login.LoginProvider);
                     return View("ExternalLoginConfirmation", 
                         new ExternalLoginConfirmationModel
                         {

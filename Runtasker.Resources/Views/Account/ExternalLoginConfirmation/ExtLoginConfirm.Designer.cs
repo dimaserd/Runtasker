@@ -61,15 +61,6 @@ namespace Runtasker.Resources.Views.Account.ExternalLoginConfirmation {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Please enter an Email for this site below and click the Register button to finish logging in..
-        /// </summary>
-        public static string ActionDesc {
-            get {
-                return ResourceManager.GetString("ActionDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Association form.
         /// </summary>
         public static string FormTitle {
@@ -79,29 +70,20 @@ namespace Runtasker.Resources.Views.Account.ExternalLoginConfirmation {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Associate your.
+        ///   Ищет локализованную строку, похожую на Associate your {0} account..
         /// </summary>
-        public static string Header1 {
+        public static string HeaderFormat {
             get {
-                return ResourceManager.GetString("Header1", resourceCulture);
+                return ResourceManager.GetString("HeaderFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на  account.
+        ///   Ищет локализованную строку, похожую на You have successfully authenticated with {0}. Please enter an Email for this site below and click the Register button to finish logging in..
         /// </summary>
-        public static string Header2 {
+        public static string InfoTextFormat {
             get {
-                return ResourceManager.GetString("Header2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на You have successfully authenticated with.
-        /// </summary>
-        public static string InfoText1 {
-            get {
-                return ResourceManager.GetString("InfoText1", resourceCulture);
+                return ResourceManager.GetString("InfoTextFormat", resourceCulture);
             }
         }
         

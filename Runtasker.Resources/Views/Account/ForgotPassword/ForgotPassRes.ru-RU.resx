@@ -129,12 +129,6 @@
   <data name="HomeNav" xml:space="preserve">
     <value>Главная</value>
   </data>
-  <data name="htmlAlert1" xml:space="preserve">
-    <value>Мы отправили вам ссылку!</value>
-  </data>
-  <data name="htmlAlert2" xml:space="preserve">
-    <value>Проверьте вашу почту!</value>
-  </data>
   <data name="Instruction" xml:space="preserve">
     <value>Введите ваш адрес электронной почты, мы вышлем вам на почту ссылку, пройдя по которой вы сможете восстановить ваш пароль.</value>
   </data>
@@ -143,5 +137,17 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Забыли ваш пароль?</value>
+  </data>
+  <data name="AlertFormat" xml:space="preserve">
+    <value>{0} Проверьте вашу почту!</value>
+  </data>
+  <data name="AlertToMark" xml:space="preserve">
+    <value>Мы отправили вам ссылку!</value>
+  </data>
+  <data name="HeaderFormat" xml:space="preserve">
+    <value>Забыли {0}?</value>
+  </data>
+  <data name="HeaderToMark" xml:space="preserve">
+    <value>пароль</value>
   </data>
 </root>

@@ -117,17 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConfText" xml:space="preserve">
-    <value>Your password was reset.</value>
-  </data>
-  <data name="ConfTitle" xml:space="preserve">
-    <value>Confirmation of resetting password</value>
-  </data>
   <data name="Header" xml:space="preserve">
     <value>Reset your password.</value>
-  </data>
-  <data name="LoginLinkText" xml:space="preserve">
-    <value>Click here to log in</value>
   </data>
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>

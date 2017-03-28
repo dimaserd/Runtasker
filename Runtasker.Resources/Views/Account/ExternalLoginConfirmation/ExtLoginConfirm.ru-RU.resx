@@ -117,20 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActionDesc" xml:space="preserve">
-    <value>Пожалуйста, укажите адрес электронной почты для этого сайта и нажмите кнопку Зарегистрироваться чтобы завершить регистрацию.</value>
-  </data>
   <data name="FormTitle" xml:space="preserve">
     <value>Форма связывания</value>
   </data>
-  <data name="Header1" xml:space="preserve">
-    <value>Свяжите вашу учетную запись</value>
+  <data name="HeaderFormat" xml:space="preserve">
+    <value>Свяжите вашу учетную запись {0}.</value>
+    <comment>Свяжите вашу учетную запись {название соцсети}.</comment>
   </data>
-  <data name="Header2" xml:space="preserve">
-    <value />
-  </data>
-  <data name="InfoText1" xml:space="preserve">
-    <value>Вы успешно вошли через</value>
+  <data name="InfoTextFormat" xml:space="preserve">
+    <value>Вы успешно вошли через {0}. Пожалуйста, укажите адрес электронной почты для этого сайта и нажмите кнопку Зарегистрироваться чтобы завершить регистрацию.</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Зарегистрироваться</value>

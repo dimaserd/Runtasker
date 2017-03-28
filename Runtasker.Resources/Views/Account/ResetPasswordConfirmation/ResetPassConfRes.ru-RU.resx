@@ -117,64 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ForgotYourPass" xml:space="preserve">
-    <value>Forgot your password?</value>
+  <data name="ConfirmationText" xml:space="preserve">
+    <value>Ваш пароль изменен.</value>
   </data>
-  <data name="HomeNav" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="KeepMeSignedIn" xml:space="preserve">
-    <value>Keep me signed in</value>
-  </data>
-  <data name="RegisterNew" xml:space="preserve">
-    <value>Register new account</value>
-  </data>
-  <data name="SignIn" xml:space="preserve">
-    <value>Sign in</value>
-  </data>
-  <data name="TakesSeconds" xml:space="preserve">
-    <value>It only takes 8 seconds</value>
-  </data>
-  <data name="VerbWith" xml:space="preserve">
-    <value>Login with</value>
-  </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>Remember Me</value>
-  </data>
-  <data name="Runtasker" xml:space="preserve">
-    <value>Runtasker</value>
+  <data name="LoginLinkText" xml:space="preserve">
+    <value>Нажмите здесь, чтобы войти</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Sign in</value>
-    <comment>Войти на сайт</comment>
-  </data>
-  <data name="ViaSocialsPattern" xml:space="preserve">
-    <value>Sign in {0}</value>
-    <comment>Sign in {via social providers}</comment>
-  </data>
-  <data name="WelcomeTitlePattern" xml:space="preserve">
-    <value>Welcome to {0}</value>
-    <comment>Welcome to {Runtasker}</comment>
-  </data>
-  <data name="HeaderFormat" xml:space="preserve">
-    <value>Sign {0}</value>
-    <comment>Sign {in}</comment>
-  </data>
-  <data name="HeaderToMark" xml:space="preserve">
-    <value>in</value>
-  </data>
-  <data name="SocialSignInFormat" xml:space="preserve">
-    <value>Sign in {0}</value>
-    <comment>Sign in {via social providers}</comment>
-  </data>
-  <data name="SocialSignInToMark" xml:space="preserve">
-    <value>via social providers</value>
-  </data>
-  <data name="WithoutAccountFormat" xml:space="preserve">
-    <value>Don't have an account yet? {0} it's free!</value>
-    <comment>Don't have an account yet? {Click to create one} it's free!</comment>
-  </data>
-  <data name="WithoutAccountLinkText" xml:space="preserve">
-    <value>Click to create one</value>
+    <value>Подтверждение сброса пароля</value>
   </data>
 </root>

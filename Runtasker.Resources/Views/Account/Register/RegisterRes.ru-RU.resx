@@ -180,4 +180,10 @@
   <data name="ContactTextPattern" xml:space="preserve">
     <value>Если вам нужна помощь или у вас возникли вопросы,  пожалуйста {0}.</value>
   </data>
+  <data name="HeaderFormat" xml:space="preserve">
+    <value>Создать {0}</value>
+  </data>
+  <data name="HeaderToMark" xml:space="preserve">
+    <value>учетную запись</value>
+  </data>
 </root>

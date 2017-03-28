@@ -115,29 +115,29 @@ namespace Runtasker.Resources.Views.Account.Register {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Create {0}.
+        /// </summary>
+        public static string HeaderFormat {
+            get {
+                return ResourceManager.GetString("HeaderFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на account.
+        /// </summary>
+        public static string HeaderToMark {
+            get {
+                return ResourceManager.GetString("HeaderToMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Home.
         /// </summary>
         public static string HomeNav {
             get {
                 return ResourceManager.GetString("HomeNav", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Create.
-        /// </summary>
-        public static string htmlHeader1 {
-            get {
-                return ResourceManager.GetString("htmlHeader1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Account.
-        /// </summary>
-        public static string htmlHeader2 {
-            get {
-                return ResourceManager.GetString("htmlHeader2", resourceCulture);
             }
         }
         

@@ -61,15 +61,6 @@ namespace Runtasker.Resources.Views.Account.Login {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на .
-        /// </summary>
-        public static string ContactTextPattern {
-            get {
-                return ResourceManager.GetString("ContactTextPattern", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Forgot your password?.
         /// </summary>
         public static string ForgotYourPass {

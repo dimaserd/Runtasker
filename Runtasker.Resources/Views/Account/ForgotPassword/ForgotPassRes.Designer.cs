@@ -70,6 +70,24 @@ namespace Runtasker.Resources.Views.Account.ForgotPassword {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на {0} Check your E-mail Address!.
+        /// </summary>
+        public static string AlertFormat {
+            get {
+                return ResourceManager.GetString("AlertFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на We&apos;ve sent you a link!.
+        /// </summary>
+        public static string AlertToMark {
+            get {
+                return ResourceManager.GetString("AlertToMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Forgot.
         /// </summary>
         public static string Header1 {
@@ -88,29 +106,29 @@ namespace Runtasker.Resources.Views.Account.ForgotPassword {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Forgot {0}?.
+        /// </summary>
+        public static string HeaderFormat {
+            get {
+                return ResourceManager.GetString("HeaderFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на password.
+        /// </summary>
+        public static string HeaderToMark {
+            get {
+                return ResourceManager.GetString("HeaderToMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Home.
         /// </summary>
         public static string HomeNav {
             get {
                 return ResourceManager.GetString("HomeNav", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на We&apos;ve sent you a link!.
-        /// </summary>
-        public static string htmlAlert1 {
-            get {
-                return ResourceManager.GetString("htmlAlert1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Check your E-mail Address!.
-        /// </summary>
-        public static string htmlAlert2 {
-            get {
-                return ResourceManager.GetString("htmlAlert2", resourceCulture);
             }
         }
         

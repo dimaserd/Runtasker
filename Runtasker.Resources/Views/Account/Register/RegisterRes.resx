@@ -129,12 +129,6 @@
   <data name="ContCustSup" xml:space="preserve">
     <value>Contact Customer Support</value>
   </data>
-  <data name="htmlHeader1" xml:space="preserve">
-    <value>Create</value>
-  </data>
-  <data name="htmlHeader2" xml:space="preserve">
-    <value>Account</value>
-  </data>
   <data name="HomeNav" xml:space="preserve">
     <value>Home</value>
   </data>
@@ -187,5 +181,12 @@
   </data>
   <data name="ContactTextPattern" xml:space="preserve">
     <value>If you're looking for more help or have a question to ask, please {0}.</value>
+  </data>
+  <data name="HeaderFormat" xml:space="preserve">
+    <value>Create {0}</value>
+    <comment>Create {account}</comment>
+  </data>
+  <data name="HeaderToMark" xml:space="preserve">
+    <value>account</value>
   </data>
 </root>

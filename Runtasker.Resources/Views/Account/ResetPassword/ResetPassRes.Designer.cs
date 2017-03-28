@@ -61,38 +61,11 @@ namespace Runtasker.Resources.Views.Account.ResetPassword {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Your password was reset..
-        /// </summary>
-        public static string ConfText {
-            get {
-                return ResourceManager.GetString("ConfText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Confirmation of resetting password.
-        /// </summary>
-        public static string ConfTitle {
-            get {
-                return ResourceManager.GetString("ConfTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Reset your password..
         /// </summary>
         public static string Header {
             get {
                 return ResourceManager.GetString("Header", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Click here to log in.
-        /// </summary>
-        public static string LoginLinkText {
-            get {
-                return ResourceManager.GetString("LoginLinkText", resourceCulture);
             }
         }
         

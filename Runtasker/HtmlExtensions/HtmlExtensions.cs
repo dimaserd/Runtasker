@@ -1,4 +1,5 @@
 ﻿using Extensions.String;
+using Runtasker.LocaleBuilders.Enumerations;
 using Runtasker.Logic.Attributes;
 using Runtasker.Logic.Entities;
 using Runtasker.Settings.Enumerations;
@@ -36,10 +37,10 @@ namespace Runtasker.HtmlExtensions
         public static MvcHtmlString GetParseDateJSFunction(this HtmlHelper html)
         {
             StringBuilder sb = new StringBuilder();
-            string langCode = Thread.CurrentThread.CurrentCulture.DisplayName;
-            switch (langCode)
+            Lang lang = Runtasker.LocaleBuilders.Statics.LanguageStatic.Language;
+            switch (lang)
             {
-                case "Русский (Россия)":
+                case Lang.Russian:
                     sb.Append("function parseDate(str){")
                     .Append("var dmy = str.split('.');\n")
                     .Append("var date = new Date(20 + dmy[2], dmy[1] - 1, dmy[0])\n")
@@ -216,6 +217,58 @@ namespace Runtasker.HtmlExtensions
             
             sb.Append("</div>")
             .Append("</div>");
+            return MvcHtmlString.Create(sb.ToString());
+        }
+
+
+        public static MvcHtmlString FormWithLabelAndEditorFor<TModel, TValue>(this HtmlHelper<TModel> html,
+            Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
+        {
+
+            var member = expression.Body as MemberExpression;
+            var prop = member.Member as PropertyInfo;
+
+            string popoverInfo = GetPopoverInfoFromProperty(prop);
+
+            string formId = $"{prop.Name}Form";
+            string errorId = $"{prop.Name}Error";
+            string editorId = $"{prop.Name}Field";
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"<div id='{formId}' class='form-group {htmlAttributes.GetPropertyValue("class")}' "); //0
+            if (htmlAttributes != null)
+            {
+                sb.Append(htmlAttributes.RenderAttributesKeyValuePairExcept("class", "id"));
+            }
+            sb.Append(" >");
+
+            sb.Append(html.LabelFor(expression, htmlAttributes: new { @class = "control-label col-md-2" }).ToString())
+            .Append("<div class='col-md-5'>"); //1
+            if (popoverInfo != null)
+            {
+                sb.Append("<div class='input-group'>") //2
+
+                .Append(html.EditorFor(expression, new { id = expression.Type.Name.ToId(), htmlAttributes = new { @class = "form-control" } }))
+                .Append("<div class='input-group-btn'>") //3
+                .Append("<button type='button' class='btn btn-default popoverBtn' ")
+                .Append("data-container='body' data-toggle='popover' ")
+                .Append("data-placement='bottom' ")
+                .Append($"data-content=\"{popoverInfo}\">")
+                .Append("<span class='glyphicon glyphicon-info-sign'></span>")
+                .Append("</button></div>") //3
+                .Append("</div>") //2
+                .Append(html.ValidationMessageFor(expression, "", new { @class = "text-danger" }));//here
+            }
+            else
+            {
+                sb.Append(html.EditorFor(expression, new { id = editorId, htmlAttributes = new { @class = "form-control" } }))
+                .Append(html.ValidationMessageFor(expression, "", new { @class = "text-danger" }));
+            }
+
+            sb.Append($"<p id='{errorId}' class='text-danger'></p>")
+
+            .Append("</div>") //1
+            .Append("</div>"); //0
             return MvcHtmlString.Create(sb.ToString());
         }
 

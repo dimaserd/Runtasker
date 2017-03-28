@@ -4,7 +4,6 @@
 @model OnlineOrderRequest
 @{
 
-
     List<SelectListItem> subjects = StaticHtmlClassesHelper.GetSortedSubjectEnumList().ToList();
 
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
@@ -31,10 +30,7 @@
         @Html.ValidationErrorsToAlerts()
         @Html.AntiForgeryToken()
 
-        <div id="bigError" class="alert alert-danger">
-            <i class="fa fa-frown-o"></i>
-            <strong id="bigErrorText"></strong>
-        </div>
+        @AlertHelper.GetBigAlert()
 
         @Html.HiddenFor(m => m.OnlineHelpWorkType)
 

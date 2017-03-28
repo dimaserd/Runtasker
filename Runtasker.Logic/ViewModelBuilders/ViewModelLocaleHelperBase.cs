@@ -1,5 +1,6 @@
 ﻿
 using HtmlExtensions.Renderers;
+using HtmlExtensions.StaticRenderers;
 
 namespace Runtasker.Logic.ViewModelBuilders
 {
@@ -13,18 +14,10 @@ namespace Runtasker.Logic.ViewModelBuilders
 
         void Construct()
         {
-            FASigns = new FontAwesomeRenderer();
-            GISigns = new GlyphiconRenderer();
-            HtmlSigns = new HtmlSignsRenderer();
+            
         }
         #endregion
 
-        #region Protected Properties
-        protected FontAwesomeRenderer FASigns { get; set; }
-
-        protected GlyphiconRenderer GISigns { get; set; }
-
-        protected HtmlSignsRenderer HtmlSigns { get; set; }
-        #endregion
+        
     }
 }

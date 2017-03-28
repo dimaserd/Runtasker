@@ -1,4 +1,5 @@
-﻿using Runtasker.LocaleBuilders.Models;
+﻿using HtmlExtensions.StaticRenderers;
+using Runtasker.LocaleBuilders.Models;
 using Runtasker.LocaleBuilders.Views.Payment;
 
 namespace Runtasker.Logic.ViewModelBuilders.Payment

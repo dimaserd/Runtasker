@@ -1,8 +1,7 @@
 ﻿using HtmlExtensions.HtmlEntities;
-using HtmlExtensions.Renderers;
+using HtmlExtensions.StaticRenderers;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers.Email;
-using System;
 
 namespace Runtasker.Logic.Workers.Notifications
 {
@@ -18,16 +17,14 @@ namespace Runtasker.Logic.Workers.Notifications
         {
             Context = context;
             Emailer = new EmailWorkerBase();
-            FASigns = new FontAwesomeRenderer();
-            GISigns = new GlyphiconRenderer();
+            
         }
         #endregion
 
         #region Private Fields
-        private MyDbContext Context { get; set; }
-        private EmailWorkerBase Emailer { get; set; }
-        FontAwesomeRenderer FASigns { get; set; }
-        GlyphiconRenderer GISigns { get; set; }
+        MyDbContext Context { get; set; }
+        EmailWorkerBase Emailer { get; set; }
+        
         #endregion
 
         #region Public Methods

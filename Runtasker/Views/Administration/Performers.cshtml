@@ -1,14 +1,11 @@
 ﻿@using Extensions.String
 @using Runtasker.Logic
 @using Extensions.Decimal
-@using HtmlExtensions.Renderers
+@using HtmlExtensions.StaticRenderers
 @model IEnumerable<ApplicationUser>
 @{
     ViewBag.Title = "Performers";
-    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
-    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
-    GlyphiconRenderer GISigns = new GlyphiconRenderer();
-    HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";    
 }
 
 

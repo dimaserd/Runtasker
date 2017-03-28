@@ -1,4 +1,5 @@
-﻿@using HtmlExtensions.Renderers
+﻿@using HtmlExtensions.StaticRenderers
+@using HtmlExtensions.Renderers
 @using Extensions.String
 @using Runtasker.LocaleBuilders.Models
 
@@ -6,9 +7,7 @@
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
     ViewBag.Title = localeModel["Title"];
 
-    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
-    GlyphiconRenderer GISigns = new GlyphiconRenderer();
-    HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
+    
 
     string userGuid = ViewData["userGuid"] as string;
     decimal? sumToPay = ViewData["sumToPay"] as decimal?;

@@ -1,11 +1,10 @@
 ﻿@using VkParser.Entities
-@using HtmlExtensions.Renderers
+@using HtmlExtensions.StaticRenderers
 @using Extensions.String
 @model List<VkGroup>
 @{
-    ViewBag.Title = "Groups";
+    ViewBag.Title = "Группы";
     Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
-    GlyphiconRenderer GISigns = new GlyphiconRenderer();
 }
 
 <h2>Просматриваемые сообщества @GISigns.Count(Model.Count).ToHtml()</h2>

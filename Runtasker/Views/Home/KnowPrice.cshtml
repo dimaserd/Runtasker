@@ -2,7 +2,7 @@
 @model AnonymousKnowThePrice
 @using Runtasker.HtmlExtensions
 @using Runtasker.LocaleBuilders.Models
-@using HtmlExtensions.Renderers
+@using HtmlExtensions.StaticRenderers
 @using Extensions.String
 @{ 
     //получаем списки для выпадающих меню
@@ -14,8 +14,7 @@
 
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
     MvcHtmlString header = MvcHtmlString.Create($"<h2>{localeModel["HtmlActionDesc"]}</h2>");
-    GlyphiconRenderer GISigns = new GlyphiconRenderer();
-
+    
     ViewBag.Title = localeModel["ActionDescMini"];
 }
   

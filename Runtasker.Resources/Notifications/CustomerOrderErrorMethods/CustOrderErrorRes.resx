@@ -117,25 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Number" xml:space="preserve">
-    <value>#</value>
-  </data>
-  <data name="PayWithoutMoneyText1" xml:space="preserve">
-    <value>A half of an order</value>
-    <comment>[Половина заказа] №4 [стоит] {стоимость}.</comment>
-  </data>
-  <data name="PayWithoutMoneyText2" xml:space="preserve">
-    <value>costs</value>
-    <comment>[Половина заказа] №4 [стоит] {стоимость}.</comment>
-  </data>
-  <data name="PayWithoutMoneyText3" xml:space="preserve">
-    <value>You need to recharge your balance on</value>
+  <data name="PayWithoutMoneyTextFormat" xml:space="preserve">
+    <value>Your Balance : {0}{1}. Half price of order #{2} costs {3}{1}. You need to top up your balance by {4}{1}.</value>
+    <comment>Your Balance : {баланс}{знак рубля}. Half price of order #{номер заказа} costs {половина стоимости заказа}{знак рубля}. You need to top up your balance by {сумма к оплате}{знак рубля}.</comment>
   </data>
   <data name="PayWithoutMoneyTitle" xml:space="preserve">
     <value>You don't have enough money on your account!</value>
   </data>
-  <data name="RechargeBalance" xml:space="preserve">
-    <value>Recharge on</value>
+  <data name="TopUpBalanceFormat" xml:space="preserve">
+    <value>Top up by {0}{1}</value>
+    <comment>Top up by {сумма к оплате}{знак рубля}</comment>
   </data>
   <data name="UnconfirmedAttemptText" xml:space="preserve">
     <value>Wait for a confirmation email. You can not make an order while you're not confirmed!</value>
@@ -145,5 +136,8 @@
   </data>
   <data name="YourBalance" xml:space="preserve">
     <value>Your Balance</value>
+  </data>
+  <data name="YourBalanceFormat" xml:space="preserve">
+    <value>Your Balance : {0}{1}.</value>
   </data>
 </root>

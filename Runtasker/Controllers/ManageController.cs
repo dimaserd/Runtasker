@@ -20,11 +20,11 @@ namespace Runtasker.Controllers
 
         #region My Fields
         InvitationWorker _inviter;
-        private AvatarWorker _avatar;
+        AvatarWorker _avatar;
         #endregion
 
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+        ApplicationSignInManager _signInManager;
+        ApplicationUserManager _userManager;
 
         
         #endregion

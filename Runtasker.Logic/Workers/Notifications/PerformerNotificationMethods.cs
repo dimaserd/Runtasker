@@ -1,5 +1,5 @@
 ﻿using HtmlExtensions.HtmlEntities;
-using HtmlExtensions.Renderers;
+using HtmlExtensions.StaticRenderers;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers.Email;
 using System.Linq;
@@ -26,10 +26,6 @@ namespace Runtasker.Logic.Workers.Notifications
             PerformerGuid = userGuid;
 
             ModelBuilder = new PerformerOrderNotificationBuilder();
-
-            FASigns = new FontAwesomeRenderer();
-            GISigns = new GlyphiconRenderer();
-            HtmlSigns = new HtmlSignsRenderer();
         }
         #endregion
 
@@ -39,10 +35,6 @@ namespace Runtasker.Logic.Workers.Notifications
         PerformerEmailMethods Emailer { get; set; }
 
         PerformerOrderNotificationBuilder ModelBuilder { get; set; }
-
-        FontAwesomeRenderer FASigns { get; set; }
-        GlyphiconRenderer GISigns { get; set; }
-        HtmlSignsRenderer HtmlSigns { get; set; }
         #endregion
 
         #region Public Methods

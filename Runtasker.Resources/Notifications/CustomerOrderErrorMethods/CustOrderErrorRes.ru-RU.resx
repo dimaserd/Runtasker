@@ -117,23 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Number" xml:space="preserve">
-    <value>№</value>
-  </data>
-  <data name="PayWithoutMoneyText1" xml:space="preserve">
-    <value>Половина стоимости заказа</value>
-  </data>
-  <data name="PayWithoutMoneyText2" xml:space="preserve">
-    <value>стоит</value>
-  </data>
-  <data name="PayWithoutMoneyText3" xml:space="preserve">
-    <value>Вам необходимо пополнить ваш счет на</value>
+  <data name="PayWithoutMoneyTextFormat" xml:space="preserve">
+    <value>Ваш Баланс : {0}{1}. Половина стоимости заказа №{2} стоит {3}{1}. Вам необходимо пополнить ваш счет на {4}{1}.</value>
+    <comment>Ваш Баланс : {0=баланс}{1=знак рубля}. Половина стоимости заказа №{2=номер заказа} стоит {3=половина стоимости заказа}{1=знак рубля}. Вам необходимо пополнить ваш счет на {4=сколько нужно денег}{1=знак рубля}. </comment>
   </data>
   <data name="PayWithoutMoneyTitle" xml:space="preserve">
-    <value>У вас недостаточно денег на счете!</value>
+    <value>У вас недостаточно средств!</value>
   </data>
-  <data name="RechargeBalance" xml:space="preserve">
-    <value>Пополнить счет на</value>
+  <data name="TopUpBalanceFormat" xml:space="preserve">
+    <value>Пополнить счет на {0}{1}</value>
+    <comment>Пополнить счет на {сумма к оплате}{знак рубля}</comment>
   </data>
   <data name="UnconfirmedAttemptText" xml:space="preserve">
     <value>Проверьте вашу почту, вам должно прийти электронное письмо. Вы не можете делать заказы, пока вы не подтвердили свою электронную почту!</value>
@@ -143,5 +136,8 @@
   </data>
   <data name="YourBalance" xml:space="preserve">
     <value>Ваш Баланс</value>
+  </data>
+  <data name="YourBalanceFormat" xml:space="preserve">
+    <value>Ваш Баланс : {0}{1}.</value>
   </data>
 </root>

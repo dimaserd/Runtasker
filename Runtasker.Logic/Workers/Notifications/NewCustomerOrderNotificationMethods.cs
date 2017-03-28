@@ -35,8 +35,6 @@ namespace Runtasker.Logic.Workers.Notifications
         void Construct()
         {
             Emailer = new CustomerEmailMethods();
-            FASigns = new FontAwesomeRenderer();
-            GISigns = new GlyphiconRenderer();
 
             ModelBuilder = new CustomerOrderNotificationBuilder();
         }
@@ -46,9 +44,6 @@ namespace Runtasker.Logic.Workers.Notifications
         NotificationRepository Repository { get; set; }
 
         CustomerEmailMethods Emailer { get; set; }
-
-        FontAwesomeRenderer FASigns { get; set; }
-        GlyphiconRenderer GISigns { get; set; }
 
         CustomerOrderNotificationBuilder ModelBuilder { get; set; }
         #endregion

@@ -1,5 +1,5 @@
 ﻿using HtmlExtensions.HtmlEntities;
-using HtmlExtensions.Renderers;
+using HtmlExtensions.StaticRenderers;
 using Runtasker.LocaleBuilders.Models;
 using Runtasker.LocaleBuilders.Notification;
 using Runtasker.Logic.Contexts.Interfaces;
@@ -32,9 +32,7 @@ namespace Runtasker.Logic.Workers.Notifications
         {
             Emailer = new CustomerEmailMethods();
 
-            FASigns = new FontAwesomeRenderer();
-            GISigns = new GlyphiconRenderer();
-            HtmlSigns = new HtmlSignsRenderer();
+            
 
             ModelBuilder = new CustomerOrderNotificationBuilder();
             PerformerNotificationGetter = new PerformerNotificationCreator(Context);
@@ -46,11 +44,6 @@ namespace Runtasker.Logic.Workers.Notifications
 
         CustomerEmailMethods Emailer { get; set; }
 
-        #region Знаки
-        FontAwesomeRenderer FASigns { get; set; }
-        GlyphiconRenderer GISigns { get; set; }
-        HtmlSignsRenderer HtmlSigns { get; set; }
-        #endregion
         CustomerOrderNotificationBuilder ModelBuilder { get; set; }
 
         IMyDbContext Context { get; set; }

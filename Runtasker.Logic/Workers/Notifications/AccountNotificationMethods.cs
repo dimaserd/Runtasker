@@ -1,5 +1,6 @@
 ﻿using HtmlExtensions.HtmlEntities;
 using HtmlExtensions.Renderers;
+using HtmlExtensions.StaticRenderers;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers.Email;
 using Runtasker.Resources.Notifications.AccountMethods;
@@ -23,21 +24,13 @@ namespace Runtasker.Logic.Workers.Notifications
             Context = context;
 
             Emailer = new AccountEmailMethods();
-
-            FASigns = new FontAwesomeRenderer();
-            GISigns = new GlyphiconRenderer();
-            HtmlSigns = new HtmlSignsRenderer();
         }
         #endregion
 
         #region Private Fields
-        private AccountEmailMethods Emailer { get; set; }
+        AccountEmailMethods Emailer { get; set; }
 
         MyDbContext Context { get; set; }
-
-        FontAwesomeRenderer FASigns { get; set; }
-        GlyphiconRenderer GISigns { get; set; }
-        HtmlSignsRenderer HtmlSigns { get; set; }
         #endregion
 
         #region Public Methods

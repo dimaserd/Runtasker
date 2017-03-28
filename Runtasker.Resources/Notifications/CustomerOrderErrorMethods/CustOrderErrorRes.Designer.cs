@@ -61,38 +61,11 @@ namespace Runtasker.Resources.Notifications.CustomerOrderErrorMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на #.
+        ///   Ищет локализованную строку, похожую на Your Balance : {0}{1}. Half price of order #{2} costs {3}{1}. You need to top up your balance by {4}{1}..
         /// </summary>
-        public static string Number {
+        public static string PayWithoutMoneyTextFormat {
             get {
-                return ResourceManager.GetString("Number", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на A half of an order.
-        /// </summary>
-        public static string PayWithoutMoneyText1 {
-            get {
-                return ResourceManager.GetString("PayWithoutMoneyText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на costs.
-        /// </summary>
-        public static string PayWithoutMoneyText2 {
-            get {
-                return ResourceManager.GetString("PayWithoutMoneyText2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на You need to recharge your balance on.
-        /// </summary>
-        public static string PayWithoutMoneyText3 {
-            get {
-                return ResourceManager.GetString("PayWithoutMoneyText3", resourceCulture);
+                return ResourceManager.GetString("PayWithoutMoneyTextFormat", resourceCulture);
             }
         }
         
@@ -106,11 +79,11 @@ namespace Runtasker.Resources.Notifications.CustomerOrderErrorMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Recharge on.
+        ///   Ищет локализованную строку, похожую на Top up by {0}{1}.
         /// </summary>
-        public static string RechargeBalance {
+        public static string TopUpBalanceFormat {
             get {
-                return ResourceManager.GetString("RechargeBalance", resourceCulture);
+                return ResourceManager.GetString("TopUpBalanceFormat", resourceCulture);
             }
         }
         
@@ -138,6 +111,15 @@ namespace Runtasker.Resources.Notifications.CustomerOrderErrorMethods {
         public static string YourBalance {
             get {
                 return ResourceManager.GetString("YourBalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Your Balance : {0}{1}..
+        /// </summary>
+        public static string YourBalanceFormat {
+            get {
+                return ResourceManager.GetString("YourBalanceFormat", resourceCulture);
             }
         }
     }

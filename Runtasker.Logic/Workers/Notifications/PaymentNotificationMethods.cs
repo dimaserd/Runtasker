@@ -1,6 +1,7 @@
 ﻿using Extensions.Decimal;
 using HtmlExtensions.HtmlEntities;
 using HtmlExtensions.Renderers;
+using HtmlExtensions.StaticRenderers;
 using Runtasker.Logic.Entities;
 using Runtasker.Resources.Notifications.PaymentMethods;
 using System.Globalization;
@@ -20,8 +21,6 @@ namespace Runtasker.Logic.Workers.Notifications
         void Construct(MyDbContext context)
         {
             Context = context;
-            FASigns = new FontAwesomeRenderer();
-            GISigns = new GlyphiconRenderer();
         }
         #endregion
 
@@ -31,9 +30,6 @@ namespace Runtasker.Logic.Workers.Notifications
 
         #region Properties
         MyDbContext Context { get; set; }
-
-        FontAwesomeRenderer FASigns {get;set;}
-        GlyphiconRenderer GISigns { get; set; }
         #endregion
 
         #region Methods like Events

@@ -1,14 +1,13 @@
 ﻿@using VkParser.Entities
 @using VkParser.Enumerations
-@using HtmlExtensions.Renderers
+@using HtmlExtensions.StaticRenderers
 @using Extensions.String
 @using VkParser.Extensions.String
 @model List<VkFoundPost>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Список постов";
     Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 
-    GlyphiconRenderer GISigns = new GlyphiconRenderer();
 }
 
 <h2>Найденные посты из сообществ</h2>

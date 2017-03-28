@@ -1,4 +1,4 @@
-﻿using HtmlExtensions.Renderers;
+﻿using HtmlExtensions.StaticRenderers;
 using Runtasker.Logic.Entities;
 using System.Text;
 using Runtasker.Resources.UIExtensions.Orders;
@@ -19,16 +19,11 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
         void Construct()
         {
-            FASignsCollection = new FontAwesomeRenderer();
-            GISignsCollection = new GlyphiconRenderer();
+            
         }
         #endregion
 
-        #region Properties
-        FontAwesomeRenderer FASignsCollection { get; set; }
-
-        GlyphiconRenderer GISignsCollection { get; set; }
-        #endregion
+        
 
         #region Help Methods
 
@@ -44,7 +39,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
             return new HtmlActionButtonLink
                 (
                     buttonLink: "#",
-                    buttonText: $"{GISignsCollection.Envelope} {OrderEntityRes.ChatAboutOrder} {GISignsCollection.Count(unreadCount)}",
+                    buttonText: $"{GISigns.Envelope} {OrderEntityRes.ChatAboutOrder} {GISigns.Count(unreadCount)}",
                     //for javascript toggler with modal
                     htmlAttributes: new { id = Order.Id, @class = $"{GetButtonClass()} orderChat" }
                 ).ToString();
@@ -107,7 +102,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
             buttons.Append(new HtmlActionButtonLink
                     (
                        buttonLink: $"/Orders/PayAnotherHalf/{Order.Id}",
-                       buttonText: $"{OrderEntityRes.Pay} {Order.PaidSum.ToMoney()}{FASignsCollection.Rouble}",
+                       buttonText: $"{OrderEntityRes.Pay} {Order.PaidSum.ToMoney()}{HtmlSigns.Rouble}",
                        buttonClass: GetButtonClass()
                     ).ToString());
 
@@ -121,7 +116,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
             buttons.Append(new HtmlActionButtonLink
                 (
                     buttonLink: $"File/DownloadSolution/{Order.Id}",
-                    buttonText: $"{FASignsCollection.Download} {OrderEntityRes.DownloadSolution}",
+                    buttonText: $"{FASigns.Download} {OrderEntityRes.DownloadSolution}",
                     buttonClass: GetButtonClass()
                 ).ToString());
             return buttons.ToString();
@@ -135,7 +130,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
             buttons.Append(new HtmlActionButtonLink
                 (
-                    buttonText: $"{GISignsCollection.Star} {OrderEntityRes.RatingWork}!",
+                    buttonText: $"{GISigns.Star} {OrderEntityRes.RatingWork}!",
                     buttonLink: $"Orders/Rating/{Order.Id}",
                     htmlAttributes: new { id = $"{Order.Id}", @class = $"{GetButtonClass()} rateLink" }
                 ).ToString());

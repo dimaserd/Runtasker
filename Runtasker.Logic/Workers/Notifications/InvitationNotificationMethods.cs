@@ -1,6 +1,7 @@
-﻿using HtmlExtensions.Renderers;
+﻿using HtmlExtensions.StaticRenderers;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers.Email;
+using Runtasker.Settings;
 using System.Linq;
 
 namespace Runtasker.Logic.Workers.Notifications
@@ -18,9 +19,6 @@ namespace Runtasker.Logic.Workers.Notifications
             Context = context;
 
             Emailer = new InvitationEmailMethods();
-
-            GISigns = new GlyphiconRenderer();
-            FASigns = new FontAwesomeRenderer();
         }
         #endregion
 
@@ -28,9 +26,6 @@ namespace Runtasker.Logic.Workers.Notifications
         MyDbContext Context { get; set; }
 
         InvitationEmailMethods Emailer {get;set;}
-
-        GlyphiconRenderer GISigns { get; set; }
-        FontAwesomeRenderer FASigns { get; set; }
         #endregion
 
         #region Public Methods like Events
@@ -41,7 +36,7 @@ namespace Runtasker.Logic.Workers.Notifications
                 AboutType = NotificationAboutType.Ordinary,
                 Title = $"You have sent an invitation to {I.ReceiverEmail}!",
                 Text = "When user registered and got his first order finished, you will get your "
-                + $"300{FASigns.Rouble}. Best wishes from Runtasker team!",
+                + $"{UISettings.RegistrationBonus}{HtmlSigns.Rouble}. Best wishes from Runtasker team!",
                 Type = NotificationType.Success,
                 UserGuid = I.SenderGuid,
                 Link = null
@@ -61,7 +56,7 @@ namespace Runtasker.Logic.Workers.Notifications
                 AboutType = NotificationAboutType.Ordinary,
                 Title = $"User {registeredUser.Email} registered through your invitation!",
                 Text = $"When {registeredUser.Email} got his first order finished, you will get your "
-                + $"300{FASigns.Rouble}. Best wishes from Runtasker team!",
+                + $"{UISettings.RegistrationBonus}{HtmlSigns.Rouble}. Best wishes from Runtasker team!",
                 Type = NotificationType.Success,
                 UserGuid = I.SenderGuid,
                 Link = null
@@ -74,7 +69,7 @@ namespace Runtasker.Logic.Workers.Notifications
             {
                 AboutType = NotificationAboutType.Balance,
                 Title = $"Nice try, nice try!",
-                Text = $"But we have predicted this scenario! Get your 50{FASigns.Rouble} from Runtasker! "
+                Text = $"But we have predicted this scenario! Get your 50{HtmlSigns.Rouble} from Runtasker! "
                 + "If you spot any error, or something! Please contact us! Best wishes from Runtasker team!",
                 Type = NotificationType.Success,
                 UserGuid = I.SenderGuid,

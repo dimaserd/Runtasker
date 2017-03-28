@@ -1,6 +1,7 @@
 ﻿using Extensions.Decimal;
 using HtmlExtensions.HtmlEntities;
 using HtmlExtensions.Renderers;
+using HtmlExtensions.StaticRenderers;
 using Runtasker.Logic.Entities;
 using Runtasker.Resources.Notifications.CustomerOrderErrorMethods;
 using System;
@@ -19,21 +20,18 @@ namespace Runtasker.Logic.Workers.Notifications
         {
             UserGuid = userGuid;
 
-            FASigns = new FontAwesomeRenderer();
-            GISigns = new GlyphiconRenderer();
-            HtmlSigns = new HtmlSignsRenderer();
+            
         }
         #endregion
 
         #region Properties
         string UserGuid { get; set; }
 
-        FontAwesomeRenderer FASigns { get; set; }
-        GlyphiconRenderer GISigns { get; set; }
-        HtmlSignsRenderer HtmlSigns { get; set; }
+        
         #endregion
 
         #region Methods like Events
+
         public void OnCustomerTriedToAddAnOrderWithUnconfirmedAccount()
         {
             using (MyDbContext context = new MyDbContext())
@@ -62,20 +60,23 @@ namespace Runtasker.Logic.Workers.Notifications
 
             using (MyDbContext context = new MyDbContext())
             {
+                string balanceString = balance.ToMoney();
+                string orderHalfPriceString = (order.Sum / 2).ToMoney();
+
                 Notification N = new Notification
                 {
                     AboutType = NotificationAboutType.Ordinary,
                     UserGuid = UserGuid,
                     Type = NotificationType.Danger,
                     Title = CustOrderErrorRes.PayWithoutMoneyTitle,
-                    Text = $"{CustOrderErrorRes.YourBalance}: {balance.ToMoney()}{HtmlSigns.Rouble}. " +
-                $"{CustOrderErrorRes.PayWithoutMoneyText1} {CustOrderErrorRes.Number}{order.Id} " +
-                $"{CustOrderErrorRes.PayWithoutMoneyText2} {(order.Sum / 2).ToMoney()}{HtmlSigns.Rouble}. " +
-                $"{CustOrderErrorRes.PayWithoutMoneyText3} {sumToPay}{HtmlSigns.Rouble}.",
+
+                    Text = string.Format(CustOrderErrorRes.PayWithoutMoneyTextFormat, balanceString, HtmlSigns.Rouble, order.Id, orderHalfPriceString, sumToPay),
+                                                                //format                0                 1               2           3                    4
                     Link = new HtmlLink
                     (
                         hrefParam: $"/Payment/Index?sumToPay={sumToPay}",
-                        textParam: $"{CustOrderErrorRes.RechargeBalance} {sumToPay}{HtmlSigns.Rouble}",
+                        textParam: string.Format(CustOrderErrorRes.TopUpBalanceFormat, sumToPay, HtmlSigns.Rouble),
+                        //                              format                            0         1
                         buttonSizeParam: HtmlButtonSize.Large,
                         buttonTypeParam: HtmlButtonType.Success
                     ).ToString(),

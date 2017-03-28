@@ -3359,6 +3359,7 @@
     <Content Include="App_Code\PortfolioHelper.cshtml" />
     <Content Include="App_Code\AlertHelper.cshtml" />
     <Content Include="App_Code\JSProperyValidator.cshtml" />
+    <Content Include="App_Code\FooterHelper.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Scripts\bootstrap.js" />

@@ -126,7 +126,12 @@
   <data name="Pay" xml:space="preserve">
     <value>Pay</value>
   </data>
-  <data name="PayHalf" xml:space="preserve">
-    <value>Pay half of order #</value>
+  <data name="PayBtnFormat" xml:space="preserve">
+    <value>{0} Pay</value>
+    <comment>{знак оплаты} Pay</comment>
+  </data>
+  <data name="PayHalfFormat" xml:space="preserve">
+    <value>Pay half price of order #{0}</value>
+    <comment>Pay half price of order #{номер заказа}</comment>
   </data>
 </root>

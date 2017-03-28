@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DevSettings.cs" />
     <Compile Include="Enumerations\ApplicationSettingType.cs" />
     <Compile Include="Enumerations\ConnectionType.cs" />
     <Compile Include="Settings.cs" />

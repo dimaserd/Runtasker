@@ -88,11 +88,20 @@ namespace Runtasker.Resources.Views.Orders.Pay {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Pay half of order #.
+        ///   Ищет локализованную строку, похожую на {0} Pay.
         /// </summary>
-        public static string PayHalf {
+        public static string PayBtnFormat {
             get {
-                return ResourceManager.GetString("PayHalf", resourceCulture);
+                return ResourceManager.GetString("PayBtnFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Pay half price of order #{0}.
+        /// </summary>
+        public static string PayHalfFormat {
+            get {
+                return ResourceManager.GetString("PayHalfFormat", resourceCulture);
             }
         }
     }

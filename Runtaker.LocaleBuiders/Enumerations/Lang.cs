@@ -1,7 +1,14 @@
-﻿namespace Runtasker.LocaleBuilders.Enumerations
+﻿using System.ComponentModel;
+
+namespace Runtasker.LocaleBuilders.Enumerations
 {
     public enum Lang
     {
-        English, Russian, Chinese
+        [Description("en-GB")]
+        English,
+        [Description("ru-RU")]
+        Russian,
+        [Description("zh-CN")]
+        Chinese
     }
 }

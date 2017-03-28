@@ -40,10 +40,6 @@ namespace Runtasker.Controllers
         KnowPriceWorker _knowPriceWorker;
         AccountViewModelBuilder _viewModelBuilder;
 
-        #region Signs
-        HtmlSignsRenderer _htmlSigns;
-        #endregion
-
         #endregion
 
         #endregion
@@ -132,17 +128,6 @@ namespace Runtasker.Controllers
             }
         }
 
-        HtmlSignsRenderer HtmlSigns
-        {
-            get
-            {
-                if(_htmlSigns == null)
-                {
-                    _htmlSigns = new HtmlSignsRenderer();
-                }
-                return _htmlSigns;
-            }
-        }
         #endregion
 
         #region Constructors
@@ -160,8 +145,6 @@ namespace Runtasker.Controllers
 
         void Construct()
         {
-            
-            //RegNotificater = new RegistrationNotificationMethods(Context);
             InfoModels = new AccountInfoModels();
         }
         #endregion
@@ -216,15 +199,14 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public string Roles()
         {
-            string[] roles = new string[]
-            {
-                "Admin", "Customer", "Performer", "VkPerformer"
-            };
+            string[] roles = DevSettings.RolesInApp;
+
             foreach (string role in roles)
             {
-                
-               _roleManager.Create(new IdentityRole(role) { Name = role});
-               
+                if (!_roleManager.RoleExists(role))
+                {
+                    _roleManager.Create(new IdentityRole(role) { Name = role });
+                }
             }
 
             return "Готово";
@@ -233,23 +215,11 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public string Dev()
         {
+            //Добавление ролей в систему
+            Roles();
 
-            #region Добавление ролей в систему
-            string[] roles = new string[]
-            {
-                "Admin", "Customer", "Performer", "VkPerformer"
-            };
-            foreach(string role in roles)
-            {
-                if (!_roleManager.RoleExists(role))
-                {
-                    _roleManager.Create(new IdentityRole(role) { Name = role});
-                }
-            }
-            #endregion
-
-            string customerEmail = "dimaserd96@yandex.ru";
-            string performerEmail = "dimaserd84@gmail.com";
+            string customerEmail = DevSettings.TestCustomerEmail;
+            string performerEmail = DevSettings.AdminEmail;
 
             var maybeCustomer = UserManager.FindByEmail(customerEmail);
             if (maybeCustomer == null)
@@ -264,7 +234,7 @@ namespace Runtasker.Controllers
                     UserName = customerEmail
                 };
 
-                UserManager.Create(customer, "testpass");
+                UserManager.Create(customer, DevSettings.TestPassword);
                 UserManager.AddToRole(customer.Id, "Customer");
             }
             else
@@ -285,14 +255,14 @@ namespace Runtasker.Controllers
                     UserName = performerEmail
                 };
 
-                UserManager.Create(performer, "testpass");
+                UserManager.Create(performer, DevSettings.TestPassword);
                 UserManager.AddToRole(performer.Id, "Admin");
                 UserManager.AddToRole(performer.Id, "Performer");
 
                 OtherUserInfo info = new OtherUserInfo
                 {
                     Id = performer.Id,
-                    VkDomain = "dimaserd",
+                    VkDomain = DevSettings.AdminVkDomain,
                     Specialization = "0,1,2,3,4,5,6,7,8,9"
                 };
                 Context.OtherUserInfos.Add(info);
@@ -308,19 +278,14 @@ namespace Runtasker.Controllers
                     OtherUserInfo info = new OtherUserInfo
                     {
                         Id = maybePerformer.Id,
-                        VkDomain = "dimaserd",
+                        VkDomain = DevSettings.AdminVkDomain,
                         Specialization = "0,1,2,3,4,5,6,7,8,9"
                     };
                     Context.OtherUserInfos.Add(info);
                     Context.SaveChanges();
                 }
                 
-            }
-
-            
-
-
-                
+            }    
 
             return "готово";
         }

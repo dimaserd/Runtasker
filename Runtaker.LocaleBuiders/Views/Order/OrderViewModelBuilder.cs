@@ -3,6 +3,7 @@ using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Views.Home.KnowPrice;
 using Runtasker.Resources.Views.Orders.Create;
 using Runtasker.Resources.Views.Orders.OnlineHelp;
+using Runtasker.Resources.Views.Orders.Pay;
 
 namespace Runtaker.LocaleBuiders.Views.Order
 {
@@ -70,5 +71,16 @@ namespace Runtaker.LocaleBuiders.Views.Order
             return result;
         }
 
+        public LocaleViewModel PayHalfView(int orderId, string paySign)
+        {
+            LocaleViewModel result = new LocaleViewModel();
+
+            result.Add("Title", string.Format(PayRes.PayHalfFormat, orderId));
+            result.Add("HomeNav", PayRes.HomeNav);
+            result.Add("MyOrdersNav", PayRes.MyOrdersNav);
+            result.Add("ActiveNav", PayRes.Pay);
+            result.Add("PayBtnInnerHtml", string.Format(PayRes.PayBtnFormat, paySign));
+            return result;
+        }
     }
 }

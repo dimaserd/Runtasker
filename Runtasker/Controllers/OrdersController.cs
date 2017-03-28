@@ -12,6 +12,7 @@ using Logic.Extensions.Models;
 using Runtaker.LocaleBuiders.Views.Order;
 using Runtasker.Logic.Models.Orders;
 using Runtasker.Logic.Models.Orders.Pay;
+using HtmlExtensions.StaticRenderers;
 
 namespace Runtasker.Controllers
 {
@@ -194,6 +195,7 @@ namespace Runtasker.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewData["localeModel"] = ModelBuilder.PayHalfView(model.OrderId, FASigns.CreditCard.ToString());
             return View(model);
         }
 
@@ -203,6 +205,7 @@ namespace Runtasker.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewData["localeModel"] = ModelBuilder.PayHalfView(model.OrderId, FASigns.CreditCard.ToString());
                 return View(model);
             }
 
@@ -214,6 +217,7 @@ namespace Runtasker.Controllers
                 {
                     ModelState.AddModelError("", error);
                 }
+                ViewData["localeModel"] = ModelBuilder.PayHalfView(model.OrderId, FASigns.CreditCard.ToString());
                 return View(model);
             }
 

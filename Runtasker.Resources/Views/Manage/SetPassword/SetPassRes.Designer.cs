@@ -79,6 +79,15 @@ namespace Runtasker.Resources.Views.Manage.SetPassword {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string LittleHeader {
+            get {
+                return ResourceManager.GetString("LittleHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Set Password.
         /// </summary>
         public static string SetPass {

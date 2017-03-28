@@ -13,7 +13,7 @@
     {
         <li>
             <a href="" class="chatLink" id="@o.OrderId">
-                @ActivePanel.ChatLinkText1@o.OrderId @ActivePanel.ChatLinkText2 <span class="badge">@o.UnreadMessages</span>
+                @string.Format(ActivePanel.ChatLinkTextFormat, o.OrderId) <span class="badge">@o.UnreadMessages</span>
             </a>
         </li>
     }

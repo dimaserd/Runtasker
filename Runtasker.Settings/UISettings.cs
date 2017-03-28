@@ -27,5 +27,7 @@
 
         public static int DaysForCourseWorkTask = 30;
         #endregion
+
+        public static int CompanyStartYear = 2014;
     }
 }

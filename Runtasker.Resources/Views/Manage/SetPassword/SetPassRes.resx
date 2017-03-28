@@ -123,6 +123,9 @@
   <data name="Info" xml:space="preserve">
     <value>You do not have a local username/password for this site. Add a local account so you can log in without an external login.</value>
   </data>
+  <data name="LittleHeader" xml:space="preserve">
+    <value />
+  </data>
   <data name="SetPass" xml:space="preserve">
     <value>Set Password</value>
   </data>

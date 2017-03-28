@@ -123,6 +123,9 @@
   <data name="Info" xml:space="preserve">
     <value>У вас нет локального имени пользователя/пароля для этого сайта. Добавьте учетную запись, для того чтобы иметь доступ к сайту без внешних провайдеров.</value>
   </data>
+  <data name="LittleHeader" xml:space="preserve">
+    <value />
+  </data>
   <data name="SetPass" xml:space="preserve">
     <value>Установить пароль</value>
   </data>

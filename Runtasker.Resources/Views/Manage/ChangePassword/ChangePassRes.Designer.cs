@@ -61,6 +61,15 @@ namespace Runtasker.Resources.Views.Manage.ChangePassword {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Here you can change your password.
+        /// </summary>
+        public static string ActionDesc {
+            get {
+                return ResourceManager.GetString("ActionDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Change password.
         /// </summary>
         public static string ChangePass {

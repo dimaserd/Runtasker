@@ -64,6 +64,7 @@
     <Compile Include="Views\Account\AccountViewModelBuilder.cs" />
     <Compile Include="Views\Home\HomeViewModelBuilder.cs" />
     <Compile Include="Views\Landing\LandingLocaleViewModelBuilder.cs" />
+    <Compile Include="Views\Manage\ManageLocaleViewModel.cs" />
     <Compile Include="Views\Order\OrderViewModelBuilder.cs" />
     <Compile Include="Views\Payment\PaymentViewModelBuilder.cs" />
   </ItemGroup>

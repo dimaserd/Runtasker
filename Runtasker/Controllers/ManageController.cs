@@ -10,6 +10,7 @@ using Runtasker.Logic.Workers;
 using Runtasker.Logic.Workers.Invitations;
 using Runtasker.Logic.Models;
 using Logic.Extensions.Models;
+using Runtaker.LocaleBuiders.Views.Manage;
 
 namespace Runtasker.Controllers
 {
@@ -21,6 +22,7 @@ namespace Runtasker.Controllers
         #region My Fields
         InvitationWorker _inviter;
         AvatarWorker _avatar;
+        ManageLocaleViewModelBuilder _viewModelBuilder;
         #endregion
 
         ApplicationSignInManager _signInManager;
@@ -54,6 +56,18 @@ namespace Runtasker.Controllers
                 }
                 return _inviter;
             } 
+        }
+
+        public ManageLocaleViewModelBuilder ViewModelBuilder
+        {
+            get
+            {
+                if(_viewModelBuilder == null)
+                {
+                    _viewModelBuilder = new ManageLocaleViewModelBuilder();
+                }
+                return _viewModelBuilder;
+            }
         }
         #endregion
 
@@ -292,6 +306,7 @@ namespace Runtasker.Controllers
         [HttpGet]
         public ActionResult ChangePassword()
         {
+            ViewData["localeModel"] = ViewModelBuilder.ChangePasswordView();
             return View();
         }
 
@@ -299,8 +314,11 @@ namespace Runtasker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
+            ViewData["localeModel"] = ViewModelBuilder.ChangePasswordView();
+
             if (!ModelState.IsValid)
             {
+                
                 return View(model);
             }
             var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
@@ -313,6 +331,8 @@ namespace Runtasker.Controllers
                 }
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
+
+            
             AddErrors(result);
             return View(model);
         }
@@ -320,6 +340,8 @@ namespace Runtasker.Controllers
         [HttpGet]
         public ActionResult SetPassword()
         {
+            ViewData["localeModel"] = ViewModelBuilder.SetPasswordView();
+
             return View();
         }
 

@@ -123,6 +123,10 @@
   <data name="ChatLinkText2" xml:space="preserve">
     <value>Inbox</value>
   </data>
+  <data name="ChatLinkTextFormat" xml:space="preserve">
+    <value>Order #{0} Inbox</value>
+    <comment>Order #{номер заказа} Inbox</comment>
+  </data>
   <data name="Inbox" xml:space="preserve">
     <value>Inbox</value>
   </data>

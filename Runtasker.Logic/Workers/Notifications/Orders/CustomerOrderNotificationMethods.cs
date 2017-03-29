@@ -349,49 +349,49 @@ namespace Runtasker.Logic.Workers.Notifications
         /// и нигде не используется
         /// </summary>
         /// <param name="I"></param>
-        public void OnInvitedCustomerRatedAnOrderSolution(Invitation I)
+        public void OnInvitedCustomerRatedAnOrderSolution(Invitation I, int bonus, string roubleSign)
         {
-            string inviterEmail = GetEmailByGuid(I.SenderGuid);
+            //string inviterEmail = GetEmailByGuid(I.SenderGuid);
 
-            Notification inviterN = new Notification
-            {
-                AboutType = NotificationAboutType.Balance,
-                Type = NotificationType.Success,
-                UserGuid = I.SenderGuid,
-                Title = string.Format(CustomerOrder.InviterRatingTitleFormat, I.ReceiverEmail),
-                Text = string.Format(CustomerOrder.InviterRatingTextFormat, UISettings.RegistrationBonus, HtmlSigns.Rouble),
-                Link = new HtmlLink
-                (
-                    hrefParam: "/Manage/InviteUser",
-                    textParam: $"{GISigns.User} {CustomerOrder.InviterRatingButtonText}",
-                    buttonSizeParam: HtmlButtonSize.Large,
-                    buttonTypeParam: HtmlButtonType.Success
-                ).ToString(),
-            };
+            //Notification inviterN = new Notification
+            //{
+            //    AboutType = NotificationAboutType.Balance,
+            //    Type = NotificationType.Success,
+            //    UserGuid = I.SenderGuid,
+            //    Title = string.Format(CustomerOrder.InviterRatingTitleFormat, I.ReceiverEmail),
+            //    Text = string.Format(CustomerOrder.InviterRatingTextFormat, UISettings.RegistrationBonus, HtmlSigns.Rouble),
+            //    Link = new HtmlLink
+            //    (
+            //        hrefParam: "/Manage/InviteUser",
+            //        textParam: $"{GISigns.User} {CustomerOrder.InviterRatingButtonText}",
+            //        buttonSizeParam: HtmlButtonSize.Large,
+            //        buttonTypeParam: HtmlButtonType.Success
+            //    ).ToString(),
+            //};
 
-            Notification invitedN = new Notification
-            {
-                AboutType = NotificationAboutType.Ordinary,
-                Type = NotificationType.Info,
-                UserGuid = I.ReceiverGuid,
-                Title = $"{CustomerOrder.InvitedRatingTitle1} {inviterEmail} " + 
-                $"{CustomerOrder.InvitedRatingTitle2} 300{FASigns.Rouble}!",
-                Text = $"{CustomerOrder.InvitedRatingText1} {inviterEmail} {CustomerOrder.InvitedRatingText2} 300{FASigns.Rouble} "
-                + CustomerOrder.InvitedRatingText3,
-                Link = new HtmlLink
-                (
-                    hrefParam: "/Manage/InviteUser",
-                    textParam: $"{GISigns.User} {CustomerOrder.InviterRatingButtonText}",
-                    buttonSizeParam: HtmlButtonSize.Large,
-                    buttonTypeParam: HtmlButtonType.Success
-                ).ToString()
-            };
+            //Notification invitedN = new Notification
+            //{
+            //    AboutType = NotificationAboutType.Ordinary,
+            //    Type = NotificationType.Info,
+            //    UserGuid = I.ReceiverGuid,
+            //    Title = $"{CustomerOrder.InvitedRatingTitle1} {inviterEmail} " + 
+            //    $"{CustomerOrder.InvitedRatingTitle2} {bonus}{FASigns.Rouble}!",
+            //    Text = $"{CustomerOrder.InvitedRatingText1} {inviterEmail} {CustomerOrder.InvitedRatingText2} {bonus}{FASigns.Rouble} "
+            //    + CustomerOrder.InvitedRatingText3,
+            //    Link = new HtmlLink
+            //    (
+            //        hrefParam: "/Manage/InviteUser",
+            //        textParam: $"{GISigns.User} {CustomerOrder.InviterRatingButtonText}",
+            //        buttonSizeParam: HtmlButtonSize.Large,
+            //        buttonTypeParam: HtmlButtonType.Success
+            //    ).ToString()
+            //};
 
-            Context.Notifications.Add(inviterN);
-            Context.Notifications.Add(invitedN);
-            Context.SaveChanges();
+            //Context.Notifications.Add(inviterN);
+            //Context.Notifications.Add(invitedN);
+            //Context.SaveChanges();
             
-            Emailer.OnInvitedCustomerRatedAnOrderSolution(GetUserByGuid(I.SenderGuid), I.ReceiverEmail);
+            //Emailer.OnInvitedCustomerRatedAnOrderSolution(GetUserByGuid(I.SenderGuid), I.ReceiverEmail);
         }
 
         #endregion

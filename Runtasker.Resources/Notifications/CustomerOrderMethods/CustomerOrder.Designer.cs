@@ -133,51 +133,6 @@ namespace Runtasker.Resources.Notifications.CustomerOrderMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на User.
-        /// </summary>
-        public static string InvitedRatingText1 {
-            get {
-                return ResourceManager.GetString("InvitedRatingText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на invited you to Runtasker! Runtasker team gifts anyone.
-        /// </summary>
-        public static string InvitedRatingText2 {
-            get {
-                return ResourceManager.GetString("InvitedRatingText2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на who invited someone new to our service! You can also invite your friends to us!.
-        /// </summary>
-        public static string InvitedRatingText3 {
-            get {
-                return ResourceManager.GetString("InvitedRatingText3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на User.
-        /// </summary>
-        public static string InvitedRatingTitle1 {
-            get {
-                return ResourceManager.GetString("InvitedRatingTitle1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на invited.
-        /// </summary>
-        public static string InvitedRatingTitle2 {
-            get {
-                return ResourceManager.GetString("InvitedRatingTitle2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Invite User.
         /// </summary>
         public static string InviterRatingButtonText {
@@ -201,15 +156,6 @@ namespace Runtasker.Resources.Notifications.CustomerOrderMethods {
         public static string InviterRatingTitleFormat {
             get {
                 return ResourceManager.GetString("InviterRatingTitleFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на #.
-        /// </summary>
-        public static string Number {
-            get {
-                return ResourceManager.GetString("Number", resourceCulture);
             }
         }
         

@@ -86,14 +86,5 @@ namespace Runtasker.Resources.Views.Orders.MiniPanel {
                 return ResourceManager.GetString("NoOrdersMes", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Order #.
-        /// </summary>
-        public static string Order {
-            get {
-                return ResourceManager.GetString("Order", resourceCulture);
-            }
-        }
     }
 }

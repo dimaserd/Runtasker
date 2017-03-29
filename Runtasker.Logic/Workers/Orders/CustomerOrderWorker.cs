@@ -1,6 +1,5 @@
-﻿using HtmlExtensions.Renderers;
+﻿using HtmlExtensions.StaticRenderers;
 using Logic.Extensions.Models;
-using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations.OrderWorker;
 using Runtasker.Logic.Handlers;
@@ -37,9 +36,7 @@ namespace Runtasker.Logic.Workers.Orders
             //здесь все упирается в UserManger
             Paymenter = new CustomerOrderPaymentMethods(UserGuid, Context);
             ErrorHandler = new CustomerOrderErrorEvents(UserGuid);
-
-            FASigns = new FontAwesomeRenderer();
-            HtmlSigns = new HtmlSignsRenderer();
+            
         }
         #endregion
 
@@ -56,15 +53,12 @@ namespace Runtasker.Logic.Workers.Orders
 
         CustomerOrderErrorEvents ErrorHandler { get; set; }
 
-        #region Special Signs Renderers
-        FontAwesomeRenderer FASigns { get; set; }
-
-        HtmlSignsRenderer HtmlSigns { get; set; }
-        #endregion
+        
 
         #region Internal properties for passing objects
         ApplicationUser Customer { get; set; }
         #endregion
+
         #endregion
 
         #region Help Methods
@@ -113,7 +107,7 @@ namespace Runtasker.Logic.Workers.Orders
             Paymenter.OnInvitedCustomerFinishedOrder(I);
 
             //Notifications methods
-            Notificater.OnInvitedCustomerRatedAnOrderSolution(I);
+            Notificater.OnInvitedCustomerRatedAnOrderSolution(I, 300, HtmlSigns.Rouble);
 
         }
         #endregion

@@ -249,3 +249,7 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\AngleSh
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\VkNet.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\AngleSharp.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\zh-CN\Runtasker.Resources.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Views\Payment\Robokassa\RkassaRes.resx
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.resx
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Views\Payment\Robokassa\RkassaRes.Designer.cs
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.Designer.cs

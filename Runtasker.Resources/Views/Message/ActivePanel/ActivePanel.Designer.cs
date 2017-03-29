@@ -61,24 +61,6 @@ namespace Runtasker.Resources.Views.Message.ActivePanel {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Order№.
-        /// </summary>
-        public static string ChatLinkText1 {
-            get {
-                return ResourceManager.GetString("ChatLinkText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Inbox.
-        /// </summary>
-        public static string ChatLinkText2 {
-            get {
-                return ResourceManager.GetString("ChatLinkText2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Order #{0} Inbox.
         /// </summary>
         public static string ChatLinkTextFormat {

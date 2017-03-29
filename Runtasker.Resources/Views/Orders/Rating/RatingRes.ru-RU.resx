@@ -123,8 +123,9 @@
   <data name="CommentError" xml:space="preserve">
     <value>Вы не можете оставить отзыв пустым. Пожалуйста, напишите что-нибудь!</value>
   </data>
-  <data name="LeaveReview" xml:space="preserve">
-    <value>Поделиться мнением о заказе №</value>
+  <data name="LeaveReviewFormat" xml:space="preserve">
+    <value>Поделиться мнением о заказе №{0}</value>
+    <comment>Поделиться мнением о заказе №{номер заказа}</comment>
   </data>
   <data name="PlaceHolder" xml:space="preserve">
     <value>Оставьте комментарий здесь...</value>

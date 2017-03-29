@@ -143,21 +143,6 @@
   <data name="GoodRatingText1" xml:space="preserve">
     <value>We love that you like what we do!</value>
   </data>
-  <data name="InvitedRatingText1" xml:space="preserve">
-    <value>User</value>
-  </data>
-  <data name="InvitedRatingText2" xml:space="preserve">
-    <value>invited you to Runtasker! Runtasker team gifts anyone</value>
-  </data>
-  <data name="InvitedRatingText3" xml:space="preserve">
-    <value>who invited someone new to our service! You can also invite your friends to us!</value>
-  </data>
-  <data name="InvitedRatingTitle1" xml:space="preserve">
-    <value>User</value>
-  </data>
-  <data name="InvitedRatingTitle2" xml:space="preserve">
-    <value>invited</value>
-  </data>
   <data name="InviterRatingButtonText" xml:space="preserve">
     <value>Invite User</value>
   </data>
@@ -167,9 +152,6 @@
   </data>
   <data name="InviterRatingTitleFormat" xml:space="preserve">
     <value>User {0} has completed his order.</value>
-  </data>
-  <data name="Number" xml:space="preserve">
-    <value>#</value>
   </data>
   <data name="OnlineHelpPaidText" xml:space="preserve">
     <value>Please wait a little, we will contact you soon.</value>

@@ -4,11 +4,26 @@ using Runtasker.Resources.Views.Home.KnowPrice;
 using Runtasker.Resources.Views.Orders.Create;
 using Runtasker.Resources.Views.Orders.OnlineHelp;
 using Runtasker.Resources.Views.Orders.Pay;
+using Runtasker.Resources.Views.Orders.Rating;
 
 namespace Runtaker.LocaleBuiders.Views.Order
 {
     public class OrderViewModelBuilder : UICultureSwitcher
     {
+        public LocaleViewModel RatingView(int orderId)
+        {
+            LocaleViewModel result = new LocaleViewModel();
+
+            result.Add("LeaveReviewBtnText", string.Format(RatingRes.LeaveReviewFormat, orderId));
+            result.Add("CommentError", RatingRes.CommentError);
+            result.Add("RatingError", RatingRes.RatingError);
+            result.Add("CancelBtnText", RatingRes.Cancel);
+            result.Add("SendBtnText", RatingRes.Send);
+            result.Add("CommentPlaceHolder", RatingRes.PlaceHolder);
+
+            return result;
+        }
+
         public LocaleViewModel CreateOrderView()
         {
             LocaleViewModel result = new LocaleViewModel();

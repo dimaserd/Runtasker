@@ -79,11 +79,11 @@ namespace Runtasker.Resources.Views.Orders.Rating {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Leave a Review about order #.
+        ///   Ищет локализованную строку, похожую на Leave a Review about order #{0}.
         /// </summary>
-        public static string LeaveReview {
+        public static string LeaveReviewFormat {
             get {
-                return ResourceManager.GetString("LeaveReview", resourceCulture);
+                return ResourceManager.GetString("LeaveReviewFormat", resourceCulture);
             }
         }
         

@@ -144,15 +144,6 @@
   <data name="GoodRatingText1" xml:space="preserve">
     <value>Спасибо, что по достоинству оценили наши услуги!</value>
   </data>
-  <data name="InvitedRatingText1" xml:space="preserve">
-    <value>Пользователь</value>
-  </data>
-  <data name="InvitedRatingText2" xml:space="preserve">
-    <value>пригласил вас в Runtasker! Runtasker дарит каждому </value>
-  </data>
-  <data name="InvitedRatingText3" xml:space="preserve">
-    <value>за каждого приглашенного друга! Вы тоже можете пригласить своих друзей к нам!</value>
-  </data>
   <data name="InviterRatingButtonText" xml:space="preserve">
     <value>Пригласить пользователя</value>
   </data>
@@ -162,9 +153,6 @@
   <data name="InviterRatingTitleFormat" xml:space="preserve">
     <value>Пользователь {0} завершил свой заказ!.</value>
     <comment>Пользователь {еmail приглашенного} завершил свой заказ!.</comment>
-  </data>
-  <data name="Number" xml:space="preserve">
-    <value>№</value>
   </data>
   <data name="OnlineHelpPaidText" xml:space="preserve">
     <value>Пожалуйста, ожидайте. Мы скоро с вами свяжемся.</value>

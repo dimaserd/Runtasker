@@ -126,7 +126,4 @@
   <data name="NoOrdersMes" xml:space="preserve">
     <value>Создайте свой первый заказ.</value>
   </data>
-  <data name="Order" xml:space="preserve">
-    <value>Заказ №</value>
-  </data>
 </root>

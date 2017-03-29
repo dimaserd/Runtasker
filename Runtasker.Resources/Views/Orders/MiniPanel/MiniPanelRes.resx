@@ -126,7 +126,4 @@
   <data name="NoOrdersMes" xml:space="preserve">
     <value>Create your first order.</value>
   </data>
-  <data name="Order" xml:space="preserve">
-    <value>Order #</value>
-  </data>
 </root>

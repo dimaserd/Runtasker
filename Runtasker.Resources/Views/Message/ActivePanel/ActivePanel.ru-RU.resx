@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChatLinkText1" xml:space="preserve">
-    <value>Чат о заказе №</value>
-  </data>
-  <data name="ChatLinkText2" xml:space="preserve">
-    <value />
-  </data>
   <data name="ChatLinkTextFormat" xml:space="preserve">
     <value>Чат о заказе №{0}</value>
     <comment>Чат о заказе №{номер заказа}</comment>

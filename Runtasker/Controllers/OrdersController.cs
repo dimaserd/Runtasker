@@ -306,13 +306,15 @@ namespace Runtasker.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewData["localeModel"] = ModelBuilder.RatingView(model.OrderId);
             return View(model);
         }
 
         [HttpPost]
         public ActionResult Rating(RatingOrderModel model)
         {
-            if(!ModelState.IsValid)
+            ViewData["localeModel"] = ModelBuilder.RatingView(model.OrderId);
+            if (!ModelState.IsValid)
             {
                 return View(model);
             }

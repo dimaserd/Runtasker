@@ -1,6 +1,4 @@
-﻿using Extensions.Decimal;
-using Runtasker.LocaleBuilders.Enumerations;
-using Runtasker.LocaleBuilders.Models;
+﻿using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Email.OrderPerformer;
 
 namespace Runtasker.LocaleBuilders.Email.CallToAction
@@ -12,7 +10,7 @@ namespace Runtasker.LocaleBuilders.Email.CallToAction
         {
             return new ForEmailCallToAction
             {
-                Header = string.Format(PerformerOrderEmRes.GreetingFormat, customerName),
+                Header = string.Format(PerformerOrderEmRes.EstimatedSubjectFormat, customerName),
                 BigText = $"{string.Format(PerformerOrderEmRes.EstimatedTextFormat, customerName, orderId, orderSum, roubleSign)} {PerformerOrderEmRes.RuntaskerWish}",
                 ActionBtnText = PerformerOrderEmRes.EstimatedBtnText
             };

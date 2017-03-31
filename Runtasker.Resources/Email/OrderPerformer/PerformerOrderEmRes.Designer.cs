@@ -61,15 +61,6 @@ namespace Runtasker.Resources.Email.OrderPerformer {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Dear.
-        /// </summary>
-        public static string Dear {
-            get {
-                return ResourceManager.GetString("Dear", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Go to my orders!.
         /// </summary>
         public static string ErrorFoundButtonText {
@@ -79,29 +70,11 @@ namespace Runtasker.Resources.Email.OrderPerformer {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на about order #.
+        ///   Ищет локализованную строку, похожую на about order #{0}.
         /// </summary>
-        public static string ErrorFoundSubject1 {
+        public static string ErrorFoundSubjectFormat {
             get {
-                return ResourceManager.GetString("ErrorFoundSubject1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на We have found an error in your order #.
-        /// </summary>
-        public static string ErrorFoundText1 {
-            get {
-                return ResourceManager.GetString("ErrorFoundText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Please correct it. It’s easy..
-        /// </summary>
-        public static string ErrorFoundText2 {
-            get {
-                return ResourceManager.GetString("ErrorFoundText2", resourceCulture);
+                return ResourceManager.GetString("ErrorFoundSubjectFormat", resourceCulture);
             }
         }
         
@@ -124,20 +97,11 @@ namespace Runtasker.Resources.Email.OrderPerformer {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Your order #.
+        ///   Ищет локализованную строку, похожую на Your order #{0} has been estimated.
         /// </summary>
-        public static string EstimatedSubject1 {
+        public static string EstimatedSubjectFormat {
             get {
-                return ResourceManager.GetString("EstimatedSubject1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на has been estimated.
-        /// </summary>
-        public static string EstimatedSubject2 {
-            get {
-                return ResourceManager.GetString("EstimatedSubject2", resourceCulture);
+                return ResourceManager.GetString("EstimatedSubjectFormat", resourceCulture);
             }
         }
         
@@ -160,11 +124,11 @@ namespace Runtasker.Resources.Email.OrderPerformer {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на We finished your order.
+        ///   Ищет локализованную строку, похожую на Your order #{0} has been executed.
         /// </summary>
-        public static string ExecutedSubject1 {
+        public static string ExecutedSubjectFormat {
             get {
-                return ResourceManager.GetString("ExecutedSubject1", resourceCulture);
+                return ResourceManager.GetString("ExecutedSubjectFormat", resourceCulture);
             }
         }
         
@@ -178,38 +142,11 @@ namespace Runtasker.Resources.Email.OrderPerformer {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Hello.
-        /// </summary>
-        public static string Greeting {
-            get {
-                return ResourceManager.GetString("Greeting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Hello {0}!.
         /// </summary>
         public static string GreetingFormat {
             get {
                 return ResourceManager.GetString("GreetingFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на #.
-        /// </summary>
-        public static string NumberSign {
-            get {
-                return ResourceManager.GetString("NumberSign", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Order.
-        /// </summary>
-        public static string Order {
-            get {
-                return ResourceManager.GetString("Order", resourceCulture);
             }
         }
         

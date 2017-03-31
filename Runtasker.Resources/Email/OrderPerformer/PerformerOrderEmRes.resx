@@ -117,20 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Dear" xml:space="preserve">
-    <value>Dear</value>
-  </data>
   <data name="ErrorFoundButtonText" xml:space="preserve">
     <value>Go to my orders!</value>
   </data>
-  <data name="ErrorFoundSubject1" xml:space="preserve">
-    <value>about order #</value>
-  </data>
-  <data name="ErrorFoundText1" xml:space="preserve">
-    <value>We have found an error in your order #</value>
-  </data>
-  <data name="ErrorFoundText2" xml:space="preserve">
-    <value>Please correct it. It’s easy.</value>
+  <data name="ErrorFoundSubjectFormat" xml:space="preserve">
+    <value>about order #{0}</value>
+    <comment>about order #{номер заказа}</comment>
   </data>
   <data name="ErrorFoundTextFormat" xml:space="preserve">
     <value>Hello {0} we have found an error in your order #{1}. Please correct it. It’s easy.</value>
@@ -139,11 +131,9 @@
   <data name="EstimatedBtnText" xml:space="preserve">
     <value>Pay a half of it!</value>
   </data>
-  <data name="EstimatedSubject1" xml:space="preserve">
-    <value>Your order #</value>
-  </data>
-  <data name="EstimatedSubject2" xml:space="preserve">
-    <value>has been estimated</value>
+  <data name="EstimatedSubjectFormat" xml:space="preserve">
+    <value>Your order #{0} has been estimated</value>
+    <comment>Your order #{номер заказа} has been estimated</comment>
   </data>
   <data name="EstimatedTextFormat" xml:space="preserve">
     <value>Hello {0} we have estimated your order #{1} at {2}{3}. You need to pay half of the sum before we start carrying out your order.</value>
@@ -152,25 +142,17 @@
   <data name="ExecutedButtonText" xml:space="preserve">
     <value>Pay and download!</value>
   </data>
-  <data name="ExecutedSubject1" xml:space="preserve">
-    <value>We finished your order</value>
+  <data name="ExecutedSubjectFormat" xml:space="preserve">
+    <value>Your order #{0} has been executed</value>
+    <comment>Your order #{номер заказа} has been executed</comment>
   </data>
   <data name="ExecutedTextFormat" xml:space="preserve">
     <value>Hello {0} we have completed the work on your order #{1}. You will be able to download the completed solution after paying the second half of the price - {2}{3}.</value>
     <comment>Hello {имя пользователя} we have completed the work on your order #{номер заказа}. You will be able to download the completed solution after paying the second half of the price - {оставшаяся стоимость}{знак рубля}.</comment>
   </data>
-  <data name="Greeting" xml:space="preserve">
-    <value>Hello</value>
-  </data>
   <data name="GreetingFormat" xml:space="preserve">
     <value>Hello {0}!</value>
     <comment>Hello {имя пользователя}!</comment>
-  </data>
-  <data name="NumberSign" xml:space="preserve">
-    <value>#</value>
-  </data>
-  <data name="Order" xml:space="preserve">
-    <value>Order</value>
   </data>
   <data name="RuntaskerWish" xml:space="preserve">
     <value>Best wishes from the Runtasker team!</value>

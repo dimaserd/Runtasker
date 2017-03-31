@@ -61,7 +61,7 @@ namespace Runtasker.Logic.HtmlConstantEmails
 
             return new EmailModel
             {
-                Subject = $"{PerformerOrderEmRes.EstimatedSubject1}{order.Id} {PerformerOrderEmRes.EstimatedSubject2}",
+                Subject = string.Format(PerformerOrderEmRes.EstimatedSubjectFormat,order.Id),
                 Body = text
             };
         }
@@ -87,7 +87,7 @@ namespace Runtasker.Logic.HtmlConstantEmails
 
             return new EmailModel
             {
-                Subject = $"{PerformerOrderEmRes.ErrorFoundSubject1}{order.Id}",
+                Subject = string.Format(PerformerOrderEmRes.ErrorFoundSubjectFormat,order.Id),
                 Body = text
             };
         }
@@ -115,7 +115,7 @@ namespace Runtasker.Logic.HtmlConstantEmails
 
             return new EmailModel
             {
-                Subject = $"{PerformerOrderEmRes.ExecutedSubject1}{order.Id}",
+                Subject = string.Format(PerformerOrderEmRes.ExecutedSubjectFormat,order.Id),
                 Body = text
             };
         }

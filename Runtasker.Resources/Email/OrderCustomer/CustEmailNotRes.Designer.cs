@@ -142,42 +142,6 @@ namespace Runtasker.Resources.Email.OrderCustomer {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Spend my bonus money!.
-        /// </summary>
-        public static string InvFinishedBtnText {
-            get {
-                return ResourceManager.GetString("InvFinishedBtnText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на You get 300 roubles!.
-        /// </summary>
-        public static string InvFinishedSubject1 {
-            get {
-                return ResourceManager.GetString("InvFinishedSubject1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на got his order finished!.
-        /// </summary>
-        public static string InvFinishedText1 {
-            get {
-                return ResourceManager.GetString("InvFinishedText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на You invited him/her to us! That means you get your 300 roubles! Hope to see you and your friends on Runtasker!.
-        /// </summary>
-        public static string InvFinishedText2 {
-            get {
-                return ResourceManager.GetString("InvFinishedText2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Dear {0}, we have received your application for online-help for {1}. Our administrators will process it and get you the response..
         /// </summary>
         public static string OnlineHelpAppliedTextFormat {
@@ -192,15 +156,6 @@ namespace Runtasker.Resources.Email.OrderCustomer {
         public static string RuntaskerWish {
             get {
                 return ResourceManager.GetString("RuntaskerWish", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на User.
-        /// </summary>
-        public static string User {
-            get {
-                return ResourceManager.GetString("User", resourceCulture);
             }
         }
     }

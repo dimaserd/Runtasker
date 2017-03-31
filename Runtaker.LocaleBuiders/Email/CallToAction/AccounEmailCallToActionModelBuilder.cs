@@ -43,7 +43,7 @@ namespace Runtasker.LocaleBuilders.Email.CallToAction
                 case Lang.Russian:
                     return new ForEmailCallToAction
                     {
-                        Header = $"{AccountEmRes.Greeting}, {userName}!",
+                        Header = string.Format(AccountEmRes.GreetingFormat,userName),
                         BigText = $"{AccountEmRes.RegWithOrdertText1}" +
                             $"<p>{AccountEmRes.RegWithOrdertText2}:</p>" +
                         $"<p>{AccountEmRes.RegWithOrdertText3} : {email}</p>" +
@@ -54,7 +54,7 @@ namespace Runtasker.LocaleBuilders.Email.CallToAction
                 default:
                     return new ForEmailCallToAction
                     {
-                        Header = $"{AccountEmRes.Greeting}, {userName}!",
+                        Header = string.Format(AccountEmRes.GreetingFormat, userName),
                         BigText = $"{AccountEmRes.RegWithOrdertText1} {AccountEmRes.RegWithOrdertText2}:\n" +
                         $"{AccountEmRes.RegWithOrdertText3} : {email}\n" +
                         $"{AccountEmRes.RegWithOrdertText4} : {password}",

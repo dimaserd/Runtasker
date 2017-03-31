@@ -207,11 +207,16 @@ namespace Runtasker.Logic.Workers.Email
             SendEmail(m);
         }
 
+        /// <summary>
+        /// Не готово и не используется
+        /// </summary>
+        /// <param name="inviter"></param>
+        /// <param name="invitedEmail"></param>
         public void OnInvitedCustomerRatedAnOrderSolution(ApplicationUser inviter, string invitedEmail)
         {
             IdentityMessage m = new IdentityMessage
             {
-                Subject = CustEmailNotRes.InvFinishedSubject1,
+                Subject = null,
                 Body = HtmlConstants.GetForInvitedCustomerFinishedAnOrder(inviter.Name, invitedEmail),
                 Destination = inviter.Email
             };

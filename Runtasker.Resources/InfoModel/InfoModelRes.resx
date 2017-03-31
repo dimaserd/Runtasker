@@ -117,24 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RegisterSurpriseText1" xml:space="preserve">
+  <data name="RegisterTextFormat" xml:space="preserve">
+    <value>Please check your email, we have sent you a confirmation email. {0} We are waiting for your account confirmation on {1}.</value>
+    <comment>Please check your email, we have sent you a confirmation email. {ToMark} We are waiting for your account confirmation on {Runtasker}.</comment>
+  </data>
+  <data name="RegisterTextToMark" xml:space="preserve">
     <value>So we have prepared a little surprise for you!</value>
-    <comment>Так же мы приготовили для вас небольшой сюрприз!</comment>
   </data>
-  <data name="RegisterText1" xml:space="preserve">
-    <value>Please check your email, we have sent you a confirmation email.</value>
-    <comment>Пожалуйста, проверьте вашу электронную почту, мы отправили вам подтверждающие письмо.</comment>
-  </data>
-  <data name="RegisterText2" xml:space="preserve">
-    <value>We are waiting for your account confirmation on</value>
-    <comment>Ждем подтверждения вашей учетной записи на</comment>
-  </data>
-  <data name="RegisterTitle1" xml:space="preserve">
-    <value>There is one little step and you will join the</value>
-    <comment>Остался последний шаг, и вы станете частью сообщества</comment>
-  </data>
-  <data name="RegisterTitle2" xml:space="preserve">
-    <value>community</value>
+  <data name="RegisterTitleFormat" xml:space="preserve">
+    <value>There is one little step and you will join the {0} community</value>
+    <comment>There is one little step and you will join the {Runtasker} community</comment>
   </data>
   <data name="Runtasker" xml:space="preserve">
     <value>Runtasker</value>

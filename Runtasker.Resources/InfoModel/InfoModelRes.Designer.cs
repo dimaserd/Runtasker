@@ -61,47 +61,29 @@ namespace Runtasker.Resources.InfoModel {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Please check your email, we have sent you a confirmation email. {0} We are waiting for your account confirmation on {1}..
+        /// </summary>
+        public static string RegisterTextFormat {
+            get {
+                return ResourceManager.GetString("RegisterTextFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на So we have prepared a little surprise for you!.
         /// </summary>
-        public static string RegisterSurpriseText1 {
+        public static string RegisterTextToMark {
             get {
-                return ResourceManager.GetString("RegisterSurpriseText1", resourceCulture);
+                return ResourceManager.GetString("RegisterTextToMark", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Please check your email, we have sent you a confirmation email..
+        ///   Ищет локализованную строку, похожую на There is one little step and you will join the {0} community.
         /// </summary>
-        public static string RegisterText1 {
+        public static string RegisterTitleFormat {
             get {
-                return ResourceManager.GetString("RegisterText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на We are waiting for your account confirmation on.
-        /// </summary>
-        public static string RegisterText2 {
-            get {
-                return ResourceManager.GetString("RegisterText2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на There is one little step and you will join the.
-        /// </summary>
-        public static string RegisterTitle1 {
-            get {
-                return ResourceManager.GetString("RegisterTitle1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на community.
-        /// </summary>
-        public static string RegisterTitle2 {
-            get {
-                return ResourceManager.GetString("RegisterTitle2", resourceCulture);
+                return ResourceManager.GetString("RegisterTitleFormat", resourceCulture);
             }
         }
         

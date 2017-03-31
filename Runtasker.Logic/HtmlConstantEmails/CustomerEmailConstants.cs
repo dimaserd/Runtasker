@@ -132,22 +132,7 @@ namespace Runtasker.Logic.HtmlConstantEmails
         //Not done not implemented
         public string GetForInvitedCustomerFinishedAnOrder(string userName, string invitedEmail)
         {
-            return new HtmlEmailBase
-                (
-                    callToAction: new BigEmailCallToActionBase
-                    (
-                        header: string.Format(CustEmailNotRes.HelloFormat, userName),
-                        littleHeader: null,
-                        bigText:
-                        $"{CustEmailNotRes.Dear} {userName}! {CustEmailNotRes.User} {invitedEmail} {CustEmailNotRes.InvFinishedText1} "
-                        + $"{CustEmailNotRes.InvFinishedText2} {CustEmailNotRes.RuntaskerWish}",
-                        link: new HtmlLink
-                        (
-                            hrefParam: $"{Host}/Orders/Create",
-                            textParam: CustEmailNotRes.InvFinishedBtnText
-                        )
-                    )
-                ).ToString();
+            throw new System.Exception("Не сделано нихера!");
         }
     }
 }

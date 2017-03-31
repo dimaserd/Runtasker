@@ -150,26 +150,11 @@
     <value>Hello, {0}.</value>
     <comment>Hello, {имя пользователя}.</comment>
   </data>
-  <data name="InvFinishedBtnText" xml:space="preserve">
-    <value>Spend my bonus money!</value>
-  </data>
-  <data name="InvFinishedSubject1" xml:space="preserve">
-    <value>You get 300 roubles!</value>
-  </data>
-  <data name="InvFinishedText1" xml:space="preserve">
-    <value>got his order finished!</value>
-  </data>
-  <data name="InvFinishedText2" xml:space="preserve">
-    <value>You invited him/her to us! That means you get your 300 roubles! Hope to see you and your friends on Runtasker!</value>
-  </data>
   <data name="OnlineHelpAppliedTextFormat" xml:space="preserve">
     <value>Dear {0}, we have received your application for online-help for {1}. Our administrators will process it and get you the response.</value>
     <comment>Dear {имя пользователя}, we have received your application for online-help for {название предмета}. Our administrators will process it and get you the response.</comment>
   </data>
   <data name="RuntaskerWish" xml:space="preserve">
     <value>Best wishes from the Runtasker team!</value>
-  </data>
-  <data name="User" xml:space="preserve">
-    <value>User</value>
   </data>
 </root>

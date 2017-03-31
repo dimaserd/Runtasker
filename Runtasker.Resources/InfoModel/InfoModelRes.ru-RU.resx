@@ -117,20 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RegisterSurpriseText1" xml:space="preserve">
+  <data name="RegisterTextFormat" xml:space="preserve">
+    <value>Пожалуйста, проверьте вашу электронную почту, мы отправили вам подтверждающие письмо. {0} Ждем подтверждения вашей учетной записи на {1}.</value>
+    <comment>Пожалуйста, проверьте вашу электронную почту, мы отправили вам подтверждающие письмо. {ToMark} Ждем подтверждения вашей учетной записи на {Runtasker}.</comment>
+  </data>
+  <data name="RegisterTextToMark" xml:space="preserve">
     <value>Так же мы приготовили для вас небольшой сюрприз!</value>
   </data>
-  <data name="RegisterText1" xml:space="preserve">
-    <value>Пожалуйста, проверьте вашу электронную почту, мы отправили вам подтверждающие письмо.</value>
-  </data>
-  <data name="RegisterText2" xml:space="preserve">
-    <value>Ждем подтверждения вашей учетной записи на</value>
-  </data>
-  <data name="RegisterTitle1" xml:space="preserve">
-    <value>Остался последний шаг, и вы станете частью сообщества</value>
-  </data>
-  <data name="RegisterTitle2" xml:space="preserve">
-    <value />
+  <data name="RegisterTitleFormat" xml:space="preserve">
+    <value>Остался последний шаг, и вы станете частью сообщества {0}</value>
+    <comment>Остался последний шаг, и вы станете частью сообщества {Runtasker}</comment>
   </data>
   <data name="Runtasker" xml:space="preserve">
     <value>Runtasker</value>

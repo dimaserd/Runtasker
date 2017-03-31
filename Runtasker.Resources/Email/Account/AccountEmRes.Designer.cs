@@ -61,15 +61,6 @@ namespace Runtasker.Resources.Email.Account {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Hello.
-        /// </summary>
-        public static string Greeting {
-            get {
-                return ResourceManager.GetString("Greeting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Hello {0}!.
         /// </summary>
         public static string GreetingFormat {

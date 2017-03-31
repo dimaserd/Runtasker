@@ -136,6 +136,9 @@
   <data name="ErrorFoundText2" xml:space="preserve">
     <value>Пожалуйста, исправьте! Это просто!</value>
   </data>
+  <data name="ErrorFoundTextFormat" xml:space="preserve">
+    <value>Здравствуйте, {0}. Мы нашли ошибки в вашем заказе №{1}. Пожалуйста, исправьте! Это просто!</value>
+  </data>
   <data name="EstimatedBtnText" xml:space="preserve">
     <value>Заплатить половину!</value>
   </data>
@@ -145,14 +148,9 @@
   <data name="EstimatedSubject2" xml:space="preserve">
     <value>оценили</value>
   </data>
-  <data name="EstimatedText1" xml:space="preserve">
-    <value>Мы оценили ваш заказ №</value>
-  </data>
-  <data name="EstimatedText2" xml:space="preserve">
-    <value>на</value>
-  </data>
-  <data name="EstimatedText3" xml:space="preserve">
-    <value>Вам нужно оплатить половину суммы, до того как мы начнем выполнять его.</value>
+  <data name="EstimatedTextFormat" xml:space="preserve">
+    <value>Дорогой/ая, {0}, мы оценили ваш заказ №{1}. Ваш заказ будет стоить {2}{3}. Вам нужно оплатить половину суммы, до того как мы начнем выполнять его.</value>
+    <comment>Дорогой/ая, {имя пользователя}, мы оценили ваш заказ №{номер заказа}. Ваш заказ будет стоить {сумма заказа}{знак рубля}. Вам нужно оплатить половину суммы, до того как мы начнем выполнять его.</comment>
   </data>
   <data name="ExecutedButtonText" xml:space="preserve">
     <value>Оплатить и скачать!</value>
@@ -160,14 +158,16 @@
   <data name="ExecutedSubject1" xml:space="preserve">
     <value>Мы завершили ваш заказ №</value>
   </data>
-  <data name="ExecutedText1" xml:space="preserve">
-    <value>Мы завершили работу по вашему заказу №</value>
-  </data>
-  <data name="ExecutedText2" xml:space="preserve">
-    <value>Вы cможете скачать решение заказа, после того как оплатите-</value>
+  <data name="ExecutedTextFormat" xml:space="preserve">
+    <value>Здравствуйте, {0} мы завершили работу по вашему заказу №{1}. Вы cможете скачать решение заказа, после того как оплатите - {2}{3}.</value>
+    <comment>Здравствуйте, {имя пользователя} мы завершили работу по вашему заказу №{номер заказа}. Вы cможете скачать решение заказа, после того как оплатите - {оставшаяся стоимость}{знак рубля}.</comment>
   </data>
   <data name="Greeting" xml:space="preserve">
     <value>Здравствуйте,</value>
+  </data>
+  <data name="GreetingFormat" xml:space="preserve">
+    <value>Здравствуйте, {0}.</value>
+    <comment>Здравствуйте, {имя пользователя}.</comment>
   </data>
   <data name="NumberSign" xml:space="preserve">
     <value>№</value>

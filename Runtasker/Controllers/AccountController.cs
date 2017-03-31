@@ -325,6 +325,8 @@ namespace Runtasker.Controllers
 
             ViewBag.ReturnUrl = returnUrl;
             ViewData["viewModel"] = ViewModelBuilder.LoginView();
+
+            
             return View(viewName: "NewLogin");
         }
 
@@ -762,6 +764,7 @@ namespace Runtasker.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            
             return RedirectToAction("Index", "Home");
         }
 
@@ -802,6 +805,7 @@ namespace Runtasker.Controllers
         }
         #endregion
 
+        
         protected override void Dispose(bool disposing)
         {
             IDisposable[] toDisposes = new IDisposable[]

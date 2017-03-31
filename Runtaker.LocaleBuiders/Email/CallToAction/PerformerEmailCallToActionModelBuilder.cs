@@ -1,4 +1,5 @@
 ﻿using Extensions.Decimal;
+using Runtasker.LocaleBuilders.Enumerations;
 using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Email.OrderPerformer;
 
@@ -9,82 +10,32 @@ namespace Runtasker.LocaleBuilders.Email.CallToAction
 
         public ForEmailCallToAction EstimatedOrder(string customerName, int orderId, decimal orderSum, string roubleSign)
         {
-            switch(UICultureName)
+            return new ForEmailCallToAction
             {
-                case "ru-RU":
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{PerformerOrderEmRes.Greeting} {customerName}!",
-                        BigText = $"{PerformerOrderEmRes.Dear} {customerName}, {PerformerOrderEmRes.EstimatedText1}{orderId} " +
-                         $"{PerformerOrderEmRes.EstimatedText2} {orderSum.ToMoney()}{roubleSign}. " +
-                         $"{PerformerOrderEmRes.EstimatedText3} {PerformerOrderEmRes.RuntaskerWish}",
-                        ActionBtnText = PerformerOrderEmRes.EstimatedBtnText
-                    };
-                    //english checked
-                default:
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{PerformerOrderEmRes.Greeting} {customerName}!",
-                        BigText = $"{PerformerOrderEmRes.Dear} {customerName}, " +
-                        $"{PerformerOrderEmRes.EstimatedText1}{orderId} " +
-                        $"{PerformerOrderEmRes.EstimatedText2} {orderSum.ToMoney()}{roubleSign}. " +
-                        $"{PerformerOrderEmRes.EstimatedText3} {PerformerOrderEmRes.RuntaskerWish}",
-                        ActionBtnText = PerformerOrderEmRes.EstimatedBtnText
-                    };
-            }
+                Header = string.Format(PerformerOrderEmRes.GreetingFormat, customerName),
+                BigText = $"{string.Format(PerformerOrderEmRes.EstimatedTextFormat, customerName, orderId, orderSum, roubleSign)} {PerformerOrderEmRes.RuntaskerWish}",
+                ActionBtnText = PerformerOrderEmRes.EstimatedBtnText
+            };
         }
 
         public ForEmailCallToAction FoundError(string customerName, int orderId)
         {
-            switch(UICultureName)
+            return new ForEmailCallToAction
             {
-                case "ru-RU":
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{PerformerOrderEmRes.Greeting} {customerName}!",
-                        BigText = $"{PerformerOrderEmRes.Dear} {customerName}, {PerformerOrderEmRes.ErrorFoundText1}{orderId}. " +
-                        $"{PerformerOrderEmRes.ErrorFoundText2} {PerformerOrderEmRes.RuntaskerWish}",
-                        ActionBtnText = PerformerOrderEmRes.ErrorFoundButtonText
-                    };
-
-                default:
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{PerformerOrderEmRes.Greeting} {customerName}!",
-                        BigText = $"{PerformerOrderEmRes.Dear} {customerName}, {PerformerOrderEmRes.ErrorFoundText1}{orderId}. " +
-                        $"{PerformerOrderEmRes.ErrorFoundText2} {PerformerOrderEmRes.RuntaskerWish}",
-                        ActionBtnText = PerformerOrderEmRes.ErrorFoundButtonText
-                    };
-            }
-            
+                Header = string.Format(PerformerOrderEmRes.GreetingFormat, customerName),
+                BigText = $"{string.Format(PerformerOrderEmRes.ErrorFoundTextFormat, customerName, orderId)} {PerformerOrderEmRes.RuntaskerWish}",
+                ActionBtnText = PerformerOrderEmRes.ErrorFoundButtonText
+            };
         }
 
         public ForEmailCallToAction ExecutedOrder(string customerName, int orderId, decimal leftSum, string roubleSign)
         {
-            switch (UICultureName)
+            return new ForEmailCallToAction
             {
-                case "ru-RU":
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{PerformerOrderEmRes.Greeting} {customerName}!",
-                        BigText = $"{PerformerOrderEmRes.Dear} {customerName}, " +
-                            $"{PerformerOrderEmRes.ExecutedText1}{orderId}. " +
-                            $"{PerformerOrderEmRes.ExecutedText2}{leftSum.ToMoney()}{roubleSign}. " +
-                            PerformerOrderEmRes.RuntaskerWish,
-                        ActionBtnText = PerformerOrderEmRes.ExecutedButtonText
-                    };
-
-                default:
-                    return new ForEmailCallToAction
-                    {
-                        Header = $"{PerformerOrderEmRes.Greeting} {customerName}!",
-                        BigText = $"{PerformerOrderEmRes.Dear} {customerName}, " +
-                        $"{PerformerOrderEmRes.ExecutedText1}{orderId}. " +
-                        $"{PerformerOrderEmRes.ExecutedText2}{leftSum.ToMoney()}{roubleSign}. " +
-                        PerformerOrderEmRes.RuntaskerWish,
-                        ActionBtnText = PerformerOrderEmRes.ExecutedButtonText
-                    };
-            }
+                Header = string.Format(PerformerOrderEmRes.GreetingFormat, customerName),
+                BigText = $"{string.Format(PerformerOrderEmRes.ExecutedTextFormat, customerName, orderId, leftSum, roubleSign)} {PerformerOrderEmRes.RuntaskerWish}",
+                ActionBtnText = PerformerOrderEmRes.ExecutedButtonText
+            };
         }
     }
 }

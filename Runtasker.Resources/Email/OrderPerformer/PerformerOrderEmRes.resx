@@ -132,6 +132,10 @@
   <data name="ErrorFoundText2" xml:space="preserve">
     <value>Please correct it. It’s easy.</value>
   </data>
+  <data name="ErrorFoundTextFormat" xml:space="preserve">
+    <value>Hello {0} we have found an error in your order #{1}. Please correct it. It’s easy.</value>
+    <comment>Hello {имя пользователя} we have found an error in your order #{номер заказа}. Please correct it. It’s easy.</comment>
+  </data>
   <data name="EstimatedBtnText" xml:space="preserve">
     <value>Pay a half of it!</value>
   </data>
@@ -141,14 +145,9 @@
   <data name="EstimatedSubject2" xml:space="preserve">
     <value>has been estimated</value>
   </data>
-  <data name="EstimatedText1" xml:space="preserve">
-    <value>We have estimated your order #</value>
-  </data>
-  <data name="EstimatedText2" xml:space="preserve">
-    <value>at</value>
-  </data>
-  <data name="EstimatedText3" xml:space="preserve">
-    <value>You need to pay half of the sum before we start carrying out your order.</value>
+  <data name="EstimatedTextFormat" xml:space="preserve">
+    <value>Hello {0} we have estimated your order #{1} at {2}{3}. You need to pay half of the sum before we start carrying out your order.</value>
+    <comment>Hello {имя пользователя} we have estimated your order #{номер заказа} at {сумма заказа}{знак рубля}. You need to pay half of the sum before we start carrying out your order.</comment>
   </data>
   <data name="ExecutedButtonText" xml:space="preserve">
     <value>Pay and download!</value>
@@ -156,14 +155,16 @@
   <data name="ExecutedSubject1" xml:space="preserve">
     <value>We finished your order</value>
   </data>
-  <data name="ExecutedText1" xml:space="preserve">
-    <value>We have completed the work on your order #</value>
-  </data>
-  <data name="ExecutedText2" xml:space="preserve">
-    <value>You will be able to download the completed solution after paying the second half of the price-</value>
+  <data name="ExecutedTextFormat" xml:space="preserve">
+    <value>Hello {0} we have completed the work on your order #{1}. You will be able to download the completed solution after paying the second half of the price - {2}{3}.</value>
+    <comment>Hello {имя пользователя} we have completed the work on your order #{номер заказа}. You will be able to download the completed solution after paying the second half of the price - {оставшаяся стоимость}{знак рубля}.</comment>
   </data>
   <data name="Greeting" xml:space="preserve">
     <value>Hello</value>
+  </data>
+  <data name="GreetingFormat" xml:space="preserve">
+    <value>Hello {0}!</value>
+    <comment>Hello {имя пользователя}!</comment>
   </data>
   <data name="NumberSign" xml:space="preserve">
     <value>#</value>

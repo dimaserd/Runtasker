@@ -106,6 +106,15 @@ namespace Runtasker.Resources.Email.OrderPerformer {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Hello {0} we have found an error in your order #{1}. Please correct it. It’s easy..
+        /// </summary>
+        public static string ErrorFoundTextFormat {
+            get {
+                return ResourceManager.GetString("ErrorFoundTextFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Pay a half of it!.
         /// </summary>
         public static string EstimatedBtnText {
@@ -133,29 +142,11 @@ namespace Runtasker.Resources.Email.OrderPerformer {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на We have estimated your order #.
+        ///   Ищет локализованную строку, похожую на Hello {0} we have estimated your order #{1} at {2}{3}. You need to pay half of the sum before we start carrying out your order..
         /// </summary>
-        public static string EstimatedText1 {
+        public static string EstimatedTextFormat {
             get {
-                return ResourceManager.GetString("EstimatedText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на at.
-        /// </summary>
-        public static string EstimatedText2 {
-            get {
-                return ResourceManager.GetString("EstimatedText2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на You need to pay half of the sum before we start carrying out your order..
-        /// </summary>
-        public static string EstimatedText3 {
-            get {
-                return ResourceManager.GetString("EstimatedText3", resourceCulture);
+                return ResourceManager.GetString("EstimatedTextFormat", resourceCulture);
             }
         }
         
@@ -178,20 +169,11 @@ namespace Runtasker.Resources.Email.OrderPerformer {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на We have completed the work on your order #.
+        ///   Ищет локализованную строку, похожую на Hello {0} we have completed the work on your order #{1}. You will be able to download the completed solution after paying the second half of the price - {2}{3}..
         /// </summary>
-        public static string ExecutedText1 {
+        public static string ExecutedTextFormat {
             get {
-                return ResourceManager.GetString("ExecutedText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на You will be able to download the completed solution after paying the second half of the price-.
-        /// </summary>
-        public static string ExecutedText2 {
-            get {
-                return ResourceManager.GetString("ExecutedText2", resourceCulture);
+                return ResourceManager.GetString("ExecutedTextFormat", resourceCulture);
             }
         }
         
@@ -201,6 +183,15 @@ namespace Runtasker.Resources.Email.OrderPerformer {
         public static string Greeting {
             get {
                 return ResourceManager.GetString("Greeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Hello {0}!.
+        /// </summary>
+        public static string GreetingFormat {
+            get {
+                return ResourceManager.GetString("GreetingFormat", resourceCulture);
             }
         }
         

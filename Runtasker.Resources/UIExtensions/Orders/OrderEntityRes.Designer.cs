@@ -79,11 +79,11 @@ namespace Runtasker.Resources.UIExtensions.Orders {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Chat about order.
+        ///   Ищет локализованную строку, похожую на {0} Chat about order {1}.
         /// </summary>
-        public static string ChatAboutOrder {
+        public static string ChatAboutOrderFormat {
             get {
-                return ResourceManager.GetString("ChatAboutOrder", resourceCulture);
+                return ResourceManager.GetString("ChatAboutOrderFormat", resourceCulture);
             }
         }
         
@@ -97,11 +97,11 @@ namespace Runtasker.Resources.UIExtensions.Orders {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Download Solution.
+        ///   Ищет локализованную строку, похожую на {0} Download Solution.
         /// </summary>
-        public static string DownloadSolution {
+        public static string DownloadSolutionFormat {
             get {
-                return ResourceManager.GetString("DownloadSolution", resourceCulture);
+                return ResourceManager.GetString("DownloadSolutionFormat", resourceCulture);
             }
         }
         
@@ -124,74 +124,65 @@ namespace Runtasker.Resources.UIExtensions.Orders {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Finished.
+        ///   Ищет локализованную строку, похожую на {0} Finished.
         /// </summary>
-        public static string Finished {
+        public static string FinishedFormat {
             get {
-                return ResourceManager.GetString("Finished", resourceCulture);
+                return ResourceManager.GetString("FinishedFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Order.
+        ///   Ищет локализованную строку, похожую на Order #{0}.
         /// </summary>
-        public static string Order {
+        public static string OrderFormat {
             get {
-                return ResourceManager.GetString("Order", resourceCulture);
+                return ResourceManager.GetString("OrderFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Pay.
+        ///   Ищет локализованную строку, похожую на {0} Pay {1}{2}.
         /// </summary>
-        public static string Pay {
+        public static string PayFormat {
             get {
-                return ResourceManager.GetString("Pay", resourceCulture);
+                return ResourceManager.GetString("PayFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Pay Half.
+        ///   Ищет локализованную строку, похожую на {0} Rating our work.
         /// </summary>
-        public static string PayHalf {
+        public static string RatingWorkFormat {
             get {
-                return ResourceManager.GetString("PayHalf", resourceCulture);
+                return ResourceManager.GetString("RatingWorkFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Rating our work.
+        ///   Ищет локализованную строку, похожую на Subject: {0}.
         /// </summary>
-        public static string RatingWork {
+        public static string SubjectFormat {
             get {
-                return ResourceManager.GetString("RatingWork", resourceCulture);
+                return ResourceManager.GetString("SubjectFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Subject.
+        ///   Ищет локализованную строку, похожую на Sum: {0}{1}.
         /// </summary>
-        public static string Subject {
+        public static string SumFormat {
             get {
-                return ResourceManager.GetString("Subject", resourceCulture);
+                return ResourceManager.GetString("SumFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Sum.
+        ///   Ищет локализованную строку, похожую на Type of work: {0}.
         /// </summary>
-        public static string Sum {
+        public static string WorkTypeFormat {
             get {
-                return ResourceManager.GetString("Sum", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Type of work.
-        /// </summary>
-        public static string WorkType {
-            get {
-                return ResourceManager.GetString("WorkType", resourceCulture);
+                return ResourceManager.GetString("WorkTypeFormat", resourceCulture);
             }
         }
     }

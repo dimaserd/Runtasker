@@ -123,14 +123,16 @@
   <data name="AddFiles" xml:space="preserve">
     <value>Add Files</value>
   </data>
-  <data name="ChatAboutOrder" xml:space="preserve">
-    <value>Chat about order</value>
+  <data name="ChatAboutOrderFormat" xml:space="preserve">
+    <value>{0} Chat about order {1}</value>
+    <comment>{знак чата} Chat about order {кол-во непрочитанных сообщений}</comment>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
-  <data name="DownloadSolution" xml:space="preserve">
-    <value>Download Solution</value>
+  <data name="DownloadSolutionFormat" xml:space="preserve">
+    <value>{0} Download Solution</value>
+    <comment>{знак загрузки} Download Solution</comment>
   </data>
   <data name="Estimation" xml:space="preserve">
     <value>Waiting for estimation!</value>
@@ -138,28 +140,32 @@
   <data name="Executing" xml:space="preserve">
     <value>We're executing it!</value>
   </data>
-  <data name="Finished" xml:space="preserve">
-    <value>Finished</value>
+  <data name="FinishedFormat" xml:space="preserve">
+    <value>{0} Finished</value>
+    <comment>{знак финиша} Finished</comment>
   </data>
-  <data name="Order" xml:space="preserve">
-    <value>Order</value>
+  <data name="OrderFormat" xml:space="preserve">
+    <value>Order #{0}</value>
+    <comment>Order #{номер заказа}</comment>
   </data>
-  <data name="Pay" xml:space="preserve">
-    <value>Pay</value>
+  <data name="PayFormat" xml:space="preserve">
+    <value>{0} Pay {1}{2}</value>
+    <comment>{знак оплаты} Pay {сумма оплаты}{знак рубля}</comment>
   </data>
-  <data name="PayHalf" xml:space="preserve">
-    <value>Pay Half</value>
+  <data name="RatingWorkFormat" xml:space="preserve">
+    <value>{0} Rating our work</value>
+    <comment>{знак рейтинга} Rating our work</comment>
   </data>
-  <data name="RatingWork" xml:space="preserve">
-    <value>Rating our work</value>
+  <data name="SubjectFormat" xml:space="preserve">
+    <value>Subject: {0}</value>
+    <comment>Subject: {название предмета}</comment>
   </data>
-  <data name="Subject" xml:space="preserve">
-    <value>Subject</value>
+  <data name="SumFormat" xml:space="preserve">
+    <value>Sum: {0}{1}</value>
+    <comment>Sum: {стоимость заказа}{знак рубля}</comment>
   </data>
-  <data name="Sum" xml:space="preserve">
-    <value>Sum</value>
-  </data>
-  <data name="WorkType" xml:space="preserve">
-    <value>Type of work</value>
+  <data name="WorkTypeFormat" xml:space="preserve">
+    <value>Type of work: {0}</value>
+    <comment>Type of work: {тип работы}</comment>
   </data>
 </root>

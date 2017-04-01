@@ -39,8 +39,8 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
             return new HtmlActionButtonLink
                 (
                     buttonLink: "#",
-                    buttonText: $"{GISigns.Envelope} {OrderEntityRes.ChatAboutOrder} {GISigns.Count(unreadCount)}",
-                    //for javascript toggler with modal
+                    buttonText: string.Format(OrderEntityRes.ChatAboutOrderFormat, GISigns.Envelope, GISigns.Count(unreadCount)),
+                    //для вызова функции javacript которая откроет чат в модале
                     htmlAttributes: new { id = Order.Id, @class = $"{GetButtonClass()} orderChat" }
                 ).ToString();
         }
@@ -64,10 +64,12 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         {
             StringBuilder buttons = new StringBuilder();
 
+            string sumToPayString = (Order.Sum / 2).ToMoney();
+
             buttons.Append(new HtmlActionButtonLink
                 (
                     buttonLink: $"/Orders/PayHalf/{Order.Id}",
-                    buttonText: OrderEntityRes.PayHalf,
+                    buttonText: string.Format(OrderEntityRes.PayFormat, FASigns.CreditCard, sumToPayString, HtmlSigns.Rouble),
                     buttonClass: GetButtonClass()
                 ).ToString());
 
@@ -99,10 +101,12 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         {
             StringBuilder buttons = new StringBuilder();
 
+            string sumToPayString = Order.PaidSum.ToMoney();
+
             buttons.Append(new HtmlActionButtonLink
                     (
                        buttonLink: $"/Orders/PayAnotherHalf/{Order.Id}",
-                       buttonText: $"{OrderEntityRes.Pay} {Order.PaidSum.ToMoney()}{HtmlSigns.Rouble}",
+                       buttonText: string.Format(OrderEntityRes.PayFormat, FASigns.CreditCard, sumToPayString, HtmlSigns.Rouble),
                        buttonClass: GetButtonClass()
                     ).ToString());
 
@@ -116,13 +120,13 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
             buttons.Append(new HtmlActionButtonLink
                 (
                     buttonLink: $"File/DownloadSolution/{Order.Id}",
-                    buttonText: $"{FASigns.Download} {OrderEntityRes.DownloadSolution}",
+                    buttonText: string.Format(OrderEntityRes.DownloadSolutionFormat, FASigns.Download),
                     buttonClass: GetButtonClass()
                 ).ToString());
             return buttons.ToString();
         }
 
-        //rateLink class added for opening link in modal
+        
         string GetButtonsForDownloadedOrder()
         {
             StringBuilder buttons = new StringBuilder();
@@ -130,8 +134,9 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
             buttons.Append(new HtmlActionButtonLink
                 (
-                    buttonText: $"{GISigns.Star} {OrderEntityRes.RatingWork}!",
+                    buttonText: string.Format(OrderEntityRes.RatingWorkFormat, GISigns.Star),
                     buttonLink: $"Orders/Rating/{Order.Id}",
+                    //для джаваскрипт функции чтобы вызвать это все в модале
                     htmlAttributes: new { id = $"{Order.Id}", @class = $"{GetButtonClass()} rateLink" }
                 ).ToString());
             return buttons.ToString();
@@ -143,7 +148,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
             buttons.Append(new HtmlActionButtonLink
                 (
                     buttonLink: "#",
-                    buttonText: OrderEntityRes.Finished,
+                    buttonText: string.Format(OrderEntityRes.FinishedFormat, null),
                     buttonClass: GetButtonClass(),
                     disabled: true
                 ).ToString());

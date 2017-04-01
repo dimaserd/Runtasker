@@ -2,6 +2,7 @@
 using System.Text;
 using Runtasker.Resources.UIExtensions.Orders;
 using Extensions.Decimal;
+using HtmlExtensions.StaticRenderers;
 
 namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 {
@@ -65,15 +66,15 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"<div class='col-md-9 cta-contents'><h1 class='cta-title'>")
-            .Append($"{OrderEntityRes.Order} №{Order.Id}")
+            .Append(string.Format(OrderEntityRes.OrderFormat, Order.Id))
             .Append("</h1><div class='cta-desc'>")
             .Append($"{GetDescription()}");
             if (Order.Sum != 0)
             {
-                sb.Append($"<h4><span>{OrderEntityRes.Sum}: </span> {Order.Sum.ToMoney()}&#8381;</h4>");
+                sb.Append($"<h4>{string.Format(OrderEntityRes.SumFormat, Order.Sum.ToMoney(),HtmlSigns.Rouble)}</h4>");
             }
-            sb.Append($"<h4>{OrderEntityRes.Subject}: {GetSubject()}</h4>")
-            .Append($"<h4>{OrderEntityRes.WorkType}: {GetTypeOfWork()}</h4>")
+            sb.Append($"<h4>{string.Format(OrderEntityRes.SubjectFormat, GetSubject())}</h4>")
+            .Append($"<h4>{string.Format(OrderEntityRes.WorkTypeFormat,GetTypeOfWork())}</h4>")
             .Append("</div></div>");
 
             return sb.ToString();
@@ -83,7 +84,6 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("<div class='col-md-3 cta-button'>")
-            //.Append($"<a href='#' class='btn btn-lg btn-block btn-{GetColorClass()}'>Go for It!</a>")
             .Append(GetButton())
             .Append("</div>");
 

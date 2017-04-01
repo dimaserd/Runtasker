@@ -199,6 +199,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RegAndCreateRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Namers\Payment\PaymentNamerRes.ru-RU.Designer.cs">
+      <DependentUpon>PaymentNamerRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Namers\Payment\PaymentNamerRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -817,6 +822,10 @@
     <EmbeddedResource Include="Models\OrderModels\RegAndCreate\RegAndCreateRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RegAndCreateRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Namers\Payment\PaymentNamerRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PaymentNamerRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Namers\Payment\PaymentNamerRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

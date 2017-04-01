@@ -117,29 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CreateOrder" xml:space="preserve">
-    <value>Create Order</value>
+  <data name="ViaRoboKassa" xml:space="preserve">
+    <value>via RoboKassa service</value>
   </data>
-  <data name="PaymentReceived" xml:space="preserve">
-    <value>We have received your payment</value>
-    <comment>We have received your payment 300Р via YandexMoney service</comment>
+  <data name="ViaYandexMoney" xml:space="preserve">
+    <value>via YandexMoney service</value>
   </data>
-  <data name="PayOrder" xml:space="preserve">
-    <value>Pay Order</value>
+  <data name="CreateOrderFormat" xml:space="preserve">
+    <value>{0} Create Order</value>
+    <comment>{значок создания} Create Order</comment>
   </data>
-  <data name="Service" xml:space="preserve">
-    <value>service</value>
+  <data name="PaymentReceivedTitleFormat" xml:space="preserve">
+    <value>We have received your payment {0}{1} {2}.</value>
+    <comment>We have received your payment {сумма оплаты}{знак рубля} {способ оплаты}. We have received your payment 300Р via YandexMoney service.</comment>
   </data>
-  <data name="Via" xml:space="preserve">
-    <value>via</value>
+  <data name="PayOrderFormat" xml:space="preserve">
+    <value>{0} Pay Order #{1}</value>
+    <comment>{значок для оплаты} Pay Order #{номер заказа}</comment>
   </data>
-  <data name="YourBalance" xml:space="preserve">
-    <value>Your balance is</value>
-  </data>
-  <data name="RoboKassa" xml:space="preserve">
-    <value>RoboKassa</value>
-  </data>
-  <data name="YandexMoney" xml:space="preserve">
-    <value>YandexMoney</value>
+  <data name="YourBalanceFormat" xml:space="preserve">
+    <value>Your balance is {0}{1}.</value>
+    <comment>Your balance is {сумма на счете}{знак рубля}.</comment>
   </data>
 </root>

@@ -33,9 +33,11 @@ namespace Runtasker.Logic.Workers.Notifications
         #endregion
 
         #region Methods like Events
-        //We need to set customerculture
+        
         public void OnUserPaid(Payment p)
         {
+            //устанавливаем локаль пользователя чтобы все уведомления записались
+            //на выбранном им языке
             SetCustomerCulture(p);
 
             Order activeOrder = Context.Orders.FirstOrDefault(
@@ -43,23 +45,23 @@ namespace Runtasker.Logic.Workers.Notifications
             (o.Status == OrderStatus.Finished || o.Status == OrderStatus.Valued));
 
 
+            //выбираем сервис оплаты
+            string ViaService = (p.ViaType == PaymentViaType.Robokassa) ? PaymentNotRes.ViaRoboKassa : PaymentNotRes.ViaYandexMoney;
 
-
+            //создаем уведомление
             Notification N = new Notification
             {
                 AboutType = NotificationAboutType.Balance,
                 Status = NotificationStatus.Unseen,
                 Type = NotificationType.Info,
                 UserGuid = p.UserGuid,
-                Title = $"{PaymentNotRes.PaymentReceived} {p.Amount.ToMoney()}{FASigns.Rouble} {PaymentNotRes.Via} "
-                +( (p.ViaType == PaymentViaType.Robokassa)? PaymentNotRes.RoboKassa : PaymentNotRes.YandexMoney)
-                + $" {PaymentNotRes.Service}!",
-                Text = $"{PaymentNotRes.YourBalance} {GetUserBalance(p)}{FASigns.Rouble}!",
+                Title = string.Format(PaymentNotRes.PaymentReceivedTitleFormat, p.Amount.ToMoney(), HtmlSigns.Rouble, ViaService),
+                Text = string.Format(PaymentNotRes.YourBalanceFormat, GetUserBalanceString(p),HtmlSigns.Rouble),
                 Link = (activeOrder == null) ? 
                 new HtmlLink
                 (
                     hrefParam: "/Orders/Create",
-                    textParam: $"{FASigns.PlusCircle.Lg()} {PaymentNotRes.CreateOrder}",
+                    textParam: string.Format(PaymentNotRes.CreateOrderFormat, FASigns.PlusCircle.Lg()),
                     buttonSizeParam: HtmlButtonSize.Large,
                     buttonTypeParam: HtmlButtonType.Success
                 ).ToString()
@@ -69,12 +71,13 @@ namespace Runtasker.Logic.Workers.Notifications
                     hrefParam: (activeOrder.Status == OrderStatus.Valued) ?
                     $"/Orders/PayHalf/{activeOrder.Id}"
                     : $"/Orders/PayAnotherHalf/{activeOrder.Id}",
-                    textParam: $"{FASigns.PlusCircle.Lg()} {PaymentNotRes.PayOrder} №{activeOrder.Id}",
+                    textParam: string.Format(PaymentNotRes.PayOrderFormat, FASigns.PlusCircle.Lg(), activeOrder.Id),
                     buttonSizeParam: HtmlButtonSize.Large,
                     buttonTypeParam: HtmlButtonType.Success
                 ).ToString()
 
             };
+
             Context.Notifications.Add(N);
             Context.SaveChanges();
         }
@@ -82,7 +85,13 @@ namespace Runtasker.Logic.Workers.Notifications
         #endregion
 
         #region Help Methods
-        string GetUserBalance(Payment payment)
+        /// <summary>
+        /// Возвращает уже преобразованную строку из текущего баланса пользователя.
+        /// Например 300 если баланс = 300.00m
+        /// </summary>
+        /// <param name="payment"></param>
+        /// <returns></returns>
+        string GetUserBalanceString(Payment payment)
         {
             if (_user == null)
             {
@@ -101,7 +110,10 @@ namespace Runtasker.Logic.Workers.Notifications
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(_user.Language);
 
         }
-
+        /// <summary>
+        /// Устанавливает вспомогательное поле пользователя по платежу
+        /// </summary>
+        /// <param name="payment"></param>
         void SetUserByPayment(Payment payment)
         {
             _user = Context.Users.FirstOrDefault(u => u.Id == payment.UserGuid);

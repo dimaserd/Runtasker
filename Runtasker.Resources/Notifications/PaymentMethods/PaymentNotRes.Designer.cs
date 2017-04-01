@@ -61,74 +61,56 @@ namespace Runtasker.Resources.Notifications.PaymentMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Create Order.
+        ///   Ищет локализованную строку, похожую на {0} Create Order.
         /// </summary>
-        public static string CreateOrder {
+        public static string CreateOrderFormat {
             get {
-                return ResourceManager.GetString("CreateOrder", resourceCulture);
+                return ResourceManager.GetString("CreateOrderFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на We have received your payment.
+        ///   Ищет локализованную строку, похожую на We have received your payment {0}{1} {2}..
         /// </summary>
-        public static string PaymentReceived {
+        public static string PaymentReceivedTitleFormat {
             get {
-                return ResourceManager.GetString("PaymentReceived", resourceCulture);
+                return ResourceManager.GetString("PaymentReceivedTitleFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Pay Order.
+        ///   Ищет локализованную строку, похожую на {0} Pay Order #{1}.
         /// </summary>
-        public static string PayOrder {
+        public static string PayOrderFormat {
             get {
-                return ResourceManager.GetString("PayOrder", resourceCulture);
+                return ResourceManager.GetString("PayOrderFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на RoboKassa.
+        ///   Ищет локализованную строку, похожую на via RoboKassa service.
         /// </summary>
-        public static string RoboKassa {
+        public static string ViaRoboKassa {
             get {
-                return ResourceManager.GetString("RoboKassa", resourceCulture);
+                return ResourceManager.GetString("ViaRoboKassa", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на service.
+        ///   Ищет локализованную строку, похожую на via YandexMoney service.
         /// </summary>
-        public static string Service {
+        public static string ViaYandexMoney {
             get {
-                return ResourceManager.GetString("Service", resourceCulture);
+                return ResourceManager.GetString("ViaYandexMoney", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на via.
+        ///   Ищет локализованную строку, похожую на Your balance is {0}{1}..
         /// </summary>
-        public static string Via {
+        public static string YourBalanceFormat {
             get {
-                return ResourceManager.GetString("Via", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на YandexMoney.
-        /// </summary>
-        public static string YandexMoney {
-            get {
-                return ResourceManager.GetString("YandexMoney", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Your balance is.
-        /// </summary>
-        public static string YourBalance {
-            get {
-                return ResourceManager.GetString("YourBalance", resourceCulture);
+                return ResourceManager.GetString("YourBalanceFormat", resourceCulture);
             }
         }
     }

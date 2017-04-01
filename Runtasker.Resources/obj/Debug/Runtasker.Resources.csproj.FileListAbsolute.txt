@@ -362,3 +362,4 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Ru
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Account.ResetPasswordConfirmation.ResetPassConfRes.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Home.Contact.ContactViewRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Home.Contact.ContactViewRes.ru-RU.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Namers.Payment.PaymentNamerRes.ru-RU.resources

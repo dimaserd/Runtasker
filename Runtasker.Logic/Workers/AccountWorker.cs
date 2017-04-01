@@ -182,7 +182,7 @@ namespace Runtasker.Logic.Workers
                 infoModel = new InfoModel
                 {
                     Title = $"An invitation with given id does not exist!",
-                    Text = $"Check out the given link in email! If everything is right contact us, !" +
+                    Text = $"Check out the given link in email! If everything is right contact us, " +
                     "we will solve your problem! " +
                     "<a href='/Home/Contact'>Contact link</a>"
                 };
@@ -299,11 +299,7 @@ namespace Runtasker.Logic.Workers
             }
         }
 
-        // TODO: переопределить метод завершения, только если Dispose(bool disposing) выше включает код для освобождения неуправляемых ресурсов.
-        // ~AccountWorker() {
-        //   // Не изменяйте этот код. Разместите код очистки выше, в методе Dispose(bool disposing).
-        //   Dispose(false);
-        // }
+        
 
         // Этот код добавлен для правильной реализации шаблона высвобождаемого класса.
         public void Dispose()

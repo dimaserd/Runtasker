@@ -100,6 +100,10 @@ namespace Runtasker.Logic.Workers.Notifications
             return _user.Balance.ToMoney();
         }
 
+        /// <summary>
+        /// Устанавливает культуру для текущего потока
+        /// </summary>
+        /// <param name="payment"></param>
         void SetCustomerCulture(Payment payment)
         {
             if(_user == null)
@@ -108,7 +112,6 @@ namespace Runtasker.Logic.Workers.Notifications
             }
             Thread.CurrentThread.CurrentCulture = new CultureInfo(_user.Language);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(_user.Language);
-
         }
         /// <summary>
         /// Устанавливает вспомогательное поле пользователя по платежу

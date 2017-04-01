@@ -9,91 +9,40 @@ namespace Runtasker.LocaleBuilders.Notification
     {
         public ForNotification AddedError(int orderId, string errorDesc)
         {
-            switch(UICultureName)
+            return new ForNotification
             {
-                case "ru-RU":
-                    return new ForNotification
-                    {
-                        Title = $"{PerformerOrderNotRes.AddedErrorTitle}{orderId} {errorDesc}.",
-                        Text = $"{PerformerOrderNotRes.AddedErrorText}",
-                    };
-
-                default:
-                    return new ForNotification
-                    {
-                        Title = $"{PerformerOrderNotRes.AddedErrorTitle}{orderId} {errorDesc}.",
-                        Text = $"{PerformerOrderNotRes.AddedErrorText}",
-                    };
-            }
+                Title = string.Format(PerformerOrderNotRes.AddedErrorTitleFormat, orderId, errorDesc),
+                Text = PerformerOrderNotRes.AddedErrorText,
+            };
         }
 
         public ForNotification Estimated(int orderId, decimal orderSum, string roubleSign)
         {
-            switch(UICultureName)
+            return new ForNotification
             {
-                case "ru-RU":
-                    return new ForNotification
-                    {
-                        Text = $"{PerformerOrderNotRes.EstimatedText1}{orderId} {PerformerOrderNotRes.EstimatedText2} "
-                            + $"{orderSum.ToMoney()}{roubleSign}. {PerformerOrderNotRes.EstimatedText3}. {PerformerOrderNotRes.RuntaskerWishes}",
-                        Title = PerformerOrderNotRes.EstimatedTitle1,
-                        ActionBtnText = $"{PerformerOrderNotRes.EstimatedBtnText} {(orderSum / 2).ToMoney()}{roubleSign}"
-                    };
-
-                default:
-                    return new ForNotification
-                    {
-                        Text = $"{PerformerOrderNotRes.EstimatedText1}{orderId} {PerformerOrderNotRes.EstimatedText2} "
-                        + $"{orderSum.ToMoney()}{roubleSign}. {PerformerOrderNotRes.EstimatedText3}. {PerformerOrderNotRes.RuntaskerWishes}",
-                        Title = PerformerOrderNotRes.EstimatedTitle1,
-                        ActionBtnText = $"{PerformerOrderNotRes.EstimatedBtnText} {(orderSum / 2).ToMoney()}{roubleSign}"
-                    };
-            }    
+                Text = $"{string.Format(PerformerOrderNotRes.EstimatedTextFormat, orderId, orderSum.ToMoney(), roubleSign)} {PerformerOrderNotRes.RuntaskerWishes}",
+                Title = string.Format(PerformerOrderNotRes.EstimatedTitleFormat, orderId),
+                ActionBtnText = string.Format(PerformerOrderNotRes.EstimatedBtnTextFormat, (orderSum / 2).ToMoney(), roubleSign)
+            };
         }
 
         public ForNotification StartedExecuting(int orderId, DateTime orderFinishDate)
         {
-            switch(UICultureName)
+            return new ForNotification
             {
-                case "ru-RU":
-                    return new ForNotification
-                    {
-                        Title = $"{PerformerOrderNotRes.StartedExecutingTitle1}{orderId} {PerformerOrderNotRes.StartedExecutingTitle2}",
-                        Text = $"{PerformerOrderNotRes.StartedExecutingText1} {orderFinishDate.ToString("d MMM yyyy")} {PerformerOrderNotRes.StartedExecutingText2} "
-                        + PerformerOrderNotRes.RuntaskerWishes,
-                    };
-
-                default:
-                    return new ForNotification
-                    {
-                        Title = $"{PerformerOrderNotRes.StartedExecutingTitle1}{orderId} {PerformerOrderNotRes.StartedExecutingTitle2}",
-                        Text = $"{PerformerOrderNotRes.StartedExecutingText1} {orderFinishDate.ToString("d MMM yyyy")} {PerformerOrderNotRes.StartedExecutingText2} "
-                        + PerformerOrderNotRes.RuntaskerWishes,
-                    };
-            }
-            
+                Title = string.Format(PerformerOrderNotRes.StartedExecutingTitleFormat, orderId),
+                Text = $"{string.Format(PerformerOrderNotRes.StartedExecutingTextFormat, orderFinishDate.ToString("d MMM yyyy"))} {PerformerOrderNotRes.RuntaskerWishes}",
+            };
         }
 
         public ForNotification Executed(int orderId, decimal leftSum, string roubleSign)
         {
-            switch(UICultureName)
+            return new ForNotification
             {
-                case "ru-RU":
-                    return new ForNotification
-                    {
-                        Title = $"{PerformerOrderNotRes.ExecutedTitle1}{orderId}.",
-                        Text = $"{PerformerOrderNotRes.ExecutedText1} {leftSum.ToMoney()}{roubleSign} {PerformerOrderNotRes.ExecutedText2}",
-                        ActionBtnText = $"{PerformerOrderNotRes.ExecutedBtnText} {leftSum.ToMoney()}{roubleSign}"
-                    };
-
-                default:
-                    return new ForNotification
-                    {
-                        Title = $"{PerformerOrderNotRes.ExecutedTitle1}{orderId}.",
-                        Text = $"{PerformerOrderNotRes.ExecutedText1}",
-                        ActionBtnText = $"{PerformerOrderNotRes.ExecutedBtnText} {leftSum.ToMoney()}{roubleSign}"
-                    };
-            }
+                Title = string.Format(PerformerOrderNotRes.ExecutedTitleFormat, orderId),
+                Text = $"{string.Format(PerformerOrderNotRes.ExecutedTextFormat, leftSum.ToMoney(), roubleSign)} {PerformerOrderNotRes.RuntaskerWishes}",
+                ActionBtnText = string.Format(PerformerOrderNotRes.ExecutedBtnTextFormat, leftSum.ToMoney(), roubleSign)
+            };
         }
     }
 }

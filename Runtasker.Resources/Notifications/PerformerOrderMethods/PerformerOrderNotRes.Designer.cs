@@ -79,11 +79,11 @@ namespace Runtasker.Resources.Notifications.PerformerOrderMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на We have found some errors! Your order #.
+        ///   Ищет локализованную строку, похожую на We have found some errors! Your order #{0} {1}..
         /// </summary>
-        public static string AddedErrorTitle {
+        public static string AddedErrorTitleFormat {
             get {
-                return ResourceManager.GetString("AddedErrorTitle", resourceCulture);
+                return ResourceManager.GetString("AddedErrorTitleFormat", resourceCulture);
             }
         }
         
@@ -97,83 +97,56 @@ namespace Runtasker.Resources.Notifications.PerformerOrderMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Pay.
+        ///   Ищет локализованную строку, похожую на Pay {0}{1}..
         /// </summary>
-        public static string EstimatedBtnText {
+        public static string EstimatedBtnTextFormat {
             get {
-                return ResourceManager.GetString("EstimatedBtnText", resourceCulture);
+                return ResourceManager.GetString("EstimatedBtnTextFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Your order #.
+        ///   Ищет локализованную строку, похожую на Your order #{0} costs {1}{2}. Please, pay half of the sum now..
         /// </summary>
-        public static string EstimatedText1 {
+        public static string EstimatedTextFormat {
             get {
-                return ResourceManager.GetString("EstimatedText1", resourceCulture);
+                return ResourceManager.GetString("EstimatedTextFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на costs.
+        ///   Ищет локализованную строку, похожую на Your order #{0} has been estimated..
         /// </summary>
-        public static string EstimatedText2 {
+        public static string EstimatedTitleFormat {
             get {
-                return ResourceManager.GetString("EstimatedText2", resourceCulture);
+                return ResourceManager.GetString("EstimatedTitleFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Please, pay half of the sum now.
+        ///   Ищет локализованную строку, похожую на Pay {0}{1}.
         /// </summary>
-        public static string EstimatedText3 {
+        public static string ExecutedBtnTextFormat {
             get {
-                return ResourceManager.GetString("EstimatedText3", resourceCulture);
+                return ResourceManager.GetString("ExecutedBtnTextFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Your order has been estimated..
+        ///   Ищет локализованную строку, похожую на Pay the rest of the sum {0}{1} and get the solution..
         /// </summary>
-        public static string EstimatedTitle1 {
+        public static string ExecutedTextFormat {
             get {
-                return ResourceManager.GetString("EstimatedTitle1", resourceCulture);
+                return ResourceManager.GetString("ExecutedTextFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Pay.
+        ///   Ищет локализованную строку, похожую на We have completed working on your order #{0}..
         /// </summary>
-        public static string ExecutedBtnText {
+        public static string ExecutedTitleFormat {
             get {
-                return ResourceManager.GetString("ExecutedBtnText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Pay the second half of the price and get the solution!.
-        /// </summary>
-        public static string ExecutedText1 {
-            get {
-                return ResourceManager.GetString("ExecutedText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на .
-        /// </summary>
-        public static string ExecutedText2 {
-            get {
-                return ResourceManager.GetString("ExecutedText2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на We have completed working on your order #.
-        /// </summary>
-        public static string ExecutedTitle1 {
-            get {
-                return ResourceManager.GetString("ExecutedTitle1", resourceCulture);
+                return ResourceManager.GetString("ExecutedTitleFormat", resourceCulture);
             }
         }
         
@@ -187,38 +160,20 @@ namespace Runtasker.Resources.Notifications.PerformerOrderMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Our team have started working on your order. You will have received the solution by.
+        ///   Ищет локализованную строку, похожую на Our team have started working on your order. You will have received the solution by {0} at the latest..
         /// </summary>
-        public static string StartedExecutingText1 {
+        public static string StartedExecutingTextFormat {
             get {
-                return ResourceManager.GetString("StartedExecutingText1", resourceCulture);
+                return ResourceManager.GetString("StartedExecutingTextFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на at the latest..
+        ///   Ищет локализованную строку, похожую на Your order #{0} is being carried out..
         /// </summary>
-        public static string StartedExecutingText2 {
+        public static string StartedExecutingTitleFormat {
             get {
-                return ResourceManager.GetString("StartedExecutingText2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Your order #.
-        /// </summary>
-        public static string StartedExecutingTitle1 {
-            get {
-                return ResourceManager.GetString("StartedExecutingTitle1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на is being carried out..
-        /// </summary>
-        public static string StartedExecutingTitle2 {
-            get {
-                return ResourceManager.GetString("StartedExecutingTitle2", resourceCulture);
+                return ResourceManager.GetString("StartedExecutingTitleFormat", resourceCulture);
             }
         }
     }

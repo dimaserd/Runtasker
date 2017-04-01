@@ -123,52 +123,46 @@
   <data name="AddedErrorText" xml:space="preserve">
     <value>Please correct it!</value>
   </data>
-  <data name="AddedErrorTitle" xml:space="preserve">
-    <value>We have found some errors! Your order #</value>
-  </data>
   <data name="AddFilesBtnText" xml:space="preserve">
     <value>Add Files</value>
-  </data>
-  <data name="ExecutedText1" xml:space="preserve">
-    <value>Pay the second half of the price and get the solution!</value>
-  </data>
-  <data name="ExecutedText2" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ExecutedTitle1" xml:space="preserve">
-    <value>We have completed working on your order #</value>
-  </data>
-  <data name="EstimatedBtnText" xml:space="preserve">
-    <value>Pay</value>
   </data>
   <data name="RuntaskerWishes" xml:space="preserve">
     <value>Best wishes from the Runtasker team!</value>
   </data>
-  <data name="StartedExecutingText1" xml:space="preserve">
-    <value>Our team have started working on your order. You will have received the solution by</value>
+  <data name="AddedErrorTitleFormat" xml:space="preserve">
+    <value>We have found some errors! Your order #{0} {1}.</value>
+    <comment>We have found some errors! Your order #{номер заказа} {описание ошибки}.</comment>
   </data>
-  <data name="StartedExecutingTitle1" xml:space="preserve">
-    <value>Your order #</value>
+  <data name="EstimatedBtnTextFormat" xml:space="preserve">
+    <value>Pay {0}{1}.</value>
+    <comment>Pay {сумма к оплате}{знак рубля}.</comment>
   </data>
-  <data name="StartedExecutingTitle2" xml:space="preserve">
-    <value>is being carried out.</value>
+  <data name="EstimatedTextFormat" xml:space="preserve">
+    <value>Your order #{0} costs {1}{2}. Please, pay half of the sum now.</value>
+    <comment>Your order #{номер заказа} costs {стоимость заказа}{знак рубля}. Please, pay half of the sum now.</comment>
   </data>
-  <data name="EstimatedText1" xml:space="preserve">
-    <value>Your order #</value>
+  <data name="EstimatedTitleFormat" xml:space="preserve">
+    <value>Your order #{0} has been estimated.</value>
+    <comment>Your order #{номер заказа} has been estimated.</comment>
   </data>
-  <data name="EstimatedText2" xml:space="preserve">
-    <value>costs</value>
+  <data name="ExecutedBtnTextFormat" xml:space="preserve">
+    <value>Pay {0}{1}</value>
+    <comment>Pay {сумма}{знак рубля}</comment>
   </data>
-  <data name="EstimatedText3" xml:space="preserve">
-    <value>Please, pay half of the sum now</value>
+  <data name="ExecutedTextFormat" xml:space="preserve">
+    <value>Pay the rest of the sum {0}{1} and get the solution.</value>
+    <comment>Pay the rest of the sum sum {сумма}{знак рубля} and get the solution.</comment>
   </data>
-  <data name="EstimatedTitle1" xml:space="preserve">
-    <value>Your order has been estimated.</value>
+  <data name="ExecutedTitleFormat" xml:space="preserve">
+    <value>We have completed working on your order #{0}.</value>
+    <comment>We have completed working on your order #{номер заказа}.</comment>
   </data>
-  <data name="ExecutedBtnText" xml:space="preserve">
-    <value>Pay</value>
+  <data name="StartedExecutingTextFormat" xml:space="preserve">
+    <value>Our team have started working on your order. You will have received the solution by {0} at the latest.</value>
+    <comment>Our team have started working on your order. You will have received the solution by {дата завершения} at the latest.</comment>
   </data>
-  <data name="StartedExecutingText2" xml:space="preserve">
-    <value>at the latest.</value>
+  <data name="StartedExecutingTitleFormat" xml:space="preserve">
+    <value>Your order #{0} is being carried out.</value>
+    <comment>Your order #{номер заказа} is being carried out.</comment>
   </data>
 </root>

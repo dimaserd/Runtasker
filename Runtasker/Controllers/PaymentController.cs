@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Logic.Extensions.Models;
+using Microsoft.AspNet.Identity;
 using Runtasker.Logic;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.ViewModelBuilders.Payment;
 using Runtasker.Logic.Workers;
 using Runtasker.Logic.Workers.Payments;
+using Runtasker.Logic.Workers.Payments.PaymentGetters;
 using Runtasker.Logic.Workers.PaymentTransactions;
 using System;
 using System.Collections.Generic;
@@ -122,6 +124,23 @@ namespace Runtasker.Controllers
 
         [HttpGet]
         [Authorize]
+        public ActionResult YandexKassa(decimal? sumToPay)
+        {
+            if (sumToPay.HasValue && sumToPay.Value <= 0)
+            {
+                RedirectToAction("Index");
+            }
+            ViewData["localeModel"] = ViewsHelper.Yandex();
+
+            ViewData["sumToPay"] = sumToPay;
+            ViewData["userGuid"] = UserGuid;
+            ViewData["userEmail"] = User.Identity.GetEmail();
+
+            return View();
+        }
+
+        [HttpGet]
+        [Authorize]
         public ActionResult Yandex(decimal? sumToPay)
         {
             if(sumToPay.HasValue && sumToPay.Value <= 0)
@@ -168,8 +187,9 @@ namespace Runtasker.Controllers
             return View();
         }
 
-        #region Paid Post Methods
+        #region Обработчики оплаты
 
+        #region Бомжовские обработчики
         [HttpPost]
         [AllowAnonymous]
         public string Paid(string amount = null, string withdraw_amount = null, string notification_type = null, 
@@ -212,6 +232,30 @@ namespace Runtasker.Controllers
 
             RoboKassaWorker.OnPaymentReceived(OutSum, InvId, SignatureValue);
             return $"OK{InvId}";
+        }
+
+        #endregion
+
+        [HttpPost]
+        [AllowAnonymous]
+        public string YandexKassaPaid(string action = null, string orderSumAmount = null,
+            string orderSumCurrencyPaycash = null, string orderSumBankPaycash = null,
+            string shopId = null, string invoiceId = null, string customerNumber = null, 
+            string MD5 = null)
+        {
+            YandexKassaPaymentGetter getter = new YandexKassaPaymentGetter();
+
+            WorkerResult result = getter.YandexKassaNotificated(action: action, orderSumAmount: orderSumAmount,
+                orderSumCurrencyPaycash: orderSumCurrencyPaycash, orderSumBankPaycash: orderSumBankPaycash,
+                shopId: shopId, invoiceId: invoiceId, customerNumber: customerNumber,
+                MD5: MD5);
+
+            if(result.Succeeded)
+            {
+                return 0.ToString();
+            }
+
+            return result.ErrorsList[0];
         }
         #endregion
 

@@ -4,12 +4,13 @@
 @model decimal?
 
 @{ 
-    
+
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
     ViewBag.Title = localeModel["Title"];
 
     string roboKassa = $"{FASigns.CreditCard} {localeModel["HtmlTopUpViaRoboKassa"]}";
     string yandexMoney = $"{FASigns.CreditCard} {localeModel["HtmlTopUpViaYandexMoney"]}";
+    string yandexKassa = $"{FASigns.CreditCard} Через ЯндексКассу";
 }
 
 <!--Navigation-->
@@ -59,6 +60,14 @@
     <a id="yandexMoneyPay" class="btn btn-lg btn-success marginTop">
         @yandexMoney.ToHtml()
     </a>
+
+    @if (Runtasker.Settings.Settings.AppSetting == Runtasker.Settings.Enumerations.ApplicationSettingType.Debug)
+    {
+        <a id="yandexKassaPay" class="btn btn-lg btn-success marginTop">
+            @yandexKassa.ToHtml()
+        </a>
+    }
+    
 </div>
 
 <style>
@@ -90,6 +99,7 @@
 
         var roboKassaButton = $("#roboKassaPay");
         var yandexMoneyButton = $("#yandexMoneyPay");
+        var yandexKassaButton = $("#yandexKassaPay");
 
         function SumIsNum()
         {
@@ -142,6 +152,18 @@
             else {
                 var sumToPay = sum.val();
                 window.location.href = "/Payment/Yandex?sumToPay=" + sumToPay;
+            }
+        });
+
+        yandexKassaButton.click(function (e) {
+            e.preventDefault();
+
+            if (!SumIsGreaterThanNull()) {
+                NotificationShow();
+            }
+            else {
+                var sumToPay = sum.val();
+                window.location.href = "/Payment/YandexKassa?sumToPay=" + sumToPay;
             }
         });
 

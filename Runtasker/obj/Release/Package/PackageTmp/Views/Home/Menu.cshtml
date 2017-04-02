@@ -33,9 +33,13 @@
 <!-- /Top Nav -->
 
 @section scripts{
+
+    @JSHelper.GetStringFormatFunction()
+
     <!--Building Scripts-->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+
             var GetData = function()
             {
                 $.ajax({
@@ -70,8 +74,8 @@
                         for (i = 0; i < data.OrderMessageInfos.length; i++)
                         {
                             messageLis = messageLis + "<li>" +
-                            "<a href=\"#\" class=\"chatLink\" id=\"" + data.OrderMessageInfos[i].Id + "\">" +
-                            "@ActivePanel.ChatLinkText1" + data.OrderMessageInfos[i].Id + " @ActivePanel.ChatLinkText2" +
+                                "<a href=\"#\" class=\"chatLink\" id=\"" + data.OrderMessageInfos[i].Id + "\">" +
+                                "@ActivePanel.ChatLinkTextFormat".format(data.OrderMessageInfos[i].Id) +
                             "<span class=\"badge\">" + data.OrderMessageInfos[i].UnreadCount + "</span></a></li>";
 
                         }
@@ -88,6 +92,23 @@
                 document.getElementById("orderPanelMenu").innerHTML = orderLi;
                 document.getElementById("unreadCount").innerHTML = data.UnreadCount;
 
+            }
+
+            function GetLi(dataBit)
+            {
+                var li = document.createElement("li");
+
+                var a = document.createElement("a");
+
+                var span = document.createElement("span");
+                span.className = "badge";
+                span.innerHTML = dataBit.UnreadCount;
+
+                a.className = "chatLink"
+                a.id = dataBit.Id;
+
+                a.innerHTML = "@ActivePanel.ChatLinkTextFormat".format(dataBit.Id);
+                return li;
             }
         })
     </script>

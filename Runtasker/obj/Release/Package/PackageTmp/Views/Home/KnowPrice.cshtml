@@ -13,7 +13,7 @@
     string langCode = StaticHtmlClassesHelper.GetLangCode();
 
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
-    MvcHtmlString header = MvcHtmlString.Create($"<h2>{localeModel["HtmlActionDesc"]}</h2>");
+    
     
     ViewBag.Title = localeModel["ActionDescMini"];
 }
@@ -39,7 +39,8 @@
         <div class="row">
             <!-- FORM -->
             <div class="col-md-12">
-                @header
+                
+                <h2>@localeModel["ActionDescHtml"].ToHtml()</h2>
 
                 @using (Html.BeginForm("KnowPrice", "Home", FormMethod.Post, htmlAttributes: new { id = "contactForm", @class = "white-row", enctype = "multipart/form-data" }))
                 {

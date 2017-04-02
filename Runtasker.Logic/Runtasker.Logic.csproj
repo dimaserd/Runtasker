@@ -274,9 +274,11 @@
     <Compile Include="Workers\Payments\AccountPaymentMethods.cs" />
     <Compile Include="Workers\Payments\CustomerOrderPaymentMethods.cs" />
     <Compile Include="Workers\Payments\InvitationPaymentMethods.cs" />
-    <Compile Include="Workers\Payments\RobokassaPaymentMethods.cs" />
+    <Compile Include="Workers\Payments\PaymentGetters\PaymentGetterBase.cs" />
+    <Compile Include="Workers\Payments\PaymentGetters\RobokassaPaymentMethods.cs" />
+    <Compile Include="Workers\Payments\PaymentGetters\YandexKassaPaymentGetter.cs" />
     <Compile Include="Workers\Payments\ServicePaymentMethodsBase.cs" />
-    <Compile Include="Workers\Payments\YandexPaymentWorker.cs" />
+    <Compile Include="Workers\Payments\PaymentGetters\YandexPaymentWorker.cs" />
     <Compile Include="Workers\Notifications\WebUINotificater.cs" />
     <Compile Include="Workers\PaymentTransactions\PaymentTransactionsLogger.cs" />
     <Compile Include="Workers\PaymentTransactions\PaymentTransactionsWorker.cs" />
@@ -318,6 +320,7 @@
   <ItemGroup>
     <Folder Include="Models\Menu\" />
     <Folder Include="Statics\" />
+    <Folder Include="Workers\Logging\Statics\" />
     <Folder Include="Workers\RestoreData\" />
   </ItemGroup>
   <ItemGroup>

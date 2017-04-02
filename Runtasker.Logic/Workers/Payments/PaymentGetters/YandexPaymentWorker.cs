@@ -2,15 +2,14 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers.Notifications;
+using Runtasker.Logic.Workers.Payments.PaymentGetters;
 using Runtasker.Logic.Workers.PaymentTransactions;
 using System;
 using System.IO;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Runtasker.Logic.Workers
 {
-    public class YandexPaymentWorker
+    public class YandexPaymentWorker : PaymentGetterBase
     {
         #region Constructors
         public YandexPaymentWorker(MyDbContext context)
@@ -130,19 +129,7 @@ namespace Runtasker.Logic.Workers
         }
 
 
-        private string GetHash(string val)
-        {
-            SHA1 sha = new SHA1CryptoServiceProvider();
-            byte[] data = sha.ComputeHash(Encoding.Default.GetBytes(val));
-
-            StringBuilder sBuilder = new StringBuilder();
-
-            for (int i = 0; i < data.Length; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-            return sBuilder.ToString();
-        }
+        
         #endregion
     }
 }

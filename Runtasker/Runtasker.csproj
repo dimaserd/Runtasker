@@ -3540,6 +3540,7 @@
     <Content Include="Views\Orders\OnlineHelp.cshtml" />
     <Content Include="Views\Orders\PayOnlineHelp.cshtml" />
     <Content Include="Views\Shared\_NewAdminLayout.cshtml" />
+    <Content Include="Views\Payment\YandexKassa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

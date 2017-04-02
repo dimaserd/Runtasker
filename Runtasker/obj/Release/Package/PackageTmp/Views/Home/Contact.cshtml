@@ -1,121 +1,167 @@
-﻿@using Runtasker.Logic
-@using Runtasker.Resources.Views.Home.Contact
-@model Runtasker.Logic.Models.ContactViewModel
+﻿@using Runtasker.Logic.Models
+@using Runtasker.HtmlExtensions
+@using Runtasker.LocaleBuilders.Models
+@using Extensions.String
+@using Runtasker.Logic
+@model ContactViewModel
 @{
-    ViewBag.Title = "Contact";
-}
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
 
-@*
-    TO DO Screenshots file input
-*@
+    ViewBag.Title = localeModel["Title"];
 
-@{ 
-    string Email = "";
-    string Name = "";
-    string Text = "";
-    if (User.Identity.IsAuthenticated)
+    bool? messageSent = ViewData["messageSent"] as bool?;
+
+    string disabled = (messageSent != null && messageSent.Value) ? "disabled" : null;
+
+
+    MvcHtmlString btnfakeSubmit = MvcHtmlString.Create($"<button id=\"fakeBtn\" {disabled} class=\"btn btn-primary btn-lg\">{localeModel["BtnText"]}</button>");
+
+
+    string Email = "", Name = "";
+    if (Request.IsAuthenticated)
     {
         Email = User.Identity.GetEmail();
         Name = User.Identity.GetName();
     }
-
-    if(!string.IsNullOrEmpty(Model.Email))
-    {
-        Email = Model.Email;
-    }
-
-    if(!string.IsNullOrEmpty(Model.Name))
-    {
-        Name = Model.Name;
-    }
-
-    if(!string.IsNullOrEmpty(Model.Text))
-    {
-        Text = Model.Text;
-    }
-
 }
+<!-- WRAPPER -->
+<div>
+    <!--Подключение каптчи-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <!--/Подключение каптчи-->
 
-<hr/>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="well well-sm">
-                <form class="form-horizontal" action="" method="post">
-                    <fieldset>
-                        <legend class="text-center">@ContactRes.ContactUs</legend>
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary("", new { @class = "text-danger" })
-                        <!-- Name input-->
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.Name, htmlAttributes: new { @class = "col-md-3 control-label" })
-                            <div class="col-md-9">
-                                @if (string.IsNullOrEmpty(Name))
-                                {
-                                    <input id="name" name="Name" type="text" placeholder="@ContactRes.NamePlaceholder" class="form-control">
-                                }
-                                else
-                                {
-                                    <input id="name" name="Name" type="text" value="@Name" class="form-control">
-                                }
-
-                            </div>
-                        </div>
-
-                        <!-- Email input-->
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="email">Your E-mail</label>
-                            <div class="col-md-9">
-                                @if (!string.IsNullOrEmpty(Email))
-                                {
-                                    <input id="email" name="Email" type="text" value="@Email" class="form-control">
-                                }
-                                else
-                                {
-                                    <input id="email" name="Email" type="text" value="@Email"  placeholder="@ContactRes.EmailPlaceholder" class="form-control">
-                                }
-                                </div>
-                        </div>
-
-                        <!-- Message body -->
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="message">@ContactRes.YourMessage</label>
-                            <div class="col-md-9">
-                                @if (string.IsNullOrEmpty(Text))
-                                {
-                                    <textarea class="form-control" id="message" name="Text" placeholder="@ContactRes.MessagePlaceholder" rows="5"></textarea>
-                                }
-                                else
-                                {
-                                    <textarea class="form-control" id="message" name="Text" rows="5">@Text</textarea>
-                                }
-                            </div>
-                        </div>
-
-                        <!-- Form actions -->
-                        <div class="form-group">
-                            <div class="col-md-12 text-right">
-                                <button type="submit" class="btn btn-primary btn-lg">
-                                    @ContactRes.SendMessage
-                                </button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
+    <!-- PAGE TITLE -->
+    <header id="page-title">
+        <div class="container">
+            <h1>@localeModel["Header"]</h1>
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Home")">@localeModel["HomeNav"]</a></li>
+                <li class="active">@localeModel["ActiveNav"]</li>
+            </ul>
         </div>
-    </div>
-</div>
-@*
-    <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
-    </address>
+    </header>
 
-    <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
-*@
+    <section id="contact" class="container">
+        <div class="row">
+            <!-- FORM -->
+            <div class="col-md-12">
+               
+            
+                @using (Html.BeginForm("Contact", "Home", FormMethod.Post, htmlAttributes: new { id = "contactForm", @class = "white-row" }))
+                {
+                    <div class="row">                        
+                        @if (messageSent != null && messageSent.Value)
+                        {
+                            <div class="alert alert-success fade in fsize16 hide">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                @localeModel["AlertTextHtml"].ToHtml()
+                            </div>
+                        }
+                        else
+                        {
+                            @Html.ValidationErrorsToAlerts()
+                        }
+                        <div id="bigError" class="alert alert-danger">
+                            <i class="fa fa-frown-o"></i>
+                            <strong id="bigErrorText"></strong>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.FullName)
+                                @Html.TextBoxFor(m => m.FullName, htmlAttributes: new {@class="form-control", value = $"{Name}"})
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.Email)
+                                @Html.TextBoxFor(m => m.Email, htmlAttributes: new {@class="form-control", value = $"{Email}"})
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.PhoneNumber)
+                                @Html.TextBoxFor(m => m.PhoneNumber, htmlAttributes: new { @class = "form-control", type = "tel" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.LabelFor(m => m.Subject)
+                                @Html.TextBoxFor(m => m.Subject, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.LabelFor(m => m.Message)
+                                @Html.TextAreaFor(m => m.Message,
+                                htmlAttributes: new { maxlength = "5000", rows = "10",
+                                    @class ="form-control", placeholder = localeModel["MessagePlaceholderText"]
+                                })
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="pull-right">
+                                <!-- captcha -->
+                                <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6LfGJQsUAAAAAD_WIZo3f6v8mb9rJuZzRqZy4v3i"></div>
+                                <!--/captcha-->
+                             </span>
+                            <input type="submit" id="realSubmit" class="hidden" />
+                            @btnfakeSubmit
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <!-- /FORM -->
+        </div>
+    </section>
+</div>
+<!-- /WRAPPER -->
+
+@section scripts{
+    <!--Big Error Scripts-->
+    <script>
+        var bigError = $("#bigError");
+        var bigErrorText = $("#bigErrorText")
+
+        function ShowBigError(errorDesc) {
+            bigErrorText.html(errorDesc);
+            bigError.show();
+        }
+
+        function HideBigError() {
+            bigError.hide();
+        }
+    </script>
+    <!--/Big Error Scripts-->
+
+    <script>
+        HideBigError();
+
+        var fakeBtn = $("#fakeBtn");
+        var realSubmit = $("#realSubmit");
+
+        var canSend = false;
+
+        function recaptchaCallback() {
+            canSend = true;
+        };
+
+        fakeBtn.click(function (e) {
+            e.preventDefault();
+            if(canSend)
+            {
+                realSubmit.click();
+            }
+            else
+            {
+                ShowBigError("Нажмите на галочку каптчи!")
+            }
+        })
+    </script>
+}

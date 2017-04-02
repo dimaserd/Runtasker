@@ -1,0 +1,189 @@
+﻿@using Runtasker.LocaleBuilders.Models
+@using HtmlExtensions.StaticRenderers
+@using Extensions.String
+@using Runtasker.Settings
+@{
+
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
+    ViewBag.Title = localeModel["Title"];
+
+    ViewBag.Title = "YandexKassa";
+
+    string userGuid = ViewData["userGuid"] as string;
+    string userEmail = ViewData["userEmail"] as string;
+    decimal? sumToPay = ViewData["sumToPay"] as decimal?;
+}
+
+<!--Navigation-->
+<header id="page-title">
+    <div class="container">
+        <h1>@ViewBag.Title</h1>
+        <ul class="breadcrumb">
+            <li><a href="/Home/Index">@localeModel["NavHome"]</a></li>
+            <li><a href="/Payment/Index">@localeModel["NavPayment"]</a></li>
+            <li class="active">@localeModel["NavActive"]</li>
+        </ul>
+    </div>
+</header>
+<!--/Navigation-->
+
+<h2>YandexKassa</h2>
+
+<div class="form-horizontal">
+    <form method="POST" action="@YandexKassaSettings.DemoTestUrl">
+        
+        <!--customerNumber - это userguid-->
+        <input name="customerNumber" value="@userEmail" type="hidden">
+        
+        <input name="shopId" value="@YandexKassaSettings.ShopId" type="hidden">
+        <input name="scid" value="@YandexKassaSettings.SCId" type="hidden">
+        <input name="cps_email" value="@userEmail" type="hidden">
+        <input type="hidden" name="targets" value="@localeModel["YandexDesc"]">
+        <h4>@localeModel["Amount"]: </h4>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="input-group input-group-lg">
+
+                    <input id="sum" class="form-control" name="sum" value="@((sumToPay.HasValue) ? sumToPay.Value : 0 )" maxlength="10" type="number" data-type="number">
+                    <span class="input-group-addon">
+                        @HtmlSigns.Rouble.ToHtml()
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h4 id="errorText" class="hidden text-danger paddingLeft">
+                @localeModel["AmountErrorText"]
+            </h4>
+            <style>
+                .paddingLeft {
+                    padding-left: 15px;
+                }
+
+                .marginTop {
+                    margin-top: 15px;
+                }
+            </style>
+        </div>
+
+        
+
+        
+        <!--PsevdoButton Trick-->
+        <input id="paySubmit" class="hidden" type="submit" name="submit-button" value="Pay">
+    </form>
+    <button id="fakeButton" class="btn btn-info btn-lg marginTop">
+        @GISigns.PiggyBank.ToHtml() @localeModel["Pay"]
+    </button>
+</div>
+
+
+
+@section scripts
+{
+    <script>
+    if ($(document).ready())
+    {
+        //Prevent Sending Form by clicking enter button
+        $(window).keydown(function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
+        var fakeButton = $('#fakeButton');
+        var sum = $("#sum");
+        var errorText = $('#errorText');
+
+        fakeButton.click(function (e) {
+            if(SumIsNum())
+            {
+
+                if (!SumIsNumericNull())
+                {
+                    console.log(sum.val());
+                    sum.val(SumToInt());
+                    SendForm();
+                }
+                else
+                {
+                    NotificationShow();
+                }
+
+            }
+
+        });
+
+        sum.keyup(function (e) {
+            var code = e.which; // recommended to use e.which, it's normalized across browsers
+            if (code == 13) {
+                fakeButton.click();
+            }
+        });
+
+        sum.change(function (e) {
+            e.preventDefault();
+            if (SumIsGreaterThanNull()) {
+                NotificationHide();
+            }
+
+            if(isNaN(sum.val()))
+            {
+                sum.val('0');
+            }
+        })
+
+        function SumIsGreaterThanNull() {
+            if (!SumIsNum) {
+                return false;
+            }
+
+            return (Number(sum.val()) > 0)
+        }
+
+        sum.keydown(function (e) {
+            var code = e.which;
+            if (code == 69) {
+                event.preventDefault();
+                return false;
+            }
+        })
+
+        function SumToInt()
+        {
+            return parseInt(sum.val());
+        }
+
+        function SumIsNum()
+        {
+            console.log(sum.val());
+
+            return !isNaN(sum.val());
+        }
+
+        function SumIsNumericNull()
+        {
+
+            console.log(sum.val() == '0' || sum.val() == 0)
+            return sum.val() == '0' || sum.val() == 0;
+        }
+
+        function SendForm()
+        {
+            var paySubmit = $('#paySubmit');
+            paySubmit.trigger('click');
+        }
+
+        function NotificationShow()
+        {
+            errorText.removeClass('hidden');
+        }
+
+        function NotificationHide()
+        {
+            errorText.addClass('hidden');
+        }
+    }
+    </script>
+}

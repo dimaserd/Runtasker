@@ -2,7 +2,7 @@
 @using HtmlExtensions.Renderers
 @using Extensions.String
 @using Runtasker.LocaleBuilders.Models
-
+@using Runtasker.Settings
 @{
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
     ViewBag.Title = localeModel["Title"];
@@ -30,9 +30,11 @@
 </div>
 
 <div class="form-horizontal">
-    <form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml">
+    <form method="POST" action="@YandexKassaSettings.DemoTestUrl">
 
         <!--label - это userguid-->
+        <input name="shopId" value="@YandexKassaSettings.ShopId" type="hidden">
+        <input name="scid" value="@YandexKassaSettings.SCId" type="hidden">
         <input name="label" value="@userGuid" type="hidden">
         <input name="receiver" value="410014471705465" type="hidden">
         <input name="quickpay-form" value="shop" type="hidden">

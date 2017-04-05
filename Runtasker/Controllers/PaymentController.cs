@@ -5,12 +5,14 @@ using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.ViewModelBuilders.Payment;
 using Runtasker.Logic.Workers;
+using Runtasker.Logic.Workers.Logging;
 using Runtasker.Logic.Workers.Payments;
 using Runtasker.Logic.Workers.Payments.PaymentGetters;
 using Runtasker.Logic.Workers.PaymentTransactions;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 using System.Threading;
 using System.Web.Mvc;
 
@@ -139,6 +141,58 @@ namespace Runtasker.Controllers
             return View();
         }
 
+        /// <summary>
+        ///  Получение уведомления от кассы пока сделано уебищно
+        ///  потом поставь через contrib библиотеку
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="orderSumAmount"></param>
+        /// <param name="orderSumCurrencyPaycash"></param>
+        /// <param name="orderSumBankPaycash"></param>
+        /// <param name="shopId"></param>
+        /// <param name="invoiceId"></param>
+        /// <param name="customerNumber"></param>
+        /// <param name="MD5"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [AllowAnonymous]
+        public string YandexKassa(string action = null, string orderSumAmount = null,
+            string orderSumCurrencyPaycash = null, string orderSumBankPaycash = null,
+            string shopId = null, string invoiceId = null, string customerNumber = null,
+            string MD5 = null)
+        {
+            using (LoggingWorker logger = new LoggingWorker())
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"action={action}\n")
+                .Append($"orderSumAmount={orderSumAmount}\n")
+                .Append($"orderSumCurrencyPaycash={orderSumCurrencyPaycash}\n")
+                .Append($"orderSumBankPaycash={orderSumBankPaycash}\n")
+                .Append($"shopId={shopId}\n")
+                .Append($"invoiceId={invoiceId}\n")
+                .Append($"customerNumber={customerNumber}\n")
+                .Append($"MD5={MD5}\n");
+                
+
+                string fileName = "yandexKassaPostTest.txt";
+
+                logger.LogTextToFile(fileName, sb.ToString());
+            }
+
+            //code = "0"    такой заказ есть в магазине, 
+            //можно продолжать оплату магазин принимает оплаченный заказ
+            //code = "1"    полученная MD5-сумма не совпадает с MD5-суммой 
+            //на стороне магазина тоже самое
+            //code = "100"  такого заказа нет в магазине в авизо такого ответа нет
+            //code = "200"  не удается выполнить разбор полученных параметров   тоже самое
+
+            Response.ContentType = "application/xml";
+            return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+                $"<checkOrderResponse performedDatetime=\"{DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fff", CultureInfo.InvariantCulture)}\" " +
+                $"code=\"{0}\" invoiceId=\"{invoiceId}\" shopId=\"{shopId}\"/>";
+            
+        }
+
         [HttpGet]
         [Authorize]
         public ActionResult Yandex(decimal? sumToPay)
@@ -250,12 +304,21 @@ namespace Runtasker.Controllers
                 shopId: shopId, invoiceId: invoiceId, customerNumber: customerNumber,
                 MD5: MD5);
 
-            if(result.Succeeded)
+            int succeededCode = 0;
+            if (result.Succeeded)
             {
-                return 0.ToString();
+                succeededCode = 0;
+            }
+            else
+            {
+                succeededCode = 100;
             }
 
-            return result.ErrorsList[0];
+            Response.ContentType = "application/xml";
+            return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+                $"<checkOrderResponse performedDatetime=\"{DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fff", CultureInfo.InvariantCulture)}\" " +
+                $"code=\"{succeededCode}\" invoiceId=\"{invoiceId}\" shopId=\"{shopId}\"/>";
+
         }
         #endregion
 

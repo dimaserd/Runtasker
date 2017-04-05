@@ -11,7 +11,7 @@ namespace Runtasker.Logic.Workers.Payments.PaymentGetters
         /// <summary>
         /// Метод оплаты логгируется
         /// </summary>
-        /// <param name="action"></param>
+        /// <param name="action"> описывает действие</param>
         /// <param name="orderSumAmount"></param>
         /// <param name="orderSumCurrencyPaycash"></param>
         /// <param name="orderSumBankPaycash"></param>

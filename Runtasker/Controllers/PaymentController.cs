@@ -231,7 +231,12 @@ namespace Runtasker.Controllers
             return View(model);
         }
 
-        
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Succeeded()
+        {
+            return View();
+        }
 
         
 

@@ -184,6 +184,7 @@
     <Compile Include="Models\Orders\Pay\PayAnotherHalfModel.cs" />
     <Compile Include="Models\Orders\Pay\PayHalfModel.cs" />
     <Compile Include="Models\Orders\Pay\PayOnlineHelp.cs" />
+    <Compile Include="Models\Payments\YandexKassa\YandexKassaPaymentResponse.cs" />
     <Compile Include="Models\VkNotificater\VkUserInfo.cs" />
     <Compile Include="Models\WokerResults\WorkerPropertyResult.cs" />
     <Compile Include="Workers\Admin\Users\AdminUserCreation.cs" />
@@ -206,7 +207,7 @@
     <Compile Include="Models\MessageViewModels.cs" />
     <Compile Include="Models\Orders\CustomerOrderModels.cs" />
     <Compile Include="Models\NotificationModels.cs" />
-    <Compile Include="Models\PaymentModels.cs" />
+    <Compile Include="Models\Payments\PaymentModels.cs" />
     <Compile Include="Models\PerformerViewModels.cs" />
     <Compile Include="Contexts\MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

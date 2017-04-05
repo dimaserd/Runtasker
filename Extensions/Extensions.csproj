@@ -110,6 +110,7 @@
     <Compile Include="Json\JsonExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Randoms\RandomPassword.cs" />
+    <Compile Include="Reflection\ReflectionExtensionMethods.cs" />
     <Compile Include="String\StringExtension.cs" />
     <Compile Include="String\StringExtensions2.cs" />
     <Compile Include="String\StringHtmlWrapper.cs" />

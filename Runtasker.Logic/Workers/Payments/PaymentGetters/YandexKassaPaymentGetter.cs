@@ -29,7 +29,7 @@ namespace Runtasker.Logic.Workers.Payments.PaymentGetters
 
 
             //формирую строку для расчета MD5
-            string val = $"{action};{orderSumAmount};{orderSumCurrencyPaycash};{orderSumBankPaycash};{shopId};{invoiceId};{customerNumber};{YandexKassaSettings.ShopPassword}";
+            string val = $"{action}{orderSumAmount}{orderSumCurrencyPaycash}{orderSumBankPaycash}{shopId}{invoiceId}{customerNumber}{YandexKassaSettings.ShopPassword}";
 
             //считаю хеш
             string md5 = GetHash(val);

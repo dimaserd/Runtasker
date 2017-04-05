@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Runtasker.Logic;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
+using Runtasker.Logic.Models.Payments.YandexKassa;
 using Runtasker.Logic.ViewModelBuilders.Payment;
 using Runtasker.Logic.Workers;
 using Runtasker.Logic.Workers.Logging;
@@ -233,7 +234,7 @@ namespace Runtasker.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Succeeded()
+        public ActionResult Succeeded(YandexKassaPaymentResponse response)
         {
             return View();
         }

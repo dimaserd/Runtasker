@@ -1,0 +1,16 @@
+﻿@using Runtasker.Logic.Models.Payments.YandexKassa
+@using Extensions.Reflection
+@using System.Reflection;
+@model YandexKassaPaymentResponse
+@{
+    ViewBag.Title = "Успешная оплата";
+    Dictionary<string, object> propsAndValues = ReflectionExtensionMethods.GetPropertiesDictionary(Model);
+}
+
+@if (Model != null)
+{
+    foreach (var prop in Model.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
+    {
+        <h2>@prop.Name : @prop.GetValue(Model, null) </h2>
+    }
+}

@@ -1,4 +1,4 @@
-﻿using System.Text.RegularExpressions;
+﻿using Extensions.Reflection;
 
 namespace Extensions.String
 {
@@ -32,7 +32,7 @@ namespace Extensions.String
             string keyValueAttributesPair = string.Empty;
             if(htmlAttributes != null)
             {
-                keyValueAttributesPair = StringExtension.RenderAttributesKeyValuePair(htmlAttributes);
+                keyValueAttributesPair = ReflectionExtensionMethods.RenderAttributesKeyValuePair(htmlAttributes);
             }
 
             return $"<span{keyValueAttributesPair}>{s}</span>";
@@ -46,7 +46,7 @@ namespace Extensions.String
 
         public static string WrapToA(this string s, object htmlAttributes)
         {
-            string keyValueAttributesPair = StringExtension.RenderAttributesKeyValuePair(htmlAttributes);
+            string keyValueAttributesPair = ReflectionExtensionMethods.RenderAttributesKeyValuePair(htmlAttributes);
             return $"<a{keyValueAttributesPair}>{s}</a>";
         }
 

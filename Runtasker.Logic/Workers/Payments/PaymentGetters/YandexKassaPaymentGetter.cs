@@ -12,7 +12,6 @@ namespace Runtasker.Logic.Workers.Payments.PaymentGetters
 {
     public class YandexKassaPaymentGetter : PaymentGetterBase
     {
-
         #region Constructors
         public YandexKassaPaymentGetter(MyDbContext context) : base (context)
         {
@@ -36,14 +35,13 @@ namespace Runtasker.Logic.Workers.Payments.PaymentGetters
         /// <param name="customerNumber"></param>
         /// <param name="MD5"></param>
         /// <returns></returns>
-        public async Task<WorkerResult> YandexKassaNotificated(string action = null, string orderSumAmount = null,
+        public async Task<WorkerResult> YandexKassaNotificatedAsync(string action = null, string orderSumAmount = null,
             string orderSumCurrencyPaycash = null, string orderSumBankPaycash = null,
             string shopId = null, string invoiceId = null, string customerNumber = null,
             string MD5 = null)
         {
 
             //action; суммазаказа; orderSumCurrencyPaycash; orderSumBankPaycash; shopId; invoiceId; customerNumber; shopPassword
-            //MD5(action; суммазаказа; orderSumCurrencyPaycash; orderSumBankPaycash; shopId; invoiceId; customerNumber; shopPassword);
             //формирую строку для расчета MD5
             string val = $"{action};{orderSumAmount};{orderSumCurrencyPaycash};{orderSumBankPaycash};{shopId};{invoiceId};{customerNumber};{YandexKassaSettings.ShopPassword}";
 
@@ -101,17 +99,21 @@ namespace Runtasker.Logic.Workers.Payments.PaymentGetters
                 //добавляем пользователю денег на счет
                 AddMoneyToUser(payment);
 
-                //создаем платежное уведомление
+                //Передаем сущность пользователя в класс уведомлений
+                //чтобы избежать запроса в базу данных
+                Notificater.SetCustomer(user);
+
+                //и создаем платежное уведомление
                 Notificater.OnUserPaid(payment);
                 
-
+                //возвращаем успешный результат операции
                 return new WorkerResult
                 {
                     Succeeded = true
                 };
             }
 
-            //возвращаю 
+            //возвращаю неуспешный результат операции
             return new WorkerResult("1");
         }
 

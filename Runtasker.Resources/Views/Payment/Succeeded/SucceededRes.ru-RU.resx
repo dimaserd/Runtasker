@@ -132,4 +132,13 @@
     <value>Успешная оплата</value>
     <comment>Успешная оплата</comment>
   </data>
+  <data name="GoToMyOrders" xml:space="preserve">
+    <value>Перейти к моим заказам</value>
+  </data>
+  <data name="HomeNav" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="ToppingUpNav" xml:space="preserve">
+    <value>Пополнение баланса</value>
+  </data>
 </root>

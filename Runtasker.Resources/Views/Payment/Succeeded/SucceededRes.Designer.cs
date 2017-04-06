@@ -70,6 +70,24 @@ namespace Runtasker.Resources.Views.Payment.Succeeded {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Go to My Orders.
+        /// </summary>
+        public static string GoToMyOrders {
+            get {
+                return ResourceManager.GetString("GoToMyOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Home.
+        /// </summary>
+        public static string HomeNav {
+            get {
+                return ResourceManager.GetString("HomeNav", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Your account has been credited with {0}{1}..
         /// </summary>
         public static string PaymentDescTextFormat {
@@ -93,6 +111,15 @@ namespace Runtasker.Resources.Views.Payment.Succeeded {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Topping up.
+        /// </summary>
+        public static string ToppingUpNav {
+            get {
+                return ResourceManager.GetString("ToppingUpNav", resourceCulture);
             }
         }
     }

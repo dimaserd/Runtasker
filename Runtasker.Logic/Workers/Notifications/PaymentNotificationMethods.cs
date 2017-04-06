@@ -33,8 +33,21 @@ namespace Runtasker.Logic.Workers.Notifications
         MyDbContext Context { get; set; }
         #endregion
 
-        #region Methods like Events
-        
+        #region Методы
+
+        #region Внешние методы
+        /// <summary>
+        /// метод передающий пользователя из внешней среды в этот класс
+        /// </summary>
+        /// <param name="customer"></param>
+        public void SetCustomer(ApplicationUser customer)
+        {
+            _user = customer;
+        }
+        #endregion
+
+        #region Методы по событиям
+
         public void OnUserPaid(Payment p, SaveChangesType saveType = SaveChangesType.Now)
         {
             //устанавливаем локаль пользователя чтобы все уведомления записались
@@ -73,7 +86,7 @@ namespace Runtasker.Logic.Workers.Notifications
                 Type = NotificationType.Info,
                 UserGuid = p.UserGuid,
                 Title = string.Format(PaymentNotRes.PaymentReceivedTitleFormat, p.Amount.ToMoney(), HtmlSigns.Rouble, ViaService),
-                Text = string.Format(PaymentNotRes.YourBalanceFormat, GetUserBalanceString(p),HtmlSigns.Rouble),
+                Text = string.Format(PaymentNotRes.YourBalanceFormat, GetUserBalanceString(p), HtmlSigns.Rouble),
                 Link = (activeOrder == null) ? 
                 new HtmlLink
                 (
@@ -105,13 +118,8 @@ namespace Runtasker.Logic.Workers.Notifications
 
         #endregion
 
-        #region Help Methods
-        /// <summary>
-        /// Возвращает уже преобразованную строку из текущего баланса пользователя.
-        /// Например 300 если баланс = 300.00m
-        /// </summary>
-        /// <param name="payment"></param>
-        /// <returns></returns>
+        #region Вспомогательные методы
+        
         string GetUserBalanceString(Payment payment)
         {
             if (_user == null)
@@ -142,6 +150,8 @@ namespace Runtasker.Logic.Workers.Notifications
         {
             _user = Context.Users.FirstOrDefault(u => u.Id == payment.UserGuid);
         }
+        #endregion
+
         #endregion
     }
 }

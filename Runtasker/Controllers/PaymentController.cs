@@ -1,5 +1,7 @@
-﻿using Logic.Extensions.Models;
+﻿using HtmlExtensions.StaticRenderers;
+using Logic.Extensions.Models;
 using Microsoft.AspNet.Identity;
+using Runtasker.LocaleBuilders.Views.Payment;
 using Runtasker.Logic;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
@@ -15,6 +17,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Http.Cors;
 using System.Web.Mvc;
 
@@ -24,7 +27,7 @@ namespace Runtasker.Controllers
     [Authorize(Roles = "Customer")]
     public class PaymentController : Controller
     {
-        #region Fields
+        #region Поля
 
         MyDbContext _context;
 
@@ -34,10 +37,10 @@ namespace Runtasker.Controllers
 
         CustomerPaymentTransactionsWorker _PTWorker;
 
-        PaymentViewsLocaleHelper _viewsHelper;
+        PaymentViewModelBuilder _viewsHelper;
         #endregion
 
-        #region Properties
+        #region Свойства
         MyDbContext Context
         {
             get
@@ -62,13 +65,13 @@ namespace Runtasker.Controllers
             }
         }
 
-        PaymentViewsLocaleHelper ViewsHelper
+        PaymentViewModelBuilder ViewsHelper
         {
             get
             {
                 if(_viewsHelper == null)
                 {
-                    _viewsHelper = new PaymentViewsLocaleHelper();
+                    _viewsHelper = new PaymentViewModelBuilder();
                 }
                 return _viewsHelper;
             }
@@ -115,9 +118,10 @@ namespace Runtasker.Controllers
 
         #endregion
 
-        #region HttpController methods
 
-        //We have index method where user  can choose his way to recharge balance
+        #region Http Методы
+
+        //Здесь пользователь может выбрать каким способом оплачивать
         [HttpGet]
         [Authorize]
         public ActionResult Index(decimal? sumToPay)
@@ -126,7 +130,7 @@ namespace Runtasker.Controllers
             return View(model: sumToPay);
         }
 
-
+        #region ЯндексКасса
         [HttpGet]
         [Authorize]
         public ActionResult YandexKassa(decimal? sumToPay)
@@ -196,6 +200,9 @@ namespace Runtasker.Controllers
             
         }
 
+        #endregion
+
+        #region Старые методы оплаты
         [HttpGet]
         [Authorize]
         public ActionResult Yandex(decimal? sumToPay)
@@ -226,6 +233,8 @@ namespace Runtasker.Controllers
 
             return View(model);
         }
+        #endregion
+
 
         [HttpGet]
         public ActionResult History()
@@ -238,6 +247,8 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult Succeeded(YandexKassaPaymentResponse response)
         {
+            ViewData["localeModel"] = ViewsHelper.Succeeded(decimal.Parse(response.orderSumAmount, CultureInfo.InvariantCulture), HtmlSigns.Rouble);
+
             return View(response);
         }
 
@@ -306,14 +317,14 @@ namespace Runtasker.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public string YandexKassaPaid(string action = null, string orderSumAmount = null,
+        public async Task<string> YandexKassaPaid(string action = null, string orderSumAmount = null,
             string orderSumCurrencyPaycash = null, string orderSumBankPaycash = null,
             string shopId = null, string invoiceId = null, string customerNumber = null, 
             string MD5 = null)
         {
-            YandexKassaPaymentGetter getter = new YandexKassaPaymentGetter();
+            YandexKassaPaymentGetter getter = new YandexKassaPaymentGetter(Context);
 
-            WorkerResult result = getter.YandexKassaNotificated(action: action, orderSumAmount: orderSumAmount,
+            WorkerResult result = await getter.YandexKassaNotificatedAsync(action: action, orderSumAmount: orderSumAmount,
                 orderSumCurrencyPaycash: orderSumCurrencyPaycash, orderSumBankPaycash: orderSumBankPaycash,
                 shopId: shopId, invoiceId: invoiceId, customerNumber: customerNumber,
                 MD5: MD5);

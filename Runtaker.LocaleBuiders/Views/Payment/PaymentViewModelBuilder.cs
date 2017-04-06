@@ -89,13 +89,18 @@ namespace Runtasker.LocaleBuilders.Views.Payment
             return result;
         }
 
-        public LocaleViewModel Succeded(decimal sum, string roubleSign, int orderId)
+        public LocaleViewModel Succeeded(decimal sum, string roubleSign)
         {
             LocaleViewModel result = new LocaleViewModel();
 
             result.Add("Title", SucceededRes.Title);
             result.Add("PaymentDescText", string.Format(SucceededRes.PaymentDescTextFormat, sum, roubleSign));
-            result.Add("PayOrderBtnText", string.Format(SucceededRes.PayOrderTexFormat, orderId));
+            result.Add("GoToMyOrdersBtnText", SucceededRes.GoToMyOrders);
+            result.Add("HomeNav", SucceededRes.HomeNav);
+            result.Add("ToppingUpNav", SucceededRes.ToppingUpNav);
+            result.Add("ActiveNav", SucceededRes.Title);
+            //result.Add("PayOrderBtnText", string.Format(SucceededRes.PayOrderTexFormat, orderId));
+
 
             return result;
         }

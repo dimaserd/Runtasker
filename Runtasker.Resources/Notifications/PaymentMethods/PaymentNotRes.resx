@@ -139,4 +139,7 @@
     <value>Your balance is {0}{1}.</value>
     <comment>Your balance is {сумма на счете}{знак рубля}.</comment>
   </data>
+  <data name="ViaYandexKassa" xml:space="preserve">
+    <value>via YandexKassa service</value>
+  </data>
 </root>

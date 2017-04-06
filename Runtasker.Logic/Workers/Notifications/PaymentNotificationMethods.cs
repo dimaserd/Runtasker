@@ -3,6 +3,7 @@ using HtmlExtensions.HtmlEntities;
 using HtmlExtensions.Renderers;
 using HtmlExtensions.StaticRenderers;
 using Runtasker.Logic.Entities;
+using Runtasker.Logic.Enumerations;
 using Runtasker.Resources.Notifications.PaymentMethods;
 using System.Globalization;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace Runtasker.Logic.Workers.Notifications
 
         #region Methods like Events
         
-        public void OnUserPaid(Payment p)
+        public void OnUserPaid(Payment p, SaveChangesType saveType = SaveChangesType.Now)
         {
             //устанавливаем локаль пользователя чтобы все уведомления записались
             //на выбранном им языке
@@ -46,7 +47,23 @@ namespace Runtasker.Logic.Workers.Notifications
 
 
             //выбираем сервис оплаты
-            string ViaService = (p.ViaType == PaymentViaType.Robokassa) ? PaymentNotRes.ViaRoboKassa : PaymentNotRes.ViaYandexMoney;
+            string ViaService = string.Empty;
+
+            switch(p.ViaType)
+            {
+                case PaymentViaType.Robokassa:
+                    ViaService = PaymentNotRes.ViaRoboKassa;
+                    break;
+
+                case PaymentViaType.YandexMoney:
+                    ViaService = PaymentNotRes.ViaYandexMoney;
+                    break;
+
+                case PaymentViaType.YandexKassa:
+                    ViaService = PaymentNotRes.ViaYandexKassa;
+                    break;
+            }
+            
 
             //создаем уведомление
             Notification N = new Notification
@@ -79,7 +96,11 @@ namespace Runtasker.Logic.Workers.Notifications
             };
 
             Context.Notifications.Add(N);
-            Context.SaveChanges();
+
+            if(saveType == SaveChangesType.Now)
+            {
+                Context.SaveChanges();
+            }
         }
 
         #endregion

@@ -15,10 +15,12 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Threading;
+using System.Web.Http.Cors;
 using System.Web.Mvc;
 
 namespace Runtasker.Controllers
 {
+    [EnableCors("*", "*", "*")]
     [Authorize(Roles = "Customer")]
     public class PaymentController : Controller
     {
@@ -236,10 +238,16 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult Succeeded(YandexKassaPaymentResponse response)
         {
-            return View();
+            return View(response);
         }
 
-        
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Failed()
+        {
+
+            return View();
+        }
 
         [HttpGet]
         public ActionResult Paid()

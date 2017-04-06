@@ -3,6 +3,7 @@ using Runtasker.LocaleBuilders.Enumerations;
 using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Views.Payment.Index;
 using Runtasker.Resources.Views.Payment.Robokassa;
+using Runtasker.Resources.Views.Payment.Succeeded;
 using Runtasker.Resources.Views.Payment.Yandex;
 
 namespace Runtasker.LocaleBuilders.Views.Payment
@@ -77,6 +78,24 @@ namespace Runtasker.LocaleBuilders.Views.Payment
             result.Add("NavHome", YandexRes.NavHome);
             result.Add("NavPayment", YandexRes.NavPayment);
             result.Add("NavActive", YandexRes.NavActive);
+
+            return result;
+        }
+
+        public LocaleViewModel YandexKassa()
+        {
+            LocaleViewModel result = new LocaleViewModel();
+
+            return result;
+        }
+
+        public LocaleViewModel Succeded(decimal sum, string roubleSign, int orderId)
+        {
+            LocaleViewModel result = new LocaleViewModel();
+
+            result.Add("Title", SucceededRes.Title);
+            result.Add("PaymentDescText", string.Format(SucceededRes.PaymentDescTextFormat, sum, roubleSign));
+            result.Add("PayOrderBtnText", string.Format(SucceededRes.PayOrderTexFormat, orderId));
 
             return result;
         }

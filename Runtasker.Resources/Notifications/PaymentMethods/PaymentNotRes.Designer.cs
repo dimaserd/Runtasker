@@ -97,6 +97,15 @@ namespace Runtasker.Resources.Notifications.PaymentMethods {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на via YandexKassa service.
+        /// </summary>
+        public static string ViaYandexKassa {
+            get {
+                return ResourceManager.GetString("ViaYandexKassa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на via YandexMoney service.
         /// </summary>
         public static string ViaYandexMoney {

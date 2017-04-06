@@ -1,6 +1,6 @@
 ﻿using Logic.Extensions.Namers;
 using Runtasker.Logic.Entities;
-using System.IO;
+using Runtasker.Logic.Enumerations;
 
 namespace Runtasker.Logic.Workers.PaymentTransactions
 {
@@ -26,21 +26,9 @@ namespace Runtasker.Logic.Workers.PaymentTransactions
         #endregion
 
         #region Public methods
-        public void OnPaymentReceivedFromService(Payment payment)
+        public void OnPaymentReceivedFromService(Payment payment, SaveChangesType saveType = SaveChangesType.Now)
         {
-            #region Temporary Log Methods
 
-            //File logging
-            string RootDirectory = System.Web.Hosting.HostingEnvironment.MapPath("~/Files");
-            string filePath = $"{RootDirectory}/payment_transactions.txt";
-            string fileContents = $"came to OnPaymentReceivedFromService \n"
-            + $"Context is not null : {(Context != null)} \n"
-            + $"Payment : {Newtonsoft.Json.JsonConvert.SerializeObject(payment)} \n"
-            + $"________________________________________ \n";
-
-            File.AppendAllText(filePath, fileContents);
-
-            #endregion
             PaymentTransaction pt = new PaymentTransaction
             {
                 Description = (payment.ViaType == PaymentViaType.Robokassa) ? 
@@ -52,7 +40,11 @@ namespace Runtasker.Logic.Workers.PaymentTransactions
             };
 
             Context.PaymentTransactions.Add(pt);
-            Context.SaveChanges();
+
+            if(saveType == SaveChangesType.Now)
+            {
+                Context.SaveChanges();
+            }
         }
         #endregion
     }

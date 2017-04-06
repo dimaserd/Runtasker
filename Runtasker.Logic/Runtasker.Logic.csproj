@@ -171,6 +171,7 @@
     <Compile Include="Entities\PaymentTransaction.cs" />
     <Compile Include="Enumerations\DisposingInternalObjectsSetting.cs" />
     <Compile Include="Enumerations\OrderWorker\OrderCreationType.cs" />
+    <Compile Include="Enumerations\SaveChangesType.cs" />
     <Compile Include="Handlers\DbEntityValidationExceptionHandler.cs" />
     <Compile Include="Migrations\201702202121227_init.cs" />
     <Compile Include="Migrations\201702202121227_init.Designer.cs">

@@ -83,6 +83,7 @@
     <Compile Include="Logic\Workers\Notifications\NotificationsTestClass.cs" />
     <Compile Include="Logic\Workers\Orders\CustomerOrderWorkerTests.cs" />
     <Compile Include="MessageWorkerTest.cs" />
+    <Compile Include="Payment\EncryptingTestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\StringExtensionsTest.cs" />
     <Compile Include="VkParse\VkParseTests.cs" />
@@ -107,6 +108,10 @@
     <ProjectReference Include="..\Runtasker.Logic\Runtasker.Logic.csproj">
       <Project>{8f9a8021-202a-4fdb-8377-ab6f9f605cf1}</Project>
       <Name>Runtasker.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Runtasker.Settings\Runtasker.Settings.csproj">
+      <Project>{70630F62-8278-44C2-B24A-089356EEEB8A}</Project>
+      <Name>Runtasker.Settings</Name>
     </ProjectReference>
     <ProjectReference Include="..\Runtasker\Runtasker.csproj">
       <Project>{d161bdf2-0cec-4b51-a6dd-da7c1e8a32ab}</Project>

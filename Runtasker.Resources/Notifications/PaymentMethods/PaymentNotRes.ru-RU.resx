@@ -139,4 +139,7 @@
     <value>Ваш баланс : {0}{1}.</value>
     <comment>Ваш баланс : {сумма на счете}{знак рубля}.</comment>
   </data>
+  <data name="ViaYandexKassa" xml:space="preserve">
+    <value>через ЯндексКассу</value>
+  </data>
 </root>

@@ -3542,6 +3542,7 @@
     <Content Include="Views\Shared\_NewAdminLayout.cshtml" />
     <Content Include="Views\Payment\YandexKassa.cshtml" />
     <Content Include="Views\Payment\Succeeded.cshtml" />
+    <Content Include="Views\Payment\Failed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

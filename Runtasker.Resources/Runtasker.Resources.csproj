@@ -622,6 +622,16 @@
       <DependentUpon>RkassaRes.ru-RU.resx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Views\Payment\Succeeded\SucceededRes.ru-RU.Designer.cs">
+      <DependentUpon>SucceededRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Payment\Succeeded\SucceededRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SucceededRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Payment\Yandex\YandexRes.ru-RU.Designer.cs">
       <DependentUpon>YandexRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1152,6 +1162,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RkassaRes.ru-RU.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\Succeeded\SucceededRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SucceededRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\Succeeded\SucceededRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SucceededRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Payment\Yandex\YandexRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

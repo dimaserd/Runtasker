@@ -163,7 +163,7 @@ namespace Runtasker.Controllers
         /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
-        public string YandexKassa(string action = null, string orderSumAmount = null,
+        public async Task<string> YandexKassa(string action = null, string orderSumAmount = null,
             string orderSumCurrencyPaycash = null, string orderSumBankPaycash = null,
             string shopId = null, string invoiceId = null, string customerNumber = null,
             string MD5 = null)
@@ -193,10 +193,28 @@ namespace Runtasker.Controllers
             //code = "100"  такого заказа нет в магазине в авизо такого ответа нет
             //code = "200"  не удается выполнить разбор полученных параметров   тоже самое
 
+            YandexKassaPaymentGetter getter = new YandexKassaPaymentGetter(Context);
+
+            WorkerResult result = await getter.YandexKassaPaymentStartedAsync(action: action,
+                orderSumAmount: orderSumAmount,
+                orderSumBankPaycash: orderSumBankPaycash,
+                MD5: MD5,
+                customerNumber: customerNumber,
+                invoiceId: invoiceId,
+                orderSumCurrencyPaycash: orderSumCurrencyPaycash,
+                shopId: shopId);
+
+            int responseCode = 0;
+
+            if(!result.Succeeded)
+            {
+                responseCode = 1;
+            }
+
             Response.ContentType = "application/xml";
             return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
                 $"<checkOrderResponse performedDatetime=\"{DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fff", CultureInfo.InvariantCulture)}\" " +
-                $"code=\"{0}\" invoiceId=\"{invoiceId}\" shopId=\"{shopId}\"/>";
+                $"code=\"{responseCode}\" invoiceId=\"{invoiceId}\" shopId=\"{shopId}\"/>";
             
         }
 
@@ -229,7 +247,7 @@ namespace Runtasker.Controllers
             }
             RoboKassaPaymentModel model = RoboKassaWorker.GetPaymentModel(sumToPay);
 
-            ViewData["localeModel"] = ViewsHelper.Robokassa(sumToPay, sumToPay * 1.07m);
+            ViewData["localeModel"] = ViewsHelper.Robokassa(sumToPay, sumToPay * 1.07m, HtmlSigns.Rouble);
 
             return View(model);
         }

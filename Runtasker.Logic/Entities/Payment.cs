@@ -34,6 +34,21 @@ namespace Runtasker.Logic.Entities
         public DateTime Date { get; set; }
 
         public string Description { get; set; }
+
+        /// <summary>
+        /// Хеш рассчитаный платежными системами
+        /// </summary>
+        public string Hash { get; set; }
+
+        /// <summary>
+        /// Идентификатор платежа в эквайринговой системе
+        /// </summary>
+        public string PaymentServiceId { get; set; }
+
+        /// <summary>
+        /// Метка учета данного платежа в моей системе
+        /// </summary>
+        public bool Confirmed { get; set; }
     }
 
     

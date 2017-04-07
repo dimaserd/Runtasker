@@ -1,5 +1,6 @@
 ﻿@using Runtasker.Logic.Models.Payments.YandexKassa
 @using Runtasker.LocaleBuilders.Models
+@using Extensions.String
 @model YandexKassaPaymentResponse
 @{
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
@@ -21,7 +22,7 @@
 <!--/Navigation-->
 
 
-<h3>@localeModel["PaymentDescText"]</h3>
+<h3>@localeModel["PaymentDescTextHtml"].ToHtml()</h3>
 
 <a href="/Orders/Index" class="btn btn-success btn-lg">
     @localeModel["GoToMyOrdersBtnText"]

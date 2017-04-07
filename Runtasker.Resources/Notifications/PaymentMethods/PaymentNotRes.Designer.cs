@@ -61,7 +61,7 @@ namespace Runtasker.Resources.Notifications.PaymentMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на {0} Create Order.
+        ///   Ищет локализованную строку, похожую на {0}Create Order.
         /// </summary>
         public static string CreateOrderFormat {
             get {
@@ -79,7 +79,7 @@ namespace Runtasker.Resources.Notifications.PaymentMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на {0} Pay Order #{1}.
+        ///   Ищет локализованную строку, похожую на {0}Pay Order #{1}.
         /// </summary>
         public static string PayOrderFormat {
             get {

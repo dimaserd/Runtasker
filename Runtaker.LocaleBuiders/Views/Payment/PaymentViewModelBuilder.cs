@@ -94,7 +94,7 @@ namespace Runtasker.LocaleBuilders.Views.Payment
             LocaleViewModel result = new LocaleViewModel();
 
             result.Add("Title", SucceededRes.Title);
-            result.Add("PaymentDescText", string.Format(SucceededRes.PaymentDescTextFormat, sum, roubleSign));
+            result.Add("PaymentDescTextHtml", string.Format(SucceededRes.PaymentDescTextFormat, sum, roubleSign));
             result.Add("GoToMyOrdersBtnText", SucceededRes.GoToMyOrders);
             result.Add("HomeNav", SucceededRes.HomeNav);
             result.Add("ToppingUpNav", SucceededRes.ToppingUpNav);

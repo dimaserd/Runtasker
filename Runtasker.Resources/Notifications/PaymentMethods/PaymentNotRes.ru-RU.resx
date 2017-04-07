@@ -121,7 +121,7 @@
     <value>через Робокассу</value>
   </data>
   <data name="CreateOrderFormat" xml:space="preserve">
-    <value>{0} Создать заказ</value>
+    <value>{0}Создать заказ</value>
     <comment>{значок создания} Создать заказ</comment>
   </data>
   <data name="PaymentReceivedTitleFormat" xml:space="preserve">
@@ -129,7 +129,7 @@
     <comment>Мы получили вашу оплату {сумма заказа}{знак рубля} {способ получения}. Мы получили вашу оплату 300Р через Робокассу.</comment>
   </data>
   <data name="PayOrderFormat" xml:space="preserve">
-    <value>{0} Оплатить заказ №{1}</value>
+    <value>{0}Оплатить заказ №{1}</value>
     <comment>{значок для оплаты} Оплатить заказ №{номер заказа}</comment>
   </data>
   <data name="ViaYandexMoney" xml:space="preserve">

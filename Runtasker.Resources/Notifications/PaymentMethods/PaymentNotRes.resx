@@ -124,7 +124,7 @@
     <value>via YandexMoney service</value>
   </data>
   <data name="CreateOrderFormat" xml:space="preserve">
-    <value>{0} Create Order</value>
+    <value>{0}Create Order</value>
     <comment>{значок создания} Create Order</comment>
   </data>
   <data name="PaymentReceivedTitleFormat" xml:space="preserve">
@@ -132,7 +132,7 @@
     <comment>We have received your payment {сумма оплаты}{знак рубля} {способ оплаты}. We have received your payment 300Р via YandexMoney service.</comment>
   </data>
   <data name="PayOrderFormat" xml:space="preserve">
-    <value>{0} Pay Order #{1}</value>
+    <value>{0}Pay Order #{1}</value>
     <comment>{значок для оплаты} Pay Order #{номер заказа}</comment>
   </data>
   <data name="YourBalanceFormat" xml:space="preserve">

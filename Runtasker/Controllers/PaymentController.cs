@@ -359,7 +359,7 @@ namespace Runtasker.Controllers
 
             Response.ContentType = "application/xml";
             return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-                $"<checkOrderResponse performedDatetime=\"{DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fff", CultureInfo.InvariantCulture)}\" " +
+                $"<paymentAvisoResponse performedDatetime=\"{DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fff", CultureInfo.InvariantCulture)}\" " +
                 $"code=\"{succeededCode}\" invoiceId=\"{invoiceId}\" shopId=\"{shopId}\"/>";
 
         }

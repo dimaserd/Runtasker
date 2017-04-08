@@ -28,17 +28,7 @@ namespace Runtasker.LocaleBuilders.Views.Payment
             result.Add("HtmlTopUpViaYandexMoney", string.Format(IndexRes.TopUpFormat, IndexRes.TopUpToHide.WrapToSpan(new { @class = "hidden-xs" }), IndexRes.ViaYandexMoney));
             result.Add("HtmlTopUpViaYandexKassa", string.Format(IndexRes.TopUpFormat, IndexRes.TopUpToHide.WrapToSpan(new { @class = "hidden-xs" }), IndexRes.ViaYandexKassa));
 
-            //switch (UILang)
-            //{
-            //    case Lang.Russian:
-            //        result.Add("HtmlTopUpViaRoboKassa", $"{IndexRes.TopUp.WrapToSpan(new { @class ="hidden-xs" })} {IndexRes.ViaRobokassa}");
-            //        result.Add("HtmlTopUpViaYandexMoney", $"{IndexRes.TopUp.WrapToSpan(new { @class = "hidden-xs" })} {IndexRes.ViaYandexMoney}");
-
-            //    default:
-            //        result.Add("HtmlTopUpViaRoboKassa", $"{IndexRes.TopUp.WrapToSpan(new { @class = "hidden-xs" })} {IndexRes.ViaRobokassa}");
-            //        result.Add("HtmlTopUpViaYandexMoney", $"{IndexRes.TopUp.WrapToSpan(new { @class = "hidden-xs" })} {IndexRes.ViaYandexMoney}");
-            //}
-
+            
             return result;
         }
 

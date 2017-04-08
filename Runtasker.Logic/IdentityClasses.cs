@@ -5,7 +5,6 @@ namespace Runtasker.Logic
 {
     public class IdentityClasses
     {
-
         private UserManager<ApplicationUser> usermanager =
             new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new MyDbContext()));
 

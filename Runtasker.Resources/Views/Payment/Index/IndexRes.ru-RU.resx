@@ -144,8 +144,19 @@
   <data name="TopUp" xml:space="preserve">
     <value>Пополнить</value>
   </data>
+  <data name="TopUpFormat" xml:space="preserve">
+    <value>{0} {1}</value>
+    <comment>{Пополнить(будет скрываться)} {через ЯндексКассу(не будет скрываться)}</comment>
+  </data>
+  <data name="TopUpToHide" xml:space="preserve">
+    <value>Пополнить</value>
+    <comment>Эта часть будет скрываься</comment>
+  </data>
   <data name="ViaRobokassa" xml:space="preserve">
     <value>через Робокассу</value>
+  </data>
+  <data name="ViaYandexKassa" xml:space="preserve">
+    <value>через ЯндексКассу</value>
   </data>
   <data name="ViaYandexMoney" xml:space="preserve">
     <value>через ЯндексДеньги</value>

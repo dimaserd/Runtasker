@@ -142,11 +142,38 @@ namespace Runtasker.Resources.Views.Payment.Index {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на {0} {1}.
+        /// </summary>
+        public static string TopUpFormat {
+            get {
+                return ResourceManager.GetString("TopUpFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Top up.
+        /// </summary>
+        public static string TopUpToHide {
+            get {
+                return ResourceManager.GetString("TopUpToHide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на via Robokassa.
         /// </summary>
         public static string ViaRobokassa {
             get {
                 return ResourceManager.GetString("ViaRobokassa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на via YandexKassa.
+        /// </summary>
+        public static string ViaYandexKassa {
+            get {
+                return ResourceManager.GetString("ViaYandexKassa", resourceCulture);
             }
         }
         

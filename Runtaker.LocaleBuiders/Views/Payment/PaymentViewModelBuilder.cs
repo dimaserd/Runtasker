@@ -5,6 +5,7 @@ using Runtasker.Resources.Views.Payment.Index;
 using Runtasker.Resources.Views.Payment.Robokassa;
 using Runtasker.Resources.Views.Payment.Succeeded;
 using Runtasker.Resources.Views.Payment.Yandex;
+using Runtasker.Resources.Views.Payment.YandexKassa;
 
 namespace Runtasker.LocaleBuilders.Views.Payment
 {
@@ -22,18 +23,23 @@ namespace Runtasker.LocaleBuilders.Views.Payment
             result.Add("NavHome", IndexRes.NavHome);
             result.Add("NavActive", IndexRes.NavActive);
 
-            switch (UILang)
-            {
-                case Lang.Russian:
-                    result.Add("HtmlTopUpViaRoboKassa", $"{IndexRes.TopUp.WrapToSpan(new { @class ="hidden-xs" })} {IndexRes.ViaRobokassa}");
-                    result.Add("HtmlTopUpViaYandexMoney", $"{IndexRes.TopUp.WrapToSpan(new { @class = "hidden-xs" })} {IndexRes.ViaYandexMoney}");
-                    return result;
 
-                default:
-                    result.Add("HtmlTopUpViaRoboKassa", $"{IndexRes.TopUp.WrapToSpan(new { @class = "hidden-xs" })} {IndexRes.ViaRobokassa}");
-                    result.Add("HtmlTopUpViaYandexMoney", $"{IndexRes.TopUp.WrapToSpan(new { @class = "hidden-xs" })} {IndexRes.ViaYandexMoney}");
-                    return result;
-            }
+            result.Add("HtmlTopUpViaRoboKassa", string.Format(IndexRes.TopUpFormat, IndexRes.TopUpToHide.WrapToSpan(new { @class = "hidden-xs" }), IndexRes.ViaRobokassa));
+            result.Add("HtmlTopUpViaYandexMoney", string.Format(IndexRes.TopUpFormat, IndexRes.TopUpToHide.WrapToSpan(new { @class = "hidden-xs" }), IndexRes.ViaYandexMoney));
+            result.Add("HtmlTopUpViaYandexKassa", string.Format(IndexRes.TopUpFormat, IndexRes.TopUpToHide.WrapToSpan(new { @class = "hidden-xs" }), IndexRes.ViaYandexKassa));
+
+            //switch (UILang)
+            //{
+            //    case Lang.Russian:
+            //        result.Add("HtmlTopUpViaRoboKassa", $"{IndexRes.TopUp.WrapToSpan(new { @class ="hidden-xs" })} {IndexRes.ViaRobokassa}");
+            //        result.Add("HtmlTopUpViaYandexMoney", $"{IndexRes.TopUp.WrapToSpan(new { @class = "hidden-xs" })} {IndexRes.ViaYandexMoney}");
+
+            //    default:
+            //        result.Add("HtmlTopUpViaRoboKassa", $"{IndexRes.TopUp.WrapToSpan(new { @class = "hidden-xs" })} {IndexRes.ViaRobokassa}");
+            //        result.Add("HtmlTopUpViaYandexMoney", $"{IndexRes.TopUp.WrapToSpan(new { @class = "hidden-xs" })} {IndexRes.ViaYandexMoney}");
+            //}
+
+            return result;
         }
 
         public LocaleViewModel Robokassa(decimal amount, decimal withdrawAmount, string roubleSign)
@@ -85,6 +91,21 @@ namespace Runtasker.LocaleBuilders.Views.Payment
         public LocaleViewModel YandexKassa()
         {
             LocaleViewModel result = new LocaleViewModel();
+
+            result.Add("Title", YandexKassaRes.Title);
+            result.Add("NavHome", YandexKassaRes.NavHome);
+            result.Add("NavPayment", YandexKassaRes.NavPayment);
+            result.Add("NavActive", YandexKassaRes.NavActive);
+            result.Add("ActionDesc", YandexKassaRes.ActionDesc);
+            result.Add("ActionDescMini", YandexKassaRes.ActionDescMini);
+            result.Add("Amount", YandexKassaRes.Amount);
+            result.Add("AmountErrorText", YandexKassaRes.AmountErrorText);
+            result.Add("PayBtnText", YandexKassaRes.Pay);
+            result.Add("BackToPMBtnText", YandexKassaRes.BackToPM);
+            
+
+            //Нет информационного текста в самом ресурсе
+            result.Add("InfoText", "");
 
             return result;
         }

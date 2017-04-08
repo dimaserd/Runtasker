@@ -2,12 +2,11 @@
 @using HtmlExtensions.StaticRenderers
 @using Extensions.String
 @using Runtasker.Settings
+@using HtmlExtensions.Renderers
 @{
 
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
     ViewBag.Title = localeModel["Title"];
-
-    ViewBag.Title = "YandexKassa";
 
     string userGuid = ViewData["userGuid"] as string;
     string userEmail = ViewData["userEmail"] as string;
@@ -27,7 +26,9 @@
 </header>
 <!--/Navigation-->
 
-<h2>YandexKassa</h2>
+<div class="page-header">
+    <h1>@localeModel["ActionDesc"] <small>@localeModel["ActionDescMini"]</small></h1>
+</div>
 
 <div class="form-horizontal">
     <form method="POST" action="@YandexKassaSettings.DemoTestUrl">
@@ -71,11 +72,26 @@
         <input id="paySubmit" class="hidden" type="submit" name="submit-button" value="Pay">
     </form>
     <button id="fakeButton" class="btn btn-info btn-lg marginTop">
-        @GISigns.PiggyBank.ToHtml() @localeModel["Pay"]
+        @GISigns.PiggyBank.ToHtml() @localeModel["PayBtnText"]
     </button>
 </div>
 
 
+<!--Explantion-->
+<div class="row">
+    <h4 class="text-info paddingLeft">
+        @localeModel["InfoText"]
+    </h4>
+</div>
+<!--/Explanation-->
+
+<hr />
+
+<!--BackButton-->
+<a href="@Url.Action("Index", "Payment")" class="btn btn-default">
+    @FASigns.DoubleBack.Lg().ToHtml() @localeModel["BackToPMBtnText"]
+</a>
+<!--/BackButton-->
 
 @section scripts
 {

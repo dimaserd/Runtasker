@@ -61,6 +61,24 @@ namespace Runtasker.Resources.Views.Account.ConfirmEmail {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Now you have an access to all functions of {0}..
+        /// </summary>
+        public static string ContinueWorkTextFormat {
+            get {
+                return ResourceManager.GetString("ContinueWorkTextFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Click here to Log in.
         /// </summary>
         public static string LoginBtnText {
@@ -93,6 +111,15 @@ namespace Runtasker.Resources.Views.Account.ConfirmEmail {
         public static string PleaseClickToLoginWithBtnFormat {
             get {
                 return ResourceManager.GetString("PleaseClickToLoginWithBtnFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Runtasker.
+        /// </summary>
+        public static string Runtasker {
+            get {
+                return ResourceManager.GetString("Runtasker", resourceCulture);
             }
         }
         

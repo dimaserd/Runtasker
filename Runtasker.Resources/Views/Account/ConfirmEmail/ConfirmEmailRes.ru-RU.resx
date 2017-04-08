@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ContinueWorkTextFormat" xml:space="preserve">
+    <value>Теперь вам доступны все функции приложения {0}.</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Главная</value>
+  </data>
   <data name="LoginBtnText" xml:space="preserve">
     <value>Нажмите сюда чтобы войти</value>
   </data>
@@ -130,6 +136,9 @@
   <data name="PleaseClickToLoginWithBtnFormat" xml:space="preserve">
     <value>Пожалуйста, {0}</value>
     <comment>Пожалуйста, {кнопка входа с текстом}</comment>
+  </data>
+  <data name="Runtasker" xml:space="preserve">
+    <value>Runtasker</value>
   </data>
   <data name="Thanks" xml:space="preserve">
     <value>Спасибо, за подтверждение адреса электронной почты!</value>

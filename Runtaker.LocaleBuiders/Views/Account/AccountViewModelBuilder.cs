@@ -21,6 +21,8 @@ namespace Runtaker.LocaleBuiders.Views.Account
             result.Add("ConfirmationText", ResetPassConfRes.ConfirmationText);
             result.Add("BtnText", ResetPassConfRes.LoginLinkText);
 
+
+
             return result;
         }
 
@@ -66,13 +68,20 @@ namespace Runtaker.LocaleBuiders.Views.Account
             LocaleViewModel result = new LocaleViewModel();
 
             result.Add("Title", ConfirmEmailRes.Title);
+            //Для блока навигации
+            result.Add("NavHome", ConfirmEmailRes.Home);
+            result.Add("NavActive", ConfirmEmailRes.Title);
+
             result.Add("Thanks", ConfirmEmailRes.Thanks);
+
             result.Add("ClickToLoginLink", 
                 string.Format(
                     ConfirmEmailRes.PleaseClickToLoginWithBtnFormat, 
                     string.Format(ConfirmEmailRes.LoginBtnTextFormat.WrapToA(new { href="/Account/Login", @class = "btn btn-success btn-lg" }), loginSign)
                     )
                 );
+
+            result.Add("ContinueWorkTextHtml", string.Format(ConfirmEmailRes.ContinueWorkTextFormat, ConfirmEmailRes.Runtasker.WrapToStrong().WrapToEm()));
 
             return result;
         }

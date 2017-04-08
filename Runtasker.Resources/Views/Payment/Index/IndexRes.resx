@@ -144,8 +144,19 @@
   <data name="TopUp" xml:space="preserve">
     <value>Top up</value>
   </data>
+  <data name="TopUpFormat" xml:space="preserve">
+    <value>{0} {1}</value>
+    <comment>{Top up(будет скрываться)} {via smth(не будет скрываться)}</comment>
+  </data>
+  <data name="TopUpToHide" xml:space="preserve">
+    <value>Top up</value>
+    <comment>эта часть будет скрываться</comment>
+  </data>
   <data name="ViaRobokassa" xml:space="preserve">
     <value>via Robokassa</value>
+  </data>
+  <data name="ViaYandexKassa" xml:space="preserve">
+    <value>via YandexKassa</value>
   </data>
   <data name="ViaYandexMoney" xml:space="preserve">
     <value>via YandexMoney</value>

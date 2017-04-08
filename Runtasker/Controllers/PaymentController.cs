@@ -139,7 +139,7 @@ namespace Runtasker.Controllers
             {
                 RedirectToAction("Index");
             }
-            ViewData["localeModel"] = ViewsHelper.Yandex();
+            ViewData["localeModel"] = ViewsHelper.YandexKassa();
 
             ViewData["sumToPay"] = sumToPay;
             ViewData["userGuid"] = UserGuid;

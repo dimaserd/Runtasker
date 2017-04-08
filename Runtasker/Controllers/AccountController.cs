@@ -509,11 +509,7 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
-            if(Request.IsAuthenticated)
-            {
-                AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            }
-
+            
             if (userId == null || code == null)
             {
                 return View("Error");

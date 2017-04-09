@@ -49,7 +49,7 @@ namespace Runtasker.Controllers
             {
                 if(_errorWorker == null)
                 {
-                    _errorWorker = new CustomerOrderErrorEvents(UserGuid);
+                    _errorWorker = new CustomerOrderErrorEvents(UserGuid, _db);
                 }
                 return _errorWorker;
             }
@@ -286,7 +286,7 @@ namespace Runtasker.Controllers
 
                 if(result.Succeeded)
                 {
-
+                    return RedirectToAction("Index");
                 }
             }
 

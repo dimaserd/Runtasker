@@ -6,21 +6,23 @@ namespace Runtasker.Logic.Workers.Orders
     public class CustomerOrderErrorEvents
     {
         #region Constructors
-        public CustomerOrderErrorEvents(string userGuid)
+        public CustomerOrderErrorEvents(string userGuid, MyDbContext context)
         {
-            Construct(userGuid);
+            UserGuid = userGuid;
+            Context = context;
+            Construct();
         }
 
-        void Construct(string userGuid)
+        void Construct()
         {
-            
-            UserGuid = userGuid;
-            Notificater = new CustomerOrderNotificationErrorMethods(UserGuid);
+            Notificater = new CustomerOrderNotificationErrorMethods(UserGuid, Context);
         }
         #endregion
 
         #region Properties
         string UserGuid { get; set; }
+
+        MyDbContext Context { get; set; }
 
         CustomerOrderNotificationErrorMethods Notificater { get; set; }
         #endregion
@@ -33,7 +35,9 @@ namespace Runtasker.Logic.Workers.Orders
 
         public void OnCustomerTriedToPayWithoutMoney(ApplicationUser customer, Order order)
         {
-            Notificater.OnCustomerTriedToPayWithoutMoney(customer.Balance, order);
+            decimal sumThatUserNeedToPay = (order.WorkType == OrderWorkType.OnlineHelp)? order.Sum : order.Sum / 2;
+            
+            Notificater.OnCustomerTriedToPayWithoutMoney(customer.Balance, sumThatUserNeedToPay, order.Id);
         }
         #endregion
     }

@@ -61,7 +61,7 @@ namespace Runtasker.Resources.Notifications.CustomerOrderErrorMethods {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Your Balance : {0}{1}. Half price of order #{2} costs {3}{1}. You need to top up your balance by {4}{1}..
+        ///   Ищет локализованную строку, похожую на Your Balance : {0}{1}. Paying order #{2} requires {3}{1}. You need to top up your balance by {4}{1}..
         /// </summary>
         public static string PayWithoutMoneyTextFormat {
             get {

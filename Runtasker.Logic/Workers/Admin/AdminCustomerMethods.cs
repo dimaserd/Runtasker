@@ -60,10 +60,8 @@ namespace Runtasker.Logic.Workers.Admin
         #region DeleteOrder methods
         public Order GetDeleteOrderModel(int orderId)
         {
-            using (MyDbContext context = new MyDbContext())
-            {
-                return context.Orders.FirstOrDefault(o => o.Id == orderId);
-            }
+            return Context.Orders.FirstOrDefault(o => o.Id == orderId);
+            
         }
 
         public void DeleteOrder()

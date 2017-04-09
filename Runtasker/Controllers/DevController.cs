@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using Runtasker.Logic;
 using Runtasker.Logic.Workers.Developer;
 using Runtasker.Logic.Workers.Files;
+using Runtasker.Settings;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
@@ -20,11 +21,16 @@ namespace Runtasker.Controllers
     [Authorize(Roles = "Admin,Customer,Performer,Dev")]
     public class DevController : Controller
     {
-        #region Private Fields
-        private DeveloperWorker Dev = new DeveloperWorker();
+        #region Поля
+        DeveloperWorker Dev = new DeveloperWorker();
+
+        MyDbContext context = new MyDbContext();
+
+        UserManager<ApplicationUser> usermanager =
+            new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new MyDbContext()));
         #endregion
 
-        #region Constants
+        #region Константы
         const string Password = "566762332";
         #endregion
 
@@ -35,7 +41,7 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region Http methods
+        #region Http Методы
 
         #region Save and Restore Data
 
@@ -209,22 +215,22 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        public ActionResult TestVkApi()
+        #region Методы тестового пользователя
+        public async Task<string> AddMoneyToTestUser(int money = 1000)
         {
-            VkApiWorkerBase test = new VkApiWorkerBase();
+            ApplicationUser testUser = await usermanager.FindByEmailAsync(DevSettings.TestCustomerEmail);
 
-            string token = test.Token;
+            if(testUser == null)
+            {
+                return "Пользователя не существует!";
+            }
 
-            string method = "wall.get";
-            string paramsString = $"owner_id={-58897819}&count={100}&offset{0}&extended=1";
+            testUser.Balance += money;
+            await usermanager.UpdateAsync(testUser);
 
-
-            JToken resp = test.Request(method, paramsString);
-
-            test.Dispose(true);
-
-            return View("Index");
+            return "Готово";
         }
+        #endregion
 
         // GET: Dev
         public ActionResult Index()
@@ -276,7 +282,13 @@ namespace Runtasker.Controllers
 
             return File(filePath, MimeMapping.GetMimeMapping(filePath), filename);
         }
-        //Придумай нормальное применение этому
+       
+
+        /// <summary>
+        /// Метод который удаляет все файлы придумай ему нормальное применение
+        /// </summary>
+        /// <param name="pass"></param>
+        /// <returns></returns>
         public string DeleteFolders(string pass = "")
         {
             //на данный момент пароль не пройдет

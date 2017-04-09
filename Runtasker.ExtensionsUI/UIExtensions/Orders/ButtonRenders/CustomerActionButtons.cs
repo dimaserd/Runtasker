@@ -137,12 +137,27 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         {
             StringBuilder buttons = new StringBuilder();
 
-            buttons.Append(new HtmlActionButtonLink
+
+            if(Order.WorkType != OrderWorkType.OnlineHelp)
+            {
+                buttons.Append(new HtmlActionButtonLink
                 (
                     buttonLink: $"File/DownloadSolution/{Order.Id}",
                     buttonText: string.Format(OrderEntityRes.DownloadSolutionFormat, FASigns.Download),
                     buttonClass: GetButtonClass()
                 ).ToString());
+            }
+            else
+            {
+                buttons.Append(new HtmlActionButtonLink
+                (
+                    buttonLink: $"#",
+                    disabled: true,
+                    buttonText: string.Format(OrderEntityRes.WaitingForHelpEventFormat, Order.FinishDate.ToShortDateString()),
+                    buttonClass: GetButtonClass()
+                ).ToString());
+            }
+            
             return buttons.ToString();
         }
 

@@ -164,6 +164,10 @@
     <value>Sum: {0}{1}</value>
     <comment>Sum: {стоимость заказа}{знак рубля}</comment>
   </data>
+  <data name="WaitingForHelpEventFormat" xml:space="preserve">
+    <value>Waiting for {0}</value>
+    <comment>Waiting for {дата помощи}</comment>
+  </data>
   <data name="WorkTypeFormat" xml:space="preserve">
     <value>Type of work: {0}</value>
     <comment>Type of work: {тип работы}</comment>

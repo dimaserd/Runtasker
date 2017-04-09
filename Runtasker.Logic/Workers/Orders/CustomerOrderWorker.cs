@@ -36,12 +36,16 @@ namespace Runtasker.Logic.Workers.Orders
             
             //здесь все упирается в UserManger
             Paymenter = new CustomerOrderPaymentMethods(UserGuid, Context);
-            ErrorHandler = new CustomerOrderErrorEvents(UserGuid);
+            ErrorHandler = new CustomerOrderErrorEvents(UserGuid, Context);
             
         }
         #endregion
 
-        #region Properties
+        #region Поля
+        ApplicationUser _customer;
+        #endregion
+
+        #region Свойства
         MyDbContext Context { get; set; }
 
         CustomerOrderNotificationMethods Notificater { get; set; }
@@ -56,36 +60,29 @@ namespace Runtasker.Logic.Workers.Orders
 
         
 
-        #region Internal properties for passing objects
-        ApplicationUser Customer { get; set; }
+        #region Внутренние свойства
+        ApplicationUser Customer
+        {
+            get
+            {
+                if(_customer == null)
+                {
+                    _customer = Context.Users.FirstOrDefault(u => u.Id == UserGuid);
+                }
+
+                return _customer;
+            }
+        }
         #endregion
 
         #endregion
 
-        #region Help Methods
+        #region Вспомогательные методы
 
         public string GetAdminGuid()
         {
-            
             return Context.Users.FirstOrDefault(u => u.Email == AdminSettings.AdminEmail).Id;
-            
         }
-
-        #region Balance methods
-
-        public decimal? GetUserBalance()
-        {
-            using (MyDbContext context = new MyDbContext())
-            {
-                if (Customer == null)
-                {
-                    Customer = context.Users.FirstOrDefault(u => u.Id == UserGuid);
-                }
-                return Customer.Balance;
-            }
-        }
-
-        #endregion
 
         public void CheckForAnInvitation(Order order)
         {
@@ -265,9 +262,10 @@ namespace Runtasker.Logic.Workers.Orders
                 return new WorkerResult("You should pay a half of an order!");
             }
 
-            if (GetUserBalance() < sumThatUserNeedToPay)
+            //если баланс пользователя меньше чем сумма котоурю ему нужно оплатить
+            if (Customer.Balance < sumThatUserNeedToPay)
             {
-                //we don't have an error message because we will show a notification
+                //не добавляем текст ошибки так как будет показано уведомление
                 WorkerResult result = new WorkerResult
                 {
                     Succeeded = false
@@ -330,6 +328,9 @@ namespace Runtasker.Logic.Workers.Orders
             && o.UserGuid == UserGuid
             && o.WorkType != OrderWorkType.OnlineHelp);
 
+
+            decimal sumThatUserNeedToPay = order.Sum / 2;
+
             if (order == null)
             {
                 return new WorkerResult($"Finished Order №{model.OrderId} not found!");
@@ -337,10 +338,11 @@ namespace Runtasker.Logic.Workers.Orders
 
             if (model.Sum != order.Sum / 2)
             {
-                return new WorkerResult($"You should pay {order.Sum / 2} roubles!");
+                return new WorkerResult($"You should pay {sumThatUserNeedToPay} roubles!");
             }
 
-            if (GetUserBalance() < order.Sum / 2)
+            //если баланс пользователя ниже чем сумма которую ему нужно оплатить
+            if (Customer.Balance < sumThatUserNeedToPay)
             {
 
                 WorkerResult result = new WorkerResult
@@ -389,7 +391,8 @@ namespace Runtasker.Logic.Workers.Orders
                 return new PayOnlineHelp
                 {
                     OrderId = order.Id,
-                    Sum = order.Sum
+                    Sum = order.Sum,
+                    RequiredSum = order.Sum
                 };
             }
 
@@ -416,7 +419,32 @@ namespace Runtasker.Logic.Workers.Orders
             {
                 return new WorkerResult("Произошла ошибка при оплате онлайн-помощи!");
             }
-            
+
+            //пользователь должен оплатить заказ полностью
+            decimal sumThatUserNeedToPay = order.Sum;
+
+            //если переданная сумма не совпадает с суммой которую нужно оплатить
+            if (model.Sum != sumThatUserNeedToPay)
+            {
+                //возвращаем ошибку
+                return new WorkerResult("You should pay a half of an order!");
+            }
+
+            //если баланс пользователя ниже чем сумма которую ему нужно оплатить
+            if (Customer.Balance < sumThatUserNeedToPay)
+            {
+                //Не добавляем описание ошибки так как будет показано уведомление
+                WorkerResult result = new WorkerResult
+                {
+                    Succeeded = false
+                };
+
+                //вызываем метод который обрабатывает ошибку
+                ErrorHandler.OnCustomerTriedToPayWithoutMoney(Customer, order);
+
+                return result;
+            }
+
             //регистрируем оплату
             Paymenter.OnCutomerPaidOnlineHelp(order);
 
@@ -428,7 +456,7 @@ namespace Runtasker.Logic.Workers.Orders
             //уведомления не сделаны
             Notificater.OnCustomerPaidOnlineHelp(order);
             
-
+            //сохраняем изменения
             await Context.SaveChangesAsync();
 
             return new WorkerResult
@@ -443,7 +471,7 @@ namespace Runtasker.Logic.Workers.Orders
 
         #endregion
 
-        #region Rating Methods
+        #region Методы оценки заказа
         public RatingOrderModel GetRatingOrderModel(int orderId)
         {
             Order order = Context.Orders.FirstOrDefault(o => o.Id == orderId
@@ -498,19 +526,17 @@ namespace Runtasker.Logic.Workers.Orders
         #region GetMyOrders Methods
         public IEnumerable<Order> GetMyOrders()
         {
-            using (MyDbContext context = new MyDbContext())
-            {
-                return context.Orders.Where(o => o.UserGuid == UserGuid).ToList();
-            }
+            
+            return Context.Orders.Where(o => o.UserGuid == UserGuid).ToList();
+            
         }
 
         public async Task<IEnumerable<Order>> GetMyOrdersAsync()
         {
-            using (MyDbContext context = new MyDbContext())
-            {
-                return await context.Orders.Where(o => o.UserGuid == UserGuid)
+            
+                return await Context.Orders.Where(o => o.UserGuid == UserGuid)
                     .Include(x => x.Messages).ToListAsync();
-            }
+            
         }
         #endregion
 
@@ -541,34 +567,23 @@ namespace Runtasker.Logic.Workers.Orders
         //обращались к этому методу и его асинхронной копии
         public Order CreateOrderSubMethod(OrderCreationType creationType, OrderCreateModel orderModel)
         {
-            using (MyDbContext context = new MyDbContext())
+
+            Order order = orderModel.ToOrder(UserGuid);
+
+            Context.Orders.Add(order);
+            Context.SaveChanges();
+
+            //записываем файлы заказа
+            Filer.OnCustomerCreatedAnOrder(orderModel.FileUpload, order);
+
+            if (creationType == OrderCreationType.Ordinary)
             {
-                Order order = new Order
-                {
-                    Description = orderModel.Description,
-                    FinishDate = orderModel.FinishDate,
-                    Status = OrderStatus.New,
-                    PublishDate = DateTime.Now,
-                    WorkType = orderModel.WorkType,
-                    Subject = orderModel.Subject,
-                    OtherSubject = orderModel.OtherSubject,
-                    UserGuid = UserGuid
-                };
-                context.Orders.Add(order);
-                context.SaveChanges();
-
-                //записываем файлы заказа
-                Filer.OnCustomerCreatedAnOrder(orderModel.FileUpload, order);
-
-                if (creationType == OrderCreationType.Ordinary)
-                {
-                    //вызываем класс отвечающий за создание уведомлений
-                    Notificater.OnCustomerAddedOrder(order, OrderCreationType.Ordinary);
-                }
-                    
-                    
-                return order;
+                //вызываем класс отвечающий за создание уведомлений
+                Notificater.OnCustomerAddedOrder(order, OrderCreationType.Ordinary);
             }
+
+
+            return order;
         }
 
         /// <summary>

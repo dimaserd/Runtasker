@@ -7,7 +7,7 @@
 @{
     ViewBag.Title = $"Pay roubles";
 
-    MvcHtmlString title = MvcHtmlString.Create($"{PayRes.Pay} {Model}{FASigns.Rouble}");
+    MvcHtmlString title = MvcHtmlString.Create($"{PayRes.Pay} {Model.RequiredSum}{HtmlSigns.Rouble}");
 
 }
 

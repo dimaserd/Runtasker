@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="PayWithoutMoneyTextFormat" xml:space="preserve">
-    <value>Ваш Баланс : {0}{1}. Половина стоимости заказа №{2} стоит {3}{1}. Вам необходимо пополнить ваш счет на {4}{1}.</value>
+    <value>Ваш Баланс : {0}{1}. Для оплаты заказа №{2} требуется {3}{1}. Вам необходимо пополнить ваш счет на {4}{1}.</value>
     <comment>Ваш Баланс : {0=баланс}{1=знак рубля}. Половина стоимости заказа №{2=номер заказа} стоит {3=половина стоимости заказа}{1=знак рубля}. Вам необходимо пополнить ваш счет на {4=сколько нужно денег}{1=знак рубля}. </comment>
   </data>
   <data name="PayWithoutMoneyTitle" xml:space="preserve">

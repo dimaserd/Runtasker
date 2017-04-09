@@ -178,6 +178,15 @@ namespace Runtasker.Resources.UIExtensions.Orders {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Waiting for {0}.
+        /// </summary>
+        public static string WaitingForHelpEventFormat {
+            get {
+                return ResourceManager.GetString("WaitingForHelpEventFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Type of work: {0}.
         /// </summary>
         public static string WorkTypeFormat {

@@ -12,13 +12,14 @@ namespace Runtasker.Logic.Workers.Admin
 {
     public class AdminCustomerMethods
     {
-        #region Constants
+        #region Константы
 
         #endregion
 
         #region Constructors
-        public AdminCustomerMethods()
+        public AdminCustomerMethods(MyDbContext context)
         {
+            Db = context;
             Construct();
         }
 
@@ -29,19 +30,21 @@ namespace Runtasker.Logic.Workers.Admin
         }
         #endregion
 
-        #region Fields
+        #region Поля
         ApplicationUser _customer;
         #endregion
 
-        #region Properties
+        #region Свойства
         AdminEmailSender Emailer { get; set; }
+
+        MyDbContext Db { get; set; }
 
         public AdminDeleteMethods Delete { get; set; }
         #endregion
 
-        #region Public methods
+        #region Публичные методы
 
-        #region WriteEmail methods
+        #region Написание почты
         public ActionEmailToCustomer GetWriteEmailModel()
         {
             return new ActionEmailToCustomer
@@ -57,11 +60,10 @@ namespace Runtasker.Logic.Workers.Admin
         }
         #endregion
 
-        #region DeleteOrder methods
+        #region Удаление заказов
         public Order GetDeleteOrderModel(int orderId)
         {
-            return Context.Orders.FirstOrDefault(o => o.Id == orderId);
-            
+            return Db.Orders.FirstOrDefault(o => o.Id == orderId);
         }
 
         public void DeleteOrder()
@@ -75,16 +77,15 @@ namespace Runtasker.Logic.Workers.Admin
         #region Performers
         public async Task<IEnumerable<ApplicationUser>> GetPerformersAsync()
         {
-            using (MyDbContext db = new MyDbContext())
-            {
-                string[] performerRolesIds = await (from r in db.Roles
+            
+                string[] performerRolesIds = await (from r in Db.Roles
                                              where (r.Name == "Performer") || (r.Name == "VkPerformer")
                                              select r.Id).ToArrayAsync();
 
                 string role0 = performerRolesIds[0];
                 string role1 = performerRolesIds[1];
 
-                List<ApplicationUser> result = await (from user in db.Users
+                List<ApplicationUser> result = await (from user in Db.Users
                               where user.Roles.Any(r => r.RoleId == role0 || r.RoleId == role1)
                               orderby user.RegistrationDate
                               select user).ToListAsync();
@@ -96,38 +97,37 @@ namespace Runtasker.Logic.Workers.Admin
                 }
 
                 return result;
-            }  
+              
         }
         
         public async Task<PerformerInfo> GetPerformerInfoAsync(string id)
         {
-            using (MyDbContext db = new MyDbContext())
-            {
-                ApplicationUser user = await db.Users
+            
+                ApplicationUser user = await Db.Users
                     .FirstOrDefaultAsync(u => u.Id == id);
 
-                List<Message> messages = await (from m in db.Messages
+                List<Message> messages = await (from m in Db.Messages
                                           where m.SenderGuid == id || m.ReceiverGuid == id
                                           select m)
                                           .Include(x => x.Receiver)
                                           .Include(x => x.Sender)
                                           .ToListAsync();
 
-                List<Order> orders = await (from o in db.Orders
+                List<Order> orders = await (from o in Db.Orders
                                       where o.PerformerGuid == id
                                       select o).Include(x => x.Customer)
                                       .ToListAsync();
 
-                List<PaymentTransaction> pts = await (from pt in db.PaymentTransactions
+                List<PaymentTransaction> pts = await (from pt in Db.PaymentTransactions
                                                 where pt.UserGuid == id
                                                 select pt).ToListAsync();
 
-                OtherUserInfo info = await db.OtherUserInfos
+                OtherUserInfo info = await Db.OtherUserInfos
                     .FirstOrDefaultAsync(x => x.Id == id);
 
                 return new PerformerInfo(user, messages, orders, pts, info);
                 
-            }
+            
         }
         #endregion
 
@@ -135,69 +135,60 @@ namespace Runtasker.Logic.Workers.Admin
         #region Customers
         public IEnumerable<ApplicationUser> GetCustomers()
         {
-            using (MyDbContext context = new MyDbContext())
-            {
-                string customeRoleId = context.Roles.FirstOrDefault(r => r.Name == "Customer").Id;
+            
+                string customeRoleId = Db.Roles.FirstOrDefault(r => r.Name == "Customer").Id;
 
-                return (from user in context.Users
+                return (from user in Db.Users
                         where user.Roles.Any(r => r.RoleId == customeRoleId)
                         orderby user.RegistrationDate
                         select user
                        ).ToList();
-            }
-                
+              
         }
 
         public async Task<IEnumerable<ApplicationUser>> GetCustomersAsync()
         {
-            using (MyDbContext context = new MyDbContext())
-            {
-                string customeRoleId = context.Roles.FirstOrDefault(r => r.Name == "Customer").Id;
+            string customeRoleId = Db.Roles.FirstOrDefault(r => r.Name == "Customer").Id;
 
-                return await (from user in context.Users
-                        where user.Roles.Any(r => r.RoleId == customeRoleId)
-                        orderby user.RegistrationDate
-                        select user
-                       ).ToListAsync();
-            }
+            return await (from user in Db.Users
+                          where user.Roles.Any(r => r.RoleId == customeRoleId)
+                          orderby user.RegistrationDate
+                          select user
+                   ).ToListAsync();
 
         }
 
         public async Task<CustomerInfo> GetCustomerInfoAsync(string id)
         {          
-            using (MyDbContext db = new MyDbContext())
-            {
-               
+            
                 return new CustomerInfo
                 {
-                    User = await db.Users.FirstOrDefaultAsync(u => u.Id == id),
+                    User = await Db.Users.FirstOrDefaultAsync(u => u.Id == id),
                                 
 
-                    Orders = await (from o in db.Orders
+                    Orders = await (from o in Db.Orders
                                     where o.UserGuid == id
                                     select o).Include(x => x.Customer).ToListAsync(),
 
-                    Messages = await (from m in db.Messages
+                    Messages = await (from m in Db.Messages
                                 where m.SenderGuid == id || m.ReceiverGuid == id
                                 select m).Include(x => x.Sender).Include(x => x.Receiver).ToListAsync(),
 
-                    PaymentTransactions = await (from p in db.PaymentTransactions
+                    PaymentTransactions = await (from p in Db.PaymentTransactions
                                                  where p.UserGuid == id
                                                  select p).ToListAsync(),
                };
 
                 
-            }
+            
         }
 
         
 
         public ApplicationUser GetCustomer(string id)
         {
-            using (MyDbContext context = new MyDbContext())
-            {
-                return context.Users.FirstOrDefault(u => u.Id == id);
-            }                
+            return Db.Users.FirstOrDefault(u => u.Id == id);
+                         
         }
 
         public ApplicationUser GetCustomer()
@@ -207,10 +198,7 @@ namespace Runtasker.Logic.Workers.Admin
 
         public void SetCustomerField(string id)
         {
-            using (MyDbContext context = new MyDbContext())
-            {
-                _customer = context.Users.FirstOrDefault(u => u.Id == id);
-            }
+            _customer = Db.Users.FirstOrDefault(u => u.Id == id);
         }
         #endregion
 

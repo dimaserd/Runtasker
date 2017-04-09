@@ -33,7 +33,7 @@ namespace Runtasker.Controllers
         #endregion
 
         #region Properties
-        MyDbContext db
+        MyDbContext Db
         {
             get
             {
@@ -51,7 +51,7 @@ namespace Runtasker.Controllers
             {
                 if(_userManager == null)
                 {
-                    _userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+                    _userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(Db));
                 }
                 return _userManager;
             } 
@@ -63,7 +63,7 @@ namespace Runtasker.Controllers
             {
                 if (_adminWorker == null)
                 {
-                    _adminWorker = new AdminCustomerMethods();
+                    _adminWorker = new AdminCustomerMethods(Db);
                 }
 
                 return _adminWorker;
@@ -76,7 +76,7 @@ namespace Runtasker.Controllers
             {
                 if(_userCreator == null)
                 {
-                    _userCreator = new AdminUserCreationWorker(db, UserManager);
+                    _userCreator = new AdminUserCreationWorker(Db, UserManager);
                 }
                 return _userCreator;
             }
@@ -96,7 +96,7 @@ namespace Runtasker.Controllers
         public async Task<ActionResult> UpdatePerformerInfo(string id)
         {
             
-            OtherUserInfo model = await db.OtherUserInfos
+            OtherUserInfo model = await Db.OtherUserInfos
                    .Where(x => x.Id == id).FirstOrDefaultAsync();
 
             if(model == null)
@@ -110,14 +110,14 @@ namespace Runtasker.Controllers
         [HttpPost]
         public async Task<ActionResult> UpdatePerformerInfo(OtherUserInfo model)
         {
-            OtherUserInfo infoToUpdate = await db.OtherUserInfos.FirstOrDefaultAsync(x => x.Id == model.Id);
+            OtherUserInfo infoToUpdate = await Db.OtherUserInfos.FirstOrDefaultAsync(x => x.Id == model.Id);
 
             infoToUpdate.Specialization = model.Specialization;
             infoToUpdate.VkDomain = model.VkDomain;
             infoToUpdate.VkId = model.VkId;
 
             
-            await db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
             
             
 
@@ -140,7 +140,7 @@ namespace Runtasker.Controllers
         public async Task<ActionResult> CreateUser(CreateUserModel model)
         {
             #region Полчуение обратно
-            List<IdentityRole> roles = await db.Roles.ToListAsync();
+            List<IdentityRole> roles = await Db.Roles.ToListAsync();
 
             roles.Remove(roles.FirstOrDefault(x => x.Name == "Admin"));
 
@@ -174,10 +174,10 @@ namespace Runtasker.Controllers
         public async Task<ActionResult> AddUserToRole(string userId)
         {
             
-            ViewBag.Roles = new SelectList(await db.Roles.ToListAsync(), "Name", "Name");
+            ViewBag.Roles = new SelectList(await Db.Roles.ToListAsync(), "Name", "Name");
             AddUserToRoleModel model = new AddUserToRoleModel
             {
-                User = await db.Users.FirstOrDefaultAsync(x => x.Id == userId)
+                User = await Db.Users.FirstOrDefaultAsync(x => x.Id == userId)
             };
 
             return View();

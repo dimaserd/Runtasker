@@ -1,4 +1,5 @@
 ﻿using Logic.Extensions.Models;
+using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations;
 using Runtasker.Logic.Workers.Logging;

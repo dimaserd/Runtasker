@@ -3,15 +3,13 @@
 @using Microsoft.AspNet.Identity;
 @using HtmlExtensions.Renderers
 @using Extensions.String
-@using Runtasker.Resources.Views.Shared.NewLoginPartial
 @using Runtasker.LocaleBuilders.Models
 @model LoginModel
 @{
     Layout = null;
     string userGuid = User.Identity.GetUserId();
     string imageLink = $"/File/GetAvatar?userGuid={userGuid}";
-    HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
-    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
+    
 
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
 }

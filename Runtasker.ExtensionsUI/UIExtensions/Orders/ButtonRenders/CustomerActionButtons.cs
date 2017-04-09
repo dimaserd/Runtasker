@@ -60,18 +60,38 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
             return buttons.ToString();
         }
 
-        string GetButtonsForValuedOrder()
+        /// <summary>
+        /// Кнопки для заказа который был оценен администраторами, оплата должна отличаться
+        /// для онлайн помощи и других видов работы
+        /// </summary>
+        /// <returns></returns>
+        string GetButtonsForEstimatedOrder()
         {
             StringBuilder buttons = new StringBuilder();
 
-            string sumToPayString = (Order.Sum / 2).ToMoney();
+            //выбираем сумм
+            string sumToPayString = ( Order.WorkType != OrderWorkType.OnlineHelp)? (Order.Sum / 2).ToMoney() : (Order.Sum).ToMoney();
+            
 
-            buttons.Append(new HtmlActionButtonLink
+            if(Order.WorkType != OrderWorkType.OnlineHelp)
+            {
+                buttons.Append(new HtmlActionButtonLink
                 (
                     buttonLink: $"/Orders/PayHalf/{Order.Id}",
                     buttonText: string.Format(OrderEntityRes.PayFormat, FASigns.CreditCard, sumToPayString, HtmlSigns.Rouble),
                     buttonClass: GetButtonClass()
                 ).ToString());
+
+            }
+            else
+            {
+                buttons.Append(new HtmlActionButtonLink
+                (
+                    buttonLink: $"/Orders/PayOnlineHelp/{Order.Id}",
+                    buttonText: string.Format(OrderEntityRes.PayFormat, FASigns.CreditCard, sumToPayString, HtmlSigns.Rouble),
+                    buttonClass: GetButtonClass()
+                ).ToString());
+            }
 
             return buttons.ToString();
         }
@@ -198,8 +218,8 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                     buttons = GetButtonsForNewOrder();
                     break;
 
-                case OrderStatus.Valued:
-                    buttons = GetButtonsForValuedOrder();
+                case OrderStatus.Estimated:
+                    buttons = GetButtonsForEstimatedOrder();
                     break;
 
                 case OrderStatus.HalfPaid:

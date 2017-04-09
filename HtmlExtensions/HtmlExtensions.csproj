@@ -80,7 +80,6 @@
     <Compile Include="HtmlEntities\HtmlButton.cs" />
     <Compile Include="HtmlEntities\HtmlLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Renderers\FontAwesomeRender.cs" />
     <Compile Include="Renderers\GlyphiconRenderer.cs" />
     <Compile Include="Renderers\HtmlSignsRenderer.cs" />
     <Compile Include="StaticRenderers\FontAwesomeRender.cs" />

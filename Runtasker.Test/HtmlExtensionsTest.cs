@@ -33,8 +33,7 @@ namespace Runtasker.Test
         [TestMethod]
         public void FAToAnimatedTest()
         {
-            FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
-
+            
             //"<i class='fa fa-rub'></i>"
             
         }

@@ -222,9 +222,12 @@ namespace Runtasker.Logic.Workers.Orders
         #region Оплата первой половины
         public PayHalfModel GetPayHalfModel(int id)
         {
+            //получаем заказ из базы данных
+            //заказ не должен быть онлайн помощью
             Order order = Context.Orders.FirstOrDefault(
                     o => o.UserGuid == UserGuid
-                    && o.Status == OrderStatus.Valued);
+                    && o.Status == OrderStatus.Estimated
+                    && o.WorkType != OrderWorkType.OnlineHelp);
 
             if (order == null)
             {
@@ -242,15 +245,19 @@ namespace Runtasker.Logic.Workers.Orders
 
         public WorkerResult PayHalfOfOrder(PayHalfModel model)
         {
+            //получаем заказ из базы данных
+            //заказ не должен быть онлайн помощью
             Order order = Context.Orders.FirstOrDefault(
                     o => o.UserGuid == UserGuid
-                    && o.Status == OrderStatus.Valued);
+                    && o.Status == OrderStatus.Estimated
+                    && o.WorkType != OrderWorkType.OnlineHelp);
 
             if (order == null)
             {
                 return new WorkerResult("No order matched!");
             }
 
+            //пользователь должен оплатить только половину
             decimal sumThatUserNeedToPay = order.Sum / 2;
 
             if (model.Sum != sumThatUserNeedToPay)
@@ -266,20 +273,21 @@ namespace Runtasker.Logic.Workers.Orders
                     Succeeded = false
                 };
 
+                //вызываем метод который обрабатывает ошибку
                 ErrorHandler.OnCustomerTriedToPayWithoutMoney(Customer, order);
 
                 return result;
             }
 
-            //Changing order properties
+            //меняем свойства заказа
             order.PaidSum = model.Sum;
             order.Status = OrderStatus.HalfPaid;
             Context.SaveChanges();
 
-            //Payment methods
+            //Вызываю метод записывающий оплату в базу данных
             Paymenter.OnCustomerPaidFirstHalfOfAnOrder(order);
 
-            //Notifications methods
+            //вызываем метод уведомляющий пользователя о прошедшей оплате заказа
             Notificater.OnCustomerPaidHalfOfAnOrder(order);
 
             return new WorkerResult
@@ -295,7 +303,8 @@ namespace Runtasker.Logic.Workers.Orders
         {
             Order order = Context.Orders.FirstOrDefault(o => o.Id == orderId
             && o.Status == OrderStatus.Finished
-            && o.UserGuid == UserGuid);
+            && o.UserGuid == UserGuid
+            && o.WorkType != OrderWorkType.OnlineHelp);
 
             if (order == null)
             {
@@ -314,9 +323,12 @@ namespace Runtasker.Logic.Workers.Orders
 
         public WorkerResult PayAnotherHalfOfAnOrder(PayAnotherHalfModel model)
         {
+            //получаем заказ из базы данных
+            //заказ не должен быть онлайн помощью
             Order order = Context.Orders.FirstOrDefault(o => o.Id == model.OrderId
             && o.Status == OrderStatus.Finished
-            && o.UserGuid == UserGuid);
+            && o.UserGuid == UserGuid
+            && o.WorkType != OrderWorkType.OnlineHelp);
 
             if (order == null)
             {
@@ -369,7 +381,7 @@ namespace Runtasker.Logic.Workers.Orders
                 x.PaidSum == 0 && 
                 x.UserGuid == UserGuid &&
                 x.WorkType == OrderWorkType.OnlineHelp &&
-                x.Status == OrderStatus.Valued
+                x.Status == OrderStatus.Estimated
                 );
 
             if(order != null)
@@ -397,7 +409,7 @@ namespace Runtasker.Logic.Workers.Orders
                 x.PaidSum == 0 &&
                 x.UserGuid == UserGuid &&
                 x.WorkType == OrderWorkType.OnlineHelp &&
-                x.Status == OrderStatus.Valued
+                x.Status == OrderStatus.Estimated
                 );
 
             if(order == null)

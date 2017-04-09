@@ -68,7 +68,7 @@ namespace Runtasker.Logic.HtmlConstantEmails
             };
         }
 
-        public EmailModel GetForPerformerValuedAnOrder(string customerName, Order order)
+        public EmailModel GetForPerformerEstimatedAnOrder(string customerName, Order order)
         {
             ForEmailCallToAction model = ModelBuilder.EstimatedOrder(customerName, order.Id, order.Sum, HtmlSigns.Rouble);
 

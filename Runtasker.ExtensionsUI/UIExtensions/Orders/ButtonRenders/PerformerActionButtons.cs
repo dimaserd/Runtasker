@@ -1,4 +1,4 @@
-﻿using HtmlExtensions.Renderers;
+﻿using HtmlExtensions.StaticRenderers;
 using Runtasker.Logic.Entities;
 using System.Linq;
 using System.Text;
@@ -16,15 +16,12 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
         void Construct()
         {
-            FAIcons = new FontAwesomeRenderer();
-            GIcons = new GlyphiconRenderer();
+            
         }
         #endregion
 
         #region Properties
-        FontAwesomeRenderer FAIcons { get; set; }
-
-        GlyphiconRenderer GIcons { get; set; }
+        
 
         #endregion
 
@@ -42,7 +39,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
             return new HtmlActionButtonLink
                 (
                     buttonLink: $"File/DownloadSolution/{Order.Id}",
-                    buttonText: $"{FAIcons.Download} Скачать решение",
+                    buttonText: $"{FASigns.Download} Скачать решение",
                     buttonClass: GetButtonClass()
                 ).ToString();
         }
@@ -56,7 +53,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
             return new HtmlActionButtonLink
                 (
                     buttonLink: $"#",
-                    buttonText: $"Чат по заказу {GIcons.Count(unreadCount)}",
+                    buttonText: $"Чат по заказу {GISigns.Count(unreadCount)}",
                     //for javascript toggler with modal
                     htmlAttributes: new { id = Order.Id, @class = $"{GetButtonClass()} orderChat"  }
                 ).ToString();
@@ -68,7 +65,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
             buttons.Append(new HtmlActionButtonLink
                 (
                     buttonLink: $"Performer/Solve/{Order.Id}",
-                    buttonText: $"{GIcons.Briefcase} Загрузить решение",
+                    buttonText: $"{GISigns.Briefcase} Загрузить решение",
                     buttonClass: GetButtonClass()
                 ).ToString());
 
@@ -181,7 +178,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                     buttons = GetButtonsForNewOrder();
                     break;
 
-                case OrderStatus.Valued:
+                case OrderStatus.Estimated:
                     buttons = GetButtonForValuedOrder();
                     break;
                 

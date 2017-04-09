@@ -54,9 +54,10 @@ namespace Runtasker.Logic.Workers.Notifications
             //на выбранном им языке
             SetCustomerCulture(p);
 
+            //получаю заказ в системе
             Order activeOrder = Context.Orders.FirstOrDefault(
                 o => o.UserGuid == p.UserGuid &&
-            (o.Status == OrderStatus.Finished || o.Status == OrderStatus.Valued));
+            (o.Status == OrderStatus.Finished || o.Status == OrderStatus.Estimated));
 
 
             //выбираем сервис оплаты
@@ -98,7 +99,7 @@ namespace Runtasker.Logic.Workers.Notifications
 
                 : new HtmlLink
                 (
-                    hrefParam: (activeOrder.Status == OrderStatus.Valued) ?
+                    hrefParam: (activeOrder.Status == OrderStatus.Estimated) ?
                     $"/Orders/PayHalf/{activeOrder.Id}"
                     : $"/Orders/PayAnotherHalf/{activeOrder.Id}",
                     textParam: string.Format(PaymentNotRes.PayOrderFormat, FASigns.PlusCircle.Lg(), activeOrder.Id),
@@ -108,10 +109,13 @@ namespace Runtasker.Logic.Workers.Notifications
 
             };
 
+            //добавляю уведомление в базу
             Context.Notifications.Add(N);
+
 
             if(saveType == SaveChangesType.Now)
             {
+                //сохраняю изменения
                 Context.SaveChanges();
             }
         }

@@ -75,7 +75,7 @@ namespace Runtasker.Logic.Workers.Orders
             }
             //изменяем свойства заказа
             order.Sum = model.Sum;
-            order.Status = OrderStatus.Valued;
+            order.Status = OrderStatus.Estimated;
             
             //записываем изменения в базе данных
             Context.SaveChanges();

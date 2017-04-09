@@ -1,8 +1,8 @@
 ﻿using Logic.Extensions.Namers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
+using Runtasker.Logic.Enumerations;
 using System;
 
 namespace Runtasker.Logic.Workers.Payments
@@ -33,7 +33,7 @@ namespace Runtasker.Logic.Workers.Payments
         #endregion
 
         #region Methods like events
-        public void OnCustomerPaidFirstHalfOfAnOrder(Order order)
+        public void OnCustomerPaidFirstHalfOfAnOrder(Order order, SaveChangesType saveType = SaveChangesType.Now)
         {
             decimal sum = order.PaidSum;
 
@@ -45,15 +45,23 @@ namespace Runtasker.Logic.Workers.Payments
                 UserGuid = UserGuid,
                 Type = TransactionType.Spending
             };
+
             Context.PaymentTransactions.Add(PT);
-            Context.SaveChanges();
+
+            if(saveType == SaveChangesType.Now)
+            {
+                Context.SaveChanges();
+            }
+            
         }
 
-        public void OnCustomerPaidSecondHalfOfAnOrder(Order order)
+        public void OnCustomerPaidSecondHalfOfAnOrder(Order order, SaveChangesType saveType = SaveChangesType.Now)
         {
             decimal sum = order.Sum / 2;
 
             MinusUserBalance(sum);
+
+            //создаем платежное уведомление
             PaymentTransaction PT = new PaymentTransaction
             {
                 Sum = -sum,
@@ -61,11 +69,17 @@ namespace Runtasker.Logic.Workers.Payments
                 UserGuid = order.UserGuid,
                 Type = TransactionType.Spending
             };
+
+            //добавление его в базу
             Context.PaymentTransactions.Add(PT);
-            Context.SaveChanges();
+
+            if(saveType == SaveChangesType.Now)
+            {
+                Context.SaveChanges();
+            }
         }
 
-        public void OnCutomerPaidOnlineHelp(Order order)
+        public void OnCutomerPaidOnlineHelp(Order order, SaveChangesType saveType = SaveChangesType.Now)
         {
             if(order.WorkType != OrderWorkType.OnlineHelp)
             {
@@ -85,8 +99,15 @@ namespace Runtasker.Logic.Workers.Payments
                 UserGuid = order.UserGuid,
                 Type = TransactionType.Spending
             };
+            //добавляем в базу
             Context.PaymentTransactions.Add(PT);
-            Context.SaveChanges();
+
+            if(saveType == SaveChangesType.Now)
+            {
+                //сохраняем изменения
+                Context.SaveChanges();
+            }
+            
         }
 
         public void OnInvitedCustomerFinishedOrder(Invitation I)

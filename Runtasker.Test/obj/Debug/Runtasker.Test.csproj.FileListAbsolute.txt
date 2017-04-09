@@ -205,7 +205,6 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Runtask
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\VkParser.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\VkParser.dll.config
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Castle.Core.xml
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Moq.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\System.Web.Mvc.xml

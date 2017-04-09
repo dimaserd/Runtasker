@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Runtasker.Logic;
 using Runtasker.Logic.Workers.Payments.PaymentGetters;
 
 namespace Runtasker.Test.Payment
@@ -6,7 +7,7 @@ namespace Runtasker.Test.Payment
     [TestClass]
     public class EncryptingTestClass
     {
-        YandexKassaPaymentGetter getter = new YandexKassaPaymentGetter(new F);
+        YandexKassaPaymentGetter getter = new YandexKassaPaymentGetter(new MyDbContext());
 
         [TestMethod]
         public void PreTest()

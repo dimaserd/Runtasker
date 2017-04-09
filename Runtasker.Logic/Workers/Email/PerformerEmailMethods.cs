@@ -35,7 +35,7 @@ namespace Runtasker.Logic.Workers.Email
         #region Методы оценки
         public void OnPerformerEstimatedAnOrder(Order order, ApplicationUser customer)
         {
-            EmailModel model = HtmlConstants.GetForPerformerValuedAnOrder(customer.Name, order);
+            EmailModel model = HtmlConstants.GetForPerformerEstimatedAnOrder(customer.Name, order);
 
             IdentityMessage m = new IdentityMessage
             {

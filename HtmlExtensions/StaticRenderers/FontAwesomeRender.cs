@@ -1,4 +1,5 @@
 ﻿using HtmlExtensions.Renderers;
+using System.Web.Mvc;
 
 namespace HtmlExtensions.StaticRenderers
 {
@@ -111,5 +112,65 @@ namespace HtmlExtensions.StaticRenderers
         #endregion
     }
 
+    public class FontAwesomeSignModel
+    {
+        #region Properties
+        public string @class { get; set; }
+        #endregion
 
+        #region Overridden Methods
+        public override string ToString()
+        {
+            return $"<i class='fa {@class}'></i>";
+        }
+        #endregion
+    }
+
+    public static class FontAwesomeExtensions
+    {
+        #region Size Changing Extensions
+        public static FontAwesomeSignModel Lg(this FontAwesomeSignModel FASign)
+        {
+            FASign.@class = FASign.@class + " fa-lg";
+            return FASign;
+        }
+
+        public static FontAwesomeSignModel X2(this FontAwesomeSignModel FASign)
+        {
+            FASign.@class = FASign.@class + " fa-2x";
+            return FASign;
+        }
+
+        public static FontAwesomeSignModel X3(this FontAwesomeSignModel FASign)
+        {
+            FASign.@class = FASign.@class + " fa-3x";
+            return FASign;
+        }
+
+        public static FontAwesomeSignModel X4(this FontAwesomeSignModel FASign)
+        {
+            FASign.@class = FASign.@class + " fa-4x";
+            return FASign;
+        }
+
+        public static FontAwesomeSignModel X5(this FontAwesomeSignModel FASign)
+        {
+            FASign.@class = FASign.@class + " fa-5x";
+            return FASign;
+        }
+        #endregion
+
+        public static FontAwesomeSignModel Animate(this FontAwesomeSignModel FASign)
+        {
+            FASign.@class = FASign.@class + " fa-spin";
+            return FASign;
+        }
+
+        public static MvcHtmlString ToHtml(this FontAwesomeSignModel FASign)
+        {
+            return MvcHtmlString.Create(FASign.ToString());
+        }
+
+
+    }
 }

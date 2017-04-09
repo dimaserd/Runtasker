@@ -1,15 +1,13 @@
-﻿@using Runtasker.Logic.Models
-@using HtmlExtensions.Renderers
+﻿@using Runtasker.Logic.Models.Orders.Pay
+@using HtmlExtensions.StaticRenderers
 @using Runtasker.Resources.Views.Orders.Pay
 @using Runtasker.HtmlExtensions
 @model PayAnotherHalfModel
 
 @{
     ViewBag.Title = $"Pay {Model.RequiredSum} roubles";
-    //Font Awesome Signs Collection
-    FontAwesomeRenderer FASC = new FontAwesomeRenderer();
-
-    MvcHtmlString title = MvcHtmlString.Create($"{PayRes.Pay} {Model.RequiredSum}{FASC.Rouble}");
+    
+    MvcHtmlString title = MvcHtmlString.Create($"{PayRes.Pay} {Model.RequiredSum}{FASigns.Rouble}");
 
 }
 

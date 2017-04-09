@@ -61,7 +61,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         
         #endregion
 
-        #region Overriden Methods
+        #region Переопределенные методы базового класса
         public override string GetContents()
         {
             StringBuilder sb = new StringBuilder();

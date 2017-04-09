@@ -52,7 +52,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                     result += "default";
                     break;
 
-                case OrderStatus.Valued:
+                case OrderStatus.Estimated:
                     result += "info";
                     break;
 

@@ -18,7 +18,7 @@ namespace Runtasker.Logic.Entities
         [Description("Новый")]
         New,
         [Description("Оценен")]
-        Valued,
+        Estimated,
         [Description("Оплачен наполовину")]
         HalfPaid,
         [Description("Выполняется")]
@@ -102,7 +102,7 @@ namespace Runtasker.Logic.Entities
             
             if( (order.Status == OrderStatus.New ||
                 order.Status == OrderStatus.HasError ||
-                order.Status == OrderStatus.Valued ||
+                order.Status == OrderStatus.Estimated ||
                 //полуоплаченный заказ еще не занят
                 order.Status == OrderStatus.HalfPaid
                 )
@@ -176,7 +176,7 @@ namespace Runtasker.Logic.Entities
                     result += "default";
                     break;
 
-                case OrderStatus.Valued:
+                case OrderStatus.Estimated:
                     result += "info";
                     break;
 
@@ -214,7 +214,7 @@ namespace Runtasker.Logic.Entities
 
         public static string GetActiveStatus(this OrderStatus val)
         {
-            if(val == OrderStatus.New || val == OrderStatus.HasError || val == OrderStatus.Valued
+            if(val == OrderStatus.New || val == OrderStatus.HasError || val == OrderStatus.Estimated
                 || val == OrderStatus.HalfPaid || val == OrderStatus.FullPaid ||
                 val == OrderStatus.Executing)
             {

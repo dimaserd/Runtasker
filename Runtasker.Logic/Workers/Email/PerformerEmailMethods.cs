@@ -3,12 +3,14 @@ using Microsoft.AspNet.Identity;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.HtmlConstantEmails;
 using Runtasker.Logic.HtmlConstantEmails.Models;
-using Runtasker.Resources.Email.OrderPerformer;
 
 namespace Runtasker.Logic.Workers.Email
 {
-    //Class that sends emails when performer do something
-    //that someone else should know about
+
+    /// <summary>
+    /// Класс который посылает электронные письма уведомляя пользователей
+    /// о каких либо событиях на сервисе
+    /// </summary>
     public class PerformerEmailMethods : EmailWorkerBase
     {
         #region Constructors
@@ -28,9 +30,10 @@ namespace Runtasker.Logic.Workers.Email
         PerformerEmailConstants HtmlConstants { get; set; }
         #endregion
 
-        #region Methods like Events
+        #region Методы как события
 
-        public void OnPerformerValuedAnOrder(Order order, ApplicationUser customer)
+        #region Методы оценки
+        public void OnPerformerEstimatedAnOrder(Order order, ApplicationUser customer)
         {
             EmailModel model = HtmlConstants.GetForPerformerValuedAnOrder(customer.Name, order);
 
@@ -43,6 +46,21 @@ namespace Runtasker.Logic.Workers.Email
             SendEmail(m);
             
         }
+
+        public void OnAdminEstimatedOnlineHelp(Order order, ApplicationUser customer)
+        {
+            EmailModel model = HtmlConstants.GetForPerformerEstimatedOnlineHelp(customer.Name, order);
+
+            IdentityMessage m = new IdentityMessage
+            {
+                Subject = model.Subject,
+                Body = model.Body,
+                Destination = customer.Email
+            };
+            SendEmail(m);
+
+        }
+        #endregion
 
         public void OnPerformerAddedErrorToOrder(Order order, ApplicationUser customer)
         {

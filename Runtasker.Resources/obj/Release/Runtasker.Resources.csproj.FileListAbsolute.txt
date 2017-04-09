@@ -253,3 +253,5 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Home.Contact.ContactViewRes.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Payment.Succeeded.SucceededRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Payment.Succeeded.SucceededRes.ru-RU.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Payment.YandexKassa.YandexKassaRes.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Payment.YandexKassa.YandexKassaRes.ru-RU.resources

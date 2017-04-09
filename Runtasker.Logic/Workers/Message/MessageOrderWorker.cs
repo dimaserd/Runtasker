@@ -1,6 +1,7 @@
 ﻿using Logic.Extensions.Namers;
 using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
+using Runtasker.Settings;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -45,12 +46,12 @@ namespace Runtasker.Logic.Workers.MessageWorker
         //for now its just an administrator
         public string GetChattterGuid()
         {
-            return Context.Users.FirstOrDefault(u => u.Email == "dimaserd84@gmail.com").Id;
+            return Context.Users.FirstOrDefault(u => u.Email == AdminSettings.AdminEmail).Id;
         }
 
         public string GetChatterName()
         {
-            return "Jenny";
+            return AdminSettings.ChatterName;
         }
 
         //Returns Messages about Order

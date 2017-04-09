@@ -6,7 +6,7 @@ namespace Runtasker.Test.Payment
     [TestClass]
     public class EncryptingTestClass
     {
-        YandexKassaPaymentGetter getter = new YandexKassaPaymentGetter();
+        YandexKassaPaymentGetter getter = new YandexKassaPaymentGetter(new F);
 
         [TestMethod]
         public void PreTest()

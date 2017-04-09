@@ -9,7 +9,7 @@
 
         public static string TestCustomerEmail = "dimaserd96@yandex.ru";
 
-        public static string AdminEmail = "dimaserd84@gmail.com";
+        public static string AdminEmail = AdminSettings.AdminEmail;
 
         public static string TestPassword = "testpass";
 

@@ -7,13 +7,29 @@
     ViewBag.Title = localeModel["Title"];
 }
 
-<h2>@ViewBag.Title</h2>
+<!--Navigation-->
+<header id="page-title">
+    <div class="container">
+        <h1>@ViewBag.Title</h1>
+        <ul class="breadcrumb">
+            <li><a href="/Home/Index">@localeModel["NavHome"]</a></li>
+            <li class="active">@localeModel["NavActive"]</li>
+        </ul>
+    </div>
+</header>
+<!--/Navigation-->
+
+
 <div>
     <h3>
         @localeModel["Thanks"]
     </h3>
 
-    <h3>
+    @*<h3>
         @localeModel["ClickToLoginLink"].ToHtml()
-    </h3> 
+    </h3>*@ 
+
+    <h3>
+        @localeModel["ContinueWorkTextHtml"].ToHtml()
+    </h3>
 </div>

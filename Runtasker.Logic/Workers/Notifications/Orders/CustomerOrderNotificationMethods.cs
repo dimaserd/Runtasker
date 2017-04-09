@@ -420,7 +420,7 @@ namespace Runtasker.Logic.Workers.Notifications
 
         string GetPerformerEmail()
         {
-            return "dimaserd84@gmail.com";
+            return AdminSettings.AdminEmail;
         }
 
         string GetPerformerEmail(Order order)
@@ -454,13 +454,13 @@ namespace Runtasker.Logic.Workers.Notifications
         #region Guid Getters
         string GetAdminGuid(Order order)
         {
-            string email = "dimaserd84@gmail.com";
+            string email = AdminSettings.AdminEmail;
             return Context.Users.FirstOrDefault(u => u.Email == email).Id;
         }
 
         string GetAdminGuid()
         {
-            string email = "dimaserd84@gmail.com";
+            string email = AdminSettings.AdminEmail;
             return Context.Users.FirstOrDefault(u => u.Email == email).Id;
         }
 

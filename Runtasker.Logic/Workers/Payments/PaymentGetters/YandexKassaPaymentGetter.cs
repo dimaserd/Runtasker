@@ -6,7 +6,6 @@ using Runtasker.Settings;
 using System;
 using System.Data.Entity;
 using System.Globalization;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,7 +41,7 @@ namespace Runtasker.Logic.Workers.Payments.PaymentGetters
             string shopId = null, string invoiceId = null, string customerNumber = null,
             string MD5 = null)
         {
-
+            
             //invoiceId - идентификатор платежа в системе яндексКасса
 
 
@@ -58,27 +57,7 @@ namespace Runtasker.Logic.Workers.Payments.PaymentGetters
             //сравниваю строки
             bool compareResult = string.Compare(md5, MD5, StringComparison.OrdinalIgnoreCase) == 0;
 
-            #region Логгирование в файл
-            using (LoggingWorker logger = new LoggingWorker())
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append($"action={action}\n")
-                .Append($"orderSumAmount={orderSumAmount}\n")
-                .Append($"orderSumCurrencyPaycash={orderSumCurrencyPaycash}\n")
-                .Append($"orderSumBankPaycash={orderSumBankPaycash}\n")
-                .Append($"shopId={shopId}\n")
-                .Append($"invoiceId={invoiceId}\n")
-                .Append($"customerNumber={customerNumber}\n")
-                .Append($"MD5={MD5}\n")
-                .Append($"РассчитанныйMD5={md5}\n")
-                .Append($"Хеши совпали={compareResult}\n");
-
-                string fileName = "yandexKassaTest.txt";
-
-                logger.LogTextToFile(fileName, sb.ToString());
-            }
-            #endregion
-
+            
             //если хеши идентичны то 
             if (compareResult)
             {

@@ -9,6 +9,7 @@ using Runtasker.Logic.Workers.Attachments;
 using Runtasker.Logic.Workers.Files;
 using Runtasker.Logic.Workers.Notifications;
 using Runtasker.Logic.Workers.Payments;
+using Runtasker.Settings;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -66,7 +67,7 @@ namespace Runtasker.Logic.Workers.Orders
         public string GetAdminGuid()
         {
             
-            return Context.Users.FirstOrDefault(u => u.Email == "dimaserd84@gmail.com").Id;
+            return Context.Users.FirstOrDefault(u => u.Email == AdminSettings.AdminEmail).Id;
             
         }
 
@@ -112,9 +113,9 @@ namespace Runtasker.Logic.Workers.Orders
         }
         #endregion
 
-        #region Public Methods
+        #region Публичные методы
 
-        #region Add Description Methods
+        #region Добавление описания
         public AddDescriptionModel GetAddDescriptionModel(int id)
         {
             Order order = Context.Orders.FirstOrDefault
@@ -160,7 +161,7 @@ namespace Runtasker.Logic.Workers.Orders
         }
         #endregion
 
-        #region Add Files Methods
+        #region Добавление файлов
 
         public OrderAddFilesModel GetAddFilesModel(int id)
         {
@@ -216,9 +217,9 @@ namespace Runtasker.Logic.Workers.Orders
         }
         #endregion
 
-        #region Pay Methods
+        #region Методы оплаты
 
-        #region PayHalf Methods
+        #region Оплата первой половины
         public PayHalfModel GetPayHalfModel(int id)
         {
             Order order = Context.Orders.FirstOrDefault(
@@ -288,7 +289,7 @@ namespace Runtasker.Logic.Workers.Orders
         }
         #endregion
 
-        #region PayAnotherHalf methods
+        #region Оплата второй половины
 
         public PayAnotherHalfModel GetPayAnotherHalfModel(int orderId)
         {
@@ -359,7 +360,7 @@ namespace Runtasker.Logic.Workers.Orders
         }
         #endregion
 
-        #region Pay OnlineHelp methods
+        #region Онлайн-Помощь
 
         public async Task<PayOnlineHelp> GetPayOnlineHelpModelAsync(int orderId)
         {

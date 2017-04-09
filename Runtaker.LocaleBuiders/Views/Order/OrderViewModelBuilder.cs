@@ -6,7 +6,7 @@ using Runtasker.Resources.Views.Orders.OnlineHelp;
 using Runtasker.Resources.Views.Orders.Pay;
 using Runtasker.Resources.Views.Orders.Rating;
 
-namespace Runtaker.LocaleBuiders.Views.Order
+namespace Runtasker.LocaleBuilders.Views.Order
 {
     public class OrderViewModelBuilder : UICultureSwitcher
     {

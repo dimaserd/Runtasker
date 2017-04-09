@@ -1,10 +1,21 @@
 ﻿using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Email.OrderPerformer;
+using System;
 
 namespace Runtasker.LocaleBuilders.Email.CallToAction
 {
     public class PerformerEmailCallToActionModelBuilder : UICultureSwitcher
     {
+        public ForEmailCallToAction EstimatedOnlineHelp(string customerName, DateTime helpDate, string subjectName, string costString, string roubleSign)
+        {
+            return new ForEmailCallToAction
+            {
+                Header = string.Format(PerformerOrderEmRes.EstimatedOnlineHelpSubjectFormat, subjectName),
+                BigText = string.Format(PerformerOrderEmRes.EstimatedOnlineHelpTextFormat, customerName, helpDate.ToLongDateString(), subjectName, costString, roubleSign)
+                + $" {PerformerOrderEmRes.RuntaskerWish}",
+                ActionBtnText = PerformerOrderEmRes.EstimatedOnlineHelpBtnText
+            };
+        }
 
         public ForEmailCallToAction EstimatedOrder(string customerName, int orderId, decimal orderSum, string roubleSign)
         {

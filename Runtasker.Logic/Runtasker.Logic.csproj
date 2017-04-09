@@ -194,7 +194,6 @@
     <Compile Include="Models\WokerResults\WorkerPropertyResult.cs" />
     <Compile Include="Workers\Admin\Users\AdminUserCreation.cs" />
     <Compile Include="Workers\Logging\LoggingWorker.cs" />
-    <Compile Include="Workers\Notifications\NewCustomerOrderNotificationMethods.cs" />
     <Compile Include="Workers\Notifications\Orders\PerformerNotificationCreator.cs" />
     <Compile Include="Workers\Notifications\Orders\VkNotifications\VkPerformerNotificater.cs" />
     <Compile Include="Workers\Orders\KnowPriceWorker.cs" />
@@ -219,8 +218,6 @@
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\NotificationRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
-    <Compile Include="ViewModelBuilders\Payment\PaymentViewsLocaleHelper.cs" />
-    <Compile Include="ViewModelBuilders\ViewModelLocaleHelperBase.cs" />
     <Compile Include="Workers\AccountWorker.cs" />
     <Compile Include="Workers\Admin\AdminCustomerMethods.cs" />
     <Compile Include="Workers\Admin\AdminDeleteMethods.cs" />

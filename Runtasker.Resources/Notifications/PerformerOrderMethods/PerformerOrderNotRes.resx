@@ -165,4 +165,13 @@
     <value>Your order #{0} is being carried out.</value>
     <comment>Your order #{номер заказа} is being carried out.</comment>
   </data>
+  <data name="OnlineHelpEstimatedBtnText" xml:space="preserve">
+    <value>Pay Online-Help</value>
+  </data>
+  <data name="OnlineHelpEstimatedTextFormat" xml:space="preserve">
+    <value>Our Online-Help on {0} for subject {1} costs {2}{3}. You need to pay the whole sum now.</value>
+  </data>
+  <data name="OnlineHelpEstimatedTitleFormat" xml:space="preserve">
+    <value>Online-Help #{0} has been estimated.</value>
+  </data>
 </root>

@@ -13,7 +13,7 @@ using Runtasker.Logic.Workers.Invitations;
 using Runtasker.Logic.Workers;
 using Runtasker.Logic.Workers.Info;
 using Runtasker.Resources.Controllers.Account;
-using Runtaker.LocaleBuiders.Views.Account;
+using Runtasker.LocaleBuilders.Views.Account;
 using System;
 using Runtasker.Logic.Workers.Orders;
 using Runtasker.Logic.Workers.Email;

@@ -9,7 +9,7 @@ using Runtasker.Resources.Views.Account.ForgotPassword;
 using Runtasker.Resources.Views.Account.ResetPassword;
 using Runtasker.Resources.Views.Account.ResetPasswordConfirmation;
 
-namespace Runtaker.LocaleBuiders.Views.Account
+namespace Runtasker.LocaleBuilders.Views.Account
 {
     public class AccountViewModelBuilder : UICultureSwitcher
     {

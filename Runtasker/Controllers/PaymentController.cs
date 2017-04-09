@@ -6,7 +6,6 @@ using Runtasker.Logic;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Models.Payments.YandexKassa;
-using Runtasker.Logic.ViewModelBuilders.Payment;
 using Runtasker.Logic.Workers;
 using Runtasker.Logic.Workers.Logging;
 using Runtasker.Logic.Workers.Payments;

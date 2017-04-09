@@ -6,6 +6,7 @@ using System.Linq;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System;
+using Runtasker.Settings;
 
 namespace Runtasker.Logic.Workers.Admin
 {
@@ -90,7 +91,7 @@ namespace Runtasker.Logic.Workers.Admin
                               orderby user.RegistrationDate
                               select user).ToListAsync();
 
-                ApplicationUser userAdmin = result.FirstOrDefault(u => u.Email == "dimaserd84@gmail.com");
+                ApplicationUser userAdmin = result.FirstOrDefault(u => u.Email == AdminSettings.AdminEmail);
                 if(userAdmin != null)
                 {
                     result.Remove(userAdmin);

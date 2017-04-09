@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Logic.Extensions.Models;
-using Runtaker.LocaleBuiders.Views.Order;
+using Runtasker.LocaleBuilders.Views.Order;
 using Runtasker.Logic.Models.Orders;
 using Runtasker.Logic.Models.Orders.Pay;
 using HtmlExtensions.StaticRenderers;

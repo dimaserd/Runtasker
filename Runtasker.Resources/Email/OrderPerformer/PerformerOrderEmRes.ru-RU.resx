@@ -130,6 +130,17 @@
   <data name="EstimatedBtnText" xml:space="preserve">
     <value>Заплатить половину!</value>
   </data>
+  <data name="EstimatedOnlineHelpBtnText" xml:space="preserve">
+    <value>Оплатить онлайн-помощь</value>
+  </data>
+  <data name="EstimatedOnlineHelpSubjectFormat" xml:space="preserve">
+    <value>Онлайн-Помощь {0}</value>
+    <comment>Онлайн-Помощь {название предмета}</comment>
+  </data>
+  <data name="EstimatedOnlineHelpTextFormat" xml:space="preserve">
+    <value>Здравствуйте, {0}. Онлайн-Помощь на {1} по предмету {2} стоит {3}{4}. Вам нужно оплатить всю стоимость сейчас.</value>
+    <comment>Здравствуйте, {имя пользователя}. Онлайн-Помощь на {дата помощи} по предмету {название предмета} стоит {стоимость}{знак рубля}. Вам нужно оплатить всю стоимость сейчас.</comment>
+  </data>
   <data name="EstimatedSubjectFormat" xml:space="preserve">
     <value>Ваш заказ №{0} оценили</value>
     <comment>Ваш заказ №{номер заказа} оценили</comment>

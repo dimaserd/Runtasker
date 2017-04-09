@@ -8,6 +8,8 @@ using System.Globalization;
 using System.Threading;
 using Runtasker.LocaleBuilders.Notification;
 using Runtasker.LocaleBuilders.Models;
+using Runtasker.Logic.Enumerations;
+using Runtasker.Settings;
 
 namespace Runtasker.Logic.Workers.Notifications
 {
@@ -81,9 +83,10 @@ namespace Runtasker.Logic.Workers.Notifications
             Emailer.OnPerformerAddedErrorToOrder(order, GetCustomer(order));
         }
 
-        public void OnPerformerValuedAnOrder(int orderId)
+        #region Оценивание заказа
+        public void OnAdminEstimatedAnOrder(Order order, SaveChangesType saveType = SaveChangesType.Now)
         {
-            Order order = Context.Orders.FirstOrDefault(o => o.Id == orderId);
+            //устанавливаем культуру пользователя чтобы уведомления создавались на его языке
             SetCustomerCulture(order);
 
             ForNotification model = ModelBuilder.Estimated(order.Id, order.Sum, HtmlSigns.Rouble.ToString());
@@ -102,8 +105,7 @@ namespace Runtasker.Logic.Workers.Notifications
                     buttonTypeParam : HtmlButtonType.Success
                 ).ToString()
             };
-            Context.Notifications.Add(customerN);
-
+            
             Notification performerN = new Notification
             {
                 AboutType = NotificationAboutType.Ordinary,
@@ -114,15 +116,87 @@ namespace Runtasker.Logic.Workers.Notifications
                 Link = null
             };
 
+            //добавляю уведомления в базу
+            Context.Notifications.Add(customerN);
             Context.Notifications.Add(performerN);
-            Context.SaveChanges();
+
+            if(saveType == SaveChangesType.Now)
+            {
+                //сохраняю изменения в базе
+                Context.SaveChanges();
+            }
+           
 
 
-            //Then go calls for email methods
+            //вызываем методы рассылки электронной почты
             string customerEmail = GetCustomerEmail(order);
-            Emailer.OnPerformerValuedAnOrder(order, GetCustomer(order));
+            Emailer.OnPerformerEstimatedAnOrder(order, GetCustomer(order));
+        }
+        
+        /// <summary>
+        /// Данный метод должен отличаться от метода который выше так как 
+        /// для онлайн помощи немного другие правила
+        /// </summary>
+        /// <param name="order"></param>
+        /// <param name="saveType"></param>
+        public void OnPerformerEstimatedOnlineHelp(Order order, SaveChangesType saveType = SaveChangesType.Now)
+        {
+            if(order.WorkType != OrderWorkType.OnlineHelp)
+            {
+                throw new System.Exception("Заказ не является онлайн помощью");
+            }
+
+            //устанавливаем культуру пользователя чтобы уведомления создавались на его языке
+            SetCustomerCulture(order);
+
+            //получаю модель для уведомления для заказчика
+            ForNotification model = ModelBuilder.OnlineHelpEstimated(order.Id, order.FinishDate, order.Subject.ToDescriptionString(), order.Sum, HtmlSigns.Rouble);
+
+            //создаю уведомление для заказчика
+            Notification customerN = new Notification
+            {
+                AboutType = NotificationAboutType.Ordinary,
+                UserGuid = order.UserGuid,
+                Type = NotificationType.Info,
+                Text = model.Text,
+                Title = model.Title,
+                Link = new HtmlLink
+                (
+                    hrefParam: $"/Orders/PayOnlineHelp/{order.Id}",
+                    textParam: model.ActionBtnText,
+                    buttonSizeParam: HtmlButtonSize.Large,
+                    buttonTypeParam: HtmlButtonType.Success
+                ).ToString()
+            };
+
+            //создаю уведомление для исполнителя или администратора
+            Notification adminN = new Notification
+            {
+                AboutType = NotificationAboutType.Ordinary,
+                UserGuid = PerformerGuid,
+                Text = $"Вы оценили онлайн-помощь №{order.Id} на сумму {order.Sum} ждем полной оплаты...",
+                Title = "Онлайн-помощь оценена.",
+                Type = NotificationType.Success,
+                Link = null
+            };
+
+            //добавляю уведомления в базу
+            Context.Notifications.Add(adminN);
+            Context.Notifications.Add(customerN);
+
+            if(saveType == SaveChangesType.Now)
+            {
+                //сохраняю изменения в базе данных
+                Context.SaveChanges();
+            }
+
+
+            //вызываем методы рассылки электронной почты
+            string customerEmail = GetCustomerEmail(order);
+            Emailer.OnAdminEstimatedOnlineHelp(order, GetCustomer(order));
         }
 
+        #endregion
         public void OnPerformerStartedExecutingAnOrder(Order order)
         {
             SetCustomerCulture(order);
@@ -209,7 +283,7 @@ namespace Runtasker.Logic.Workers.Notifications
 
         string GetPerformerEmail()
         {
-            return "dimaserd84@gmail.com";
+            return AdminSettings.AdminEmail;
         }
         #endregion
     }

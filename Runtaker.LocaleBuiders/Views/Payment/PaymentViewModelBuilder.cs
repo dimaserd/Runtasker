@@ -18,7 +18,9 @@ namespace Runtasker.LocaleBuilders.Views.Payment
             result.Add("ActionDescMini", IndexRes.ActionDescMini);
             result.Add("Amount", IndexRes.Amount);
             result.Add("ErrorText", IndexRes.ErrorText);
-            result.Add("InfoText", IndexRes.InfoText);
+            //result.Add("InfoText", IndexRes.InfoText);
+            result.Add("InfoText", IndexRes.NewInfoText);
+
             result.Add("Title", IndexRes.Title);
             result.Add("NavHome", IndexRes.NavHome);
             result.Add("NavActive", IndexRes.NavActive);

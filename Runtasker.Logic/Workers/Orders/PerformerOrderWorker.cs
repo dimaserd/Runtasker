@@ -44,9 +44,9 @@ namespace Runtasker.Logic.Workers.Orders
 
         #endregion
 
-        #region Public Methods
+        #region Публичные методы
 
-        #region Value Methods
+        #region Методы оценки заказа
         public ValueOrderModel GetValueOrderModel(int id)
         {
             Order order = Context.Orders.FirstOrDefault(o => o.Id == id && o.Sum == 0 && o.Status == OrderStatus.New);
@@ -61,7 +61,7 @@ namespace Runtasker.Logic.Workers.Orders
             };
         }
 
-        //Changes sum of an order than sends notifications
+        
         public Order ValueOrder(ValueOrderModel model)
         {
             Order order = Context.Orders.FirstOrDefault(
@@ -73,18 +73,30 @@ namespace Runtasker.Logic.Workers.Orders
             {
                 return null;
             }
-            //changing fields
+            //изменяем свойства заказа
             order.Sum = model.Sum;
             order.Status = OrderStatus.Valued;
+            
+            //записываем изменения в базе данных
             Context.SaveChanges();
 
-            //notification methods
-            Notificater.OnPerformerValuedAnOrder(model.OrderId);
+            //Вызываем методы создающие уведомления
+            if(order.WorkType == OrderWorkType.OnlineHelp)
+            {
+                Notificater.OnPerformerEstimatedOnlineHelp(order);
+            }
+            else
+            {
+                Notificater.OnAdminEstimatedAnOrder(order);
+            }
+            
+
+            //возвращаем заказ
             return order;
         }
         #endregion
 
-        #region AddError Methods
+        #region Добавление ошибок
 
         public AddErrorToOrderModel GetAddErrorToOrderModel(int id)
         {
@@ -129,7 +141,7 @@ namespace Runtasker.Logic.Workers.Orders
 
         #endregion
 
-        #region Choose Methods
+        #region Выбор заказа
         //For now performers can select orders when orders are halfpaid
         public ChooseOrderModel GetChooseOrderModel(int id)
         {
@@ -186,7 +198,7 @@ namespace Runtasker.Logic.Workers.Orders
         }
         #endregion
 
-        #region Solve Methods
+        #region Решение заказа
         public SolveOrderModel GetSolveOrderModel(int orderId)
         {
             Order order = Context.Orders.FirstOrDefault(o => o.Id == orderId
@@ -270,8 +282,6 @@ namespace Runtasker.Logic.Workers.Orders
         }
         #endregion
 
-        #region Help Methods
         
-        #endregion
     }
 }

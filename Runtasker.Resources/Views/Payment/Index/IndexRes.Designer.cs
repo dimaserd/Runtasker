@@ -124,6 +124,15 @@ namespace Runtasker.Resources.Views.Payment.Index {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на You are about to top up your balance. Select a payment method. We strongly reccomend you to use YandexKassa service. It supports all popular payment methods and does not charge commission. Please be advised that RoboKassa charges 6% commission..
+        /// </summary>
+        public static string NewInfoText {
+            get {
+                return ResourceManager.GetString("NewInfoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Balance Recharging.
         /// </summary>
         public static string Title {

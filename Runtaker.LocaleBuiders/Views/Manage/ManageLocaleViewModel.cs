@@ -2,7 +2,7 @@
 using Runtasker.Resources.Views.Manage.ChangePassword;
 using Runtasker.Resources.Views.Manage.SetPassword;
 
-namespace Runtaker.LocaleBuiders.Views.Manage
+namespace Runtasker.LocaleBuilders.Views.Manage
 {
     public class ManageLocaleViewModelBuilder : UICultureSwitcher
     {

@@ -10,7 +10,7 @@ using Runtasker.Logic.Workers;
 using Runtasker.Logic.Workers.Invitations;
 using Runtasker.Logic.Models;
 using Logic.Extensions.Models;
-using Runtaker.LocaleBuiders.Views.Manage;
+using Runtasker.LocaleBuilders.Views.Manage;
 
 namespace Runtasker.Controllers
 {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Entities;
+using Runtasker.Settings;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,9 +17,9 @@ namespace Runtasker.Logic.Contexts.Fake
             ApplicationUser performer = new ApplicationUser
             {
                 Id = Guid.NewGuid().ToString(),
-                Email = "dimaserd84@gmail.com",
+                Email = AdminSettings.AdminEmail,
                 EmailConfirmed = true,
-                UserName = "dimaserd84@gmail.com",
+                UserName = AdminSettings.AdminEmail,
                 Name = "Dmitry"
 
             };

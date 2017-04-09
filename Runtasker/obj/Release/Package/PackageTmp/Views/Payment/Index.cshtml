@@ -10,7 +10,7 @@
 
     string roboKassa = $"{FASigns.CreditCard} {localeModel["HtmlTopUpViaRoboKassa"]}";
     string yandexMoney = $"{FASigns.CreditCard} {localeModel["HtmlTopUpViaYandexMoney"]}";
-    string yandexKassa = $"{FASigns.CreditCard} Через ЯндексКассу";
+    string yandexKassa = $"{FASigns.CreditCard} {localeModel["HtmlTopUpViaYandexKassa"]}";
 }
 
 <!--Navigation-->
@@ -53,20 +53,23 @@
 
 <!--UserButtons-->
 <div class="row paddingLeft">
+
+    <a id="yandexKassaPay" class="btn btn-lg btn-success marginTop">
+        @yandexKassa.ToHtml()
+    </a>
+
     <a id="roboKassaPay" class="btn btn-lg btn-info marginTop">
         @roboKassa.ToHtml()
     </a>
 
-    <a id="yandexMoneyPay" class="btn btn-lg btn-success marginTop">
-        @yandexMoney.ToHtml()
-    </a>
-
     @if (Runtasker.Settings.Settings.AppSetting == Runtasker.Settings.Enumerations.ApplicationSettingType.Debug)
     {
-        <a id="yandexKassaPay" class="btn btn-lg btn-success marginTop">
-            @yandexKassa.ToHtml()
+        <a id="yandexMoneyPay" class="btn btn-lg btn-success marginTop">
+            @yandexMoney.ToHtml()
         </a>
     }
+    
+
     
 </div>
 

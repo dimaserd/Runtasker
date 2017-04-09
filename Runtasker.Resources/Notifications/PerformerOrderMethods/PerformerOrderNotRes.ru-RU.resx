@@ -161,4 +161,15 @@
     <value>Ваш заказ №{0} выполняется.</value>
     <comment>Ваш заказ №{номер заказа} выполняется.</comment>
   </data>
+  <data name="OnlineHelpEstimatedBtnText" xml:space="preserve">
+    <value>Оплатить Онлайн-Помощь</value>
+  </data>
+  <data name="OnlineHelpEstimatedTextFormat" xml:space="preserve">
+    <value>Наша Онлайн-Помощь на {0} по предмету {1} стоит {2}{3}. Полную стоимость данной услугу нужно оплатить сейчас.</value>
+    <comment>Наша Онлайн-Помощь на {дата онлайн помощи} по предмету {название предмета} стоит {стоимость}{знак рубля}. Полную стоимость данной услугу нужно оплатить сейчас.</comment>
+  </data>
+  <data name="OnlineHelpEstimatedTitleFormat" xml:space="preserve">
+    <value>Мы оценили стоимость Онлайн-Помощи №{0}.</value>
+    <comment>Мы оценили стоимость Онлайн-Помощи №{номер заказа}.</comment>
+  </data>
 </root>

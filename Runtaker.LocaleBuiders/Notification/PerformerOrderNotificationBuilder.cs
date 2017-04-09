@@ -16,6 +16,7 @@ namespace Runtasker.LocaleBuilders.Notification
             };
         }
 
+        #region Заказ оценен
         public ForNotification Estimated(int orderId, decimal orderSum, string roubleSign)
         {
             return new ForNotification
@@ -25,6 +26,18 @@ namespace Runtasker.LocaleBuilders.Notification
                 ActionBtnText = string.Format(PerformerOrderNotRes.EstimatedBtnTextFormat, (orderSum / 2).ToMoney(), roubleSign)
             };
         }
+
+        public ForNotification OnlineHelpEstimated(int orderId, DateTime startDate, string subjectName, decimal helpCost, string roubleSign)
+        {
+            return new ForNotification
+            {
+                Title = string.Format(PerformerOrderNotRes.OnlineHelpEstimatedTitleFormat, orderId),
+                Text = string.Format(PerformerOrderNotRes.OnlineHelpEstimatedTextFormat, startDate.ToLongDateString(), subjectName, helpCost.ToMoney(), roubleSign)
+                + $" {PerformerOrderNotRes.RuntaskerWishes}",
+                ActionBtnText = PerformerOrderNotRes.OnlineHelpEstimatedBtnText
+            };
+        }
+        #endregion
 
         public ForNotification StartedExecuting(int orderId, DateTime orderFinishDate)
         {

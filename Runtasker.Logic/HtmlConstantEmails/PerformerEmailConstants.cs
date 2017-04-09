@@ -1,5 +1,7 @@
-﻿using HtmlExtensions.HtmlEntities;
+﻿using Extensions.Decimal;
+using HtmlExtensions.HtmlEntities;
 using HtmlExtensions.Renderers;
+using HtmlExtensions.StaticRenderers;
 using Logic.Extensions.HtmlEmail;
 using Runtasker.LocaleBuilders.Email.CallToAction;
 using Runtasker.LocaleBuilders.Models;
@@ -20,8 +22,7 @@ namespace Runtasker.Logic.HtmlConstantEmails
         void Construct()
         {
             ModelBuilder = new PerformerEmailCallToActionModelBuilder();
-
-            HtmlSigns = new HtmlSignsRenderer();
+            
         }
         #endregion
 
@@ -36,10 +37,37 @@ namespace Runtasker.Logic.HtmlConstantEmails
         #region Properties
         PerformerEmailCallToActionModelBuilder ModelBuilder { get; set;}
 
-        HtmlSignsRenderer HtmlSigns { get; set; }
         #endregion
 
         #region Public Methods
+        public EmailModel GetForPerformerEstimatedOnlineHelp(string customerName, Order order)
+        {
+            string subjectName = order.Subject.ToDescriptionString();
+
+            ForEmailCallToAction model = ModelBuilder.EstimatedOnlineHelp(customerName, order.FinishDate, subjectName, order.Sum.ToMoney(), HtmlSigns.Rouble);
+
+            string text = new HtmlEmailBase
+                (
+                    callToAction: new BigEmailCallToActionBase
+                    (
+                        header: model.Header,
+                        littleHeader: null,
+                        bigText: model.BigText,
+                        link: new HtmlLink
+                        (
+                            hrefParam: $"{Host}/Orders/PayOnlineHelp/{order.Id}",
+                            textParam: model.ActionBtnText
+                        )
+                    )
+                ).ToString();
+
+            return new EmailModel
+            {
+                Subject = string.Format(PerformerOrderEmRes.EstimatedOnlineHelpSubjectFormat, subjectName),
+                Body = text
+            };
+        }
+
         public EmailModel GetForPerformerValuedAnOrder(string customerName, Order order)
         {
             ForEmailCallToAction model = ModelBuilder.EstimatedOrder(customerName, order.Id, order.Sum, HtmlSigns.Rouble);

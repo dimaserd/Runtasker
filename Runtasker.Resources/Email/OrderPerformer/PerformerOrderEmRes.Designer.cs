@@ -97,6 +97,33 @@ namespace Runtasker.Resources.Email.OrderPerformer {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Pay Online-Help.
+        /// </summary>
+        public static string EstimatedOnlineHelpBtnText {
+            get {
+                return ResourceManager.GetString("EstimatedOnlineHelpBtnText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Online-Help for {0}.
+        /// </summary>
+        public static string EstimatedOnlineHelpSubjectFormat {
+            get {
+                return ResourceManager.GetString("EstimatedOnlineHelpSubjectFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Hello {0}. Our Online-Help on {1} for subject {2} costs {3}{4}. You need to pay the whole sum now..
+        /// </summary>
+        public static string EstimatedOnlineHelpTextFormat {
+            get {
+                return ResourceManager.GetString("EstimatedOnlineHelpTextFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Your order #{0} has been estimated.
         /// </summary>
         public static string EstimatedSubjectFormat {

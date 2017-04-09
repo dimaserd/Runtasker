@@ -151,6 +151,33 @@ namespace Runtasker.Resources.Notifications.PerformerOrderMethods {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Pay Online-Help.
+        /// </summary>
+        public static string OnlineHelpEstimatedBtnText {
+            get {
+                return ResourceManager.GetString("OnlineHelpEstimatedBtnText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Our Online-Help on {0} for subject {1} costs {2}{3}. You need to pay the whole sum now..
+        /// </summary>
+        public static string OnlineHelpEstimatedTextFormat {
+            get {
+                return ResourceManager.GetString("OnlineHelpEstimatedTextFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Online-Help #{0} has been estimated..
+        /// </summary>
+        public static string OnlineHelpEstimatedTitleFormat {
+            get {
+                return ResourceManager.GetString("OnlineHelpEstimatedTitleFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Best wishes from the Runtasker team!.
         /// </summary>
         public static string RuntaskerWishes {

@@ -138,6 +138,9 @@
   <data name="NavHome" xml:space="preserve">
     <value>Главная</value>
   </data>
+  <data name="NewInfoText" xml:space="preserve">
+    <value>Вы собираетесь пополнить баланс на Runtasker. Выберите нужный сервис для оплаты. Мы настоятельно рекомендуем вам использовать сервис ЯндексКасса. Он поддерживает все популярные способы оплаты и не имеет комиссии. Будьте внимательны, Robokassa удержит с вас коммиссию в размере 6 процентов.</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Пополнение баланса</value>
   </data>

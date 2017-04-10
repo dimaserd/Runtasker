@@ -4,6 +4,8 @@ using System.Text;
 using Runtasker.Resources.UIExtensions.Orders;
 using Extensions.Decimal;
 using System.Linq;
+using System;
+using Runtasker.ExtensionsUI.Statics;
 
 namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 {
@@ -29,33 +31,30 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
         #region Buttons parameters
 
-        //Is called by javascript
+        /// <summary>
+        /// Возвращает кнопку для чата о заказе. 
+        /// После нажатия кнопка откроется в модале
+        /// </summary>
+        /// <returns></returns>
         string GetButtonForChatAboutOrder()
         {
             //подсчитываем непрочитанные пользователем сообщения
             int unreadCount = Order.Messages
                 .Count(m => m.ReceiverGuid == Order.UserGuid
                     && m.Status == MessageStatus.New);
-            return new HtmlActionButtonLink
-                (
-                    buttonLink: "#",
-                    buttonText: string.Format(OrderEntityRes.ChatAboutOrderFormat, GISigns.Envelope, GISigns.Count(unreadCount)),
-                    //для вызова функции javacript которая откроет чат в модале
-                    htmlAttributes: new { id = Order.Id, @class = $"{GetButtonClass()} orderChat" }
-                ).ToString();
+
+            return ActionBtns.ChatBtn(Order.Id, unreadCount, GetButtonClass()).ToString();
         }
 
+        /// <summary>
+        /// Получает кнопки для только что созданного заказа
+        /// </summary>
+        /// <returns></returns>
         string GetButtonsForNewOrder()
         {
             StringBuilder buttons = new StringBuilder();
 
-            buttons.Append(new HtmlActionButtonLink
-                (
-                    buttonLink: "#",
-                    buttonText: OrderEntityRes.Estimation,
-                    buttonClass: GetButtonClass(),
-                    disabled: true
-                ).ToString());
+            buttons.Append(ActionBtns.EstimationBtn(GetButtonClass()));
 
             return buttons.ToString();
         }
@@ -69,28 +68,18 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         {
             StringBuilder buttons = new StringBuilder();
 
-            //выбираем сумм
+            //выбираем сумму
             string sumToPayString = ( Order.WorkType != OrderWorkType.OnlineHelp)? (Order.Sum / 2).ToMoney() : (Order.Sum).ToMoney();
             
 
             if(Order.WorkType != OrderWorkType.OnlineHelp)
             {
-                buttons.Append(new HtmlActionButtonLink
-                (
-                    buttonLink: $"/Orders/PayHalf/{Order.Id}",
-                    buttonText: string.Format(OrderEntityRes.PayFormat, FASigns.CreditCard, sumToPayString, HtmlSigns.Rouble),
-                    buttonClass: GetButtonClass()
-                ).ToString());
+                buttons.Append(ActionBtns.PayFirstHalfBtn(Order.Id, sumToPayString, GetButtonClass()));
 
             }
             else
             {
-                buttons.Append(new HtmlActionButtonLink
-                (
-                    buttonLink: $"/Orders/PayOnlineHelp/{Order.Id}",
-                    buttonText: string.Format(OrderEntityRes.PayFormat, FASigns.CreditCard, sumToPayString, HtmlSigns.Rouble),
-                    buttonClass: GetButtonClass()
-                ).ToString());
+                buttons.Append(ActionBtns.PayOnlineHelpBtn(Order.Id, sumToPayString, GetButtonClass()));
             }
 
             return buttons.ToString();
@@ -100,18 +89,16 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         {
             StringBuilder buttons = new StringBuilder();
 
-            buttons.Append(new HtmlActionButtonLink
-                (
-                    buttonLink : "#",
-                    buttonText: OrderEntityRes.Executing,
-                    buttonClass: GetButtonClass(),
-                    disabled: true
-                ).ToString());
+            buttons.Append(ActionBtns.ExecutingBtn(GetButtonClass()));
 
             return buttons.ToString();
         }
 
-        //They are same
+        /// <summary>
+        /// Абсолютно идентична с методом получающим кнопки для 
+        /// заказа оплаченного наполовину
+        /// </summary>
+        /// <returns></returns>
         string GetButtonsForExecutingOrder()
         {
             return GetButtonsForHalfPaidOrder();
@@ -123,16 +110,15 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
             string sumToPayString = Order.PaidSum.ToMoney();
 
-            buttons.Append(new HtmlActionButtonLink
-                    (
-                       buttonLink: $"/Orders/PayAnotherHalf/{Order.Id}",
-                       buttonText: string.Format(OrderEntityRes.PayFormat, FASigns.CreditCard, sumToPayString, HtmlSigns.Rouble),
-                       buttonClass: GetButtonClass()
-                    ).ToString());
+            buttons.Append(ActionBtns.PaySecondHalfBtn(Order.Id, sumToPayString, GetButtonClass());
 
             return buttons.ToString();
         }
         
+        /// <summary>
+        /// Получает кнопки для полностью оплаченного заказа
+        /// </summary>
+        /// <returns></returns>
         string GetButtonsForPaidOrder()
         {
             StringBuilder buttons = new StringBuilder();
@@ -140,53 +126,42 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
             if(Order.WorkType != OrderWorkType.OnlineHelp)
             {
-                buttons.Append(new HtmlActionButtonLink
-                (
-                    buttonLink: $"File/DownloadSolution/{Order.Id}",
-                    buttonText: string.Format(OrderEntityRes.DownloadSolutionFormat, FASigns.Download),
-                    buttonClass: GetButtonClass()
-                ).ToString());
+                buttons.Append(ActionBtns.DownloadSolutionBtn(Order.Id, GetButtonClass()));
             }
             else
             {
-                buttons.Append(new HtmlActionButtonLink
-                (
-                    buttonLink: $"#",
-                    disabled: true,
-                    buttonText: string.Format(OrderEntityRes.WaitingForHelpEventFormat, Order.FinishDate.ToShortDateString()),
-                    buttonClass: GetButtonClass()
-                ).ToString());
+                //если событие онлайн помощи уже завершено
+                if((DateTime.Now - Order.FinishDate).TotalDays >= 1)
+                {
+                    buttons.Append(GetButtonsForDownloadedOrder());
+                }
+                else
+                {
+                    buttons.Append(ActionBtns.WaitingForHelpEventBtn(Order.FinishDate, GetButtonClass()));
+                } 
             }
             
             return buttons.ToString();
         }
 
-        
+
+        /// <summary>
+        /// Генерирует кнопки для скачаннго заказа либо завершенной онлайн помощи
+        /// </summary>
+        /// <returns></returns>
         string GetButtonsForDownloadedOrder()
         {
             StringBuilder buttons = new StringBuilder();
             buttons.Append(GetButtonsForPaidOrder());
 
-            buttons.Append(new HtmlActionButtonLink
-                (
-                    buttonText: string.Format(OrderEntityRes.RatingWorkFormat, GISigns.Star),
-                    buttonLink: $"Orders/Rating/{Order.Id}",
-                    //для джаваскрипт функции чтобы вызвать это все в модале
-                    htmlAttributes: new { id = $"{Order.Id}", @class = $"{GetButtonClass()} rateLink" }
-                ).ToString());
+            buttons.Append(ActionBtns.RatingBtn(orderId: Order.Id, btnClass: GetButtonClass()));
             return buttons.ToString();
         }
 
         string GetButtonsForAppreciatedOrder()
         {
             StringBuilder buttons = new StringBuilder();
-            buttons.Append(new HtmlActionButtonLink
-                (
-                    buttonLink: "#",
-                    buttonText: string.Format(OrderEntityRes.FinishedFormat, null),
-                    buttonClass: GetButtonClass(),
-                    disabled: true
-                ).ToString());
+            buttons.Append(ActionBtns.FinishedBtn(GetButtonClass()));
 
             buttons.Append(GetButtonsForPaidOrder());
 
@@ -198,21 +173,11 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
             switch(Order.ErrorType)
             {
                 case OrderErrorType.NeedDescription:
-                    return new HtmlActionButtonLink
-                        (
-                            buttonLink: $"/Orders/AddDescription/{Order.Id}",
-                            buttonText: OrderEntityRes.AddDescription,
-                            buttonClass: GetButtonClass()
-                        ).ToString();
+                    return ActionBtns.AddDescriptionBtn(Order.Id, GetButtonClass()).ToString();
 
 
                 case OrderErrorType.NeedFiles:
-                    return new HtmlActionButtonLink
-                        (
-                            buttonLink: $"/Orders/AddFiles/{Order.Id}",
-                            buttonText: OrderEntityRes.AddFiles,
-                            buttonClass: GetButtonClass()
-                        ).ToString();
+                    return ActionBtns.AddFilesBtn(Order.Id, GetButtonClass()).ToString();
 
                 default:
                     return null;

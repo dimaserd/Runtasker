@@ -6,12 +6,15 @@ using HtmlExtensions.StaticRenderers;
 
 namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 {
-    //bs-calltoaction-primary - blue (executing)
-    //bs-calltoaction-info  - light blue (valued waits for payment)
-    //bs-calltoaction-default - white (proccessed)
-    //bs-calltoaction-success -green (done and wait for last payment) 
-    //bs-calltoaction-warning  -yellow
-    //bs-calltoaction-danger  - red (have some mistake)
+    /// <summary>
+    /// bs-calltoaction-primary - blue (executing)
+    ///bs-calltoaction-info  - light blue (valued waits for payment)
+    ///bs-calltoaction-default - white (proccessed)
+    ///bs-calltoaction-success -green (done and wait for last payment) 
+    ///bs-calltoaction-warning  -yellow
+    ///bs-calltoaction-danger  - red (have some mistake)
+    /// </summary>
+    
     public class CustomerOrderHtmlEntity : OrderEntityBase
     {
         #region Constructors

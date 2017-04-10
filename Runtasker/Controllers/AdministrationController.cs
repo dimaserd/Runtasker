@@ -12,27 +12,27 @@ using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers.Admin;
 using Logic.Extensions.Models;
 using Runtasker.Logic.Workers.Admin.Users;
-using System.Data.Entity.Validation;
-using Runtasker.Logic.Handlers;
-using System.Data.Entity.Migrations;
 
 namespace Runtasker.Controllers
 {
-    //в этом контроле можно будет наделять пользователей
-    //различными правами присваивать им роли
-    //в дальнейшем скорее всего будет использоваться
-    //для отслеживания деятельности исполнителей
+    
+    /// <summary>
+    /// в этом контроле можно будет наделять пользователей
+    ///различными правами, присваивать им роли,
+    ///а в дальнейшем скорее всего будет использоваться
+    ///для отслеживания деятельности исполнителей
+    /// </summary>
     [Authorize(Roles = "Admin")]
     public class AdministrationController : Controller
     {
-        #region Fields
+        #region Поля
         static MyDbContext _db;
         UserManager<ApplicationUser> _userManager;
         AdminCustomerMethods _adminWorker;
         AdminUserCreationWorker _userCreator;
         #endregion
 
-        #region Properties
+        #region Свойства
         MyDbContext Db
         {
             get
@@ -83,12 +83,13 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region HttpController Methods
+        #region Http методы
         // GET: Administration
         public ActionResult Index()
         {
             return View();
         }
+
         #region OtherInfo Methods
 
         #region UpdatePerformerInfo methods
@@ -127,6 +128,7 @@ namespace Runtasker.Controllers
         #endregion
 
         #endregion
+
         #region CreateUser Methods
         [HttpGet]
         public async Task<ActionResult> CreateUser()

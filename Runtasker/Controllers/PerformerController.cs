@@ -64,7 +64,7 @@ namespace Runtasker.Controllers
             {
                 if(_adminWorker == null)
                 {
-                    _adminWorker = new AdminCustomerMethods();
+                    _adminWorker = new AdminCustomerMethods(Context);
                 }
 
                 return _adminWorker;

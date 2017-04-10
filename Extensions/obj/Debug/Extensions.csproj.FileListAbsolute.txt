@@ -145,5 +145,3 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\System.Web.
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\obj\Debug\Extensions.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\obj\Debug\Extensions.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\obj\Debug\Extensions.csprojResolveAssemblyReference.cache
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\Extensions.dll.CodeAnalysisLog.xml
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\Extensions.dll.lastcodeanalysissucceeded

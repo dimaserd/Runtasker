@@ -1,7 +1,5 @@
-﻿using HtmlExtensions.StaticRenderers;
-using Runtasker.Logic.Entities;
+﻿using Runtasker.Logic.Entities;
 using System.Text;
-using Runtasker.Resources.UIExtensions.Orders;
 using Extensions.Decimal;
 using System.Linq;
 using System;
@@ -9,10 +7,12 @@ using Runtasker.ExtensionsUI.Statics;
 
 namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 {
-    //this class produces action link or links for current OrderHtmlEntity
+    /// <summary>
+    /// Этот класс выдает кнопки действий для сущности заказ
+    /// </summary>
     public class CustomerOrderActionButtons : OrderHtmlButtonsBase
     {
-        //TODO add spans with glyphicon
+        
         #region Constructors
         public CustomerOrderActionButtons(CustomerOrderHtmlEntity orderEntity) : base(orderEntity)
         {
@@ -43,7 +43,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                 .Count(m => m.ReceiverGuid == Order.UserGuid
                     && m.Status == MessageStatus.New);
 
-            return ActionBtns.ChatBtn(Order.Id, unreadCount, GetButtonClass()).ToString();
+            return CustomerBtns.ChatBtn(Order.Id, unreadCount, BtnClass).ToString();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         {
             StringBuilder buttons = new StringBuilder();
 
-            buttons.Append(ActionBtns.EstimationBtn(GetButtonClass()));
+            buttons.Append(CustomerBtns.EstimationBtn(BtnClass));
 
             return buttons.ToString();
         }
@@ -74,12 +74,12 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
             if(Order.WorkType != OrderWorkType.OnlineHelp)
             {
-                buttons.Append(ActionBtns.PayFirstHalfBtn(Order.Id, sumToPayString, GetButtonClass()));
+                buttons.Append(CustomerBtns.PayFirstHalfBtn(Order.Id, sumToPayString, BtnClass));
 
             }
             else
             {
-                buttons.Append(ActionBtns.PayOnlineHelpBtn(Order.Id, sumToPayString, GetButtonClass()));
+                buttons.Append(CustomerBtns.PayOnlineHelpBtn(Order.Id, sumToPayString, BtnClass));
             }
 
             return buttons.ToString();
@@ -89,7 +89,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         {
             StringBuilder buttons = new StringBuilder();
 
-            buttons.Append(ActionBtns.ExecutingBtn(GetButtonClass()));
+            buttons.Append(CustomerBtns.ExecutingBtn(BtnClass));
 
             return buttons.ToString();
         }
@@ -110,7 +110,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
             string sumToPayString = Order.PaidSum.ToMoney();
 
-            buttons.Append(ActionBtns.PaySecondHalfBtn(Order.Id, sumToPayString, GetButtonClass());
+            buttons.Append(CustomerBtns.PaySecondHalfBtn(Order.Id, sumToPayString, BtnClass));
 
             return buttons.ToString();
         }
@@ -126,18 +126,18 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
             if(Order.WorkType != OrderWorkType.OnlineHelp)
             {
-                buttons.Append(ActionBtns.DownloadSolutionBtn(Order.Id, GetButtonClass()));
+                buttons.Append(CustomerBtns.DownloadSolutionBtn(Order.Id, BtnClass));
             }
             else
             {
-                //если событие онлайн помощи уже завершено
-                if((DateTime.Now - Order.FinishDate).TotalDays >= 1)
+                //если событие онлайн помощи уже завершено и заказ еще не оценен
+                if((DateTime.Now - Order.FinishDate).TotalDays >= 1 && Order.Status != OrderStatus.Appreciated)
                 {
-                    buttons.Append(GetButtonsForDownloadedOrder());
+                    buttons.Append(CustomerBtns.RatingBtn(orderId: Order.Id, btnClass: BtnClass));
                 }
                 else
                 {
-                    buttons.Append(ActionBtns.WaitingForHelpEventBtn(Order.FinishDate, GetButtonClass()));
+                    buttons.Append(CustomerBtns.WaitingForHelpEventBtn(Order.FinishDate, BtnClass));
                 } 
             }
             
@@ -152,18 +152,23 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         string GetButtonsForDownloadedOrder()
         {
             StringBuilder buttons = new StringBuilder();
-            buttons.Append(GetButtonsForPaidOrder());
+            buttons.Append(CustomerBtns.DownloadSolutionBtn(Order.Id, BtnClass));
 
-            buttons.Append(ActionBtns.RatingBtn(orderId: Order.Id, btnClass: GetButtonClass()));
+            buttons.Append(CustomerBtns.RatingBtn(orderId: Order.Id, btnClass: BtnClass));
             return buttons.ToString();
         }
 
         string GetButtonsForAppreciatedOrder()
         {
             StringBuilder buttons = new StringBuilder();
-            buttons.Append(ActionBtns.FinishedBtn(GetButtonClass()));
+            buttons.Append(CustomerBtns.FinishedBtn(BtnClass));
 
-            buttons.Append(GetButtonsForPaidOrder());
+            //у онлайн заказов нет решения
+            if(Order.WorkType != OrderWorkType.OnlineHelp)
+            {
+                buttons.Append(CustomerBtns.DownloadSolutionBtn(Order.Id, BtnClass));
+            }
+            
 
             return buttons.ToString();
         }
@@ -173,11 +178,11 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
             switch(Order.ErrorType)
             {
                 case OrderErrorType.NeedDescription:
-                    return ActionBtns.AddDescriptionBtn(Order.Id, GetButtonClass()).ToString();
+                    return CustomerBtns.AddDescriptionBtn(Order.Id, BtnClass).ToString();
 
 
                 case OrderErrorType.NeedFiles:
-                    return ActionBtns.AddFilesBtn(Order.Id, GetButtonClass()).ToString();
+                    return CustomerBtns.AddFilesBtn(Order.Id, BtnClass).ToString();
 
                 default:
                     return null;

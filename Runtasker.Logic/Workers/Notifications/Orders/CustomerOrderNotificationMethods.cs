@@ -321,6 +321,7 @@ namespace Runtasker.Logic.Workers.Notifications
                 AboutType = NotificationAboutType.Ordinary,
                 Type = NotificationType.Success,
                 UserGuid = order.UserGuid,
+
                 Title = model.Title,
                 Text = model.Text,
                 Link = null
@@ -330,7 +331,8 @@ namespace Runtasker.Logic.Workers.Notifications
             {
                 AboutType = NotificationAboutType.Ordinary,
                 Type = NotificationType.Success,
-                UserGuid = order.PerformerGuid,
+                //если заказ является онлайн помощью у него так и не появиться исполнитель
+                UserGuid = (order.UserGuid == order.PerformerGuid) ? GetAdminGuid() : order.PerformerGuid,
                 Title = $"Пользователь оценил наши услуги по заказу №{order.Id}!",
                 Text = $"Его оценка ({order.Rating} из 5) Оцените его комментарии, если они жалобные, " +
                        "то предложите пользователю какой-либо бонус!",

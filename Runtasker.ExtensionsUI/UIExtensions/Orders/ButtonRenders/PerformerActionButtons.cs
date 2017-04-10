@@ -40,7 +40,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                 (
                     buttonLink: $"File/DownloadSolution/{Order.Id}",
                     buttonText: $"{FASigns.Download} Скачать решение",
-                    buttonClass: GetButtonClass()
+                    buttonClass: BtnClass
                 ).ToString();
         }
         #endregion
@@ -55,7 +55,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                     buttonLink: $"#",
                     buttonText: $"Чат по заказу {GISigns.Count(unreadCount)}",
                     //for javascript toggler with modal
-                    htmlAttributes: new { id = Order.Id, @class = $"{GetButtonClass()} orderChat"  }
+                    htmlAttributes: new { id = Order.Id, @class = $"{BtnClass} orderChat"  }
                 ).ToString();
         }
 
@@ -66,7 +66,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                 (
                     buttonLink: $"Performer/Solve/{Order.Id}",
                     buttonText: $"{GISigns.Briefcase} Загрузить решение",
-                    buttonClass: GetButtonClass()
+                    buttonClass: BtnClass
                 ).ToString());
 
             return buttons.ToString();
@@ -80,7 +80,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                          (
                              buttonLink: Order.Attachments,
                              buttonText: "<span class='glyphicon glyphicon-download-alt'> </span> Скачать файлы",
-                             buttonClass: GetButtonClass()
+                             buttonClass: BtnClass
                          ).ToString();
             }
 
@@ -88,7 +88,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                          (
                              buttonLink: Order.Attachments,
                              buttonText: "Нет прикрепленных файлов",
-                             buttonClass: GetButtonClass(),
+                             buttonClass: BtnClass,
                              disabled: true
                          ).ToString();
 
@@ -106,14 +106,14 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                          (
                              buttonLink: $"/Performer/AddError/{Order.Id}",
                              buttonText: "Указать на ошибку",
-                             buttonClass: GetButtonClass()
+                             buttonClass: BtnClass
                          ).ToString())
 
             .Append(new HtmlActionButtonLink
                      (
                         buttonLink : $"/Performer/ValueOrder/{Order.Id}",
                         buttonText : "Оценить заказ",
-                        buttonClass : GetButtonClass()
+                        buttonClass : BtnClass
                      ).ToString());
 
 
@@ -129,7 +129,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                         (
                             buttonLink: "#",
                             buttonText: $"Ожидаем оплаты",
-                            buttonClass: GetButtonClass(),
+                            buttonClass: BtnClass,
                             disabled: true
                         ).ToString());
 
@@ -145,7 +145,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                         (
                             buttonLink: $"/Performer/Choose/{Order.Id}",
                             buttonText: $"Выбрать для исполнения",
-                            buttonClass: GetButtonClass()
+                            buttonClass: BtnClass
                         ).ToString());
 
             return buttons.ToString();
@@ -158,7 +158,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                 (
                     buttonLink: "#",
                     buttonText: "Ожидаем исправлений",
-                    buttonClass: GetButtonClass(),
+                    buttonClass: BtnClass,
                     disabled: true
                 ));
             return buttons.ToString();

@@ -475,7 +475,7 @@ namespace Runtasker.Logic.Workers.Orders
         public RatingOrderModel GetRatingOrderModel(int orderId)
         {
             Order order = Context.Orders.FirstOrDefault(o => o.Id == orderId
-            && o.Status == OrderStatus.Downloaded
+            && (o.Status == OrderStatus.Downloaded || (o.Status == OrderStatus.FullPaid && o.WorkType == OrderWorkType.OnlineHelp))
             && o.UserGuid == UserGuid);
 
             if (order == null)
@@ -493,9 +493,8 @@ namespace Runtasker.Logic.Workers.Orders
         {
 
             Order order = Context.Orders.FirstOrDefault(o => o.Id == model.OrderId
-                && o.Status == OrderStatus.Downloaded
-                && o.UserGuid == UserGuid);
-
+            && (o.Status == OrderStatus.Downloaded || (o.Status == OrderStatus.FullPaid && o.WorkType == OrderWorkType.OnlineHelp))
+            && o.UserGuid == UserGuid);
 
             if (order == null)
             {
@@ -504,7 +503,7 @@ namespace Runtasker.Logic.Workers.Orders
 
 
 
-            //changing order fields
+            //изменяем свойства заказа
             order.Status = OrderStatus.Appreciated;
             order.Comment = model.Text;
             order.Rating = model.Rating;

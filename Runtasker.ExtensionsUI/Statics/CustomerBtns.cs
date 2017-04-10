@@ -5,7 +5,7 @@ using System;
 
 namespace Runtasker.ExtensionsUI.Statics
 {
-    public static class ActionBtns
+    public static class CustomerBtns
     {
         public static HtmlActionButtonLink RatingBtn(int orderId, string btnClass)
         {
@@ -82,7 +82,7 @@ namespace Runtasker.ExtensionsUI.Statics
                     buttonText: string.Format(OrderEntityRes.ChatAboutOrderFormat, GISigns.Envelope, GISigns.Count(unreadCount)),
                     //для вызова функции javacript которая откроет чат в модале
                     htmlAttributes: new { id = orderId, @class = $"{btnClass} orderChat" }
-                )
+                );
         }
 
         public static HtmlActionButtonLink EstimationBtn(string btnClass)
@@ -112,7 +112,7 @@ namespace Runtasker.ExtensionsUI.Statics
             return new HtmlActionButtonLink
                 (
                     buttonLink: "#",
-                    buttonText: string.Format(OrderEntityRes.FinishedFormat, null),
+                    buttonText: string.Format(OrderEntityRes.FinishedFormat, string.Empty),
                     buttonClass: btnClass,
                     disabled: true
                 );

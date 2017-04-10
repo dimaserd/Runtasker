@@ -13,18 +13,33 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         }
         #endregion
 
-        #region Properties
+        #region Поля
+        string _btnClass;
+        #endregion
+
+        #region Защищенные Свойства
         protected OrderEntityBase OrderEntity { get; set; }
+
         protected Order Order
         {
             get { return OrderEntity.Order; }
         }
 
-
+        protected string BtnClass
+        {
+            get
+            {
+                if(string.IsNullOrEmpty(_btnClass))
+                {
+                    _btnClass = GetButtonClass();
+                }
+                return _btnClass;
+            }
+        }
         #endregion
 
-        #region Protected Methods
-        protected string GetButtonClass()
+        #region Закрытые методы
+        private string GetButtonClass()
         {
             return $"btn btn-lg btn-block btn-{OrderEntity.GetColorClass()}";
         }

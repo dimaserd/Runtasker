@@ -19,7 +19,7 @@ namespace Runtasker.Controllers
     [Authorize]
     public class OrdersController : Controller
     {
-        #region Private Fields
+        #region Поля
 
         CustomerOrderWorker _orderWorker;
 
@@ -30,7 +30,7 @@ namespace Runtasker.Controllers
         OrderViewModelBuilder _modelBuilder;
         #endregion
 
-        #region Properties
+        #region Свойства
         CustomerOrderWorker OrderWorker
         {
             get
@@ -103,9 +103,11 @@ namespace Runtasker.Controllers
             return View(viewName: "MiniPanel", model:model);
         }
 
-        
 
-        #region Add Files Methods
+
+        #region Исправление ошибок
+
+        #region Добавление файлов
 
         [HttpGet]
         public ActionResult AddFiles(int id)
@@ -144,7 +146,7 @@ namespace Runtasker.Controllers
 
         //тестирование методов добавления описания новым 
         //более совершенным классом
-        #region AddDescription Methods
+        #region Добавление описание
         
         [HttpGet]
         public ActionResult AddDescription(int id)
@@ -180,9 +182,11 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region Pay methods
+        #endregion
 
-        #region PayHalf Methods
+        #region Оплата
+
+        #region Оплата первой половины
         //Orders should be paid only if current user
         //has money on his balance 
         //if not redirect him to Payment Controller Methods
@@ -225,7 +229,7 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region PayAnotherHalf Methods
+        #region Оплата второй половины
 
 
         [HttpGet]
@@ -263,7 +267,7 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region Pay OnlineHelp Methods
+        #region Оплата ОнлайнПомощи
         [HttpGet]
         public async Task<ActionResult> PayOnlineHelp(int id)
         {
@@ -295,7 +299,7 @@ namespace Runtasker.Controllers
         #endregion
         #endregion
         //TODO
-        #region Rating Methods
+        #region Оценка заказа
         [HttpGet]
         public ActionResult Rating(int id)
         {
@@ -329,7 +333,7 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region Create Methods
+        #region Созздание заказа
 
         [HttpGet]
         [AllowAnonymous]

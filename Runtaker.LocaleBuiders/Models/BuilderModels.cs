@@ -8,7 +8,14 @@ namespace Runtasker.LocaleBuilders.Models
         public string Text { get; set; }
 
         public string ActionBtnText { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Title} {Text}";
+        }
     }
+
+    
 
     public class ForEmailCallToAction
     {

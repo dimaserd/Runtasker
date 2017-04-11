@@ -49,7 +49,7 @@ namespace Runtasker.Logic.Workers.Notifications
         IMyDbContext Context { get; set; }
         #endregion
 
-        #region Public Methods
+        #region Методы по событиям
 
         #region Когда заказ еще не выбран исполнителем
 
@@ -81,9 +81,9 @@ namespace Runtasker.Logic.Workers.Notifications
             //получаем список тех кого нужно оповестить
             IEnumerable<VkUserInfo> vkUserInfos = PerformerNotificationGetter.GetVkUserInfos();
             //методы рассылки исполнителям в вк
-            using (VkPerformerNotificater vkNotificater = new VkPerformerNotificater(vkUserInfos))
+            using (VkNotificater vkNotificater = new VkNotificater(vkUserInfos))
             {
-                vkNotificater.OnCustomerAddedOrder(order);
+                vkNotificater.OnCustomerAddedOrder(order, model);
             }
 
 
@@ -130,6 +130,15 @@ namespace Runtasker.Logic.Workers.Notifications
             //добавляем уведомление для исполнителя
             Context.Notifications.Add(customerN);
             Context.SaveChanges();
+
+            //получаем список тех кого нужно оповестить
+            IEnumerable<VkUserInfo> vkUserInfos = PerformerNotificationGetter.GetVkUserInfos();
+            
+            //рассылаем оповещения в вк
+            using (VkNotificater vkNotificater = new VkNotificater(vkUserInfos))
+            {
+                vkNotificater.OnCustomerAddedOrder(order, model);
+            }
 
             //Рассылка электронной почты 
             //как для исполнителей и администраторов так и для заказчика
@@ -186,7 +195,7 @@ namespace Runtasker.Logic.Workers.Notifications
             //получаем список тех кого нужно оповестить
             IEnumerable<VkUserInfo> vkUserInfos = PerformerNotificationGetter.GetVkUserInfos();
             //методы рассылки исполнителям в вк
-            using (VkPerformerNotificater vkNotificater = new VkPerformerNotificater(vkUserInfos))
+            using (VkNotificater vkNotificater = new VkNotificater(vkUserInfos))
             {
                 vkNotificater.OnCustomerChangedOrderDescription(order);
             }
@@ -221,7 +230,7 @@ namespace Runtasker.Logic.Workers.Notifications
             //получаем список тех кого нужно оповестить
             IEnumerable<VkUserInfo> vkUserInfos = PerformerNotificationGetter.GetVkUserInfos();
             //методы рассылки исполнителям в вк
-            using (VkPerformerNotificater vkNotificater = new VkPerformerNotificater(vkUserInfos))
+            using (VkNotificater vkNotificater = new VkNotificater(vkUserInfos))
             {
                 vkNotificater.OnCustomerAddedFiles(order);
             }
@@ -259,7 +268,7 @@ namespace Runtasker.Logic.Workers.Notifications
             //получаем список тех кого нужно оповестить
             IEnumerable<VkUserInfo> vkUserInfos = PerformerNotificationGetter.GetVkUserInfos();
             //методы рассылки исполнителям в вк
-            using (VkPerformerNotificater vkNotificater = new VkPerformerNotificater(vkUserInfos))
+            using (VkNotificater vkNotificater = new VkNotificater(vkUserInfos))
             {
                 vkNotificater.OnCustomerPaidFirstHalf(order);
             }

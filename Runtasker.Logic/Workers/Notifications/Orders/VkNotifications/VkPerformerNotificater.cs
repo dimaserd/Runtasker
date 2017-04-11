@@ -1,4 +1,5 @@
 ﻿using Logic.Extensions.Models;
+using Runtasker.LocaleBuilders.Models;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Models.VkNotificater;
@@ -14,10 +15,10 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
     /// <summary>
     /// Класс который создает и отправляет текстовые уведомления для иссполнителей
     /// </summary>
-    public class VkPerformerNotificater : IDisposable
+    public class VkNotificater : IDisposable
     {
         #region Constructor
-        public VkPerformerNotificater(IEnumerable<VkUserInfo> userInfos)
+        public VkNotificater(IEnumerable<VkUserInfo> userInfos)
         {
             VkInfoList = userInfos.ToList();
         }
@@ -27,15 +28,28 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
         public List<VkUserInfo> VkInfoList { get; set; }
         #endregion
 
-        #region Public methods
+        #region Методы по событиям
 
         #region Методы для еще свободного заказа
-        public void OnCustomerAddedOrder(Order order)
+
+        #region Добавление заказа
+        public void OnCustomerAddedOrder(Order order, ForNotification notificationModel)
         {
+            OtherUserInfo customerInfo = order.Customer.OtherInfo;
+
             List<VkMessage> messages = new List<VkMessage>();
+
+            //добавляю сообщение для заказчика
+            messages.Add(new VkMessage
+            {
+                UserDomain = customerInfo.VkDomain,
+                UserId = customerInfo.VkId,
+                Text = notificationModel.ToString()
+            });
+
             foreach(VkUserInfo vkInfo in VkInfoList)
             {
-                VkMessage message = new VkMessage
+                VkMessage performerMes = new VkMessage
                 {
                     Text = $"Пользователь добавил заказ по предмету {order.Subject.ToDescriptionString()}\n"
                 + $"Проверьте его на наличие ошибок и оцените его стоимость, помните что"
@@ -43,17 +57,42 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
                     UserDomain = vkInfo.VkDomain,
                     UserId = vkInfo.VkId,
                 };
-                messages.Add(message);
+                messages.Add(performerMes);
             }
 
             using (VkMessageSender sender = new VkMessageSender())
             {
                 sender.SendMessagesToVkUsers(messages);
             }
+        }
+        
+        /// <summary>
+        ///В этот метод заказ должен быть передан с подгруженным заказчиком и его дополнительными данными
+        /// </summary>
+        /// <param name="order"></param>
+        public void OnCustomerAppliedForOnlineHelp(Order order, ForNotification notificationModel)
+        {
+            OtherUserInfo customerInfo = order.Customer.OtherInfo;
             
 
-        }
+            //создаю лист из сообщений
+            List<VkMessage> messages = new List<VkMessage>();
 
+            if(customerInfo != null)
+            {
+                //добавляю сообщение для заказчика
+                messages.Add(new VkMessage
+                {
+                    UserDomain = customerInfo.VkDomain,
+                    Text = notificationModel.ToString(),
+                    UserId = customerInfo.VkId
+                });
+            }
+            
+        }
+        #endregion
+
+        #region Исправление ошибок
         public void OnCustomerChangedOrderDescription(Order order)
         {
             List<VkMessage> messages = new List<VkMessage>();
@@ -101,6 +140,8 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
 
 
         }
+        
+        #endregion
 
         public void OnCustomerPaidFirstHalf(Order order)
         {

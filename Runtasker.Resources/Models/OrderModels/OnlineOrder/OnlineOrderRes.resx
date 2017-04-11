@@ -135,4 +135,13 @@
   <data name="Subject" xml:space="preserve">
     <value>Subject</value>
   </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="PhoneNumberErrorText" xml:space="preserve">
+    <value>You've input a wrong phone number!</value>
+  </data>
+  <data name="PhoneNumberInfo" xml:space="preserve">
+    <value>We will contact you to discuss all the details about your application.</value>
+  </data>
 </root>

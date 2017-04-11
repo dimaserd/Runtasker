@@ -148,6 +148,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\ErrorTextAttribute.cs" />
     <Compile Include="Attributes\PopOverInfoAttribute.cs" />
     <Compile Include="Attributes\RatingSizeAttribute.cs" />
     <Compile Include="Attributes\SpecifyDropdownAttribute.cs" />

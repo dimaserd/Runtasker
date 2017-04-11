@@ -13,6 +13,9 @@ using Runtasker.LocaleBuilders.Views.Order;
 using Runtasker.Logic.Models.Orders;
 using Runtasker.Logic.Models.Orders.Pay;
 using HtmlExtensions.StaticRenderers;
+using System.Web;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Runtasker.Controllers
 {
@@ -20,6 +23,13 @@ namespace Runtasker.Controllers
     public class OrdersController : Controller
     {
         #region Поля
+
+        #region Стандартные поля
+
+        ApplicationUserManager _userManager;
+        ApplicationSignInManager _signInManager;
+
+        #endregion
 
         CustomerOrderWorker _orderWorker;
 
@@ -31,6 +41,34 @@ namespace Runtasker.Controllers
         #endregion
 
         #region Свойства
+
+        #region Стандартные свойства
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                if(_userManager == null)
+                {
+                    _userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(_db));
+                }
+                return _userManager;
+            }
+            
+        }
+        #endregion
+
         CustomerOrderWorker OrderWorker
         {
             get
@@ -66,12 +104,14 @@ namespace Runtasker.Controllers
                 return _modelBuilder;
             }
         }
+
         string UserGuid
         {
             get { return User.Identity.GetUserId(); }
         }
         #endregion
 
+        
 
         // GET: Orders
         [AllowAnonymous]
@@ -146,7 +186,7 @@ namespace Runtasker.Controllers
 
         //тестирование методов добавления описания новым 
         //более совершенным классом
-        #region Добавление описание
+        #region Добавление описания
         
         [HttpGet]
         public ActionResult AddDescription(int id)
@@ -168,7 +208,7 @@ namespace Runtasker.Controllers
             if(ModelState.IsValid)
             {
                 
-                Order order = OrderWorker.AddDescriptionToOrder(model);
+                Order order = await OrderWorker.AddDescriptionToOrderAsync(model);
                 
                 if(order == null)
                 {
@@ -297,6 +337,7 @@ namespace Runtasker.Controllers
             return View(model);
         }
         #endregion
+
         #endregion
         //TODO
         #region Оценка заказа
@@ -333,8 +374,9 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region Созздание заказа
+        #region Создание заказа
 
+        #region Обычный заказ
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Create()
@@ -405,7 +447,10 @@ namespace Runtasker.Controllers
             return View(model: createOrder);
         
         }
-        
+        #endregion
+
+        #region Онлайн-помощь
+
         [HttpGet]
         public ActionResult OnlineHelp()
         {
@@ -421,6 +466,25 @@ namespace Runtasker.Controllers
         [HttpPost]
         public async Task<ActionResult> OnlineHelp(OnlineOrderRequest model)
         {
+            //изменяем телефон
+            if(model.PhoneNumber != User.Identity.GetPhoneNumber())
+            {
+                //получаем пользователя
+                ApplicationUser user = await UserManager.FindByIdAsync(UserGuid);
+                
+                if (user != null)
+                {
+                    //меняем номер телефона пользователя
+                    user.PhoneNumber = model.PhoneNumber;
+
+                    //соханяем изменения
+                    await UserManager.UpdateAsync(user);
+                    
+                    //обновляем куки
+                    SignInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 Order order = await OrderWorker.CreateOnlineHelpOrderAsync(model.ToOrderCreateModel());
@@ -431,11 +495,11 @@ namespace Runtasker.Controllers
 
             return View(model);
         }
+
         #endregion
 
-        
+        #endregion
 
-        
 
         public ActionResult DownloadSolution(int id)
         {

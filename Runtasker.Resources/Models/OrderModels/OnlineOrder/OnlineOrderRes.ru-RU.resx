@@ -135,4 +135,13 @@
   <data name="Subject" xml:space="preserve">
     <value>Предмет</value>
   </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Номер телефона</value>
+  </data>
+  <data name="PhoneNumberErrorText" xml:space="preserve">
+    <value>Вы указали неверный номер телефона!</value>
+  </data>
+  <data name="PhoneNumberInfo" xml:space="preserve">
+    <value>Мы c вами свяжемся для уточнения деталей касательно вашей заявки.</value>
+  </data>
 </root>

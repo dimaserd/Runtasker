@@ -156,6 +156,31 @@ namespace Runtasker.Logic.Workers.Orders
             return order;
 
         }
+
+        public async Task<Order> AddDescriptionToOrderAsync(AddDescriptionModel model)
+        {
+            Order order = await Context.Orders.FirstOrDefaultAsync
+                    (o => o.Id == model.OrderId
+                        && o.UserGuid == UserGuid
+                        && o.ErrorType == OrderErrorType.NeedDescription
+                    );
+
+            if (order == null)
+            {
+                return null;
+            }
+
+            order.Description = model.Description;
+            order.ErrorType = OrderErrorType.None;
+            order.Status = OrderStatus.New;
+
+
+            Notificater.OnCustomerAddedNewDescription(order);
+
+            await Context.SaveChangesAsync();
+            return order;
+
+        }
         #endregion
 
         #region Добавление файлов

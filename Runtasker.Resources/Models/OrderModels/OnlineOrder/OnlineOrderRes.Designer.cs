@@ -88,6 +88,33 @@ namespace Runtasker.Resources.Models.OrderModels.OnlineOrder {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Phone Number.
+        /// </summary>
+        public static string PhoneNumber {
+            get {
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на You&apos;ve input a wrong phone number!.
+        /// </summary>
+        public static string PhoneNumberErrorText {
+            get {
+                return ResourceManager.GetString("PhoneNumberErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на We will contact you to discuss all the details about your application..
+        /// </summary>
+        public static string PhoneNumberInfo {
+            get {
+                return ResourceManager.GetString("PhoneNumberInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Start Date.
         /// </summary>
         public static string StartDate {

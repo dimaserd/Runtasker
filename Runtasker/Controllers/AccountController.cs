@@ -26,36 +26,82 @@ namespace Runtasker.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        #region Private Fields
+        #region Поля
         
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private RoleManager<IdentityRole> _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new MyDbContext()));
 
-        #region My Fields
+        #region Мои поля
         MyDbContext _context;
         InvitationWorker _invitater;
         AccountWorker _accountWorker;
         KnowPriceWorker _knowPriceWorker;
         AccountViewModelBuilder _viewModelBuilder;
+        private AccountNotificationMethods _notificater;
 
         #endregion
 
         #endregion
 
-        #region My Properties
+        #region Свойства
+
+        #region Стандартные свойства
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+        
+
+        public AccountNotificationMethods Notificater
+        {
+            get
+            {
+                if (_notificater == null)
+                {
+                    _notificater = new AccountNotificationMethods(Context);
+                }
+                return _notificater;
+            }
+
+        }
+
+        #endregion
+
+        #region Мои свойства
         MyDbContext Context
         {
             get
             {
-                if(_context == null)
+                if (_context == null)
                 {
                     _context = new MyDbContext();
                 }
                 return _context;
             }
         }
-        
+
         string FilesDir
         {
             get { return System.Web.Hosting.HostingEnvironment.MapPath("~/Files"); }
@@ -65,7 +111,7 @@ namespace Runtasker.Controllers
         {
             get
             {
-                if(_invitater == null)
+                if (_invitater == null)
                 {
                     _invitater = new InvitationWorker(UserGuid, Context);
                 }
@@ -77,7 +123,7 @@ namespace Runtasker.Controllers
         {
             get
             {
-                if(_accountWorker == null)
+                if (_accountWorker == null)
                 {
                     _accountWorker = new AccountWorker(UserManager, Context, UserGuid);
                 }
@@ -107,7 +153,7 @@ namespace Runtasker.Controllers
         {
             get
             {
-                if(_viewModelBuilder == null)
+                if (_viewModelBuilder == null)
                 {
                     _viewModelBuilder = new AccountViewModelBuilder();
                 }
@@ -129,6 +175,10 @@ namespace Runtasker.Controllers
 
         #endregion
 
+        #endregion
+
+
+
         #region Constructors
         public AccountController()
         {
@@ -148,48 +198,7 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region Standard Properties
-
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set 
-            { 
-                _signInManager = value; 
-            }
-        }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
-
-        private AccountNotificationMethods _notificater;
-
-        public AccountNotificationMethods Notificater
-        {
-            get
-            {   
-                if(_notificater == null)
-                {
-                    _notificater = new AccountNotificationMethods(Context);
-                }
-                return _notificater;
-            }
-            
-        }
-
-        #endregion
+        
 
         #region HttpController methods
 

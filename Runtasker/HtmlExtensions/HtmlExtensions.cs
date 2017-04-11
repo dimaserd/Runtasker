@@ -17,9 +17,9 @@ using System.Web.Optimization;
 
 namespace Runtasker.HtmlExtensions
 {
-    public static class HtmlExtensions
+    public static partial class HtmlExtensions
     {
-        #region Styles and Scripts
+        #region Стили и скрипты
         
         #region DateTime styles scripts
         public static MvcHtmlString GetDateTimeScriptsAndStyles(this HtmlHelper html)
@@ -63,6 +63,8 @@ namespace Runtasker.HtmlExtensions
 
         }
         #endregion
+
+
         #endregion
 
         #region UI Elements
@@ -323,6 +325,24 @@ namespace Runtasker.HtmlExtensions
 
         #endregion
 
+        public static MvcHtmlString ErrorFor<TModel, TValue>(this HtmlHelper<TModel> html,
+            Expression<Func<TModel, TValue>> expression, string errorText = null)
+        {
+            
+
+            var member = expression.Body as MemberExpression;
+            var prop = member.Member as PropertyInfo;
+
+            if(errorText == null)
+            {
+                errorText = GetErrorTextFromProperty(prop);
+            }
+            
+
+            return MvcHtmlString.Create($"<p id=\"{prop.Name}Error\" class=\"text-danger\">{errorText}</p>");
+
+        }
+
         #region Specify Dropdowns methods
         public static MvcHtmlString SpecifyDropdownLabelAndPopoverForSubject(this HtmlHelper html, Subject subjectEnum)
         {
@@ -398,7 +418,7 @@ namespace Runtasker.HtmlExtensions
 
         #endregion
 
-        #region AttributeInfo Getters from Property
+        #region Получение значений из атрибута для свойства объекта
         public static string GetPopoverInfoFromProperty(PropertyInfo prop)
         {
             
@@ -420,6 +440,26 @@ namespace Runtasker.HtmlExtensions
             return null;
         }
 
+        public static string GetErrorTextFromProperty(PropertyInfo prop)
+        {
+
+            object[] attrs = prop.GetCustomAttributes(true);
+
+            foreach (object attr in attrs)
+            {
+                ErrorTextAttribute authAttr = attr as ErrorTextAttribute;
+                if (authAttr != null)
+                {
+                    string propName = prop.Name;
+                    string info = authAttr.Text;
+
+                    return info;
+                }
+            }
+
+
+            return null;
+        }
         #endregion
     }
 }

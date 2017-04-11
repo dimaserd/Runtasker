@@ -1,13 +1,17 @@
 ﻿@using Runtasker.Logic.Models.Orders
 @using Runtasker.HtmlExtensions;
 @using Runtasker.LocaleBuilders.Models
+@using Runtasker.Logic
 @model OnlineOrderRequest
 @{
 
     List<SelectListItem> subjects = StaticHtmlClassesHelper.GetSortedSubjectEnumList().ToList();
 
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
+
     ViewBag.Title = localeModel["Title"];
+
+    string phoneNumber = User.Identity.GetPhoneNumber();
 }
 
 @AlertHelper.GetAlert(localeModel["HelpAlertTitle"], localeModel["HelpAlertText"])
@@ -65,6 +69,21 @@
         </div>
         <!--/UserSubjectForm-->
 
+        <!--PhoneNumberForm-->
+        <div class="form-group" id="PhoneNumberForm">
+            @Html.LabelFor(m => m.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.PhoneNumber, htmlAttributes: new { id = "PhoneNumber", @class = "form-control" })
+                    <div class="input-group-btn">
+                        @Html.PopoverInfoFor(m => m.PhoneNumber)
+                    </div>
+                </div>
+                @Html.ErrorFor(m => m.PhoneNumber)
+            </div>
+        </div>
+        <!--/PhoneNumberForm-->
+
         <!--DateTime Picker-->
         <div class="form-group" id="DateForm">
             @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -118,9 +137,7 @@
                         placeholder = localeModel["DescriptionPlaceholder"]
                     })
                 @Html.ValidationMessageFor(model => model.Description, "", new { id = "descriptionError", @class = "text-danger" })
-                <p id="DescriptionError" class="text-danger">
-
-                </p>
+                @Html.ErrorFor(m => m.Description)
             </div>
         </div>
         <!--/Description-->
@@ -138,11 +155,52 @@
 
 @section scripts{
     
+    
+
+
+
     <!--Validation Coloring And Error Showing-->
     @OrderScripts.GetValidationColoringAndErrorShowing()
     <!--/Validation Coloring And Error Showing-->
 
+    <!--Проверка мобильного телефона-->
+<script>
+    var phoneNumberString = "PhoneNumber";
 
+    var phoneNumberCSS_String = "#" + phoneNumberString;
+
+    var phoneNumber = $(phoneNumberCSS_String);
+
+    //устанавливаю телефон
+    phoneNumber.val("@phoneNumber");
+
+    HideError(phoneNumberCSS_String);
+
+
+
+    phoneNumber.change(function () {
+        if (CheckPhoneNumber()) {
+            AddSuccessToForm(phoneNumberCSS_String);
+            HideError(phoneNumberCSS_String);
+        }
+        else {
+            AddErrorToForm(phoneNumberCSS_String);
+            ShowError(phoneNumberCSS_String);
+        }
+    })
+
+    //булева проверка мобильно телефона 
+    function CheckPhoneNumber() {
+        var value = document.getElementById("PhoneNumber").value;
+
+        var pattern = new RegExp(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im);
+
+        return pattern.test(value);
+    }
+</script>
+<!--/Проверка мобильного телефона-->
+
+    <!--Логика при нажатии клика-->
     <script>
         var fakeCreate = $("#fakeCreate");
 
@@ -156,16 +214,19 @@
 
             count = (CheckOtherSubject()) ? count + 1 : count;
             count = (CheckDescription()) ? count + 1 : count;
+            count = (CheckPhoneNumber()) ? count + 1 : count;
 
-            if (count == 2) {
+            if (count == 3) {
                 realCreate.click();
             }
             
         })
     </script>
-
+    <!--/Логика при нажатии клика-->
 
     @OrderScripts.GetPreparingScripts()
+
+    
 
     @OrderScripts.GetDescriptionHandlers(localeModel)
 

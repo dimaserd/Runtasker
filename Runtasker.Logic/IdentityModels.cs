@@ -13,6 +13,12 @@ namespace Runtasker.Logic
     public static class MyIdentityExtensions
     {
         #region Claims list
+        public static string GetPhoneNumber(this IIdentity identity)
+        {
+            var claim = ((ClaimsIdentity)identity).FindFirst("PhoneNumber");
+            return (claim != null) ? claim.Value : string.Empty;
+        }
+
         public static string GetName(this IIdentity identity)
         {
             var claim = ((ClaimsIdentity)identity).FindFirst("Name");
@@ -94,7 +100,8 @@ namespace Runtasker.Logic
             userIdentity.AddClaim(new Claim("Password", PasswordHash == null ? "" : PasswordHash.ToString()));
             userIdentity.AddClaim(new Claim("EmailConfirmed", EmailConfirmed == true ? "true" : "false"));
             userIdentity.AddClaim(new Claim("Language", Language));
-            
+            userIdentity.AddClaim(new Claim("PhoneNumber", PhoneNumber == null ? string.Empty : PhoneNumber.ToString()));
+
             // Здесь добавьте утверждения пользователя
             return userIdentity;
         }

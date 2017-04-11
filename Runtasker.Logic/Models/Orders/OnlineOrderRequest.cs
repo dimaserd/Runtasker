@@ -29,6 +29,12 @@ namespace Runtasker.Logic.Models.Orders
         [PopoverInfo(typeof(OnlineOrderRes), resourceName: "FilesUploadInfo")]
         public IEnumerable<HttpPostedFileBase> FileUpload { get; set; }
 
+
+        [Display(Name = "PhoneNumber", ResourceType = typeof(OnlineOrderRes))]
+        [ErrorText( typeof(OnlineOrderRes), resourceName: "PhoneNumberErrorText")]
+        [PopoverInfo(typeof(OnlineOrderRes), resourceName: "PhoneNumberInfo")]
+        public string PhoneNumber { get; set; }
+
         /// <summary>
         /// ПОдсказка взята из другого ресурса
         /// </summary>

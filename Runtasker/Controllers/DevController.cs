@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Newtonsoft.Json.Linq;
 using Runtasker.Logic;
+using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers.Developer;
 using Runtasker.Logic.Workers.Files;
 using Runtasker.Settings;

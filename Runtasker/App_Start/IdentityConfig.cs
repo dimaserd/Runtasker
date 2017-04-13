@@ -9,6 +9,7 @@ using Microsoft.Owin.Security;
 using Runtasker.Logic;
 using Runtasker.Logic.Workers.Email;
 using Runtasker.Logic.Contexts;
+using Runtasker.Logic.Entities;
 
 namespace Runtasker
 {

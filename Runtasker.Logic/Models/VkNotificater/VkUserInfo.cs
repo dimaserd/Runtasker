@@ -34,8 +34,8 @@ namespace Runtasker.Logic.Models.VkNotificater
                     result.Add(new VkUserInfo
                     {
                         Name = user.Name,
-                        VkDomain = info.VkDomain,
-                        VkId = info.VkId
+                        VkDomain = user.VkDomain,
+                        VkId = user.VkId
                     });
                 }
 

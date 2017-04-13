@@ -1,9 +1,6 @@
-﻿using Logic.Extensions.Models;
-using Runtasker.LocaleBuilders.Models;
+﻿using Runtasker.LocaleBuilders.Models;
 using Runtasker.Logic.Entities;
-using Runtasker.Logic.Models;
 using Runtasker.Logic.Models.VkNotificater;
-using Runtasker.Logic.Workers.BaseWorkers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,8 +39,8 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
             //добавляю сообщение для заказчика
             messages.Add(new VkMessage
             {
-                UserDomain = customerInfo.VkDomain,
-                UserId = customerInfo.VkId,
+                UserDomain = order.Customer.VkDomain,
+                UserId = order.Customer.VkId,
                 Text = notificationModel.ToString()
             });
 
@@ -83,9 +80,9 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
                 //добавляю сообщение для заказчика
                 messages.Add(new VkMessage
                 {
-                    UserDomain = customerInfo.VkDomain,
+                    UserDomain = order.Customer.VkDomain,
                     Text = notificationModel.ToString(),
-                    UserId = customerInfo.VkId
+                    UserId = order.Customer.VkId
                 });
             }
             

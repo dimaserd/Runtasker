@@ -162,18 +162,19 @@
     <Compile Include="Contexts\Interfaces\IMyDbContext.cs" />
     <Compile Include="Contexts\Interfaces\IMyDbContextWithDbSet.cs" />
     <Compile Include="Contexts\MyNewDbContext.cs" />
+    <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Attachment.cs" />
     <Compile Include="Entities\Invitation.cs" />
     <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Notification.cs" />
     <Compile Include="Entities\Order.cs" />
-    <Compile Include="Entities\OtherUserInfo.cs" />
     <Compile Include="Entities\Payment.cs" />
     <Compile Include="Entities\PaymentTransaction.cs" />
     <Compile Include="Enumerations\DisposingInternalObjectsSetting.cs" />
     <Compile Include="Enumerations\OrderWorker\OrderCreationType.cs" />
     <Compile Include="Enumerations\SaveChangesType.cs" />
     <Compile Include="Handlers\DbEntityValidationExceptionHandler.cs" />
+    <Compile Include="Interfaces\Identity\IVkUser.cs" />
     <Compile Include="Migrations\201702202121227_init.cs" />
     <Compile Include="Migrations\201702202121227_init.Designer.cs">
       <DependentUpon>201702202121227_init.cs</DependentUpon>
@@ -184,6 +185,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
+    <Compile Include="Models\ManageModels\AddVkInfoModel.cs" />
+    <Compile Include="Models\ManageModels\OtherUserInfo.cs" />
     <Compile Include="Models\Orders\AnonymousModels.cs" />
     <Compile Include="Models\Orders\ApiModels.cs" />
     <Compile Include="Models\Orders\OnlineOrderRequest.cs" />
@@ -204,7 +207,6 @@
     <Compile Include="HtmlConstantEmails\Models\EmailModel.cs" />
     <Compile Include="HtmlConstantEmails\PerformerEmailConstants.cs" />
     <Compile Include="IdentityClasses.cs" />
-    <Compile Include="IdentityModels.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AdminModels.cs" />
     <Compile Include="Models\HomeViewModels.cs" />

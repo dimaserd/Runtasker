@@ -3544,6 +3544,7 @@
     <Content Include="Views\Payment\YandexKassa.cshtml" />
     <Content Include="Views\Payment\Succeeded.cshtml" />
     <Content Include="Views\Payment\Failed.cshtml" />
+    <Content Include="Views\Manage\AddVkInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

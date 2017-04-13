@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Runtasker.Logic.Entities;
 using Runtasker.Settings.Statics;
 
 namespace Runtasker.Logic.Contexts

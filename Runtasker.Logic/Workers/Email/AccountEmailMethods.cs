@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Runtasker.Logic.Entities;
 using Runtasker.Logic.HtmlConstantEmails;
 using Runtasker.Logic.HtmlConstantEmails.Models;
 

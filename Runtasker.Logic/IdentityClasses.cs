@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Runtasker.Logic.Entities;
 
 namespace Runtasker.Logic
 {

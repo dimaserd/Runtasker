@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Runtasker.Logic.Entities;
 
 namespace Runtasker.Logic.Workers.Developer
 {
@@ -11,7 +12,7 @@ namespace Runtasker.Logic.Workers.Developer
         public DeveloperMoqMethods(MyDbContext context)
         {
             Context = context;
-            userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(Context));
+            UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(Context));
         }
         #endregion
 
@@ -19,7 +20,7 @@ namespace Runtasker.Logic.Workers.Developer
 
         static MyDbContext Context { get; set; }
 
-        UserManager<ApplicationUser> userManager { get; set; }
+        UserManager<ApplicationUser> UserManager { get; set; }
 
         RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
 
@@ -33,7 +34,7 @@ namespace Runtasker.Logic.Workers.Developer
             string password = "testpassword";
 
 
-            ApplicationUser createdUser = userManager.FindByEmail(email);
+            ApplicationUser createdUser = UserManager.FindByEmail(email);
 
             if(createdUser != null)
             {
@@ -50,7 +51,7 @@ namespace Runtasker.Logic.Workers.Developer
             };
 
 
-            IdentityResult result = userManager.Create(user, password);
+            IdentityResult result = UserManager.Create(user, password);
             if(result.Succeeded)
             {
                 return $"Создан пользователь, email: {user.Email} pass: {password}";
@@ -70,7 +71,7 @@ namespace Runtasker.Logic.Workers.Developer
 
         public string AddUserToRole(string email, string role)
         {
-            ApplicationUser user = userManager.FindByEmail(email);
+            ApplicationUser user = UserManager.FindByEmail(email);
             if(user == null)
             {
                 return $"пользователя с email: {email} не существует";
@@ -87,7 +88,7 @@ namespace Runtasker.Logic.Workers.Developer
             }
             else
             {
-                userManager.AddToRole(user.Id, role);
+                UserManager.AddToRole(user.Id, role);
                 return $"пользователю email:{user.Email} присвоена роль {role}";
             }
             

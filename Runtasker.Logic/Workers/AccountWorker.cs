@@ -1,4 +1,5 @@
 ﻿using Extensions.String;
+using Logic.Extensions.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Runtasker.Logic.Entities;
@@ -40,11 +41,11 @@ namespace Runtasker.Logic.Workers
         }
         #endregion
 
-        #region Fields
+        #region Поля
         public DisposingInternalObjectsSetting DisposeInternalObjects = DisposingInternalObjectsSetting.Yes;
         #endregion
 
-        #region Properties
+        #region Свойства
 
         #region Intenal Properties
         UserManager<ApplicationUser> UserManager { get; set; }
@@ -70,6 +71,8 @@ namespace Runtasker.Logic.Workers
             {
                 //добавляем к роли
                 UserManager.AddToRole(user.Id, "Customer");
+
+                
                 //делаем лог в таблицу Payments
                 Paymenter.OnUserRegistered(user);
             }
@@ -254,6 +257,10 @@ namespace Runtasker.Logic.Workers
                 {
                     //добавляем к роли
                     UserManager.AddToRole(user.Id, "Customer");
+
+                    //создаем другое инфо по ползователю
+                    //await CreateOtherUserInfo(user);
+
                     //делаем лог в таблицу Payments
                     Paymenter.OnUserRegistered(user);
                 }
@@ -266,6 +273,74 @@ namespace Runtasker.Logic.Workers
             
         }
 
+        public async Task<ApplicationUser> RegisterCustomerAsync(RegistrationType regType, RegisterModel model)
+        {
+            //создание объекта пользователя
+            ApplicationUser user = new ApplicationUser
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                Name = model.Name,
+                EmailConfirmed = false,
+                Balance = UISettings.RegistrationBonus,
+                RegistrationDate = DateTime.Now,
+                Language = GetLanguage()
+            };
+
+            if (regType == RegistrationType.WithPassword)
+            {
+                //создание пользователя с введенным паролем из модели
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    //добавляем к роли
+                    await UserManager.AddToRoleAsync(user.Id, "Customer");
+                    //делаем лог в таблицу Payments
+                    Paymenter.OnUserRegistered(user);
+                }
+
+                return user;
+            }
+            else if (regType == RegistrationType.WithoutPassword)
+            {
+                //создание пользователя с введенным паролем из модели
+                IdentityResult result = await UserManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    //добавляем к роли
+                    UserManager.AddToRole(user.Id, "Customer");
+
+                    //создаем другое инфо по ползователю
+                    await CreateOtherUserInfo(user);
+
+                    //делаем лог в таблицу Payments
+                    Paymenter.OnUserRegistered(user);
+                }
+
+                return user;
+            }
+
+            //невозможный исход
+            return null;
+
+        }
+
+        async Task<WorkerResult> CreateOtherUserInfo(ApplicationUser user)
+        {
+            OtherUserInfo otherInfo = new OtherUserInfo
+            {
+                Id = user.Id
+            };
+
+            Context.OtherUserInfos.Add(otherInfo);
+            await Context.SaveChangesAsync();
+
+            return new WorkerResult
+            {
+                Succeeded = true
+            };
+        }
+        
         #endregion
 
         #region IDisposable Support

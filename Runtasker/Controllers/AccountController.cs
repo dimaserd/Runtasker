@@ -260,20 +260,17 @@ namespace Runtasker.Controllers
                     Balance = UISettings.RegistrationBonus,
                     Language = "ru-RU",
                     Name = "Dmitry",
-                    UserName = performerEmail
+                    UserName = performerEmail,
+                    VkDomain = DevSettings.AdminVkDomain,
+                    Specialization = "0,1,2,3,4,5,6,7,8,9"
                 };
 
                 UserManager.Create(performer, DevSettings.TestPassword);
                 UserManager.AddToRole(performer.Id, "Admin");
                 UserManager.AddToRole(performer.Id, "Performer");
 
-                OtherUserInfo info = new OtherUserInfo
-                {
-                    Id = performer.Id,
-                    VkDomain = DevSettings.AdminVkDomain,
-                    Specialization = "0,1,2,3,4,5,6,7,8,9"
-                };
-                Context.OtherUserInfos.Add(info);
+                
+                
                 Context.SaveChanges();
             }
             else
@@ -283,12 +280,7 @@ namespace Runtasker.Controllers
 
                 if(!Context.OtherUserInfos.Any(x => x.Id == maybePerformer.Id))
                 {
-                    OtherUserInfo info = new OtherUserInfo
-                    {
-                        Id = maybePerformer.Id,
-                        VkDomain = DevSettings.AdminVkDomain,
-                        Specialization = "0,1,2,3,4,5,6,7,8,9"
-                    };
+                    
                     Context.OtherUserInfos.Add(info);
                     Context.SaveChanges();
                 }

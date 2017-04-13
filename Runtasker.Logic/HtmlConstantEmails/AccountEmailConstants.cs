@@ -3,6 +3,7 @@ using HtmlExtensions.Renderers;
 using Logic.Extensions.HtmlEmail;
 using Runtasker.LocaleBuilders.Email.CallToAction;
 using Runtasker.LocaleBuilders.Models;
+using Runtasker.Logic.Entities;
 using Runtasker.Logic.HtmlConstantEmails.Models;
 using Runtasker.Resources.Email.Account;
 using Runtasker.Settings;

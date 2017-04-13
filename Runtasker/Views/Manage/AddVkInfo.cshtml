@@ -1,0 +1,22 @@
+﻿@using Runtasker.Logic.Models.ManageModels
+@using Runtasker.HtmlExtensions
+@model AddVkInfoModel
+@{
+    ViewBag.Title = "Добавление вк-инфо";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelAndEditorFor(x => x.VkId)
+
+    @Html.LabelAndEditorFor(x => x.VkDomain)
+
+    <input type="submit" class="btn btn-success" value="Сохранить изменения"/>
+}
+
+
+
+
+

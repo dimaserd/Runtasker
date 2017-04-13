@@ -4,6 +4,7 @@ using Runtasker.Resources.Models.Account.LoginModel;
 using Runtasker.Settings;
 using System;
 using System.Threading;
+using Runtasker.Logic.Entities;
 
 namespace Runtasker.Logic.Models
 {

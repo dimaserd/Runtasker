@@ -1,4 +1,5 @@
-﻿using Runtasker.Logic.Workers.Files;
+﻿using Runtasker.Logic.Entities;
+using Runtasker.Logic.Workers.Files;
 using System.IO;
 
 namespace Runtasker.Logic.Workers.Developer

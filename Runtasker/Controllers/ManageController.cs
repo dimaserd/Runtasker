@@ -11,27 +11,38 @@ using Runtasker.Logic.Workers.Invitations;
 using Runtasker.Logic.Models;
 using Logic.Extensions.Models;
 using Runtasker.LocaleBuilders.Views.Manage;
+using Runtasker.Settings.Enumerations;
+using Runtasker.Logic.Models.ManageModels;
+using Runtasker.Logic;
+using Runtasker.Logic.Entities;
+using System.Data.Entity;
 
 namespace Runtasker.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
-        #region Private Fields
+        #region Поля
 
-        #region My Fields
+        #region Мной созданные
+        MyDbContext _db;
+
         InvitationWorker _inviter;
         AvatarWorker _avatar;
         ManageLocaleViewModelBuilder _viewModelBuilder;
+
         #endregion
+
+        #region Стандартные
 
         ApplicationSignInManager _signInManager;
         ApplicationUserManager _userManager;
 
-        
         #endregion
 
-        #region Constructors
+        #endregion
+
+        #region Конструкторы
         public ManageController()
         {
         }
@@ -43,10 +54,36 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region Public Properties
+        #region Свойства
 
-        #region My Properties
-        public InvitationWorker Inviter
+        #region Мной созданные
+        string UserGuid { get { return User.Identity.GetUserId(); } }
+
+        MyDbContext Db
+        {
+            get
+            {
+                if(_db == null)
+                {
+                    _db = new MyDbContext();
+                }
+                return _db;
+            }
+        }
+
+        AvatarWorker Avatarer
+        {
+            get
+            {
+                if (_avatar == null)
+                {
+                    _avatar = new AvatarWorker(UserGuid);
+                }
+                return _avatar;
+            }
+        }
+
+        InvitationWorker Inviter
         {
             get
             {
@@ -58,7 +95,7 @@ namespace Runtasker.Controllers
             } 
         }
 
-        public ManageLocaleViewModelBuilder ViewModelBuilder
+        ManageLocaleViewModelBuilder ViewModelBuilder
         {
             get
             {
@@ -71,19 +108,7 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        public string UserGuid { get { return User.Identity.GetUserId(); } }
-
-        public AvatarWorker Avatarer
-        {
-            get
-            {
-                if(_avatar == null)
-                {
-                    _avatar = new AvatarWorker(UserGuid);
-                }
-                return _avatar;
-            }
-        }
+        #region Стандартные
 
         public ApplicationSignInManager SignInManager
         {
@@ -111,10 +136,52 @@ namespace Runtasker.Controllers
 
         #endregion
 
-        #region My Action Methods
+        #endregion
 
+        #region Http обработчики
 
-        #region InviteUser methods
+        #region Созданные мной методы
+
+        #region Добавление ВкИнфо
+
+        [HttpGet]
+        public async Task<ActionResult> AddVkInfo()
+        {
+            if(Settings.Settings.AppSetting == ApplicationSettingType.Production)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            ApplicationUser customer = await Db.Users.FirstOrDefaultAsync(x => x.Id == UserGuid);
+
+            return View(new AddVkInfoModel
+            {
+                VkDomain = customer.VkDomain,
+                VkId = customer.VkId
+            });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddVkInfo(AddVkInfoModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                ApplicationUser customer = await Db.Users.FirstOrDefaultAsync(x => x.Id == UserGuid);
+
+                customer.VkDomain = model.VkDomain;
+                customer.VkId = model.VkId;
+
+                Db.Entry(customer).State = EntityState.Modified;
+                await Db.SaveChangesAsync();
+
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+        #endregion
+
+        #region Приглашение пользователя
 
         [HttpGet]
         public ActionResult InviteUser()
@@ -439,6 +506,9 @@ namespace Runtasker.Controllers
 
         #endregion
 
+        #endregion
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
@@ -450,7 +520,7 @@ namespace Runtasker.Controllers
             base.Dispose(disposing);
         }
 
-#region Вспомогательные приложения
+        #region Вспомогательные приложения
         // Используется для защиты от XSRF-атак при добавлении внешних имен входа
         private const string XsrfKey = "XsrfId";
 

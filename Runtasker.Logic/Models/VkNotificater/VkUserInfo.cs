@@ -1,4 +1,5 @@
 ﻿using Runtasker.Logic.Entities;
+using Runtasker.Logic.Models.ManageModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace Runtasker.Logic.Models.VkNotificater
 
             foreach(ApplicationUser user in users)
             {
-                OtherUserInfo info = infos.FirstOrDefault(x => x.Id == user.Id);
+                OtherUserInfo info = user.GetOtherInfo();
                 if (info != null)
                 {
                     result.Add(new VkUserInfo

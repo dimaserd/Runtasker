@@ -277,14 +277,6 @@ namespace Runtasker.Controllers
             {
                 UserManager.AddToRole(maybePerformer.Id, "Admin");
                 UserManager.AddToRole(maybePerformer.Id, "Performer");
-
-                if(!Context.OtherUserInfos.Any(x => x.Id == maybePerformer.Id))
-                {
-                    
-                    Context.OtherUserInfos.Add(info);
-                    Context.SaveChanges();
-                }
-                
             }    
 
             return "готово";

@@ -12,6 +12,7 @@ using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers.Admin;
 using Logic.Extensions.Models;
 using Runtasker.Logic.Workers.Admin.Users;
+using Runtasker.Logic.Models.ManageModels;
 
 namespace Runtasker.Controllers
 {
@@ -97,13 +98,9 @@ namespace Runtasker.Controllers
         public async Task<ActionResult> UpdatePerformerInfo(string id)
         {
             
-            OtherUserInfo model = await Db.OtherUserInfos
-                   .Where(x => x.Id == id).FirstOrDefaultAsync();
+            OtherUserInfo model = (await Db.Users.FirstOrDefaultAsync(x => x.Id == id)).GetOtherInfo();
 
-            if(model == null)
-            {
-                throw new Exception("Не существует информации об исполнителе!");
-            }
+            
             return View(model);
         }
 
@@ -111,16 +108,13 @@ namespace Runtasker.Controllers
         [HttpPost]
         public async Task<ActionResult> UpdatePerformerInfo(OtherUserInfo model)
         {
-            OtherUserInfo infoToUpdate = await Db.OtherUserInfos.FirstOrDefaultAsync(x => x.Id == model.Id);
+            ApplicationUser userToUpdate = await Db.Users.FirstOrDefaultAsync(x => x.Id == model.UserId);
 
-            infoToUpdate.Specialization = model.Specialization;
-            infoToUpdate.VkDomain = model.VkDomain;
-            infoToUpdate.VkId = model.VkId;
+            userToUpdate.UpdateUserInfo(model);
 
-            
+            Db.Entry(userToUpdate).State = EntityState.Modified;
+
             await Db.SaveChangesAsync();
-            
-            
 
             return RedirectToAction("Performers");
         }

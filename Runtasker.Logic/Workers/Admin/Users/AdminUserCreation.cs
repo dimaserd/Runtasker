@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
+using Runtasker.Logic.Models.ManageModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -74,7 +75,8 @@ namespace Runtasker.Logic.Workers.Admin.Users
                 Email = model.Email,
                 EmailConfirmed = true,
                 RegistrationDate = DateTime.Now,
-                Language = "ru-RU"
+                Language = "ru-RU",
+                Specialization = GetSpecializationString(model.Subjects),
             };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
@@ -87,16 +89,7 @@ namespace Runtasker.Logic.Workers.Admin.Users
                     IdentityResult roleRes = await UserManager.AddToRoleAsync(user.Id, role);
                 }
 
-                OtherUserInfo userInfo = new OtherUserInfo
-                {
-                    Id = user.Id,
-                    Specialization = GetSpecializationString(model.Subjects),
-                    
-                };
-
-                //добавляем дополнительную информацию о пользователе
-                //и сохрнаняем в бд
-                Db.OtherUserInfos.Add(userInfo);
+                
                 await Db.SaveChangesAsync();
 
                 return new WorkerResult

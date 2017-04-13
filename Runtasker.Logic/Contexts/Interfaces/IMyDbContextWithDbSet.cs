@@ -11,9 +11,7 @@ namespace Runtasker.Logic.Contexts.Interfaces
         /// </summary>
         IDbSet<ApplicationUser> Users { get; set; }
 
-        DbSet<OtherUserInfo> OtherUserInfos { get; set; }
-
-
+        
 
         DbSet<Order> Orders { get; set; }
 

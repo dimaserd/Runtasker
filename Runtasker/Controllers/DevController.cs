@@ -143,64 +143,7 @@ namespace Runtasker.Controllers
         #endregion
 
         #region Build Methods
-        /// <summary>
-        /// Метод создает дополнительные информации по каждому
-        /// из пользователей
-        /// </summary>
-        public async Task<string> CheckOtherInfos()
-        {
-            using (MyDbContext db = new MyDbContext())
-            {
-                //List<IdentityRole> roles = await db.Roles.ToListAsync();
-
-                List<ApplicationUser> users = await db.Users.ToListAsync();
-
-                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
-
-                var roles = await roleManager.Roles.ToListAsync();
-
-                foreach(var role in roles)
-                {
-                    var usersInRole = users
-                        .Where(u => u.Roles.Select(r => r.RoleId)
-                        .Contains(role.Id)).ToList();
-
-                    foreach(ApplicationUser user in usersInRole)
-                    {
-                        if(role.Name == "Admin")
-                        {
-                            //если не существует инфы то создаем ее
-                            if(!db.OtherUserInfos.Any(info => info.Id == user.Id))
-                            {
-                                db.OtherUserInfos.Add(new Logic.Entities.OtherUserInfo
-                                {
-                                    Id = user.Id,
-                                    Specialization = "0,1,2,3,4,5,6,7,8,9",
-
-                                });
-                            }
-                        }
-                        else if(role.Name == "Performer")
-                        {
-                            if (!db.OtherUserInfos.Any(info => info.Id == user.Id))
-                            {
-                                db.OtherUserInfos.Add(new Logic.Entities.OtherUserInfo
-                                {
-                                    Id = user.Id,
-                                    Specialization = "0",
-                                });
-                            }
-                        }
-                    }
-
-                }
-
-                await db.SaveChangesAsync();
-                
-
-                return "готово";
-            }
-        }
+        
 
         public string DeleteAllFiles(string pass = null)
         {

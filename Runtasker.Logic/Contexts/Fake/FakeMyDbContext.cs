@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Entities;
+using Runtasker.Logic.Models.ManageModels;
 using Runtasker.Settings;
 using System;
 using System.Collections.Generic;

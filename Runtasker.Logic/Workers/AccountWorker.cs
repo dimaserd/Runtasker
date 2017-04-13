@@ -310,9 +310,6 @@ namespace Runtasker.Logic.Workers
                     //добавляем к роли
                     UserManager.AddToRole(user.Id, "Customer");
 
-                    //создаем другое инфо по ползователю
-                    await CreateOtherUserInfo(user);
-
                     //делаем лог в таблицу Payments
                     Paymenter.OnUserRegistered(user);
                 }
@@ -325,21 +322,6 @@ namespace Runtasker.Logic.Workers
 
         }
 
-        async Task<WorkerResult> CreateOtherUserInfo(ApplicationUser user)
-        {
-            OtherUserInfo otherInfo = new OtherUserInfo
-            {
-                Id = user.Id
-            };
-
-            Context.OtherUserInfos.Add(otherInfo);
-            await Context.SaveChangesAsync();
-
-            return new WorkerResult
-            {
-                Succeeded = true
-            };
-        }
         
         #endregion
 

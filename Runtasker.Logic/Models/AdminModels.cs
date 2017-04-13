@@ -1,4 +1,5 @@
 ﻿using Runtasker.Logic.Entities;
+using Runtasker.Logic.Models.ManageModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -71,7 +72,7 @@ namespace Runtasker.Logic.Models
 
         void Construct(OtherUserInfo info)
         {
-            Subjects = info.GetPerformerSubjects();
+            Subjects = info.GetSubjects();
         }
         #endregion
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Data.Entity;
 using Logic.Extensions.Models;
 using System.Threading.Tasks;
+using Runtasker.Logic.Models.ManageModels;
 
 namespace Runtasker.Logic.Workers.Orders
 {
@@ -250,11 +251,11 @@ namespace Runtasker.Logic.Workers.Orders
 
         public async Task<List<Order>> GetOrdersAsync()
         {
-            OtherUserInfo performerInfo = await Context.OtherUserInfos.FirstOrDefaultAsync(i => i.Id == UserGuid);
+            OtherUserInfo performerInfo = (await Context.Users.FirstOrDefaultAsync(x => x.Id == UserGuid)).GetOtherInfo();
             List<Order> allOrders =  Context.Orders.Include(x => x.Messages).ToList();
 
             return performerInfo
-                .GetOrdersForPerformerByInfo(allOrders).ToList();
+                .GetOrdersBySpecialization(allOrders).ToList();
         }
 
         public Order ChooseOrder(int id)

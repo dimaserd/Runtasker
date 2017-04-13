@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.Twitter;
 using KatanaContrib.Security.VK;
 using KatanaContrib.Security.Instagram;
 using Runtasker.Logic.Contexts;
+using Runtasker.Logic.Entities;
 
 namespace Runtasker
 {

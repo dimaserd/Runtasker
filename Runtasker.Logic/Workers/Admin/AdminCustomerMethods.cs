@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Threading.Tasks;
 using System;
 using Runtasker.Settings;
+using Runtasker.Logic.Models.ManageModels;
 
 namespace Runtasker.Logic.Workers.Admin
 {
@@ -122,8 +123,7 @@ namespace Runtasker.Logic.Workers.Admin
                                                 where pt.UserGuid == id
                                                 select pt).ToListAsync();
 
-                OtherUserInfo info = await Db.OtherUserInfos
-                    .FirstOrDefaultAsync(x => x.Id == id);
+                OtherUserInfo info = user.GetOtherInfo();
 
                 return new PerformerInfo(user, messages, orders, pts, info);
                 

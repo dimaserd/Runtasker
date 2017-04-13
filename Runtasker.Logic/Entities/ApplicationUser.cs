@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Interfaces.Identity;
+using Runtasker.Logic.Models.ManageModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,161 +13,17 @@ using System.Threading.Tasks;
 namespace Runtasker.Logic.Entities
 {
 
-    public static class OtherUserInfoExtensionMethods
-    {
-        public static IEnumerable<Subject> GetPerformerSubjects(this  info)
-        {
-            List<Subject> allSubjects = Enum.GetValues(typeof(Subject)).Cast<Subject>().ToList();
-
-            List<int> subjectInts = GetSubjectIntsFromSpecializationString(info.Specialization);
-
-            List<Subject> result = new List<Subject>();
-
-            foreach (Subject subject in allSubjects)
-            {
-                if (subjectInts.Contains((int)subject))
-                {
-                    result.Add(subject);
-                }
-            }
-
-            return result;
-        }
-
-
-        public static IEnumerable<Order> GetOrdersForPerformerByInfo(this OtherUserInfo info, IEnumerable<Order> orders)
-        {
-            List<Subject> performerSubjects = GetPerformerSubjects(info).ToList();
-
-            List<Order> result = new List<Order>();
-            foreach (Order order in orders)
-            {
-                //если в списке предметов исполнителя содержиться
-                //предмет заказа или предмет точно не указан
-                //то добавляем предмет в результат
-                if (performerSubjects.Any(x => x == order.Subject) || (order.Subject == Subject.Other))
-                {
-                    result.Add(order);
-                }
-            }
-
-            return result;
-        }
-
-        
-    }
-    public static class MyIdentityExtensions
-    {
-        #region Claims list
-        public static IEnumerable<Subject> GetPerformerSubjects(this IIdentity identity)
-        {
-            var claim = ((ClaimsIdentity)identity).FindFirst("Specialization");
-
-            string specString = (claim != null) ? claim.Value : string.Empty;
-
-            List<Subject> allSubjects = Enum.GetValues(typeof(Subject)).Cast<Subject>().ToList();
-
-            List<int> subjectInts = GetSubjectIntsFromSpecializationString(specString);
-
-            List<Subject> result = new List<Subject>();
-
-            foreach (Subject subject in allSubjects)
-            {
-                if (subjectInts.Contains((int)subject))
-                {
-                    result.Add(subject);
-                }
-            }
-
-            return result;
-        }
-
-
-
-        public static string GetPhoneNumber(this IIdentity identity)
-        {
-            var claim = ((ClaimsIdentity)identity).FindFirst("PhoneNumber");
-            return (claim != null) ? claim.Value : string.Empty;
-        }
-
-        public static string GetName(this IIdentity identity)
-        {
-            var claim = ((ClaimsIdentity)identity).FindFirst("Name");
-            // Test for null to avoid issues during local testing
-            return (claim != null) ? claim.Value : string.Empty;
-        }
-
-        public static string GetLanguage(this IIdentity identity)
-        {
-            var claim = ((ClaimsIdentity)identity).FindFirst("Language");
-            // Test for null to avoid issues during local testing
-            return (claim != null) ? claim.Value : string.Empty;
-        }
-
-        public static bool IsEmailConfirmed(this IIdentity identity)
-        {
-            var claim = ((ClaimsIdentity)identity).FindFirst("EmailConfirmed");
-            if (claim != null && claim.Value == "true")
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        public static bool HasPassword(this IIdentity identity)
-        {
-            var claim = ((ClaimsIdentity)identity).FindFirst("Password");
-            return (claim != null) ? (!string.IsNullOrEmpty(claim.Value)) : false;
-        }
-
-        public static string GetBalance(this IIdentity identity)
-        {
-            var claim = ((ClaimsIdentity)identity).FindFirst("Balance");
-            // Test for null to avoid issues during local testing
-            return (claim != null) ? claim.Value : string.Empty;
-        }
-
-        public static string GetEmail(this IIdentity identity)
-        {
-            var claim = ((ClaimsIdentity)identity).FindFirst("Email");
-            // Test for null to avoid issues during local testing
-            return (claim != null) ? claim.Value : string.Empty;
-        }
-        #endregion
-
-        #region Help Methods
-        static List<int> GetSubjectIntsFromSpecializationString(string specString)
-        {
-            return specString
-                .Split(separator: new string[] { "," }, options: StringSplitOptions.RemoveEmptyEntries)
-                .Select(x =>
-                {
-                    int parseResult;
-                    if (int.TryParse(x, out parseResult))
-                    {
-                        return parseResult;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }).Where(x => x > 0).ToList();
-        }
-        #endregion
-    }
-
-    // Чтобы добавить данные профиля для пользователя, можно добавить дополнительные свойства в класс ApplicationUser. Дополнительные сведения см. по адресу: http://go.microsoft.com/fwlink/?LinkID=317594.
     public class ApplicationUser : IdentityUser, IVkUser
     {
-        #region Constructors
+        #region Конструкторы
         public ApplicationUser()
         {
             Payments = new List<Payment>();
             PaymentTransactions = new List<PaymentTransaction>();
-            //VkPostLookUps = new List<VkPostLookUp>();
         }
         #endregion
+
+        #region Свойства
 
         #region IVkUser свойства
         public string VkDomain { get; set; }
@@ -184,9 +41,14 @@ namespace Runtasker.Logic.Entities
 
         public DateTime? RegistrationDate { get; set; }
 
-        public OtherUserInfo OtherInfo { get; set; }
+        #endregion
 
 
+        /// <summary>
+        /// Добавление клеймов по свойствам
+        /// </summary>
+        /// <param name="manager"></param>
+        /// <returns></returns>
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Обратите внимание, что authenticationType должен совпадать с типом, определенным в CookieAuthenticationOptions.AuthenticationType
@@ -200,20 +62,111 @@ namespace Runtasker.Logic.Entities
             userIdentity.AddClaim(new Claim("Language", Language));
             userIdentity.AddClaim(new Claim("PhoneNumber", PhoneNumber == null ? string.Empty : PhoneNumber.ToString()));
 
+            userIdentity.AddClaim(new Claim("Specialization", Specialization));
+            userIdentity.AddClaim(new Claim("VkDomain", VkDomain));
+            userIdentity.AddClaim(new Claim("VkId", VkId));
+
             // Здесь добавьте утверждения пользователя
             return userIdentity;
         }
 
-        #region Virtual collections
+        #region Отношения к коллекциям
 
         public virtual ICollection<Payment> Payments { get; set; }
         public virtual ICollection<PaymentTransaction> PaymentTransactions { get; set; }
-        //public virtual ICollection<VkPostLookUp> VkPostLookUps { get; set; }
-
-        //сообщения и заказы должны отсутствовать так как
-        //это приведет к неведомой хуйне, а именно к созданию
-        //колонки ApplicationUser_Id в подключенной через коллекцию
-        //таблицу
+        
         #endregion
     }
+
+    #region Расширения
+
+    public static class ApplicationUserExtensions
+    {
+        
+    }
+
+    /// <summary>
+    /// Идентфикационные расширения
+    /// </summary>
+    public static class MyIdentityExtensions
+    {
+        #region Список клеймов
+
+        /// <summary>
+        /// Получает предметы, которые может выполнять исполнитель из свойства Specialization
+        /// </summary>
+        /// <param name="identity"></param>
+        /// <returns></returns>
+        public static IEnumerable<Subject> GetPerformerSubjects(this IIdentity identity)
+        {
+            OtherUserInfo info = GetOtherInfo(identity);
+
+            return info.GetSubjects();
+        }
+
+        public static OtherUserInfo GetOtherInfo(this IIdentity identity)
+        {
+            return new OtherUserInfo
+            {
+                UserId = identity.GetUserId(),
+                Specialization = GetClaimValueByName(identity, "Specialization"),
+                VkId = GetClaimValueByName(identity, "VkId"),
+                VkDomain = GetClaimValueByName(identity, "VkDomain")
+            };
+        }
+
+        public static string GetPhoneNumber(this IIdentity identity)
+        {
+            return GetClaimValueByName(identity, "PhoneNumber");
+        }
+
+        public static string GetName(this IIdentity identity)
+        {
+            return GetClaimValueByName(identity, "Name");
+
+        }
+
+        public static string GetLanguage(this IIdentity identity)
+        {
+            return GetClaimValueByName(identity, "Language");
+        }
+
+        public static bool IsEmailConfirmed(this IIdentity identity)
+        {
+            string claimValue = GetClaimValueByName(identity, "EmailConfirmed");
+            if (claimValue != null && claimValue == "true")
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool HasPassword(this IIdentity identity)
+        {
+            string pass = GetClaimValueByName(identity, "Password");
+            return (pass != null) ? (!string.IsNullOrEmpty(pass)) : false;
+        }
+
+        public static string GetBalance(this IIdentity identity)
+        {
+            return GetClaimValueByName(identity, "Balance");
+        }
+
+        public static string GetEmail(this IIdentity identity)
+        {
+            return GetClaimValueByName(identity, "Email");
+        }
+        #endregion
+
+        #region Вспомогательные методы
+        private static string GetClaimValueByName(this IIdentity identity, string claimName)
+        {
+            var claim = ((ClaimsIdentity)identity).FindFirst(claimName);
+            // Test for null to avoid issues during local testing
+            return (claim != null) ? claim.Value : string.Empty;
+        }
+        #endregion
+    }
+    #endregion
 }

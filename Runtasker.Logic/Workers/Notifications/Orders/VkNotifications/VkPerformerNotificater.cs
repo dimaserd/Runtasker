@@ -1,5 +1,6 @@
 ﻿using Runtasker.LocaleBuilders.Models;
 using Runtasker.Logic.Entities;
+using Runtasker.Logic.Models.ManageModels;
 using Runtasker.Logic.Models.VkNotificater;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
         #region Добавление заказа
         public void OnCustomerAddedOrder(Order order, ForNotification notificationModel)
         {
-            OtherUserInfo customerInfo = order.Customer.OtherInfo;
+            OtherUserInfo customerInfo = order.Customer.GetOtherInfo();
 
             List<VkMessage> messages = new List<VkMessage>();
 
@@ -69,7 +70,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
         /// <param name="order"></param>
         public void OnCustomerAppliedForOnlineHelp(Order order, ForNotification notificationModel)
         {
-            OtherUserInfo customerInfo = order.Customer.OtherInfo;
+            OtherUserInfo customerInfo = order.Customer.GetOtherInfo();
             
 
             //создаю лист из сообщений

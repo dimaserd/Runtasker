@@ -4,6 +4,7 @@ using Runtasker.Logic.Entities;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System;
+using Runtasker.Logic.Models.ManageModels;
 
 namespace Runtasker.Logic.Contexts.Fake
 {
@@ -16,7 +17,7 @@ namespace Runtasker.Logic.Contexts.Fake
 
         TestDbSet<IdentityRole> _roles;
 
-        TestDbSet<OtherUserInfo> _otherUserInfos;
+        
 
         TestDbSet<Order> _orders;
 
@@ -67,22 +68,7 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        public DbSet<OtherUserInfo> OtherUserInfos
-        {
-            get
-            {
-                if (_otherUserInfos == null)
-                {
-                    _otherUserInfos = new TestDbSet<OtherUserInfo>();
-                }
-                return _otherUserInfos;
-            }
-
-            set
-            {
-                _otherUserInfos = null;
-            }
-        }
+        
 
         public DbSet<Order> Orders
         {

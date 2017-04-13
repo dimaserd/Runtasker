@@ -5,7 +5,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models.VkNotificater;
 using Runtasker.Logic.Contexts.Interfaces;
+
 using System.Data.Entity;
+using Runtasker.Logic.Models.ManageModels;
 
 namespace Runtasker.Logic.Workers.Notifications.Orders
 {
@@ -54,7 +56,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
                 .ToVkUserInfoList
                 (
                 PerformersAndAdmins
-                .Select(x => x.OtherInfo)
+                .Select(x => x.GetOtherInfo())
                 );
         }
 
@@ -172,12 +174,13 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
         #region Help Methods
         List<ApplicationUser> GetPerformersAndAdminsWithInfo()
         {
+            
             List<string> selectedUserIds = (from role in Db.Roles
                                   where role.Name == "Admin" || role.Name == "Performer"
                                   from user in role.Users
                                   select user.UserId).ToList();
 
-            List<ApplicationUser> allUsers = Db.Users.Include(x => x.OtherInfo).ToList();
+            List<ApplicationUser> allUsers = Db.Users.ToList();
 
             return allUsers.Where(applicationUser => selectedUserIds.Contains(applicationUser.Id)).ToList();
             
@@ -201,7 +204,8 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
 
             return PerformersAndAdmins.Select(x =>
             {
-                if( (x.OtherInfo != null) && (x.OtherInfo.Specialization.Contains(orderSubjectEnum)) )
+                OtherUserInfo info = x.GetOtherInfo();
+                if( (info != null) && (info.Specialization.Contains(orderSubjectEnum)) )
                 {
                     return x;
                 }

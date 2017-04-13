@@ -28,9 +28,6 @@ namespace Runtasker.Logic
         #endregion
 
         
-
-        public DbSet<OtherUserInfo> OtherUserInfos { get; set; }
-
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<Message> Messages { get; set; }

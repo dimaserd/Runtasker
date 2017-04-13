@@ -13,10 +13,6 @@ namespace Runtasker.Logic.Contexts.Interfaces
 
         IDbSet<IdentityRole> Roles { get; }
 
-        DbSet<OtherUserInfo> OtherUserInfos { get; }
-
-        
-
         DbSet<Order> Orders { get;  }
 
         DbSet<Message> Messages { get;  }

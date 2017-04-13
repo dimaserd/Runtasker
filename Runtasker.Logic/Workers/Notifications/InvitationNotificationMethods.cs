@@ -6,9 +6,12 @@ using System.Linq;
 
 namespace Runtasker.Logic.Workers.Notifications
 {
+    /// <summary>
+    /// Здесь вообще ничего не готово
+    /// </summary>
     public class InvitationNotificationMethods
     {
-        #region Constructors
+        #region Конструкторы
         public InvitationNotificationMethods(MyDbContext context)
         {
             Construct(context);
@@ -22,13 +25,13 @@ namespace Runtasker.Logic.Workers.Notifications
         }
         #endregion
 
-        #region Properties
+        #region Свойства
         MyDbContext Context { get; set; }
 
         InvitationEmailMethods Emailer {get;set;}
         #endregion
 
-        #region Public Methods like Events
+        #region Методы по событиям
         public void OnUserSentAnInvitation(Invitation I)
         {
             Notification invitatorN = new Notification
@@ -80,7 +83,7 @@ namespace Runtasker.Logic.Workers.Notifications
         }
         #endregion
 
-        #region Help Methods
+        #region Вспомогательные методы
         public string GetInvitorEmail(Invitation I)
         {
             return Context.Users.FirstOrDefault(u => u.Id == I.SenderGuid).Email;

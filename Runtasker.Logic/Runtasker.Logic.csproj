@@ -183,6 +183,10 @@
     <Compile Include="Migrations\201704071031412_paymentsExt.Designer.cs">
       <DependentUpon>201704071031412_paymentsExt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704131308243_dropOtherInfo.cs" />
+    <Compile Include="Migrations\201704131308243_dropOtherInfo.Designer.cs">
+      <DependentUpon>201704131308243_dropOtherInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
     <Compile Include="Models\ManageModels\AddVkInfoModel.cs" />
@@ -275,7 +279,6 @@
     <Compile Include="Workers\Notifications\RegistrationNotificationMethods.cs" />
     <Compile Include="Workers\Orders\CustomerOrderErrorEvents.cs" />
     <Compile Include="Workers\Orders\CustomerOrderWorker.cs" />
-    <Compile Include="Workers\Orders\OrdersWorker.cs" />
     <Compile Include="Workers\Orders\OrdersWorkerBase.cs" />
     <Compile Include="Workers\Orders\PerformerOrderWorker.cs" />
     <Compile Include="Workers\Payments\AccountPaymentMethods.cs" />
@@ -336,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704071031412_paymentsExt.resx">
       <DependentUpon>201704071031412_paymentsExt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704131308243_dropOtherInfo.resx">
+      <DependentUpon>201704131308243_dropOtherInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

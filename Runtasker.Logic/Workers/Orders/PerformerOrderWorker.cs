@@ -11,43 +11,34 @@ using Runtasker.Logic.Models.ManageModels;
 
 namespace Runtasker.Logic.Workers.Orders
 {
-    public class PerformerOrderWorker
+    public class PerformerOrderWorker : OrdersWorkerBase
     {
-        #region Constructors
+        #region Конструктор
 
-        public PerformerOrderWorker(string userGuid)
+        public PerformerOrderWorker(MyDbContext context, string userGuid) : base(context, userGuid)
         {
-            Construct(null, null, null, userGuid);
+            Construct();
         }
 
-        public PerformerOrderWorker(MyDbContext context, string userGuid)
+        void Construct()
         {
-            Construct(context, null, null, userGuid);
+            Filer = new PerformerFileMethods(Context);
+            Notificater = new PerformerOrderNotificationMethods(Context, UserGuid);
         }
 
-
-        void Construct(MyDbContext context, PerformerFileMethods filer, PerformerOrderNotificationMethods notificater, string userGuid)
-        {
-            Context = context ?? new MyDbContext();
-            //passing Context for attachments worker it need it
-            Filer = filer ?? new PerformerFileMethods(Context);
-            UserGuid = userGuid;
-            Notificater = new PerformerOrderNotificationMethods(Context, userGuid);
-        }
         #endregion
 
-        #region Properties
+        #region Свойства
 
-        public PerformerOrderNotificationMethods Notificater { get; private set; }
-        MyDbContext Context { get; set; }
+        PerformerOrderNotificationMethods Notificater { get; set; }
         PerformerFileMethods Filer { get; set; }
-        string UserGuid { get; set; }
-
+        
         #endregion
 
         #region Публичные методы
 
         #region Методы оценки заказа
+
         public ValueOrderModel GetValueOrderModel(int id)
         {
             Order order = Context.Orders.FirstOrDefault(o => o.Id == id && o.Sum == 0 && o.Status == OrderStatus.New);
@@ -61,8 +52,7 @@ namespace Runtasker.Logic.Workers.Orders
                 OrderId = order.Id
             };
         }
-
-        
+  
         public Order ValueOrder(ValueOrderModel model)
         {
             Order order = Context.Orders.FirstOrDefault(
@@ -77,24 +67,28 @@ namespace Runtasker.Logic.Workers.Orders
             //изменяем свойства заказа
             order.Sum = model.Sum;
             order.Status = OrderStatus.Estimated;
-            
+
+            Context.Entry(order).State = EntityState.Modified;
+
             //записываем изменения в базе данных
             Context.SaveChanges();
 
             //Вызываем методы создающие уведомления
             if(order.WorkType == OrderWorkType.OnlineHelp)
             {
+                //для заказа являющегося онлайн помощью
                 Notificater.OnPerformerEstimatedOnlineHelp(order);
             }
             else
             {
+                //для обычного заказа
                 Notificater.OnAdminEstimatedAnOrder(order);
             }
-            
 
             //возвращаем заказ
             return order;
         }
+
         #endregion
 
         #region Добавление ошибок
@@ -170,13 +164,7 @@ namespace Runtasker.Logic.Workers.Orders
 
             if(order == null)
             {
-                WorkerResult result = new WorkerResult
-                {
-                    Succeeded = false
-                };
-                result.ErrorsList.Add("Оцененных заказов с указанным Id не найдено!");
-
-                return result;
+                return new WorkerResult("Оцененных заказов с указанным Id не найдено!");
             }
 
             //изначально заказ создается с одинаковыми Id
@@ -234,12 +222,17 @@ namespace Runtasker.Logic.Workers.Orders
                 return new WorkerResult("Вы не можете загрузить еще одно решение!");
             }
 
-            //Saving files and writing attachments
+            //Перезаписываем файлы связанные с заказом
             Filer.OnPerformerSolvedAnOrder(model);
+
+            //изменяем свойство статуса заказа
             order.Status = OrderStatus.Finished;
+
+            Context.Entry(order).State = EntityState.Modified;
+
             Context.SaveChanges();
 
-            //Notifications methods
+            //Вызываю метод уведомлений
             Notificater.OnPerformerExecutedAnOrder(order);
 
             return new WorkerResult
@@ -252,7 +245,7 @@ namespace Runtasker.Logic.Workers.Orders
         public async Task<List<Order>> GetOrdersAsync()
         {
             OtherUserInfo performerInfo = (await Context.Users.FirstOrDefaultAsync(x => x.Id == UserGuid)).GetOtherInfo();
-            List<Order> allOrders =  Context.Orders.Include(x => x.Messages).ToList();
+            List<Order> allOrders = await Context.Orders.Include(x => x.Messages).ToListAsync();
 
             return performerInfo
                 .GetOrdersBySpecialization(allOrders).ToList();

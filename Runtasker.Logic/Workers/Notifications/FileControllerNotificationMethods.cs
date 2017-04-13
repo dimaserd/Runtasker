@@ -8,7 +8,7 @@ namespace Runtasker.Logic.Workers.Notifications
 {
     public class FileControllerNotificationMethods : IDisposable
     {
-        #region Constructors
+        #region Конструкторы
         public FileControllerNotificationMethods(string userGuid, MyDbContext db)
         {
             UserGuid = userGuid;
@@ -16,13 +16,19 @@ namespace Runtasker.Logic.Workers.Notifications
         }
         #endregion
 
-        #region Properties
+        #region Свойства
         string UserGuid { get; set; }
 
         MyDbContext Db { get; set; }
         #endregion
 
-        #region Methods like Events
+        #region Методы по событиям
+
+        /// <summary>
+        /// Этим методом нужно будет заняться
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="order"></param>
         public void OnCustomerTriedToDownloadSolution(WorkerResult result, Order order)
         {
             if(order.Status == OrderStatus.FullPaid)
@@ -48,8 +54,6 @@ namespace Runtasker.Logic.Workers.Notifications
                 new CustomerEmailMethods().OnCustomerDownloadedAnOrderSolution(customer, order);
                 return;
             }
-            
-
         }
 
 

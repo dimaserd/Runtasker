@@ -17,7 +17,7 @@ namespace Runtasker.Logic.Workers.Orders
     //фактически происходит регистрация пользователя с заказом
     public class KnowPriceWorker : IDisposable
     {
-        #region Constructor
+        #region Конструктор
         public KnowPriceWorker()
         {
 
@@ -30,13 +30,13 @@ namespace Runtasker.Logic.Workers.Orders
         }
         #endregion
 
-        #region Fields
+        #region Поля
         MyDbContext _db;
         #endregion
 
-        #region Properties
+        #region Свойства
 
-        #region Internal Properties
+        #region Внутренние свойства
         MyDbContext Db
         {
             get
@@ -53,7 +53,7 @@ namespace Runtasker.Logic.Workers.Orders
         
         #endregion
 
-        #region Public Properties
+        #region Внешние свойства
         /// <summary>
         /// Устанавливается в методе при успешной регистрации ползователя
         /// </summary>
@@ -64,9 +64,8 @@ namespace Runtasker.Logic.Workers.Orders
 
         #endregion
 
-        #region Public Methods
+        #region Методы
 
-        //проверим асинхронную версию
         public async Task<WorkerResult> CreateUserAndOrderAsync(AnonymousKnowThePrice model)
         {
             //создаем пользователя
@@ -83,19 +82,12 @@ namespace Runtasker.Logic.Workers.Orders
 
                 string pass = new RandomPassword().GetRandomPass();
 
-                RegisterModel regModel = new RegisterModel
-                {
-                    Email = model.Email,
-                    Password = pass,
-                    ConfirmPassword = pass,
-                    Name = model.Name
-                };
+                RegisterModel regModel = model.ToRegisterModel(pass);
 
-                ApplicationUser user =
-                    accounter.RegisterCustomer(RegistrationType.WithPassword, regModel);
+                //создаю пользователя с помощью методы AccountWorker
+                ApplicationUser user = await 
+                    accounter.RegisterCustomerAsync(RegistrationType.WithPassword, regModel);
 
-                //отправляем электронное письмо с данными о регистрации
-                //SendRegistrationEmail(user, pass);
 
                 //записываем данные в свойства чтобы потом передать их контроллеру
                 //для авторизации пользователя в системе
@@ -105,15 +97,7 @@ namespace Runtasker.Logic.Workers.Orders
                 //создаем объект который создаст заказы
                 using (CustomerOrderWorker orderWorker = new CustomerOrderWorker(Db, user.Id))
                 {
-                    OrderCreateModel createModel = new OrderCreateModel
-                    {
-                        WorkType = model.WorkType,
-                        Description = model.Description,
-                        FinishDate = model.CompletionDate,
-                        FileUpload = model.Files,
-                        OtherSubject = model.OtherSubject,
-                        Subject = model.Subject
-                    };
+                    OrderCreateModel createModel = model.ToOrderCreateModel();
 
                     Order order = await orderWorker.CreateOrderAsync(createModel);
                     if (order != null)
@@ -132,7 +116,7 @@ namespace Runtasker.Logic.Workers.Orders
         }
         #endregion
 
-        #region Help methods
+        #region Вспомогательные методы
         void SendRegistrationEmail(ApplicationUser user, string pass)
         {
             using (AccountEmailMethods emailer = new AccountEmailMethods())

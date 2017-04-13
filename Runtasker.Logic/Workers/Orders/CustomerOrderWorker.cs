@@ -21,10 +21,9 @@ namespace Runtasker.Logic.Workers.Orders
 {
     public class CustomerOrderWorker : OrdersWorkerBase
     {
-        #region Constructors
-        public CustomerOrderWorker(MyDbContext context, string userGuid) : base(userGuid)
+        #region Конструктор
+        public CustomerOrderWorker(MyDbContext context, string userGuid) : base(context,userGuid)
         {
-            Context = context;
             Construct();
         }
 
@@ -46,8 +45,7 @@ namespace Runtasker.Logic.Workers.Orders
         #endregion
 
         #region Свойства
-        MyDbContext Context { get; set; }
-
+       
         CustomerOrderNotificationMethods Notificater { get; set; }
 
         CustomerFileMethods Filer { get; set; }
@@ -57,7 +55,6 @@ namespace Runtasker.Logic.Workers.Orders
         CustomerOrderPaymentMethods Paymenter { get; set; }
 
         CustomerOrderErrorEvents ErrorHandler { get; set; }
-
         
 
         #region Внутренние свойства
@@ -77,40 +74,31 @@ namespace Runtasker.Logic.Workers.Orders
 
         #endregion
 
-        #region Вспомогательные методы
+        #region Публичные методы
 
-        public string GetAdminGuid()
+        #region Создание заказа
+        public Order CreateOrder(OrderCreateModel orderModel)
         {
-            return Context.Users.FirstOrDefault(u => u.Email == AdminSettings.AdminEmail).Id;
+            return CreateOrderSubMethod(OrderCreationType.Ordinary, orderModel);
         }
 
-        public void CheckForAnInvitation(Order order)
+        public async Task<Order> CreateOrderAsync(OrderCreateModel orderModel)
         {
-            Invitation I = Context.Invitations.FirstOrDefault(i => i.ReceiverGuid == order.UserGuid);
+            return await CreateOrderSubMethodAsync(OrderCreationType.Ordinary, orderModel);
 
-            if (I == null)
-            {
-                return;
-            }
+        }
 
-            if (I.Status == InvitationStatus.Paid)
-            {
-                return;
-            }
-
-            I.Status = InvitationStatus.Paid;
-            Context.SaveChanges();
-
-            //Payment methods
-            Paymenter.OnInvitedCustomerFinishedOrder(I);
-
-            //Notifications methods
-            Notificater.OnInvitedCustomerRatedAnOrderSolution(I, 300, HtmlSigns.Rouble);
-
+        /// <summary>
+        /// Вроде сделано
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Order> CreateOnlineHelpOrderAsync(OrderCreateModel model)
+        {
+            return await CreateOrderSubMethodAsync(OrderCreationType.Ordinary, model);
         }
         #endregion
 
-        #region Публичные методы
+        #region Исправление ошибок
 
         #region Добавление описания
         public AddDescriptionModel GetAddDescriptionModel(int id)
@@ -237,6 +225,7 @@ namespace Runtasker.Logic.Workers.Orders
                 Succeeded = true
             };
         }
+        #endregion
         #endregion
 
         #region Методы оплаты
@@ -547,48 +536,77 @@ namespace Runtasker.Logic.Workers.Orders
         }
         #endregion
 
-        #region GetMyOrders Methods
+        #region Получение заказов
         public IEnumerable<Order> GetMyOrders()
         {
-            
             return Context.Orders.Where(o => o.UserGuid == UserGuid).ToList();
-            
         }
 
         public async Task<IEnumerable<Order>> GetMyOrdersAsync()
         {
-            
                 return await Context.Orders.Where(o => o.UserGuid == UserGuid)
                     .Include(x => x.Messages).ToListAsync();
-            
         }
         #endregion
 
-        #region Create Order Methods
-        public Order CreateOrder(OrderCreateModel orderModel)
-        {
-            return CreateOrderSubMethod(OrderCreationType.Ordinary, orderModel);
-        }
-
-        public async Task<Order> CreateOrderAsync(OrderCreateModel orderModel)
-        {
-            return await CreateOrderSubMethodAsync(OrderCreationType.Ordinary, orderModel);
-            
-        }
+        #region Удаление заказа
 
         /// <summary>
-        /// Вроде сделано
-        /// 
+        /// Пока нигде не используется и не реализован должным образом
         /// </summary>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<Order> CreateOnlineHelpOrderAsync(OrderCreateModel model)
+        public Order DeleteOrder(int id)
         {
-            return await CreateOrderSubMethodAsync(OrderCreationType.Ordinary, model);
+            Order order = Context.Orders.FirstOrDefault(o => o.UserGuid == UserGuid && o.Status == OrderStatus.New && o.Id == id);
+            if (order == null)
+            {
+                return null;
+            }
+            Context.Orders.Remove(order);
+            Notificater.OnCustomerDeletedOrder(order);
+            Context.SaveChanges();
+            return order;
         }
 
-        #region Sub Methods
-        //в дальнейшем сделай так чтобы методы создания заказа
-        //обращались к этому методу и его асинхронной копии
+
+        #endregion
+
+        #endregion
+
+        #region Вспомогательные методы
+
+        public string GetAdminGuid()
+        {
+            return Context.Users.FirstOrDefault(u => u.Email == AdminSettings.AdminEmail).Id;
+        }
+
+        public void CheckForAnInvitation(Order order)
+        {
+            Invitation I = Context.Invitations.FirstOrDefault(i => i.ReceiverGuid == order.UserGuid);
+
+            if (I == null)
+            {
+                return;
+            }
+
+            if (I.Status == InvitationStatus.Paid)
+            {
+                return;
+            }
+
+            I.Status = InvitationStatus.Paid;
+            Context.SaveChanges();
+
+            //Payment methods
+            Paymenter.OnInvitedCustomerFinishedOrder(I);
+
+            //Notifications methods
+            Notificater.OnInvitedCustomerRatedAnOrderSolution(I, 300, HtmlSigns.Rouble);
+
+        }
+
+        #region Создание заказа
         public Order CreateOrderSubMethod(OrderCreationType creationType, OrderCreateModel orderModel)
         {
 
@@ -643,7 +661,7 @@ namespace Runtasker.Logic.Workers.Orders
             if (creationType == OrderCreationType.Ordinary)
             {
                 //если заказ является заявкой на онлайн помощь 
-                if(order.WorkType == OrderWorkType.OnlineHelp)
+                if (order.WorkType == OrderWorkType.OnlineHelp)
                 {
                     //вызываем другой метод уведомлений
                     Notificater.OnCustomerAddedOnlineOrder(order);
@@ -653,32 +671,14 @@ namespace Runtasker.Logic.Workers.Orders
                     //вызываем класс отвечающий за создание уведомлений
                     Notificater.OnCustomerAddedOrder(order, OrderCreationType.Ordinary);
                 }
-                
+
             }
 
 
             return order;
 
         }
-        
-        
         #endregion
-        #endregion
-
-
-        public Order DeleteOrder(int id)
-        {
-            Order order = Context.Orders.FirstOrDefault(o => o.UserGuid == UserGuid && o.Status == OrderStatus.New && o.Id == id);
-            if (order == null)
-            {
-                return null;
-            }
-            Context.Orders.Remove(order);
-            Notificater.OnCustomerDeletedOrder(order);
-            Context.SaveChanges();
-            return order;
-        }
-
 
         #endregion
     }

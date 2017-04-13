@@ -5,7 +5,7 @@ namespace Runtasker.Logic.Workers.Orders
 {
     public class CustomerOrderErrorEvents
     {
-        #region Constructors
+        #region Конструктор
         public CustomerOrderErrorEvents(string userGuid, MyDbContext context)
         {
             UserGuid = userGuid;
@@ -19,7 +19,7 @@ namespace Runtasker.Logic.Workers.Orders
         }
         #endregion
 
-        #region Properties
+        #region Свойства
         string UserGuid { get; set; }
 
         MyDbContext Context { get; set; }
@@ -27,7 +27,7 @@ namespace Runtasker.Logic.Workers.Orders
         CustomerOrderNotificationErrorMethods Notificater { get; set; }
         #endregion
 
-        #region Public Methods like events
+        #region Методы по событиям
         public void OnCustomerTriedToAddAnOrderWithUnconfirmedAccount()
         {
             Notificater.OnCustomerTriedToAddAnOrderWithUnconfirmedAccount();

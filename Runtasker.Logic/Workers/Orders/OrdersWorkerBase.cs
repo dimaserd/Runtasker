@@ -7,8 +7,8 @@ namespace Runtasker.Logic.Workers.Orders
 {
     public class OrdersWorkerBase : IDisposable
     {
-        #region Contructors
-        public OrdersWorkerBase(string userGuid)
+        #region Конструктор
+        public OrdersWorkerBase(MyDbContext context, string userGuid)
         {
             Construct(userGuid);
         }
@@ -19,16 +19,13 @@ namespace Runtasker.Logic.Workers.Orders
         }
         #endregion
 
-        #region Protected Properties
+        #region Свойства
         protected string UserGuid { get; set; }
+
+        protected MyDbContext Context { get; set; }
         #endregion
 
-        #region Protected Methods
         
-
-
-
-        #endregion
 
         #region IDisposable
 

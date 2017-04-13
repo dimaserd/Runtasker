@@ -272,3 +272,4 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\roslyn
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\roslyn\vbc.rsp
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\roslyn\VBCSCompiler.exe
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\roslyn\VBCSCompiler.exe.config
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.dropOtherInfo.resources

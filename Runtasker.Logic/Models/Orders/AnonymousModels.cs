@@ -41,4 +41,31 @@ namespace Runtasker.Logic.Models.Orders
         [Display(Name = "Description", ResourceType = typeof(RegAndCreateRes))]
         public string Description { get; set; }
     }
+
+    public static class AnonumousKnowThePriceExtensions
+    {
+        public static RegisterModel ToRegisterModel(this AnonymousKnowThePrice model, string pass)
+        {
+            return new RegisterModel
+            {
+                Email = model.Email,
+                Password = pass,
+                ConfirmPassword = pass,
+                Name = model.Name
+            };
+        }
+
+        public static OrderCreateModel ToOrderCreateModel(this AnonymousKnowThePrice model)
+        {
+            return new OrderCreateModel
+            {
+                WorkType = model.WorkType,
+                Description = model.Description,
+                FinishDate = model.CompletionDate,
+                FileUpload = model.Files,
+                OtherSubject = model.OtherSubject,
+                Subject = model.Subject
+            };
+        }
+    }
 }

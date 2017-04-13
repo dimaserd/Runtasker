@@ -8,34 +8,34 @@ using Runtasker.Settings;
 
 namespace Runtasker.Logic.Workers.Notifications
 {
-    //Some kind of exception it will be used internally in AccountController
-    //others will be hidden in workers
-    //This class is some kind of bunch of 'events'(methods)
+    /// <summary>
+    /// используется только в Account контроллере
+    /// </summary>
     public class AccountNotificationMethods
     {
-        #region Constructors
+        #region Конструктор
         public AccountNotificationMethods(MyDbContext context)
         {
-            Construct(context);
+            Context = context;
+            Construct();
         }
 
-        void Construct(MyDbContext context)
+        void Construct()
         {
-            Context = context;
-
             Emailer = new AccountEmailMethods();
         }
         #endregion
 
-        #region Private Fields
+        #region Свойства
         AccountEmailMethods Emailer { get; set; }
 
         MyDbContext Context { get; set; }
         #endregion
 
-        #region Public Methods
+        #region Методы
 
-        #region Registration and Confirmation
+        #region Регистрация
+
         public void OnUserRegistered(ApplicationUser user, string callBackUrl)
         {
             Emailer.OnUserRegistered(user, callBackUrl);
@@ -44,6 +44,30 @@ namespace Runtasker.Logic.Workers.Notifications
         public void OnUserRegisteredFromSocialProvider(ApplicationUser user, string callBackUrl, string providerName)
         {
             Emailer.OnUserRegisteredFromSocialProvider(user, callBackUrl, providerName);
+        }
+
+        public void OnUserRegisteredFromInvitation(ApplicationUser user, Invitation I)
+        {
+            Notification inviterN = new Notification
+            {
+                AboutType = NotificationAboutType.Ordinary,
+                Type = NotificationType.Success,
+                UserGuid = I.SenderGuid,
+                Title = $"{AccountRes.FromInvitationTitle1} {user.Email} {AccountRes.FromInvitationTitle2}",
+                Text = $"{AccountRes.FromInvitationText1} {UISettings.RegistrationBonus}{FASigns.Rouble} {AccountRes.FromInvitationText2} "
+                + AccountRes.RuntaskerWish,
+                Link = null
+            };
+            Context.Notifications.Add(inviterN);
+            Context.SaveChanges();
+        }
+        #endregion
+
+        #region Другие методы
+
+        public void OnUserForgottenPassword(ApplicationUser user, string callBackUrl)
+        {
+            Emailer.OnUserForgottenPass(user, callBackUrl);
         }
 
         public void OnUserConfirmedEmail(string userGuid)
@@ -66,29 +90,6 @@ namespace Runtasker.Logic.Workers.Notifications
             };
             Context.Notifications.Add(N);
             Context.SaveChanges();
-        }
-
-        public void OnUserRegisteredFromInvitation(ApplicationUser user, Invitation I)
-        {
-            Notification inviterN = new Notification
-            {
-                AboutType = NotificationAboutType.Ordinary,
-                Type = NotificationType.Success,
-                UserGuid = I.SenderGuid,
-                Title = $"{AccountRes.FromInvitationTitle1} {user.Email} {AccountRes.FromInvitationTitle2}",
-                Text = $"{AccountRes.FromInvitationText1} {UISettings.RegistrationBonus}{FASigns.Rouble} {AccountRes.FromInvitationText2} "
-                + AccountRes.RuntaskerWish,
-                Link = null
-            };
-            Context.Notifications.Add(inviterN);
-            Context.SaveChanges();
-        }
-        #endregion
-
-        #region Other methods
-        public void OnUserForgottenPassword(ApplicationUser user, string callBackUrl)
-        {
-            Emailer.OnUserForgottenPass(user, callBackUrl);
         }
         #endregion
 

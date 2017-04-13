@@ -84,7 +84,6 @@
     <Compile Include="Models\VkPostLookUpModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Base\BaseVkRepository.cs" />
-    <Compile Include="Repositories\VkFoundPostRepository.cs" />
     <Compile Include="Repositories\VkGroupRepository.cs" />
     <Compile Include="Statics\TokenGiver.cs" />
     <Compile Include="Workers\Api\VkApiWorkerBase.cs" />

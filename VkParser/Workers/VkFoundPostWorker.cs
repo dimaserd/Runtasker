@@ -8,36 +8,34 @@ using System.Threading.Tasks;
 using VkParser.Contexts;
 using VkParser.Entities;
 using VkParser.Models;
-using VkParser.Repositories;
 using VkParser.Workers.Base;
 
 namespace VkParser.Workers
 {
     public class VkFoundPostWorker : BaseVkParseContextWorker
     {
-        #region Constructors
+        #region Конструктор
         public VkFoundPostWorker(VkParseContext context) : base(context)
         {
-            Construct();
+            
         }
 
-        void Construct()
-        {
-            Repository = new VkFoundPostRepository(Context);           
-        }
-        #endregion
-
-        #region Properties
-        VkFoundPostRepository Repository { get; set; }
-        #endregion
-
-        #region Public Methods
         
-
+        #endregion
+        
+        #region Методы
+        
         public VkFoundPost GetVkPost(int id)
         {
             return Context.VkFoundPosts.FirstOrDefault(p => p.Id == id);
         }
+
+        public async Task<VkFoundPost> GetVkPostAsync(int id)
+        {
+            return await Context.VkFoundPosts.FirstOrDefaultAsync(p => p.Id == id);
+        }
+
+        #region Удаление постов
 
         public WorkerResult DeletePost(VkFoundPost model)
         {
@@ -121,20 +119,19 @@ namespace VkParser.Workers
             };
         }
 
-
         public async Task<DeleteManyModel> GetDeleteOldPostsModel(int days)
         {
             DateTime dateNow = DateTime.Now;
 
-       
+
 
             List<VkFoundPost> oldPosts = await (from p in Context.VkFoundPosts
-                         where SqlFunctions.DateDiff("day", p.PublishDate, dateNow) > days
-                         select p).ToListAsync();
+                                                where SqlFunctions.DateDiff("day", p.PublishDate, dateNow) > days
+                                                select p).ToListAsync();
 
             string result = string.Empty;
 
-            foreach(VkFoundPost post in oldPosts)
+            foreach (VkFoundPost post in oldPosts)
             {
                 result += $"{post.Id}.";
             }
@@ -144,15 +141,11 @@ namespace VkParser.Workers
                 Deletion = result
             };
         }
+
         #endregion
 
-        #region Overridden Methods
-        protected override void Dispose(bool disposing)
-        {
-            Repository.Dispose(disposing);
-
-            base.Dispose(disposing);
-        }
         #endregion
+
+
     }
 }

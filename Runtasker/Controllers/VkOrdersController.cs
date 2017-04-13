@@ -244,11 +244,11 @@ namespace Runtasker.Controllers
 
         #endregion
 
-        #region Delete One Post
+        #region Удалить один пост
         [HttpGet]
-        public ActionResult DeleteFoundPost(int id)
+        public async Task<ActionResult> DeleteFoundPost(int id)
         {
-            VkFoundPost model = VkPostWorker.GetVkPost(id);
+            VkFoundPost model = await VkPostWorker.GetVkPostAsync(id);
             if(model == null)
             {
                 return RedirectToAction("Index");

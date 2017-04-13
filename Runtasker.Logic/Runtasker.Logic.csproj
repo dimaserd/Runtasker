@@ -210,7 +210,6 @@
     <Compile Include="HtmlConstantEmails\CustomerEmailConstants.cs" />
     <Compile Include="HtmlConstantEmails\Models\EmailModel.cs" />
     <Compile Include="HtmlConstantEmails\PerformerEmailConstants.cs" />
-    <Compile Include="IdentityClasses.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AdminModels.cs" />
     <Compile Include="Models\HomeViewModels.cs" />
@@ -223,9 +222,6 @@
     <Compile Include="Models\PerformerViewModels.cs" />
     <Compile Include="Contexts\MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\BaseRepository.cs" />
-    <Compile Include="Repositories\NotificationRepository.cs" />
-    <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Workers\AccountWorker.cs" />
     <Compile Include="Workers\Admin\AdminCustomerMethods.cs" />
     <Compile Include="Workers\Admin\AdminDeleteMethods.cs" />
@@ -329,7 +325,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Menu\" />
-    <Folder Include="Statics\" />
     <Folder Include="Workers\Logging\Statics\" />
     <Folder Include="Workers\RestoreData\" />
   </ItemGroup>

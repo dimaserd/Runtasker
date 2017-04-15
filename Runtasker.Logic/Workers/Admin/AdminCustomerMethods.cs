@@ -13,11 +13,7 @@ namespace Runtasker.Logic.Workers.Admin
 {
     public class AdminCustomerMethods
     {
-        #region Константы
-
-        #endregion
-
-        #region Constructors
+        #region Конструктор
         public AdminCustomerMethods(MyDbContext context)
         {
             Db = context;
@@ -73,9 +69,9 @@ namespace Runtasker.Logic.Workers.Admin
         }
         #endregion
 
-        #region Users
+        #region Пользователи
 
-        #region Performers
+        #region Исполнители
         public async Task<IEnumerable<ApplicationUser>> GetPerformersAsync()
         {
             
@@ -132,7 +128,7 @@ namespace Runtasker.Logic.Workers.Admin
         #endregion
 
 
-        #region Customers
+        #region Заказчики
         public IEnumerable<ApplicationUser> GetCustomers()
         {
             
@@ -187,8 +183,7 @@ namespace Runtasker.Logic.Workers.Admin
 
         public ApplicationUser GetCustomer(string id)
         {
-            return Db.Users.FirstOrDefault(u => u.Id == id);
-                         
+            return Db.Users.FirstOrDefault(u => u.Id == id);             
         }
 
         public ApplicationUser GetCustomer()

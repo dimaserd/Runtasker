@@ -13,11 +13,13 @@
         #endregion
 
         #region Стартовые цены
-        public static int OrdinaryFromPrice = 50;
+        public const int OrdinaryFromPrice = 50;
 
-        public static int EssayFromPrice = 200;
+        public const int EssayFromPrice = 200;
 
-        public static int CourseWorkFromPrice = 500;
+        public const int CourseWorkFromPrice = 500;
+
+        public const int OnlineHelpFromPrice = 200;
         #endregion
 
         #region Сроки

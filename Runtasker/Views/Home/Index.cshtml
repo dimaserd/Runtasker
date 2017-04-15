@@ -1,7 +1,9 @@
 ﻿@using Extensions.String
 @using Runtasker.LocaleBuilders.Models
+@using Runtasker.Logic.Enumerations.Notifications.Anonymous
 @{
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
+    AnonymousNotificationType? notType = ViewData["notType"] as AnonymousNotificationType?;
 
     ViewBag.Title = localeModel["Title"];
     string lang = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
@@ -11,6 +13,8 @@
 <script>
     console.log("@lang");
 </script>
+
+@AlertHelper.Get
 
 <div class="jumbotron">
     <h1>@LogoHelper.GetLogoWithImage(100)RUNTASKER.RU</h1>

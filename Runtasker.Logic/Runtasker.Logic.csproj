@@ -171,6 +171,8 @@
     <Compile Include="Entities\Payment.cs" />
     <Compile Include="Entities\PaymentTransaction.cs" />
     <Compile Include="Enumerations\DisposingInternalObjectsSetting.cs" />
+    <Compile Include="Enumerations\Notifications\Anonymous\AnonymousNotificationType.cs" />
+    <Compile Include="Enumerations\Notifications\Customer\Order\CustomerOrderNotificationType.cs" />
     <Compile Include="Enumerations\OrderWorker\OrderCreationType.cs" />
     <Compile Include="Enumerations\SaveChangesType.cs" />
     <Compile Include="Handlers\DbEntityValidationExceptionHandler.cs" />
@@ -201,9 +203,11 @@
     <Compile Include="Models\Payments\YandexKassa\YandexKassaPaymentResponse.cs" />
     <Compile Include="Models\VkNotificater\VkUserInfo.cs" />
     <Compile Include="Models\WokerResults\WorkerPropertyResult.cs" />
+    <Compile Include="Statics\Notifications\CustomerOrderNotifications.cs" />
     <Compile Include="Workers\Admin\Users\AdminUserCreation.cs" />
     <Compile Include="Workers\Logging\LoggingWorker.cs" />
     <Compile Include="Workers\Notifications\Orders\PerformerNotificationCreator.cs" />
+    <Compile Include="Workers\Notifications\Orders\VkNotifications\VkCustomerNotificationMethods.cs" />
     <Compile Include="Workers\Notifications\Orders\VkNotifications\VkPerformerNotificater.cs" />
     <Compile Include="Workers\Orders\KnowPriceWorker.cs" />
     <Compile Include="HtmlConstantEmails\AccountEmailConstants.cs" />
@@ -324,7 +328,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Enumerations\Notifications\Customer\Local\" />
     <Folder Include="Models\Menu\" />
+    <Folder Include="Statics\NewFolder1\" />
     <Folder Include="Workers\Logging\Statics\" />
     <Folder Include="Workers\RestoreData\" />
   </ItemGroup>

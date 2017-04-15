@@ -4,10 +4,8 @@ using Runtasker.Logic.Interfaces.Identity;
 using Runtasker.Logic.Models.ManageModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Runtasker.Logic.Entities

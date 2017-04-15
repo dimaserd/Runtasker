@@ -36,7 +36,7 @@
         <!-- FOUR COLUMNS -->
         <div class="row pricetable-container">
 
-            <div class="col-md-4 price-table">
+            <div class="col-md-3 price-table popular">
                 <h3>@localeModel["Ordinary"]</h3>
                 <p>
                     @localeModel["OrdinaryFromPrice"].ToHtml()
@@ -55,7 +55,7 @@
                 </a>
             </div>
 
-            <div class="col-md-4 price-table popular">
+            <div class="col-md-3 price-table">
                 <h3>@localeModel["Essay"]</h3>
                 <p>
                     @localeModel["EssayFromPrice"].ToHtml()          
@@ -67,12 +67,31 @@
                     <li>@localeModel["FreeUniqueTextUpgrade"]</li>
                     <li>@localeModel["ReturningFundsWarranty"]</li>
                 </ul>
-                <a href="/Home/KnowPrice?workTypeId=1" class="btn btn-default btn-sm">
+                <a href="/Home/KnowPrice?workTypeId=1" class="btn btn-primary btn-sm">
                     @localeModel["FindOutThePrice"]
                 </a>
             </div>
 
-            <div class="col-md-4 price-table">
+            <!--Online-Help-->
+            <div class="col-md-3 price-table popular">
+                <h3>@localeModel["OnlineHelp"]</h3>
+                <p>
+                    @localeModel["OnlineHelpFromPrice"].ToHtml()
+                </p>
+                <ul class="pricetable-items">
+                    <li>@localeModel["PayWithBonusMoney"]</li>
+                    <li>@localeModel["DiscussWithPerformer"]</li>
+                    <li>@localeModel["FreeCorrections"]</li>
+                    <li>@localeModel["FreeUniqueTextUpgrade"]</li>
+                    <li>@localeModel["ReturningFundsWarranty"]</li>
+                </ul>
+                <a href="/Orders/OnlineHelp" class="btn btn-primary btn-sm">
+                    @localeModel["OrderOnlineHelp"]
+                </a>
+            </div>
+            <!--/Online-Help-->
+
+            <div class="col-md-3 price-table">
                 <h3>@localeModel["CourseWork"]</h3>
                 <p>
                     @localeModel["CourseWorkFromPrice"].ToHtml()

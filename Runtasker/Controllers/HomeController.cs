@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using Runtasker.LocaleBuilders.Views.Home;
 using Runtasker.Logic;
 using Runtasker.Logic.Entities;
+using Runtasker.Logic.Enumerations.Notifications.Anonymous;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Models.Orders;
 using Runtasker.Logic.Workers;
@@ -131,13 +132,18 @@ namespace Runtasker.Controllers
         #region HttpController methods
 
         //Get Home/Index
-        public ActionResult Index()
+        public ActionResult Index(AnonymousNotificationType? notType = null)
         { 
             if(!Request.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Landing");
             }
+            //передаю вид уведомления
+            ViewData["notType"] = notType;
+
+            //передаю локализованную модель
             ViewData["localeModel"] = ModelBuilder.HomeView();
+
             return View();
         }
 

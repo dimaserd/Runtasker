@@ -14,5 +14,7 @@
         public static string TestPassword = "testpass";
 
         public static string AdminVkDomain = "dimaserd";
+
+        public const string PasswordToDoSmth = "566762332";
     }
 }

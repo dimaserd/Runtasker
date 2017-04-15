@@ -219,6 +219,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AccountRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Notifications\Anonymous\AnonNotRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnonNotRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Notifications\CustomerOrderErrorMethods\CustOrderErrorRes.ru-RU.Designer.cs">
       <DependentUpon>CustOrderErrorRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -850,6 +855,10 @@
     <EmbeddedResource Include="Namers\Payment\PaymentNamerRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PaymentNamerRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notifications\Anonymous\AnonNotRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnonNotRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Notifications\CustomerOrderErrorMethods\CustOrderErrorRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -252,3 +252,5 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Views\P
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.resx
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Views\Payment\Robokassa\RkassaRes.Designer.cs
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.Designer.cs
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Runtasker.Test.dll.CodeAnalysisLog.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Runtasker.Test.dll.lastcodeanalysissucceeded

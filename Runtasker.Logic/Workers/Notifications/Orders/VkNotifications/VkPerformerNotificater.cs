@@ -22,7 +22,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
         }
         #endregion
 
-        #region Properties
+        #region Свойства
         public List<VkUserInfo> VkInfoList { get; set; }
         #endregion
 

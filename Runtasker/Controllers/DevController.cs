@@ -32,7 +32,7 @@ namespace Runtasker.Controllers
         #endregion
 
         #region Константы
-        const string Password = "566762332";
+        const string Password = DevSettings.PasswordToDoSmth;
         #endregion
 
         #region Private Methods

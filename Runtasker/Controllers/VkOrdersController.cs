@@ -19,6 +19,7 @@ using Logic.Extensions.Models;
 using VkParser.MessageSenders;
 using VkParser.Models.MessageSenderModels;
 using VkParser.Constants;
+using Runtasker.Settings;
 
 namespace Runtasker.Controllers
 {
@@ -276,7 +277,7 @@ namespace Runtasker.Controllers
 
         #endregion
 
-        #region KeyWords Methods
+        #region Для ключевых слов
         public ActionResult KeyWords()
         {
             List<VkKeyWord> model = KeyWordsWorker.GetVkKeyWords().ToList();
@@ -284,7 +285,7 @@ namespace Runtasker.Controllers
             return View(model);
         }
 
-        #region Update Methods
+        #region Обновить
         [HttpGet]
         public ActionResult Update(int id)
         {
@@ -321,7 +322,7 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region Create Methods
+        #region Создать
         [HttpGet]
         public ActionResult CreateKeyWord()
         {
@@ -349,7 +350,7 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region Delete methods
+        #region Удалить
         [HttpGet]
         public async Task<ActionResult> DeleteKeyWord(int id)
         {
@@ -378,7 +379,7 @@ namespace Runtasker.Controllers
         #endregion
         #endregion
 
-        #region Groups Methods
+        #region Для Группы
         public ActionResult Groups()
         {
             List<VkGroup> model = VkGroupWorker.GetGroups()
@@ -422,7 +423,7 @@ namespace Runtasker.Controllers
         [HttpGet]
         public async Task<string> GroupsRecovery(string pass = null)
         {
-            if(pass == "566762332")
+            if(pass == DevSettings.PasswordToDoSmth)
             {
                 await VkGroupWorker.DeleteAllGroupsAndGetFromVk();
             }

@@ -133,6 +133,9 @@
     <value>от {0}{1}</value>
     <comment>от {цена}{знак рубаса}</comment>
   </data>
+  <data name="OrderOnlineHelp" xml:space="preserve">
+    <value>Заказать Онлайн-Помощь</value>
+  </data>
   <data name="PayWithBonusMoney" xml:space="preserve">
     <value>Возможность оплатить бонусными деньгами</value>
   </data>

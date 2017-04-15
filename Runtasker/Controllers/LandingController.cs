@@ -79,7 +79,7 @@ namespace Runtasker.Controllers
 
         public ActionResult Pricing()
         {
-            ViewData["localeModel"] = ModelBuilder.PricingView(UISettings.OrdinaryFromPrice, UISettings.EssayFromPrice, UISettings.CourseWorkFromPrice, HtmlSigns.Rouble);
+            ViewData["localeModel"] = ModelBuilder.PricingView(UISettings.OrdinaryFromPrice, UISettings.EssayFromPrice, UISettings.CourseWorkFromPrice, UISettings.OnlineHelpFromPrice, HtmlSigns.Rouble);
             return View();
         }
 

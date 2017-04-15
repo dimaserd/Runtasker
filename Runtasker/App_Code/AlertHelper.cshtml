@@ -11,16 +11,18 @@
     </div>
 }
 
-@helper GetAlertWithActionBtn(string title, string text, string btn)
+@helper GetAlertWithActionBtn(string title, string text, string btnHtml = null)
 {
     <div class="alert alert-info fade in">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <h4>@title</h4>
         <p>@text</p>
-        <p>
-                @Extensions.String.StringExtension.ToHtml(btn)
-                
-         </p>
+        @if (btnHtml != null)
+        {
+            <p>
+                @Extensions.String.StringExtension.ToHtml(btnHtml)
+            </p>
+        }
     </div>
 }
 
@@ -30,4 +32,9 @@
         <i class="fa fa-frown-o"></i>
         <strong id="bigErrorText"></strong>
     </div>
+}
+
+@helper GetAnonymousNotificationAlert(Runtasker.Logic.Enumerations.Notifications.Anonymous.AnonymousNotificationType? notType)
+{
+    
 }

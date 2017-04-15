@@ -133,6 +133,9 @@
     <value>from {0}{1}</value>
     <comment>from {цена}{знак рубля}</comment>
   </data>
+  <data name="OrderOnlineHelp" xml:space="preserve">
+    <value>Order Online-Help</value>
+  </data>
   <data name="PayWithBonusMoney" xml:space="preserve">
     <value>You can pay using your bonus money</value>
   </data>

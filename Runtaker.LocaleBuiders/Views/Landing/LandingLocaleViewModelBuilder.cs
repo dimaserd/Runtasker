@@ -85,7 +85,7 @@ namespace Runtasker.LocaleBuilders.Views.Landing
             return result;
         }
 
-        public LocaleViewModel PricingView(int ordinaryPrice, int essayPrice, int courseWorkPrice, string roubleSign)
+        public LocaleViewModel PricingView(int ordinaryPrice, int essayPrice, int courseWorkPrice, int onlineHelpPrice, string roubleSign)
         {
             LocaleViewModel result = new LocaleViewModel();
 
@@ -93,11 +93,13 @@ namespace Runtasker.LocaleBuilders.Views.Landing
             result.Add("CourseWork", OrderResource.CourseWork);
             result.Add("Ordinary", OrderResource.Ordinary);
             result.Add("Essay", OrderResource.Essay);
+            result.Add("OnlineHelp", OrderResource.OnlineHelp);
 
             //цены от скольки-то рублей
             result.Add("OrdinaryFromPrice", string.Format(PricingRes.FromPriceFormat, ordinaryPrice, roubleSign));
             result.Add("EssayFromPrice", string.Format(PricingRes.FromPriceFormat, essayPrice, roubleSign));
             result.Add("CourseWorkFromPrice", string.Format(PricingRes.FromPriceFormat, courseWorkPrice, roubleSign));
+            result.Add("OnlineHelpFromPrice", string.Format(PricingRes.FromPriceFormat, onlineHelpPrice, roubleSign));
 
 
             result.Add("Title", PricingRes.Title);
@@ -109,6 +111,7 @@ namespace Runtasker.LocaleBuilders.Views.Landing
             result.Add("FindOutThePrice", PricingRes.FindOutThePrice);
             result.Add("FreeUniqueTextUpgrade", PricingRes.FreeUniqueTextUpgrade);
 
+            result.Add("OrderOnlineHelp", PricingRes.OrderOnlineHelp);
             return result;
         }
     }

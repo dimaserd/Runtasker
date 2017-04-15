@@ -16,6 +16,7 @@ using HtmlExtensions.StaticRenderers;
 using System.Web;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Runtasker.Logic.Enumerations.Notifications.Anonymous;
 
 namespace Runtasker.Controllers
 {
@@ -452,11 +453,23 @@ namespace Runtasker.Controllers
         #region Онлайн-помощь
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult OnlineHelp()
         {
             if(Settings.Settings.AppSetting != Settings.Enumerations.ApplicationSettingType.Debug)
             {
                 return RedirectToAction("Index");
+            }
+
+            if(!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home", new { notType = AnonymousNotificationType.TriedToOrderOnlineHelp });
+            }
+
+            if (!User.Identity.IsEmailConfirmed())
+            {
+                ErrorWorker.OnCustomerTriedToAddAnOrderWithUnconfirmedAccount();
+                return RedirectToAction("Index", "Home");
             }
 
             ViewData["localeModel"] = ModelBuilder.OnlineHelpView();

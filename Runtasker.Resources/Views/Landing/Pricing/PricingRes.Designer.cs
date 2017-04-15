@@ -106,6 +106,15 @@ namespace Runtasker.Resources.Views.Landing.Pricing {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Order Online-Help.
+        /// </summary>
+        public static string OrderOnlineHelp {
+            get {
+                return ResourceManager.GetString("OrderOnlineHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на You can pay using your bonus money.
         /// </summary>
         public static string PayWithBonusMoney {

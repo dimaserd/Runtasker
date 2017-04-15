@@ -152,6 +152,8 @@ namespace Runtasker.Logic.Entities
             MyDescriptionAttribute[] attributes = (MyDescriptionAttribute[])val.GetType().GetField(val.ToString()).GetCustomAttributes(typeof(MyDescriptionAttribute), false);
             return attributes.Length > 0 ? attributes[0].Description : string.Empty;
         }
+
+        
         #endregion
 
         public static string ToDescriptionString(this OrderErrorType val)
@@ -238,13 +240,14 @@ namespace Runtasker.Logic.Entities
 
     public class Order
     {
-        #region Constructors
+        #region Конструктор
         public Order()
         {
             Messages = new List<Message>();
         }
         #endregion
 
+        #region Свойства
         [Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -293,10 +296,14 @@ namespace Runtasker.Logic.Entities
         public int Rating { get; set; }
 
         public string Comment { get; set; }
+
+        #endregion
+
+        #region Виртуальные коллекции
         [JsonIgnore]
         public virtual ICollection<Message> Messages { get; set; }
+        #endregion
 
-        
 
     }
 

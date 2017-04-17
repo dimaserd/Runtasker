@@ -22,13 +22,6 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Alerts
             
             if(!string.IsNullOrEmpty(N.Link))
             {
-                /*
-                HtmlButton buttonLink = new HtmlButton
-                (
-                    HtmlButtonType.Link,
-                    HtmlButtonSize.Large,
-                    new HtmlLink(N.Link)
-                );*/
                 sb.Append($"<p>{N.Link}</p>");
             }
             sb.Append("</div>");
@@ -36,7 +29,6 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Alerts
         }
 
         
-
     }
 
     #region Enums with extensions

@@ -15,7 +15,7 @@ namespace Runtasker.Controllers
     [AllowAnonymous]
     public class NotificationController : Controller
     {
-        #region Private Fields
+        #region Поля
         IMyDbContext _db = new MyDbContext();
 
         AccountInfoModels _infoModels;
@@ -39,7 +39,7 @@ namespace Runtasker.Controllers
 
         #endregion
 
-        #region Properties
+        #region Свойства
         public WebUINotificater Notificater
         {
             get
@@ -65,8 +65,8 @@ namespace Runtasker.Controllers
             }
         }
         #endregion
+        
         // GET: Notification
-
         public ActionResult Index()
         {
             Notification model = Notificater.GetNotification();

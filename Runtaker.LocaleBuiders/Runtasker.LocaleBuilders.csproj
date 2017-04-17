@@ -58,6 +58,7 @@
     <Compile Include="Notification\AccountNotificationBuilder.cs" />
     <Compile Include="Notification\CustomerOrderNotificationBuilder.cs" />
     <Compile Include="Notification\FileNotificationBuilder.cs" />
+    <Compile Include="Notification\GuestNotificationBuilder.cs" />
     <Compile Include="Notification\PerformerOrderNotificationBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statics\LanguageStatic.cs" />

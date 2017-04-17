@@ -36,5 +36,10 @@
 
 @helper GetAnonymousNotificationAlert(Runtasker.Logic.Enumerations.Notifications.Anonymous.AnonymousNotificationType? notType)
 {
-    
+Runtasker.Models.Notifications.UINotificationModel model = Runtasker.Statics.Notifications.UIGuestNotifications.GetUINotification(notType);
+if (model != null)
+{
+        <div class="alert @model.Type. alert-dismissable">
+
+        </div>
 }

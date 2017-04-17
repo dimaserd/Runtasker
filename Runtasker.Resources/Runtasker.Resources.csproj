@@ -254,6 +254,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FileNotRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Notifications\GuestNotifications\GuestNotRes.ru-RU.Designer.cs">
+      <DependentUpon>GuestNotRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Notifications\GuestNotifications\GuestNotRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GuestNotRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Notifications\PaymentMethods\PaymentNotRes.ru-RU.Designer.cs">
       <DependentUpon>PaymentNotRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -883,6 +893,14 @@
     <EmbeddedResource Include="Notifications\FileMethods\FileNotRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FileNotRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notifications\GuestNotifications\GuestNotRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GuestNotRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notifications\GuestNotifications\GuestNotRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GuestNotRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Notifications\PaymentMethods\PaymentNotRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -204,6 +204,7 @@
     <Compile Include="Models\VkNotificater\VkUserInfo.cs" />
     <Compile Include="Models\WokerResults\WorkerPropertyResult.cs" />
     <Compile Include="Statics\Notifications\CustomerOrderNotifications.cs" />
+    <Compile Include="Statics\Notifications\GuestNotifications.cs" />
     <Compile Include="Workers\Admin\Users\AdminUserCreation.cs" />
     <Compile Include="Workers\Logging\LoggingWorker.cs" />
     <Compile Include="Workers\Notifications\Orders\PerformerNotificationCreator.cs" />

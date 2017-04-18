@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\ErrorTextAttribute.cs" />
+    <Compile Include="Attributes\OrderActionType\ActionLinkAttribute.cs" />
     <Compile Include="Attributes\PopOverInfoAttribute.cs" />
     <Compile Include="Attributes\RatingSizeAttribute.cs" />
     <Compile Include="Attributes\SpecifyDropdownAttribute.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Payment.cs" />
     <Compile Include="Entities\PaymentTransaction.cs" />
+    <Compile Include="Enumerations\ActionTypes\OrderActionType.cs" />
     <Compile Include="Enumerations\DisposingInternalObjectsSetting.cs" />
     <Compile Include="Enumerations\InfoModels\InfoModelType.cs" />
     <Compile Include="Enumerations\Notifications\Anonymous\AnonymousNotificationType.cs" />

@@ -49,6 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AClass\SpecClass.cs" />
+    <Compile Include="Actions\OrderActions\OrderActionsRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderActionsRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\Account\AccountRes.ru-RU.Designer.cs">
       <DependentUpon>AccountRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -103,6 +108,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>OrderResource.zh-CN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Enumerations\OrderActionType\OrderActionTypeRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderActionTypeRes.resx</DependentUpon>
     </Compile>
     <Compile Include="HtmlEmail\SocialAndContact\SocContactRes.ru-RU.Designer.cs">
       <DependentUpon>SocContactRes.ru-RU.resx</DependentUpon>
@@ -729,6 +739,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Actions\OrderActions\OrderActionsRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrderActionsRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controllers\Account\AccountRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountRes.ru-RU.Designer.cs</LastGenOutput>
@@ -772,6 +786,10 @@
     <EmbeddedResource Include="Entities\Order\OrderResource.zh-CN.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OrderResource.zh-CN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enumerations\OrderActionType\OrderActionTypeRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrderActionTypeRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="HtmlEmail\SocialAndContact\SocContactRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

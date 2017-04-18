@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.AspNet.Identity;
 using Runtasker.Logic.Models.Orders;
+using Runtasker.Statics.Actions;
 
 namespace Runtasker.Controllers.Api
 {
@@ -36,6 +37,8 @@ namespace Runtasker.Controllers.Api
                     .Select(x => new OrderMessagesInfo
                     {
                         Id = x.Id,
+                        //задание ссылки по каждому заказу
+                        ActionLink = CustomerActions.GetActionLinkFromOrder(x),
                         UnreadCount = x.Messages.Count(m => m.ReceiverGuid == UserGuid && m.Status == MessageStatus.New)
                     }).ToList();
 

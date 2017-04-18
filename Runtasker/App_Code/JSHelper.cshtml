@@ -15,3 +15,22 @@
             }
     </script>
 }
+
+@helper GetMakeLoadingFunction()
+{
+    <script>
+        function MakeLoading(elementId) {
+            var sp = document.createElement("span");
+            sp.className = "text-center";
+
+            sp.className = "fa fa-spinner fa-5x fa-spin";
+
+            var searchResult = document.getElementById(elementId);
+
+            searchResult.innerHTML = "";
+
+            searchResult.appendChild(sp);
+
+        }
+    </script>
+}

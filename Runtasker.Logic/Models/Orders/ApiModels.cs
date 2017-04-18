@@ -13,8 +13,17 @@ namespace Runtasker.Logic.Models.Orders
 
     public class OrderMessagesInfo
     {
+        public ActionLink ActionLink { get; set; }
+
         public int Id { get; set; }
 
         public int UnreadCount { get; set; }
+    }
+
+    public class ActionLink
+    {
+        public string Link { get; set; }
+
+        public string Text { get; set; }
     }
 }

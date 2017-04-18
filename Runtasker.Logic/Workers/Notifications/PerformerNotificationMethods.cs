@@ -237,7 +237,7 @@ namespace Runtasker.Logic.Workers.Notifications
             SetCustomerCulture(order);
             decimal leftSum = order.Sum - order.PaidSum;
 
-            ForNotification model = ModelBuilder.Executed(order.Id, leftSum, HtmlSigns.Rouble.ToString());
+            ForNotification model = ModelBuilder.Executed(order.Id, leftSum, HtmlSigns.Rouble);
 
             Notification customerN = new Notification
             {

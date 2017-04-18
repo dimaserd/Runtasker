@@ -134,4 +134,15 @@
     <value>Оплатить половину суммы заказа №{0}</value>
     <comment>Оплатить половину суммы заказа №{номер заказа}</comment>
   </data>
+  <data name="PayOnlineHelpTitle" xml:space="preserve">
+    <value>Оплата Онлайн-Помощи</value>
+  </data>
+  <data name="PayRoublesFormat" xml:space="preserve">
+    <value>Оплатить {0}{1}</value>
+    <comment>Оплатить {сумма к оплате}{знак рубля}</comment>
+  </data>
+  <data name="PaySecondHalfFormat" xml:space="preserve">
+    <value>Оплата второй половины суммы заказа №{0}</value>
+    <comment>Оплата второй половины суммы заказа №{номер заказа}</comment>
+  </data>
 </root>

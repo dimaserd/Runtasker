@@ -134,4 +134,16 @@
     <value>Pay half price of order #{0}</value>
     <comment>Pay half price of order #{номер заказа}</comment>
   </data>
+  <data name="PayOnlineHelpTitle" xml:space="preserve">
+    <value>Pay Online-Help</value>
+    <comment>Оплата Онлайн-Помощи</comment>
+  </data>
+  <data name="PayRoublesFormat" xml:space="preserve">
+    <value>Pay {0}{1}</value>
+    <comment>Pay {сумма к оплате}{знак рубля}</comment>
+  </data>
+  <data name="PaySecondHalfFormat" xml:space="preserve">
+    <value>Pay second half of order #{0}</value>
+    <comment>Pay second half of order #{номер заказа}</comment>
+  </data>
 </root>

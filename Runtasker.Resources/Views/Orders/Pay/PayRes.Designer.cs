@@ -104,5 +104,32 @@ namespace Runtasker.Resources.Views.Orders.Pay {
                 return ResourceManager.GetString("PayHalfFormat", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Pay Online-Help.
+        /// </summary>
+        public static string PayOnlineHelpTitle {
+            get {
+                return ResourceManager.GetString("PayOnlineHelpTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Pay {0}{1}.
+        /// </summary>
+        public static string PayRoublesFormat {
+            get {
+                return ResourceManager.GetString("PayRoublesFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Pay second half of order #{0}.
+        /// </summary>
+        public static string PaySecondHalfFormat {
+            get {
+                return ResourceManager.GetString("PaySecondHalfFormat", resourceCulture);
+            }
+        }
     }
 }

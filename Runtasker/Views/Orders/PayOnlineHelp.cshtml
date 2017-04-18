@@ -1,13 +1,14 @@
 ﻿@using Runtasker.Logic.Models.Orders.Pay
 @using HtmlExtensions.StaticRenderers
-@using Extensions.Decimal
-@using Runtasker.Resources.Views.Orders.Pay
 @using Runtasker.HtmlExtensions
+@using Runtasker.LocaleBuilders.Models
 @model PayOnlineHelp
 @{
-    ViewBag.Title = $"Pay roubles";
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
 
-    MvcHtmlString title = MvcHtmlString.Create($"{PayRes.Pay} {Model.RequiredSum.ToMoney()}{HtmlSigns.Rouble}");
+    ViewBag.Title = localeModel["Title"];
+
+    MvcHtmlString title = MvcHtmlString.Create(localeModel["PayRoublesHtml"]);
 
 }
 
@@ -16,9 +17,9 @@
     <div class="container">
         <h1>@title</h1>
         <ul class="breadcrumb">
-            <li><a href="@Url.Action("Index","Home")">@PayRes.HomeNav</a></li>
-            <li><a href="@Url.Action("Index","Orders")">@PayRes.MyOrdersNav</a></li>
-            <li class="active">@PayRes.Pay</li>
+            <li><a href="@Url.Action("Index","Home")">@localeModel["HomeNav"]</a></li>
+            <li><a href="@Url.Action("Index","Orders")">@localeModel["MyOrdersNav"]</a></li>
+            <li class="active">@localeModel["ActiveNav"]</li>
         </ul>
     </div>
 </header>
@@ -52,7 +53,7 @@
         @Html.HiddenFor(model => model.OrderId)
         @Html.HiddenFor(model => model.RequiredSum)
 
-        <button class="btn btn-lg btn-success">@PayRes.Pay</button>
+        <button class="btn btn-lg btn-success">@localeModel["ActionBtnText"]</button>
     </div>
 }
 

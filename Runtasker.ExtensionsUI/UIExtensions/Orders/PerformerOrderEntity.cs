@@ -6,18 +6,17 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
     //TO DO make the base class
     public class PerformerOrderHtmlEntity : OrderEntityBase
     {
-        #region Constructors
+        #region Конструктор
         public PerformerOrderHtmlEntity(Order order) : base(order)
         {
         }
         #endregion
 
-        #region Building Methods
+        #region Построительные методы
         //TODO ClaimForDecription Method
         string GetDescription()
         {
             
-
             string uniqueId = $"collapse{Order.Id}";
 
             StringBuilder sb = new StringBuilder();
@@ -27,7 +26,9 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
             .Append("Description</a></h4>")
             .Append($"<div id='{uniqueId}' class='panel-collapse collapse'>")
             .Append("<div class='panel-body'>")
-            .Append($"{Order.Description}</div></div>");
+            .Append($"{Order.Description}")
+            
+            .Append("</div></div>");
         
              return sb.ToString();
         }

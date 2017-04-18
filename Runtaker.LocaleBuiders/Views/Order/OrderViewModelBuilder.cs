@@ -8,9 +8,9 @@ using Runtasker.Resources.Views.Orders.Rating;
 
 namespace Runtasker.LocaleBuilders.Views.Order
 {
-    public class OrderViewModelBuilder : UICultureSwitcher
+    public static class OrderViewModelBuilder
     {
-        public LocaleViewModel RatingView(int orderId)
+        public static LocaleViewModel RatingView(int orderId)
         {
             LocaleViewModel result = new LocaleViewModel();
 
@@ -24,7 +24,8 @@ namespace Runtasker.LocaleBuilders.Views.Order
             return result;
         }
 
-        public LocaleViewModel CreateOrderView()
+        #region Создание заказа
+        public static LocaleViewModel CreateOrderView()
         {
             LocaleViewModel result = new LocaleViewModel();
 
@@ -55,7 +56,7 @@ namespace Runtasker.LocaleBuilders.Views.Order
             return result;
         }
 
-        public LocaleViewModel OnlineHelpView()
+        public static LocaleViewModel OnlineHelpView()
         {
             LocaleViewModel result = new LocaleViewModel();
 
@@ -85,8 +86,11 @@ namespace Runtasker.LocaleBuilders.Views.Order
             
             return result;
         }
+        #endregion
 
-        public LocaleViewModel PayHalfView(int orderId, string paySign)
+        #region Оплата
+
+        public static LocaleViewModel PayHalfView(int orderId, string paySign)
         {
             LocaleViewModel result = new LocaleViewModel();
 
@@ -97,5 +101,41 @@ namespace Runtasker.LocaleBuilders.Views.Order
             result.Add("PayBtnInnerHtml", string.Format(PayRes.PayBtnFormat, paySign));
             return result;
         }
+
+
+        public static LocaleViewModel PayAnotherHalfView(int orderId, string sumToPay, string roubleSign)
+        {
+            LocaleViewModel result = new LocaleViewModel();
+
+            result.Add("Title", string.Format(PayRes.PaySecondHalfFormat, orderId));
+            result.Add("PayRoublesHtml", string.Format(PayRes.PayRoublesFormat, sumToPay, roubleSign));
+
+            //элементы навигации
+            result.Add("HomeNav", PayRes.HomeNav);
+            result.Add("MyOrdersNav", PayRes.MyOrdersNav);
+            result.Add("ActiveNav", PayRes.Pay);
+
+            result.Add("ActionBtnText", PayRes.Pay);
+
+            return result;
+        }
+        
+        public static LocaleViewModel PayOnlineHelp(string sumToPay, string roubleSign)
+        {
+            LocaleViewModel result = new LocaleViewModel();
+
+            result.Add("Title", PayRes.PayOnlineHelpTitle);
+            result.Add("PayRoublesHtml", string.Format(PayRes.PayRoublesFormat, sumToPay, roubleSign));
+
+            //элементы навигации
+            result.Add("HomeNav", PayRes.HomeNav);
+            result.Add("MyOrdersNav", PayRes.MyOrdersNav);
+            result.Add("ActiveNav", PayRes.Pay);
+
+            result.Add("ActionBtnText", PayRes.Pay);
+
+            return result;
+        }
+        #endregion
     }
 }

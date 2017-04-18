@@ -17,6 +17,7 @@ using System.Web;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Enumerations.Notifications.Anonymous;
+using Extensions.Decimal;
 
 namespace Runtasker.Controllers
 {
@@ -37,8 +38,6 @@ namespace Runtasker.Controllers
         MyDbContext _db = new MyDbContext();
 
         CustomerOrderErrorEvents _errorWorker;
-
-        OrderViewModelBuilder _modelBuilder;
         #endregion
 
         #region Свойства
@@ -94,25 +93,13 @@ namespace Runtasker.Controllers
             }
         }
 
-        OrderViewModelBuilder ModelBuilder
-        {
-            get
-            {
-                if(_modelBuilder == null)
-                {
-                    _modelBuilder = new OrderViewModelBuilder();
-                }
-                return _modelBuilder;
-            }
-        }
-
         string UserGuid
         {
             get { return User.Identity.GetUserId(); }
         }
         #endregion
 
-        
+        #region Http Обработчики
 
         // GET: Orders
         [AllowAnonymous]
@@ -143,8 +130,6 @@ namespace Runtasker.Controllers
             IEnumerable<Order> model = await OrderWorker.GetMyOrdersAsync();
             return View(viewName: "MiniPanel", model:model);
         }
-
-
 
         #region Исправление ошибок
 
@@ -228,9 +213,7 @@ namespace Runtasker.Controllers
         #region Оплата
 
         #region Оплата первой половины
-        //Orders should be paid only if current user
-        //has money on his balance 
-        //if not redirect him to Payment Controller Methods
+        
         [HttpGet]
         public ActionResult PayHalf(int id)
         {
@@ -240,17 +223,16 @@ namespace Runtasker.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewData["localeModel"] = ModelBuilder.PayHalfView(model.OrderId, FASigns.CreditCard.ToString());
+            ViewData["localeModel"] = OrderViewModelBuilder.PayHalfView(model.OrderId, FASigns.CreditCard.ToString());
             return View(model);
         }
 
-        //TODO
         [HttpPost]
         public ActionResult PayHalf(PayHalfModel model)
         {
             if (!ModelState.IsValid)
             {
-                ViewData["localeModel"] = ModelBuilder.PayHalfView(model.OrderId, FASigns.CreditCard.ToString());
+                ViewData["localeModel"] = OrderViewModelBuilder.PayHalfView(model.OrderId, FASigns.CreditCard.ToString());
                 return View(model);
             }
 
@@ -262,7 +244,7 @@ namespace Runtasker.Controllers
                 {
                     ModelState.AddModelError("", error);
                 }
-                ViewData["localeModel"] = ModelBuilder.PayHalfView(model.OrderId, FASigns.CreditCard.ToString());
+                ViewData["localeModel"] = OrderViewModelBuilder.PayHalfView(model.OrderId, FASigns.CreditCard.ToString());
                 return View(model);
             }
 
@@ -277,7 +259,10 @@ namespace Runtasker.Controllers
         public ActionResult PayAnotherHalf(int id)
         {
             PayAnotherHalfModel model = OrderWorker.GetPayAnotherHalfModel(id);
-            if(model == null)
+
+            ViewData["localeModel"] = OrderViewModelBuilder.PayAnotherHalfView(model.OrderId, model.RequiredSum.ToMoney(), HtmlSigns.Rouble);
+
+            if (model == null)
             {
                 return RedirectToAction("Index");
             }
@@ -289,7 +274,10 @@ namespace Runtasker.Controllers
         [HttpPost]
         public ActionResult PayAnotherHalf(PayAnotherHalfModel model)
         {
-            if(!ModelState.IsValid)
+
+            ViewData["localeModel"] = OrderViewModelBuilder.PayAnotherHalfView(model.OrderId, model.RequiredSum.ToMoney(), HtmlSigns.Rouble);
+
+            if (!ModelState.IsValid)
             {
                 return View(model);
             }
@@ -308,13 +296,15 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region Оплата ОнлайнПомощи
+        #region Оплата Онлайн-Помощи
         [HttpGet]
         public async Task<ActionResult> PayOnlineHelp(int id)
         {
             PayOnlineHelp model = await OrderWorker.GetPayOnlineHelpModelAsync(id);
 
-            if(model == null)
+            ViewData["localeModel"] = OrderViewModelBuilder.PayOnlineHelp(model.RequiredSum.ToMoney(), HtmlSigns.Rouble);
+
+            if (model == null)
             {
                 return RedirectToAction("Index");
             }
@@ -325,7 +315,10 @@ namespace Runtasker.Controllers
         [HttpPost]
         public async Task<ActionResult> PayOnlineHelp(PayOnlineHelp model)
         {
-            if(ModelState.IsValid)
+
+            ViewData["localeModel"] = OrderViewModelBuilder.PayOnlineHelp(model.RequiredSum.ToMoney(), HtmlSigns.Rouble);
+
+            if (ModelState.IsValid)
             {
                 WorkerResult result = await OrderWorker.PayOnlineHelpAsync(model);
 
@@ -352,14 +345,14 @@ namespace Runtasker.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewData["localeModel"] = ModelBuilder.RatingView(model.OrderId);
+            ViewData["localeModel"] = OrderViewModelBuilder.RatingView(model.OrderId);
             return View(model);
         }
 
         [HttpPost]
         public ActionResult Rating(RatingOrderModel model)
         {
-            ViewData["localeModel"] = ModelBuilder.RatingView(model.OrderId);
+            ViewData["localeModel"] = OrderViewModelBuilder.RatingView(model.OrderId);
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -397,7 +390,7 @@ namespace Runtasker.Controllers
                 ErrorWorker.OnCustomerTriedToAddAnOrderWithUnconfirmedAccount();
                 return RedirectToAction("Index", "Home");
             }
-            ViewData["localeModel"] = ModelBuilder.CreateOrderView();
+            ViewData["localeModel"] = OrderViewModelBuilder.CreateOrderView();
 
             return View(model : new OrderCreateModel() { FinishDate = DateTime.Now});
         }
@@ -444,7 +437,7 @@ namespace Runtasker.Controllers
                 
             }
 
-            ViewData["localeModel"] = ModelBuilder.CreateOrderView();
+            ViewData["localeModel"] = OrderViewModelBuilder.CreateOrderView();
             return View(model: createOrder);
         
         }
@@ -472,7 +465,7 @@ namespace Runtasker.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            ViewData["localeModel"] = ModelBuilder.OnlineHelpView();
+            ViewData["localeModel"] = OrderViewModelBuilder.OnlineHelpView();
             return View();
         }
 
@@ -519,11 +512,13 @@ namespace Runtasker.Controllers
             return RedirectToAction("DownloadSolution", "File", routeValues: new { id = id});
         }
 
+        #endregion
+
         protected override void Dispose(bool disposing)
         {
             IDisposable[] toDisposes = new IDisposable[]
             {
-                _db, _orderWorker, _modelBuilder
+                _db, _orderWorker
             };
 
             if (disposing)

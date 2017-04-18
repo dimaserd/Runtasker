@@ -172,4 +172,8 @@
     <value>Мы оценили стоимость Онлайн-Помощи №{0}.</value>
     <comment>Мы оценили стоимость Онлайн-Помощи №{номер заказа}.</comment>
   </data>
+  <data name="ExecutedBtnTextFormat" xml:space="preserve">
+    <value>Оплатить {0}{1}</value>
+    <comment>Оплатить {сумма к оплате}{знак рубля}</comment>
+  </data>
 </root>

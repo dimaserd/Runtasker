@@ -10,12 +10,14 @@ namespace Runtasker.Logic.Workers.Orders
         #region Конструктор
         public OrdersWorkerBase(MyDbContext context, string userGuid)
         {
-            Construct(userGuid);
+            Context = context;
+            UserGuid = userGuid;
+            
         }
 
         void Construct(string userGuid)
         {
-            UserGuid = userGuid;
+            
         }
         #endregion
 

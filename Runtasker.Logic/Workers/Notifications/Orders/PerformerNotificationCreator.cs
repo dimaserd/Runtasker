@@ -1,12 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models.VkNotificater;
 using Runtasker.Logic.Contexts.Interfaces;
-
-using System.Data.Entity;
 using Runtasker.Logic.Models.ManageModels;
 
 namespace Runtasker.Logic.Workers.Notifications.Orders
@@ -205,7 +201,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders
             return PerformersAndAdmins.Select(x =>
             {
                 OtherUserInfo info = x.GetOtherInfo();
-                if( (info != null) && (info.Specialization.Contains(orderSubjectEnum)) )
+                if( (info != null) && (info.Specialization != null) && (info.Specialization.Contains(orderSubjectEnum)) )
                 {
                     return x;
                 }

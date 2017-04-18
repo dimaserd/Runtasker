@@ -1,13 +1,13 @@
 ﻿@using Runtasker.Logic.Models.Orders.Pay
 @using HtmlExtensions.StaticRenderers
-
+@using Extensions.Decimal
 @using Runtasker.Resources.Views.Orders.Pay
 @using Runtasker.HtmlExtensions
 @model PayOnlineHelp
 @{
     ViewBag.Title = $"Pay roubles";
 
-    MvcHtmlString title = MvcHtmlString.Create($"{PayRes.Pay} {Model.RequiredSum}{HtmlSigns.Rouble}");
+    MvcHtmlString title = MvcHtmlString.Create($"{PayRes.Pay} {Model.RequiredSum.ToMoney()}{HtmlSigns.Rouble}");
 
 }
 

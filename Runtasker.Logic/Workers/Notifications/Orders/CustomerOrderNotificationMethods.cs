@@ -31,16 +31,26 @@ namespace Runtasker.Logic.Workers.Notifications
         void Construct()
         {
             Emailer = new CustomerEmailMethods();
-
-            
-
             ModelBuilder = new CustomerOrderNotificationBuilder();
-            PerformerNotificationGetter = new PerformerNotificationCreator(Context);
         }
         #endregion
 
-        #region Properties
-        PerformerNotificationCreator PerformerNotificationGetter { get; set; }
+        #region Поля
+        PerformerNotificationCreator _performerNotificationCreator;
+        #endregion
+
+        #region Свойства
+        PerformerNotificationCreator PerformerNotificationGetter
+        {
+            get
+            {
+                if(_performerNotificationCreator == null)
+                {
+                    _performerNotificationCreator = new PerformerNotificationCreator(Context);
+                }
+                return _performerNotificationCreator;
+            }
+        }
 
         CustomerEmailMethods Emailer { get; set; }
 

@@ -2,6 +2,7 @@
 using Runtasker.LocaleBuilders.Views.Landing;
 using Runtasker.Settings;
 using System.Web.Mvc;
+using Runtasker.Logic.Enumerations.Notifications.Anonymous;
 
 namespace Runtasker.Controllers
 {
@@ -41,9 +42,9 @@ namespace Runtasker.Controllers
 
         #region Http methods
         // GET: Landing
-        public ActionResult Index()
+        public ActionResult Index(AnonymousNotificationType? notType = null)
         {
-            
+            ViewData["notType"] = notType;
             return View();
         }
 

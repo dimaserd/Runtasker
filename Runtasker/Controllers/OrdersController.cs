@@ -463,7 +463,7 @@ namespace Runtasker.Controllers
 
             if(!Request.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Home", new { notType = AnonymousNotificationType.TriedToOrderOnlineHelp });
+                return RedirectToAction("Index", "Landing", new { notType = AnonymousNotificationType.TriedToOrderOnlineHelp });
             }
 
             if (!User.Identity.IsEmailConfirmed())

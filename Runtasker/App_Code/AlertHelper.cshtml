@@ -39,7 +39,17 @@
 Runtasker.Models.Notifications.UINotificationModel model = Runtasker.Statics.Notifications.UIGuestNotifications.GetUINotification(notType);
 if (model != null)
 {
-        <div class="alert @model.Type. alert-dismissable">
+        string _class = $"alert {Runtasker.Logic.Entities.NotificationEnumExtensions.ToDescriptionString(model.Type)} alert-dismissable";
 
+        <div class="@_class">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4>@model.Title</h4>
+            <p>@model.Text</p>
+            @if(model.ActionLink != null)
+            {
+                <p>@Extensions.String.StringExtension.ToHtml(model.ActionLink.ToString())</p>
+            }
         </div>
+}
+    
 }

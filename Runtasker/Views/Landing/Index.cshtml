@@ -1,7 +1,10 @@
 ﻿@using Runtasker.Resources.Views.Shared.NewLayout
 @using Runtasker.Resources.Views.Landing.Index
+@using Runtasker.Logic.Enumerations.Notifications.Anonymous
 @{
     Layout = null;
+
+    AnonymousNotificationType? notType = ViewData["notType"] as AnonymousNotificationType?;
 }
 
 <!DOCTYPE html>
@@ -119,6 +122,8 @@
     
     <!-- WRAPPER -->
     <div id="wrapper">
+
+        @AlertHelper.GetAnonymousNotificationAlert(notType)
 
         <!--SLIDER-->
         @{Html.RenderAction("Slider", "Landing");}

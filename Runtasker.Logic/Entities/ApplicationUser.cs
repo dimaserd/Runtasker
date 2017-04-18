@@ -60,9 +60,9 @@ namespace Runtasker.Logic.Entities
             userIdentity.AddClaim(new Claim("Language", Language));
             userIdentity.AddClaim(new Claim("PhoneNumber", PhoneNumber == null ? string.Empty : PhoneNumber.ToString()));
 
-            userIdentity.AddClaim(new Claim("Specialization", Specialization));
-            userIdentity.AddClaim(new Claim("VkDomain", VkDomain));
-            userIdentity.AddClaim(new Claim("VkId", VkId));
+            userIdentity.AddClaim(new Claim("Specialization", Specialization == null? string.Empty : Specialization.ToString()));
+            userIdentity.AddClaim(new Claim("VkDomain", VkDomain == null ? string.Empty : VkDomain.ToString()));
+            userIdentity.AddClaim(new Claim("VkId", VkId == null ? string.Empty : VkId.ToString()));
 
             // Здесь добавьте утверждения пользователя
             return userIdentity;

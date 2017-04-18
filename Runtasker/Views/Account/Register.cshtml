@@ -69,6 +69,15 @@
         </div>
         <!-- /REGISTER -->
 
+        <!--Социальные сети -->
+        <div class="col-md-6">
+            @viewModel["SocialRegisterTitleHtml"].ToHtml()
+            <div class="white-row">
+                @Html.Partial("BlockLoginList", new ExternalLoginListModel { ReturnUrl = ViewBag.ReturnUrl, Pattern = viewModel["RegisterViaSocialFormat"] })
+            </div>
+        </div>
+        <!-- /Социальные сети -->
+
         <!-- WHY? -->
         <div class="col-md-6">
             <h2>@viewModel["WhyToReg"].ToHtml()</h2>

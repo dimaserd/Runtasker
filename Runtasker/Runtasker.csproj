@@ -3454,7 +3454,6 @@
     <Content Include="Views\Dev\CreateUser.cshtml" />
     <Content Include="Views\Dev\AddUserToRole.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\NewLoginList.cshtml" />
     <Content Include="Views\Manage\Profile.cshtml" />
     <Content Include="Views\Message\ChatsInModals.cshtml" />
@@ -3491,7 +3490,7 @@
     <Content Include="Views\Account\BlockLoginList.cshtml" />
     <Content Include="Views\Orders\MiniPanel.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\NewLogin.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Message\NewActivePanel.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\VkOrders\Index.cshtml" />
@@ -3507,7 +3506,6 @@
     <Content Include="Views\Performer\DeleteUser.cshtml" />
     <Content Include="Views\Performer\DeleteOrders.cshtml" />
     <Content Include="Views\VkOrders\Refresh.cshtml" />
-    <Content Include="Views\NewOrder\AddDescription.cshtml" />
     <Content Include="Views\Administration\CreateUser.cshtml" />
     <Content Include="Views\Administration\Index.cshtml" />
     <Content Include="Views\Administration\AddUserToRole.cshtml" />
@@ -3530,7 +3528,6 @@
     <Content Include="App_Code\OrderScripts.cshtml" />
     <Content Include="Views\Language\NewIndex.cshtml" />
     <Content Include="App_Code\LogoHelper.cshtml" />
-    <Content Include="Views\Home\Landing.cshtml" />
     <Content Include="Views\Landing\Index.cshtml" />
     <Content Include="Views\Landing\Slider.cshtml" />
     <Content Include="Views\Landing\AboutUs.cshtml" />

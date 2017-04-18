@@ -149,6 +149,7 @@ namespace Runtasker.LocaleBuilders.Views.Account
             result.Add("Title", RegisterRes.Title);
             result.Add("HomeNav", RegisterRes.HomeNav);
             result.Add("ActiveNav", RegisterRes.ActiveNav);
+            
             //плюсы регистрации
             result.Add("RegPlusesHeader", RegisterRes.RegPlusesHeader);
             result.Add("RegPlus1", RegisterRes.RegPlus1);
@@ -167,6 +168,11 @@ namespace Runtasker.LocaleBuilders.Views.Account
             result.Add("ClickToSI", RegisterRes.ClickToSI);
             result.Add("ContCustSup", RegisterRes.ContCustSup);
             result.Add("htmlContactField", string.Format(RegisterRes.ContactTextPattern, RegisterRes.ContactLinkText.WrapToA(href: "/Home/Contact")));
+
+
+            //регистрация через социальные сети
+            result.Add("SocialRegisterTitleHtml", string.Format(RegisterRes.RegisterViaSocialsHeaderFormat, RegisterRes.RegisterViaSocialsHeaderToMark.WrapToEm().WrapToStrong()).WrapToH2());
+            result.Add("RegisterViaSocialFormat", RegisterRes.RegisterViaSocialFormat);
 
             return result;
         }

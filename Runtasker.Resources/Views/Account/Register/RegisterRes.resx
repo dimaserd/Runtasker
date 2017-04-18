@@ -189,4 +189,15 @@
   <data name="HeaderToMark" xml:space="preserve">
     <value>account</value>
   </data>
+  <data name="RegisterViaSocialFormat" xml:space="preserve">
+    <value>Register via {0}</value>
+    <comment>Зарегистрироваться через {Google}</comment>
+  </data>
+  <data name="RegisterViaSocialsHeaderFormat" xml:space="preserve">
+    <value>Register {0}</value>
+    <comment>Register &lt;mark&gt;via social providers&lt;/mark&gt;</comment>
+  </data>
+  <data name="RegisterViaSocialsHeaderToMark" xml:space="preserve">
+    <value>via social providers</value>
+  </data>
 </root>

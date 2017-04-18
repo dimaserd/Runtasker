@@ -34,22 +34,36 @@
     </div>
 }
 
-@helper GetAnonymousNotificationAlert(Runtasker.Logic.Enumerations.Notifications.Anonymous.AnonymousNotificationType? notType)
+@helper GetAnonymousNotificationAlert(Runtasker.Logic.Enumerations.Notifications.Anonymous.AnonymousNotificationType? notType, bool shadowFromTop = false)
 {
 Runtasker.Models.Notifications.UINotificationModel model = Runtasker.Statics.Notifications.UIGuestNotifications.GetUINotification(notType);
 if (model != null)
 {
-        string _class = $"alert {Runtasker.Logic.Entities.NotificationEnumExtensions.ToDescriptionString(model.Type)} alert-dismissable";
-
-        <div class="@_class">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <h4>@model.Title</h4>
-            <p>@model.Text</p>
-            @if(model.ActionLink != null)
+    if(shadowFromTop)
+    {
+        <style>
+            .marginFromShadow
             {
-                <p>@Extensions.String.StringExtension.ToHtml(model.ActionLink.ToString())</p>
+                margin-top: 55px;
             }
+        </style>
+    }
+    string _class = $"alert marginFromShadow {Runtasker.Logic.Entities.NotificationEnumExtensions.ToDescriptionString(model.Type)} alert-dismissable";
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="@Extensions.String.StringExtension.ToHtml(@_class)">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4>@model.Title</h4>
+                    <p>@model.Text</p>
+                    @if (model.ActionLink != null)
+                    {
+                        <p>@Extensions.String.StringExtension.ToHtml(model.ActionLink.ToString())</p>
+                    }
+                </div>
+            </div>
         </div>
+        
 }
     
 }

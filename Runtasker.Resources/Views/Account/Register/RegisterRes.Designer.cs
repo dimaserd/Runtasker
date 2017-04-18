@@ -160,6 +160,33 @@ namespace Runtasker.Resources.Views.Account.Register {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Register via {0}.
+        /// </summary>
+        public static string RegisterViaSocialFormat {
+            get {
+                return ResourceManager.GetString("RegisterViaSocialFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Register {0}.
+        /// </summary>
+        public static string RegisterViaSocialsHeaderFormat {
+            get {
+                return ResourceManager.GetString("RegisterViaSocialsHeaderFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на via social providers.
+        /// </summary>
+        public static string RegisterViaSocialsHeaderToMark {
+            get {
+                return ResourceManager.GetString("RegisterViaSocialsHeaderToMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Join the Runtasker community.
         /// </summary>
         public static string RegPlus1 {

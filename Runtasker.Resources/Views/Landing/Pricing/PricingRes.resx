@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnyTypeOfConnection" xml:space="preserve">
+    <value>Connecting with a performer by the most convenient way</value>
+  </data>
   <data name="DiscussWithPerformer" xml:space="preserve">
     <value>You can discuss your work directly with a performer</value>
   </data>

@@ -186,4 +186,15 @@
   <data name="HeaderToMark" xml:space="preserve">
     <value>учетную запись</value>
   </data>
+  <data name="RegisterViaSocialFormat" xml:space="preserve">
+    <value>Зарегистрироваться через {0}</value>
+    <comment>Зарегистрироваться через {Google}</comment>
+  </data>
+  <data name="RegisterViaSocialsHeaderFormat" xml:space="preserve">
+    <value>Зарегистрироваться {0}</value>
+    <comment>Войти &lt;mark&gt;через аккаунты в социальных сетях&lt;/mark&gt;</comment>
+  </data>
+  <data name="RegisterViaSocialsHeaderToMark" xml:space="preserve">
+    <value>через аккаунты в социальных сетях</value>
+  </data>
 </root>

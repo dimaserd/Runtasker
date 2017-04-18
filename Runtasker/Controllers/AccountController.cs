@@ -11,7 +11,6 @@ using Runtasker.Logic.Workers.Notifications;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers.Invitations;
 using Runtasker.Logic.Workers;
-using Runtasker.Logic.Workers.Info;
 using Runtasker.Resources.Controllers.Account;
 using Runtasker.LocaleBuilders.Views.Account;
 using System;
@@ -20,6 +19,7 @@ using Runtasker.Logic.Workers.Email;
 using Runtasker.Logic.Entities;
 using Runtasker.Settings;
 using HtmlExtensions.StaticRenderers;
+using Runtasker.Logic.Enumerations.InfoModels;
 
 namespace Runtasker.Controllers
 {
@@ -131,9 +131,7 @@ namespace Runtasker.Controllers
                 return _accountWorker;
             }
         }
-
-        AccountInfoModels InfoModels { get; set; }
-
+        
         string UserGuid
         {
             get
@@ -194,7 +192,7 @@ namespace Runtasker.Controllers
 
         void Construct()
         {
-            InfoModels = new AccountInfoModels();
+            
         }
         #endregion
 
@@ -320,7 +318,7 @@ namespace Runtasker.Controllers
             ViewData["viewModel"] = ViewModelBuilder.LoginView();
 
             
-            return View(viewName: "NewLogin");
+            return View();
         }
 
         [HttpPost]
@@ -335,7 +333,7 @@ namespace Runtasker.Controllers
 
             if (!ModelState.IsValid)
             {   
-                return View(viewName: "NewLogin", model:model);
+                return View(model);
             }
 
             // Require the user to have a confirmed email before they can log on.
@@ -344,7 +342,7 @@ namespace Runtasker.Controllers
             if (user == null)
             {
                 ModelState.AddModelError("", AccountRes.WrongInput);
-                return View(viewName: "NewLogin", model:model);
+                return View(model);
             }
 
             // Сбои при входе не приводят к блокированию учетной записи
@@ -361,7 +359,7 @@ namespace Runtasker.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", AccountRes.WrongInput);
-                    return View(viewName: "NewLogin", model: model);
+                    return View(model);
             }
         }
 
@@ -423,7 +421,7 @@ namespace Runtasker.Controllers
        
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Register(RegisterModel model)
+        public async Task<ActionResult> Register(RegisterModel model)
         {
             ViewData["viewModel"] = ViewModelBuilder.RegisterView();
             if (ModelState.IsValid)
@@ -435,16 +433,18 @@ namespace Runtasker.Controllers
                 if(!result.Succeeded)
                 {
                     AddErrors(result);
-                    return View(viewName: "NewRegister",model:model);
+                    return View(model);
                 }
 
+                //авторизуем пользователя
+                await SignInManager.SignInAsync(user, true, true);
+
+                //отправляем подтверждающее письмо
                 SendConfirmationEmail(user);
 
-                InfoModel infoModel = InfoModels.ToConfirmEmail;
-
-                return RedirectToAction("Info", "Notification", routeValues: infoModel);   
+                return RedirectToAction("Info", "Notification", routeValues: new { infoType = InfoModelType.ToConfirmEmail });   
             }
-            return View(viewName: "NewRegister", model : model);
+            return View(model : model);
         }
 
         #region Invitations
@@ -489,12 +489,10 @@ namespace Runtasker.Controllers
                 AddErrors(result);
                 return View(model);
             }
-            SendConfirmationEmail(user);
-            
-            //for redirecting to method to show a message
-            InfoModel infoModel = InfoModels.ToConfirmEmail;
 
-            return RedirectToAction("Info", "Notification", routeValues: infoModel);
+            SendConfirmationEmail(user);
+
+            return RedirectToAction("Info", "Notification", routeValues: new { infoType = InfoModelType.ToConfirmEmail });
         }
         #endregion
 
@@ -513,6 +511,9 @@ namespace Runtasker.Controllers
             {
                 return View("Error");
             }
+
+            ApplicationUser user = await UserManager.FindByIdAsync(UserGuid);
+            await SignInManager.SignInAsync(user, true, true);
 
             ViewData["localeModel"] = ViewModelBuilder.ConfirmEmailView(GISigns.Login);
             return View();

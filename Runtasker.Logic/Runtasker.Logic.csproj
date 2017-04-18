@@ -171,6 +171,7 @@
     <Compile Include="Entities\Payment.cs" />
     <Compile Include="Entities\PaymentTransaction.cs" />
     <Compile Include="Enumerations\DisposingInternalObjectsSetting.cs" />
+    <Compile Include="Enumerations\InfoModels\InfoModelType.cs" />
     <Compile Include="Enumerations\Notifications\Anonymous\AnonymousNotificationType.cs" />
     <Compile Include="Enumerations\Notifications\Customer\Order\CustomerOrderNotificationType.cs" />
     <Compile Include="Enumerations\OrderWorker\OrderCreationType.cs" />

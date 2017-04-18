@@ -89,29 +89,41 @@ namespace Runtasker.LocaleBuilders.Views.Landing
         {
             LocaleViewModel result = new LocaleViewModel();
 
+            result.Add("Title", PricingRes.Title);
+
             //типы работы из другого файла ресурсов
             result.Add("CourseWork", OrderResource.CourseWork);
             result.Add("Ordinary", OrderResource.Ordinary);
             result.Add("Essay", OrderResource.Essay);
             result.Add("OnlineHelp", OrderResource.OnlineHelp);
 
-            //цены от скольки-то рублей
+            //Цены от скольки-то рублей
             result.Add("OrdinaryFromPrice", string.Format(PricingRes.FromPriceFormat, ordinaryPrice, roubleSign));
             result.Add("EssayFromPrice", string.Format(PricingRes.FromPriceFormat, essayPrice, roubleSign));
             result.Add("CourseWorkFromPrice", string.Format(PricingRes.FromPriceFormat, courseWorkPrice, roubleSign));
             result.Add("OnlineHelpFromPrice", string.Format(PricingRes.FromPriceFormat, onlineHelpPrice, roubleSign));
 
 
-            result.Add("Title", PricingRes.Title);
+            
+
+            //Плюсы
+            //для всех видов работ
             result.Add("PayWithBonusMoney", PricingRes.PayWithBonusMoney);
             result.Add("DiscussWithPerformer", PricingRes.DiscussWithPerformer);
             result.Add("FreeCorrections", PricingRes.FreeCorrections);
             result.Add("ShortTimeExecution", PricingRes.ShortTimeExecution);
             result.Add("ReturningFundsWarranty", PricingRes.ReturningFundsWarranty);
-            result.Add("FindOutThePrice", PricingRes.FindOutThePrice);
+
+            //для рефератов и курсовых
             result.Add("FreeUniqueTextUpgrade", PricingRes.FreeUniqueTextUpgrade);
 
+            //для Онлайн-помощи
+            result.Add("AnyTypeOfConnection", PricingRes.AnyTypeOfConnection);
+
+            //Действия
             result.Add("OrderOnlineHelp", PricingRes.OrderOnlineHelp);
+            result.Add("FindOutThePrice", PricingRes.FindOutThePrice);
+
             return result;
         }
     }

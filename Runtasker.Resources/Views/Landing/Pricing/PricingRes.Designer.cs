@@ -61,6 +61,15 @@ namespace Runtasker.Resources.Views.Landing.Pricing {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Connecting with a performer by the most convenient way.
+        /// </summary>
+        public static string AnyTypeOfConnection {
+            get {
+                return ResourceManager.GetString("AnyTypeOfConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на You can discuss your work directly with a performer.
         /// </summary>
         public static string DiscussWithPerformer {

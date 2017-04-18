@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using Runtasker.Logic;
-using Runtasker.Logic.Contexts;
 using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
+using Runtasker.Logic.Enumerations.InfoModels;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers.Info;
 using Runtasker.Logic.Workers.Notifications;
@@ -17,9 +17,7 @@ namespace Runtasker.Controllers
     {
         #region Поля
         IMyDbContext _db = new MyDbContext();
-
-        AccountInfoModels _infoModels;
-
+        
         WebUINotificater _notificater;
 
         string UserGuid
@@ -52,20 +50,9 @@ namespace Runtasker.Controllers
             }
             
         }
-
-        AccountInfoModels InfoModels
-        {
-            get
-            {
-                if(_infoModels == null)
-                {
-                    _infoModels = new AccountInfoModels();
-                }
-                return _infoModels;
-            }
-        }
         #endregion
-        
+
+        #region Http обработчики
         // GET: Notification
         public ActionResult Index()
         {
@@ -85,16 +72,18 @@ namespace Runtasker.Controllers
             return PartialView(viewName: "Index", model: model);
         }
 
-        public ActionResult Info(string type)
+        public ActionResult Info(InfoModelType? infoType = null)
         {
-            if(type == "toConfirmEmail")
+            if(infoType != null)
             {
-                InfoModel infoModel = InfoModels.ToConfirmEmail;
+                InfoModel infoModel = AccountInfoModels.GetInfoModel(infoType);
                 return View(infoModel);
             }
-
+            
             return RedirectToAction("Index", "Home");
         }
+        
+        #endregion
 
         #region Dispose
         protected override void Dispose(bool disposing)

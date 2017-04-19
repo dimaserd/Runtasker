@@ -8,6 +8,20 @@ namespace HtmlExtensions.StaticRenderers
     public static class FASigns
     {
         #region Public Properties
+        /// <summary>
+        /// Стрелка показывающая на возвращение операции
+        /// </summary>
+        public static FontAwesomeSignModel Undo
+        {
+            get
+            {
+                return new FontAwesomeSignModel
+                {
+                    @class = "fa-undo"
+                };
+            }
+        }
+
         public static FontAwesomeSignModel PlusSquare
         {
             get

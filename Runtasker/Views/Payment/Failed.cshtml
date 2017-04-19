@@ -1,16 +1,17 @@
-﻿
+﻿@using Runtasker.Resources.Views.Payment.Failed
+@using HtmlExtensions.StaticRenderers
 @{
-    ViewBag.Title = "Failed";
+    ViewBag.Title = FailedRes.Title;
 }
 
-<h2>Что-то пошло не так!</h2>
+<h2>@FailedRes.Header</h2>
 
-<h4> К сожалению, мы не смогли обработать ваш платеж!</h4>
+<h4>@FailedRes.Explanation</h4>
 
-<a href="/Payment/YandexKassa">
-    Попробовать еще раз
+<a href="/Payment/YandexKassa" class="btn btn-success">
+    @FASigns.Undo.ToHtml() @FailedRes.TryAgain
 </a>
 
-<a href="/Home/Index">
-    Вернуться в главное меню
+<a href="/Home/Index" class="btn btn-default">
+    @FailedRes.BackToMainMenu
 </a>

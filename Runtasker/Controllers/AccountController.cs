@@ -709,6 +709,7 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationModel model, string returnUrl)
         {
+            ViewData["localeModel"] = ViewModelBuilder.ExternalLoginConfirmationView(model.ProviderName);
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Manage");

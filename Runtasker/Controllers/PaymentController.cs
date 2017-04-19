@@ -264,6 +264,11 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult Succeeded(YandexKassaPaymentResponse response)
         {
+            if(response == null)
+            {
+                return RedirectToAction("Index");
+            }
+
             ViewData["localeModel"] = ViewsHelper.Succeeded(decimal.Parse(response.orderSumAmount, CultureInfo.InvariantCulture), HtmlSigns.Rouble);
 
             return View(response);

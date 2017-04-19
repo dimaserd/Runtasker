@@ -510,6 +510,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ChangePassRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Manage\Index\IndexRes.ru-RU.Designer.cs">
+      <DependentUpon>IndexRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Manage\Index\IndexRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IndexRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Manage\ManageLogins\ManageLoginsRes.ru-RU.Designer.cs">
       <DependentUpon>ManageLoginsRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -629,6 +639,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RatingRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Payment\Failed\FailedRes.ru-Ru.Designer.cs">
+      <DependentUpon>FailedRes.ru-Ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Payment\Failed\FailedRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FailedRes.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\Payment\Index\IndexRes.ru-RU.Designer.cs">
       <DependentUpon>IndexRes.ru-RU.resx</DependentUpon>
@@ -1113,6 +1133,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ChangePassRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Manage\Index\IndexRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>IndexRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Manage\Index\IndexRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>IndexRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\ManageLogins\ManageLoginsRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ManageLoginsRes.ru-RU.Designer.cs</LastGenOutput>
@@ -1210,6 +1238,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RatingRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\Failed\FailedRes.ru-Ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FailedRes.ru-Ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\Failed\FailedRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FailedRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Payment\Index\IndexRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>IndexRes.ru-RU.Designer.cs</LastGenOutput>
@@ -1304,7 +1340,6 @@
   <ItemGroup>
     <Folder Include="Email\File\" />
     <Folder Include="Logic\" />
-    <Folder Include="Views\Manage\Index\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

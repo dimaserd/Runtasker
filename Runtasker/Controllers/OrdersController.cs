@@ -449,10 +449,6 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult OnlineHelp()
         {
-            if(Settings.Settings.AppSetting != Settings.Enumerations.ApplicationSettingType.Debug)
-            {
-                return RedirectToAction("Index");
-            }
 
             if(!Request.IsAuthenticated)
             {

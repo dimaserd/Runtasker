@@ -16,6 +16,7 @@ using Runtasker.Logic.Models.ManageModels;
 using Runtasker.Logic;
 using Runtasker.Logic.Entities;
 using System.Data.Entity;
+using Runtasker.Resources.Views.Manage.Index;
 
 namespace Runtasker.Controllers
 {
@@ -230,10 +231,10 @@ namespace Runtasker.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password set."
+                message == ManageMessageId.ChangePasswordSuccess ? IndexRes.ChangePasswordSuccess
+                : message == ManageMessageId.SetPasswordSuccess ? IndexRes.SetPasswordSuccess
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Настроен поставщик двухфакторной проверки подлинности."
-                : message == ManageMessageId.Error ? "An Error occured."
+                : message == ManageMessageId.Error ? IndexRes.Error
                 : message == ManageMessageId.AddPhoneSuccess ? "Ваш номер телефона добавлен."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Ваш номер телефона удален."
                 : "";

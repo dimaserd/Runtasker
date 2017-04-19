@@ -71,7 +71,9 @@
 
                 }
                 else {
-
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode("@ActivePanel.NoNewMessages"));
+                    ul.appendChild(li);
                 }
             }
 
@@ -93,9 +95,9 @@
                     }
 
                     //добавляю разделитель
-                    ul.appendChild(GetDividerLi());
+                ul.appendChild(GetDividerLi());
 
-                    //элемент для перехода к заказам
+                //элемент для перехода к заказам
                     var ordersLi = document.createElement("li");
 
                     var ordersA = document.createElement("a");
@@ -120,15 +122,37 @@
 
                     ul.appendChild(createLi);
 
-                    
+
 
                     //добавляю разделитель
                     ul.appendChild(GetDividerLi());
 
-                }
-                else {
+
 
                 }
+
+                //элемент для перехода к заказам
+                    var ordersLi = document.createElement("li");
+
+                    var ordersA = document.createElement("a");
+                    ordersA.href = "/Orders";
+                    ordersA.innerHTML = "@ActivePanel.GoToMyOrders";
+
+                    ordersLi.appendChild(ordersA);
+
+                    ul.appendChild(ordersLi);
+
+                    //элемент для добавления заказа
+                    var createLi = document.createElement("li");
+
+                    var createA = document.createElement("a");
+                    createA.href = "/Orders/Create";
+                    createA.innerHTML = "@ActivePanel.CreateNewOrder"
+
+                    createLi.appendChild(createA);
+
+                    ul.appendChild(createLi);
+                
             }
 
             function GetDividerLi()
@@ -191,61 +215,60 @@
 
 
 
-        //Модал и прочее
-        var modalBodyId = "modalBody";
-        var modalBody = $('#' + modalBodyId);
+            //Модал и прочее
+            var modalBodyId = "modalBody";
+            var modalBody = $('#' + modalBodyId);
 
-        var myModal = $('#myModal');
+            var myModal = $('#myModal');
 
 
-        //обработчик содержит дуплицит
-        function ChatClickHandler() {
-            var id = $(this).attr('id');
-            myModal.modal('show');
-            //показываю крутилку
-            MakeLoading(modalBodyId);
-            GetModalDataFromMenu(id);
-        }
+            //обработчик содержит дуплицит
+            function ChatClickHandler() {
+                var id = $(this).attr('id');
+                myModal.modal('show');
+                //показываю крутилку
+                MakeLoading(modalBodyId);
+                GetModalDataFromMenu(id);
+            }
 
-        //обработчик для модала
-        function OrderActionClickHandler()
-        {
-            console.log("Клик ебаный");
-            var link = $(this).attr('link');
+            //обработчик для модала
+            function OrderActionClickHandler() {
+                console.log("Клик ебаный");
+                var link = $(this).attr('link');
 
-            console.log(link);
+                console.log(link);
 
-            myModal.modal('show');
-            //показываю крутилку
-            MakeLoading(modalBodyId);
-            GetModalDataFromLink(link);
-        }
+                myModal.modal('show');
+                //показываю крутилку
+                MakeLoading(modalBodyId);
+                GetModalDataFromLink(link);
+            }
 
-        function GetModalDataFromMenu(id) {
+            function GetModalDataFromMenu(id) {
 
-            var link = '/Message/ChatAboutOrder/?orderId=' + id;
-            GetModalDataFromLink(link);
-        }
+                var link = '/Message/ChatAboutOrder/?orderId=' + id;
+                GetModalDataFromLink(link);
+            }
 
-        function GetModalDataFromLink(link) {
+            function GetModalDataFromLink(link) {
 
-            $.ajax({
-                type: "GET",
-                url: link,
-                contentType: false,
-                processData: false,
-                async: true,
-                data: null,
-                success: function (result) {
-                    modalBody.html(result);
-                },
-                error: function (xhr, status, p3) {
-                    alert(xhr.responseText);
-                }
-            });
-        }
+                $.ajax({
+                    type: "GET",
+                    url: link,
+                    contentType: false,
+                    processData: false,
+                    async: true,
+                    data: null,
+                    success: function (result) {
+                        modalBody.html(result);
+                    },
+                    error: function (xhr, status, p3) {
+                        alert(xhr.responseText);
+                    }
+                });
+            }
 
-     })
+        })
     </script>
     <!--/Building Scripts-->
 

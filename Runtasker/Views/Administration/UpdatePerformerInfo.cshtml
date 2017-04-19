@@ -1,8 +1,8 @@
-﻿@model Runtasker.Logic.Entities.OtherUserInfo
+﻿@model Runtasker.Logic.Models.ManageModels.OtherUserInfo
 @using Runtasker.HtmlExtensions
 @using Runtasker.Logic.Entities
 @{
-    ViewBag.Title = "UpdatePerformerInfo";
+    ViewBag.Title = "";
     Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
@@ -23,7 +23,6 @@
         @Html.LabelAndEditorFor(model => model.Specialization, htmlAttributes: null)
         <!--/UserSubjectForm-->
 
-        @Html.HiddenFor(model => model.Id)
         
         <input value="Обновить дополнительную информацию" type="submit" class="btn-lg btn btn-primary" />
     </div>

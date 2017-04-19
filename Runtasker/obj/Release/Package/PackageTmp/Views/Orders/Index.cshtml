@@ -67,7 +67,7 @@
     @if (Model.Count() > 0)
     {
         @Styles.Render("~/OrdersList")
-        //It must react on order status by styles like default danger and then add some status icon
+        
         foreach (Order order in Model)
         {
             @MvcHtmlString.Create(new CustomerOrderHtmlEntity(order).ToString());
@@ -86,10 +86,31 @@
 </div>
 
 @section scripts{
+    <!--Modal Functions-->
+    <script>
+        function MakeLoading(elementId) {
+            var sp = document.createElement("span");
+            sp.className = "text-center";
+
+            sp.className = "fa fa-spinner fa-5x fa-spin";
+
+            var searchResult = document.getElementById(elementId);
+
+            searchResult.innerHTML = "";
+
+            searchResult.appendChild(sp);
+
+        }
+    </script>
+    <!--/Modal Functions-->
+
     <!--Rating togglers scripts-->
     <script>
         var rateLinks = $('.rateLink');
-        var modalBody = $('#modalBody');
+
+        var modalBodyId = "modalBody";
+        var modalBody = $('#' + modalBodyId);
+
         var myModal = $('#myModal');
 
         rateLinks.click(function (e) {
@@ -102,6 +123,9 @@
 
         function GetModalData(id) {
             console.log('getmodalData');
+
+            MakeLoading(modalBodyId);
+
             $.ajax({
                 type: "GET",
                 url: '/Orders/Rating/' + id,
@@ -150,7 +174,8 @@
         $(document).ready(function () {
             var chatTogglers = $('.orderChat');
 
-            var modalBody = $('#modalBody');
+            var modalBodyId = "modalBody";
+            var modalBody = $('#' + modalBodyId);
             var myModal = $('#myModal');
 
             chatTogglers.click(function (e) {
@@ -163,6 +188,9 @@
             });
 
             function GetModalData(id) {
+
+                MakeLoading(modalBodyId);
+
                 $.ajax({
                     type: "GET",
                     url: '/Message/ChatAboutOrder/?orderId=' + id,

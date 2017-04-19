@@ -117,20 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChatLinkTextFormat" xml:space="preserve">
-    <value>Чат о заказе №{0}</value>
-    <comment>Чат о заказе №{номер заказа}</comment>
+  <data name="AddDescription" xml:space="preserve">
+    <value>Добавить описание</value>
   </data>
-  <data name="CreateNewOrder" xml:space="preserve">
-    <value>Создать новый заказ</value>
+  <data name="AddFiles" xml:space="preserve">
+    <value>Добавить файлы</value>
   </data>
-  <data name="GoToMyOrders" xml:space="preserve">
-    <value>Перейти к моим заказам</value>
+  <data name="DownloadSolutionFormat" xml:space="preserve">
+    <value>Загрузить решение №{0}</value>
+    <comment>Download solution #{номер заказа}</comment>
   </data>
-  <data name="Inbox" xml:space="preserve">
-    <value>Сообщения</value>
+  <data name="OnlineHelpFormat" xml:space="preserve">
+    <value>Онлайн-помощь №{0}</value>
   </data>
-  <data name="NoNewMessages" xml:space="preserve">
-    <value>Нет новых сообщений</value>
+  <data name="OrderFormat" xml:space="preserve">
+    <value>Заказ №{0}</value>
+    <comment>Order #{номер заказа}</comment>
+  </data>
+  <data name="PayAnotherHalfFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PayFirstHalfFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PayFormat" xml:space="preserve">
+    <value>Оплатить {0}{1}</value>
+    <comment>Pay {сумма к оплате}{знак рубля}</comment>
+  </data>
+  <data name="RatingFormat" xml:space="preserve">
+    <value>Оценить решение заказа №{0}</value>
+    <comment>Rating Order#{номер заказа}</comment>
   </data>
 </root>

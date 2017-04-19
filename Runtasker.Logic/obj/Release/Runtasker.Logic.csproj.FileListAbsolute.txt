@@ -195,3 +195,4 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runt
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Release\zh-CN\Runtasker.Resources.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.paymentsExt.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.dropOtherInfo.resources

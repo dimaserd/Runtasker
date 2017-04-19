@@ -255,3 +255,9 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Payment.Succeeded.SucceededRes.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Payment.YandexKassa.YandexKassaRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Payment.YandexKassa.YandexKassaRes.ru-RU.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Actions.OrderActions.OrderActionsRes.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Enumerations.OrderActionType.OrderActionTypeRes.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Notifications.Anonymous.AnonNotRes.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Notifications.GuestNotifications.GuestNotRes.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Actions.OrderActions.OrderActionsRes.ru-RU.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Notifications.GuestNotifications.GuestNotRes.ru-RU.resources

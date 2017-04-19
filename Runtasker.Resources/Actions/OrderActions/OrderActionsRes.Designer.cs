@@ -61,11 +61,47 @@ namespace Runtasker.Resources.Actions.OrderActions {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Add Description.
+        /// </summary>
+        public static string AddDescription {
+            get {
+                return ResourceManager.GetString("AddDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Add Files.
+        /// </summary>
+        public static string AddFiles {
+            get {
+                return ResourceManager.GetString("AddFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Download solution #{0}.
         /// </summary>
         public static string DownloadSolutionFormat {
             get {
                 return ResourceManager.GetString("DownloadSolutionFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Online-Help #{0}.
+        /// </summary>
+        public static string OnlineHelpFormat {
+            get {
+                return ResourceManager.GetString("OnlineHelpFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Order #{0}.
+        /// </summary>
+        public static string OrderFormat {
+            get {
+                return ResourceManager.GetString("OrderFormat", resourceCulture);
             }
         }
         
@@ -93,6 +129,15 @@ namespace Runtasker.Resources.Actions.OrderActions {
         public static string PayFormat {
             get {
                 return ResourceManager.GetString("PayFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Rating Order Solution #{0}.
+        /// </summary>
+        public static string RatingFormat {
+            get {
+                return ResourceManager.GetString("RatingFormat", resourceCulture);
             }
         }
     }

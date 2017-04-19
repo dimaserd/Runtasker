@@ -1,16 +1,24 @@
 ﻿@using Runtasker.Logic.Entities
 @using Runtasker.ExtensionsUI.UIExtensions.Alerts
+@using Runtasker.Resources.Views.Shared.NewLoginPartial
+@using HtmlExtensions.StaticRenderers
 @model Notification
 @{
     Layout = null;
+    
 }
 @if (Model != null)
 {
     if (Model.AboutType == NotificationAboutType.Balance)
     {
-        @*Re Sign In User to change his balance*@
-    { Html.RenderAction("ReSignIn", "Account"); }
-}
+
+        { Html.RenderAction("ReSignIn", "Account"); }
+
+        string balance = User.Identity.GetBalance();
+        string newBalance = string.Format(NewLoginPartial.YourBalancePattern, balance, HtmlSigns.Rouble);
+
+        @JSHelper.ChangeValueByIdExec("balance", newBalance)
+    }
 <div class="row">
     <div class="col-md-12">
         @MvcHtmlString.Create(AlertBuilder.BuildAlertFromNotification(Model))

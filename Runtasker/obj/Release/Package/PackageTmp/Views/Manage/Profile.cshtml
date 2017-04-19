@@ -1,7 +1,6 @@
-﻿@using Runtasker.Logic
+﻿@using Runtasker.Logic.Entities
 @using Microsoft.AspNet.Identity
 @using Runtasker.Resources.Views.Manage.Profile
-@using HtmlExtensions.Renderers
 @{
     ViewBag.Title = ProfilePageRes.Title;
     string avatarPath = ViewData["avatarPath"] as string;
@@ -11,7 +10,7 @@
 
     string actionName = (User.Identity.HasPassword()) ? "ChangePassword" : "SetPassword";
     string actionNameForUser = (actionName == "ChangePassword") ? ProfilePageRes.ChangePass : ProfilePageRes.SetPass;
-    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
+    
 }
 
 @*

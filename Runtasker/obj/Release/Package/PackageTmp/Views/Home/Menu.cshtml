@@ -36,6 +36,8 @@
 
     @JSHelper.GetStringFormatFunction()
 
+    @JSHelper.GetMakeLoadingFunction()
+
     <!--Building Scripts-->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -46,106 +48,212 @@
                     type: "GET",
                     url: "/api/Menu/GetOrders",
                     data: null,
-                    success: DataGetter,
+                    //изменена функция тестируются сообщения
+                    success: NewDataGetter,
                 });
             }();
 
-            function DataGetter(data)
-            {
-
-                var orderLi = "";
-                var messageLis = "";
-
-                if(!data.HasOrders)
-                {
-                    orderLi = "<li>" + "<a href=\"/Orders/Create\">"
-                        + "<span class=\"fa fa-fa-plus-square\"></span>"
-                     + "@MiniPanelRes.NoOrdersMes" + "</a></li>";
-                }
-                else
-                {
-                    orderLi = "<li>" + "<a href=\"/Orders\">"
-                        + "<span class=\"fa fa-fa-plus-square\"></span>"
-                     + "@MiniPanelRes.GoToOrders" + "</a></li>";
-
-                    
-                    if (data.OrderMessageInfos.length != 0)
-                    {
-                        for (i = 0; i < data.OrderMessageInfos.length; i++)
-                        {
-                            messageLis = messageLis + "<li>" +
-                                "<a href=\"#\" class=\"chatLink\" id=\"" + data.OrderMessageInfos[i].Id + "\">" +
-                                "@ActivePanel.ChatLinkTextFormat".format(data.OrderMessageInfos[i].Id) +
-                            "<span class=\"badge\">" + data.OrderMessageInfos[i].UnreadCount + "</span></a></li>";
-
-                        }
-
-                    }
-                    else
-                    {
-                        messageLis = "<li>" + "<a href=\"\">" +
-                            "@ActivePanel.NoNewMessages" + "</a></li>"
-                    }
-
-                }
-                document.getElementById("messagePanelMenu").innerHTML = messageLis;
-                document.getElementById("orderPanelMenu").innerHTML = orderLi;
-                document.getElementById("unreadCount").innerHTML = data.UnreadCount;
-
+            function NewDataGetter(data) {
+                MessagesSetter(data);
+                OrdersSetter(data);
             }
 
-            function GetLi(dataBit)
+            function MessagesSetter(data) {
+
+                var ul = document.getElementById("messagePanelMenu");
+
+                if (data.OrderMessageInfos.length != 0) {
+                    for (i = 0; i < data.OrderMessageInfos.length; i++) {
+                        var li = document.createElement("li");
+                        li.appendChild( CreateChatA(data.OrderMessageInfos[i]) );
+                        ul.appendChild(li);
+                    }
+
+                }
+                else {
+
+                }
+            }
+
+            function OrdersSetter(data)
+            {
+                var ul = document.getElementById("orderPanelMenu");
+
+                if (data.OrderMessageInfos.length != 0) {
+
+                    for (i = 0; i < data.OrderMessageInfos.length; i++) {
+                        if (data.OrderMessageInfos[i].ActionLink != null)
+                        {
+                            var li = document.createElement("li");
+
+                            li.appendChild(CreateOrderActionLink(data.OrderMessageInfos[i]));
+
+                            ul.appendChild(li);
+                        }
+                    }
+
+                    //добавляю разделитель
+                    ul.appendChild(GetDividerLi());
+
+                    //элемент для перехода к заказам
+                    var ordersLi = document.createElement("li");
+
+                    var ordersA = document.createElement("a");
+                    ordersA.href = "/Orders";
+                    ordersA.innerHTML = "@ActivePanel.GoToMyOrders";
+
+                    ordersLi.appendChild(ordersA);
+
+                    ul.appendChild(ordersLi);
+
+                    //добавляю разделитель
+                    ul.appendChild(GetDividerLi());
+
+                    //элемент для добавления заказа
+                    var createLi = document.createElement("li");
+
+                    var createA = document.createElement("a");
+                    createA.href = "/Orders/Create";
+                    createA.innerHTML = "@ActivePanel.CreateNewOrder"
+
+                    createLi.appendChild(createA);
+
+                    ul.appendChild(createLi);
+
+                    
+
+                    //добавляю разделитель
+                    ul.appendChild(GetDividerLi());
+
+                }
+                else {
+
+                }
+            }
+
+            function GetDividerLi()
             {
                 var li = document.createElement("li");
 
+                li.className = "divider";
+
+                return li;
+            }
+
+            function CreateOrderActionLink(dataBit)
+            {
                 var a = document.createElement("a");
+
+                console.log(dataBit);
+
+                a.href = dataBit.ActionLink.Link;
+                a.innerHTML = dataBit.ActionLink.Text;
+
+                console.log(dataBit.ActionLink.OpenInModal);
+                if (dataBit.ActionLink.OpenInModal == true) {
+                    console.log("Зашло");
+
+                    var att = document.createAttribute("link");       // Create a "link" attribute
+                    att.value = dataBit.ActionLink.Link;       // Set the value of the link attribute
+                    a.setAttributeNode(att);
+
+                    a.addEventListener("click", OrderActionClickHandler);
+                    a.href = "#";
+                }
+
+                return a;
+            }
+
+
+            function CreateChatA(dataBit) {
+                var a = document.createElement("a");
+
+                a.className = "chatLink";
+                a.id = dataBit.Id;
+
 
                 var span = document.createElement("span");
                 span.className = "badge";
                 span.innerHTML = dataBit.UnreadCount;
 
-                a.className = "chatLink"
-                a.id = dataBit.Id;
+                //другой способ
+                a.appendChild(document.createTextNode("@ActivePanel.ChatLinkTextFormat".format(dataBit.Id)));
+                a.appendChild(span);
 
-                a.innerHTML = "@ActivePanel.ChatLinkTextFormat".format(dataBit.Id);
-                return li;
+
+                a.addEventListener("click", ChatClickHandler);
+                a.href = "#";
+
+                return a;
             }
-        })
+
+
+
+
+
+        //Модал и прочее
+        var modalBodyId = "modalBody";
+        var modalBody = $('#' + modalBodyId);
+
+        var myModal = $('#myModal');
+
+
+        //обработчик содержит дуплицит
+        function ChatClickHandler() {
+            var id = $(this).attr('id');
+            myModal.modal('show');
+            //показываю крутилку
+            MakeLoading(modalBodyId);
+            GetModalDataFromMenu(id);
+        }
+
+        //обработчик для модала
+        function OrderActionClickHandler()
+        {
+            console.log("Клик ебаный");
+            var link = $(this).attr('link');
+
+            console.log(link);
+
+            myModal.modal('show');
+            //показываю крутилку
+            MakeLoading(modalBodyId);
+            GetModalDataFromLink(link);
+        }
+
+        function GetModalDataFromMenu(id) {
+
+            var link = '/Message/ChatAboutOrder/?orderId=' + id;
+            GetModalDataFromLink(link);
+        }
+
+        function GetModalDataFromLink(link) {
+
+            $.ajax({
+                type: "GET",
+                url: link,
+                contentType: false,
+                processData: false,
+                async: true,
+                data: null,
+                success: function (result) {
+                    modalBody.html(result);
+                },
+                error: function (xhr, status, p3) {
+                    alert(xhr.responseText);
+                }
+            });
+        }
+
+     })
     </script>
     <!--/Building Scripts-->
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function(){
-            var modalBody = $('#modalBody');
-            var myModal = $('#myModal');
-
-            $(document).on("click", ".chatLink", function (e) {
-
-                console.log("клик ебаный")
-                e.preventDefault();
-
-                var id = $(this).attr('id');
-                myModal.modal('show');
-                GetModalDataFromMenu(id);
-            })
-
-            function GetModalDataFromMenu(id) {
-                
-                $.ajax({
-                    type: "GET",
-                    url: '/Message/ChatAboutOrder/?orderId=' + id,
-                    contentType: false,
-                    processData: false,
-                    async: true,
-                    data: null,
-                    success: function (result) {
-                        modalBody.html(result);
-                    },
-                    error: function (xhr, status, p3) {
-                        alert(xhr.responseText);
-                    }
-                });
-            }
-      });
+   
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        
+    });
 </script>
+
 }

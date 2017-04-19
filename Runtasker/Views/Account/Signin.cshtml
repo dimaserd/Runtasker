@@ -97,7 +97,7 @@ else
                         </p>
                         <div class="divider">
                         </div>
-                        <p class="text-muted small low-marg">
+                        <p id="balance" class="text-muted small low-marg">
                             @localeModel["YourBalanceHtml"].ToHtml()
                         </p>
 
@@ -109,7 +109,6 @@ else
                                 </a>
                             </p>
                         }
-                        
 
 
 
@@ -138,7 +137,7 @@ else
                     <div class="row">
                         @if (!User.Identity.HasPassword())
                         {
-                            <div class="col-md-12 col-xs-12">
+                            <div class="col-md-12 col-xs-12 text-center">
                                 @Html.RouteLink(localeModel["SetPassword"], new { controller = "Manage", action = "SetPassword" }, new { @class = "btn btn-default btn-sm" })
                             </div>
                         }

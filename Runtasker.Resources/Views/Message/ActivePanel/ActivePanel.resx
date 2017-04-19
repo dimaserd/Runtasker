@@ -121,6 +121,12 @@
     <value>Order #{0} Inbox</value>
     <comment>Order #{номер заказа} Inbox</comment>
   </data>
+  <data name="CreateNewOrder" xml:space="preserve">
+    <value>Create new order</value>
+  </data>
+  <data name="GoToMyOrders" xml:space="preserve">
+    <value>Go to my orders</value>
+  </data>
   <data name="Inbox" xml:space="preserve">
     <value>Inbox</value>
   </data>

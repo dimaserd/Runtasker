@@ -1,5 +1,4 @@
 ﻿@using Runtasker.Logic.Models
-@using Runtasker.Resources.Views.Account.Register
 @using Runtasker.HtmlExtensions
 @using Runtasker.LocaleBuilders.Models
 @using Extensions.String
@@ -68,6 +67,15 @@
 
         </div>
         <!-- /REGISTER -->
+
+        <!--Социальные сети -->
+        <div class="col-md-6">
+            @viewModel["SocialRegisterTitleHtml"].ToHtml()
+            <div class="white-row">
+                @Html.Partial("BlockLoginList", new ExternalLoginListModel { ReturnUrl = ViewBag.ReturnUrl, Pattern = viewModel["RegisterViaSocialFormat"] })
+            </div>
+        </div>
+        <!-- /Социальные сети -->
 
         <!-- WHY? -->
         <div class="col-md-6">

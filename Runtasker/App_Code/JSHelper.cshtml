@@ -34,3 +34,14 @@
         }
     </script>
 }
+
+@helper ChangeValueByIdExec(string elementId, string value)
+{
+    <script>
+        var exec = function () {
+            var element = document.getElementById("@elementId");
+
+            element.innerHTML = "@value";
+        }();
+    </script>
+}

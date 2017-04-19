@@ -70,6 +70,24 @@ namespace Runtasker.Resources.Views.Message.ActivePanel {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Create new order.
+        /// </summary>
+        public static string CreateNewOrder {
+            get {
+                return ResourceManager.GetString("CreateNewOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Go to my orders.
+        /// </summary>
+        public static string GoToMyOrders {
+            get {
+                return ResourceManager.GetString("GoToMyOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Inbox.
         /// </summary>
         public static string Inbox {

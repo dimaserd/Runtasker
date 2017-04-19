@@ -1,15 +1,14 @@
-﻿@using Runtasker.Logic.Models
-@using HtmlExtensions.Renderers
-@using Runtasker.Resources.Views.Orders.Pay
+﻿@using Runtasker.Logic.Models.Orders.Pay
 @using Runtasker.HtmlExtensions
+@using Runtasker.LocaleBuilders.Models
+@using HtmlExtensions.StaticRenderers
 @model PayAnotherHalfModel
-
 @{
-    ViewBag.Title = $"Pay {Model.RequiredSum} roubles";
-    //Font Awesome Signs Collection
-    FontAwesomeRenderer FASC = new FontAwesomeRenderer();
+    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
 
-    MvcHtmlString title = MvcHtmlString.Create($"{PayRes.Pay} {Model.RequiredSum}{FASC.Rouble}");
+    ViewBag.Title = localeModel["Title"];
+
+    MvcHtmlString title = MvcHtmlString.Create(localeModel["PayRoublesHtml"]);
 
 }
 
@@ -17,9 +16,9 @@
     <div class="container">
         <h1>@title</h1>
         <ul class="breadcrumb">
-            <li><a href="@Url.Action("Index","Home")">@PayRes.HomeNav</a></li>
-            <li><a href="@Url.Action("Index","Orders")">@PayRes.MyOrdersNav</a></li>
-            <li class="active">@PayRes.Pay</li>
+            <li><a href="@Url.Action("Index","Home")">@localeModel["HomeNav"]</a></li>
+            <li><a href="@Url.Action("Index","Orders")">@localeModel["MyOrdersNav"]</a></li>
+            <li class="active">@localeModel["ActiveNav"]</li>
         </ul>
     </div>
 </header>
@@ -31,8 +30,13 @@
         <!--Sum-->
         <div class="form-group">
             @Html.LabelFor(model => model.Sum, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                 @Html.TextBoxFor(model => model.Sum, htmlAttributes: new { id = "halfOfOrderSum", @class = "form-control", type = "number", value = Model.Sum })
+            <div class="col-md-5">
+                <div class="input-group input-group-lg">
+                    @Html.TextBoxFor(model => model.Sum, htmlAttributes: new { id = "halfOfOrderSum", @class = "form-control", type = "number", value = Model.Sum })
+                    <span class="input-group-addon">
+                        @FASigns.Rouble.ToHtml()
+                    </span>
+                </div>
              </div>
         </div>
         @Html.ValidationMessageFor(model => model.Sum, "", new { @class = "text-danger" })
@@ -41,7 +45,7 @@
         @Html.HiddenFor(model => model.OrderId)
         @Html.HiddenFor(model => model.RequiredSum)
 
-        <button class="btn btn-lg btn-success">@PayRes.Pay</button>
+        <button class="btn btn-lg btn-success">@localeModel["ActionBtnText"]</button>
     </div>
 }
 

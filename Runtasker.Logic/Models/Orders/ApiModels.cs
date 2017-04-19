@@ -25,5 +25,7 @@ namespace Runtasker.Logic.Models.Orders
         public string Link { get; set; }
 
         public string Text { get; set; }
+
+        public bool OpenInModal { get; set; }
     }
 }

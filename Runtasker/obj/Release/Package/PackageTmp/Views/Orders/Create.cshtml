@@ -1,5 +1,5 @@
 ﻿@using Runtasker.HtmlExtensions
-@using HtmlExtensions.Renderers
+@using HtmlExtensions.StaticRenderers
 @using Extensions.String
 @using Runtasker.LocaleBuilders.Models
 
@@ -18,7 +18,7 @@
 
     whichSubject = (whichSubject == 0) ? count : whichSubject;
 
-    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
+    
 
     //for datetime picker
     string langCode = StaticHtmlClassesHelper.GetLangCode();

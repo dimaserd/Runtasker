@@ -1,6 +1,6 @@
 ﻿@using Runtasker.Logic
 @using Microsoft.AspNet.Identity;
-@using HtmlExtensions.Renderers
+@using HtmlExtensions.StaticRenderers
 @using Extensions.String
 @using Runtasker.Resources.Views.Shared.NewLoginPartial
 
@@ -8,8 +8,7 @@
 {
     string userGuid = User.Identity.GetUserId();
     string imageLink = $"/File/GetAvatar?userGuid={userGuid}";
-    HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
-    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
+    
 
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">

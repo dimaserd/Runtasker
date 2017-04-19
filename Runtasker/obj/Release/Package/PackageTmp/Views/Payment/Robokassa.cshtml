@@ -1,7 +1,7 @@
 ﻿@using Runtasker.Logic.Models
 @using System.Text
 @using System.Security.Cryptography
-@using HtmlExtensions.Renderers
+@using HtmlExtensions.StaticRenderers
 @using Extensions.String
 @using Runtasker.LocaleBuilders.Models
 
@@ -10,8 +10,8 @@
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
     ViewBag.Title = localeModel["Title"];
 
-    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
-    HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
+    
+    
     string sMrchLogin = "runtasker";
     string sMrchPass1 = "An74vPBpNK4Z5YkgRn6i";
 

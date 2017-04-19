@@ -49,6 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AClass\SpecClass.cs" />
+    <Compile Include="Actions\OrderActions\OrderActionsRes.ru-RU.Designer.cs">
+      <DependentUpon>OrderActionsRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Actions\OrderActions\OrderActionsRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -739,6 +744,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Actions\OrderActions\OrderActionsRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrderActionsRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Actions\OrderActions\OrderActionsRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OrderActionsRes.Designer.cs</LastGenOutput>
@@ -1155,6 +1164,7 @@
     <EmbeddedResource Include="Views\Orders\Create\Create.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Create.ru-RU.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orders\Create\Create.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

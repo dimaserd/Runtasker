@@ -1,17 +1,14 @@
 ﻿@using Runtasker.Logic.Models
-@using Runtasker.Logic
 @using Microsoft.AspNet.Identity;
-@using HtmlExtensions.Renderers
 @using Extensions.String
-@using Runtasker.Resources.Views.Shared.NewLoginPartial
 @using Runtasker.LocaleBuilders.Models
+@using Runtasker.Logic.Entities
 @model LoginModel
 @{
     Layout = null;
     string userGuid = User.Identity.GetUserId();
     string imageLink = $"/File/GetAvatar?userGuid={userGuid}";
-    HtmlSignsRenderer HtmlSigns = new HtmlSignsRenderer();
-    FontAwesomeRenderer FASigns = new FontAwesomeRenderer();
+    
 
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
 }
@@ -100,7 +97,7 @@ else
                         </p>
                         <div class="divider">
                         </div>
-                        <p class="text-muted small low-marg">
+                        <p id="balance" class="text-muted small low-marg">
                             @localeModel["YourBalanceHtml"].ToHtml()
                         </p>
 
@@ -112,7 +109,6 @@ else
                                 </a>
                             </p>
                         }
-                        
 
 
 
@@ -141,7 +137,7 @@ else
                     <div class="row">
                         @if (!User.Identity.HasPassword())
                         {
-                            <div class="col-md-12 col-xs-12">
+                            <div class="col-md-12 col-xs-12 text-center">
                                 @Html.RouteLink(localeModel["SetPassword"], new { controller = "Manage", action = "SetPassword" }, new { @class = "btn btn-default btn-sm" })
                             </div>
                         }

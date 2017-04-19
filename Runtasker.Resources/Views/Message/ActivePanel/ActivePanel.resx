@@ -133,4 +133,7 @@
   <data name="NoNewMessages" xml:space="preserve">
     <value>No new messages</value>
   </data>
+  <data name="OnlineHelpApplication" xml:space="preserve">
+    <value>Online-Help application</value>
+  </data>
 </root>

@@ -97,37 +97,6 @@
                     //добавляю разделитель
                 ul.appendChild(GetDividerLi());
 
-                //элемент для перехода к заказам
-                    var ordersLi = document.createElement("li");
-
-                    var ordersA = document.createElement("a");
-                    ordersA.href = "/Orders";
-                    ordersA.innerHTML = "@ActivePanel.GoToMyOrders";
-
-                    ordersLi.appendChild(ordersA);
-
-                    ul.appendChild(ordersLi);
-
-                    //добавляю разделитель
-                    ul.appendChild(GetDividerLi());
-
-                    //элемент для добавления заказа
-                    var createLi = document.createElement("li");
-
-                    var createA = document.createElement("a");
-                    createA.href = "/Orders/Create";
-                    createA.innerHTML = "@ActivePanel.CreateNewOrder"
-
-                    createLi.appendChild(createA);
-
-                    ul.appendChild(createLi);
-
-
-
-                    //добавляю разделитель
-                    ul.appendChild(GetDividerLi());
-
-
 
                 }
 
@@ -152,7 +121,18 @@
                     createLi.appendChild(createA);
 
                     ul.appendChild(createLi);
-                
+
+                    //элемент для онлайн помощи
+                    var onlineLi = document.createElement("li");
+
+                    var onlineA = document.createElement("a");
+                    onlineA.href = "/Orders/OnlineHelp";
+                    onlineA.innerHTML = "@ActivePanel.OnlineHelpApplication"
+
+                    onlineLi.appendChild(onlineA);
+
+                    ul.appendChild(onlineLi);
+
             }
 
             function GetDividerLi()

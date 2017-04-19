@@ -104,5 +104,14 @@ namespace Runtasker.Resources.Views.Message.ActivePanel {
                 return ResourceManager.GetString("NoNewMessages", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Online-Help application.
+        /// </summary>
+        public static string OnlineHelpApplication {
+            get {
+                return ResourceManager.GetString("OnlineHelpApplication", resourceCulture);
+            }
+        }
     }
 }

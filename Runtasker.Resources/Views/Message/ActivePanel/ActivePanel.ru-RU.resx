@@ -133,4 +133,7 @@
   <data name="NoNewMessages" xml:space="preserve">
     <value>Нет новых сообщений</value>
   </data>
+  <data name="OnlineHelpApplication" xml:space="preserve">
+    <value>Заявка на Онлайн-Помощь</value>
+  </data>
 </root>

@@ -127,7 +127,14 @@
 
                     var onlineA = document.createElement("a");
                     onlineA.href = "/Orders/OnlineHelp";
-                    onlineA.innerHTML = "@ActivePanel.OnlineHelpApplication"
+
+                    var i = document.createElement("i");
+                    i.className = "fa fa-mobile";
+                    i.attributes['aria-hidden'] = 'true';
+                    onlineA.appendChild(i);
+                    onlineA.appendChild(document.createTextNode("@ActivePanel.OnlineHelpApplication"))
+
+                //    onlineA.innerHTML = "@ActivePanel.OnlineHelpApplication"
 
                     onlineLi.appendChild(onlineA);
 

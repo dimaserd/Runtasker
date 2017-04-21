@@ -7,7 +7,34 @@ namespace HtmlExtensions.StaticRenderers
     
     public static class FASigns
     {
-        #region Public Properties
+        #region Свойства
+
+        /// <summary>
+        /// Изображение айфона
+        /// </summary>
+        public static FontAwesomeSignModel MobilePhone
+        {
+            get
+            {
+                return new FontAwesomeSignModel
+                {
+                    @class = "fa-mobile"
+                };
+            }
+        }
+        /// <summary>
+        /// Восклицательный знак
+        /// </summary>
+        public static FontAwesomeSignModel Exclamation
+        {
+            get
+            {
+                return new FontAwesomeSignModel
+                {
+                    @class = "fa-exclamation"
+                };
+            }
+        }
         /// <summary>
         /// Стрелка показывающая на возвращение операции
         /// </summary>

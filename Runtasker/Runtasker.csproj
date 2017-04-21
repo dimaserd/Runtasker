@@ -2464,6 +2464,7 @@
     <Content Include="assets\images\demo\shop\thumb\4.jpg" />
     <Content Include="assets\images\demo\shop\view2.jpg" />
     <Content Include="assets\images\demo\shop\view3.jpg" />
+    <Content Include="assets\images\demo\my_about3.jpg" />
     <Content Include="assets\images\demo\spotted.jpg" />
     <Content Include="assets\images\demo\start\blog_masonry-min.png" />
     <Content Include="assets\images\demo\start\blog_sidebar-min.png" />
@@ -2574,6 +2575,8 @@
     <Content Include="assets\images\demo\video\siren_thumb.jpg" />
     <Content Include="assets\images\demo\vision-min.jpg" />
     <Content Include="assets\images\demo\yellow-min.jpg" />
+    <Content Include="assets\images\demo\my_about1.jpg" />
+    <Content Include="assets\images\demo\my_about2.jpg" />
     <Content Include="assets\images\dummy.png" />
     <Content Include="assets\images\email_template\readme.txt" />
     <Content Include="assets\images\email_template\social_icon1.png" />

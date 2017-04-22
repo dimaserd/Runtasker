@@ -23,14 +23,14 @@ namespace Runtasker.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
-        #region Fields
+        #region Поля
         HomeViewModelBuilder _modelBuilder;
 
         ContactWorker _contacter;
 
         KnowPriceWorker _knowPriceWorker;
 
-        #region Standard
+        #region Стандартные
         ApplicationSignInManager _signInManager;
 
         UserManager<ApplicationUser> _userManager;
@@ -40,7 +40,7 @@ namespace Runtasker.Controllers
 
         #endregion
 
-        #region Properties
+        #region Свойства
         ContactWorker Contacter
         {
             get
@@ -144,6 +144,11 @@ namespace Runtasker.Controllers
             //передаю локализованную модель
             ViewData["localeModel"] = ModelBuilder.HomeView();
 
+            return View();
+        }
+
+        public ActionResult Services()
+        {
             return View();
         }
 

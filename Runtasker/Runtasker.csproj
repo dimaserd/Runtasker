@@ -2853,6 +2853,7 @@
     <Content Include="assets\images\logo_dark.png" />
     <Content Include="assets\images\logo_footer.png" />
     <Content Include="assets\images\male.png" />
+    <Content Include="assets\images\MyIcons\Onl-pomosch.png" />
     <Content Include="assets\images\noimg.png" />
     <Content Include="assets\images\patterns\none.jpg" />
     <Content Include="assets\images\patterns\pattern1.png" />
@@ -2865,6 +2866,10 @@
     <Content Include="assets\images\patterns\pattern7.png" />
     <Content Include="assets\images\patterns\pattern8.png" />
     <Content Include="assets\images\patterns\pattern9.png" />
+    <Content Include="assets\images\Portfolio\мат1.png" />
+    <Content Include="assets\images\Portfolio\мат2.png" />
+    <Content Include="assets\images\Portfolio\прог1.jpg" />
+    <Content Include="assets\images\Portfolio\прог2.jpg" />
     <Content Include="assets\images\Portfolio\физика1.png" />
     <Content Include="assets\images\Portfolio\физика2.png" />
     <Content Include="assets\images\Portfolio\физика3.png" />
@@ -3548,6 +3553,7 @@
     <Content Include="Views\Payment\Succeeded.cshtml" />
     <Content Include="Views\Payment\Failed.cshtml" />
     <Content Include="Views\Manage\AddVkInfo.cshtml" />
+    <Content Include="Views\Home\Services.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

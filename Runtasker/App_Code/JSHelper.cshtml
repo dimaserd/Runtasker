@@ -40,8 +40,9 @@
     <script>
         var exec = function () {
             var element = document.getElementById("@elementId");
-
-            element.innerHTML = "@value";
+            element.innerHTML = "";
+            
+            element.appendChild(document.createTextNode("@value"))
         }();
     </script>
 }

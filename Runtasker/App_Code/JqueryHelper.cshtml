@@ -1,0 +1,7 @@
+﻿@helper ChangeValueByIdExec(string elementId, string value)
+{   
+    <script>
+        var element = $("#@elementId");
+            element.html("@value")
+    </script>
+}

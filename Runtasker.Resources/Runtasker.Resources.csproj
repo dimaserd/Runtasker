@@ -445,6 +445,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KnowPriceRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Landing\AboutUs\AboutUsRes.ru-RU.Designer.cs">
+      <DependentUpon>AboutUsRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Landing\AboutUs\AboutUsRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1080,6 +1085,10 @@
     <EmbeddedResource Include="Views\Home\KnowPrice\KnowPriceRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>KnowPriceRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\AboutUs\AboutUsRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutUsRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Landing\AboutUs\AboutUsRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -61,7 +61,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Правки и доработки.
+        ///   Ищет локализованную строку, похожую на Free corrections .
         /// </summary>
         public static string EditingAndFinilizing {
             get {
@@ -70,7 +70,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Runtasker заботиться о своих клиентах, поэтому сопровождение ваших работ осуществляются бесплатно во время ее выполнения..
+        ///   Ищет локализованную строку, похожую на Runtasker cares a lot about his customers, that&apos;s why any maintenance is free while executing your order..
         /// </summary>
         public static string EditingAndFinilizingText {
             get {
@@ -79,7 +79,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Добро пожаловать на {0}.
+        ///   Ищет локализованную строку, похожую на Welcome to {0}.
         /// </summary>
         public static string HeaderFormat {
             get {
@@ -88,7 +88,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Runtasker – это мультиязычное веб-приложение, созданное для студентов. Мы считаем своим долгом помочь всем студентам, поэтому мы будем продолжать добавлять новые языки в Runtasker. Для нас важно, чтобы наши заказчики при взаимодействии с нами чувствовали себя максимально комфортно. А что может быть более удобным, чем общение на родном языке?.
+        ///   Ищет локализованную строку, похожую на Runtasker – is  multilingual web application, created for students. We see it as an obligation to help any student, that&apos;s why we continue adding new language support. It is important for us to know that our cusomers feel maximum comfort working with Runtasker. And what could be more comfortable than communication in your native language?.
         /// </summary>
         public static string MiniDescription {
             get {
@@ -115,7 +115,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Runtasker : создан чтобы помогать.
+        ///   Ищет локализованную строку, похожую на Runtasker : created to help.
         /// </summary>
         public static string Slogan {
             get {
@@ -124,7 +124,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Строгие сроки выполнения.
+        ///   Ищет локализованную строку, похожую на Strict with the deadlines.
         /// </summary>
         public static string StrictTimetables {
             get {
@@ -133,7 +133,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Runtasker вовремя выполняет взятые на себя обязательства. Для нас важна наша репутация..
+        ///   Ищет локализованную строку, похожую на Runtasker meeting deadlines well. We care about our reputation..
         /// </summary>
         public static string StrictTimetablesText {
             get {
@@ -142,7 +142,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Техническая поддержка.
+        ///   Ищет локализованную строку, похожую на Technical support.
         /// </summary>
         public static string TechnicalSupport {
             get {
@@ -151,7 +151,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Компания Runtasker, думает о вас и вашем времени, поэтому, наша техподдержка, всегда готова вам помочь..
+        ///   Ищет локализованную строку, похожую на Runtasker about you and your free time, becauase of that you&apos;re always welcomed at our technical support..
         /// </summary>
         public static string TechnicalSupportText {
             get {
@@ -160,7 +160,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Наверняка вы задумывались, что куча времени уходит на выполнение рутинных заданий, однотипных рефератов и прочих работ которые нужны только для «галочки»? МЫ ТОЖЕ! В Runtasker считают это недопустимой тратой времени! Поэтому всю вашу рутину мы берём на себя. НО! Как же курсовые и дипломные – это громоздкие, нудные проекты, от которых часто хочется спать? ЭТО МЫ ТОЖЕ БЕРЁМ НА СЕБЯ! Вам больше не надо тратить на это время!  Всё что вам нужно - это написать нам тему и описать ваши пожелания, и мы сделаем всё з [остаток строки не уместился]&quot;;.
+        ///   Ищет локализованную строку, похожую на You must be having thoughts, a lot of your free time wastes on performing routine tasks, similar essays and other works just needed for formal reasons? We are also having those thoughts! In Runtasker we consider this time-wasting unaccectable! We are taking the charge to hadle your routine. But what about the course works and diplomas – those enormous boting projects, which make you feel sleep? These we can handle too! You don&apos;t have to waste your precious time anymore! All you need is - is describe the wor [остаток строки не уместился]&quot;;.
         /// </summary>
         public static string TextParagraph {
             get {
@@ -169,7 +169,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Почему лучше заказывать на {0}.
+        ///   Ищет локализованную строку, похожую на Why it&apos;s better to order at {0}.
         /// </summary>
         public static string WhyOrderFromUsFormat {
             get {
@@ -178,7 +178,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Качество работ.
+        ///   Ищет локализованную строку, похожую на Works quality.
         /// </summary>
         public static string WorksQuality {
             get {
@@ -187,7 +187,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Компания Runtasker выполняет работы высочайшего качества. Обеспечивается это за счёт того, что над вашими заданиями трудятся настоящие профессионалы своего дела, серьезно относящиеся к своим обязанностям..
+        ///   Ищет локализованную строку, похожую на Runtasker executes works of a high quality. Your works are handled by the true masters of the business, taking their responsibilities seriously..
         /// </summary>
         public static string WorksQualityText {
             get {

@@ -3373,6 +3373,7 @@
     <Content Include="App_Code\FooterHelper.cshtml" />
     <Content Include="App_Code\JSHelper.cshtml" />
     <Content Include="App_Code\NavigationHelper.cshtml" />
+    <Content Include="App_Code\JqueryHelper.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Scripts\bootstrap.js" />

@@ -23,4 +23,7 @@
     </p>
 </div>
 
-@{ Html.RenderAction("Services", "Home");}
+@if (Runtasker.Settings.Settings.AppSetting == Runtasker.Settings.Enumerations.ApplicationSettingType.Debug)
+{
+    {Html.RenderAction("Services", "Home");}
+}

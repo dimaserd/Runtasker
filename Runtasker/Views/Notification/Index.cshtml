@@ -17,7 +17,7 @@
         string balance = User.Identity.GetBalance();
         string newBalance = string.Format(NewLoginPartial.YourBalancePattern, balance, HtmlSigns.Rouble);
 
-        @JSHelper.ChangeValueByIdExec("balance", newBalance)
+        @JSHelper.ChangeValueByIdJqueryExec("balance", newBalance)
     }
 <div class="row">
     <div class="col-md-12">

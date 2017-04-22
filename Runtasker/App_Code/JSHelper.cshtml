@@ -35,14 +35,13 @@
     </script>
 }
 
-@helper ChangeValueByIdExec(string elementId, string value)
+@helper ChangeValueByIdJqueryExec(string elementId, string value)
 {
     <script>
         var exec = function () {
-            var element = document.getElementById("@elementId");
-            element.innerHTML = "";
+            var element = $("#@elementId");
+            element.html("@value")
             
-            element.appendChild(document.createTextNode("@value"))
         }();
     </script>
 }

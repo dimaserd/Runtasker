@@ -265,3 +265,6 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Payment.Failed.FailedRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Manage.Index.IndexRes.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Payment.Failed.FailedRes.ru-Ru.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Landing.AboutUs.AboutUsRes.ru-RU.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Home.News.NewsRes.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Home.News.NewsRes.ru-RU.resources

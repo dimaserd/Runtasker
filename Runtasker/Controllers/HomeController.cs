@@ -147,7 +147,7 @@ namespace Runtasker.Controllers
             return View();
         }
 
-        public ActionResult Services()
+        public ActionResult News()
         {
             return View();
         }

@@ -145,16 +145,16 @@
     <value>Strict with the deadlines</value>
   </data>
   <data name="StrictTimetablesText" xml:space="preserve">
-    <value>Runtasker meeting deadlines well. We care about our reputation.</value>
+    <value>Runtasker meeting deadlines well. Our reputation is important for us.</value>
   </data>
   <data name="TechnicalSupport" xml:space="preserve">
     <value>Technical support</value>
   </data>
   <data name="TechnicalSupportText" xml:space="preserve">
-    <value>Runtasker about you and your free time, becauase of that you're always welcomed at our technical support.</value>
+    <value>Runtasker cares about you and your free time, becauase of that you're always welcomed at our technical support.</value>
   </data>
   <data name="TextParagraph" xml:space="preserve">
-    <value>You must be having thoughts, a lot of your free time wastes on performing routine tasks, similar essays and other works just needed for formal reasons? We are also having those thoughts! In Runtasker we consider this time-wasting unaccectable! We are taking the charge to hadle your routine. But what about the course works and diplomas – those enormous boting projects, which make you feel sleep? These we can handle too! You don't have to waste your precious time anymore! All you need is - is describe the work you need, the topic and tell us your desires about the work, and we we will do it for you! Runtasker - your time is our priority!</value>
+    <value>You must be having thoughts, a lot of your free time wastes on performing routine tasks, similar essays and other works just needed for formal reasons? We are also having those thoughts! In Runtasker we consider this time-wasting unaccectable! We are taking the charge to handle your routine. But what about the course works and diplomas – those enormous boring projects, which make you feel sleep? These we can handle too! You don't have to waste your precious time anymore! All you need - is describe the work you need, the topic and tell us your desires about the work, and we we will do it for you! Runtasker - your time is our priority!</value>
   </data>
   <data name="WhyOrderFromUsFormat" xml:space="preserve">
     <value>Why it's better to order at {0}</value>

@@ -79,6 +79,15 @@ namespace Runtasker.Resources.Views.Landing.Index {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Our news.
+        /// </summary>
+        public static string OurNews {
+            get {
+                return ResourceManager.GetString("OurNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Portfolio.
         /// </summary>
         public static string Portfolio {

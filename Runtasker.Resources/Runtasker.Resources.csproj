@@ -445,6 +445,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KnowPriceRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Home\News\NewsRes.ru-RU.Designer.cs">
+      <DependentUpon>NewsRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Home\News\NewsRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Landing\AboutUs\AboutUsRes.ru-RU.Designer.cs">
       <DependentUpon>AboutUsRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1085,6 +1095,14 @@
     <EmbeddedResource Include="Views\Home\KnowPrice\KnowPriceRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>KnowPriceRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\News\NewsRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NewsRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\News\NewsRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NewsRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Landing\AboutUs\AboutUsRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

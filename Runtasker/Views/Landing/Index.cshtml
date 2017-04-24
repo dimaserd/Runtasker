@@ -107,7 +107,7 @@
                         <li><a href="#about">@Index.AboutUs</a></li>
                         <li><a href="#portfolio">@Index.Portfolio</a></li>
                         <li><a href="#pricing">@Index.Pricing</a></li>
-                        
+                        <li><a href="#news">@Index.OurNews</a></li>
                     </ul>
                     
                 </nav>
@@ -150,9 +150,9 @@
         @{Html.RenderAction("Pricing", "Landing");}
         <!-- /PRICING -->
 
-        <!-- MEET THE TEAM -->
-        @*{Html.RenderAction("Team", "Landing");}*@
-        <!-- /MEET THE TEAM -->
+        <!-- News -->
+        @{Html.RenderAction("News", "Home");}
+        <!-- /News -->
 
     </div>
     <!-- /WRAPPER -->

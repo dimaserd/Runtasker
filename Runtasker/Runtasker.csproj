@@ -2853,7 +2853,10 @@
     <Content Include="assets\images\logo_dark.png" />
     <Content Include="assets\images\logo_footer.png" />
     <Content Include="assets\images\male.png" />
-    <Content Include="assets\images\MyIcons\Onl-pomosch.png" />
+    <Content Include="assets\images\MyIcons\kursovaya.png" />
+    <Content Include="assets\images\MyIcons\obychnoe-zadanie.png" />
+    <Content Include="assets\images\MyIcons\Onlaynpomosch.png" />
+    <Content Include="assets\images\MyIcons\Referaty-esse.png" />
     <Content Include="assets\images\noimg.png" />
     <Content Include="assets\images\patterns\none.jpg" />
     <Content Include="assets\images\patterns\pattern1.png" />
@@ -3554,7 +3557,7 @@
     <Content Include="Views\Payment\Succeeded.cshtml" />
     <Content Include="Views\Payment\Failed.cshtml" />
     <Content Include="Views\Manage\AddVkInfo.cshtml" />
-    <Content Include="Views\Home\Services.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

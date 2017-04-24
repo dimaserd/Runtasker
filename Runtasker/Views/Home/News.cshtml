@@ -1,0 +1,76 @@
+﻿@using Runtasker.Resources.Views.Home.News
+@using HtmlExtensions.StaticRenderers
+@using Extensions.String
+@using Runtasker.Settings
+@{
+
+    Layout = null;
+
+
+    DateTime bonusMoneyDate = new DateTime(2017, 03, 15);
+    DateTime onlineHelpDate = new DateTime(2016, 10, 20);
+    DateTime newSiteDate = new DateTime(2016, 8, 11);
+}
+
+
+<section id="news" class="container margin-top100">
+
+    <h1 class="text-center">@NewsRes.Title</h1>
+
+    <!-- SERVICE 2 -->
+    <div class="row margin-top30">
+
+        <div class="col-md-2 text-center">
+            <i class="nomargin featured-icon fa fa-rub"></i>
+        </div>
+
+        <div class="col-md-10">
+            <h3>@NewsRes.BonusMoneyTitle (@bonusMoneyDate.ToShortDateString())</h3>
+            <p>@string.Format(NewsRes.BonusMoneyTextFormat, UISettings.RegistrationBonus, HtmlSigns.Rouble).ToHtml()</p>
+        </div>
+
+    </div>
+
+    <div class="divider half-margins">
+        <!-- divider -->
+        <i class="fa fa-graduation-cap"></i>
+    </div>
+
+    <!-- SERVICE 1 -->
+    <div class="row margin-top30">
+
+        <!-- SERVICE 1 -->
+        <div class="col-md-2 text-center">
+            <a href="/Orders/OnlineHelp/">
+                <img class="fa" src="~/assets/images/MyIcons/Onlaynpomosch.png" width="90" height="90" />
+            </a>
+        </div>
+
+        <div class="col-md-10">
+            <h3>@NewsRes.OnlineHelpTitle (@onlineHelpDate.ToShortDateString())</h3>
+            <p>@NewsRes.OnlineHelpText</p>
+        </div>
+
+    </div>
+
+    <div class="divider half-margins">
+        <!-- divider -->
+        <i class="fa fa-graduation-cap"></i>
+    </div>
+
+    <!-- SERVICE 2 -->
+    <div class="row margin-top30">
+
+        <div class="col-md-2 text-center">
+            <i class="nomargin featured-icon fa fa-thumbs-up fa-5x"></i>
+        </div>
+
+        <div class="col-md-10">
+            <h3>@NewsRes.NewSiteTitle (@newSiteDate.ToShortDateString())</h3>
+            <p>@NewsRes.NewSiteText</p>
+        </div>
+
+    </div>
+
+
+</section>

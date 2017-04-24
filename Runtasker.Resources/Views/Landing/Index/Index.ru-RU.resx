@@ -123,6 +123,9 @@
   <data name="Home" xml:space="preserve">
     <value>Главная</value>
   </data>
+  <data name="OurNews" xml:space="preserve">
+    <value>Наши новости</value>
+  </data>
   <data name="Portfolio" xml:space="preserve">
     <value>Примеры работ</value>
   </data>

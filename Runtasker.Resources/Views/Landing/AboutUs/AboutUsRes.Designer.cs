@@ -133,7 +133,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Runtasker meeting deadlines well. We care about our reputation..
+        ///   Ищет локализованную строку, похожую на Runtasker meeting deadlines well. Our reputation is important for us..
         /// </summary>
         public static string StrictTimetablesText {
             get {
@@ -151,7 +151,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Runtasker about you and your free time, becauase of that you&apos;re always welcomed at our technical support..
+        ///   Ищет локализованную строку, похожую на Runtasker cares about you and your free time, becauase of that you&apos;re always welcomed at our technical support..
         /// </summary>
         public static string TechnicalSupportText {
             get {
@@ -160,7 +160,7 @@ namespace Runtasker.Resources.Views.Landing.AboutUs {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на You must be having thoughts, a lot of your free time wastes on performing routine tasks, similar essays and other works just needed for formal reasons? We are also having those thoughts! In Runtasker we consider this time-wasting unaccectable! We are taking the charge to hadle your routine. But what about the course works and diplomas – those enormous boting projects, which make you feel sleep? These we can handle too! You don&apos;t have to waste your precious time anymore! All you need is - is describe the wor [остаток строки не уместился]&quot;;.
+        ///   Ищет локализованную строку, похожую на You must be having thoughts, a lot of your free time wastes on performing routine tasks, similar essays and other works just needed for formal reasons? We are also having those thoughts! In Runtasker we consider this time-wasting unaccectable! We are taking the charge to handle your routine. But what about the course works and diplomas – those enormous boring projects, which make you feel sleep? These we can handle too! You don&apos;t have to waste your precious time anymore! All you need - is describe the work  [остаток строки не уместился]&quot;;.
         /// </summary>
         public static string TextParagraph {
             get {

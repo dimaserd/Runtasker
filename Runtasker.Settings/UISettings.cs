@@ -9,7 +9,7 @@
         /// <summary>
         /// Бонус при регистрации 
         /// </summary>
-        public static int RegistrationBonus = 300;
+        public const int RegistrationBonus = 300;
         #endregion
 
         #region Стартовые цены

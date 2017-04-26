@@ -73,6 +73,7 @@ namespace Runtasker.Logic.Entities
         public virtual ICollection<Payment> Payments { get; set; }
         public virtual ICollection<PaymentTransaction> PaymentTransactions { get; set; }
         
+        public virtual ICollection<Coupon> Coupons { get; set; }
         #endregion
     }
 

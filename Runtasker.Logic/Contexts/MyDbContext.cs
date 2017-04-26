@@ -27,6 +27,7 @@ namespace Runtasker.Logic
         }
         #endregion
 
+        public DbSet<Coupon> Coupons { get; set; }
         
         public DbSet<Order> Orders { get; set; }
 
@@ -67,6 +68,18 @@ namespace Runtasker.Logic
                     m.MapLeftKey("VkKeyWordId");
                     m.MapRightKey("VkFoundPostId");
                 });
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(t => t.Coupons)
+                .WithMany(t => t.Users)
+                .Map(m =>
+                {
+                    m.ToTable("UserCoupons");
+                    m.MapLeftKey("UserId");
+                    m.MapRightKey("CouponId");
+                });
+
+
             base.OnModelCreating(modelBuilder);
         }
 

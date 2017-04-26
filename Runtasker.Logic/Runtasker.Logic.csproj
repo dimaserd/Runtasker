@@ -165,6 +165,7 @@
     <Compile Include="Contexts\MyNewDbContext.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Attachment.cs" />
+    <Compile Include="Entities\Coupon.cs" />
     <Compile Include="Entities\Invitation.cs" />
     <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Notification.cs" />

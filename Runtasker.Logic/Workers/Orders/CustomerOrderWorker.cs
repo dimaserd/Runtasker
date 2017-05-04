@@ -236,7 +236,9 @@ namespace Runtasker.Logic.Workers.Orders
             //получаем заказ из базы данных
             //заказ не должен быть онлайн помощью
             Order order = Context.Orders.FirstOrDefault(
+                    
                     o => o.UserGuid == UserGuid
+                    && o.Id == id
                     && o.Status == OrderStatus.Estimated
                     && o.WorkType != OrderWorkType.OnlineHelp);
 
@@ -259,7 +261,9 @@ namespace Runtasker.Logic.Workers.Orders
             //получаем заказ из базы данных
             //заказ не должен быть онлайн помощью
             Order order = Context.Orders.FirstOrDefault(
+
                     o => o.UserGuid == UserGuid
+                    && o.Id == model.OrderId
                     && o.Status == OrderStatus.Estimated
                     && o.WorkType != OrderWorkType.OnlineHelp);
 

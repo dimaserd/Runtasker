@@ -1,6 +1,5 @@
 ﻿using Extensions.Decimal;
 using HtmlExtensions.HtmlEntities;
-using HtmlExtensions.Renderers;
 using HtmlExtensions.StaticRenderers;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations;

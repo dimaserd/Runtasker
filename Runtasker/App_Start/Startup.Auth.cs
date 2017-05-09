@@ -5,7 +5,6 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using Runtasker.Logic;
 using Microsoft.Owin.Security.Twitter;
 using KatanaContrib.Security.VK;
 using KatanaContrib.Security.Instagram;

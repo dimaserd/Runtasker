@@ -1,22 +1,21 @@
 ﻿@using VkParser.Entities
 @using VkParser.Enumerations
 @using Runtasker.HtmlExtensions
-@using Runtasker.Logic.Entities
 @model VkKeyWord
 @{
-    ViewBag.Title = "Update";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Обновить ключевое слово";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
     int currentCode = (int)Model.Subject;
 
     List<SelectListItem> subjects = new List<SelectListItem>();
 
-    foreach(WordSubject item in Enum.GetValues(typeof(WordSubject)))
+    foreach(WordType item in Enum.GetValues(typeof(WordType)))
     {
         subjects.Add(new SelectListItem { Selected = (int)item == currentCode, Text = item.ToString(), Value = ((int)item).ToString() });
     }
 }
 
-<h2>Update</h2>
+<h2>Обновить ключевое слово</h2>
 
 @using (Html.BeginForm())
 {
@@ -43,6 +42,15 @@
         <input type="submit" value="Сохранить" class="btn btn-success"/>
     </div>
 }
+<hr />
+
+<p>
+    <strong>
+        <a href="/VkOrders/KeyWords">[Ключевые слова]</a> |
+        <a href="/VkOrders/Index">[Найденные посты]</a>
+    </strong>
+</p>
+
 
 @section scripts{
     <script>

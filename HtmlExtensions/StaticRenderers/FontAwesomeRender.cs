@@ -1,13 +1,26 @@
-﻿using HtmlExtensions.Renderers;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace HtmlExtensions.StaticRenderers
 {
     //<i class="fa fa-rub" aria-hidden="true"></i>
-    
+
     public static class FASigns
     {
         #region Свойства
+
+        /// <summary>
+        /// Знак банкноты (с единичкой)
+        /// </summary>
+        public static FontAwesomeSignModel Money
+        {
+            get
+            {
+                return new FontAwesomeSignModel
+                {
+                    @class = "fa-money"
+                };
+            }
+        }
 
         /// <summary>
         /// Изображение айфона

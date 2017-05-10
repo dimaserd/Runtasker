@@ -182,6 +182,7 @@ namespace Runtasker.Controllers
         public async Task<ActionResult> Refresh()
         {
             List<VkGroup> model = await NewVkPostParseWorker.GetUpdateVkGroupsModel();
+
             return View(model);
         }
 

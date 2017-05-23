@@ -4,6 +4,7 @@ using Logic.Extensions.Namers;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers.Attachments;
+using Runtasker.Settings.Files;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,6 +31,10 @@ namespace Runtasker.Logic.Workers.Files
             Attachmenter = new CustomerAttachmentWorker();
             Namer = new AttachmentNamer();
         }
+        #endregion
+
+        #region Константы
+        
         #endregion
 
         #region Help Methods
@@ -84,6 +89,12 @@ namespace Runtasker.Logic.Workers.Files
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Создает директорию для заказа и очищает и возвращает путь к данной директории
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         public string CreateOrderDirectory(int orderId)
         {
             //если директория не существует то все норм создаем новую
@@ -95,7 +106,7 @@ namespace Runtasker.Logic.Workers.Files
             }
             else
             {
-                new DirectoryInfo($"{RootDirectory}/Orders/{orderId}").Clear();
+                new DirectoryInfo(orderDirPath).Clear();
             }
             return orderDirPath;
         }
@@ -103,10 +114,13 @@ namespace Runtasker.Logic.Workers.Files
         
         #endregion
 
-        #region Methods Like Events
+        #region Методы по событиям
 
-        //adding new files to existing directory
-        //rewriting zip with all customer Files
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public WorkerResult OnCustomerAddedNewFilesToOrder(OrderAddFilesModel model)
         {
             string orderDirectoryPath = GetOrderDirectoryPath(model.OrderId);
@@ -118,10 +132,13 @@ namespace Runtasker.Logic.Workers.Files
             {
                 if (file != null)
                 {
-                    filesCount++;
-                    string uniqueFileName = file.FileName.makeFileNameUniqueAtList(fileNamesInOrderDir);
-                    string filePath = $"{orderDirectoryPath}/{uniqueFileName}";
-                    file.SaveAs(filePath);
+                    if(FilesSettings.IsThatGoodFile(file))
+                    {
+                        filesCount++;
+                        string uniqueFileName = file.FileName.makeFileNameUniqueAtList(fileNamesInOrderDir);
+                        string filePath = $"{orderDirectoryPath}/{uniqueFileName}";
+                        file.SaveAs(filePath);
+                    }
                 }
             }
             if(filesCount == 0)
@@ -136,6 +153,11 @@ namespace Runtasker.Logic.Workers.Files
             };
         }
         
+        /// <summary>
+        /// Записывает файлы заказа в директорию
+        /// </summary>
+        /// <param name="files"></param>
+        /// <param name="order"></param>
         public void OnCustomerCreatedAnOrder(IEnumerable<HttpPostedFileBase> files, Order order)
         {
             //Saving all files to directory
@@ -150,8 +172,11 @@ namespace Runtasker.Logic.Workers.Files
             {
                 if (file != null)
                 {
-                    string fileName = Path.GetFileName(file.FileName);
-                    file.SaveAs($"{OrderDirectory}/{fileName}");
+                    if(FilesSettings.IsThatGoodFile(file))
+                    {
+                        string fileName = Path.GetFileName(file.FileName);
+                        file.SaveAs($"{OrderDirectory}/{fileName}");
+                    } 
                 }
             }
 
@@ -162,6 +187,11 @@ namespace Runtasker.Logic.Workers.Files
             }
             
         }
+        #endregion
+
+
+        #region Вспомогательные методы
+        
         #endregion
     }
 }

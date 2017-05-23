@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Runtasker.Settings.Files;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -57,13 +58,16 @@ namespace Runtasker.Logic.Workers.Files
         string AvatarsDirectory { get; set; }
         #endregion
 
-        #region Public Methods
+        #region Публичные методы
 
         public void ChangeAvatarFile(HttpPostedFileBase image)
         {
-            string ext = image.FileName.Split('.').Last();
-            string filename = $"{AvatarsDirectory}/{UserGuid}.{ext}";
-            image.SaveAs(filename);
+            if(FilesSettings.IsThatFileImage(image))
+            {
+                string ext = image.FileName.Split('.').Last();
+                string filename = $"{AvatarsDirectory}/{UserGuid}.{ext}";
+                image.SaveAs(filename);
+            }
         }
 
         public string GetAvatarPath()

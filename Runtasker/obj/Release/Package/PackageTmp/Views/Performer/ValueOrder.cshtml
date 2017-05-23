@@ -1,4 +1,6 @@
 ﻿@using Runtasker.Logic.Models
+@using Runtasker.HtmlExtensions
+@using HtmlExtensions.StaticRenderers
 @model ValueOrderModel
 @{
     ViewBag.Title = "Оценить заказ";
@@ -8,16 +10,30 @@
 <div class="page-header">
     <h1>@ViewBag.Title <small></small></h1>
 </div>
+
 @using (Html.BeginForm("ValueOrder", "Performer", FormMethod.Post))
 {
-    <div class="form-horizontal">
-        <div class="form-group">
-            @Html.LabelFor(model => model.Sum, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Sum, htmlAttributes: new { @clalss = "form-control"})
+    <!--HalfOfOrderSum-->
+    <div class="form-group">
+        @Html.ValidationErrorsToAlerts()
+        @Html.LabelFor(model => model.Sum, "Стоимость", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            <div class="input-group input-group-lg">
+                @Html.TextBoxFor(model => model.Sum,
+         htmlAttributes: new
+         {
+             @class = "form-control",
+             type = "number",
+             value = Model.Sum
+         })
+                <span class="input-group-addon">
+                    @FASigns.Rouble.ToHtml()
+                </span>
             </div>
         </div>
+        @Html.ValidationMessageFor(model => model.Sum, "", new { @class = "text-danger" })
     </div>
+        <!--/HalfOfOrderSum-->
 
     @Html.HiddenFor(model => model.OrderId)
 

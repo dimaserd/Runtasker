@@ -25,26 +25,31 @@ namespace Runtasker
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-
+            //получаю куку о языке
             HttpCookie cookie = HttpContext.Current.Request.Cookies["Language"];
 
+            //если она не существует и запрос анонимный
             if (cookie == null && !HttpContext.Current.Request.IsAuthenticated)
             {
+                //получаю сведения о языках пользователя от браузера
                 string[] languages = HttpContext.Current.Request.UserLanguages;
+
                 if (languages == null)
                 {
                     Thread.CurrentThread.CurrentCulture = new CultureInfo("en");
                     Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
                     return;
                 }
+                //обход фишки с сафари браузерами
                 string lang = ( languages[0].ToLower().Contains("ru") ) ? "ru-RU" : "en";
 
 
-
+                //создаю куку с настройками языка и добавляю в пользовательские куки
                 HttpCookie newCookie = new HttpCookie("Language");
                 newCookie.Value = lang;
                 Response.Cookies.Add(newCookie);
 
+                //меняю культуру потока
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(lang);
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang);
                 return;

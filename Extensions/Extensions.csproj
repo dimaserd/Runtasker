@@ -112,6 +112,7 @@
     <Compile Include="Reflection\ReflectionExtensionMethods.cs" />
     <Compile Include="String\StringExtension.cs" />
     <Compile Include="String\StringExtensions2.cs" />
+    <Compile Include="String\StringHtmlStripper.cs" />
     <Compile Include="String\StringHtmlWrapper.cs" />
   </ItemGroup>
   <ItemGroup>

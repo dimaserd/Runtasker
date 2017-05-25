@@ -4,24 +4,25 @@ using System.Linq;
 using System;
 using Microsoft.AspNet.SignalR.Hubs;
 using Runtasker.Logic.Workers.Files;
+using Extensions.String;
 
 namespace Runtasker.Hubs
 {
     [HubName("aboutOrderChatHub")]
     public class AboutOrderChatHub : ChatHubBase
     {
-        #region Constructors
+        #region Конструкторы
         public AboutOrderChatHub()
         {
             Filer = new SuperFileWorker(context);
         }
         #endregion
 
-        #region Properties
+        #region Свойства
         SuperFileWorker Filer { get; set; }
         #endregion
 
-        #region Implemented Methods
+        #region Реализованные методы
 
         UIHubMessage SendMessage(object message)
         {
@@ -31,7 +32,7 @@ namespace Runtasker.Hubs
                 Date = DateTime.Now,
                 Type = MessageType.AboutOrder,
                 Mark = m.OrderId.ToString(),
-                Text = m.Text,
+                Text = m.Text.StripHTML(),
                 //Links in Text must be wrapped and checked for html tags
                 AttachmentId = Filer.AttachmentWorker.GetToMessage(m.Attachments),
                 //Attachments get throw file
@@ -40,23 +41,14 @@ namespace Runtasker.Hubs
                 Status = MessageStatus.New,
                 OrderId = m.OrderId,
             };
+
+            //добавление сообщения в базу
             context.Messages.Add(mes);
             context.SaveChanges();
-            return new UIHubMessage
-            {
-                /*For group building*/
-                SenderGuid = mes.SenderGuid,
-                ReceiverGuid = mes.ReceiverGuid,
-                /*/For group building*/
 
-                /*For building message in Chat via JavaScript*/
-                Id = mes.Id,
-                Attachments = mes.AttachmentId,
-                Date = mes.Date,
-                NickName = GetSenderNickName(mes.SenderGuid),
-                Text = mes.Text
-                /*/For building message in Chat via JavaScript*/
-            };
+            string name = GetSenderNickName(mes.SenderGuid);
+
+            return UIHubMessage.ToUIHubMessage(mes);
         }
 
         UIHubMessage MakeMessageRead(int messageId)
@@ -95,7 +87,7 @@ namespace Runtasker.Hubs
 
         #endregion
 
-        #region Public Methods OnClient
+        #region Методы вызываемые на клиенте
 
         public void OnMessageSend(UIHubMessage message)
         {

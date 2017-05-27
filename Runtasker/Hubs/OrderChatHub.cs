@@ -46,9 +46,9 @@ namespace Runtasker.Hubs
             context.Messages.Add(mes);
             context.SaveChanges();
 
-            string name = GetSenderNickName(mes.SenderGuid);
+            string senderName = GetSenderNickName(mes.SenderGuid);
 
-            return UIHubMessage.ToUIHubMessage(mes);
+            return mes.ToUIHubMessage(senderName);
         }
 
         UIHubMessage MakeMessageRead(int messageId)

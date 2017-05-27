@@ -33,6 +33,11 @@ namespace Runtasker.Logic.Workers.MessageWorker
         
         #endregion
 
+        
+    }
+
+    public static class UIHubMessageExtensions
+    {
         /// <summary>
         /// 
         /// </summary>

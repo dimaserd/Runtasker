@@ -70,11 +70,29 @@ namespace Runtasker.Resources.Views.Shared.Chat {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на about order #{0}.
+        /// </summary>
+        public static string AboutOrderFormat {
+            get {
+                return ResourceManager.GetString("AboutOrderFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Chat with.
         /// </summary>
         public static string ChatWith {
             get {
                 return ResourceManager.GetString("ChatWith", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Chat with {0}.
+        /// </summary>
+        public static string ChatWithFormat {
+            get {
+                return ResourceManager.GetString("ChatWithFormat", resourceCulture);
             }
         }
         

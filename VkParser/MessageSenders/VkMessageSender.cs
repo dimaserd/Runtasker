@@ -15,9 +15,7 @@ namespace VkParser.MessageSenders
 
         }
 
-        #region Properties
-
-        #endregion
+        
 
         public WorkerResult SendMessageToVkUser(VkMessage message)
         {

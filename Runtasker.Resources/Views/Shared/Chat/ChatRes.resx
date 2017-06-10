@@ -120,8 +120,14 @@
   <data name="AboutOrder" xml:space="preserve">
     <value>about order</value>
   </data>
+  <data name="AboutOrderFormat" xml:space="preserve">
+    <value>about order #{0}</value>
+  </data>
   <data name="ChatWith" xml:space="preserve">
     <value>Chat with</value>
+  </data>
+  <data name="ChatWithFormat" xml:space="preserve">
+    <value>Chat with {0}</value>
   </data>
   <data name="DownloadFiles" xml:space="preserve">
     <value>Download files</value>

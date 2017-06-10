@@ -21,8 +21,12 @@
     string senderName = ViewData["senderName"] as string;
     string receiverName = ViewData["receiverName"] as string;
     string orderId = ViewData["orderId"] as string;
+
+
+    string chatWithAboutOrder = string.Format("{0} {1}",
+        string.Format(ChatRes.ChatWithFormat, receiverName.GetShortName()),
+        string.Format(ChatRes.AboutOrderFormat, orderId).WrapToSpan(new { @class= "hidden-xs" }));
 }
-@*Styles.Render("~/Content/css")*@
 @Styles.Render("~/Chat")
 
 <!--Chat Body-->
@@ -30,7 +34,7 @@
         <div class="col-md-12">
             <div class="panel panel-primary">
                 <div class="panel-heading" id="accordion">
-                    <span class="glyphicon glyphicon-comment"></span> @ChatRes.ChatWith @receiverName.GetShortName() <span class="hidden-xs">@ChatRes.AboutOrder №@orderId</span>
+                    <span class="glyphicon glyphicon-comment"></span> @chatWithAboutOrder.ToHtml()
                     <div class="btn-group pull-right">
                         <button id="chevron-down" class="btn btn-default btn-xs">
                             <span class="glyphicon glyphicon-chevron-down"></span>
@@ -88,7 +92,7 @@
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
-<script src="~/Scripts/jquery.signalR-2.2.1.js"></script>
+<script src="~/Scripts/jquery.signalR-2.2.2.js"></script>
 <script src="~/signalr/hubs"></script>
 
 
@@ -320,6 +324,7 @@
             
             //Events for chat
             $('#btn-chat').click(function (e) {
+                console.log("клик на отправку")
                 SendMessageWithData();
                 $('#btn-input').val('');
                 $('#uploadFile').val('');

@@ -25,6 +25,11 @@ namespace Runtasker
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
+            ChangeThreadLanguage();
+        }
+
+        private void ChangeThreadLanguage()
+        {
             //получаю куку о языке
             HttpCookie cookie = HttpContext.Current.Request.Cookies["Language"];
 
@@ -41,7 +46,7 @@ namespace Runtasker
                     return;
                 }
                 //обход фишки с сафари браузерами
-                string lang = ( languages[0].ToLower().Contains("ru") ) ? "ru-RU" : "en";
+                string lang = (languages[0].ToLower().Contains("ru")) ? "ru-RU" : "en";
 
 
                 //создаю куку с настройками языка и добавляю в пользовательские куки

@@ -7,6 +7,76 @@ namespace HtmlExtensions.StaticRenderers
     public static class FASigns
     {
         #region Свойства
+        /// <summary>
+        /// Значок стоячего мужика
+        /// </summary>
+        public static FontAwesomeSignModel Male
+        {
+            get
+            {
+                return new FontAwesomeSignModel
+                {
+                    @class = "fa-male"
+                };
+            }
+        }
+
+        /// <summary>
+        /// Значок ключика
+        /// </summary>
+        public static FontAwesomeSignModel Key
+        {
+            get
+            {
+                return new FontAwesomeSignModel
+                {
+                    @class = "fa-key"
+                };
+            }
+        }
+
+        /// <summary>
+        /// Значок с тремя пользователями
+        /// </summary>
+        public static FontAwesomeSignModel Users
+        {
+            get
+            {
+                return new FontAwesomeSignModel
+                {
+                    @class = "fa-users"
+                };
+            }
+        }
+
+        /// <summary>
+        /// Значок пользователя
+        /// </summary>
+        public static FontAwesomeSignModel User
+        {
+            get
+            {
+                return new FontAwesomeSignModel
+                {
+                    @class = "fa-user"
+                };
+            }
+        }
+
+        /// <summary>
+        /// Знак закрытого замочка
+        /// </summary>
+        public static FontAwesomeSignModel Lock
+        {
+            get
+            {
+                return new FontAwesomeSignModel
+                {
+                    @class = "fa-lock"
+                };
+            }
+        }
+
 
         /// <summary>
         /// Знак банкноты (с единичкой)

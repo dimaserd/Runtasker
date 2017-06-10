@@ -656,8 +656,14 @@
         <member name="P:Microsoft.AspNet.SignalR.Configuration.IConfigurationManager.LongPollDelay">
             <summary>
             Gets or sets a <see cref="T:System.TimeSpan"/> representing tell the client to wait before restablishing a
-            long poll connection after data is sent from the server. 
+            long poll connection after data is sent from the server.
             The default value is 0.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Configuration.IConfigurationManager.MaxScaleoutMappingsPerStream">
+            <summary>
+            Gets or sets the maximum number of scaleout mappings per scaleout stream stored on the server.
+            The default value is 65535
             </summary>
         </member>
         <member name="P:Microsoft.AspNet.SignalR.ConnectionConfiguration.Resolver">
@@ -2439,6 +2445,277 @@
             Standard keys and values for use within the OWIN interfaces
             </summary>
         </member>
+        <member name="T:Microsoft.AspNet.SignalR.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.DynamicComment_CallsMethodOnServerSideDeferredPromise">
+            <summary>
+              Looks up a localized string similar to             /// &lt;summary&gt;Calls the {0} method on the server-side {1} hub.&amp;#10;Returns a jQuery.Deferred() promise.&lt;/summary&gt;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.DynamicComment_ServerSideTypeIs">
+            <summary>
+              Looks up a localized string similar to             /// &lt;param name=\&quot;{0}\&quot; type=\&quot;{1}\&quot;&gt;Server side type is {2}&lt;/param&gt;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_AmbiguousMessage">
+            <summary>
+              Looks up a localized string similar to Ambiguous message. Unable to send to both &apos;{0}&apos; and &apos;{1}&apos;..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ArgumentNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to Argument cannot be null or empty.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_BufferSizeOutOfRange">
+            <summary>
+              Looks up a localized string similar to The buffer size &apos;{0}&apos; is out of range..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_CallerNotAuthorizedToInvokeMethodOn">
+            <summary>
+              Looks up a localized string similar to Caller is not authorized to invoke the {0} method on {1}..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ConnectionIdIncorrectFormat">
+            <summary>
+              Looks up a localized string similar to The ConnectionId is in the incorrect format..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ConnectionNotInitialized">
+            <summary>
+              Looks up a localized string similar to The PersistentConnection is not initialized..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_DisconnectTimeoutCannotBeConfiguredAfterKeepAlive">
+            <summary>
+              Looks up a localized string similar to DisconnectTimeout cannot be configured after the KeepAlive..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_DisconnectTimeoutMustBeAtLeastSixSeconds">
+            <summary>
+              Looks up a localized string similar to DisconnectTimeout must be at least six seconds..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_DoNotReadRequireOutgoing">
+            <summary>
+              Looks up a localized string similar to Do not read RequireOutgoing. Use protected _requireOutgoing instead..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_DuplicateHubNames">
+            <summary>
+              Looks up a localized string similar to Two Hubs must not share the same name. &apos;{0}&apos; and &apos;{1}&apos; both share the name &apos;{2}&apos;..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_DuplicateHubNamesInConnectionData">
+            <summary>
+              Looks up a localized string similar to Duplicate Hub names found..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_DuplicatePayloadsForStream">
+            <summary>
+              Looks up a localized string similar to Duplicate payload id detected for stream &apos;{0}&apos;..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ExceptionContextCanOnlyBeModifiedOnce">
+            <summary>
+              Looks up a localized string similar to The ExceptionContext has already been modified once and cannot be modified again..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_HubCouldNotBeResolved">
+            <summary>
+              Looks up a localized string similar to &apos;{0}&apos; Hub could not be resolved..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_HubInvocationFailed">
+            <summary>
+              Looks up a localized string similar to There was an error invoking Hub method &apos;{0}.{1}&apos;..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_HubProgressOnlyReportableBeforeMethodReturns">
+            <summary>
+              Looks up a localized string similar to You cannot report progress on a hub method invocation that has already completed..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_InvalidCursorFormat">
+            <summary>
+              Looks up a localized string similar to Invalid cursor..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_InvalidForeverFrameId">
+            <summary>
+              Looks up a localized string similar to The supplied frameId is in the incorrect format..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_IsNotA">
+            <summary>
+              Looks up a localized string similar to &apos;{0}&apos; is not a {1}..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_JavaScriptProxyDisabled">
+            <summary>
+              Looks up a localized string similar to SignalR: JavaScript Hub proxy generation has been disabled..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_KeepAliveMustBeGreaterThanTwoSeconds">
+            <summary>
+              Looks up a localized string similar to KeepAlive value must be greater than two seconds..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_KeepAliveMustBeNoMoreThanAThirdOfTheDisconnectTimeout">
+            <summary>
+              Looks up a localized string similar to KeepAlive value must be no more than a third of the DisconnectTimeout..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MaxScaleoutMappingsPerStreamMustBeNonNegative">
+            <summary>
+              Looks up a localized string similar to The value of the MaxScaleoutMappingsPerStream property must be greater or equal to zero..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MethodCouldNotBeResolved">
+            <summary>
+              Looks up a localized string similar to &apos;{0}&apos; method could not be resolved. No method found with that name..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MethodCouldNotBeResolvedCandidates">
+            <summary>
+              Looks up a localized string similar to &apos;{0}&apos; method could not be resolved. Potential candidates are: {1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MethodLevelOutgoingAuthorization">
+            <summary>
+              Looks up a localized string similar to Outgoing authorization can only be required for an entire Hub, not a specific method..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MethodMustNotTakeOutParameter">
+            <summary>
+              Looks up a localized string similar to The &apos;{0}&apos; parameter of &apos;{1}.{2}&apos; must not be an out parameter..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MethodMustNotTakeRefParameter">
+            <summary>
+              Looks up a localized string similar to The &apos;{0}&apos; parameter of &apos;{1}.{2}&apos; must not be a ref parameter..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MethodMustReturnVoidOrTask">
+            <summary>
+              Looks up a localized string similar to The return type of &apos;{0}.{1}&apos; must be void or Task..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MultipleActivatorsAreaRegisteredCallGetServices">
+            <summary>
+              Looks up a localized string similar to Multiple activators for type {0} are registered. Please call GetServices instead..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_NoConfiguration">
+            <summary>
+              Looks up a localized string similar to A configuration object must be specified..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_NoDependencyResolver">
+            <summary>
+              Looks up a localized string similar to A dependency resolver must be specified..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_NotWebSocketRequest">
+            <summary>
+              Looks up a localized string similar to Not a valid web socket request..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ParseObjectFailed">
+            <summary>
+              Looks up a localized string similar to Unexpected end when reading object..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ProtocolErrorMissingConnectionToken">
+            <summary>
+              Looks up a localized string similar to Protocol error: Missing connection token..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ProtocolErrorUnknownTransport">
+            <summary>
+              Looks up a localized string similar to Protocol error: Unknown transport..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ScaleoutQueuingConfig">
+            <summary>
+              Looks up a localized string similar to Scaleout queuing is enabled but maximum queue size is 0.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_StateExceededMaximumLength">
+            <summary>
+              Looks up a localized string similar to State has exceeded the maximum length of 4096 bytes..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_StreamClosed">
+            <summary>
+              Looks up a localized string similar to The stream has been closed..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_StreamNotOpen">
+            <summary>
+              Looks up a localized string similar to The stream is not open..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_TaskQueueFull">
+            <summary>
+              Looks up a localized string similar to The queue is full..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_TypeMustBeInterface">
+            <summary>
+              Looks up a localized string similar to The type T, &apos;{0}&apos;, passed to Hub&lt;T&gt; must be an interface..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_TypeMustNotContainEvents">
+            <summary>
+              Looks up a localized string similar to The interface &apos;{0}&apos; must not contain any events..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_TypeMustNotContainProperties">
+            <summary>
+              Looks up a localized string similar to The interface &apos;{0}&apos; must not contain any properties..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_UnableToAddModulePiplineAlreadyInvoked">
+            <summary>
+              Looks up a localized string similar to Unable to add module. The HubPipeline has already been invoked..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_UnrecognizedUserIdentity">
+            <summary>
+              Looks up a localized string similar to Unrecognized user identity.  The user identity cannot change during an active SignalR connection..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_UsingHubInstanceNotCreatedUnsupported">
+            <summary>
+              Looks up a localized string similar to Using a Hub instance not created by the HubPipeline is unsupported..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_WebSocketsNotSupported">
+            <summary>
+              Looks up a localized string similar to WebSockets is not supported..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.SignalR.Resources.Forbidden_JSONPDisabled">
+            <summary>
+              Looks up a localized string similar to Forbidden: JSONP is disabled..
+            </summary>
+        </member>
         <member name="T:Microsoft.AspNet.SignalR.IGroupManager">
             <summary>
             Manages groups for a connection.
@@ -2815,272 +3092,6 @@
             <param name="connectionId">The connection id to remove from the group.</param>
             <param name="groupName">The name of the group</param>
             <returns>A task that represents the connection id being removed from the group.</returns>
-        </member>
-        <member name="T:Microsoft.AspNet.SignalR.Resources">
-            <summary>
-              A strongly-typed resource class, for looking up localized strings, etc.
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.ResourceManager">
-            <summary>
-              Returns the cached ResourceManager instance used by this class.
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Culture">
-            <summary>
-              Overrides the current thread's CurrentUICulture property for all
-              resource lookups using this strongly typed resource class.
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.DynamicComment_CallsMethodOnServerSideDeferredPromise">
-            <summary>
-              Looks up a localized string similar to             /// &lt;summary&gt;Calls the {0} method on the server-side {1} hub.&amp;#10;Returns a jQuery.Deferred() promise.&lt;/summary&gt;.
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.DynamicComment_ServerSideTypeIs">
-            <summary>
-              Looks up a localized string similar to             /// &lt;param name=\&quot;{0}\&quot; type=\&quot;{1}\&quot;&gt;Server side type is {2}&lt;/param&gt;.
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_AmbiguousMessage">
-            <summary>
-              Looks up a localized string similar to Ambiguous message. Unable to send to both &apos;{0}&apos; and &apos;{1}&apos;..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ArgumentNullOrEmpty">
-            <summary>
-              Looks up a localized string similar to Argument cannot be null or empty.
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_BufferSizeOutOfRange">
-            <summary>
-              Looks up a localized string similar to The buffer size &apos;{0}&apos; is out of range..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_CallerNotAuthorizedToInvokeMethodOn">
-            <summary>
-              Looks up a localized string similar to Caller is not authorized to invoke the {0} method on {1}..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ConnectionIdIncorrectFormat">
-            <summary>
-              Looks up a localized string similar to The ConnectionId is in the incorrect format..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ConnectionNotInitialized">
-            <summary>
-              Looks up a localized string similar to The PersistentConnection is not initialized..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_DisconnectTimeoutCannotBeConfiguredAfterKeepAlive">
-            <summary>
-              Looks up a localized string similar to DisconnectTimeout cannot be configured after the KeepAlive..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_DisconnectTimeoutMustBeAtLeastSixSeconds">
-            <summary>
-              Looks up a localized string similar to DisconnectTimeout must be at least six seconds..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_DoNotReadRequireOutgoing">
-            <summary>
-              Looks up a localized string similar to Do not read RequireOutgoing. Use protected _requireOutgoing instead..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_DuplicateHubNames">
-            <summary>
-              Looks up a localized string similar to Two Hubs must not share the same name. &apos;{0}&apos; and &apos;{1}&apos; both share the name &apos;{2}&apos;..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_DuplicateHubNamesInConnectionData">
-            <summary>
-              Looks up a localized string similar to Duplicate Hub names found..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_DuplicatePayloadsForStream">
-            <summary>
-              Looks up a localized string similar to Duplicate payload id detected for stream &apos;{0}&apos;..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ExceptionContextCanOnlyBeModifiedOnce">
-            <summary>
-              Looks up a localized string similar to The ExceptionContext has already been modified once and cannot be modified again..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_HubCouldNotBeResolved">
-            <summary>
-              Looks up a localized string similar to &apos;{0}&apos; Hub could not be resolved..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_HubInvocationFailed">
-            <summary>
-              Looks up a localized string similar to There was an error invoking Hub method &apos;{0}.{1}&apos;..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_HubProgressOnlyReportableBeforeMethodReturns">
-            <summary>
-              Looks up a localized string similar to You cannot report progress on a hub method invocation that has already completed..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_InvalidCursorFormat">
-            <summary>
-              Looks up a localized string similar to Invalid cursor..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_InvalidForeverFrameId">
-            <summary>
-              Looks up a localized string similar to The supplied frameId is in the incorrect format..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_IsNotA">
-            <summary>
-              Looks up a localized string similar to &apos;{0}&apos; is not a {1}..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_JavaScriptProxyDisabled">
-            <summary>
-              Looks up a localized string similar to SignalR: JavaScript Hub proxy generation has been disabled..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_KeepAliveMustBeGreaterThanTwoSeconds">
-            <summary>
-              Looks up a localized string similar to KeepAlive value must be greater than two seconds..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_KeepAliveMustBeNoMoreThanAThirdOfTheDisconnectTimeout">
-            <summary>
-              Looks up a localized string similar to KeepAlive value must be no more than a third of the DisconnectTimeout..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MethodCouldNotBeResolved">
-            <summary>
-              Looks up a localized string similar to &apos;{0}&apos; method could not be resolved. No method found with that name..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MethodCouldNotBeResolvedCandidates">
-            <summary>
-              Looks up a localized string similar to &apos;{0}&apos; method could not be resolved. Potential candidates are: {1}.
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MethodLevelOutgoingAuthorization">
-            <summary>
-              Looks up a localized string similar to Outgoing authorization can only be required for an entire Hub, not a specific method..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MethodMustNotTakeOutParameter">
-            <summary>
-              Looks up a localized string similar to The &apos;{0}&apos; parameter of &apos;{1}.{2}&apos; must not be an out parameter..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MethodMustNotTakeRefParameter">
-            <summary>
-              Looks up a localized string similar to The &apos;{0}&apos; parameter of &apos;{1}.{2}&apos; must not be a ref parameter..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MethodMustReturnVoidOrTask">
-            <summary>
-              Looks up a localized string similar to The return type of &apos;{0}.{1}&apos; must be void or Task..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_MultipleActivatorsAreaRegisteredCallGetServices">
-            <summary>
-              Looks up a localized string similar to Multiple activators for type {0} are registered. Please call GetServices instead..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_NoConfiguration">
-            <summary>
-              Looks up a localized string similar to A configuration object must be specified..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_NoDependencyResolver">
-            <summary>
-              Looks up a localized string similar to A dependency resolver must be specified..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_NotWebSocketRequest">
-            <summary>
-              Looks up a localized string similar to Not a valid web socket request..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ParseObjectFailed">
-            <summary>
-              Looks up a localized string similar to Unexpected end when reading object..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ProtocolErrorMissingConnectionToken">
-            <summary>
-              Looks up a localized string similar to Protocol error: Missing connection token..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ProtocolErrorUnknownTransport">
-            <summary>
-              Looks up a localized string similar to Protocol error: Unknown transport..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_ScaleoutQueuingConfig">
-            <summary>
-              Looks up a localized string similar to Scaleout queuing is enabled but maximum queue size is 0.
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_StateExceededMaximumLength">
-            <summary>
-              Looks up a localized string similar to State has exceeded the maximum length of 4096 bytes..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_StreamClosed">
-            <summary>
-              Looks up a localized string similar to The stream has been closed..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_StreamNotOpen">
-            <summary>
-              Looks up a localized string similar to The stream is not open..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_TaskQueueFull">
-            <summary>
-              Looks up a localized string similar to The queue is full..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_TypeMustBeInterface">
-            <summary>
-              Looks up a localized string similar to The type T, &apos;{0}&apos;, passed to Hub&lt;T&gt; must be an interface..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_TypeMustNotContainEvents">
-            <summary>
-              Looks up a localized string similar to The interface &apos;{0}&apos; must not contain any events..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_TypeMustNotContainProperties">
-            <summary>
-              Looks up a localized string similar to The interface &apos;{0}&apos; must not contain any properties..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_UnableToAddModulePiplineAlreadyInvoked">
-            <summary>
-              Looks up a localized string similar to Unable to add module. The HubPipeline has already been invoked..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_UnrecognizedUserIdentity">
-            <summary>
-              Looks up a localized string similar to Unrecognized user identity.  The user identity cannot change during an active SignalR connection..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_UsingHubInstanceNotCreatedUnsupported">
-            <summary>
-              Looks up a localized string similar to Using a Hub instance not created by the HubPipeline is unsupported..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Error_WebSocketsNotSupported">
-            <summary>
-              Looks up a localized string similar to WebSockets is not supported..
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNet.SignalR.Resources.Forbidden_JSONPDisabled">
-            <summary>
-              Looks up a localized string similar to Forbidden: JSONP is disabled..
-            </summary>
         </member>
         <member name="T:Microsoft.AspNet.SignalR.PersistentConnection">
             <summary>

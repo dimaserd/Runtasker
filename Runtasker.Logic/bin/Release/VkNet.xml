@@ -2768,7 +2768,7 @@
             Страница документации ВКонтакте http://vk.com/dev/groups.getById
             </remarks>
         </member>
-        <member name="M:VkNet.Categories.GroupsCategory.GetMembers(System.Int64,System.Int32@,System.Nullable{System.UInt32},System.Nullable{System.UInt32},VkNet.Enums.SafetyEnums.GroupsSort,VkNet.Enums.Filters.UsersFields,VkNet.Enums.Filters.GroupsFilters)">
+        <member name="M:VkNet.Categories.GroupsCategory.GetMembers(System.Int64,System.Int32@,System.Nullable{System.UInt32},System.Nullable{System.UInt32},VkNet.Enums.SafetyEnums.GroupsSort,VkNet.Enums.Filters.UsersFields,VkNet.Enums.SafetyEnums.GroupsMemberFilters)">
             <summary>
             Возвращает список участников группы.
             </summary>
@@ -2786,7 +2786,7 @@
             Страница документации ВКонтакте http://vk.com/dev/groups.getMembers
             </remarks>
         </member>
-        <member name="M:VkNet.Categories.GroupsCategory.GetMembers(System.String,System.Int32@,System.Nullable{System.UInt32},System.Nullable{System.UInt32},VkNet.Enums.SafetyEnums.GroupsSort,VkNet.Enums.Filters.UsersFields,VkNet.Enums.Filters.GroupsFilters)">
+        <member name="M:VkNet.Categories.GroupsCategory.GetMembers(System.String,System.Int32@,System.Nullable{System.UInt32},System.Nullable{System.UInt32},VkNet.Enums.SafetyEnums.GroupsSort,VkNet.Enums.Filters.UsersFields,VkNet.Enums.SafetyEnums.GroupsMemberFilters)">
             <summary>
             Возвращает список участников группы.
             </summary>
@@ -8691,6 +8691,27 @@
             Возвращает друзей в случайном порядке.
             </summary>
         </member>
+        <member name="T:VkNet.Enums.SafetyEnums.GroupsMemberFilters">
+            <summary>
+            Порядок сортировки членов группы.
+            </summary>
+        </member>
+        <member name="F:VkNet.Enums.SafetyEnums.GroupsMemberFilters.Friends">
+            <summary>
+            Friends — будут возвращены только друзья в этом сообществе.
+            </summary>
+        </member>
+        <member name="F:VkNet.Enums.SafetyEnums.GroupsMemberFilters.Unsure">
+            <summary>
+            unsure — будут возвращены пользователи, которые выбрали «Возможно пойду» (если сообщество относится к мероприятиям). 
+            </summary>
+        </member>
+        <member name="F:VkNet.Enums.SafetyEnums.GroupsMemberFilters.Managers">
+            <summary>
+            managers — будут возвращены только руководители сообщества (доступно при запросе с передачей access_token от имени администратора сообщества). 
+            строка.
+            </summary>
+        </member>
         <member name="T:VkNet.Enums.SafetyEnums.GroupsSort">
             <summary>
             Порядок сортировки членов группы.
@@ -11825,6 +11846,12 @@
             <param name="code">Код ошибки, полученный от сервера ВКонтакте.</param>
             <param name="innerException">Внутреннее исключение.</param>
         </member>
+        <member name="M:VkNet.Exception.AccessDeniedException.#ctor(VkNet.Utils.VkResponse)">
+            <summary>
+            Инициализирует новый экземпляр класса AccessDeniedException
+            </summary>
+            <param name="response">Ответ от сервера vk</param>
+        </member>
         <member name="T:VkNet.Exception.AccessTokenInvalidException">
             <summary>
             Исключение, которое выбрасывается, в случае, если предоставленный маркер доступа является недействительным.
@@ -11847,6 +11874,156 @@
             </summary>
             <param name="message">Описание исключения.</param>
             <param name="innerException">Внутреннее исключение.</param>
+        </member>
+        <member name="M:VkNet.Exception.AccessTokenInvalidException.#ctor(VkNet.Utils.VkResponse)">
+            <summary>
+            Инициализирует новый экземпляр класса VkApiException
+            </summary>
+            <param name="response">Ответ от сервера vk</param>
+        </member>
+        <member name="T:VkNet.Exception.CannotAddUserBlacklistedException">
+            <summary>
+            Исключение, которые выбрасывается при попытке добавить в друзья пользователя, который занесен в Ваш черный список. Код ошибки - 176
+            </summary>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddUserBlacklistedException.#ctor">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddUserBlacklistedException
+            </summary>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddUserBlacklistedException.#ctor(System.String)">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddUserBlacklistedException
+            </summary>
+            <param name="message">Описание исключения.</param>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddUserBlacklistedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddUserBlacklistedException
+            </summary>
+            <param name="message">Описание исключения.</param>
+            <param name="innerException">Внутреннее исключение.</param>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddUserBlacklistedException.#ctor(System.String,System.Int32)">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddUserBlacklistedException
+            </summary>
+            <param name="message">Описание исключения.</param>
+            <param name="code">Код ошибки, полученный от сервера ВКонтакте.</param>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddUserBlacklistedException.#ctor(VkNet.Utils.VkResponse)">
+            <summary>
+            Инициализирует новый экземпляр класса VkApiException
+            </summary>
+            <param name="response">Ответ от сервера vk</param>
+        </member>
+        <member name="T:VkNet.Exception.CannotAddUserNotFoundException">
+            <summary>
+            Исключение, которые выбрасывается при попытке добавить в друзья пользователя, который не найден. Код ошибки - 177
+            </summary>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddUserNotFoundException.#ctor">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddUserNotFoundException
+            </summary>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddUserNotFoundException.#ctor(System.String)">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddUserNotFoundException
+            </summary>
+            <param name="message">Описание исключения.</param>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddUserNotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddUserNotFoundException
+            </summary>
+            <param name="message">Описание исключения.</param>
+            <param name="innerException">Внутреннее исключение.</param>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddUserNotFoundException.#ctor(System.String,System.Int32)">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddUserNotFoundException
+            </summary>
+            <param name="message">Описание исключения.</param>
+            <param name="code">Код ошибки, полученный от сервера ВКонтакте.</param>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddUserNotFoundException.#ctor(VkNet.Utils.VkResponse)">
+            <summary>
+            Инициализирует новый экземпляр класса VkApiException
+            </summary>
+            <param name="response">Ответ от сервера vk</param>
+        </member>
+        <member name="T:VkNet.Exception.CannotAddYouBlacklistedException">
+            <summary>
+            Исключение, которые выбрасывается при попытке добавить в друзья пользователя, который занес Вас в свой черный список. Код ошибки - 175
+            </summary>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddYouBlacklistedException.#ctor">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddYouBlacklistedException
+            </summary>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddYouBlacklistedException.#ctor(System.String)">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddYouBlacklistedException
+            </summary>
+            <param name="message">Описание исключения.</param>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddYouBlacklistedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddYouBlacklistedException
+            </summary>
+            <param name="message">Описание исключения.</param>
+            <param name="innerException">Внутреннее исключение.</param>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddYouBlacklistedException.#ctor(System.String,System.Int32)">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddYouBlacklistedException
+            </summary>
+            <param name="message">Описание исключения.</param>
+            <param name="code">Код ошибки, полученный от сервера ВКонтакте.</param>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddYouBlacklistedException.#ctor(VkNet.Utils.VkResponse)">
+            <summary>
+            Инициализирует новый экземпляр класса VkApiException
+            </summary>
+            <param name="response">Ответ от сервера vk</param>
+        </member>
+        <member name="T:VkNet.Exception.CannotAddYourselfException">
+            <summary>
+            Исключение, которые выбрасывается при попытке добавить себя в друзья. Код ошибки - 174
+            </summary>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddYourselfException.#ctor">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddYourselfException
+            </summary>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddYourselfException.#ctor(System.String)">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddYourselfException
+            </summary>
+            <param name="message">Описание исключения.</param>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddYourselfException.#ctor(System.String,System.Exception)">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddYourselfException
+            </summary>
+            <param name="message">Описание исключения.</param>
+            <param name="innerException">Внутреннее исключение.</param>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddYourselfException.#ctor(System.String,System.Int32)">
+            <summary>
+            Инициализирует новый экземпляр класса CannotAddYourselfException
+            </summary>
+            <param name="message">Описание исключения.</param>
+            <param name="code">Код ошибки, полученный от сервера ВКонтакте.</param>
+        </member>
+        <member name="M:VkNet.Exception.CannotAddYourselfException.#ctor(VkNet.Utils.VkResponse)">
+            <summary>
+            Инициализирует новый экземпляр класса VkApiException
+            </summary>
+            <param name="response">Ответ от сервера vk</param>
         </member>
         <member name="T:VkNet.Exception.CaptchaNeededException">
             <summary>
@@ -11876,6 +12053,12 @@
             </summary>
             <param name="sid">Сид</param>
             <param name="img">Uri-адрес изображения с капчей</param>
+        </member>
+        <member name="M:VkNet.Exception.CaptchaNeededException.#ctor(VkNet.Utils.VkResponse)">
+            <summary>
+            Инициализирует новый экземпляр класса VkApiException
+            </summary>
+            <param name="response">Ответ от сервера vk</param>
         </member>
         <member name="T:VkNet.Exception.InvalidParameterException">
             <summary>
@@ -11915,6 +12098,12 @@
             <param name="code">Код ошибки, полученный от сервера ВКонтакте.</param>
             <param name="innerException">Внутреннее исключение.</param>
         </member>
+        <member name="M:VkNet.Exception.InvalidParameterException.#ctor(VkNet.Utils.VkResponse)">
+            <summary>
+            Инициализирует новый экземпляр класса VkApiException
+            </summary>
+            <param name="response">Ответ от сервера vk</param>
+        </member>
         <member name="T:VkNet.Exception.NeedValidationException">
             <summary>
             Исключение, которое выбрасывается в случаях, 
@@ -11928,7 +12117,7 @@
             
             </summary>
         </member>
-        <member name="P:VkNet.Exception.NeedValidationException.redirectUri">
+        <member name="P:VkNet.Exception.NeedValidationException.RedirectUri">
             <summary>
             Адрес который необходимо открыть в браузере.
             </summary>
@@ -11939,6 +12128,12 @@
             </summary>
             <param name="message">Описание исключения.</param>
             <param name="strRedirectUri">Адрес который необходимо открыть в браузере.</param>
+        </member>
+        <member name="M:VkNet.Exception.NeedValidationException.#ctor(VkNet.Utils.VkResponse)">
+            <summary>
+            Инициализирует новый экземпляр класса NeedValidationException
+            </summary>
+            <param name="response">Ответ от сервера vk</param>
         </member>
         <member name="T:VkNet.Exception.OutOfLimitsException">
             <summary>
@@ -11952,6 +12147,12 @@
             </summary>
             <param name="message">Описание исключения.</param>
         </member>
+        <member name="M:VkNet.Exception.OutOfLimitsException.#ctor(VkNet.Utils.VkResponse)">
+            <summary>
+            Инициализирует новый экземпляр класса NeedValidationException
+            </summary>
+            <param name="response">Ответ от сервера vk</param>
+        </member>
         <member name="T:VkNet.Exception.PostLimitException">
             <summary>
             Исключение, выбрасываемое при исчерпании лимита публикации постов в день
@@ -11962,6 +12163,12 @@
             
             </summary>
             <param name="message"></param>
+        </member>
+        <member name="M:VkNet.Exception.PostLimitException.#ctor(VkNet.Utils.VkResponse)">
+            <summary>
+            Инициализирует новый экземпляр класса NeedValidationException
+            </summary>
+            <param name="response">Ответ от сервера vk</param>
         </member>
         <member name="T:VkNet.Exception.TooManyRequestsException">
             <summary>
@@ -11996,6 +12203,12 @@
             <param name="message">Описание исключения.</param>
             <param name="code">Код ошибки, полученный от сервера ВКонтакте.</param>
         </member>
+        <member name="M:VkNet.Exception.TooManyRequestsException.#ctor(VkNet.Utils.VkResponse)">
+            <summary>
+            Инициализирует новый экземпляр класса TooManyRequestsException
+            </summary>
+            <param name="response">Ответ от сервера vk</param>
+        </member>
         <member name="T:VkNet.Exception.UserAuthorizationFailException">
             <summary>
             Исключение, которое выбрасывается при отсутствии авторизации на выполнение запрошенной операции.
@@ -12012,6 +12225,12 @@
             </summary>
             <param name="message">Описание исключения.</param>
             <param name="code">Код ошибки, полученный от сервера ВКонтакте.</param>
+        </member>
+        <member name="M:VkNet.Exception.UserAuthorizationFailException.#ctor(VkNet.Utils.VkResponse)">
+            <summary>
+            Инициализирует новый экземпляр класса UserAuthorizationFailException
+            </summary>
+            <param name="response">Ответ от сервера vk</param>
         </member>
         <member name="T:VkNet.Exception.VkApiAuthorizationException">
             <summary>
@@ -12042,6 +12261,16 @@
             Базовый класс для всех исключений, выбрасываемых библиотекой.
             </summary>
         </member>
+        <member name="P:VkNet.Exception.VkApiException.ErrorCode">
+            <summary>
+            Код ошибки
+            </summary>
+        </member>
+        <member name="P:VkNet.Exception.VkApiException.RequestParams">
+            <summary>
+            Параметры запроса
+            </summary>
+        </member>
         <member name="M:VkNet.Exception.VkApiException.#ctor">
             <summary>
             Инициализирует новый экземпляр класса VkApiException
@@ -12053,6 +12282,12 @@
             </summary>
             <param name="message">Описание исключения.</param>
         </member>
+        <member name="M:VkNet.Exception.VkApiException.#ctor(VkNet.Utils.VkResponse)">
+            <summary>
+            Инициализирует новый экземпляр класса VkApiException
+            </summary>
+            <param name="response">Ответ от сервера vk</param>
+        </member>
         <member name="M:VkNet.Exception.VkApiException.#ctor(System.String,System.Exception)">
             <summary>
             Инициализирует новый экземпляр класса InvalidParameterException
@@ -12063,11 +12298,6 @@
         <member name="T:VkNet.Exception.VkApiMethodInvokeException">
             <summary>
             Базовый класс, для всех исключений, которые могут произойти при вызове методов API ВКонтакте.
-            </summary>
-        </member>
-        <member name="P:VkNet.Exception.VkApiMethodInvokeException.ErrorCode">
-            <summary>
-            Код ошибки, полученный от сервера ВКонтакте.
             </summary>
         </member>
         <member name="M:VkNet.Exception.VkApiMethodInvokeException.#ctor">
@@ -23904,7 +24134,7 @@
             Нужно сократить число однотипных обращений. Для более эффективной работы Вы можете использовать execute или JSONP.
             </summary>
         </member>
-        <member name="F:VkNet.Utils.ErrorCode.publicServerError">
+        <member name="F:VkNet.Utils.ErrorCode.PublicServerError">
             <summary>
             Произошла внутренняя ошибка сервера.
             Попробуйте повторить запрос позже.
@@ -24009,6 +24239,26 @@
         <member name="F:VkNet.Utils.ErrorCode.UserAccessDenied">
             <summary>
             Доступ к пользователю запрещён.
+            </summary>
+        </member>
+        <member name="F:VkNet.Utils.ErrorCode.CannotAddYourself">
+            <summary>
+            Невозможно добавить в друзья самого себя.
+            </summary>
+        </member>
+        <member name="F:VkNet.Utils.ErrorCode.CannotAddYouBlacklisted">
+            <summary>
+            Невозможно добавить в друзья пользователя, который занес Вас в свой черный список. 
+            </summary>
+        </member>
+        <member name="F:VkNet.Utils.ErrorCode.CannotAddUserBlacklisted">
+            <summary>
+            Невозможно добавить в друзья пользователя, который занесен в Ваш черный список.
+            </summary>
+        </member>
+        <member name="F:VkNet.Utils.ErrorCode.CannotAddUserNotFound">
+            <summary>
+            Невозможно добавить в друзья пользователя, т.к. он не найден.
             </summary>
         </member>
         <member name="F:VkNet.Utils.ErrorCode.AlbumAccessDenied">
@@ -28228,6 +28478,15 @@
             </returns>
         </member>
         <member name="M:VkNet.Utils.VkResponse.op_Implicit(VkNet.Utils.VkResponse)~VkNet.Enums.SafetyEnums.FriendsOrder">
+            <summary>
+            Преобразовать из VkResponse
+            </summary>
+            <param name="response">Ответ.</param>
+            <returns>
+            Результат преобразования.
+            </returns>
+        </member>
+        <member name="M:VkNet.Utils.VkResponse.op_Implicit(VkNet.Utils.VkResponse)~VkNet.Enums.SafetyEnums.GroupsMemberFilters">
             <summary>
             Преобразовать из VkResponse
             </summary>

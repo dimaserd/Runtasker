@@ -6,7 +6,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Runtasker.Logic;
 using Runtasker.Logic.Workers.Email;
 using Runtasker.Logic.Contexts;
 using Runtasker.Logic.Entities;
@@ -24,24 +23,12 @@ namespace Runtasker
 
         private static async Task SendEmailAsync(IdentityMessage imessage)
         {
-            
             await Task.FromResult(0);
 
-            //MailMessage mail = new MailMessage(new MailAddress("dimaserd96@yandex.ru"), new MailAddress(imessage.Destination));
-
-            //mail.Subject = imessage.Subject;
-            //mail.Body = imessage.Body;
-            //mail.IsBodyHtml = true;
-
-            //SmtpClient smtpMail = new SmtpClient("smtp.yandex.com");
-            //smtpMail.Port = 587;
-            //smtpMail.EnableSsl = true;
-            //smtpMail.Credentials = new NetworkCredential("dimaserd96@yandex.ru", "Fifa16muversusfcb");
-            // and then send the mail
-            //smtpMail.Send(mail);
-           
-            new EmailWorkerBase().SendEmail(imessage);
-
+            using (EmailWorkerBase emailer = new EmailWorkerBase())
+            {
+                emailer.SendEmail(imessage);
+            }   
         }
 
     }
@@ -94,13 +81,16 @@ namespace Runtasker
             {
                 MessageFormat = "Ваш код безопасности: {0}"
             });
+
             manager.RegisterTwoFactorProvider("Код из сообщения", new EmailTokenProvider<ApplicationUser>
             {
                 Subject = "Код безопасности",
                 BodyFormat = "Ваш код безопасности: {0}"
             });
+
             manager.EmailService = new EmailService();
             manager.SmsService = new SmsService();
+
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {

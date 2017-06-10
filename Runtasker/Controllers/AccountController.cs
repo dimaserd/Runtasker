@@ -176,8 +176,7 @@ namespace Runtasker.Controllers
         #endregion
 
 
-
-        #region Constructors
+        #region Конструкторы
         public AccountController()
         {
             Construct();
@@ -281,7 +280,9 @@ namespace Runtasker.Controllers
         }
         #endregion
         
-        //just perfect
+        /// <summary>
+        /// Обновляет куки текущего пользователя. Используется для смены баланса после его пополнения или снятия.
+        /// </summary>
         public void ReSignIn()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -292,7 +293,13 @@ namespace Runtasker.Controllers
         }
 
         #region Login Methods
-        
+        /// <summary>
+        /// Частичное представление страницы с логином. Представление бывает двух видов. Для анонимного пользователя представление
+        /// представляет форму для входа. Для авторизованного пользователя представление показывает некоторые сведения,
+        /// такие как: адрес электронной почты, баланс, а также кнопки действий.
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [AllowAnonymous]
         public ActionResult Signin()
         {
@@ -414,6 +421,10 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            if(Request.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             ViewData["viewModel"] = ViewModelBuilder.RegisterView();
             return View();
         }
@@ -423,6 +434,7 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Register(RegisterModel model)
         {
+
             ViewData["viewModel"] = ViewModelBuilder.RegisterView();
             if (ModelState.IsValid)
             {
@@ -512,8 +524,15 @@ namespace Runtasker.Controllers
                 return View("Error");
             }
 
-            ApplicationUser user = await UserManager.FindByIdAsync(UserGuid);
-            await SignInManager.SignInAsync(user, true, true);
+            ////Убрал асинхронные методы
+            //ApplicationUser user = UserManager.FindById(userId);
+
+
+            //if(user != null)
+            //{
+            //    SignInManager.SignIn(user, true, true);
+            //}
+            
 
             ViewData["localeModel"] = ViewModelBuilder.ConfirmEmailView(GISigns.Login);
             return View();
@@ -733,7 +752,7 @@ namespace Runtasker.Controllers
 
                     SendConfirmationEmail(user, providerName: model.ProviderName);
 
-                    return RedirectToAction("Info", "Notification", routeValues: new { type = "toConfirmEmail"});
+                    return RedirectToAction("Info", "Notification", routeValues: new { infoType = InfoModelType.ToConfirmEmail});
                 }
 
                 AddErrors(result);

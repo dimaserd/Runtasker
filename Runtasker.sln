@@ -46,7 +46,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runtasker.Settings", "Runta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VkParser", "VkParser\VkParser.csproj", "{C41AED5C-A0E0-4648-95D3-FB36E4225927}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runtasker.Web", "Runtasker.Web\Runtasker.Web.csproj", "{FEE85ED4-8414-4835-A6D9-8F2778FFD6C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messaging", "Messaging\Messaging.csproj", "{D8EF5DB5-8CFB-4FA6-850A-5095F64AD5DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,10 +98,10 @@ Global
 		{C41AED5C-A0E0-4648-95D3-FB36E4225927}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C41AED5C-A0E0-4648-95D3-FB36E4225927}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C41AED5C-A0E0-4648-95D3-FB36E4225927}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FEE85ED4-8414-4835-A6D9-8F2778FFD6C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FEE85ED4-8414-4835-A6D9-8F2778FFD6C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FEE85ED4-8414-4835-A6D9-8F2778FFD6C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FEE85ED4-8414-4835-A6D9-8F2778FFD6C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8EF5DB5-8CFB-4FA6-850A-5095F64AD5DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8EF5DB5-8CFB-4FA6-850A-5095F64AD5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8EF5DB5-8CFB-4FA6-850A-5095F64AD5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8EF5DB5-8CFB-4FA6-850A-5095F64AD5DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

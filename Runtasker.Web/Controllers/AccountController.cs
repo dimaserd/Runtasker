@@ -264,6 +264,8 @@ namespace Runtasker.Web.Controllers
                 return View("Error");
             }
             var result = await _userManager.ConfirmEmailAsync(user, code);
+
+            ViewData["localeModel"] = Loca
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 

@@ -118,3 +118,4 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\roslyn\Sy
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\roslyn\System.Xml.XmlDocument.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\roslyn\System.Xml.XPath.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\DocumentFormat.OpenXml.xml

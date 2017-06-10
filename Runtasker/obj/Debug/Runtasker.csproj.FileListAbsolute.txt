@@ -474,3 +474,4 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\AngleSharp.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\JetBrains.Annotations.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\AngleSharp.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\JetBrains.Annotations.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\DocumentFormat.OpenXml.xml

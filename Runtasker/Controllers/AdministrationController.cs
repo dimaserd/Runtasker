@@ -333,6 +333,12 @@ namespace Runtasker.Controllers
 
         #endregion
 
+
+        public ActionResult Test()
+        {
+            return View("~/Views/Administration/Metronic/Layouts/_MetronicAdminLayout.cshtml");
+        }
+
         #endregion
 
         #region Help Methods

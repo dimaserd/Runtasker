@@ -142,61 +142,16 @@
 <!--/Chat togglers scripts-->
 
 
-<!--Переход к чату с пользователем-->
-<script>
-        function OnChatterClickHandler(obj)
-        {
-            //получил номер заказа
-            var orderId = obj.id;
-
-            $.ajax({
-                type: "GET",
-                url: "/api/message/GetChatAboutOrder?orderId=" + orderId,
-                contentType: false,
-                processData: false,
-                async: true,
-                data: null,
-                success: function (result) {
-
-                    console.log("Сообщения!");
-                    console.log(result);
-                },
-                error: function (xhr, status, p3) {
-                    alert(xhr.responseText);
-                }
-            });
-            
-        }
-
-        function BuildChat(data)
-        {
-            
-        }
-
-        
-</script>
-<!--/Переход к чату с пользователем-->
-
-
-<!--Пример отправленного сообщения-->
-<div class="post out">
-    <img class="avatar" alt="" src="~/metronic_assets/layouts/layout/img/avatar3.jpg" />
-    <div class="message">
-        <span class="arrow"></span>
-        <a href="javascript:;" class="name">Bob Nilson</a>
-        <span class="datetime">20:15</span>
-        <span class="body"> When could you send me the report ? </span>
-    </div>
-</div>
-<!--/Пример отправленного сообщения-->
 
 
 
-
+<!--Построение сообщений-->
 <script>
 
         var myId = "@User.Identity.GetUserId()";
-        
+
+
+
         function BuildMessage(data)
         {
             var mainDiv = document.createElement("div");
@@ -212,12 +167,19 @@
                 mainDiv.classList.add("in");
             }
 
+            mainDiv.appendChild(GetAvatarImage(data));
+
+            mainDiv.appendChild(GetMessageDiv(data));
+
+            return mainDiv;
 
         }
 
         function GetAvatarImage(data)
         {
             var img = document.createElement("img");
+
+            img.className = "avatar";
 
             img.src = "/File/GetAvatar?userGuid=" + data.SenderId;
 
@@ -251,26 +213,74 @@
 
             spanDate.className = "datetime";
 
-            spanDate.innerText = "Пока без даты!";
+            spanDate.innerText =  " " + "Пока без даты!";
 
             div.appendChild(spanDate);
 
             //само сообщение
             var spanBody = document.createElement("span");
 
+            spanBody.className = "body";
 
+            spanBody.innerText = data.Text;
+
+            div.appendChild(spanBody);
+
+            return div;
         }
 </script>
+<!--/Построение сообщений-->
 
 
-<!--Пример входящего сообщения-->
-<div class="post in">
-    <img class="avatar" alt="" src="~/metronic_assets/layouts/layout/img/avatar2.jpg" />
-    <div class="message">
-        <span class="arrow"></span>
-        <a href="javascript:;" class="name">Ella Wong</a>
-        <span class="datetime">20:15</span>
-        <span class="body"> Its almost done. I will be sending it shortly </span>
-    </div>
-</div>
-<!--/Пример входящего сообщения-->
+<!--Заполнение чата-->
+<script>
+
+        var chatId = "dialog";
+
+        var chat = document.getElementById(chatId);
+
+        function BuildChat(data)
+        {
+            for (i = 0; i < data.length; i++)
+            {
+                chat.appendChild(BuildMessage(data[i]));
+            }
+        }
+</script>
+<!--/Заполнение чата-->
+
+<!--Переход к чату с пользователем-->
+<script>
+        function OnChatterClickHandler(obj)
+        {
+            
+            //получил номер заказа
+            var orderId = obj.id;
+
+            $.ajax({
+                type: "GET",
+                url: "/api/message/GetChatAboutOrder?orderId=" + orderId,
+                contentType: false,
+                processData: false,
+                async: true,
+                data: null,
+                success: function (result) {
+
+                    console.log("Сообщения!");
+                    console.log(result);
+                    BuildChat(result)
+                },
+                error: function (xhr, status, p3) {
+                    alert(xhr.responseText);
+                }
+            });
+            
+        }
+
+        
+</script>
+<!--/Переход к чату с пользователем-->
+
+
+
+

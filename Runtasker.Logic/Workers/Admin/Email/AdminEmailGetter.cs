@@ -17,8 +17,8 @@ namespace Runtasker.Logic.Workers.Admin.Email
             client.Connect("pop.gmail.com", 995, true);
             client.Authenticate("admin@bendytree.com", "YourPasswordHere");
             var count = client.GetMessageCount();
-            Message message = client.GetMessage(count);
-            Console.WriteLine(message.Headers.Subject);
+            //Message message = client.GetMessage(count);
+            //Console.WriteLine(message.Headers.Subject);
         }
     }
 }

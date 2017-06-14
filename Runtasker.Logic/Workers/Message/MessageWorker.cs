@@ -58,7 +58,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
 
         }
 
-        public IEnumerable<Message> GetChat(string toGuid, string userGuid = null)
+        public IEnumerable<Runtasker.Logic.Entities.Message> GetChat(string toGuid, string userGuid = null)
         {
             string userGuidParam = userGuid ?? UserGuid;
             return from m in Context.Messages
@@ -185,7 +185,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
         #endregion
 
         #region Public Methods
-        public Message SendMessage(Message message)
+        public Entities.Message SendMessage(Entities.Message message)
         {
             message.AttachmentId = FileWorker.AttachmentWorker.GetToMessage(message.AttachmentId);
             message.Date = DateTime.Now;
@@ -200,7 +200,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
 
         public void MarkMessagesAsRead(int id)
         {
-            Message message = Context.Messages.FirstOrDefault(m => m.Id == id);
+            Entities.Message message = Context.Messages.FirstOrDefault(m => m.Id == id);
             if(message == null)
             {
                 return;
@@ -211,7 +211,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
         #endregion
 
         #region Private Methods
-        private IEnumerable<Message> GetOnlyNewMessagesFromUser(int id, string senderGuid, string receiverGuid)
+        private IEnumerable<Entities.Message> GetOnlyNewMessagesFromUser(int id, string senderGuid, string receiverGuid)
         {
             return from m in Context.Messages
                    where m.SenderGuid == receiverGuid

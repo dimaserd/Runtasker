@@ -31,7 +31,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
         }
         #endregion
 
-        #region Private Properties
+        #region Свойства
         //We get Guid and OrderId than we send messages to ChatBuilder
         private string UserGuid { get; set; }
 
@@ -41,7 +41,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
 
         #endregion
 
-        #region Public Methods
+        #region Методы
 
         //for now its just an administrator
         public string GetChattterGuid()
@@ -55,7 +55,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
         }
 
         //Returns Messages about Order
-        public IEnumerable<Message> GetChatAboutOrder(int orderId)
+        public IEnumerable<Entities.Message> GetChatAboutOrder(int orderId)
         {
             Order order = Context.Orders.FirstOrDefault(o => o.Id == orderId);
             if (order == null || order.UserGuid != UserGuid)
@@ -70,7 +70,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
                     select m).ToList();
         }
 
-        public Message WriteMessageAboutOrder(Message message)
+        public Entities.Message WriteMessageAboutOrder(Entities.Message message)
         {
             string mark = Namer.GetForMessageAboutOrder(OrderId);
 
@@ -83,12 +83,12 @@ namespace Runtasker.Logic.Workers.MessageWorker
         #endregion
 
         #region Overriden Methods
-        public override IEnumerable<Message> GetChat()
+        public override IEnumerable<Entities.Message> GetChat()
         {
             return GetChatAboutOrder(OrderId);
         }
 
-        public override Message SendMessage(Message message)
+        public override Entities.Message SendMessage(Entities.Message message)
         {
             return WriteMessageAboutOrder(message);
         }

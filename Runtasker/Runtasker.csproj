@@ -261,6 +261,7 @@
     <Compile Include="Controllers\Api\ApiCouponController.cs" />
     <Compile Include="Controllers\Api\ApiHomeController.cs" />
     <Compile Include="Controllers\Api\ApiMenuController.cs" />
+    <Compile Include="Controllers\Api\ApiMessageController.cs" />
     <Compile Include="Controllers\BugBountyController.cs" />
     <Compile Include="Controllers\DevController.cs" />
     <Compile Include="Controllers\FileController.cs" />
@@ -3595,6 +3596,9 @@
     <Content Include="Views\Manage\AddVkInfo.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Administration\Metronic\Layouts\_MetronicAdminLayout.cshtml" />
+    <Content Include="Views\Administration\Metronic\QuickSideBar.cshtml" />
+    <Content Include="Views\Administration\Test.cshtml" />
+    <Content Include="Views\Administration\Metronic\Chat\ChatScriptsView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

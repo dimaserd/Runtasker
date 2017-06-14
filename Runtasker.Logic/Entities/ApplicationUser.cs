@@ -79,10 +79,7 @@ namespace Runtasker.Logic.Entities
 
     #region Расширения
 
-    public static class ApplicationUserExtensions
-    {
-        
-    }
+    
 
     /// <summary>
     /// Идентфикационные расширения
@@ -113,6 +110,8 @@ namespace Runtasker.Logic.Entities
                 VkDomain = GetClaimValueByName(identity, "VkDomain")
             };
         }
+
+        
 
         public static string GetPhoneNumber(this IIdentity identity)
         {
@@ -156,6 +155,8 @@ namespace Runtasker.Logic.Entities
         {
             return GetClaimValueByName(identity, "Email");
         }
+
+        
         #endregion
 
         #region Вспомогательные методы

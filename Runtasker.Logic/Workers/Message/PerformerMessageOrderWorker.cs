@@ -7,7 +7,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
 {
     public class PerformerMessageOrderWorker
     {
-        #region Constructors
+        #region Конструкторы
         public PerformerMessageOrderWorker(MyDbContext context)
         {
             Context = context;
@@ -20,7 +20,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
         }
         #endregion
 
-        #region Properties
+        #region Свойства
 
         MyDbContext Context { get; set; }
         Order _Order { get; set; } //Sets in function SetOrder, Maybe it should be done in constructor
@@ -29,7 +29,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
         MessageNamer Namer { get; set; }
         #endregion
 
-        #region Public Functions
+        #region Функции
 
         //To reduce calls to database
         public void SetOrder(int orderId)
@@ -56,7 +56,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
             return (order != null) ? order.UserGuid : "";
         }
 
-        public IEnumerable<Message> GetMessagesAboutOrder(int? orderId = null)
+        public IEnumerable<Entities.Message> GetMessagesAboutOrder(int? orderId = null)
         {
             Order order = _Order ?? Context.Orders.FirstOrDefault(o => o.Id == orderId);
             if (order == null)

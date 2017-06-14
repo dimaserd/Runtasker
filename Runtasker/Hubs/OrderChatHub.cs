@@ -5,6 +5,7 @@ using System;
 using Microsoft.AspNet.SignalR.Hubs;
 using Runtasker.Logic.Workers.Files;
 using Extensions.String;
+using Runtasker.Logic.Models.Messages;
 
 namespace Runtasker.Hubs
 {
@@ -36,8 +37,8 @@ namespace Runtasker.Hubs
                 //Links in Text must be wrapped and checked for html tags
                 AttachmentId = Filer.AttachmentWorker.GetToMessage(m.Attachments),
                 //Attachments get throw file
-                ReceiverGuid = m.ToGuid,
-                SenderGuid = m.UserGuid,
+                ReceiverGuid = m.ReceiverId,
+                SenderGuid = m.SenderId,
                 Status = MessageStatus.New,
                 OrderId = m.OrderId,
             };

@@ -91,8 +91,8 @@ namespace Runtasker.Logic.Workers.Admin
             {
                 foreach (Order order in model)
                 {
-                    IEnumerable<Message> messages = order.Messages;
-                    foreach(Message mes in messages)
+                    IEnumerable<Entities.Message> messages = order.Messages;
+                    foreach(Entities.Message mes in messages)
                     {
                         context.Messages.Remove(mes);
                     }

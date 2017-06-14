@@ -14,30 +14,9 @@ namespace Runtasker.Hubs
     #endregion
 
     #region Message Classes
-    public class HubMessage
-    {
-        public string Text { get; set; }
+    
 
-        public string UserGuid { get; set; }
-
-        public string ToGuid { get; set; }
-        //Database methods
-
-        public string SenderName { get; set; }
-        //for sending back an HtmlMessage
-
-        public string ReceiverName { get; set; }
-        //for sending back an HtmlMessage
-
-        public string Attachments { get; set; }
-        //for attaching archives with files
-    }
-
-    public class OrderHubMessage : HubMessage
-    {
-        public int OrderId { get; set; }
-        //Use to get it to the mark
-    }
+    
     #endregion
 
     public class ChatHubBase : Hub

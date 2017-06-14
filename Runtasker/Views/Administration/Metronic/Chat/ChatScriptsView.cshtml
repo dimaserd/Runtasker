@@ -1,0 +1,276 @@
+﻿@using Microsoft.AspNet.Identity;
+@{
+    Layout = null;
+}
+
+  <!--Крутилка-->
+<script>
+    function MakeLoading(elementId) {
+        var sp = document.createElement("span");
+        sp.className = "text-center";
+
+        sp.className = "fa fa-spinner fa-5x fa-spin";
+
+        var searchResult = document.getElementById(elementId);
+
+        searchResult.innerHTML = "";
+
+        searchResult.appendChild(sp);
+
+    }
+</script>
+<!--/Крутилка-->
+
+<!--Chat tooglers scripts-->
+<script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var dialogPlaceId = "customerDialogList";
+
+
+            var dialogList = document.getElementById(dialogPlaceId);
+
+            function CustomerChatBuilder(data) {
+                console.log(data);
+
+                dialogList.innerHTML = "";
+
+                for (i = 0; i < data.length; i++) {
+                    dialogList.appendChild(GetLi(data[i]))
+                }
+            }
+
+            //само направение на чат
+            function GetLi(data) {
+                var li = document.createElement("li");
+
+                li.className = "media";
+                li.id = data.OrderId;
+
+                li.addEventListener("click", function (e) {
+                    OnChatterClickHandler(li);
+                }, false);
+                
+
+                li.appendChild(GetCountDiv(data));
+                li.appendChild(GetAvatarImg(data));
+                li.appendChild(GetInfoDiv(data));
+
+                return li;
+            }
+
+            //счетчик
+            function GetCountDiv(data) {
+                var div = document.createElement("div");
+
+                div.className = "media-status";
+
+                var span = document.createElement("span");
+
+                span.className = "badge badge-success";
+
+                span.innerText = data.UnreadCount;
+
+                div.appendChild(span);
+
+                return div;
+            }
+
+            //аватар
+            function GetAvatarImg(data) {
+                var img = document.createElement("img");
+
+                img.className = "media-object";
+
+                img.src = "/File/GetAvatar?userGuid=" + data.Chatter.Id;
+
+                return img;
+            }
+
+            //нижняя часть после фото
+            function GetInfoDiv(data) {
+                var div = document.createElement("div");
+
+                div.className = "media-body";
+
+                var h4 = document.createElement("h4");
+
+                h4.className = "media-heading";
+
+                h4.innerText = data.Chatter.Name;
+
+                div.appendChild(h4);
+
+                var divText = document.createElement("div");
+                divText.className = "media-heading-sub";
+
+                divText.innerHTML = "О заказе №" + data.OrderId;
+
+                div.appendChild(divText);
+
+                return div;
+            }
+
+        function GetChatsData() {
+
+
+            MakeLoading(dialogPlaceId);
+
+            $.ajax({
+                type: "GET",
+                url: "/api/message/GetOrderChatInfos",
+                contentType: false,
+                processData: false,
+                async: true,
+                data: null,
+                success: function (result) {
+
+                    CustomerChatBuilder(result);
+                },
+                error: function (xhr, status, p3) {
+                    alert(xhr.responseText);
+                }
+            });
+            }
+
+        //сам вызов
+        GetChatsData();
+
+        }, false);
+</script>
+<!--/Chat togglers scripts-->
+
+
+<!--Переход к чату с пользователем-->
+<script>
+        function OnChatterClickHandler(obj)
+        {
+            //получил номер заказа
+            var orderId = obj.id;
+
+            $.ajax({
+                type: "GET",
+                url: "/api/message/GetChatAboutOrder?orderId=" + orderId,
+                contentType: false,
+                processData: false,
+                async: true,
+                data: null,
+                success: function (result) {
+
+                    console.log("Сообщения!");
+                    console.log(result);
+                },
+                error: function (xhr, status, p3) {
+                    alert(xhr.responseText);
+                }
+            });
+            
+        }
+
+        function BuildChat(data)
+        {
+            
+        }
+
+        
+</script>
+<!--/Переход к чату с пользователем-->
+
+
+<!--Пример отправленного сообщения-->
+<div class="post out">
+    <img class="avatar" alt="" src="~/metronic_assets/layouts/layout/img/avatar3.jpg" />
+    <div class="message">
+        <span class="arrow"></span>
+        <a href="javascript:;" class="name">Bob Nilson</a>
+        <span class="datetime">20:15</span>
+        <span class="body"> When could you send me the report ? </span>
+    </div>
+</div>
+<!--/Пример отправленного сообщения-->
+
+
+
+
+<script>
+
+        var myId = "@User.Identity.GetUserId()";
+        
+        function BuildMessage(data)
+        {
+            var mainDiv = document.createElement("div");
+
+            mainDiv.classList.add("post");
+
+            if (data.SenderId == myId)
+            {
+                mainDiv.classList.add("out");
+            }
+            else
+            {
+                mainDiv.classList.add("in");
+            }
+
+
+        }
+
+        function GetAvatarImage(data)
+        {
+            var img = document.createElement("img");
+
+            img.src = "/File/GetAvatar?userGuid=" + data.SenderId;
+
+            return img;
+        }
+
+        function GetMessageDiv(data)
+        {
+            var div = document.createElement("div");
+
+            div.className = "message";
+
+            var span = document.createElement("span");
+
+            span.className = "arrow";
+
+
+            div.appendChild(span);
+
+
+            var a = document.createElement("a");
+
+            a.className = "name";
+
+            a.innerText = data.SenderName;
+
+            div.appendChild(a);
+
+            //с датой
+            var spanDate = document.createElement("span");
+
+            spanDate.className = "datetime";
+
+            spanDate.innerText = "Пока без даты!";
+
+            div.appendChild(spanDate);
+
+            //само сообщение
+            var spanBody = document.createElement("span");
+
+
+        }
+</script>
+
+
+<!--Пример входящего сообщения-->
+<div class="post in">
+    <img class="avatar" alt="" src="~/metronic_assets/layouts/layout/img/avatar2.jpg" />
+    <div class="message">
+        <span class="arrow"></span>
+        <a href="javascript:;" class="name">Ella Wong</a>
+        <span class="datetime">20:15</span>
+        <span class="body"> Its almost done. I will be sending it shortly </span>
+    </div>
+</div>
+<!--/Пример входящего сообщения-->

@@ -103,7 +103,7 @@ namespace Runtasker.Logic.Workers.Admin
                 ApplicationUser user = await Db.Users
                     .FirstOrDefaultAsync(u => u.Id == id);
 
-                List<Message> messages = await (from m in Db.Messages
+                List<Entities.Message> messages = await (from m in Db.Messages
                                           where m.SenderGuid == id || m.ReceiverGuid == id
                                           select m)
                                           .Include(x => x.Receiver)

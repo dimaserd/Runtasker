@@ -44,7 +44,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
         /// <param name="mes"></param>
         /// <param name="senderName"></param>
         /// <returns></returns>
-        public static UIHubMessage ToUIHubMessage(this Message mes, string senderName)
+        public static UIHubMessage ToUIHubMessage(this Entities.Message mes, string senderName)
         {
             //Второй раз имя не обязательно посылать
             return new UIHubMessage
@@ -111,14 +111,14 @@ namespace Runtasker.Logic.Workers.MessageWorker
 
         #region Virtual Methods
 
-        public virtual Message SendMessage(Message message)
+        public virtual Entities.Message SendMessage(Entities.Message message)
         {
             return message;
         }
 
-        public virtual IEnumerable<Message> GetChat()
+        public virtual IEnumerable<Entities.Message> GetChat()
         {
-            return new List<Message>();
+            return new List<Entities.Message>();
         }
 
         #endregion

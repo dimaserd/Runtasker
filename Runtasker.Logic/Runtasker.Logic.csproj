@@ -200,6 +200,10 @@
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
     <Compile Include="Models\ManageModels\AddVkInfoModel.cs" />
     <Compile Include="Models\ManageModels\OtherUserInfo.cs" />
+    <Compile Include="Models\Messages\ChatMessage.cs" />
+    <Compile Include="Models\Messages\HubMessage.cs" />
+    <Compile Include="Models\Messages\OrderHubMessage.cs" />
+    <Compile Include="Models\Messages\OrderMessage.cs" />
     <Compile Include="Models\Orders\AnonymousModels.cs" />
     <Compile Include="Models\Orders\ApiModels.cs" />
     <Compile Include="Models\Orders\OnlineOrderRequest.cs" />
@@ -208,12 +212,14 @@
     <Compile Include="Models\Orders\Pay\PayOnlineHelp.cs" />
     <Compile Include="Models\Orders\Pay\PayOrderBase.cs" />
     <Compile Include="Models\Payments\YandexKassa\YandexKassaPaymentResponse.cs" />
+    <Compile Include="Models\Users\ApplicationUserInfo.cs" />
     <Compile Include="Models\VkNotificater\VkUserInfo.cs" />
     <Compile Include="Models\WokerResults\WorkerPropertyResult.cs" />
     <Compile Include="Statics\Notifications\CustomerOrderNotifications.cs" />
     <Compile Include="Statics\Notifications\GuestNotifications.cs" />
     <Compile Include="Workers\Admin\Users\AdminUserCreation.cs" />
     <Compile Include="Workers\Logging\LoggingWorker.cs" />
+    <Compile Include="Workers\Message\AdminMessageWorker.cs" />
     <Compile Include="Workers\Notifications\Orders\PerformerNotificationCreator.cs" />
     <Compile Include="Workers\Notifications\Orders\VkNotifications\VkCustomerNotificationMethods.cs" />
     <Compile Include="Workers\Notifications\Orders\VkNotifications\VkPerformerNotificater.cs" />

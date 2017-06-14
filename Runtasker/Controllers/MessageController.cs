@@ -21,19 +21,19 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region Private Fields
+        #region Поля
         private MessageWorker _messageWorker;
 
         private MessageOrderWorker _messageOrderWorker;
 
-        //was static were problevs
+        
         private MyDbContext _context;
 
         private UserManager<ApplicationUser> _userManager;
        
         #endregion
 
-        #region Properties
+        #region Свойства
 
         private string UserGuid
         {
@@ -115,6 +115,8 @@ namespace Runtasker.Controllers
             return View(viewName: "ActivePanel", model: model);
         }
 
+
+        #region Методы чата
         //TO DO Chat                                                 
         public ActionResult Chat(string toGuid)
         {
@@ -142,6 +144,9 @@ namespace Runtasker.Controllers
             IEnumerable<Message> model = OrderMessager.GetChatAboutOrder(orderId);
             return View(model: model);
         }
+
+        #endregion
+
 
         #region Dispose
         protected override void Dispose(bool disposing)

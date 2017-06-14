@@ -333,10 +333,15 @@ namespace Runtasker.Controllers
 
         #endregion
 
-
+        #region Metronic
+        public ActionResult QuickSideBar()
+        {
+            return View("~/Views/Administration/Metronic/QuickSideBar.cshtml");
+        }
+        #endregion
         public ActionResult Test()
         {
-            return View("~/Views/Administration/Metronic/Layouts/_MetronicAdminLayout.cshtml");
+            return View();
         }
 
         #endregion

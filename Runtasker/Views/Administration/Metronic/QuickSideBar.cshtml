@@ -1,0 +1,122 @@
+﻿@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+    string chatViewsDir = "~/Views/Administration/Metronic/Chat/";
+
+    string chatScriptsView = "ChatScriptsView.cshtml";
+}
+
+
+
+@section scripts{
+
+  @{ Html.RenderPartial(chatViewsDir + chatScriptsView);}
+}
+
+<!--Скрипты для общения в чате-->
+<script>
+   
+    function TestSwitch()
+    {
+        var id = "quick_sidebar_tab_1";
+
+        var elem = document.getElementById(id);
+
+        var className = "page-quick-sidebar-content-item-shown";
+
+        if (elem.classList.contains(className))
+        {
+            elem.classList.remove(className);
+        }
+        else
+        {
+            elem.classList.add(className);
+        }
+
+        
+
+    }
+</script>
+<!--/Скрипты для общения в чате-->
+
+<a href="javascript:;" class="page-quick-sidebar-toggler">
+    <i class="icon-login"></i>
+</a>
+<div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
+    
+    
+    <div class="page-quick-sidebar">
+
+
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <!--Связка идет по id="quick_sidebar_tab_1" по нему произойдет переход на нужный таб-->
+                <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab">
+                    Users
+                    <span class="badge badge-danger">2</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="javascript:;" data-target="#quick_sidebar_tab_2" data-toggle="tab">
+                    Alerts
+                    <span class="badge badge-success">7</span>
+                </a>
+            </li>
+
+
+            <li class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                    More
+                    <i class="fa fa-angle-down"></i>
+                </a>
+
+                <ul class="dropdown-menu pull-right">
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-bell"></i> Alerts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-info"></i> Notifications
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-speech"></i> Activities
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-settings"></i> Settings
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+        </ul>
+
+
+        <div class="tab-content">
+            <!--Связка идет по id="quick_sidebar_tab_1"-->
+            <div class="tab-pane active page-quick-sidebar-chat" id="quick_sidebar_tab_1">
+
+                @Metronic.Admin.QuickSideBarHelper.UsersList()
+
+                @Metronic.Admin.QuickSideBarHelper.ChatExample()
+
+            </div>
+
+            @Metronic.Admin.QuickSideBarHelper.AlertSideBar()
+
+            @Metronic.Admin.QuickSideBarHelper.SettingsSideBar()
+
+        </div>
+    </div>
+
+
+</div>
+

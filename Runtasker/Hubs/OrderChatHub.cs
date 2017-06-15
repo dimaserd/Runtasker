@@ -1,14 +1,15 @@
 ﻿using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers.MessageWorker;
 using System.Linq;
-using System;
 using Microsoft.AspNet.SignalR.Hubs;
 using Runtasker.Logic.Workers.Files;
-using Extensions.String;
 using Runtasker.Logic.Models.Messages;
 
 namespace Runtasker.Hubs
 {
+    /// <summary>
+    /// Хаб, отвечающий за чат между пользователями
+    /// </summary>
     [HubName("aboutOrderChatHub")]
     public class AboutOrderChatHub : ChatHubBase
     {
@@ -28,23 +29,15 @@ namespace Runtasker.Hubs
         UIHubMessage SendMessage(object message)
         {
             OrderHubMessage m = message as OrderHubMessage;
-            Message mes = new Message
-            {
-                Date = DateTime.Now,
-                Type = MessageType.AboutOrder,
-                Mark = m.OrderId.ToString(),
-                Text = m.Text.StripHTML(),
-                //Links in Text must be wrapped and checked for html tags
-                AttachmentId = Filer.AttachmentWorker.GetToMessage(m.Attachments),
-                //Attachments get throw file
-                ReceiverGuid = m.ReceiverId,
-                SenderGuid = m.SenderId,
-                Status = MessageStatus.New,
-                OrderId = m.OrderId,
-            };
 
+            string attachmentId = Filer.AttachmentWorker.GetToMessage(m.Attachments);
+
+            Message mes = m.ToMessage(attachmentId);
+            
             //добавление сообщения в базу
             context.Messages.Add(mes);
+            
+            //сохранение изменений
             context.SaveChanges();
 
             string senderName = GetSenderNickName(mes.SenderGuid);
@@ -74,17 +67,9 @@ namespace Runtasker.Hubs
         public void SendMessageAboutOrder(OrderHubMessage Data)
         {
             UIHubMessage data = SendMessage(Data);
-            //Calling a function on client
+            
             OnMessageSend(data);
         }
-
-
-        public void MessageIsRead(int Id)
-        {
-            
-        }
-
-
 
         #endregion
 
@@ -92,19 +77,22 @@ namespace Runtasker.Hubs
 
         public void OnMessageSend(UIHubMessage message)
         {
-            //get here the group abd send message
+            //получаем группу пользователя
             string groupName = GetGroup(message.ReceiverGuid, message.SenderGuid);
-            //TODO make constructor to ChatUIHubMessage from type UIHubMessage
+
+            //че то херь какия то вроде есть метод расширения но ничего не работает
             ChatUIHubMessage m = new ChatUIHubMessage
             {
                 Id = message.Id,
                 Date = message.Date,
                 Attachments = message.Attachments,
-                SenderGuid = message.SenderGuid,
+                SenderId = message.SenderGuid,
                 NickName = message.NickName,
                 Text = message.Text,
             };
-            //Methods don't exist in javascript
+
+            //Вызов на клиентах данный группы этого методы
+            //!!!!Важно на клиенте нельзя принимать объект
             Clients.Group(groupName).onNewMessage(m);
         }
 

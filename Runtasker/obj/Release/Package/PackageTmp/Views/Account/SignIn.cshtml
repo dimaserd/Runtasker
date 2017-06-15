@@ -3,6 +3,8 @@
 @using Extensions.String
 @using Runtasker.LocaleBuilders.Models
 @using Runtasker.Logic.Entities
+@using HtmlExtensions.StaticRenderers
+
 @model LoginModel
 @{
     Layout = null;
@@ -125,7 +127,7 @@ else
                     
                     <div class="col-md-12 text-center">
                         <a href="@Url.Action("Profile", "Manage")" class="btn btn-primary btn-sm active" style="padding-right: inherit;">
-                            @localeModel["ViewProfile"]
+                            @FASigns.Male.ToHtml()@localeModel["ViewProfile"]
                         </a>
                     </div>
                 </div>
@@ -137,9 +139,13 @@ else
                     <div class="row">
                         @if (!User.Identity.HasPassword())
                         {
+                            <div class="margin-bottom10"></div>
+
                             <div class="col-md-12 col-xs-12 text-center">
-                                @Html.RouteLink(localeModel["SetPassword"], new { controller = "Manage", action = "SetPassword" }, new { @class = "btn btn-default btn-sm" })
-                            </div>
+                                <a href="/Manage/SetPassword" class="btn btn-default btn-sm">
+                                    @FASigns.Key.ToHtml()@localeModel["SetPassword"]
+                                </a>
+                             </div>
                         }
                         <div class="col-md-12 col-xs-12">
                             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "pull-right", style = "margin-top: 8px;" }))

@@ -5,17 +5,28 @@
     string chatScriptsView = "ChatScriptsView.cshtml";
 }
 
+<style type="text/css">
+    .unread {
+        background-color: rebeccapurple!important;
+    }
+    
+</style>
+
 
 
 @section scripts{
 
+    
   @{ Html.RenderPartial(chatViewsDir + chatScriptsView);}
+
+
 }
 
 <!--Скрипты для общения в чате-->
 <script>
-   
-    function TestSwitch()
+
+    //изменяет текущее окно
+    function MakeSwitch()
     {
         var id = "quick_sidebar_tab_1";
 

@@ -1,5 +1,4 @@
 ﻿using Runtasker.Logic.Contexts.Interfaces;
-using Runtasker.Logic.Entities;
 using System;
 using System.Collections.Generic;
 
@@ -67,27 +66,16 @@ namespace Runtasker.Logic.Workers.MessageWorker
     #endregion
 
     #region Class For JavaScript ChatBuilder
-    public class ChatUIHubMessage
-    {
-        /*For JavaScript message building*/
-        public int Id { get; set; }
 
-        public string Text { get; set; }
 
-        public string SenderGuid { get; set; }
+    
 
-        public string Attachments { get; set; }
 
-        public string NickName { get; set; }
-
-        public DateTime Date { get; set; }
-        /*/For JavaScript message building*/
-    }
     #endregion
 
     public class MessageWorkerBase
     {
-        #region Constructors
+        #region Конструкторы
         public MessageWorkerBase()
         {
             _context = new MyDbContext();

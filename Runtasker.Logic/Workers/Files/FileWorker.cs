@@ -4,9 +4,12 @@ using System.IO;
 
 namespace Runtasker.Logic.Workers.Files
 {
+    /// <summary>
+    /// Класс работающий с файлами и обладающий огромной ответственностью (является устаревшим)
+    /// </summary>
     public class SuperFileWorker
     {
-        #region Constructors
+        #region Конструкторы
         public SuperFileWorker(IMyDbContext context)
         {
             RootDirectory = System.Web.Hosting.HostingEnvironment.MapPath("~/Files");
@@ -17,7 +20,7 @@ namespace Runtasker.Logic.Workers.Files
         }
         #endregion
 
-        #region Fields
+        #region Поля
         public string RootDirectory { get; private set; }
 
         IMyDbContext Context { get; set; }
@@ -28,34 +31,29 @@ namespace Runtasker.Logic.Workers.Files
 
         #endregion
 
-        #region Preparation Methods
-        //подготовительные методы
+        #region Подготовительные методы
         private void CheckForDirectories()
         {
-            if(!Directory.Exists($"{RootDirectory}/Temporary"))
-            {
-                Directory.CreateDirectory($"{RootDirectory}/Temporary");
-            }
 
-            if(!Directory.Exists($"{RootDirectory}/Attachments"))
+            string[] directories = new string[]
             {
-                Directory.CreateDirectory($"{RootDirectory}/Attachments");
+                $"{RootDirectory}/Temporary",
+                $"{RootDirectory}/Attachments",
+                $"{RootDirectory}/Attachments/Temp",
+                $"{RootDirectory}/Orders"
+            };
+            
+            foreach(string directory in directories)
+            {
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
             }
+            
 
-            if (!Directory.Exists($"{RootDirectory}/Attachments/Temp"))
-            {
-                Directory.CreateDirectory($"{RootDirectory}/Attachments/Temp");
-            }
-
-            if(!Directory.Exists($"{RootDirectory}/Orders"))
-            {
-                Directory.CreateDirectory($"{RootDirectory}/Orders");
-            }
+            
         }
-        #endregion
-
-        #region Public Methods
-       
         #endregion
 
 

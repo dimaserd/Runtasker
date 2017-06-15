@@ -201,7 +201,9 @@
     <Compile Include="Models\ManageModels\AddVkInfoModel.cs" />
     <Compile Include="Models\ManageModels\OtherUserInfo.cs" />
     <Compile Include="Models\Messages\ChatMessage.cs" />
+    <Compile Include="Models\Messages\ChatUIHubMessage.cs" />
     <Compile Include="Models\Messages\HubMessage.cs" />
+    <Compile Include="Models\Messages\OrderChatMessage.cs" />
     <Compile Include="Models\Messages\OrderHubMessage.cs" />
     <Compile Include="Models\Messages\OrderMessage.cs" />
     <Compile Include="Models\Orders\AnonymousModels.cs" />

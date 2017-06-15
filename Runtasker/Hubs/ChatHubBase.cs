@@ -1,94 +1,70 @@
 ﻿using Microsoft.AspNet.SignalR;
 using Runtasker.Logic;
+using Runtasker.Logic.Contexts.Interfaces;
 
 namespace Runtasker.Hubs
-{
-    #region Class for UserDictionary
-    public class ChatHubUser
-    {
-        public string Id { get; set; }
-
-        public string Name { get; set; }
-            
-    }
-    #endregion
-
-    #region Message Classes
-    
-
-    
-    #endregion
-
+{ 
+    /// <summary>
+    /// Базовый класс хаба для чата
+    /// </summary>
     public class ChatHubBase : Hub
     {
-
-        #region Constructors
+        #region Конструкторы
 
         public ChatHubBase()
         {
             _context = new MyDbContext();
         }
 
-        #endregion
-
-        #region Future Methods
-
-        /*private IEnumerable<ChatHubUser> GetUsersList()
+        public ChatHubBase(MyDbContext contextParam)
         {
-            return (from u in context.Users.Where(o => o.Id != "")
-                    select new ChatHubUser
-                    {
-                        Id = u.Id,
-                        Name = u.Name
-                    }).ToList();
-        }*/
+            _context = contextParam;
+        }
 
         #endregion
+     
+        #region Поля
 
-        #region Private Fields
-
-        private MyDbContext _context;
-
-        //private static List<ChatHubUser> SenderNicknames;
-
+        MyDbContext _context;
         #endregion
 
-        #region Public Properties
-        //low case to avoid conflicts
+        #region Свойства
+
+        /// <summary>
+        /// Свойство контекста (записано с маленькой буквы, чтобы избежать конфликтов(
+        /// </summary>
         public MyDbContext context { get { return _context; } }
         #endregion
 
-        #region Protected Fields
-        //Some kind of message worker
-        #endregion
+        #region Защищенные методы
 
-        #region Protected Methods
+        /// <summary>
+        /// Получает группу для текущего пользователя чата и добавляет его соединение
+        /// к имени группы
+        /// </summary>
+        /// <param name="toGuid"></param>
+        /// <param name="userGuid"></param>
+        /// <returns></returns>
         protected string GetGroup(string toGuid, string userGuid)
         {
             string groupName;
-            if (string.Compare(toGuid, userGuid) > 0)
-            {
-                groupName = $"{toGuid}{userGuid}";
-            }
-            else
-            {
-                groupName = $"{userGuid}{toGuid}";
-            }
+            
+            groupName = (string.Compare(toGuid, userGuid) > 0)? $"{toGuid}{userGuid}" : $"{userGuid}{toGuid}";
+            
             //собрали группу и добавили пользователя туда
             Groups.Add(Context.ConnectionId, groupName);
             return groupName;
         }
 
-        //This method makes query it could be remade
+        /// <summary>
+        /// Метод достающий имя пользователя из базы (Его нужно переделать!)
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <returns></returns>
         protected string GetSenderNickName(string guid)
         {
             return context.Users.Find(guid).Name;
         }
-
-        #endregion
-
-        #region Virtual Methods
-        //for now it's better to implement interface
 
         #endregion
     }

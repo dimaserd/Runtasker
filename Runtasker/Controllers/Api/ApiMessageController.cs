@@ -97,7 +97,7 @@ namespace Runtasker.Controllers.Api
         }
 
         [Route("GetChatAboutOrder")]
-        public async Task<IEnumerable<OrderHubMessage>> GetChatAboutOrder(int orderId)
+        public async Task<IEnumerable<OrderChatMessage>> GetChatAboutOrder(int orderId)
         {
             return await AdminMessager.GetChatAboutOrderAsync(orderId, User.Identity.GetName());
         }

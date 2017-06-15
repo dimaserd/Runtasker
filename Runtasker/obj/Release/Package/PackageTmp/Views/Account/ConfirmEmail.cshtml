@@ -23,11 +23,15 @@
         @localeModel["Thanks"]
     </h3>
 
-    @*<h3>
+    <h3>
         @localeModel["ClickToLoginLink"].ToHtml()
-    </h3>*@ 
+    </h3>
 
     <h3>
         @localeModel["ContinueWorkTextHtml"].ToHtml()
     </h3>
 </div>
+
+<hr />
+
+@{ Html.RenderAction("News", "Home");}

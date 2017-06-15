@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Runtasker.Hubs;
+using Runtasker.Logic.Models.Messages;
 
 namespace Runtasker.Test
 {
@@ -17,8 +18,8 @@ namespace Runtasker.Test
                 ReceiverName = "receiver",
                 SenderName = "sender",
                 Text = "text",
-                ToGuid = "toguid",
-                UserGuid = "userGuid"
+                ReceiverId = "toguid",
+                SenderId = "userGuid"
             };
 
             object o = message;

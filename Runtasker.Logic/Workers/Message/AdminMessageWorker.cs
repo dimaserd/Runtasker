@@ -51,13 +51,23 @@ namespace Runtasker.Logic.Workers.Message
         /// <param name="orderId"></param>
         /// <param name="MyName"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<OrderHubMessage>> GetChatAboutOrderAsync(int orderId, string MyName)
+        public async Task<IEnumerable<OrderChatMessage>> GetChatAboutOrderAsync(int orderId, string MyName)
         {
             ApplicationUserInfo customerInfo = await GetCustomerInfoByOrderAsync(orderId);
 
+            //получил информацию о текущем чате теперь надо засунуть его вперед списка
+            OrderChatMessage info = GetChatInfo(customerInfo, orderId);
+
             List<Entities.Message> messages = await Context.Messages.Where(m => m.OrderId == orderId).ToListAsync();
 
-            return messages.Select(x => x.ToOrderHubMessage(MyName, UserId, customerInfo.Name));
+            //создаю список
+            List<OrderChatMessage> result = new List<OrderChatMessage>();
+
+            result.Add(info);
+            //добавляю  ссообщения
+            result.AddRange(messages.Select(x => x.ToOrderChatMessage(MyName, customerInfo.Name, UserId)));
+
+            return result;
         }
 
 
@@ -69,6 +79,23 @@ namespace Runtasker.Logic.Workers.Message
             return (await Context.Orders
                 .Include(x => x.Customer)
                 .FirstOrDefaultAsync(x => x.Id == orderId)).Customer.ToApplicationUserInfo();
+        }
+
+        /// <summary>
+        /// Довольно костыльный метод который возвращает общую информацию о текущем диалоге
+        /// в виде сообщения (Скорее всего придется переделать)
+        /// </summary>
+        /// <returns></returns>
+        OrderChatMessage GetChatInfo(ApplicationUserInfo chatterInfo, int orderId)
+        {
+            return new OrderChatMessage
+            {
+                OrderId = orderId,
+                SenderId = UserId,
+                ReceiverId = chatterInfo.UserId,
+                ReceiverName = chatterInfo.Name,
+                Text = "Сообщение специально для построения чата!"
+            };
         }
         #endregion
         #region IDisposable Support

@@ -3,6 +3,20 @@
     Layout = null;
 }
 
+<!--Поля по которым будет создаваться объект сообщения-->
+<!--Поля SenderId, SenderName не меняются с течением времени
+    то есть остаются статическими при смене текущего диалога-->
+
+<input type="hidden" name="SenderId" value="@User.Identity.GetUserId()"/>
+<input type="hidden" name="ReceiverId" />
+<input type="hidden" name="SenderName" value="@User.Identity.GetUserName()" />
+<input type="hidden" name="OrderId" />
+<input type="hidden" name="ReceiverName" />
+<!--/Поля по которым будет создаваться объект сообщения-->
+
+
+
+
   <!--Крутилка-->
 <script>
     function MakeLoading(elementId) {
@@ -21,7 +35,7 @@
 </script>
 <!--/Крутилка-->
 
-<!--Chat tooglers scripts-->
+<!--Методы подгрузки диалогов-->
 <script>
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -30,6 +44,8 @@
 
 
             var dialogList = document.getElementById(dialogPlaceId);
+
+            
 
             function CustomerChatBuilder(data) {
                 console.log(data);
@@ -139,18 +155,17 @@
 
         }, false);
 </script>
-<!--/Chat togglers scripts-->
+<!--/Методы подгрузки диалогов-->
 
 
 
 
 
 <!--Построение сообщений-->
+
+
+<!--Сообщения из класса -->
 <script>
-
-        var myId = "@User.Identity.GetUserId()";
-
-
 
         function BuildMessage(data)
         {
@@ -158,7 +173,8 @@
 
             mainDiv.classList.add("post");
 
-            if (data.SenderId == myId)
+            //проверка на то является ли сообщение входящим
+            if (data.SenderId == document.getElementsByName("SenderId")[0].value)
             {
                 mainDiv.classList.add("out");
             }
@@ -190,7 +206,17 @@
         {
             var div = document.createElement("div");
 
-            div.className = "message";
+            //установка идентификатора сообщения по нему
+            //нужно определять не является ли сообщения повторным
+            div.id = data.Id;
+            div.classList.add("message");
+
+            //если сообщение не прочитано
+            if (!data.IsRead)
+            {
+                //добавляем свойство непрочитанности
+                div.classList.add("unread");
+            }
 
             var span = document.createElement("span");
 
@@ -213,7 +239,7 @@
 
             spanDate.className = "datetime";
 
-            spanDate.innerText =  " " + "Пока без даты!";
+            spanDate.innerText =  " " + data.FormattedDate;
 
             div.appendChild(spanDate);
 
@@ -228,23 +254,43 @@
 
             return div;
         }
+
 </script>
 <!--/Построение сообщений-->
 
 
 <!--Заполнение чата-->
 <script>
-
+        //Id диалога куда(элемент является списком и в него будут дополняться новые 
+        //элементы сообщений)
         var chatId = "dialog";
 
-        var chat = document.getElementById(chatId);
+        var chatDiv = document.getElementById(chatId);
+
+        //устанавливает глобальные константы для чата
+        function setChatGlobal(data) {
+            document.getElementsByName("ReceiverId")[0].value = data[0].ReceiverId;
+            document.getElementsByName("ReceiverName")[0].value = data[0].ReceiverName;
+            document.getElementsByName("OrderId")[0].value = data[0].OrderId;
+        }
 
         function BuildChat(data)
         {
-            for (i = 0; i < data.length; i++)
+
+            chatDiv.innerHTML = "";
+
+            setChatGlobal(data);
+
+            //перечисление идет не с первого элемента в последовательности
+            for (i = 1; i < data.length; i++)
             {
-                chat.appendChild(BuildMessage(data[i]));
+                chatDiv.appendChild(BuildMessage(data[i]));
             }
+        }
+
+        function AddToChat(dataBit)
+        {
+            chatDiv.appendChild(BuildMessage(dataBit));
         }
 </script>
 <!--/Заполнение чата-->
@@ -268,7 +314,9 @@
 
                     console.log("Сообщения!");
                     console.log(result);
-                    BuildChat(result)
+                    BuildChat(result);
+                    //перехожу к окну
+                    MakeSwitch()
                 },
                 error: function (xhr, status, p3) {
                     alert(xhr.responseText);
@@ -281,6 +329,59 @@
 </script>
 <!--/Переход к чату с пользователем-->
 
+<!--Скрипты для чата-->
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var chat = $.connection.newOrderChatHub;
+
+            //Начало клиентских функций
+
+            //функция отметки сообщения
+            chat.client.onMessageMarked = function (id) {
+
+                document.getElementById(id).removeClass("unread");
+            }
+
+            //функция приема сообщений
+            chat.client.onNewMessage = function (data) {
+
+            }
+            //Конец клиентских функций
+
+
+            $.connection.hub.start().done(function () {
+                function SendMessage(Data) {
+                    //вызов метода на клиенте
+                    chat.server.sendMessageAboutOrder(Data);
+                }
+            }) //the end of the hub.ready()    
+
+
+            
+
+            function TestSendingMessage() {
+                var Data =
+                    {
+                        ReceiverId: document.getElementsByName("ReceiverId")[0].value,
+                        ReceiverName: document.getElementsByName("ReceiverName")[0].value,
+                        SenderId: document.getElementsByName("SenderId")[0].value,
+                        SenderName: document.getElementsByName("SenderName")[0].value,
+                        Text: "Test Text",
+                        OrderId: document.getElementsByName("OrderId")[0].value
+                    };
+
+                SendMessage(Data);
+            }
+        });
+</script>
 
 
 
+
+<!--/Скрипты для чата-->
+
+
+<script>
+    
+</script>

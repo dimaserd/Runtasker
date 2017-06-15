@@ -211,8 +211,8 @@
             div.id = data.Id;
             div.classList.add("message");
 
-            //если сообщение не прочитано
-            if (!data.IsRead)
+            //если сообщение не прочитано и отправитель не я
+            if (!data.IsRead && data.SenderId != document.getElementsByName("SenderId")[0].value)
             {
                 //добавляем свойство непрочитанности
                 div.classList.add("unread");

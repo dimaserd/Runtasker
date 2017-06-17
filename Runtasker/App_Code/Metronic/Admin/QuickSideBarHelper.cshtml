@@ -134,13 +134,27 @@
             <!--Набор сообщения-->
             <div class="page-quick-sidebar-chat-user-form">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Type a message here...">
+                    <input id="messageText" type="text" class="form-control" placeholder="Type a message here...">
                     <div class="input-group-btn">
+                        <!--Для прикрепления файлов-->
                         <button type="button" class="btn green">
                             <i class="icon-paper-clip"></i>
                         </button>
+                        <!--/Для прикрепления файлов-->
+
+                        
                     </div>
+                    <div class="row col-md-12 col-lg-12 col-sm-12">
+                        <!--Кнопка отправить-->
+                        <button id="sendBtn" class="btn btn-success">
+                            Отправить <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                        <!--/Кнопка отправить-->
+                    </div>
+                    
                 </div>
+
+                
             </div>
             <!--/Набор сообщения-->
         </div>

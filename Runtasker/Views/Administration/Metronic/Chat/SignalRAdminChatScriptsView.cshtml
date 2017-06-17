@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+    //ViewBag.Title = "SignalRAdminChatScriptsView";
+}
+
+<!--Скрипты для чата-->
+<script>
+    $(function () {
+        var chatHub = $.connection.newOrderChatHub;
+
+
+        //объявление функции оторую хаб вызывает при получении сообщений
+        chatHub.client.onNewMessage = function (message) {
+            console.log("новое сообщение", message)
+        }
+
+        $.connection.hub.start().done(function () {
+
+            $(document.body).on("click", "#sendBtn", function () {
+                var message = 
+                    {
+                        SenderId: document.getElementsByName("SenderId")[0].value,
+                        SenderName: document.getElementsByName("SenderName")[0].value,
+                        ReceiverId: document.getElementsByName("ReceiverId")[0].value,
+                        ReceiverName: document.getElementsByName("ReceiverName")[0].value,
+                        OrderId: document.getElementsByName("OrderId")[0].value,
+                        Text: document.getElementById("messageText").value,
+
+                    }
+
+                console.log(message);
+                chat.server.sendMessageAboutOrder(message);
+            }
+        })
+    })       
+</script>
+<!--/Скрипты для чата-->
+
+<script>
+    
+</script>
+

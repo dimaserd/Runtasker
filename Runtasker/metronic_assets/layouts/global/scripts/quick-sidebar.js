@@ -48,6 +48,8 @@ var QuickSidebar = function () {
             wrapperChat.removeClass("page-quick-sidebar-content-item-shown");
         });
 
+        //функция отвечающая за отправку сообщения 
+        //попробуй вынести ее отсюда и переопределить или отказаться от нее!
         var handleChatMessagePost = function (e) {
             e.preventDefault();
 
@@ -86,12 +88,13 @@ var QuickSidebar = function () {
                 scrollTo: '1000000px'
             });
 
+            //очищение ввода
             input.val("");
 
             // simulate reply
             setTimeout(function(){
                 var time = new Date();
-                var message = preparePost('in', (time.getHours() + ':' + time.getMinutes()), "Ella Wong", 'avatar2', 'Lorem ipsum doloriam nibh...');
+                var message = preparePost('in', (time.getHours() + ':' + time.getMinutes()), "Ella Wong", 'avatar2', 'Ух ты ж блять я отвечаю!');
                 message = $(message);
                 chatContainer.append(message);
 

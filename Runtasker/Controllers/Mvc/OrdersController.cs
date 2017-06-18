@@ -449,10 +449,16 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult OnlineHelp()
         {
+            
 
             if(!Request.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Landing", new { notType = AnonymousNotificationType.TriedToOrderOnlineHelp });
+            }
+
+            if(User.IsInRole("Admin") || User.IsInRole("Performer"))
+            {
+                return RedirectToAction("Index", "Performer");
             }
 
             if (!User.Identity.IsEmailConfirmed())

@@ -1,0 +1,258 @@
+﻿@using Runtasker.Logic.Entities
+@using Runtasker.ExtensionsUI.UIExtensions
+@using Runtasker.Resources.Views.Shared.Chat
+@using Extensions.String
+@model IEnumerable<Message>
+@{
+
+    Layout = "~/Views/Shared/_ModalLayout.cshtml";
+    List<Message> messages;
+    if (Model == null)
+    {
+        messages = null;
+    }
+    else
+    {
+        messages = Model.ToList();
+    }
+    string userGuid = ViewData["userGuid"] as string;
+    //нужен хидден для отправки сообщений
+    string toGuid = ViewData["toGuid"] as string;
+    string senderName = ViewData["senderName"] as string;
+    string receiverName = ViewData["receiverName"] as string;
+    string orderId = ViewData["orderId"] as string;
+
+
+    string chatWithAboutOrder = string.Format("{0} {1}",
+        string.Format(ChatRes.ChatWithFormat, receiverName.GetShortName()),
+        string.Format(ChatRes.AboutOrderFormat, orderId).WrapToSpan(new { @class= "hidden-xs" }));
+}
+
+@Styles.Render("~/Chat")
+
+<!--Chat Body-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading" id="accordion">
+                    <span class="glyphicon glyphicon-comment"></span> @chatWithAboutOrder.ToHtml()
+                    <div class="btn-group pull-right">
+                        <button id="chevron-down" class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="collapseOne">
+                    <div id="chatbody" class="chatContent">
+                        <ul class="chat">
+                            @if (messages != null)
+                            {
+                                foreach (Message m in messages)
+                                {
+                                    HtmlMessage hm = new HtmlMessage(m, userGuid, senderName, receiverName);
+                                    @MvcHtmlString.Create(hm.ToString())
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input id="messageText" type="text" class="form-control input-sm" placeholder="@ChatRes.PlaceHolder" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-warning btn-sm" id="sendBtn">
+                                    @ChatRes.Send
+                                </button>
+                            </span>
+
+                        </div>
+                        <!--File downloading-->
+                        <p>
+                            <input type="file" id="uploadFile" multiple />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--/Chat Body-->
+
+
+<style type="text/css">
+    .unread {
+        background-color: rgba(153,217,234, 0.25);
+        border-radius: 5px;
+    }
+
+    .img-50 {
+        width: 50px;
+        height : auto;
+    }
+</style>
+
+
+
+
+
+<!--AudioSound-->
+<audio id="audioSound" src="~/assets/sounds/vk-1-zvuki-mp3.com_.mp3" type="audio/mp3"></audio>
+<!--/AudioSound-->
+
+<!--Скрытые поля для чата-->
+<!--btn-input btn-send-->
+<input id="senderId" type="hidden" value="@userGuid" />
+<input id="receiverId" type="hidden" value="@toGuid" />
+<input id="senderName" type="hidden" value="@senderName" />
+<input id="receiverName" type="hidden" value="@receiverName" />
+<input id="attachments" type="hidden"/>
+<input id="orderId" type="hidden" value="@orderId"/>
+<!--/Скрытые поля для чата-->
+
+<!--Функции скролла-->
+<script>
+      var chatHidden = true;
+        //чат скрыт
+        function FocusSetter() {
+            $('#btn-input').focus();
+        }
+
+        function ShowHideChatBody() {
+            $('#collapseOne').collapse('toggle');
+            if (chatHidden) {
+                chatHidden = !chatHidden;
+                setTimeout(function () { scrollDownChatBody(900) }, 1);
+            }
+            else {
+                chatHidden = !chatHidden;
+            }
+        }
+
+        $('#chevron-down').on('click', function (e) {
+            ShowHideChatBody();
+        })
+
+        function scrollDownChatBody(duration) {   //stop()
+            $('#chatbody').stop().animate({
+                scrollTop: $('#chatbody')[0].scrollHeight,
+            }, duration, FocusSetter());
+        }
+</script>
+<!--/Функции скролла-->
+
+<!--Message Builder-->
+<script>
+    function buildMessageFromData(Data)
+    {
+        console.log("buildMessageFromData");
+        console.log(Data);
+        buildMessage(Data.Id, Data.Text, Data.Attachmnets, Data.SenderGuid, Data.NickName, Data.Date)
+    }
+
+    function buildMessage(id, text, filesUrl, senderGuid, nickname, date) {
+
+
+        var userGuid = $('#userGuid').val();
+        var toGuid = $('#toGuid').val();
+        var NickName = nickname;
+
+
+        function GetStarted() {
+            var result = `<li id='${id}' date='${date}' class='mes `;
+            if (senderGuid == userGuid) { //сообщение принято?
+                result += "right clearfix'><span class='chat-img pull-right ";
+            }
+            else {
+                $('#audioSound').get(0).play();
+                result += "unread left clearfix'><span class='chat-img pull-left ";
+            }
+            result += " clearfix'>";
+            return result;
+        }
+
+        function GetNickAndTime() {
+            var time = "Just now"
+            if (senderGuid != userGuid) {
+                return `<strong class='primary-font'>${NickName}</strong>`
+                    + "<small class='pull-right text-muted timeSpan'>"
+                 + `<span class='glyphicon glyphicon-time'></span>${time}</small>`;
+            }
+            else {
+                return "<small class='text-muted timeSpan'>"
+                 + `<span class='glyphicon glyphicon-time'></span>${time}</small>`
+                 + `<strong class='pull-right primary-font'>${NickName}</strong>`;
+            }
+        }
+
+        function GetImage() {
+            return `<img src='/File/GetAvatar?userGuid=${senderGuid}' alt='User Avatar'`
+                + "class='img-circle img-50'/>";
+            
+        }
+
+        function GetAttachmentsLink() {
+            if (filesUrl != "") {
+                if (senderGuid != userGuid) {
+                    return "<p class='pull-right'><a href='"
+                    + filesUrl + "'>@ChatRes.DownloadFiles<span class='glyphicon glyphicon-cloud-download'></span></a></p>";
+                }
+                else {
+                    return "<p class='pull-left'><a href='"
+                     + filesUrl + "'>@ChatRes.DownloadFiles<span class='glyphicon glyphicon-cloud-download'></span></a></p>";
+                }
+            }
+            else {
+                return "";
+            }
+        }
+
+        var result = "";
+
+        result += GetStarted() + GetImage() + "</span><div class='chat-body clearfix'><div class='header'>"
+        + GetNickAndTime() + "</div>" + "<p>" + text + "</p>" + GetAttachmentsLink() + "</div></li>";
+
+        return result;
+
+    }
+</script>
+<!--/Message Builder-->
+
+<!--OrderChatHub-->
+<script src="~/Scripts/jquery.signalR-2.2.2.js"></script>
+<script src="~/signalr/hubs"></script>
+
+
+<script>
+    var chat = $.connection.newOrderChatHub;
+
+    $.connection.hub.start()
+        .done(function ()
+        {
+            console.log('Now connected, connection ID=' + $.connection.hub.id);
+
+            //обработчик нажатия кнопки отправить
+            $('#sendBtn').click(function (e) {
+                console.log("клик на отправку")
+                var Data = {
+                    SenderId: document.getElementById("senderId").value,
+                    ReceiverId: document.getElementById("receiverId").value,
+                    SenderName: document.getElementById("senderName").value,
+                    ReceiverName: document.getElementById("receiverName").value,
+                    Text: document.getElementById("messageText").value,
+                    OrderId: document.getElementById("orderId").value
+                }
+                chat.server.sendMessage("text");
+                chat.server.sendMessageAboutOrder(Data);
+                $('#messageText').val('');
+                
+            });
+        })
+        .fail(function ()
+        {
+            console.log('Could not Connect!');
+        });
+      
+        
+    
+</script>
+<!--/OrderChatHub-->
+
+

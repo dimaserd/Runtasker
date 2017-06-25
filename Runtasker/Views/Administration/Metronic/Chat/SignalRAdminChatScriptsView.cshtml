@@ -17,7 +17,10 @@
 
         $.connection.hub.start().done(function () {
 
+            console.log("connection done");
+
             $(document.body).on("click", "#sendBtn", function () {
+                console.log("click on send");
                 var message = 
                     {
                         SenderId: document.getElementsByName("SenderId")[0].value,

@@ -85,6 +85,7 @@ namespace Runtasker.Controllers
         }
         #endregion
 
+        #region Http обработчика
         [AllowAnonymous]
         public ActionResult Modal()
         {
@@ -142,8 +143,11 @@ namespace Runtasker.Controllers
             ViewData["orderId"] = orderId.ToString();
 
             IEnumerable<Message> model = OrderMessager.GetChatAboutOrder(orderId);
-            return View(model: model);
+
+            return View(viewName: "~/Views/Shared/NewChatAboutOrder.cshtml", model: model);
         }
+
+        #endregion
 
         #endregion
 

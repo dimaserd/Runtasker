@@ -50,59 +50,7 @@ var QuickSidebar = function () {
 
         //функция отвечающая за отправку сообщения 
         //попробуй вынести ее отсюда и переопределить или отказаться от нее!
-        var handleChatMessagePost = function (e) {
-            e.preventDefault();
-
-            var chatContainer = wrapperChat.find(".page-quick-sidebar-chat-user-messages");
-            var input = wrapperChat.find('.page-quick-sidebar-chat-user-form .form-control');
-
-            var text = input.val();
-            if (text.length === 0) {
-                return;
-            }
-
-            var preparePost = function(dir, time, name, avatar, message) {
-                var tpl = '';
-                tpl += '<div class="post '+ dir +'">';
-                tpl += '<img class="avatar" alt="" src="' + Layout.getLayoutImgPath() + avatar +'.jpg"/>';
-                tpl += '<div class="message">';
-                tpl += '<span class="arrow"></span>';
-                tpl += '<a href="#" class="name">Bob Nilson</a>&nbsp;';
-                tpl += '<span class="datetime">' + time + '</span>';
-                tpl += '<span class="body">';
-                tpl += message;
-                tpl += '</span>';
-                tpl += '</div>';
-                tpl += '</div>';
-
-                return tpl;
-            };
-
-            // handle post
-            var time = new Date();
-            var message = preparePost('out', (time.getHours() + ':' + time.getMinutes()), "Bob Nilson", 'avatar3', text);
-            message = $(message);
-            chatContainer.append(message);
-
-            chatContainer.slimScroll({
-                scrollTo: '1000000px'
-            });
-
-            //очищение ввода
-            input.val("");
-
-            // simulate reply
-            setTimeout(function(){
-                var time = new Date();
-                var message = preparePost('in', (time.getHours() + ':' + time.getMinutes()), "Ella Wong", 'avatar2', 'Ух ты ж блять я отвечаю!');
-                message = $(message);
-                chatContainer.append(message);
-
-                chatContainer.slimScroll({
-                    scrollTo: '1000000px'
-                });
-            }, 3000);
-        };
+        
 
         wrapperChat.find('.page-quick-sidebar-chat-user-form .btn').click(handleChatMessagePost);
         wrapperChat.find('.page-quick-sidebar-chat-user-form .form-control').keypress(function (e) {

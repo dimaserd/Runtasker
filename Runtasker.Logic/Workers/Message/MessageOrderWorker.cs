@@ -32,6 +32,8 @@ namespace Runtasker.Logic.Workers.MessageWorker
         #endregion
 
         #region Свойства
+
+        Order _order;
         //We get Guid and OrderId than we send messages to ChatBuilder
         private string UserGuid { get; set; }
 
@@ -43,7 +45,14 @@ namespace Runtasker.Logic.Workers.MessageWorker
 
         #region Методы
 
-        //for now its just an administrator
+        /// <summary>
+        /// Устнавливает заказ сразу чтобы избежать лишних обращений к базе данных
+        /// </summary>
+        public void SetOrder()
+        {
+
+        }
+        
         public string GetChattterGuid()
         {
             return Context.Users.FirstOrDefault(u => u.Email == AdminSettings.AdminEmail).Id;
@@ -54,7 +63,11 @@ namespace Runtasker.Logic.Workers.MessageWorker
             return AdminSettings.ChatterName;
         }
 
-        //Returns Messages about Order
+        /// <summary>
+        /// Возвращает сообщения о заказе
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         public IEnumerable<Entities.Message> GetChatAboutOrder(int orderId)
         {
             Order order = Context.Orders.FirstOrDefault(o => o.Id == orderId);
@@ -66,7 +79,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
             return (from m in Context.Messages
                     where
                     m.Type == MessageType.AboutOrder
-                    && m.Mark == orderId.ToString()
+                    && m.OrderId == orderId
                     select m).ToList();
         }
 

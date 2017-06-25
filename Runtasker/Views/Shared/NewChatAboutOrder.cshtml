@@ -27,7 +27,7 @@
         string.Format(ChatRes.ChatWithFormat, receiverName.GetShortName()),
         string.Format(ChatRes.AboutOrderFormat, orderId).WrapToSpan(new { @class= "hidden-xs" }));
 
-    string chatListId = "chat";
+    string chatListId = "chatList";
 }
 
 @Styles.Render("~/Chat")
@@ -46,7 +46,7 @@
                 </div>
                 <div class="panel-collapse collapse" id="collapseOne">
                     <div id="chatbody" class="chatContent">
-                        <ul class="@chatListId">
+                        <ul class="chat" id="@chatListId">
                             @if (messages != null)
                             {
                                 foreach (Message m in messages)

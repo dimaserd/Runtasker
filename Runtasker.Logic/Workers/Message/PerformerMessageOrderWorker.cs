@@ -2,6 +2,7 @@
 using Runtasker.Logic.Entities;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 namespace Runtasker.Logic.Workers.MessageWorker
 {
@@ -31,16 +32,25 @@ namespace Runtasker.Logic.Workers.MessageWorker
 
         #region Функции
 
-        //To reduce calls to database
+        /// <summary>
+        /// Метод,  который устанавливает заказ в поле подгружая все остальные связанные свойства. Чтобы сократить
+        /// обращения к базе данных
+        /// </summary>
+        /// <param name="orderId"></param>
         public void SetOrder(int orderId)
         {
-            _Order = Context.Orders.FirstOrDefault(o => o.Id == orderId);
+            if(_Order == null)
+            {
+                _Order = Context.Orders.Include(x => x.Customer).Include(x => x.Messages).FirstOrDefault(o => o.Id == orderId);
+
+            }
         }
 
         public string GetChatterName(int? orderId = null)
         {
-            Order order = _Order ?? Context.Orders.FirstOrDefault(o => o.Id == orderId.Value);
-            if(order != null)
+            
+            Order order = _Order;
+            if (order != null)
             {
                 return Context.Users.FirstOrDefault(u => u.Id == order.UserGuid).Name;
             }
@@ -52,26 +62,22 @@ namespace Runtasker.Logic.Workers.MessageWorker
 
         public string GetUserGuidToChat(int? orderId = null)
         {
-            Order order = _Order ?? Context.Orders.FirstOrDefault(o => o.Id == orderId.Value);
+            
+            Order order = _Order;
             return (order != null) ? order.UserGuid : "";
         }
 
         public IEnumerable<Entities.Message> GetMessagesAboutOrder(int? orderId = null)
         {
-            Order order = _Order ?? Context.Orders.FirstOrDefault(o => o.Id == orderId);
+            Order order = _Order;
+
             if (order == null)
             {
                 return null;
             }
 
-            //Getting mark for messages about order
-            string mark = Namer.GetForMessageAboutOrder(order.Id);
-
-            return (from m in Context.Messages
-                    where
-                    m.Type == MessageType.AboutOrder
-                    && m.Mark == mark
-                    select m).ToList();
+            
+            return order.Messages;
         }
 
         #endregion

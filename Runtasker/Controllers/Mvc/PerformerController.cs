@@ -328,7 +328,7 @@ namespace Runtasker.Controllers
         //уточнить у заказчика
         public ActionResult ChatAboutOrder(int id)
         {
-            //First we have to set an order to reduce calls to database
+            //Устанавливаем заказ в поле чтобы сократить колличество обращений к базе
             OrderMesWorker.SetOrder(id);
 
             ViewData["userGuid"] = UserGuid;
@@ -340,7 +340,8 @@ namespace Runtasker.Controllers
             ViewData["orderId"] = id.ToString();
 
             IEnumerable<Message> model = OrderMesWorker.GetMessagesAboutOrder();
-            return View(model: model);
+
+            return View(viewName: "~/Views/Shared/NewChatAboutOrder.cshtml", model: model);
         }
 
         #endregion

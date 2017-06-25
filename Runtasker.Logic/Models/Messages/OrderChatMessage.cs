@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Web;
 
 namespace Runtasker.Logic.Models.Messages
 {
@@ -8,6 +10,8 @@ namespace Runtasker.Logic.Models.Messages
     public class OrderChatMessage : ChatMessage
     {
         public int OrderId { get; set; }
+
+        public IEnumerable<HttpPostedFileBase> Attachments {get;set;}
     }
 
     public static class OrderChatMessageExtensions

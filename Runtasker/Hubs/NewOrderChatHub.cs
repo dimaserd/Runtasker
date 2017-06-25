@@ -10,6 +10,9 @@ namespace Runtasker.Hubs
     {
 
         #region Конструкторы
+        /// <summary>
+        /// Конструктор без параметров (Без него все идет в полную жопу)
+        /// </summary>
         public NewOrderChatHub()
         {
             _context = new MyDbContext();
@@ -34,14 +37,14 @@ namespace Runtasker.Hubs
         /// Метод отправки сообщения, Метод вызывается с клиента
         /// </summary>
         /// <param name="message"></param>
-        public void SendMessageAboutOrder(object mes)
+        public void SendMessageAboutOrder(OrderChatMessage message)
         {
 
-            OrderChatMessage message = mes as OrderChatMessage;
+            
             //Сохраняю сообщение в базе
             SaveMessageInDb(message);
 
-            //вызов метода на клиенте (у этой функции есть javascript двойник - приемник)
+            //вызов метода на клиенте 
             OnMessageSend(message);
         }
 
@@ -58,6 +61,7 @@ namespace Runtasker.Hubs
 
             //Вызов на клиентах данный группы этого методы
             //!!!!Важно на клиенте нельзя принимать объект
+            //у этой функции есть джава скрипт двойник
             Clients.Group(groupName).onNewMessage(message);
         }
 

@@ -8,6 +8,7 @@ namespace Runtasker.Logic.Models.Messages
     /// </summary>
     public class ChatMessage
     {
+        public int MessageId { get; set; }
 
         /// <summary>
         /// Идентификатор отправителя

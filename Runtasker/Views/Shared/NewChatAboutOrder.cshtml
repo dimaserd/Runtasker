@@ -26,6 +26,8 @@
     string chatWithAboutOrder = string.Format("{0} {1}",
         string.Format(ChatRes.ChatWithFormat, receiverName.GetShortName()),
         string.Format(ChatRes.AboutOrderFormat, orderId).WrapToSpan(new { @class= "hidden-xs" }));
+
+    string chatListId = "chat";
 }
 
 @Styles.Render("~/Chat")
@@ -44,7 +46,7 @@
                 </div>
                 <div class="panel-collapse collapse" id="collapseOne">
                     <div id="chatbody" class="chatContent">
-                        <ul class="chat">
+                        <ul class="@chatListId">
                             @if (messages != null)
                             {
                                 foreach (Message m in messages)
@@ -67,7 +69,7 @@
                         </div>
                         <!--File downloading-->
                         <p>
-                            <input type="file" id="uploadFile" multiple />
+                            <input type="file" id="attachments" multiple />
                         </p>
                     </div>
                 </div>
@@ -137,6 +139,42 @@
         }
 </script>
 <!--/Функции скролла-->
+
+@*<!--Принятое сообщение-->
+<li id="108" date="1497297514417" class="mes left clearfix">
+    <span class="chat-img pull-left">
+        <img src="/File/GetAvatar?userGuid=1433578d-a864-4e44-9d0c-45b1d5b21d71" alt="User Avatar" class="img-circle img-50">
+    </span>
+    <div class="chat-body clearfix">
+        <div class="header">
+            <strong class="primary-font">Jenny</strong>
+            <small class="pull-right text-muted timeSpan">
+                <span class="glyphicon glyphicon-time"></span>
+                    NaN/NaN/NaN
+            </small>
+        </div>
+        <p>Присланное сообщение</p>
+    </div>
+</li>
+<!--/Принятое сообщение-->
+
+<!--Отправленное сообщение-->
+<li id="19" date="1492621679280" class="mes right clearfix">
+    <span class="chat-img pull-right">
+        <img src="/File/GetAvatar?userGuid=1433578d-a864-4e44-9d0c-45b1d5b21d71" alt="User Avatar" class="img-circle img-50">
+    </span>
+    <div class="chat-body clearfix">
+        <div class="header">
+            <small class="text-muted timeSpan">
+                <span class="glyphicon glyphicon-time"></span>
+                NaN/NaN/NaN
+            </small>
+            <strong class="pull-right primary-font">Dmitry</strong>
+        </div>
+        <p>Отправленное сообщение</p>
+    </div>
+ </li>
+<!--/Отправленное сообщение-->*@
 
 <!--Message Builder-->
 <script>
@@ -215,6 +253,129 @@
 </script>
 <!--/Message Builder-->
 
+<!--Построение сообщений-->
+<script>
+    function buildMessageForChat(message)
+    {
+        var li = document.createElement("li");
+
+        li.id = message.MessageId;
+
+        //если сообщение отправленное
+        if (document.getElementById("senderId").value == message.SenderId)
+        {
+            li.className = "mes right clearfix";
+        }
+        else
+        {
+            li.className = "mes left clearfix";
+        }
+
+        li.appendChild(GetAvatarImgInSpan(message));
+
+        li.appendChild(GetMessageDiv(message));
+
+        return li;
+
+    }
+
+    function GetAvatarImgInSpan(message)
+    {
+        var span = document.createElement("span");
+
+        var img = document.createElement("img");
+
+        //если сообщение отправленное
+        if (document.getElementById("senderId").value == message.SenderId) {
+            span.className = "chat-img pull-right";
+            
+        }
+        else {
+            span.className = "chat-img pull-left";
+        }
+
+        
+        img.src = "/File/GetAvatar?userGuid=" + message.SenderId;
+        img.className = "img-circle img-50";
+
+        span.appendChild(img);
+
+        return span;
+        
+    }
+
+    function GetMessageDiv(message)
+    {
+        var div = document.createElement("div");
+
+        div.className = "chat-body clearfix";
+
+        div.appendChild(GetHeaderDiv(message));
+
+        var p = document.createElement("p");
+
+        p.innerText = message.Text;
+
+        div.appendChild(p);
+
+        return div;
+
+    }
+
+    function GetHeaderDiv(message)
+    {
+        var div = document.createElement("div");
+
+        div.className = "header";
+
+        div.appendChild(GetSmallWithDate(message));
+
+        //<strong class="pull-right primary-font">Dmitry</strong>
+
+        var str = document.createElement("strong");
+
+        //если сообщение отправленное
+        if (document.getElementById("senderId").value == message.SenderId) {
+            str.className = "pull-right primary-font";
+        }
+        else
+        {
+            str.className = "pull-left primary-font";
+        }
+
+        str.innerText = message.SenderName;
+
+
+        div.appendChild(str);
+
+        return div;
+    }
+
+    function GetSmallWithDate(message)
+    {
+        //<small class="text-muted timeSpan">
+        //    <span class="glyphicon glyphicon-time"></span>
+        //    NaN/NaN/NaN
+        //    </small>
+
+        var small = document.createElement("small");
+
+        var span = document.createElement("span");
+
+        span.className = "glyphicon glyphicon-time";
+
+        small.appendChild(span);
+
+        var time = document.createTextNode(message.FormattedDate);
+
+        small.appendChild(time);
+
+
+        return small;
+    }
+</script>
+<!--/Построение сообщений-->
+
 <!--OrderChatHub-->
 <script src="~/Scripts/jquery.signalR-2.2.2.js"></script>
 <script src="~/signalr/hubs"></script>
@@ -222,6 +383,12 @@
 
 <script>
     var chat = $.connection.newOrderChatHub;
+
+    chat.client.onNewMessage = function (data) {
+        console.log(data);
+
+        document.getElementById("@chatListId").appendChild(buildMessageForChat(data))
+    }
 
     $.connection.hub.start()
         .done(function ()
@@ -237,9 +404,9 @@
                     SenderName: document.getElementById("senderName").value,
                     ReceiverName: document.getElementById("receiverName").value,
                     Text: document.getElementById("messageText").value,
-                    OrderId: document.getElementById("orderId").value
+                    OrderId: document.getElementById("orderId").value,
+                    //Attachments: document.getElementById("attachments").value,
                 }
-                chat.server.sendMessage("text");
                 chat.server.sendMessageAboutOrder(Data);
                 $('#messageText').val('');
                 

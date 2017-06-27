@@ -7,11 +7,14 @@
     string chinese = "中文(简体)";
     string eng = "English";
 
-    Lang currentLang = LanguageStatic.Language; 
+    Lang currentLang = LanguageStatic.Language;
+
+    string langBlockId = "langBlock";
+    string userBlockId = "userForm";
 }
 
-<div class="btn-group pull-right hidden-xs">
-    <button id="langToogler" class="dropdown-toggle language" type="button">
+<div id="@langBlockId" class="btn-group pull-right hidden-xs">
+    <button id="langToogler" onclick="langFormMenuHandler()" class="dropdown-toggle language" type="button">
         @if (currentLang == Lang.Russian)
         {
             <img src="~/assets/images/flags/ru.png" width="16" height="11" alt="RUS Язык" />
@@ -65,25 +68,25 @@
 
 <!--Скрипт раскрывалки-->
 <script>
-        document.addEventListener('DOMContentLoaded', function () {
-
-            $("#langToogler").click(function () {
-                if ($(this).parent().hasClass("open"))
-                {
-                    $(this).parent().removeClass("open");
-                }
-                else
-                {
-                    if ($("#quick_sign_in").parent().hasClass("open"))
-                    {
-                        $("#quick_sign_in").parent().removeClass("open")
-                    }
-                    $(this).parent().addClass("open");
-                }
-            })
+    function langFormMenuHandler()
+    {
+        var userBlock = document.getElementById("@userBlockId");
+        if (userBlock.classList.contains("open")) {
+            userBlock.classList.remove("open");
+        }
 
 
-        }, false);
+        var langBlock = document.getElementById("@langBlockId");
+
+        if (langBlock.classList.contains("open"))
+        {
+            langBlock.classList.remove("open");
+        }
+        else
+        {
+            langBlock.classList.add("open");
+        }
+    }     
 </script>
 <!--/Скрипт раскрывалки-->
 

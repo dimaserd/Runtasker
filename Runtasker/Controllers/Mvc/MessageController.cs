@@ -132,7 +132,7 @@ namespace Runtasker.Controllers
             return View(model);
         }
 
-        public ActionResult ChatAboutOrder(int orderId)
+        public async Task<ActionResult> ChatAboutOrder(int orderId)
         {
             ViewData["userGuid"] = UserGuid;
             ViewData["senderName"] = User.Identity.GetName();
@@ -142,7 +142,7 @@ namespace Runtasker.Controllers
             ViewData["toGuid"] = OrderMessager.GetChattterGuid();
             ViewData["orderId"] = orderId.ToString();
 
-            IEnumerable<Message> model = OrderMessager.GetChatAboutOrder(orderId);
+            IEnumerable<Message> model = await OrderMessager.GetChatAboutOrderAsync(orderId);
 
             return View(viewName: "~/Views/Shared/NewChatAboutOrder.cshtml", model: model);
         }

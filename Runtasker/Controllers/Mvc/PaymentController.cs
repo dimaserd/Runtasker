@@ -134,6 +134,12 @@ namespace Runtasker.Controllers
         [Authorize]
         public ActionResult YandexKassa(decimal? sumToPay)
         {
+            if(Settings.Settings.AppSetting == Settings.Enumerations.ApplicationSettingType.Production)
+            {
+                return RedirectToAction("Index");
+            }
+
+
             if (sumToPay.HasValue && sumToPay.Value <= 0)
             {
                 RedirectToAction("Index");
@@ -185,6 +191,11 @@ namespace Runtasker.Controllers
                 logger.LogTextToFile(fileName, sb.ToString());
             }
 
+
+            if (Settings.Settings.AppSetting == Settings.Enumerations.ApplicationSettingType.Production)
+            {
+                return "999";
+            }
             //code = "0"    такой заказ есть в магазине, 
             //можно продолжать оплату магазин принимает оплаченный заказ
             //code = "1"    полученная MD5-сумма не совпадает с MD5-суммой 

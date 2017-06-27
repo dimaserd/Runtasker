@@ -3,7 +3,9 @@ using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Settings;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Runtasker.Logic.Workers.MessageWorker
 {
@@ -68,7 +70,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
         /// </summary>
         /// <param name="orderId"></param>
         /// <returns></returns>
-        public IEnumerable<Entities.Message> GetChatAboutOrder(int orderId)
+        public async Task<IEnumerable<Entities.Message>> GetChatAboutOrderAsync(int orderId)
         {
             Order order = Context.Orders.FirstOrDefault(o => o.Id == orderId);
             if (order == null || order.UserGuid != UserGuid)
@@ -76,11 +78,11 @@ namespace Runtasker.Logic.Workers.MessageWorker
                 return null;
             }
 
-            return (from m in Context.Messages
+            return await (from m in Context.Messages
                     where
                     m.Type == MessageType.AboutOrder
                     && m.OrderId == orderId
-                    select m).ToList();
+                    select m).ToListAsync();
         }
 
         public Entities.Message WriteMessageAboutOrder(Entities.Message message)
@@ -98,7 +100,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
         #region Overriden Methods
         public override IEnumerable<Entities.Message> GetChat()
         {
-            return GetChatAboutOrder(OrderId);
+            return null;
         }
 
         public override Entities.Message SendMessage(Entities.Message message)

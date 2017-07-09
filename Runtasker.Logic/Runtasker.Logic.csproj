@@ -96,7 +96,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="OpenPop, Version=2.0.6.1120, Culture=neutral, PublicKeyToken=6bdb97f144b7efc8, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenPop.NET.2.0.6.1120\lib\net40\OpenPop.dll</HintPath>
@@ -169,6 +169,7 @@
     <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Notification.cs" />
     <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\OrderSolution.cs" />
     <Compile Include="Entities\Payment.cs" />
     <Compile Include="Entities\PaymentTransaction.cs" />
     <Compile Include="Enumerations\ActionTypes\OrderActionType.cs" />
@@ -180,23 +181,6 @@
     <Compile Include="Enumerations\SaveChangesType.cs" />
     <Compile Include="Handlers\DbEntityValidationExceptionHandler.cs" />
     <Compile Include="Interfaces\Identity\IVkUser.cs" />
-    <Compile Include="Migrations\201702202121227_init.cs" />
-    <Compile Include="Migrations\201702202121227_init.Designer.cs">
-      <DependentUpon>201702202121227_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704071031412_paymentsExt.cs" />
-    <Compile Include="Migrations\201704071031412_paymentsExt.Designer.cs">
-      <DependentUpon>201704071031412_paymentsExt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704131308243_dropOtherInfo.cs" />
-    <Compile Include="Migrations\201704131308243_dropOtherInfo.Designer.cs">
-      <DependentUpon>201704131308243_dropOtherInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705011953063_ret.cs" />
-    <Compile Include="Migrations\201705011953063_ret.Designer.cs">
-      <DependentUpon>201705011953063_ret.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
     <Compile Include="Models\ManageModels\AddVkInfoModel.cs" />
     <Compile Include="Models\ManageModels\OtherUserInfo.cs" />
@@ -349,20 +333,6 @@
     <Folder Include="Statics\NewFolder1\" />
     <Folder Include="Workers\Logging\Statics\" />
     <Folder Include="Workers\RestoreData\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702202121227_init.resx">
-      <DependentUpon>201702202121227_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704071031412_paymentsExt.resx">
-      <DependentUpon>201704071031412_paymentsExt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704131308243_dropOtherInfo.resx">
-      <DependentUpon>201704131308243_dropOtherInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705011953063_ret.resx">
-      <DependentUpon>201705011953063_ret.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

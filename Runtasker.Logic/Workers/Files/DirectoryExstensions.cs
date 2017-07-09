@@ -2,6 +2,9 @@
 
 namespace Runtasker.Logic.Workers.Files
 {
+    /// <summary>
+    /// Рекурсивно очищает все файлы и директории находящиеся внутри данного каталога
+    /// </summary>
     public static class DirectoryExtensions
     {
         public static void Clear(this DirectoryInfo di)

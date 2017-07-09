@@ -136,7 +136,7 @@
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Owin.Security.Providers.Yahoo, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.Security.Providers.Yahoo.2.14.0\lib\net45\Owin.Security.Providers.Yahoo.dll</HintPath>
@@ -256,6 +256,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
+    <Compile Include="Controllers\Base\BaseMvcController.cs" />
     <Compile Include="Controllers\Mvc\AccountController.cs" />
     <Compile Include="Controllers\Mvc\AdministrationController.cs" />
     <Compile Include="Controllers\Api\ApiCouponController.cs" />
@@ -9028,6 +9029,7 @@
     <Folder Include="metronic_assets\apps\img\" />
     <Folder Include="metronic_assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="Models\UIModels\" />
+    <Folder Include="Views\BaseMvc\" />
     <Folder Include="Views\Info\" />
     <Folder Include="Views\Partial\" />
   </ItemGroup>

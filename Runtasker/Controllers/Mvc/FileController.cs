@@ -1,6 +1,7 @@
 ﻿using Extensions.String;
 using Logic.Extensions.Models;
 using Microsoft.AspNet.Identity;
+using Runtasker.Controllers.Base;
 using Runtasker.Logic;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers;
@@ -17,9 +18,9 @@ using System.Web.Mvc;
 namespace Runtasker.Controllers
 {
 
-    public class FileController : Controller
+    public class FileController : BaseMvcController
     {
-        #region Constructors
+        #region Конструкторы
         public FileController()
         {
             Construct();
@@ -34,27 +35,16 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region Private Fields
-        MyDbContext _db;
-
+        #region Поля
+        
         AvatarWorker _avatarer;
 
         FileControllerMethods _filer;
 
         #endregion
 
-        #region Properties
-        MyDbContext Db
-        {
-            get
-            {
-                if(_db == null)
-                {
-                    _db = new MyDbContext();
-                }
-                return _db;
-            }
-        }
+        #region Свойства
+        
 
         FileControllerMethods Filer
         {
@@ -68,10 +58,6 @@ namespace Runtasker.Controllers
             } 
         }
 
-        string UserGuid
-        {
-            get { return User.Identity.GetUserId(); }
-        }
 
         #region Directories
         string FilesDir
@@ -292,17 +278,13 @@ namespace Runtasker.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if(_db != null)
-            {
-                _db.Dispose();
-                _db = null;
-            }
-
+            
             if(_filer != null)
             {
                 _filer.Dispose();
                 _filer = null;
             }
+
             base.Dispose(disposing);
         }
     }

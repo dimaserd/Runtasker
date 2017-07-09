@@ -1,6 +1,7 @@
 ﻿using HtmlExtensions.StaticRenderers;
 using Logic.Extensions.Models;
 using Microsoft.AspNet.Identity;
+using Runtasker.Controllers.Base;
 using Runtasker.LocaleBuilders.Views.Payment;
 using Runtasker.Logic;
 using Runtasker.Logic.Entities;
@@ -24,12 +25,9 @@ namespace Runtasker.Controllers
 {
     [EnableCors("*", "*", "*")]
     [Authorize(Roles = "Customer")]
-    public class PaymentController : Controller
+    public class PaymentController : BaseMvcController
     {
         #region Поля
-
-        MyDbContext _context;
-
         YandexPaymentWorker _paymentWorker;
 
         RobokassaPaymentMethods robokassaWorker;
@@ -40,29 +38,9 @@ namespace Runtasker.Controllers
         #endregion
 
         #region Свойства
-        MyDbContext Context
-        {
-            get
-            {
-                if(_context == null)
-                {
-                    _context = new MyDbContext();
-                }
-                return _context;
-            }
-        }
+        
 
-        string UserGuid
-        {
-            get
-            {
-                if (Request.IsAuthenticated)
-                {
-                    return User.Identity.GetUserId();
-                }
-                return null;
-            }
-        }
+        
 
         PaymentViewModelBuilder ViewsHelper
         {
@@ -83,7 +61,7 @@ namespace Runtasker.Controllers
             {
                 if(_paymentWorker == null)
                 {
-                    _paymentWorker = new YandexPaymentWorker(Context);
+                    _paymentWorker = new YandexPaymentWorker(Db);
                 }
                 return _paymentWorker;
             }
@@ -95,7 +73,7 @@ namespace Runtasker.Controllers
             {
                 if(robokassaWorker == null)
                 {
-                    robokassaWorker = new RobokassaPaymentMethods(Context, UserGuid);
+                    robokassaWorker = new RobokassaPaymentMethods(Db, UserGuid);
                 }
                 return robokassaWorker;
             }
@@ -107,7 +85,7 @@ namespace Runtasker.Controllers
             {
                 if(_PTWorker == null)
                 {
-                    _PTWorker = new CustomerPaymentTransactionsWorker(Context, UserGuid);
+                    _PTWorker = new CustomerPaymentTransactionsWorker(Db, UserGuid);
                 }
                 return _PTWorker;
             }
@@ -203,7 +181,7 @@ namespace Runtasker.Controllers
             //code = "100"  такого заказа нет в магазине в авизо такого ответа нет
             //code = "200"  не удается выполнить разбор полученных параметров   тоже самое
 
-            YandexKassaPaymentGetter getter = new YandexKassaPaymentGetter(Context);
+            YandexKassaPaymentGetter getter = new YandexKassaPaymentGetter(Db);
 
             WorkerResult result = await getter.YandexKassaPaymentStartedAsync(action: action,
                 orderSumAmount: orderSumAmount,
@@ -355,7 +333,7 @@ namespace Runtasker.Controllers
             string shopId = null, string invoiceId = null, string customerNumber = null, 
             string MD5 = null)
         {
-            YandexKassaPaymentGetter getter = new YandexKassaPaymentGetter(Context);
+            YandexKassaPaymentGetter getter = new YandexKassaPaymentGetter(Db);
 
             WorkerResult result = await getter.YandexKassaNotificatedAsync(action: action, orderSumAmount: orderSumAmount,
                 orderSumCurrencyPaycash: orderSumCurrencyPaycash, orderSumBankPaycash: orderSumBankPaycash,

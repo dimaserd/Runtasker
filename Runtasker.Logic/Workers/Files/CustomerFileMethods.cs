@@ -6,43 +6,49 @@ using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers.Attachments;
 using Runtasker.Settings.Files;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
 
 namespace Runtasker.Logic.Workers.Files
 {
-    //TODO delete Context from here it must be in attachments worker
+    
     public class CustomerFileMethods : FileWorkerBase
     {
-        #region Constructors
-        public CustomerFileMethods(string rootDirectory) : base(rootDirectory)
+        #region Конструкторы
+        public CustomerFileMethods(string rootDirectory, MyDbContext context = null) : base(rootDirectory)
         {
-            Construct();
+            Construct(context);
         }
 
-        public CustomerFileMethods()
+        public CustomerFileMethods(MyDbContext context)
         {
-            Construct();
+            Construct(context);
         }
 
-        void Construct()
+        void Construct(MyDbContext context)
         {
             Attachmenter = new CustomerAttachmentWorker();
             Namer = new AttachmentNamer();
+            _context = context;
         }
         #endregion
 
-        #region Константы
-        
+        #region Поля
+        MyDbContext _context;
         #endregion
 
-        #region Help Methods
+        #region Константы
 
-        //This must be in customer attachment worker
-        //Rewrites zip in attachments folder with the same name
-        //we could left the previous name
+        #endregion
 
+        #region Вспомогательные методы
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="orderId"></param>
         void RewriteAttachmentsToOrder(int orderId)
         {
             using (MyDbContext context = new MyDbContext())
@@ -53,7 +59,7 @@ namespace Runtasker.Logic.Workers.Files
                 string mark = Namer.Mark.GetForOrder(orderId);
 
                 //for getting name of previous zip archive
-                Attachment orderA = context.Attachments.FirstOrDefault(a => a.Mark == mark);
+                Attachment orderA = context.Attachments.FirstOrDefault(a => a.OrderId == orderId);
 
 
                 if (orderA == null)
@@ -62,7 +68,7 @@ namespace Runtasker.Logic.Workers.Files
                     {
                         FilePath = zipPathWithFiles,
                         FileName = zipPathWithFiles.leftJustFileName(),
-                        Mark = mark
+                        OrderId = orderId
                     };
                     Order order = context.Orders.FirstOrDefault(o => o.Id == orderId);
                     order.Attachments = $"/File/DownloadByKey?key={newOrderA.Id}";
@@ -81,11 +87,23 @@ namespace Runtasker.Logic.Workers.Files
 
         #endregion
 
-        #region Private Properties
+        #region Свойства
 
         CustomerAttachmentWorker Attachmenter { get; set; }
 
         AttachmentNamer Namer { get; set; }
+
+        MyDbContext Context
+        {
+            get
+            {
+                if(_context == null)
+                {
+                    _context = new MyDbContext();
+                }
+                return _context;
+            }
+        }
         #endregion
 
         #region Public Methods
@@ -128,25 +146,18 @@ namespace Runtasker.Logic.Workers.Files
             List<string> fileNamesInOrderDir = Directory.GetFiles(orderDirectoryPath).ToList().leftJustNames();
 
             int filesCount = 0;
-            foreach(HttpPostedFileBase file in model.Files)
-            {
-                if (file != null)
-                {
-                    if(FilesSettings.IsThatGoodFile(file))
-                    {
-                        filesCount++;
-                        string uniqueFileName = file.FileName.makeFileNameUniqueAtList(fileNamesInOrderDir);
-                        string filePath = $"{orderDirectoryPath}/{uniqueFileName}";
-                        file.SaveAs(filePath);
-                    }
-                }
-            }
-            if(filesCount == 0)
-            {
-                return new WorkerResult("No files were attached!");
-            }
 
-            RewriteAttachmentsToOrder(model.OrderId);
+            //из модели достаются только безопасные файлы
+            List<HttpPostedFileBase> goodFiles = model.Files.Where(x => FilesSettings.IsThatGoodFile(x)).ToList();
+
+            Attachment orderAttachment = Context.Attachments.FirstOrDefault(x => x.OrderId == model.OrderId);
+
+            orderAttachment.AddFilesToAttachment(goodFiles);
+
+            Context.Attachments.Attach(orderAttachment);
+            Context.Entry(orderAttachment).State = EntityState.Modified;
+            Context.SaveChanges();
+            
             return new WorkerResult
             {
                 Succeeded = true

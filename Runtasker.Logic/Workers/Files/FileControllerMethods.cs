@@ -4,6 +4,7 @@ using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers.Notifications;
 using System;
 using System.Linq;
+using System.Data.Entity;
 
 namespace Runtasker.Logic.Workers.Files
 {
@@ -101,7 +102,7 @@ namespace Runtasker.Logic.Workers.Files
         {
             string mark = Namer.Mark.GetForOrderSolution(orderId);
             
-            Attachment solution = Db.Attachments.FirstOrDefault(a => a.Mark == mark);
+            Attachment solution = Db.OrderSolutions.Include(x => x.Solution).FirstOrDefault(o => o.OrderId == orderId).Solution;
             return solution;
                   
         }

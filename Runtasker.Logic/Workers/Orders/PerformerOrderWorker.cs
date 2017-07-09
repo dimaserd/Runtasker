@@ -269,11 +269,7 @@ namespace Runtasker.Logic.Workers.Orders
 
         }
 
-        public string GetLinkToAllFilesFromOrder(int id)
-        {
-            Attachment at = Context.Attachments.FirstOrDefault(a => a.Mark == $"[all]{id}");
-            return $"/File/DownloadByKey?key={at.Id}";
-        }
+        
         #endregion
 
         

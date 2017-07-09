@@ -123,6 +123,11 @@ namespace Extensions.String
             return files;
         }
 
+        /// <summary>
+        /// Разбивает строку по символам / и \ и берет последний кусок
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public static string leftJustFileName(this string filePath)
         {
             return filePath.Split('/', '\\').Last();

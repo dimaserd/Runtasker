@@ -270,3 +270,7 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\roslyn\
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\roslyn\System.Xml.XmlDocument.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\roslyn\System.Xml.XPath.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Views\Payment\Robokassa\RkassaRes.resx
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.resx
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Views\Payment\Robokassa\RkassaRes.Designer.cs
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.Designer.cs

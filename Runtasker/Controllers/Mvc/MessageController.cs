@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Runtasker.Controllers.Base;
 using Runtasker.Logic;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
@@ -11,44 +12,25 @@ using System.Web.Mvc;
 namespace Runtasker.Controllers
 {
     [Authorize]
-    public class MessageController : Controller
+    public class MessageController : BaseMvcController
     {
-        #region Contructors
+        #region Конструкторы
 
         public MessageController()
         {
-            _context = new MyDbContext();
+            
         }
         #endregion
 
         #region Поля
         private MessageWorker _messageWorker;
 
-        private MessageOrderWorker _messageOrderWorker;
-
-        
-        private MyDbContext _context;
-
-        private UserManager<ApplicationUser> _userManager;
-       
+        private MessageOrderWorker _messageOrderWorker;        
         #endregion
 
         #region Свойства
 
-        private string UserGuid
-        {
-            get
-            {
-                if (Request.IsAuthenticated)
-                {
-                    return User.Identity.GetUserId();
-                }
-                else
-                {
-                    return "";
-                }
-            }
-        }
+        
 
         public MessageWorker Messager
         {
@@ -56,7 +38,7 @@ namespace Runtasker.Controllers
             {
                 if (_messageWorker == null)
                 {
-                    _messageWorker = new MessageWorker(Context,UserGuid);
+                    _messageWorker = new MessageWorker(Db,UserGuid);
                 }
                 return _messageWorker;
             }
@@ -69,19 +51,18 @@ namespace Runtasker.Controllers
             {   
                 if(_messageOrderWorker == null)
                 {
-                    _messageOrderWorker = new MessageOrderWorker(UserGuid, Context);
+                    _messageOrderWorker = new MessageOrderWorker(UserGuid, Db);
                 }
                 return _messageOrderWorker;
             }
         }
 
-        public MyDbContext Context { get { return _context; } }
         #endregion
 
         #region Some Functions
         private string GetName(string userGuid)
         {
-            return _context.Users.FirstOrDefault(u => u.Id == userGuid).Name;
+            return Db.Users.FirstOrDefault(u => u.Id == userGuid).Name;
         }
         #endregion
 
@@ -157,17 +138,7 @@ namespace Runtasker.Controllers
         {
             if (disposing)
             {
-                if(_context != null)
-                {
-                    _context.Dispose();
-                    _context = null;
-                }
-
-                if(_userManager != null)
-                {
-                    _userManager.Dispose();
-                    _userManager = null;
-                }
+                
             }
 
             base.Dispose(disposing);

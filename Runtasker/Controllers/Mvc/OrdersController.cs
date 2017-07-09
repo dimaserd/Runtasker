@@ -18,56 +18,20 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Enumerations.Notifications.Anonymous;
 using Extensions.Decimal;
+using Runtasker.Controllers.Base;
 
 namespace Runtasker.Controllers
 {
     [Authorize]
-    public class OrdersController : Controller
+    public class OrdersController : BaseMvcController
     {
         #region Поля
-
-        #region Стандартные поля
-
-        ApplicationUserManager _userManager;
-        ApplicationSignInManager _signInManager;
-
-        #endregion
-
         CustomerOrderWorker _orderWorker;
-
-        MyDbContext _db = new MyDbContext();
 
         CustomerOrderErrorEvents _errorWorker;
         #endregion
 
         #region Свойства
-
-        #region Стандартные свойства
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set
-            {
-                _signInManager = value;
-            }
-        }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                if(_userManager == null)
-                {
-                    _userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(_db));
-                }
-                return _userManager;
-            }
-            
-        }
-        #endregion
 
         CustomerOrderWorker OrderWorker
         {
@@ -75,7 +39,7 @@ namespace Runtasker.Controllers
             {
                 if(_orderWorker == null)
                 {
-                    _orderWorker = new CustomerOrderWorker(_db, UserGuid);
+                    _orderWorker = new CustomerOrderWorker(Db, UserGuid);
                 }
                 return _orderWorker; 
             }
@@ -87,16 +51,13 @@ namespace Runtasker.Controllers
             {
                 if(_errorWorker == null)
                 {
-                    _errorWorker = new CustomerOrderErrorEvents(UserGuid, _db);
+                    _errorWorker = new CustomerOrderErrorEvents(UserGuid, Db);
                 }
                 return _errorWorker;
             }
         }
 
-        string UserGuid
-        {
-            get { return User.Identity.GetUserId(); }
-        }
+        
         #endregion
 
         #region Http Обработчики
@@ -520,23 +481,14 @@ namespace Runtasker.Controllers
         {
             IDisposable[] toDisposes = new IDisposable[]
             {
-                _db, _orderWorker
+                _orderWorker,
             };
 
             if (disposing)
             {
-                for(int i = 0; i < toDisposes.Length; i++)
-                {
-                    if(toDisposes[i] != null)
-                    {
-                        toDisposes[i].Dispose();
-                        toDisposes[i] = null;
-                    }
-                }
-                
-
-                
+                DisposeObjects(toDisposes);
             }
+
             base.Dispose(disposing);
         }
     }

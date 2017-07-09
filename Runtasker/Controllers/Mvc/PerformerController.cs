@@ -11,11 +11,12 @@ using Runtasker.Logic.Workers.Files;
 using Runtasker.Logic.Workers.Admin;
 using System.Threading.Tasks;
 using Logic.Extensions.Models;
+using Runtasker.Controllers.Base;
 
 namespace Runtasker.Controllers
 {
     [Authorize(Roles = "VkPerformer,Performer,Admin")]
-    public class PerformerController : Controller
+    public class PerformerController : BaseMvcController
     {
         #region Private Fields
 
@@ -27,8 +28,7 @@ namespace Runtasker.Controllers
 
         SuperFileWorker _superFileWorker;
 
-        MyDbContext Context = new MyDbContext();
-
+        
         #endregion
 
         #region Private Properties
@@ -39,7 +39,7 @@ namespace Runtasker.Controllers
             {
                 if (_orderMesWorker == null)
                 {
-                    _orderMesWorker = new PerformerMessageOrderWorker(Context);
+                    _orderMesWorker = new PerformerMessageOrderWorker(Db);
                 }
                 return _orderMesWorker;
             }
@@ -52,7 +52,7 @@ namespace Runtasker.Controllers
             {
                 if(_performerOrderWorker == null)
                 {
-                    _performerOrderWorker = new PerformerOrderWorker(Context, UserGuid);
+                    _performerOrderWorker = new PerformerOrderWorker(Db, UserGuid);
                 }
                 return _performerOrderWorker;
             }
@@ -64,7 +64,7 @@ namespace Runtasker.Controllers
             {
                 if(_adminWorker == null)
                 {
-                    _adminWorker = new AdminCustomerMethods(Context);
+                    _adminWorker = new AdminCustomerMethods(Db);
                 }
 
                 return _adminWorker;
@@ -77,14 +77,14 @@ namespace Runtasker.Controllers
             {
                 if(_superFileWorker == null)
                 {
-                    _superFileWorker = new SuperFileWorker(Context);
+                    _superFileWorker = new SuperFileWorker(Db);
                 }
                 return _superFileWorker;
             }
         }
         
 
-        string UserGuid { get { return User.Identity.GetUserId(); } }
+        
         #endregion
 
         // GET: Performer

@@ -1,4 +1,5 @@
-﻿using Runtasker.LocaleBuilders.Models;
+﻿using Extensions.Enumerations;
+using Runtasker.LocaleBuilders.Models;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models.ManageModels;
 using System.Collections.Generic;
@@ -48,7 +49,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
 
             VkMessage adminMessage = new VkMessage
             {
-                Text = $"Пользователь добавил заказ по предмету {order.Subject.ToDescriptionString()}",
+                Text = $"Пользователь добавил заказ по предмету {order.Subject.ToDisplayName()}",
                 UserDomain = null,
                 UserId = null,
             };

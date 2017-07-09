@@ -1,4 +1,5 @@
-﻿using Runtasker.LocaleBuilders.Models;
+﻿using Extensions.Enumerations;
+using Runtasker.LocaleBuilders.Models;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models.ManageModels;
 using Runtasker.Logic.Models.VkNotificater;
@@ -49,7 +50,7 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
             {
                 VkMessage performerMes = new VkMessage
                 {
-                    Text = $"Пользователь добавил заказ по предмету {order.Subject.ToDescriptionString()}\n"
+                    Text = $"Пользователь добавил заказ по предмету {order.Subject.ToDisplayName()}\n"
                 + $"Проверьте его на наличие ошибок и оцените его стоимость, помните что"
                 + $"заказ нужно завершить к {order.FinishDate.ToShortDateString()}",
                     UserDomain = vkInfo.VkDomain,

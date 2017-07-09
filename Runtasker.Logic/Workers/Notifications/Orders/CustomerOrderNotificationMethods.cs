@@ -1,4 +1,5 @@
-﻿using HtmlExtensions.HtmlEntities;
+﻿using Extensions.Enumerations;
+using HtmlExtensions.HtmlEntities;
 using HtmlExtensions.StaticRenderers;
 using Runtasker.LocaleBuilders.Models;
 using Runtasker.LocaleBuilders.Notification;
@@ -119,7 +120,7 @@ namespace Runtasker.Logic.Workers.Notifications
         {
             //получаем модель для создания специального локализованного 
             //уведомления для заказчика
-            ForNotification model = ModelBuilder.AddedOnlineHelpOrder(order.Subject.ToDescriptionString());
+            ForNotification model = ModelBuilder.AddedOnlineHelpOrder(order.Subject.ToDisplayName());
 
             //создаем уведоомление для заказчика
             Notification customerN = new Notification

@@ -10,6 +10,7 @@ using Runtasker.LocaleBuilders.Notification;
 using Runtasker.LocaleBuilders.Models;
 using Runtasker.Logic.Enumerations;
 using Runtasker.Settings;
+using Extensions.Enumerations;
 
 namespace Runtasker.Logic.Workers.Notifications
 {
@@ -46,7 +47,7 @@ namespace Runtasker.Logic.Workers.Notifications
         {
             SetCustomerCulture(order);
 
-            ForNotification model = ModelBuilder.AddedError(order.Id, order.ErrorType.ToDescriptionString());
+            ForNotification model = ModelBuilder.AddedError(order.Id, order.ErrorType.ToDisplayName());
             Notification customerN = new Notification
             {
                 AboutType = NotificationAboutType.Ordinary,
@@ -72,7 +73,7 @@ namespace Runtasker.Logic.Workers.Notifications
                 Type = NotificationType.Info,
                 Link = null,
                 Title = $"Вы обнаружили ошибку в заказе №{order.Id}",
-                Text = $"Ожидайте действий пользователя - ошибка : {order.ErrorType.ToDescriptionString()}!"
+                Text = $"Ожидайте действий пользователя - ошибка : {order.ErrorType.ToDisplayName()}!"
             };
 
             Context.Notifications.Add(customerN);
@@ -150,7 +151,7 @@ namespace Runtasker.Logic.Workers.Notifications
             SetCustomerCulture(order);
 
             //получаю модель для уведомления для заказчика
-            ForNotification model = ModelBuilder.OnlineHelpEstimated(order.Id, order.FinishDate, order.Subject.ToDescriptionString(), order.Sum, HtmlSigns.Rouble);
+            ForNotification model = ModelBuilder.OnlineHelpEstimated(order.Id, order.FinishDate, order.Subject.ToDisplayName(), order.Sum, HtmlSigns.Rouble);
 
             //создаю уведомление для заказчика
             Notification customerN = new Notification

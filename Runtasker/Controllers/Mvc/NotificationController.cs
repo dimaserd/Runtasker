@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
-using Runtasker.Logic;
-using Runtasker.Logic.Contexts.Interfaces;
+﻿using Runtasker.Controllers.Base;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations.InfoModels;
 using Runtasker.Logic.Models;
@@ -13,28 +11,13 @@ using System.Web.Mvc;
 namespace Runtasker.Controllers
 {
     [AllowAnonymous]
-    public class NotificationController : Controller
+    public class NotificationController : BaseMvcController
     {
         #region Поля
-        IMyDbContext _db = new MyDbContext();
         
         WebUINotificater _notificater;
 
-        string UserGuid
-        {
-            get
-            {
-                if(Request.IsAuthenticated)
-                {
-                    return User.Identity.GetUserId();
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
-
+        
         #endregion
 
         #region Свойства
@@ -44,7 +27,7 @@ namespace Runtasker.Controllers
             {
                 if(_notificater == null)
                 {
-                    _notificater = new WebUINotificater(UserGuid, _db);
+                    _notificater = new WebUINotificater(UserGuid, Db);
                 }
                 return _notificater;
             }
@@ -92,16 +75,9 @@ namespace Runtasker.Controllers
             {
                 IDisposable[] toDisposes = new IDisposable[]
                 {
-                    _notificater, _db
+                    _notificater
                 };
-                for(int i = 0; i < toDisposes.Length; i++)
-                {
-                    if(toDisposes[i] != null)
-                    {
-                        toDisposes[i].Dispose();
-                        toDisposes[i] = null;
-                    }
-                }
+                DisposeObjects(toDisposes);
             }
             
             base.Dispose(disposing);

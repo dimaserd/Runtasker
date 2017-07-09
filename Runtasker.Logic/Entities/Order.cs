@@ -7,106 +7,226 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Extensions.Attributes;
+using Extensions.Enumerations;
 
 namespace Runtasker.Logic.Entities
 {
-    #region Enums with extensions
-
-    #region Enumerations
+    #region Перечисления
+    
     public enum OrderStatus
     {
-        [Description("Новый")]
+        [Display(Name = "Новый")]
         New,
-        [Description("Оценен")]
+        [Display(Name = "Оценен")]
         Estimated,
-        [Description("Оплачен наполовину")]
+        [Display(Name = "Оплачен наполовину")]
         HalfPaid,
-        [Description("Выполняется")]
+        [Display(Name = "Выполняется")]
         Executing,
-        [Description("Выполнен")]
+        [Display(Name = "Выполнен")]
         Finished,
-        [Description("Полностью оплачен")]
+        [Display(Name = "Полностью оплачен")]
         FullPaid,
-        [Description("Скачан пользователем")]
+        [Display(Name = "Скачан пользователем")]
         Downloaded,
-        [Description("Оценен пользователем")]
+        [Display(Name = "Оценен пользователем")]
         Appreciated,
-        [Description("Обнаружена ошибка")]
+        [Display(Name = "Обнаружена ошибка")]
         HasError,
         
     }
 
     public enum OrderErrorType
     {
-        [MyDescription(typeof(OrderResource), resourceName: "ErrorTypeNone")]
+        [Display(Name = "ErrorTypeNone", ResourceType = typeof(OrderResource))]
         None,
-        [MyDescription(typeof(OrderResource), resourceName: "ErrorTypeNeedDesc")]
+        [Display(Name = "ErrorTypeNeedDesc", ResourceType = typeof(OrderResource))]
         NeedDescription,
-        [MyDescription(typeof(OrderResource), resourceName: "ErrorTypeNeedFiles" )]
+        [Display(Name = "ErrorTypeNeedFiles", ResourceType = typeof(OrderResource))]
         NeedFiles
     }
 
     public enum OrderWorkType
     {
-        [MyDescription(typeof(OrderResource), "Ordinary")]
+        [Display(Name = "Ordinary", ResourceType = typeof(OrderResource))]
         Ordinary,
-        [MyDescription(typeof(OrderResource), "Essay")]
+        [Display(Name = "Essay", ResourceType = typeof(OrderResource))]
         Essay,
-        [MyDescription(typeof(OrderResource), "CourseWork")]
+        [Display(Name = "CourseWork", ResourceType = typeof(OrderResource))]
         CourseWork,
-        [MyDescription(typeof(OrderResource), "OnlineHelp")]
+        [Display(Name = "OnlineHelp", ResourceType = typeof(OrderResource))]
         OnlineHelp
     }
 
     public enum Subject
     {
-        [MyDescription(typeof(OrderResource), "Other")]
+        [Display(Name = "Other", ResourceType = typeof(OrderResource))]
         Other,
 
-        [SpecifyDropdown(typeof(OrderResource), dropdownName: "LangDropdownParams", labelName: "LangLabel")]
-        [MyDescription(typeof(OrderResource), "Language")]
+        
+        [Display(Name =  "Language")]
         [PopoverInfo(typeof(OrderResource), "LanguagePopover")]
         ForeignLanguage,
 
-        [MyDescription(typeof(OrderResource), "AdvancedMathematics")]
+        [Display(Name = "AdvancedMathematics", ResourceType = typeof(OrderResource))]
         AdvancedMathematics,
 
-        [MyDescription(typeof(OrderResource), "Chemistry")]
+        [Display(Name = "Chemistry", ResourceType = typeof(OrderResource))]
         Chemistry,
 
-        [MyDescription(typeof(OrderResource), "TheoreticalMechanics")]
+        [Display(Name = "TheoreticalMechanics", ResourceType = typeof(OrderResource))]
         TheoreticalMechanics,
 
-        [MyDescription(typeof(OrderResource), "Physics")]
+        [Display(Name = "Physics", ResourceType = typeof(OrderResource))]
         Physics,
 
-        [MyDescription(typeof(OrderResource), "StrengthOfMaterials")]
+        [Display(Name = "StrengthOfMaterials", ResourceType = typeof(OrderResource))]
         StrengthOfMaterials,
 
-        [MyDescription(typeof(OrderResource), "Informatics")]
+        [Display(Name = "Informatics", ResourceType = typeof(OrderResource))]
         Informatics,
 
-        [MyDescription(typeof(OrderResource), "Programming")]
+        [Display(Name = "Programming", ResourceType = typeof(OrderResource))]
         Programming,
 
-        [MyDescription(typeof(OrderResource), "Projecting")]
+        [Display(Name = "Projecting", ResourceType = typeof(OrderResource))]
         Projecting
     }
 
+    
     #endregion
+
+
+    public class Order
+    {
+        #region Конструктор
+        public Order()
+        {
+            Messages = new List<Message>();
+        }
+        #endregion
+
+        #region Свойства
+        [Key]
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Статус заказа
+        /// </summary>
+        public OrderStatus Status { get; set; }
+
+        /// <summary>
+        /// Тип ошибки указывается только тогда заказ не принят исполнителем или администратором
+        /// и требуются типичные исправления от заказчика
+        /// </summary>
+        public OrderErrorType ErrorType { get; set; }
+
+        public OrderWorkType WorkType { get; set; }
+
+        #region Свойства отношений
+        [Required]
+        [StringLength(128)]
+        [ForeignKey("Customer")]
+        public string UserGuid { get; set; }
+        [JsonIgnore]
+        public virtual ApplicationUser Customer { get; set; }
+
+
+        [Required]
+        [StringLength(128)]
+        [ForeignKey("Performer")]
+        public string PerformerGuid { get; set; }
+        [JsonIgnore]
+        public virtual ApplicationUser Performer { get; set; }
+
+
+        [ForeignKey("CustomerFiles")]
+        public virtual string CustomerFilesId { get; set; }
+        /// <summary>
+        /// Вложение в котором содержатся файлы размещенные заказчиком при добавлении заказа
+        /// </summary>
+        [JsonIgnore]
+        public virtual Attachment CustomerFiles { get; set; }
+
+
+        [ForeignKey("Solution")]
+        public virtual string SolutionId { get; set; }
+        /// <summary>
+        /// Решение заказа (добавляется исполнителем или администратором)
+        /// </summary>
+        [JsonIgnore]
+        public virtual OrderSolution Solution { get; set; }
+
+
+
+        [JsonIgnore]
+        public virtual ICollection<Message> Messages { get; set; }
+        #endregion
+
+        [Required]
+        public Subject Subject { get; set; }
+
+        /// <summary>
+        /// Другой предмет (заполняется только тогда когда основного предмета нет в списке)
+        /// </summary>
+        public string OtherSubject { get; set; }
+
+        /// <summary>
+        /// Описание заказа (Заполняется заказчиком)
+        /// </summary>
+        [Required]
+        [StringLength(500)]
+        public string Description { get; set; }
+
+        
+
+        /// <summary>
+        /// Дата к которой нужно выполнить заказ
+        /// </summary>
+        [Display(Name = "Finish Date")]
+        public DateTime FinishDate { get; set; }
+
+        /// <summary>
+        /// Дата публикации заказа
+        /// </summary>
+        public DateTime PublishDate { get; set; }
+
+        /// <summary>
+        /// Оплаченная сумма пользователем
+        /// </summary>
+        public decimal PaidSum { get; set; }
+
+        /// <summary>
+        /// Сумма на которую исполнитель оценил заказ
+        /// </summary>
+        public decimal Sum { get; set; }
+
+        /// <summary>
+        /// Выставленная оценка заказа после завершения
+        /// </summary>
+        public int Rating { get; set; }
+
+        /// <summary>
+        /// Комментарий заказчика по заказу
+        /// </summary>
+        public string Comment { get; set; }
+
+        #endregion
+
+    }
 
     public static class OrderExtensions
     {
         public static bool IsFree(this Order order)
         {
-            
-            if( (order.Status == OrderStatus.New ||
+
+            if ((order.Status == OrderStatus.New ||
                 order.Status == OrderStatus.HasError ||
                 order.Status == OrderStatus.Estimated ||
                 //полуоплаченный заказ еще не занят
                 order.Status == OrderStatus.HalfPaid
                 )
-                && order.PerformerGuid == order.UserGuid )
+                && order.PerformerGuid == order.UserGuid)
             {
                 return true;
             }
@@ -116,15 +236,23 @@ namespace Runtasker.Logic.Entities
 
         #region Subject Extensions
 
+
+
+        /// <summary>
+        /// Возвращает название предмета
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public static string GetSubjectName(this Order order)
         {
-            if(order.Subject == Subject.Other)
+            if (order.Subject == Subject.Other)
             {
                 return order.OtherSubject;
             }
             else
             {
-                return order.Subject.ToDescriptionString();
+                Subject subject = order.Subject;
+                return subject.ToDisplayName();
             }
 
         }
@@ -147,27 +275,14 @@ namespace Runtasker.Logic.Entities
             return attributes.Length > 0 ? attributes[0].Info : string.Empty;
         }
 
-        public static string ToDescriptionString(this Subject val)
-        {
-            MyDescriptionAttribute[] attributes = (MyDescriptionAttribute[])val.GetType().GetField(val.ToString()).GetCustomAttributes(typeof(MyDescriptionAttribute), false);
-            return attributes.Length > 0 ? attributes[0].Description : string.Empty;
-        }
+       
 
-        
+
         #endregion
 
-        public static string ToDescriptionString(this OrderErrorType val)
-        {
-            MyDescriptionAttribute[] attributes = (MyDescriptionAttribute[])val.GetType().GetField(val.ToString()).GetCustomAttributes(typeof(MyDescriptionAttribute), false);
-            return attributes.Length > 0 ? attributes[0].Description : string.Empty;
-        }
+        
 
         #region OrderStatus Extensions
-        public static string ToDescriptionString(this OrderStatus val)
-        {
-            DescriptionAttribute[] attributes = (DescriptionAttribute[])val.GetType().GetField(val.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false);
-            return attributes.Length > 0 ? attributes[0].Description : string.Empty;
-        }
 
         public static string GetColorClass(this OrderStatus val)
         {
@@ -216,7 +331,7 @@ namespace Runtasker.Logic.Entities
 
         public static string GetActiveStatus(this OrderStatus val)
         {
-            if(val == OrderStatus.New || val == OrderStatus.HasError || val == OrderStatus.Estimated
+            if (val == OrderStatus.New || val == OrderStatus.HasError || val == OrderStatus.Estimated
                 || val == OrderStatus.HalfPaid || val == OrderStatus.FullPaid ||
                 val == OrderStatus.Executing)
             {
@@ -225,85 +340,9 @@ namespace Runtasker.Logic.Entities
 
             return "finished";
         }
+
+        
         #endregion
-
-        #region WorkType Extensions
-        public static string ToDescriptionString(this OrderWorkType val)
-        {
-            MyDescriptionAttribute[] attributes = (MyDescriptionAttribute[])val.GetType().GetField(val.ToString()).GetCustomAttributes(typeof(MyDescriptionAttribute), false);
-            return attributes.Length > 0 ? attributes[0].Description : string.Empty;
-        }
-        #endregion
-
-    }
-    #endregion
-
-    public class Order
-    {
-        #region Конструктор
-        public Order()
-        {
-            Messages = new List<Message>();
-        }
-        #endregion
-
-        #region Свойства
-        [Key]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
-        public OrderStatus Status { get; set; }
-
-        public OrderErrorType ErrorType { get; set; }
-
-        public OrderWorkType WorkType { get; set; }
-
-        [Required]
-        [StringLength(128)]
-        [ForeignKey("Customer")]
-        public string UserGuid { get; set; }
-        [JsonIgnore]
-        public virtual ApplicationUser Customer { get; set; }
-
-
-        [Required]
-        [StringLength(128)]
-        [ForeignKey("Performer")]
-        public string PerformerGuid { get; set; }
-        [JsonIgnore]
-        public virtual ApplicationUser Performer { get; set; }
-
-        [Required]
-        public Subject Subject { get; set; }
-
-        public string OtherSubject { get; set; }
-
-        [Required]
-        [StringLength(500)]
-        public string Description { get; set; }
-
-        public string Attachments { get; set; }
-
-        [Display(Name = "Finish Date")]
-        public DateTime FinishDate { get; set; }
-
-        public DateTime PublishDate { get; set; }
-
-        public decimal PaidSum { get; set; }
-
-        public decimal Sum { get; set; }
-
-        public int Rating { get; set; }
-
-        public string Comment { get; set; }
-
-        #endregion
-
-        #region Виртуальные коллекции
-        [JsonIgnore]
-        public virtual ICollection<Message> Messages { get; set; }
-        #endregion
-
 
     }
 

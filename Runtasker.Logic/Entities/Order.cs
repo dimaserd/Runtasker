@@ -65,7 +65,7 @@ namespace Runtasker.Logic.Entities
         Other,
 
         
-        [Display(Name =  "Language")]
+        [Display(Name =  "Language", ResourceType = typeof(OrderResource))]
         [PopoverInfo(typeof(OrderResource), "LanguagePopover")]
         ForeignLanguage,
 

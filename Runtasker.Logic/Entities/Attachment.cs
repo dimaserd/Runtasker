@@ -142,10 +142,15 @@ namespace Runtasker.Logic.Entities
         /// </summary>
         private static void ClearTempDirectories()
         {
+            CheckDirectories();
             new DirectoryInfo(TempDirectory).Clear();
             new DirectoryInfo(SecondTempDirectory).Clear();
         }
 
+
+        /// <summary>
+        /// Проверяет наличие нужных директорий. Если их нет то создает их.
+        /// </summary>
         private static void CheckDirectories()
         {
             string[] direcories = new string[]

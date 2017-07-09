@@ -1,4 +1,5 @@
 ﻿
+using Extensions.Enumerations;
 using Microsoft.AspNet.Identity;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.HtmlConstantEmails;
@@ -41,7 +42,7 @@ namespace Runtasker.Logic.Workers.Email
             IdentityMessage performerM = new IdentityMessage
             {
                 Subject = $"У нас новый заказ №{order.Id}",
-                Body = $"<p>Пользователь {customer.Email} добавил заказ по предмету {order.Subject.ToDescriptionString()}</p>" +
+                Body = $"<p>Пользователь {customer.Email} добавил заказ по предмету {order.Subject.ToDisplayName()}</p>" +
                 "<p>Проверьте заказ и установите цену, за которую мы его выполним!</p>",
                 Destination = performerEmail
             };
@@ -73,7 +74,7 @@ namespace Runtasker.Logic.Workers.Email
                 emailMessages.Add(new IdentityMessage
                 {
                     Subject = $"У нас новый заказ №{order.Id}",
-                    Body = $"<p>Пользователь {customer.Email} добавил заказ по предмету {order.Subject.ToDescriptionString()}</p>" +
+                    Body = $"<p>Пользователь {customer.Email} добавил заказ по предмету {order.Subject.ToDisplayName()}</p>" +
                 "<p>Проверьте заказ и установите цену, за которую мы его выполним!</p>",
                     Destination = adminEmail
                 });
@@ -118,7 +119,7 @@ namespace Runtasker.Logic.Workers.Email
                 {
                     Subject = $"У нас новый заказ №{order.Id}",
                     Body = $"<p>Пользователь {customer.Email} добавил заказ по предмету {order.GetSubjectName()}</p>" +
-                    $"<p>Вид работы : {order.WorkType.ToDescriptionString()}</p>" +
+                    $"<p>Вид работы : {order.WorkType.ToDisplayName()}</p>" +
                 "<p>Проверьте заказ и установите цену, за которую мы его выполним!</p>",
                     Destination = adminEmail
                 });

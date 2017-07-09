@@ -3,6 +3,7 @@ using System.Text;
 using Runtasker.Resources.UIExtensions.Orders;
 using Extensions.Decimal;
 using HtmlExtensions.StaticRenderers;
+using Extensions.Enumerations;
 
 namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 {
@@ -55,7 +56,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         {
             if(Order.Subject != Subject.Other)
             {
-                return Order.Subject.ToDescriptionString();
+                return Order.Subject.ToDisplayName();
             }
 
             return Order.OtherSubject;

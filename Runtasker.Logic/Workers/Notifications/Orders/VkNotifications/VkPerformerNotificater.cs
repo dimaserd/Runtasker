@@ -36,15 +36,15 @@ namespace Runtasker.Logic.Workers.Notifications.Orders.VkNotifications
         {
             OtherUserInfo customerInfo = order.Customer.GetOtherInfo();
 
-            List<VkMessage> messages = new List<VkMessage>();
-
-            //добавляю сообщение для заказчика
-            messages.Add(new VkMessage
+            List<VkMessage> messages = new List<VkMessage>()
             {
-                UserDomain = order.Customer.VkDomain,
-                UserId = order.Customer.VkId,
-                Text = notificationModel.ToString()
-            });
+                new VkMessage
+                {
+                    UserDomain = order.Customer.VkDomain,
+                    UserId = order.Customer.VkId,
+                    Text = notificationModel.ToString()
+                }
+            };
 
             foreach(VkUserInfo vkInfo in VkInfoList)
             {

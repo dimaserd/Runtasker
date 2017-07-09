@@ -29,7 +29,7 @@ namespace Runtasker.Logic.Workers.Orders
 
         void Construct()
         {            
-            Filer = new CustomerFileMethods();
+            Filer = new CustomerFileMethods(Context);
             Notificater = new CustomerOrderNotificationMethods(Context);
             Attachmenter = new CustomerAttachmentWorker();
             

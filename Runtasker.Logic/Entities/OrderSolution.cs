@@ -20,27 +20,23 @@ namespace Runtasker.Logic.Entities
 
         #region Свойства отношений
         [ForeignKey("ToOrder")]
-        public virtual int OrderId { get; set; }
+        public int OrderId { get; set; }
         /// <summary>
         /// Указывает на заказ для которого данная сущность является решением
         /// </summary>
-        public virtual Order ToOrder { get; set; }
+        public Order ToOrder { get; set; }
 
 
-        [ForeignKey("Solution")]
-        public virtual string AttachmentId { get; set; }
-        /// <summary>
-        /// Физическое решение заказа (То есть файлы)
-        /// </summary>
-        public virtual Attachment Solution { get; set; }
+        
+        
 
         [ForeignKey("Performer")]
-        public virtual string PerformerId { get; set; }
+        public string PerformerId { get; set; }
 
         /// <summary>
         /// Исполнитель тот кто выполнил работу
         /// </summary>
-        public virtual ApplicationUser Performer { get; set; }
+        public ApplicationUser Performer { get; set; }
 
         #endregion
     }
@@ -50,21 +46,21 @@ namespace Runtasker.Logic.Entities
     /// </summary>
     public static class OrderSolutionExtensions
     {
-        public static OrderSolution CreateSolution(int orderId, string performerId, IEnumerable<HttpPostedFileBase> solutionFiles)
-        {
-            Attachment attachment = AttachmentExtensions.GetAttachmentFromFiles(solutionFiles);
+        //public static OrderSolution CreateSolution(int orderId, string performerId, IEnumerable<HttpPostedFileBase> solutionFiles)
+        //{
+        //    Attachment attachment = AttachmentExtensions.GetAttachmentFromFiles(solutionFiles);
 
-            attachment.Type = AttachmentType.OrderSolution;
+        //    attachment.Type = AttachmentType.OrderSolution;
 
-            return new OrderSolution
-            {
-                Id = Guid.NewGuid().ToString(),
-                OrderId = orderId,
-                CreationDate = DateTime.Now,
-                AttachmentId = attachment.Id,
-                Solution = attachment,
-                PerformerId = performerId,
-            };
-        }
+        //    return new OrderSolution
+        //    {
+        //        Id = Guid.NewGuid().ToString(),
+        //        OrderId = orderId,
+        //        CreationDate = DateTime.Now,
+        //        AttachmentId = attachment.Id,
+        //        Solution = attachment,
+        //        PerformerId = performerId,
+        //    };
+        //}
     }
 }

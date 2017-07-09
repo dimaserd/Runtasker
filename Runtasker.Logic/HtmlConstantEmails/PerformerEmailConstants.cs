@@ -1,4 +1,5 @@
 ﻿using Extensions.Decimal;
+using Extensions.Enumerations;
 using HtmlExtensions.HtmlEntities;
 using HtmlExtensions.Renderers;
 using HtmlExtensions.StaticRenderers;
@@ -42,7 +43,7 @@ namespace Runtasker.Logic.HtmlConstantEmails
         #region Public Methods
         public EmailModel GetForPerformerEstimatedOnlineHelp(string customerName, Order order)
         {
-            string subjectName = order.Subject.ToDescriptionString();
+            string subjectName = order.Subject.ToDisplayName();
 
             ForEmailCallToAction model = ModelBuilder.EstimatedOnlineHelp(customerName, order.FinishDate, subjectName, order.Sum.ToMoney(), HtmlSigns.Rouble);
 

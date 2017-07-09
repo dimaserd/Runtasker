@@ -32,12 +32,12 @@ namespace Runtasker.Logic.Workers.Attachments
                     Id = key,
                     FileName = $"Order№{order.Id}Files.zip",
                     FilePath = attachmentsZipPath,
-                    Mark = Namer.Mark.GetForOrder(order.Id)
+                    
                 };
                 context.Attachments.Add(a);
 
                 Order newOrder = context.Orders.FirstOrDefault(o => o.Id == order.Id);
-                newOrder.Attachments = Namer.GetLinkForAttachmentsField(key);
+                
                 context.SaveChanges();
             }
         }

@@ -1,4 +1,5 @@
 ﻿
+using Extensions.Enumerations;
 using Runtasker.Logic.Entities;
 
 namespace Runtasker.ExtensionsUI.UIExtensions.Orders
@@ -19,7 +20,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         #region Protected Help Building Methods
         protected string GetTypeOfWork()
         {
-            return Order.WorkType.ToDescriptionString();
+            return Order.WorkType.ToDisplayName();
         }
 
         protected string GetStarted()

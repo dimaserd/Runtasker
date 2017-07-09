@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Extensions.Attributes;
 using Extensions.Enumerations;
+using Runtasker.Settings.Controllers;
 
 namespace Runtasker.Logic.Entities
 {
@@ -123,6 +124,11 @@ namespace Runtasker.Logic.Entities
 
         public OrderWorkType WorkType { get; set; }
 
+        /// <summary>
+        /// Указывает на то имеет ли заказ вложенные в него файлы заказчиком
+        /// </summary>
+        public bool HasCustomerFiles { get; set; }
+
         #region Свойства отношений
         [Required]
         [StringLength(128)]
@@ -140,27 +146,15 @@ namespace Runtasker.Logic.Entities
         public virtual ApplicationUser Performer { get; set; }
 
 
-        [ForeignKey("CustomerFiles")]
-        public virtual string CustomerFilesId { get; set; }
-        /// <summary>
-        /// Вложение в котором содержатся файлы размещенные заказчиком при добавлении заказа
-        /// </summary>
-        [JsonIgnore]
-        public virtual Attachment CustomerFiles { get; set; }
-
-
-        [ForeignKey("Solution")]
-        public virtual string SolutionId { get; set; }
-        /// <summary>
-        /// Решение заказа (добавляется исполнителем или администратором)
-        /// </summary>
-        [JsonIgnore]
-        public virtual OrderSolution Solution { get; set; }
-
-
-
         [JsonIgnore]
         public virtual ICollection<Message> Messages { get; set; }
+
+        /// <summary>
+        /// Вложения асоциированные с заказаом в котором содержатся файлы 
+        /// размещенные заказчиком при добавлении заказа и файл решения
+        /// </summary>
+        [JsonIgnore]
+        public virtual ICollection<Attachment> Attachments { get; set; }
         #endregion
 
         [Required]
@@ -234,6 +228,16 @@ namespace Runtasker.Logic.Entities
             return false;
         }
 
+        /// <summary>
+        /// Возвращает ссылку для скачивания файлов заказа размещенных заказчкиком
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public static string GetLinkToDownloadCustomerFiles(this Order order)
+        {
+            return FileControllerSettings.GetLinkForDownloadingCustomerFilesFromOrder(order.Id);
+        }
+        
         #region Subject Extensions
 
 

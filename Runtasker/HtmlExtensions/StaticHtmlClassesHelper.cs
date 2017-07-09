@@ -1,4 +1,5 @@
-﻿using Runtasker.Logic.Entities;
+﻿using Extensions.Enumerations;
+using Runtasker.Logic.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -29,10 +30,10 @@ namespace Runtasker.HtmlExtensions
             {
                 if (item != Subject.Other)
                 {
-                    subjects.Add(new SelectListItem { Value = ((int)item).ToString(), Text = item.ToDescriptionString(), Selected = (item == Subject.ForeignLanguage) });
+                    subjects.Add(new SelectListItem { Value = ((int)item).ToString(), Text = item.ToDisplayName(), Selected = (item == Subject.ForeignLanguage) });
                 }
             }
-            subjects.Add(new SelectListItem { Value = "0", Text = Subject.Other.ToDescriptionString(), });
+            subjects.Add(new SelectListItem { Value = "0", Text = Subject.Other.ToDisplayName(), });
 
             return subjects;
         }
@@ -44,7 +45,7 @@ namespace Runtasker.HtmlExtensions
             {
                 if(item != OrderWorkType.OnlineHelp)
                 {
-                    workTypes.Add(new SelectListItem { Value = ((int)item).ToString(), Text = item.ToDescriptionString(), Selected = (int)item == 0 });
+                    workTypes.Add(new SelectListItem { Value = ((int)item).ToString(), Text = item.ToDisplayName(), Selected = (int)item == 0 });
                 }
             }
 

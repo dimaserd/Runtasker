@@ -34,7 +34,7 @@ namespace Runtasker.Logic
         /// <summary>
         /// Таблица содержащая решения заказов
         /// </summary>
-        public DbSet<OrderSolution> OrderSolutions { get; set; }
+        //public DbSet<OrderSolution> OrderSolutions { get; set; }
 
         public DbSet<Message> Messages { get; set; }
 

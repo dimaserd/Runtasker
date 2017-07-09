@@ -1,4 +1,5 @@
-﻿using Runtasker.Logic.Entities;
+﻿using Extensions.Enumerations;
+using Runtasker.Logic.Entities;
 using System.Text;
 
 namespace Runtasker.ExtensionsUI.UIExtensions.Orders
@@ -38,10 +39,10 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         #region Private Help Methods
         string GetOrderStatusDescription()
         {
-            string result = $"({Order.Status.ToDescriptionString()})";
+            string result = $"({Order.Status.ToDisplayName()})";
             if (Order.Status == OrderStatus.HasError)
             {
-                result = result + $"<p>[{Order.ErrorType.ToDescriptionString()}]</p>";
+                result = result + $"<p>[{Order.ErrorType.ToDisplayName()}]</p>";
             }
             return result;    
         }
@@ -50,7 +51,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         {
             if (Order.Subject != Subject.Other)
             {
-                return Order.Subject.ToDescriptionString();
+                return Order.Subject.ToDisplayName();
             }
 
             return Order.OtherSubject;

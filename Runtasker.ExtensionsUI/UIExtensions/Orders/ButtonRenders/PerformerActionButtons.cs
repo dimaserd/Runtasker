@@ -74,11 +74,11 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
         string GetButtonForFilesDownloading()
         {
-            if(!string.IsNullOrEmpty(Order.Attachments))
+            if(Order.HasCustomerFiles)
             {
                 return new HtmlActionButtonLink
                          (
-                             buttonLink: Order.Attachments,
+                             buttonLink: Order.GetLinkToDownloadCustomerFiles(),
                              buttonText: "<span class='glyphicon glyphicon-download-alt'> </span> Скачать файлы",
                              buttonClass: BtnClass
                          ).ToString();
@@ -86,7 +86,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
             return new HtmlActionButtonLink
                          (
-                             buttonLink: Order.Attachments,
+                             buttonLink: "#",
                              buttonText: "Нет прикрепленных файлов",
                              buttonClass: BtnClass,
                              disabled: true

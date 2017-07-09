@@ -101,8 +101,9 @@ namespace Runtasker.Logic.Workers.Files
         public Attachment GetOrderSolutionAttachment(int orderId)
         {
             string mark = Namer.Mark.GetForOrderSolution(orderId);
-            
-            Attachment solution = Db.OrderSolutions.Include(x => x.Solution).FirstOrDefault(o => o.OrderId == orderId).Solution;
+
+            Attachment solution = Db.Attachments.FirstOrDefault(x => x.OrderId == orderId && x.Type == AttachmentType.OrderSolution);
+           
             return solution;
                   
         }

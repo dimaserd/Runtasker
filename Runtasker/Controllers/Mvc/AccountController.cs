@@ -439,8 +439,8 @@ namespace Runtasker.Controllers
             if (ModelState.IsValid)
             {
                 
-                IdentityResult result;
-                ApplicationUser user = AccountWorker.RegisterCustomer(model, out result);
+                
+                ApplicationUser user = AccountWorker.RegisterCustomer(model, out IdentityResult result);
                 
                 if(!result.Succeeded)
                 {
@@ -469,8 +469,8 @@ namespace Runtasker.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            InfoModel infoModel;
-            RegisterByInvitationModel model = AccountWorker.TryGetRegisterByInvitationModel(id, out infoModel);
+            
+            RegisterByInvitationModel model = AccountWorker.TryGetRegisterByInvitationModel(id, out InfoModel infoModel);
 
             if(model == null)
             {
@@ -494,8 +494,8 @@ namespace Runtasker.Controllers
                 return View(model);
             }
 
-            IdentityResult result;
-            ApplicationUser user = AccountWorker.RegisterInvitedUser(model, out result);
+            
+            ApplicationUser user = AccountWorker.RegisterInvitedUser(model, out IdentityResult result);
             if(!result.Succeeded)
             {
                 AddErrors(result);
@@ -743,8 +743,8 @@ namespace Runtasker.Controllers
                     return View("ExternalLoginFailure");
                 }
 
-                IdentityResult result;
-                ApplicationUser user = AccountWorker.RegisterCustomerFromSocialProvider(model, info, out result);
+                
+                ApplicationUser user = AccountWorker.RegisterCustomerFromSocialProvider(model, info, out IdentityResult result);
 
                 if (result.Succeeded)
                 {

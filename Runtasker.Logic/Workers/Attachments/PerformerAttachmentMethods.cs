@@ -16,19 +16,7 @@ namespace Runtasker.Logic.Workers.Attachments
         #region Methods like Events
         public void OnPerformerSolvedAnOrder(string zipPath, int orderId)
         {
-            using (MyDbContext context = new MyDbContext())
-            {
-                string key = Guid.NewGuid().ToString();
-                Attachment a = new Attachment
-                {
-                    Id = key,
-                    FilePath = zipPath,
-                    FileName = $"OrderSolution№{orderId}.zip",
-                    Mark = Namer.Mark.GetForOrderSolution(orderId)
-                };
-                context.Attachments.Add(a);
-                context.SaveChanges();
-            }
+            
         }
         #endregion
     }

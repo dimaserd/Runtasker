@@ -30,7 +30,7 @@ namespace Runtasker.Logic.Workers.Files
         void Construct(MyDbContext context)
         {
             Attachmenter = new CustomerAttachmentWorker();
-            Namer = new AttachmentNamer();
+           
             _context = context;
         }
         #endregion
@@ -43,56 +43,13 @@ namespace Runtasker.Logic.Workers.Files
 
         #endregion
 
-        #region Вспомогательные методы
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="orderId"></param>
-        void RewriteAttachmentsToOrder(int orderId)
-        {
-            using (MyDbContext context = new MyDbContext())
-            {
-                string zipPathWithFiles = WriteZipWithAllFilesInFolderToAttachmentsDirectory(GetOrderDirectoryPath(orderId));
-
-                //a specail mark for getting an Attachment
-                string mark = Namer.Mark.GetForOrder(orderId);
-
-                //for getting name of previous zip archive
-                Attachment orderA = context.Attachments.FirstOrDefault(a => a.OrderId == orderId);
-
-
-                if (orderA == null)
-                {
-                    Attachment newOrderA = new Attachment()
-                    {
-                        FilePath = zipPathWithFiles,
-                        FileName = zipPathWithFiles.leftJustFileName(),
-                        OrderId = orderId
-                    };
-                    Order order = context.Orders.FirstOrDefault(o => o.Id == orderId);
-                    order.Attachments = $"/File/DownloadByKey?key={newOrderA.Id}";
-
-                    context.Attachments.Add(newOrderA);
-
-                    context.SaveChanges();
-                    return;
-                }
-                string previousZipPath = orderA.FilePath;
-                //deleting previous zip archive
-                File.Delete(previousZipPath);
-                File.Move(zipPathWithFiles, previousZipPath);
-            }
-        }
-
-        #endregion
+       
 
         #region Свойства
 
         CustomerAttachmentWorker Attachmenter { get; set; }
 
-        AttachmentNamer Namer { get; set; }
-
+        
         MyDbContext Context
         {
             get
@@ -145,7 +102,6 @@ namespace Runtasker.Logic.Workers.Files
 
             List<string> fileNamesInOrderDir = Directory.GetFiles(orderDirectoryPath).ToList().leftJustNames();
 
-            int filesCount = 0;
 
             //из модели достаются только безопасные файлы
             List<HttpPostedFileBase> goodFiles = model.Files.Where(x => FilesSettings.IsThatGoodFile(x)).ToList();

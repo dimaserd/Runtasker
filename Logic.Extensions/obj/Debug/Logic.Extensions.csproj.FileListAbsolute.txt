@@ -76,7 +76,7 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\Syste
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\ru-RU\Runtasker.Resources.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\zh-CN\Runtasker.Resources.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\obj\Debug\Logic.Extensions.csprojResolveAssemblyReference.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\obj\Debug\Logic.Extensions.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\obj\Debug\Logic.Extensions.pdb
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\zh-CN\Runtasker.Resources.resources.dll

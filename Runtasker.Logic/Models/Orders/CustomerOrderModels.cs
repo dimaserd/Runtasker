@@ -41,10 +41,18 @@ namespace Runtasker.Logic.Models
 
     }
 
+    /// <summary>
+    /// Статический класс инкапсулирующий некоторые методы для работы с сущность заказа
+    /// </summary>
     public static class OrderCreateModelExtensions
     {
         public static Order ToOrder(this OrderCreateModel orderModel, string userGuid)
         {
+            //получаю вложение для созданного заказа
+            Attachment attachment = AttachmentExtensions.GetAttachmentFromFiles(orderModel.FileUpload);
+
+            attachment.Type = AttachmentType.OrderFiles;
+
             return new Order
             {
                 Description = orderModel.Description,
@@ -53,9 +61,11 @@ namespace Runtasker.Logic.Models
                 PublishDate = DateTime.Now,
                 WorkType = orderModel.WorkType,
                 Subject = orderModel.Subject,
+                //вкладываю в заказ вложения
+                Attachments = new List<Attachment> { attachment},
                 OtherSubject = orderModel.OtherSubject,
                 UserGuid = userGuid,
-                PerformerGuid = userGuid
+                PerformerGuid = userGuid,
             };
         }
     }

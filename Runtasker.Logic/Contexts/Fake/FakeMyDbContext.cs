@@ -36,9 +36,11 @@ namespace Runtasker.Logic.Contexts.Fake
                 
             };
 
-            List<ApplicationUser> users = new List<ApplicationUser>();
-            users.Add(performer);
-            users.Add(customer);
+            List<ApplicationUser> users = new List<ApplicationUser>()
+            {
+                performer, customer
+            };
+            
 
             db.Users.AddRange(users);
 

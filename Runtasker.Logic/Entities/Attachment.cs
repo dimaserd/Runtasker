@@ -79,23 +79,19 @@ namespace Runtasker.Logic.Entities
         #region Свойства отношений
 
         [ForeignKey("Message")]
-        public virtual int? MessageId { get; set; }
+        public int? MessageId { get; set; }
 
         public virtual Message Message { get; set; }
 
 
-        [ForeignKey("OrderAttachment")]
-        public virtual int? OrderId { get; set; }
+        [ForeignKey("FromOrder")]
+        public int? OrderId { get; set; }
         /// <summary>
         /// Файлы размещаемые заказчиком при создании заказа
         /// </summary>
-        public virtual Order OrderAttachment { get; set; }
+        public virtual Order FromOrder { get; set; }
 
-        [ForeignKey("SolutionToOrder")]
-        public virtual string SolutionId { get; set; }
-
-        public virtual OrderSolution SolutionToOrder { get; set; }
-
+        
         #endregion
 
 

@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System;
-using Runtasker.Logic;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers.Orders;
@@ -13,9 +12,7 @@ using Runtasker.LocaleBuilders.Views.Order;
 using Runtasker.Logic.Models.Orders;
 using Runtasker.Logic.Models.Orders.Pay;
 using HtmlExtensions.StaticRenderers;
-using System.Web;
 using Microsoft.AspNet.Identity.Owin;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Enumerations.Notifications.Anonymous;
 using Extensions.Decimal;
 using Runtasker.Controllers.Base;

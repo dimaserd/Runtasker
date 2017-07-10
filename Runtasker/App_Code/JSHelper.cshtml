@@ -16,21 +16,67 @@
     </script>
 }
 
-@helper GetMakeLoadingFunction()
+@helper GetMakeLoadingFunction(bool newSpinner = false)
 {
-    <script>
-        function MakeLoading(elementId) {
-            var sp = document.createElement("span");
-            sp.className = "text-center";
+if (newSpinner)
+{
+        
 
-            sp.className = "fa fa-spinner fa-5x fa-spin";
+        <script>
+            function MakeLoading(elementId) {
+                
 
-            var searchResult = document.getElementById(elementId);
+                var row = document.createElement("div");
+                row.className = "row box200";
 
-            searchResult.innerHTML = "";
+                var innerDiv = document.createElement("div");
 
-            searchResult.appendChild(sp);
+                innerDiv.id = "loader";
 
-        }
-    </script>
+                for (i = 0; i < 9; i++)
+                {
+                    var dot = document.createElement("div");
+                    dot.className = "dot";
+                    innerDiv.appendChild(dot)
+                }
+
+                var lading = document.createElement("div");
+                lading.className = "lading";
+
+                innerDiv.appendChild(lading);
+
+                row.appendChild(innerDiv);
+
+                
+                    
+
+
+                var searchResult = document.getElementById(elementId);
+
+                searchResult.innerHTML = "";
+
+                searchResult.appendChild(row);
+
+            }
+        </script>
+}
+else
+{
+        <script>
+            function MakeLoading(elementId) {
+                var sp = document.createElement("span");
+                sp.className = "text-center";
+
+                sp.className = "fa fa-spinner fa-5x fa-spin";
+
+                var searchResult = document.getElementById(elementId);
+
+                searchResult.innerHTML = "";
+
+                searchResult.appendChild(sp);
+
+            }
+        </script>
+}
+
 }

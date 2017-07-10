@@ -8832,6 +8832,7 @@
     <Content Include="metronic_assets\layouts\layout7\img\Thumbs.db" />
     <Content Include="metronic_assets\pages\media\blog\Thumbs.db" />
     <Content Include="metronic_assets\pages\media\pages\Thumbs.db" />
+    <Content Include="App_Code\LoadHelper.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Scripts\bootstrap.js" />

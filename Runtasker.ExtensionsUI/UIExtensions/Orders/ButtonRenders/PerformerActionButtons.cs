@@ -48,7 +48,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         string GetButtonForChatAboutOrder()
         {
             int unreadCount = Order.Messages
-                .Count(m => m.SenderGuid == Order.UserGuid
+                .Count(m => m.SenderId == Order.UserGuid
                 && m.Status == MessageStatus.New);
             return new HtmlActionButtonLink
                 (

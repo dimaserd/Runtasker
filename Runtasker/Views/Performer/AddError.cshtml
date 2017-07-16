@@ -1,11 +1,14 @@
 ﻿@using Runtasker.Logic.Models
 @using Runtasker.Logic.Entities
+@using Extensions.Enumerations
 @model AddErrorToOrderModel
 @{
     List<SelectListItem> errors = new List<SelectListItem>();
+
+    
     foreach (OrderErrorType item in Enum.GetValues(typeof(OrderErrorType)))
     {
-        errors.Add(new SelectListItem { Value = ((int)item).ToString(), Text = item.ToDescriptionString(), Selected = (int)item == 0 });
+        errors.Add(new SelectListItem { Value = ((int)item).ToString(), Text = item.ToDisplayName(), Selected = (int)item == 0 });
     }
     int count = errors.Count - 1;
 }

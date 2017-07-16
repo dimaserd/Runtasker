@@ -54,6 +54,7 @@ namespace Extensions.String
             return MvcHtmlString.Create(s);
         }
 
+        #region Методы выделения и обертывания
         public static string MarkManyText(this string Text, string toMarkMany)
         {
             string[] words = toMarkMany.Split(separator: new string[] { "," }, options: StringSplitOptions.RemoveEmptyEntries);
@@ -107,9 +108,10 @@ namespace Extensions.String
 
             return Text;
         }
+        #endregion
 
         #region Lefters
-        public static List<string> leftJustNames(this List<string> filenames)
+        public static List<string> LeftJustNames(this List<string> filenames)
         {
             List<string> files = new List<string>();
             char[] separators = new char[] { '/', '\\' };
@@ -128,13 +130,13 @@ namespace Extensions.String
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        public static string leftJustFileName(this string filePath)
+        public static string LeftJustFileName(this string filePath)
         {
             return filePath.Split('/', '\\').Last();
         }
         #endregion
 
-        public static List<string> removeZip(this List<string> filenames)
+        public static List<string> RemoveZip(this List<string> filenames)
         {
             List<string> files = new List<string>();
 
@@ -150,11 +152,11 @@ namespace Extensions.String
             return files;
         }
 
-        public static string makeFileNameUniqueAtList(this string s, List<string> filenamesList, bool host = true)
+        public static string MakeFileNameUniqueAtList(this string s, List<string> filenamesList, bool host = true)
         {
             if (host)
             {
-                filenamesList = filenamesList.leftJustNames();
+                filenamesList = filenamesList.LeftJustNames();
             }
 
             string a, b, filename = s;
@@ -170,18 +172,18 @@ namespace Extensions.String
             return filename;
         }
 
-        public static string removeSymbols(this string s, params char[] symbols)
+        public static string RemoveSymbols(this string s, params char[] symbols)
         {
             string result = s;
 
             foreach(char symbol in symbols)
             {
-                result = result.Replace(symbol.ToString(), "");
+                result = result.Replace(symbol.ToString(), string.Empty);
             }
             return result;
         }
 
-        public static string leftJustOneDot(this string s)
+        public static string LeftJustOneDot(this string s)
         {
             string result = s;
             int index;
@@ -204,9 +206,14 @@ namespace Extensions.String
             return result;
         }
 
-        public static string getReverse(this string s)
+        /// <summary>
+        /// Получает обратную строку из текущей
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string GetReverse(this string s)
         {
-            string new_string = "";
+            string new_string = string.Empty;
             for (int i = s.Length - 1; i >= 0; i--)
             {
                 new_string += s[i];
@@ -266,9 +273,8 @@ namespace Extensions.String
 
         public static bool TryGetFileVersionfromBrackets(this string str, out int result)
         {
-            string s, ext;
-
-            if (!str.TryGetNameandExt(out s, out ext))
+            
+            if (!str.TryGetNameandExt(out string s, out string ext))
             {
                 result = 0;
                 return false;

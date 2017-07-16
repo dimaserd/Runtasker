@@ -6,11 +6,14 @@ using Runtasker.Logic;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers;
 using Runtasker.Logic.Workers.Files;
+using Runtasker.Settings.Files;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http.Cors;
 using System.Web.Mvc;
@@ -96,7 +99,7 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region HttpController methods
+        #region Http обработчики
 
         [HttpGet]
         public ActionResult Index()
@@ -119,12 +122,12 @@ namespace Runtasker.Controllers
                 if (upload != null)
                 {
                     // получаем имя файла
-                    string fileName = Path.GetFileName(upload.FileName).leftJustOneDot().removeSymbols('&', ',', '!');
+                    string fileName = Path.GetFileName(upload.FileName).LeftJustOneDot().RemoveSymbols('&', ',', '!');
                     if (System.IO.File.Exists(directory + "/" + fileName))
                     {
                         List<string> files = Directory.GetFiles(Server.MapPath("~/Files/Temporary")).ToList();
 
-                        fileName = fileName.makeFileNameUniqueAtList(files);
+                        fileName = fileName.MakeFileNameUniqueAtList(files);
                     }
                     // сохраняем файл в папку Files в проекте
                     sb.Append(fileName + "&");
@@ -136,7 +139,37 @@ namespace Runtasker.Controllers
             return Json(result.Remove(result.LastIndexOf('&')));
         }
 
-        #region Download methods
+        [HttpPost]
+        public async Task<JsonResult> UploadFiles()
+        {
+            List<HttpPostedFileBase> files = new List<HttpPostedFileBase>();
+
+            foreach (string fileName in Request.Files)
+            {
+                HttpPostedFileBase file = Request.Files[fileName];
+
+                files.Add(file);
+            }
+
+
+            using (MyDbContext db = new MyDbContext())
+            {
+                Attachment at = files.LeftOnlyGoodFiles().GetAttachmentFromFiles();
+
+                if(at == null)
+                {
+                    return null;
+                }
+
+                db.Attachments.Add(at);
+
+                await db.SaveChangesAsync();
+
+                return Json(at.Id);
+            }
+        }
+
+        #region Методы скачивания
         [HttpGet]
         [Authorize(Roles = "Admin,Performer,Customer")]
         public ActionResult DownloadByKey(string key)
@@ -155,18 +188,28 @@ namespace Runtasker.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin,Performer,Customer")]
+        public async Task<ActionResult> GetCustomerFiles(int orderId)
+        {
+            using (MyDbContext context = new MyDbContext())
+            {
+                Attachment a = await context.Attachments.FirstOrDefaultAsync(t => t.OrderId == orderId);
+                if (a == null && a.FileData != null)
+                {
+                    return new HttpStatusCodeResult(404);
+                }
+
+                return File(a.FileData, MimeMapping.GetMimeMapping(a.FileName), a.FileName);
+            }
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin,Performer,Customer")]
         public ActionResult DownloadSolution(int id)
         {
 
             WorkerResult result; 
 
-            #region Temporary Log
-            string filePath = $"{FilesDir}/solution.txt";
-            string fileContents = $"{DateTime.Now} RequestIsAuthenticated : {Request.IsAuthenticated}\n"
-                + $"(User == null) : {User == null}\n" + $"(User.IsInRole(\"Admin\")) : {User.IsInRole("Admin")} \n";
-
-            System.IO.File.AppendAllText(filePath, fileContents);
-            #endregion
+            
 
             if (Request.IsAuthenticated && User.IsInRole("Admin"))
             {
@@ -187,7 +230,12 @@ namespace Runtasker.Controllers
 
             Attachment solution = Filer.GetOrderSolutionAttachment(id);
 
-            return File(solution.FilePath, MimeMapping.GetMimeMapping(solution.FilePath), solution.FileName);
+            if(solution == null)
+            {
+                return HttpNotFound();
+            }
+
+            return File(solution.FileData, MimeMapping.GetMimeMapping(solution.FileName), solution.FileName);
         }
 
         [HttpGet]

@@ -62,8 +62,8 @@ namespace Runtasker.Logic.Workers.MessageWorker
         {
             string userGuidParam = userGuid ?? UserGuid;
             return from m in Context.Messages
-                   where (m.SenderGuid == userGuidParam && m.ReceiverGuid == toGuid)
-                      || (m.SenderGuid == toGuid && m.ReceiverGuid == userGuidParam)
+                   where (m.SenderId == userGuidParam && m.ReceiverId == toGuid)
+                      || (m.SenderId == toGuid && m.ReceiverId == userGuidParam)
                    orderby m.Date
                    select m;
         }
@@ -72,7 +72,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
         {
             return new PanelViewModel
             {
-                InboxCount = Context.Messages.Count(m => m.ReceiverGuid == UserGuid 
+                InboxCount = Context.Messages.Count(m => m.ReceiverId == UserGuid 
                     && m.Status == MessageStatus.New),
                 OrderChatLinks = GetOrderChatLinks()
             };
@@ -83,7 +83,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
         {
             return new PanelViewModel
             {
-                InboxCount = Context.Messages.Count(m => m.ReceiverGuid == UserGuid
+                InboxCount = Context.Messages.Count(m => m.ReceiverId == UserGuid
                     && m.Status == MessageStatus.New),
                 OrderChatLinks = await GetOrderChatLinksAsync()
             };
@@ -112,7 +112,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
         {
             return Context.Messages.Where(o => o.Type == MessageType.AboutOrder
             && o.Mark == orderId.ToString() && o.Status == MessageStatus.New
-            && o.ReceiverGuid == UserGuid).ToList().Count;
+            && o.ReceiverId == UserGuid).ToList().Count;
         }
         //testing
         private IEnumerable<OrderChatLink> GetOrderChatLinks2()
@@ -143,7 +143,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
                      OrderId = order.Id,
                      UnreadMessages = Context.Messages.Count(m => m.OrderId == order.Id && 
                                                              m.Status == MessageStatus.New &&
-                                                             m.ReceiverGuid == UserGuid) 
+                                                             m.ReceiverId == UserGuid) 
                 }).ToList();
             return result;
         }
@@ -160,7 +160,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
                      OrderId = order.Id,
                      UnreadMessages = Context.Messages.Count(m => m.OrderId == order.Id &&
                                                              m.Status == MessageStatus.New &&
-                                                             m.ReceiverGuid == UserGuid)
+                                                             m.ReceiverId == UserGuid)
                  }).ToListAsync();
             return result;
         }
@@ -214,8 +214,8 @@ namespace Runtasker.Logic.Workers.MessageWorker
         private IEnumerable<Entities.Message> GetOnlyNewMessagesFromUser(int id, string senderGuid, string receiverGuid)
         {
             return from m in Context.Messages
-                   where m.SenderGuid == receiverGuid
-                   && m.ReceiverGuid == senderGuid
+                   where m.SenderId == receiverGuid
+                   && m.ReceiverId == senderGuid
                    && m.Id <= id
                    && m.Status == MessageStatus.New
                    select m;

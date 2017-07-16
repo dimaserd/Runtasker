@@ -182,14 +182,14 @@ namespace Runtasker.Logic.Entities
         {
             ClearTempDirectories();
 
-            string fileName = $"{TempDirectory}/{file.FileName}";
+            string fileName = $"{TempDirectory}/{file.FileName.LeftJustFileName()}";
 
             file.SaveAs(fileName);
 
             return GetAttachmentFromFilePath(fileName);
         }
 
-        public static Attachment GetAttachmentFromFiles(IEnumerable<HttpPostedFileBase> files)
+        public static Attachment GetAttachmentFromFiles(this IEnumerable<HttpPostedFileBase> files)
         {
             ClearTempDirectories();
 
@@ -198,7 +198,7 @@ namespace Runtasker.Logic.Entities
                 //записываю все файлы во вторую директорию
                 foreach (HttpPostedFileBase file in files)
                 {
-                    file.SaveAs($"{SecondTempDirectory}/{file.FileName}");
+                    file.SaveAs($"{SecondTempDirectory}/{file.FileName.LeftJustFileName()}");
                 }
 
                 //создаю имя для файла
@@ -209,10 +209,7 @@ namespace Runtasker.Logic.Entities
 
                 ZipFile.CreateFromDirectory(SecondTempDirectory, zipPath);
 
-                //attachment.FileName = zipName;
-                //attachment.FileMymeType = MimeMapping.GetMimeMapping(zipPath);
-                //attachment.FileData = File.ReadAllBytes(zipPath);
-
+                
                 return new Attachment
                 {
                     Id = Guid.NewGuid().ToString(),
@@ -239,7 +236,7 @@ namespace Runtasker.Logic.Entities
                 Id = Guid.NewGuid().ToString(),
                 FileData = File.ReadAllBytes(filePath),
                 FileMymeType = MimeMapping.GetMimeMapping(filePath),
-                FileName = filePath.leftJustFileName(),
+                FileName = filePath.LeftJustFileName(),
                 FilePath = null,
                 MessageId = null,
                 OrderId = null
@@ -346,5 +343,8 @@ namespace Runtasker.Logic.Entities
             
         }
         #endregion
+
+       
+
     }
 }

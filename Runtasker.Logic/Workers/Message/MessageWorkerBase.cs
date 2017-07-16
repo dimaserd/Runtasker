@@ -49,8 +49,8 @@ namespace Runtasker.Logic.Workers.MessageWorker
             return new UIHubMessage
             {
                 /*For group building*/
-                SenderGuid = mes.SenderGuid,
-                ReceiverGuid = mes.ReceiverGuid,
+                SenderGuid = mes.SenderId,
+                ReceiverGuid = mes.ReceiverId,
                 /*/For group building*/
 
                 /*For building message in Chat via JavaScript*/

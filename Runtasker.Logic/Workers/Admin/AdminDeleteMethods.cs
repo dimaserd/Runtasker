@@ -9,7 +9,7 @@ namespace Runtasker.Logic.Workers.Admin
 {
     public class AdminDeleteMethods
     {
-        #region Constructors
+        #region Конструкторы
         public AdminDeleteMethods()
         {
             Construct();
@@ -21,10 +21,10 @@ namespace Runtasker.Logic.Workers.Admin
         }
         #endregion
 
-        #region Properties
+        #region Свойства
         #endregion
 
-        #region Public Methods
+        #region Публичные методы
 
         #region DeleteUser methods
         public ApplicationUser GetDeleteUserModel(string id)
@@ -54,8 +54,10 @@ namespace Runtasker.Logic.Workers.Admin
 
         public WorkerResult DeleteOrderConfirmed(Order model)
         {
-            List<Order> manyModelFromOne = new List<Order>();
-            manyModelFromOne.Add(model);
+            List<Order> manyModelFromOne = new List<Order>()
+            {
+                model
+            };
 
             DeleteOrders(manyModelFromOne);
 
@@ -92,18 +94,14 @@ namespace Runtasker.Logic.Workers.Admin
                 foreach (Order order in model)
                 {
                     IEnumerable<Entities.Message> messages = order.Messages;
-                    foreach(Entities.Message mes in messages)
-                    {
-                        context.Messages.Remove(mes);
-                    }
+
+                    context.Messages.RemoveRange(messages);
                 }
                 context.SaveChanges();
 
-                foreach (Order order in model)
-                {
-                    context.Orders.Attach(order);
-                    context.Orders.Remove(order);
-                }
+               
+                context.Orders.RemoveRange(model);
+                
                 context.SaveChanges();
             }
         }
@@ -122,7 +120,7 @@ namespace Runtasker.Logic.Workers.Admin
                 Context.Payments.RemoveRange(Context.Payments.Where(p => p.UserGuid == userGuid));
                 Context.SaveChanges();
 
-                Context.Messages.RemoveRange(Context.Messages.Where(m => m.ReceiverGuid == userGuid || m.SenderGuid == userGuid));
+                Context.Messages.RemoveRange(Context.Messages.Where(m => m.ReceiverId == userGuid || m.SenderId == userGuid));
                 Context.SaveChanges();
 
                 Context.Notifications.RemoveRange(Context.Notifications.Where(n => n.UserGuid == userGuid));

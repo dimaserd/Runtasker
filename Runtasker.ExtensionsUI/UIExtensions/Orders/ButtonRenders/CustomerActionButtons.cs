@@ -40,7 +40,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         {
             //подсчитываем непрочитанные пользователем сообщения
             int unreadCount = Order.Messages
-                .Count(m => m.ReceiverGuid == Order.UserGuid
+                .Count(m => m.ReceiverId == Order.UserGuid
                     && m.Status == MessageStatus.New);
 
             return CustomerBtns.ChatBtn(Order.Id, unreadCount, BtnClass).ToString();

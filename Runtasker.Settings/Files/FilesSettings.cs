@@ -38,7 +38,7 @@ namespace Runtasker.Settings.Files
             return ImageExtensions.Any(x => x == ext);
         }
 
-        public static bool IsThatGoodFile(HttpPostedFileBase file)
+        public static bool IsThatGoodFile(this HttpPostedFileBase file)
         {
             string ext = GetExtension(file);
 
@@ -50,6 +50,16 @@ namespace Runtasker.Settings.Files
             allExtensions.AddRange(ArchiveExtensions);
 
             return allExtensions.Any(x => x == ext);
+        }
+
+        /// <summary>
+        /// Оставляет в коллекции только не пустые файлы с разрешением
+        /// </summary>
+        /// <param name="files"></param>
+        /// <returns></returns>
+        public static IEnumerable<HttpPostedFileBase> LeftOnlyGoodFiles(this IEnumerable<HttpPostedFileBase> files)
+        {
+            return files.Where(x => x.IsThatGoodFile());
         }
         #endregion
 

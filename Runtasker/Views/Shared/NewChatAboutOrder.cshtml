@@ -30,6 +30,19 @@
     string chatListId = "chatList";
 }
 
+@{ 
+    string messageClass = "mes";
+    string unreadClass = "unread";
+    string sendBtnId = "sendBtn";
+    string attachmentsId = "attachments";
+    string textInputId = "messageText";
+    string soundId = "audioSound";
+
+
+    string downloadClassName = "fa fa-download";
+    string downloadFilesText = "Скачать файлы";
+}
+
 @Styles.Render("~/Chat")
 
 <!--Chat Body-->
@@ -59,9 +72,9 @@
                     </div>
                     <div class="panel-footer">
                         <div class="input-group">
-                            <input id="messageText" type="text" class="form-control input-sm" placeholder="@ChatRes.PlaceHolder" />
+                            <input id="@textInputId" type="text" class="form-control input-sm" placeholder="@ChatRes.PlaceHolder" />
                             <span class="input-group-btn">
-                                <button class="btn btn-warning btn-sm" id="sendBtn">
+                                <button class="btn btn-warning btn-sm" id="@sendBtnId">
                                     @ChatRes.Send
                                 </button>
                             </span>
@@ -69,7 +82,7 @@
                         </div>
                         <!--File downloading-->
                         <p>
-                            <input type="file" id="attachments" multiple />
+                            <input type="file" id="@attachmentsId" multiple />
                         </p>
                     </div>
                 </div>
@@ -96,7 +109,7 @@
 
 
 <!--AudioSound-->
-<audio id="audioSound" src="~/assets/sounds/vk-1-zvuki-mp3.com_.mp3" type="audio/mp3"></audio>
+<audio id="@soundId" src="~/assets/sounds/vk-1-zvuki-mp3.com_.mp3" type="audio/mp3"></audio>
 <!--/AudioSound-->
 
 <!--Скрытые поля для чата-->
@@ -114,7 +127,7 @@
       var chatHidden = true;
         //чат скрыт
         function FocusSetter() {
-            $('#btn-input').focus();
+            $('#@textInputId').focus();
         }
 
         function ShowHideChatBody() {
@@ -132,6 +145,7 @@
             ShowHideChatBody();
         })
 
+    //проматывает список вниз 
         function scrollDownChatBody(duration) {   //stop()
             $('#chatbody').stop().animate({
                 scrollTop: $('#chatbody')[0].scrollHeight,
@@ -140,41 +154,14 @@
 </script>
 <!--/Функции скролла-->
 
-@*<!--Принятое сообщение-->
-<li id="108" date="1497297514417" class="mes left clearfix">
-    <span class="chat-img pull-left">
-        <img src="/File/GetAvatar?userGuid=1433578d-a864-4e44-9d0c-45b1d5b21d71" alt="User Avatar" class="img-circle img-50">
-    </span>
-    <div class="chat-body clearfix">
-        <div class="header">
-            <strong class="primary-font">Jenny</strong>
-            <small class="pull-right text-muted timeSpan">
-                <span class="glyphicon glyphicon-time"></span>
-                    NaN/NaN/NaN
-            </small>
-        </div>
-        <p>Присланное сообщение</p>
-    </div>
-</li>
-<!--/Принятое сообщение-->
-
-<!--Отправленное сообщение-->
-<li id="19" date="1492621679280" class="mes right clearfix">
-    <span class="chat-img pull-right">
-        <img src="/File/GetAvatar?userGuid=1433578d-a864-4e44-9d0c-45b1d5b21d71" alt="User Avatar" class="img-circle img-50">
-    </span>
-    <div class="chat-body clearfix">
-        <div class="header">
-            <small class="text-muted timeSpan">
-                <span class="glyphicon glyphicon-time"></span>
-                NaN/NaN/NaN
-            </small>
-            <strong class="pull-right primary-font">Dmitry</strong>
-        </div>
-        <p>Отправленное сообщение</p>
-    </div>
- </li>
-<!--/Отправленное сообщение-->*@
+<!--Функции аудио-->
+<script>
+        function PlayAudio()
+        {
+            document.getElementById('@soundId').play();
+        }
+</script>
+<!--/Функции аудио-->
 
 <!--Message Builder-->
 <script>
@@ -194,13 +181,13 @@
 
 
         function GetStarted() {
-            var result = `<li id='${id}' date='${date}' class='mes `;
+            var result = `<li id='${id}' date='${date}' class='@messageClass `;
             if (senderGuid == userGuid) { //сообщение принято?
                 result += "right clearfix'><span class='chat-img pull-right ";
             }
             else {
                 $('#audioSound').get(0).play();
-                result += "unread left clearfix'><span class='chat-img pull-left ";
+                result += "@unreadClass left clearfix'><span class='chat-img pull-left ";
             }
             result += " clearfix'>";
             return result;
@@ -264,11 +251,11 @@
         //если сообщение отправленное
         if (document.getElementById("senderId").value == message.SenderId)
         {
-            li.className = "mes right clearfix";
+            li.className = "@messageClass right clearfix";
         }
         else
         {
-            li.className = "mes left clearfix";
+            li.className = "@messageClass left clearfix";
         }
 
         li.appendChild(GetAvatarImgInSpan(message));
@@ -288,20 +275,20 @@
         //если сообщение отправленное
         if (document.getElementById("senderId").value == message.SenderId) {
             span.className = "chat-img pull-right";
-            
+
         }
         else {
             span.className = "chat-img pull-left";
         }
 
-        
+
         img.src = "/File/GetAvatar?userGuid=" + message.SenderId;
         img.className = "img-circle img-50";
 
         span.appendChild(img);
 
         return span;
-        
+
     }
 
     function GetMessageDiv(message)
@@ -314,12 +301,55 @@
 
         var p = document.createElement("p");
 
+        //если сообщение отправленное
+        if (document.getElementById("senderId").value == message.SenderId)
+        {
+            p.className = "pull-right";
+        }
+        else
+        {
+            p.className = "pull-left";
+        }
+
         p.innerText = message.Text;
+
+
 
         div.appendChild(p);
 
+        
+        if  (message.AttachmentId !== null)
+        {
+            div.appendChild(GetFileLinkInP(message));
+        }
+
         return div;
 
+    }
+
+    function GetFileLinkInP(message)
+    {
+            var pForLink = document.createElement("p");
+
+            //если сообщение отправленное
+            if (document.getElementById("senderId").value == message.SenderId) {
+                pForLink.className = "pull-left";
+            }
+            else {
+                pForLink.className = "pull-right";
+            }
+
+            fileLink = document.createElement("a");
+            fileLink.href = "/File/Download?id" + message.AttachmentId;
+
+            var i = document.createElement("i");
+            i.className = "@downloadClassName";
+            fileLink.appendChild(i);
+            fileLink.appendChild(document.createTextNode("@downloadFilesText"));
+
+            pForLink.appendChild(fileLink);
+
+            return pForLink;
     }
 
     function GetHeaderDiv(message)
@@ -376,6 +406,19 @@
 </script>
 <!--/Построение сообщений-->
 
+<!--Мелкие вспомогательные функции-->
+<script>
+
+    //очищает поля
+    function ClearInputs()
+    {
+        $('#@textInputId').val('');
+         $("#@attachmentsId").val('');
+    }
+</script>
+<!--/Мелкие вспомогательные функции-->
+
+
 <!--OrderChatHub-->
 <script src="~/Scripts/jquery.signalR-2.2.2.js"></script>
 <script src="~/signalr/hubs"></script>
@@ -384,11 +427,38 @@
 <script>
     var chat = $.connection.newOrderChatHub;
 
+    chat.client.onAddedToGroup = function (groupName)
+    {
+        console.log(groupName);
+    }
+
     chat.client.onNewMessage = function (data) {
         console.log(data);
+        if (document.getElementById(data.MessageId) == undefined )
+        {
+            document.getElementById("@chatListId").appendChild(buildMessageForChat(data));
 
-        document.getElementById("@chatListId").appendChild(buildMessageForChat(data))
+            //если сообщение принято играем музыку
+            if (document.getElementById("senderId").value != data.SenderId) {
+                PlayAudio();
+            }
+            scrollDownChatBody(900);
+        }
 
+
+
+    }
+
+    //клиентский обработчик прочитанного сообщения
+    chat.client.onMessageRead = function (messageId) {
+        console.log("onMessageRead", messageId);
+
+        var message = $("#" + messageId);
+
+        if (message.hasClass("@unreadClass"))
+        {
+            message.removeClass("@unreadClass");
+        }
     }
 
     $.connection.hub.start()
@@ -396,30 +466,115 @@
         {
             console.log('Now connected, connection ID=' + $.connection.hub.id);
 
+            //поставлено в надежде вылечить отправку
+            chat.server.addToGroup(document.getElementById("senderId").value,
+                document.getElementById("receiverId").value);
+
             //обработчик нажатия кнопки отправить
-            $('#sendBtn').click(function (e) {
+            $('#@sendBtnId').click(function (e) {
                 console.log("клик на отправку")
-                var Data = {
-                    SenderId: document.getElementById("senderId").value,
-                    ReceiverId: document.getElementById("receiverId").value,
-                    SenderName: document.getElementById("senderName").value,
-                    ReceiverName: document.getElementById("receiverName").value,
-                    Text: document.getElementById("messageText").value,
-                    OrderId: document.getElementById("orderId").value,
-                    //Attachments: document.getElementById("attachments").value,
+
+
+
+
+                var files = document.getElementById('@attachmentsId').files;
+                if (files.length > 0) {
+                    if (window.FormData !== undefined) {
+                        var data = new FormData();
+
+                        for (var x = 0; x < files.length; x++) {
+                            data.append("file" + x, files[x]);
+                        }
+
+                        ///отправляю аяксом файлы на сервер и ожидаю идентификатор для вложения
+                        //чтобы отправить его на сервер
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("UploadFiles", "File")',
+                            contentType: false,
+                            processData: false,
+                            data: data,
+                            success: function (result) {
+
+                                console.log("Ajax загрузка файлов id=" + result)
+
+                                var Data = {
+                                    SenderId: document.getElementById("senderId").value,
+                                    ReceiverId: document.getElementById("receiverId").value,
+                                    SenderName: document.getElementById("senderName").value,
+                                    ReceiverName: document.getElementById("receiverName").value,
+                                    Text: document.getElementById("@textInputId").value,
+                                    OrderId: document.getElementById("orderId").value,
+                                    AttachmentId: result,
+                                }
+
+                                chat.server.sendMessageAboutOrder(Data);
+
+                                //очищение инпутов независимо от ветки отправки
+                                ClearInputs();
+                            },
+                            error: function (xhr, status, p3) {
+                                alert(xhr.responseText);
+                            }
+                        });
+                    }
+                    else {
+                        alert("Браузер не поддерживает загрузку файлов HTML5!");
+                    }
                 }
-                chat.server.sendMessageAboutOrder(Data);
-                $('#messageText').val('');
-                
+                else
+                {
+                    var Data = {
+                        SenderId: document.getElementById("senderId").value,
+                        ReceiverId: document.getElementById("receiverId").value,
+                        SenderName: document.getElementById("senderName").value,
+                        ReceiverName: document.getElementById("receiverName").value,
+                        Text: document.getElementById("@textInputId").value,
+                        OrderId: document.getElementById("orderId").value,
+                    }
+
+                    chat.server.sendMessageAboutOrder(Data);
+
+                    //очищение инпутов независимо от ветки отправки
+                    ClearInputs();
+                }
+
+
             });
+
+            ///обработчик события когда мышь нахожится на сообщении
+            $(document.body).on("mouseenter", ".@messageClass", function () {
+
+                var message = $(this);
+
+                if (message.hasClass("@unreadClass"))
+                {
+                    var id = message.attr('id');
+                    console.log(id);
+                    chat.server.readMessageAboutOrder(id, document.getElementById("senderId").value)
+                }
+
+            });
+
+            //обработчик нажатия на не прочитанное сообщение (сделано для мобил так у них нет такого понятия как наведение мыши)
+            $(document.body).on("click", ".@messageClass", function () {
+                var message = $(this);
+
+                if (message.hasClass("@unreadClass"))
+                {
+                    var id = message.attr('id');
+                    console.log(id);
+                    chat.server.readMessageAboutOrder(id, document.getElementById("senderId").value)
+                }
+            }
         })
         .fail(function ()
         {
             console.log('Could not Connect!');
         });
-      
-        
-    
+
+
+
 </script>
 <!--/OrderChatHub-->
 

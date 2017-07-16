@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.AspNet.Identity;
 using Runtasker.Logic.Models.Orders;
-using Runtasker.Statics.Actions;
+using Runtasker.Logic.Statics.Actions;
+using Runtasker.Logic.Workers.Menus;
 
 namespace Runtasker.Controllers.Api
 {
@@ -25,32 +26,19 @@ namespace Runtasker.Controllers.Api
         [Route("GetOrders")]
         public async Task<UserOrdersInfo> GetOrders()
         {
+
             using (MyDbContext db = new MyDbContext())
+            using (MenuWorker worker = new MenuWorker(db, UserGuid))
             {
-                List<Order> orders = await db.Orders
-                    .Where(o => o.UserGuid == UserGuid)
-                    .Include(x => x.Messages).ToListAsync();
-
-                List<Order> unApreciated = orders.Where(o => o.Status != OrderStatus.Appreciated).ToList();
-
-                List<OrderMessagesInfo> infos = unApreciated
-                    .Select(x => new OrderMessagesInfo
-                    {
-                        Id = x.Id,
-                        //задание ссылки по каждому заказу
-                        ActionLink = CustomerActions.GetActionLinkFromOrder(x),
-                        UnreadCount = x.Messages.Count(m => m.ReceiverGuid == UserGuid && m.Status == MessageStatus.New)
-                    }).ToList();
-
-                return new UserOrdersInfo
+                if (User.IsInRole("Customer"))
                 {
-                    UnreadCount = unApreciated.SelectMany(x => x.Messages)
-                        .Count(m => m.ReceiverGuid == UserGuid && m.Status == MessageStatus.New),
-                    HasOrders = orders.Count > 0,
-                    OrderMessageInfos = infos
-                };
+                    return await worker.GetUserOrdersInfoForCustomerAsync();
+                }
+                else
+                {
+                    return await worker.GetUserOrdersInfoForAdminAsync();
+                }
             }
-            
         }
     }
 }

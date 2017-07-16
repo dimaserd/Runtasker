@@ -192,10 +192,14 @@ namespace Runtasker.Logic.Workers.Orders
             };
 
         }
-        //TO DO Orders Files changing methods 
+        /// <summary>
+        /// Добавляет файлы в заказ через объект Attachment связанный с заказом
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public WorkerResult AddFilesToOrder(OrderAddFilesModel model)
         {
-            Order order = Context.Orders.FirstOrDefault
+            Order order = Context.Orders.Include(x => x.Attachments).FirstOrDefault
                     (o => o.Id == model.OrderId
                      && o.ErrorType == OrderErrorType.NeedFiles
                      && o.Status == OrderStatus.HasError

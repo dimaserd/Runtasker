@@ -35,7 +35,7 @@ namespace Runtasker.Logic.Workers.MessageWorker
 
         #region Свойства
 
-        Order _order;
+        
         //We get Guid and OrderId than we send messages to ChatBuilder
         private string UserGuid { get; set; }
 

@@ -56,7 +56,7 @@ namespace Runtasker.Logic.Workers.Developer
             Context.Payments.RemoveRange(Context.Payments.Where(p => p.UserGuid == testUser.Id));
             Context.SaveChanges();
 
-            Context.Messages.RemoveRange(Context.Messages.Where(m => m.ReceiverGuid == testUser.Id || m.SenderGuid == testUser.Id));
+            Context.Messages.RemoveRange(Context.Messages.Where(m => m.ReceiverId == testUser.Id || m.SenderId == testUser.Id));
             Context.SaveChanges();
 
             Context.Notifications.RemoveRange(Context.Notifications.Where(n => n.UserGuid == testUser.Id));

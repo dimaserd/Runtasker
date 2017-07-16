@@ -8,6 +8,7 @@ using System.Data.Entity;
 using Logic.Extensions.Models;
 using System.Threading.Tasks;
 using Runtasker.Logic.Models.ManageModels;
+using Runtasker.Logic.Enumerations;
 
 namespace Runtasker.Logic.Workers.Orders
 {
@@ -222,18 +223,20 @@ namespace Runtasker.Logic.Workers.Orders
                 return new WorkerResult("Вы не можете загрузить еще одно решение!");
             }
 
-            //Перезаписываем файлы связанные с заказом
-            Filer.OnPerformerSolvedAnOrder(model);
+            //Записываем файлы решения 
+            Filer.OnPerformerSolvedAnOrder(model, SaveChangesType.Handled);
 
             //изменяем свойство статуса заказа
             order.Status = OrderStatus.Finished;
 
             Context.Entry(order).State = EntityState.Modified;
 
+            //Вызываю метод для записи уведомлений
+            Notificater.OnPerformerExecutedAnOrder(order, SaveChangesType.Handled);
+
             Context.SaveChanges();
 
-            //Вызываю метод уведомлений
-            Notificater.OnPerformerExecutedAnOrder(order);
+            
 
             return new WorkerResult
             {

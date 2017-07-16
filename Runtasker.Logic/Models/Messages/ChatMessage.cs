@@ -63,8 +63,8 @@ namespace Runtasker.Logic.Models.Messages
                 //
                 AttachmentId = chatMessage.AttachmentId,
                 Mark = null,
-                ReceiverGuid = chatMessage.ReceiverId,
-                SenderGuid = chatMessage.SenderId,
+                ReceiverId = chatMessage.ReceiverId,
+                SenderId = chatMessage.SenderId,
                 Status = Entities.MessageStatus.New,
                 Text = chatMessage.Text,
                 Type = Entities.MessageType.Ordinary,

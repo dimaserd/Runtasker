@@ -100,13 +100,14 @@ namespace Runtasker.Logic.Workers.Files
         {
             string orderDirectoryPath = GetOrderDirectoryPath(model.OrderId);
 
-            List<string> fileNamesInOrderDir = Directory.GetFiles(orderDirectoryPath).ToList().leftJustNames();
+            List<string> fileNamesInOrderDir = Directory.GetFiles(orderDirectoryPath).ToList().LeftJustNames();
 
 
             //из модели достаются только безопасные файлы
             List<HttpPostedFileBase> goodFiles = model.Files.Where(x => FilesSettings.IsThatGoodFile(x)).ToList();
 
-            Attachment orderAttachment = Context.Attachments.FirstOrDefault(x => x.OrderId == model.OrderId);
+            Attachment orderAttachment = Context.Attachments
+                .FirstOrDefault(x => x.OrderId == model.OrderId && x.Type == AttachmentType.OrderFiles);
 
             orderAttachment.AddFilesToAttachment(goodFiles);
 

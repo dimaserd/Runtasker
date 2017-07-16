@@ -104,7 +104,7 @@ namespace Runtasker.Logic.Workers.Admin
                     .FirstOrDefaultAsync(u => u.Id == id);
 
                 List<Entities.Message> messages = await (from m in Db.Messages
-                                          where m.SenderGuid == id || m.ReceiverGuid == id
+                                          where m.SenderId == id || m.ReceiverId == id
                                           select m)
                                           .Include(x => x.Receiver)
                                           .Include(x => x.Sender)
@@ -167,7 +167,7 @@ namespace Runtasker.Logic.Workers.Admin
                                     select o).Include(x => x.Customer).ToListAsync(),
 
                     Messages = await (from m in Db.Messages
-                                where m.SenderGuid == id || m.ReceiverGuid == id
+                                where m.SenderId == id || m.ReceiverId == id
                                 select m).Include(x => x.Sender).Include(x => x.Receiver).ToListAsync(),
 
                     PaymentTransactions = await (from p in Db.PaymentTransactions

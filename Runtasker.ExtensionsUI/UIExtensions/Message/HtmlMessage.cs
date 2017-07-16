@@ -29,7 +29,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions
 
         public HtmlMessage(Message message, string userGuid, string senderName, string receiverName)
         {
-            if(message.SenderGuid == userGuid)
+            if(message.SenderId == userGuid)
             {
                 Destination = DestinationType.From;
                 NickName = senderName;
@@ -120,7 +120,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions
 
         private string GetImage()
         {
-            return $"<img src='/File/GetAvatar?userGuid={message.SenderGuid}' alt='User Avatar' class='img-circle img-50'/>";
+            return $"<img src='/File/GetAvatar?userGuid={message.SenderId}' alt='User Avatar' class='img-circle img-50'/>";
         }
 
         private string GetAttachmentsLink()

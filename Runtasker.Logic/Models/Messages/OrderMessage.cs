@@ -27,7 +27,7 @@ namespace Runtasker.Logic.Models.Messages
             return new OrderChatInfo
             {
                 OrderId = order.Id,
-                UnreadCount = order.Messages.Count(x => x.ReceiverGuid == userId && x.Status == MessageStatus.New),
+                UnreadCount = order.Messages.Count(x => x.ReceiverId == userId && x.Status == MessageStatus.New),
                 Chatter = order.Customer,
             };
         }

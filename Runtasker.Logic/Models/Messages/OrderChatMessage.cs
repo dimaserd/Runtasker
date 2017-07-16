@@ -11,7 +11,6 @@ namespace Runtasker.Logic.Models.Messages
     {
         public int OrderId { get; set; }
 
-        public IEnumerable<HttpPostedFileBase> Attachments {get;set;}
     }
 
     public static class OrderChatMessageExtensions
@@ -25,8 +24,8 @@ namespace Runtasker.Logic.Models.Messages
                 AttachmentId = mes.AttachmentId,
                 Mark = null,
                 OrderId = mes.OrderId,
-                ReceiverGuid = mes.ReceiverId,
-                SenderGuid = mes.SenderId,
+                ReceiverId = mes.ReceiverId,
+                SenderId = mes.SenderId,
                 Status = Entities.MessageStatus.New,
                 Text = mes.Text,
                 Type = Entities.MessageType.AboutOrder,
@@ -40,15 +39,15 @@ namespace Runtasker.Logic.Models.Messages
             {
                 AttachmentId = message.AttachmentId,
                 OrderId = message.OrderId.Value,
-                ReceiverId = message.ReceiverGuid,
-                SenderId = message.SenderGuid,
+                ReceiverId = message.ReceiverId,
+                SenderId = message.SenderId,
                 Text = message.Text,
                 FormattedDate = message.Date.ToShortDateString(),
                 IsRead = (message.Status == Entities.MessageStatus.Read),
             };
 
             //если первый является отправителем
-            if(chatterAId == message.SenderGuid)
+            if(chatterAId == message.SenderId)
             {
                 result.SenderName = chatterAName;
                 result.ReceiverName = chatterBName;

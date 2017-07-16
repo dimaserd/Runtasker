@@ -6,6 +6,14 @@
     /// </summary>
     public enum SaveChangesType
     {
-        Now, Handled
+        /// <summary>
+        /// Записать сейчас
+        /// </summary>
+        Now,
+
+        /// <summary>
+        /// Записать позже вручную одним вызовом
+        /// </summary>
+        Handled
     }
 }

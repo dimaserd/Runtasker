@@ -75,13 +75,13 @@ namespace Runtasker.Test
 
 
         [TestMethod]
-        public void leftJustFileNameTest()
+        public void LeftJustFileNameTest()
         {
             string fileName = "aed71b55-bd73-4167-8d86-fab8124193f3.zip";
             string filePath = $"C:\\Runtasker\\Runtasker\\Files\\Attachments/{fileName}";
 
-            string gottenFileName = filePath.leftJustFileName();
-            string gottenFileName2 = fileName.leftJustFileName();
+            string gottenFileName = filePath.LeftJustFileName();
+            string gottenFileName2 = fileName.LeftJustFileName();
 
             Assert.AreEqual(fileName, gottenFileName);
             Assert.AreEqual(fileName, fileName);
@@ -120,32 +120,34 @@ namespace Runtasker.Test
         }
 
         [TestMethod]
-        public void leftJustNamesTest()
+        public void LeftJustNamesTest()
         {
-            List<string> filepaths = new List<string>();
-            filepaths.Add(@"C:\Runtasker\Runtasker\Files\Orders\2\file1.jpg");
-            filepaths.Add(@"C:\Runtasker\Runtasker\Files\Orders\2/file2.jpg");
-
-            List<string> newFilepaths = filepaths.leftJustNames();
+            List<string> filepaths = new List<string>()
+            {
+                @"C:\Runtasker\Runtasker\Files\Orders\2\file1.jpg",
+                @"C:\Runtasker\Runtasker\Files\Orders\2/file2.jpg"
+            };
+            List<string> newFilepaths = filepaths.LeftJustNames();
 
             Assert.AreEqual(newFilepaths[0], "file1.jpg");
             Assert.AreEqual(newFilepaths[1], "file2.jpg");
         }
 
         [TestMethod]
-        public void makeUniqueAtTest()
+        public void MakeUniqueAtTest()
         {
-            List<string> filenames = new List<string>();
-
-            filenames.Add("file.jpg");
-            filenames.Add("file(1).jpg");
+            List<string> filenames = new List<string>()
+            {
+                "file.jpg",
+                "file(1).jpg"
+            };
 
             string newFileName = "file.jpg";
 
-            string uniqueName = newFileName.makeFileNameUniqueAtList(filenames);
+            string uniqueName = newFileName.MakeFileNameUniqueAtList(filenames);
 
             string anotherFileName = "file.jpeg";
-            string anotherUniqueName = anotherFileName.makeFileNameUniqueAtList(filenames);
+            string anotherUniqueName = anotherFileName.MakeFileNameUniqueAtList(filenames);
 
             Assert.AreEqual("file(2).jpg", uniqueName);
             Assert.AreEqual("file.jpeg", anotherUniqueName);
@@ -155,8 +157,8 @@ namespace Runtasker.Test
         public void TryGetNameAndExtText()
         {
             string filename = "file.ext.jpg";
-            string name, ext;
-            filename.TryGetNameandExt(out name, out ext);
+   
+            filename.TryGetNameandExt(out string name, out string ext);
 
             Assert.AreEqual("file", name);
             Assert.AreEqual("ext.jpg", ext);

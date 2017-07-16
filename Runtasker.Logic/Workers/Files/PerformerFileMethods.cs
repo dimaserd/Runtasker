@@ -1,14 +1,14 @@
 ﻿
+using Runtasker.Logic.Entities;
+using Runtasker.Logic.Enumerations;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers.Attachments;
-using System.IO;
-using System.Web;
 
 namespace Runtasker.Logic.Workers.Files
 {
     public class PerformerFileMethods : FileWorkerBase
     {
-        #region Constructors
+        #region Конструкторы
         public PerformerFileMethods(MyDbContext context) : base()
         {
             Construct(context);
@@ -23,48 +23,35 @@ namespace Runtasker.Logic.Workers.Files
         void Construct(MyDbContext context)
         {
             Context = context;
-            Attachmenter = new PerformerAttachmentMethods();
         }
 
         #endregion
 
-        #region Properties
+        #region Свойства
         MyDbContext Context { get; set; }
-
-        PerformerAttachmentMethods Attachmenter { get; set; }
         #endregion
 
-        #region Help Methods
+        
 
-        string GetOrderSolutionFolder(int orderId)
-        {
-            string result =  $"{GetOrderDirectoryPath(orderId)}/Solution";
-            if(!Directory.Exists(result))
-            {
-                Directory.CreateDirectory(result);
-            }
-            return result;
-        }
-
-        #endregion
-
-        #region Methods like Events
+        #region Публичные методы
         //Saving files and writes attachments zip via attachmenter
-        public void OnPerformerSolvedAnOrder(SolveOrderModel model)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        public void OnPerformerSolvedAnOrder(SolveOrderModel model, SaveChangesType saveType = SaveChangesType.Now)
         {
-            string solutionDirectory = GetOrderSolutionFolder(model.OrderId);
-            foreach (HttpPostedFileBase file in model.SolutionFiles)
+            Attachment solution = AttachmentExtensions.GetAttachmentFromFiles(model.SolutionFiles);
+
+            solution.Type = AttachmentType.OrderSolution;
+            solution.OrderId = model.OrderId;
+
+            Context.Attachments.Add(solution);
+
+            if(saveType == SaveChangesType.Now)
             {
-                if (file != null)
-                {
-                    file.SaveAs($"{solutionDirectory}/{Path.GetFileName(file.FileName)}");
-                }
+                Context.SaveChanges();
             }
-
-            string zipPath = WriteZipWithAllFilesInFolderToAttachmentsDirectory(solutionDirectory);
-
-            Attachmenter.OnPerformerSolvedAnOrder(zipPath, model.OrderId);
-
         }
         #endregion
     }

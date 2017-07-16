@@ -1,10 +1,13 @@
 ﻿@using Runtasker.Logic.Models
 @model SolveOrderModel
 
+@AlertHelper.GetAlert("Вы завершаете заказ", "Решением заказа являются загруженные вами файлы с решением. Загрузите их внимательно, чтобы не " +
+    "доставить лишнего дискомфорта заказчику.")
+
 @using (Html.BeginForm("Solve", "Performer", FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
 {
     <div class="form-horizontal">
-        <h2>Add Order</h2>
+        <h2>Завершение заказа</h2>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.AntiForgeryToken()

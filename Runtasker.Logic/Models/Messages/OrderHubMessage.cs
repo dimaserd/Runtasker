@@ -21,8 +21,8 @@ namespace Runtasker.Logic.Models.Messages
             {
                 OrderId = message.OrderId.Value,
                 Attachments = message.AttachmentId,
-                ReceiverId = message.ReceiverGuid,
-                SenderId = message.SenderGuid,
+                ReceiverId = message.ReceiverId,
+                SenderId = message.SenderId,
                 Text = message.Text,
                 IsRead = message.Status == MessageStatus.Read,
                 //дата приводится к данному формату
@@ -31,7 +31,7 @@ namespace Runtasker.Logic.Models.Messages
             };
 
             //если он отправитель
-            if(ChatterAId == message.SenderGuid)
+            if(ChatterAId == message.SenderId)
             {
                 result.SenderName = ChatterAName;
                 result.ReceiverName = ChatterBName;
@@ -58,8 +58,8 @@ namespace Runtasker.Logic.Models.Messages
                 //Links in Text must be wrapped and checked for html tags
                 AttachmentId = attachmentId,
                 //Attachments get throw file
-                ReceiverGuid = m.ReceiverId,
-                SenderGuid = m.SenderId,
+                ReceiverId = m.ReceiverId,
+                SenderId = m.SenderId,
                 Status = MessageStatus.New,
                 OrderId = m.OrderId,
             };

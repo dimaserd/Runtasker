@@ -290,7 +290,6 @@
     <Compile Include="Models\Notifications\UINotificationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Statics\Actions\CustomerActions.cs" />
     <Compile Include="Statics\Notifications\UIGuestNotifications.cs" />
   </ItemGroup>
   <ItemGroup>

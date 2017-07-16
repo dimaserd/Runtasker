@@ -25,7 +25,7 @@ namespace Runtasker.Logic.Entities
         [Required]
         [StringLength(128)]
         [ForeignKey("Sender")]
-        public string SenderGuid { get; set; }
+        public string SenderId { get; set; }
         [JsonIgnore]
         public virtual ApplicationUser Sender { get; set; }
 
@@ -33,7 +33,7 @@ namespace Runtasker.Logic.Entities
         [Required]
         [StringLength(128)]
         [ForeignKey("Receiver")]
-        public string ReceiverGuid { get; set; }
+        public string ReceiverId { get; set; }
         [JsonIgnore]
         public virtual ApplicationUser Receiver { get; set; }
 

@@ -185,6 +185,10 @@
     <Compile Include="Migrations\201707091837226_init.Designer.cs">
       <DependentUpon>201707091837226_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707151322294_rename.cs" />
+    <Compile Include="Migrations\201707151322294_rename.Designer.cs">
+      <DependentUpon>201707151322294_rename.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
     <Compile Include="Models\ManageModels\AddVkInfoModel.cs" />
@@ -206,10 +210,13 @@
     <Compile Include="Models\Users\ApplicationUserInfo.cs" />
     <Compile Include="Models\VkNotificater\VkUserInfo.cs" />
     <Compile Include="Models\WokerResults\WorkerPropertyResult.cs" />
+    <Compile Include="Statics\Actions\PerformerActions.cs" />
+    <Compile Include="Statics\Actions\CustomerActions.cs" />
     <Compile Include="Statics\Notifications\CustomerOrderNotifications.cs" />
     <Compile Include="Statics\Notifications\GuestNotifications.cs" />
     <Compile Include="Workers\Admin\Users\AdminUserCreation.cs" />
     <Compile Include="Workers\Logging\LoggingWorker.cs" />
+    <Compile Include="Workers\Menus\MenuWorker.cs" />
     <Compile Include="Workers\Message\AdminMessageWorker.cs" />
     <Compile Include="Workers\Notifications\Orders\PerformerNotificationCreator.cs" />
     <Compile Include="Workers\Notifications\Orders\VkNotifications\VkCustomerNotificationMethods.cs" />
@@ -335,13 +342,15 @@
   <ItemGroup>
     <Folder Include="Enumerations\Notifications\Customer\Local\" />
     <Folder Include="Models\Menu\" />
-    <Folder Include="Statics\NewFolder1\" />
     <Folder Include="Workers\Logging\Statics\" />
     <Folder Include="Workers\RestoreData\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201707091837226_init.resx">
       <DependentUpon>201707091837226_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707151322294_rename.resx">
+      <DependentUpon>201707151322294_rename.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

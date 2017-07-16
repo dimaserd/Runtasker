@@ -2,6 +2,7 @@
 using Microsoft.AspNet.SignalR.Hubs;
 using Runtasker.Logic;
 using Runtasker.Logic.Models.Messages;
+using System.Linq;
 
 namespace Runtasker.Hubs
 {
@@ -15,24 +16,39 @@ namespace Runtasker.Hubs
         /// </summary>
         public NewOrderChatHub()
         {
-            _context = new MyDbContext();
+            _db = new MyDbContext();
         }
 
-        public NewOrderChatHub(MyDbContext context)
+        public NewOrderChatHub(MyDbContext db)
         {
-            _context = context;
+            _db = Db;
         }
+        #endregion
+
+        #region Поля
+
+        MyDbContext _db;
+        #endregion
+
+        #region Свойства
+
+        /// <summary>
+        /// Свойство контекста (dbo для подключения к базе данных)
+        /// </summary>
+        public MyDbContext Db { get { return _db; } }
         #endregion
 
         #region Основные методы
 
         #region Методы пришедшие с клиента
 
-
-        public void SendMessage(object text)
+        public void AddToGroup(string senderId, string receiverId)
         {
+            string groupName = GetGroup(receiverId, senderId);
 
+            Clients.Group(groupName).onAddedToGroup(groupName);
         }
+
         /// <summary>
         /// Метод отправки сообщения, Метод вызывается с клиента
         /// </summary>
@@ -48,11 +64,37 @@ namespace Runtasker.Hubs
             OnMessageSend(message);
         }
 
+        /// <summary>
+        /// Метод который помечает сообщение как прочитанное в базе данных
+        /// (для небольшой защиты от подделки запросов принимается receiverId и senderId
+        /// </summary>
+        /// <param name="messageId"></param>
+        /// <param name="receiverId"></param>
+        public void ReadMessageAboutOrder(int messageId, string receiverId)
+        {
+            Logic.Entities.Message message = Db.Messages
+                .FirstOrDefault(x => x.Id == messageId && x.ReceiverId == receiverId);
+
+            if(message == null)
+            {
+                return;
+            }
+
+            message.Status = Logic.Entities.MessageStatus.Read;
+            // Указать, что запись изменилась
+            Db.Messages.Attach(message);
+            Db.Entry(message).Property(x => x.Status).IsModified = true;
+
+            Db.SaveChanges();
+
+            OnMessageRead(message);
+        }
+
         #endregion
 
         #region Методы вызываемые на клиенте
 
-        public void OnMessageSend(OrderChatMessage message)
+        private void OnMessageSend(OrderChatMessage message)
         {
             //получаем группу пользователя
             //(в дальнейшем усложни метод получения группы но вылижи наследование между объектами
@@ -65,9 +107,15 @@ namespace Runtasker.Hubs
             Clients.Group(groupName).onNewMessage(message);
         }
 
-        public void OnMessageRead(int messageId)
+        private void OnMessageRead(Logic.Entities.Message message)
         {
-            
+            //получаем группу пользователя
+            //(в дальнейшем усложни метод получения группы но вылижи наследование между объектами
+            //описывающими сообщения)
+            string groupName = GetGroup(message.ReceiverId, message.SenderId);
+
+            //Вызов на обратившемся клиенте javascript функции
+            Clients.Caller.onMessageRead(message.Id);
         }
 
         #endregion
@@ -79,23 +127,15 @@ namespace Runtasker.Hubs
         {
             Logic.Entities.Message mes = message.ToMessage();
 
-            context.Messages.Add(mes);
-            context.SaveChanges();
+            Db.Messages.Add(mes);
+            Db.SaveChanges();
+
+            message.FormattedDate = mes.Date.ToString("G");
+            message.MessageId = mes.Id;
         }
         #endregion
 
-        #region Поля
-
-        MyDbContext _context;
-        #endregion
-
-        #region Свойства
-
-        /// <summary>
-        /// Свойство контекста (записано с маленькой буквы, чтобы избежать конфликтов(
-        /// </summary>
-        public MyDbContext context { get { return _context; } }
-        #endregion
+        
 
         #region Защищенные методы
 
@@ -117,16 +157,7 @@ namespace Runtasker.Hubs
             return groupName;
         }
 
-        /// <summary>
-        /// Метод достающий имя пользователя из базы (Его нужно переделать!)
-        /// </summary>
-        /// <param name="guid"></param>
-        /// <returns></returns>
-        protected string GetSenderNickName(string guid)
-        {
-            return context.Users.Find(guid).Name;
-        }
-
+        
         #endregion
     }
 }

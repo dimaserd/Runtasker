@@ -233,7 +233,7 @@ namespace Runtasker.Logic.Workers.Notifications
             //Email methods
         }
 
-        public void OnPerformerExecutedAnOrder(Order order)
+        public void OnPerformerExecutedAnOrder(Order order, SaveChangesType saveType = SaveChangesType.Now)
         {
             SetCustomerCulture(order);
             decimal leftSum = order.Sum - order.PaidSum;
@@ -255,7 +255,11 @@ namespace Runtasker.Logic.Workers.Notifications
                 ).ToString()
             };
             Context.Notifications.Add(customerN);
-            Context.SaveChanges();
+
+            if(saveType == SaveChangesType.Now)
+            {
+                Context.SaveChanges();
+            }
 
             //Email Methods
             Emailer.OnPerformerExecutedAnOrder(order, GetCustomer(order), GetPerformerEmail());

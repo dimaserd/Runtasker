@@ -20,7 +20,7 @@
     string toGuid = ViewData["toGuid"] as string;
     string senderName = ViewData["senderName"] as string;
     string receiverName = ViewData["receiverName"] as string;
-    string orderId = ViewData["orderId"] as string;
+    int orderId = (ViewData["orderId"] as int?).Value;
 
 
     string chatWithAboutOrder = string.Format("{0} {1}",
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="panel-collapse collapse" id="collapseOne">
-                    <div id="chatbody" class="chatContent">
+                    <div id="chatbody" class="chatContent" style="border: #1980b6 2px solid;">
                         <ul class="chat" id="@chatListId">
                             @if (messages != null)
                             {
@@ -340,7 +340,7 @@
             }
 
             fileLink = document.createElement("a");
-            fileLink.href = "/File/Download?id" + message.AttachmentId;
+            fileLink.href = "/File/Download?id=" + message.AttachmentId;
 
             var i = document.createElement("i");
             i.className = "@downloadClassName";
@@ -462,8 +462,7 @@
     }
 
     $.connection.hub.start()
-        .done(function ()
-        {
+        .done(function () {
             console.log('Now connected, connection ID=' + $.connection.hub.id);
 
             //поставлено в надежде вылечить отправку
@@ -522,8 +521,7 @@
                         alert("Браузер не поддерживает загрузку файлов HTML5!");
                     }
                 }
-                else
-                {
+                else {
                     var Data = {
                         SenderId: document.getElementById("senderId").value,
                         ReceiverId: document.getElementById("receiverId").value,
@@ -547,8 +545,7 @@
 
                 var message = $(this);
 
-                if (message.hasClass("@unreadClass"))
-                {
+                if (message.hasClass("@unreadClass")) {
                     var id = message.attr('id');
                     console.log(id);
                     chat.server.readMessageAboutOrder(id, document.getElementById("senderId").value)
@@ -560,17 +557,12 @@
             $(document.body).on("click", ".@messageClass", function () {
                 var message = $(this);
 
-                if (message.hasClass("@unreadClass"))
-                {
+                if (message.hasClass("@unreadClass")) {
                     var id = message.attr('id');
                     console.log(id);
                     chat.server.readMessageAboutOrder(id, document.getElementById("senderId").value)
                 }
-            }
-        })
-        .fail(function ()
-        {
-            console.log('Could not Connect!');
+            });
         });
 
 

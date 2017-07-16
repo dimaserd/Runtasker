@@ -9,6 +9,7 @@
     ViewBag.Title = Index.Title;
 }
 
+
 <div>
     
     <!-- PAGE TITLE -->
@@ -23,6 +24,7 @@
         </div>
     </header>
 
+    
     <!--Sort Buttons-->
     <div class="row">
         <div class="col-md-6">
@@ -90,23 +92,7 @@
 </div>
 
 @section scripts{
-    <!--Modal Functions-->
-    <script>
-        function MakeLoading(elementId) {
-            var sp = document.createElement("span");
-            sp.className = "text-center";
-
-            sp.className = "fa fa-spinner fa-5x fa-spin";
-
-            var searchResult = document.getElementById(elementId);
-
-            searchResult.innerHTML = "";
-
-            searchResult.appendChild(sp);
-
-        }
-    </script>
-    <!--/Modal Functions-->
+    
 
     <!--Rating togglers scripts-->
     <script>

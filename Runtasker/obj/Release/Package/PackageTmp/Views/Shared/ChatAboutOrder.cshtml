@@ -235,6 +235,7 @@
     }
 
     chat.client.onNewMessage = function (data) {
+        console.log("new message", data);
         var mes = buildMessage(data.Id, data.Text, data.Attachments, data.SenderGuid, data.NickName, data.Date);
         //get html from Data
         $("#chatbody ul").append(mes);

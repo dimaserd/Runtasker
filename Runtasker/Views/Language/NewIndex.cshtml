@@ -13,25 +13,25 @@
     string userBlockId = "userForm";
 }
 
-<div id="@langBlockId" class="btn-group pull-right hidden-xs">
+<div id="@langBlockId" class="btn-group pull-right">
     <button id="langToogler" onclick="langFormMenuHandler()" class="dropdown-toggle language" type="button">
         @if (currentLang == Lang.Russian)
         {
             <img src="~/assets/images/flags/ru.png" width="16" height="11" alt="RUS Язык" />
-            @rus
-            <span class="caret"></span>
+            <span class="hidden-xs">@rus</span>
+            <span class="caret hidden-xs"></span>
         }
         else if (currentLang == Lang.Chinese)
         {
             <img src="~/assets/images/flags/cn.png" width="16" height="11" alt="@chinese" />
-            @chinese
-            <span class="caret"></span>
+            <span class="hidden-xs">@chinese</span>
+            <span class="caret hidden-xs"></span>
         }
         else
         {
             <img src="~/assets/images/flags/gb.png" width="16" height="11" alt="EN Language" />
-            @eng
-            <span class="caret"></span>
+            <span class="hidden-xs">@eng</span>
+            <span class="caret hidden-xs"></span>
         }
 
     </button>

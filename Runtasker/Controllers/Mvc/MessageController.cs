@@ -115,15 +115,30 @@ namespace Runtasker.Controllers
 
         public async Task<ActionResult> ChatAboutOrder(int orderId)
         {
+            string receiverName = string.Empty;
+            string toId = string.Empty;
+
+            IEnumerable<Message> model;
+            if (User.IsInRole("Customer"))
+            {
+                model = await OrderMessager.GetChatAboutOrderAsCustomerAsync(orderId);
+                receiverName = OrderMessager.GetAdminName();
+                toId = OrderMessager.GetAdminId();
+            }
+            else
+            {
+                model = await OrderMessager.GetChatAboutOrderAsPerformerAsync(orderId);
+                var customer = await OrderMessager.GetCustomerAsync(orderId);
+                receiverName = customer.Name;
+                toId = customer.Id;
+            }
+
             ViewData["userGuid"] = UserGuid;
             ViewData["senderName"] = User.Identity.GetName();
 
-
-            ViewData["receiverName"] = OrderMessager.GetChatterName();
-            ViewData["toGuid"] = OrderMessager.GetChattterGuid();
-            ViewData["orderId"] = orderId.ToString();
-
-            IEnumerable<Message> model = await OrderMessager.GetChatAboutOrderAsync(orderId);
+            ViewData["orderId"] = orderId;
+            ViewData["receiverName"] = receiverName;
+            ViewData["toGuid"] = toId;
 
             return View(viewName: "~/Views/Shared/NewChatAboutOrder.cshtml", model: model);
         }

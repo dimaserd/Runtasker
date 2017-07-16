@@ -172,6 +172,22 @@ namespace Runtasker.Controllers
         #region Методы скачивания
         [HttpGet]
         [Authorize(Roles = "Admin,Performer,Customer")]
+        public async Task<ActionResult> Download(string id)
+        {
+            using (MyDbContext context = new MyDbContext())
+            {
+                Attachment a = await context.Attachments.FirstOrDefaultAsync(t => t.Id == id);
+                if (a == null && a.FileData != null)
+                {
+                    return new HttpStatusCodeResult(404);
+                }
+
+                return File(a.FileData, MimeMapping.GetMimeMapping(a.FileName), a.FileName);
+            }
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin,Performer,Customer")]
         public ActionResult DownloadByKey(string key)
         {
             using (MyDbContext context = new MyDbContext())

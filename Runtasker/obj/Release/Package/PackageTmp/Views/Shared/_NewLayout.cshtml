@@ -50,6 +50,7 @@
 
 
 <body>
+    @LoadHelper.GetStylesForSpinner()
     <!-- Yandex.Metrika counter -->
     @ViewExtensions.GetYandexMetrika()
     <!-- /Yandex.Metrika counter -->
@@ -117,7 +118,7 @@
     <!-- WRAPPER -->
     <div id="wrapper">
         <div class="container">
-            <section class="container">
+            <section>
                 @{ Html.RenderAction("Modal", "Message");}
                 
                 <div id="notification-wrapper"></div>
@@ -141,10 +142,13 @@
     <!-- /FOOTER -->
 
     <!-- JAVASCRIPT FILES -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!--jquery via cdn-->
-    @Scripts.Render("~/NewDesign/Jquery")
-
+    
     @Scripts.Render("~/bundles/bootstrap")
     <!--bootstrap-->
 

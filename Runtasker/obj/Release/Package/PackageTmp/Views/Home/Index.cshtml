@@ -11,17 +11,18 @@
 
 @AlertHelper.GetAnonymousNotificationAlert(notType)
 
-<div class="jumbotron">
-    <h1>@LogoHelper.GetLogoWithImage(100)RUNTASKER.RU</h1>
-    <p class="lead">
-        @localeModel["Greeting"]
-    </p>
-    <p>
-        <a href="@Url.Action("Create", "Orders")" class="btn btn-primary btn-lg">
-            @localeModel["TryOurServicesHtml"].ToHtml()
-        </a>
-    </p>
-</div>
+    <div class="jumbotron">
+        <h1>@LogoHelper.GetLogoWithImage(100)RUNTASKER.RU</h1>
+        <p class="lead">
+            @localeModel["Greeting"]
+        </p>
+        <p>
+            <a href="@Url.Action("Create", "Orders")" class="btn btn-primary btn-lg">
+                @localeModel["TryOurServicesHtml"].ToHtml()
+            </a>
+        </p>
+    </div>
+
 
 <hr/>
 

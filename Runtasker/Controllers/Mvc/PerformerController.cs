@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNet.Identity;
-using Runtasker.Logic;
-using Runtasker.Logic.Entities;
+﻿using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers.MessageWorker;
 using Runtasker.Logic.Workers.Orders;
 using Runtasker.Logic.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 using Runtasker.Logic.Workers.Files;
 using Runtasker.Logic.Workers.Admin;

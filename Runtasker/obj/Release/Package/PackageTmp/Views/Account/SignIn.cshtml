@@ -13,11 +13,14 @@
     
 
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
+
+    string langBlockId = "langBlock";
+    string userBlockId = "userForm";
 }
 @if (!Request.IsAuthenticated)
 {
-    <div class="pull-right nav signin-dd">
-        <a id="quick_sign_in" href="#">
+    <div id="@userBlockId" class="pull-right nav signin-dd">
+        <a id="quick_sign_in"  onclick="userFormMenuHandler()" href="#">
             <i class="fa fa-users"></i><span class="hidden-xs"> @localeModel["SignIn"]</span>
         </a>
         <div class="dropdown-menu" role="menu">
@@ -77,8 +80,8 @@ else
         }
     </style>
 
-    <div class="pull-right nav signin-dd">
-        <a id="quick_sign_in" href="#"><i class="fa fa-users"></i><span class="hidden-xs"> @localeModel["HelloUser"]</span></a>
+    <div id="@userBlockId" class="pull-right nav signin-dd">
+        <a id="quick_sign_in" onclick="userFormMenuHandler()" href="#"><i class="fa fa-users"></i><span class="hidden-xs"> @localeModel["HelloUser"]</span></a>
         <div class="dropdown-menu whiteText" role="menu">
             <div class="navbar-content">
                 <!--Avatar-->
@@ -168,20 +171,24 @@ else
 }
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
 
-        $("#quick_sign_in").click(function () {
-            if ($(this).parent().hasClass("open")) {
-                $(this).parent().removeClass("open");
-            }
-            else {
-                if ($("#langToogler").parent().hasClass("open")) {
-                    $("#langToogler").parent().removeClass("open")
-                }
-                $(this).parent().addClass("open");
-            }
-        })
+    function userFormMenuHandler()
+    {
+        var langBlock = document.getElementById("@langBlockId");
+        if (langBlock.classList.contains("open")) {
+            langBlock.classList.remove("open");
+        }
 
+        var userBlock = document.getElementById("@userBlockId");
 
-    }, false);
+        if (userBlock.classList.contains("open"))
+        {
+            userBlock.classList.remove("open");
+        }
+        else
+        {
+            userBlock.classList.add("open");
+        }
+    }
+
 </script>

@@ -1,9 +1,10 @@
 ﻿@using Runtasker.Logic.Models
 @using Runtasker.LocaleBuilders.Models
+@using Runtasker.Statics.Views
 @model RatingOrderModel
 @{ 
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
-    Layout = "~/Views/Shared/_ModalLayout.cshtml";
+    Layout = ViewPaths.ModalLayoutPath;
 }
     <div class="row" style="margin-top:40px;">
         <div class="col-md-12">

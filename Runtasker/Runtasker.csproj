@@ -291,6 +291,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Statics\Notifications\UIGuestNotifications.cs" />
+    <Compile Include="Statics\Views\ViewPaths.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\animate.css" />
@@ -3430,7 +3431,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Layouts\_Layout.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -3452,9 +3453,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Info.cshtml" />
     <Content Include="Views\Notification\Index.cshtml" />
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Layouts\_AdminLayout.cshtml" />
     <Content Include="Views\Performer\Index.cshtml" />
-    <Content Include="Views\Shared\_JQ2Layout.cshtml" />
+    <Content Include="Views\Layouts\_JQ2Layout.cshtml" />
     <Content Include="Views\Message\Chat.cshtml" />
     <Content Include="Views\Payment\Yandex.cshtml" />
     <Content Include="Views\Payment\Paid.cshtml" />
@@ -3473,7 +3474,7 @@
     <Content Include="Views\Manage\Profile.cshtml" />
     <Content Include="Views\Message\ChatsInModals.cshtml" />
     <Content Include="Views\Message\Index.cshtml" />
-    <Content Include="Views\Shared\_EmptyLayout.cshtml" />
+    <Content Include="Views\Layouts\_EmptyLayout.cshtml" />
     <Content Include="Views\Orders\Create.cshtml" />
     <Content Include="Views\Orders\AddFiles.cshtml" />
     <Content Include="Views\Performer\ValueOrder.cshtml" />
@@ -3486,7 +3487,7 @@
     <Content Include="Views\Orders\Rating.cshtml" />
     <Content Include="Views\Home\Comments.cshtml" />
     <Content Include="Views\Message\Modal.cshtml" />
-    <Content Include="Views\Shared\_ModalLayout.cshtml" />
+    <Content Include="Views\Layouts\_ModalLayout.cshtml" />
     <Content Include="Views\Notification\Info.cshtml" />
     <Content Include="Views\Account\RegisterByInvitation.cshtml" />
     <Content Include="Views\Manage\InviteUser.cshtml" />
@@ -3500,7 +3501,7 @@
     <Content Include="Views\Performer\Users.cshtml" />
     <Content Include="Views\Performer\Statistics.cshtml" />
     <Content Include="Views\Performer\WriteEmail.cshtml" />
-    <Content Include="Views\Shared\_NewLayout.cshtml" />
+    <Content Include="Views\Layouts\_NewLayout.cshtml" />
     <Content Include="Views\Account\Signin.cshtml" />
     <Content Include="Views\Account\BlockLoginList.cshtml" />
     <Content Include="Views\Orders\MiniPanel.cshtml" />
@@ -3554,7 +3555,7 @@
     <Content Include="App_Code\MenuHelper.cshtml" />
     <Content Include="Views\Orders\OnlineHelp.cshtml" />
     <Content Include="Views\Orders\PayOnlineHelp.cshtml" />
-    <Content Include="Views\Shared\_NewAdminLayout.cshtml" />
+    <Content Include="Views\Layouts\_NewAdminLayout.cshtml" />
     <Content Include="Views\Payment\YandexKassa.cshtml" />
     <Content Include="Views\Payment\Succeeded.cshtml" />
     <Content Include="Views\Payment\Failed.cshtml" />

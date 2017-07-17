@@ -1,7 +1,7 @@
 ﻿@model string
 @{
     ViewBag.Title = "Logs";
-    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    
     string log = ViewData["log"] as string;
     if (log == null) { log = "{не указано}"; }
 }

@@ -1,12 +1,13 @@
 ﻿@using Runtasker.Logic.Models
 @using Runtasker.Logic.Entities
 @using Extensions.Decimal
+@using Extensions.Enumerations
 @using Extensions.String
 @using HtmlExtensions.StaticRenderers
 @model CustomerInfo
 @{
     ViewBag.Title = "Статистика";
-    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+    Layout = Runtasker.Statics.Views.ViewPaths.NewAdminLayoutPath;
 }
 
 <div class="row">
@@ -121,13 +122,13 @@
             {
                 <tr class="active">
                     <td>
-                        @order.Status.ToDescriptionString()
+                        @order.Status.ToDisplayName()
                     </td>
                     <td>
                         @order.Sum.ToMoney()@HtmlSigns.Rouble.ToHtml()
                     </td>
                     <td>
-                        @order.Subject.ToDescriptionString()
+                        @order.Subject.ToDisplayName()
                     </td>
                     <td>
                         @order.PublishDate.ToShortDateString()

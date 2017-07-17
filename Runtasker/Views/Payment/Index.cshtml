@@ -13,6 +13,8 @@
     string yandexKassa = $"{FASigns.CreditCard} {localeModel["HtmlTopUpViaYandexKassa"]}";
 }
 
+@AlertHelper.GetAlert(localeModel["InfoText"])
+
 <!--Navigation-->
 <header id="page-title">
     <div class="container">
@@ -85,13 +87,6 @@
 </style>
 <!--/UserButtons-->
 
-<!--Explantion-->
-<div class="row paddingLeft">
-    <h4 class="text-info">
-        @localeModel["InfoText"]
-    </h4>
-</div>
-<!--/Explanation-->
 
 
 @section scripts{

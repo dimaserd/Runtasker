@@ -4,7 +4,7 @@
 @model VkKeyWord
 @{
     ViewBag.Title = "Обновить ключевое слово";
-    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+    Layout = Runtasker.Statics.Views.ViewPaths.NewAdminLayoutPath;
     int currentCode = (int)Model.Subject;
 
     List<SelectListItem> subjects = new List<SelectListItem>();

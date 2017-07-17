@@ -1,4 +1,12 @@
-﻿@helper GetAlert(string title, string text)
+﻿@helper GetAlert(string text)
+{
+    <div class="alert alert-info fade in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <p>@text</p>
+    </div>
+}
+
+@helper GetAlert(string title, string text)
 {
     <div class="alert alert-info fade in">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>

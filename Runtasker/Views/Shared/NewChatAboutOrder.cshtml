@@ -2,10 +2,12 @@
 @using Runtasker.ExtensionsUI.UIExtensions
 @using Runtasker.Resources.Views.Shared.Chat
 @using Extensions.String
+@using Runtasker.Statics.Views
 @model IEnumerable<Message>
 @{
 
-    Layout = "~/Views/Shared/_ModalLayout.cshtml";
+    Layout = ViewPaths.ModalLayoutPath;
+
     List<Message> messages;
     if (Model == null)
     {

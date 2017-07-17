@@ -1,12 +1,12 @@
-﻿@using Runtasker.Logic
+﻿@using Runtasker.Logic.Entities
 @using Extensions.Decimal
 @using HtmlExtensions.StaticRenderers
 @using Extensions.String
 @model IEnumerable<ApplicationUser>
 @{
     ViewBag.Title = "Users";
-    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
-    
+    Layout = Runtasker.Statics.Views.ViewPaths.NewAdminLayoutPath;
+
 }
 
 <h2>Пользователи сайта </h2>

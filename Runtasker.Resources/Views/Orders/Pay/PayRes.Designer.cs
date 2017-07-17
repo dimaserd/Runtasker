@@ -106,6 +106,15 @@ namespace Runtasker.Resources.Views.Orders.Pay {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на On this page you&apos;re paying a first half of your order&apos;s cost. When you&apos;re done with this, the performer starts executing your work. {0}{1} will be debited from your account..
+        /// </summary>
+        public static string PayHelpTextFormat {
+            get {
+                return ResourceManager.GetString("PayHelpTextFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Pay Online-Help.
         /// </summary>
         public static string PayOnlineHelpTitle {

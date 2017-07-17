@@ -43,6 +43,8 @@
 
     string downloadClassName = "fa fa-download";
     string downloadFilesText = "Скачать файлы";
+
+    string colorCode = "#334faf";
 }
 
 @Styles.Render("~/Chat")
@@ -51,7 +53,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-primary">
-                <div class="panel-heading" id="accordion">
+                <div class="panel-heading" style="background-color:@colorCode" id="accordion">
                     <span class="glyphicon glyphicon-comment"></span> @chatWithAboutOrder.ToHtml()
                     <div class="btn-group pull-right">
                         <button id="chevron-down" class="btn btn-default btn-xs">
@@ -60,7 +62,7 @@
                     </div>
                 </div>
                 <div class="panel-collapse collapse" id="collapseOne">
-                    <div id="chatbody" class="chatContent" style="border: #1980b6 2px solid;">
+                    <div id="chatbody" class="chatContent" style="border: @colorCode 2px solid;">
                         <ul class="chat" id="@chatListId">
                             @if (messages != null)
                             {
@@ -72,7 +74,7 @@
                             }
                         </ul>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer" style="border-left: @colorCode 2px solid;border-right: @colorCode 2px solid;border-bottom: @colorCode 2px solid;">
                         <div class="input-group">
                             <input id="@textInputId" type="text" class="form-control input-sm" placeholder="@ChatRes.PlaceHolder" />
                             <span class="input-group-btn">

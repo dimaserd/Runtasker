@@ -3,46 +3,22 @@
     Layout = null;
 }
 
+@{ 
+    string modalId = "myModal";
+
+    string pathToModalId = "#" + modalId;
+}
+
 <!--Modal must be before anything-->
-<div id="myModal" class="modal fade">
+<div id="@modalId" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
 
             <div class="modal-header">
-                <div class="navbar navbar-inverse navbar-fixed-top">
-                    <div class="container">
-                        <!--Brand-->
-                        <div class="navbar-header">
-                            @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#modalNavbar">*@
-                                <button type="button" class="navbar-toggle hidden-xs" data-toggle="#modalNavbar" data-target="#modalNavbar">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-education"></span> RUNTASKER mini</a>
-                        </div>
-                        <!--/Brand-->
-                        <!--Panel-->
-                        <div id="#modalNavbar" class="navbar-collapse collapse hidden-xs">
-                            <ul class="nav navbar-nav">
-                                @if (Request.IsAuthenticated)
-                                {
-                                    <li>
-                                        <a href="@Url.Action("Index", "Orders")">
-                                            <span class="glyphicon glyphicon-th-list"></span> @ModalRes.MyOrders
-                                        </a>
-                                    </li>
-                                }
-                                <li>
-                                    <a href="@Url.Action("Contact", "Home")">
-                                        <span class="glyphicon glyphicon-send"></span> @ModalRes.Contact
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--/Panel-->
-                    </div>
-                </div>   
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                
+                <h4 class="modal-title"><span class="glyphicon glyphicon-education"></span> RUNTASKER mini</h4>
             </div>
             <!--ModalBody-->
             <style>

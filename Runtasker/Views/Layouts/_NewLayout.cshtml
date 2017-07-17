@@ -3,6 +3,9 @@
 @using Runtasker.Settings
 @{
     Layout = null;
+
+    string navMenuId = "NavMenu";
+    string mobileMenuBtnId = "dick";
 }
 <!DOCTYPE html>
 <html>
@@ -10,9 +13,6 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title – Runtasker.ru</title>
-    <meta name="keywords" content="HTML5,CSS3,Template" />
-    <meta name="description" content="" />
-    <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
     <link rel="shortcut icon" type="image/ico" href="@Url.Content("~/favicon.ico")">
     <!-- mobile settings -->
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
@@ -97,7 +97,7 @@
             @if (Request.IsAuthenticated)
             {
             <!-- Mobile Menu Button -->
-            <button class="btn btn-mobile" id="dick">
+            <button class="btn btn-mobile" id="@mobileMenuBtnId">
                 <i class="fa fa-bars"></i>
             </button>
             }
@@ -164,8 +164,8 @@
     @Scripts.Render("~/NewDesign/Scripts")
 
     <script>
-        $("#dick").click(function () {
-            $("#NavMenu").collapse("toggle");
+        $("#@mobileMenuBtnId").click(function () {
+            $("#@navMenuId").collapse("toggle");
         })
     </script>
 
@@ -182,5 +182,7 @@
     }
     
     @RenderSection("scripts", required: false)
+
+    @JSHelper.GetBlinkFunction()
 </body>
 </html>

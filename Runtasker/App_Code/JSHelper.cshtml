@@ -80,3 +80,54 @@ else
 }
 
 }
+
+@helper GetBlinkFunction()
+{
+    <script>
+            function blink(id, count) {
+                for (i = 0; i < count; i++)
+                {
+                    $('#' + id)
+                        .fadeOut(100)
+                        .fadeIn(100);
+                }
+
+            }
+
+            function resizeAndBack(id, count, pixels) {
+                for (i = 0; i < count; i++) {
+                    $('#' + id).animate({
+                            height: '+=' + pixels + 'px',
+                            width: '+=' + pixels + 'px',
+                    }, 150)
+                        .animate({
+                            height: '-=' + pixels + 'px',
+                            width: '-=' + pixels + 'px'
+                        }, 150);
+
+                }
+
+            }
+
+            function Svetofor(id, count)
+            {
+                
+                for (i = 0; i < count; i++) {
+                    $('#' + id).animate({
+                        color: '008000',
+                    }, 250)
+                        .animate({
+                            color: '#ffff00',
+                    }, 250)
+                        .animate({
+                            color: '#FF0000',
+
+                        }, 250)
+                        .animate({
+                            color: '#0038ff', 
+
+                        }, 250)
+                }
+            }
+    </script>
+}

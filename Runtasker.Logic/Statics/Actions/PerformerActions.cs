@@ -35,6 +35,13 @@ namespace Runtasker.Logic.Statics.Actions
                 case OrderStatus.HalfPaid:
                     return new ActionLink
                     {
+                        Link = $"/Performer/Choose/{order.Id}",
+                        Text = AddOrderBracketsInfo("Взять на исполнение", order)
+                    };
+
+                case OrderStatus.Executing:
+                    return new ActionLink
+                    {
                         Link = $"/Performer/Solve/{order.Id}",
                         Text = AddOrderBracketsInfo("Решить", order)
                     };

@@ -134,6 +134,9 @@
     <value>Pay half price of order #{0}</value>
     <comment>Pay half price of order #{номер заказа}</comment>
   </data>
+  <data name="PayHelpTextFormat" xml:space="preserve">
+    <value>On this page you're paying a first half of your order's cost. When you're done with this, the performer starts executing your work. {0}{1} will be debited from your account.</value>
+  </data>
   <data name="PayOnlineHelpTitle" xml:space="preserve">
     <value>Pay Online-Help</value>
     <comment>Оплата Онлайн-Помощи</comment>

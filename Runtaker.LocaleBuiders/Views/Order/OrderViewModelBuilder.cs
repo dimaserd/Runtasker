@@ -1,5 +1,4 @@
-﻿using Runtasker.LocaleBuilders.Enumerations;
-using Runtasker.LocaleBuilders.Models;
+﻿using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Views.Home.KnowPrice;
 using Runtasker.Resources.Views.Orders.Create;
 using Runtasker.Resources.Views.Orders.OnlineHelp;
@@ -8,6 +7,9 @@ using Runtasker.Resources.Views.Orders.Rating;
 
 namespace Runtasker.LocaleBuilders.Views.Order
 {
+    /// <summary>
+    /// Возвращает локализованные модели для представлений контроллера Orders
+    /// </summary>
     public static class OrderViewModelBuilder
     {
         public static LocaleViewModel RatingView(int orderId)
@@ -20,6 +22,7 @@ namespace Runtasker.LocaleBuilders.Views.Order
             result.Add("CancelBtnText", RatingRes.Cancel);
             result.Add("SendBtnText", RatingRes.Send);
             result.Add("CommentPlaceHolder", RatingRes.PlaceHolder);
+
 
             return result;
         }
@@ -99,6 +102,8 @@ namespace Runtasker.LocaleBuilders.Views.Order
             result.Add("MyOrdersNav", PayRes.MyOrdersNav);
             result.Add("ActiveNav", PayRes.Pay);
             result.Add("PayBtnInnerHtml", string.Format(PayRes.PayBtnFormat, paySign));
+
+            result.Add("HelpTextFormat", PayRes.PayHelpTextFormat);
             return result;
         }
 

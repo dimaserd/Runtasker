@@ -1,7 +1,9 @@
 ﻿@using Runtasker.Resources.Views.Orders.MiniPanel
 @using Runtasker.Resources.Views.Message.ActivePanel
 @{
-    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+    Layout = Runtasker.Statics.Views.ViewPaths.EmptyLayoutPath;
+
+    string navMenuId = "NavMenu";
 }
 
 <!-- Top Nav -->
@@ -209,6 +211,9 @@
 
             //обработчик содержит дуплицит
             function ChatClickHandler() {
+                $("#@navMenuId").collapse('hide');
+                @*$("#@navMenuId").removeClass('in');
+                $("#@navMenuId").attr('aria-expanded', 'false');*@
                 var id = $(this).attr('id');
                 myModal.modal('show');
                 //показываю крутилку
@@ -219,6 +224,9 @@
             //обработчик для модала
             function OrderActionClickHandler() {
                 console.log("Клик ебаный");
+
+
+
                 var link = $(this).attr('link');
 
                 console.log(link);

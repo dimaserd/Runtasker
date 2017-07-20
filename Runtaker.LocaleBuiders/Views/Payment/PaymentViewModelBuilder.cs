@@ -1,5 +1,4 @@
 ﻿using Extensions.String;
-using Runtasker.LocaleBuilders.Enumerations;
 using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Views.Payment.Index;
 using Runtasker.Resources.Views.Payment.Robokassa;
@@ -36,26 +35,18 @@ namespace Runtasker.LocaleBuilders.Views.Payment
 
         public LocaleViewModel Robokassa(decimal amount, decimal withdrawAmount, string roubleSign)
         {
-            switch(UILang)
-            {
-                case Lang.Russian:
-                    LocaleViewModel rusResult = new LocaleViewModel();
-                    rusResult.Add("Title", RkassaRes.Title1);
-                    rusResult.Add("ActionDesc", $"{RkassaRes.ActionDesc1} {amount}{roubleSign}");
-                    rusResult.Add("ActionDescMini", $"{RkassaRes.ActionDescMini}");
-                    rusResult.Add("Info", $"{RkassaRes.Info1} {withdrawAmount}{roubleSign} {RkassaRes.Info2}");
-                    rusResult.Add("BackToPM", RkassaRes.BackToPM);
-                    return rusResult;
+            LocaleViewModel result = new LocaleViewModel();
+            result.Add("Title", RkassaRes.Title);
+            result.Add("ActionDesc", string.Format(RkassaRes.ActionDescFormat, amount, roubleSign));
+            result.Add("ActionDescMini", $"{RkassaRes.ActionDescMini}");
+            result.Add("Info", string.Format(RkassaRes.InfoFormat, withdrawAmount, roubleSign));
+            result.Add("BackToPM", RkassaRes.BackToPM);
 
-                default:
-                    LocaleViewModel result = new LocaleViewModel();
-                    result.Add("Title", RkassaRes.Title1);
-                    result.Add("ActionDesc", $"{RkassaRes.ActionDesc1} {amount}{roubleSign}");
-                    result.Add("ActionDescMini", $"{RkassaRes.ActionDescMini}");
-                    result.Add("Info", $"{RkassaRes.Info1} {withdrawAmount}{roubleSign} {RkassaRes.Info2}");
-                    result.Add("BackToPM", RkassaRes.BackToPM);
-                    return result;
-            }
+            result.Add("NavHome", RkassaRes.NavHome);
+            result.Add("NavActive", RkassaRes.NavActive);
+            result.Add("NavPayments", RkassaRes.NavPayments);
+
+            return result;
         }
 
         public LocaleViewModel Yandex()

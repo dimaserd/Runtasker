@@ -27,7 +27,7 @@
         {
             get
             {
-                return $"{LayoutsDirectory}/_AdminLayout.cshtml";
+                return $"{LayoutsDirectory}/_NewAdminLayout.cshtml";
             }
         }
 

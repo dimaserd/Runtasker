@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Runtasker.Logic.Entities
@@ -12,13 +13,13 @@ namespace Runtasker.Logic.Entities
 
     public enum NotificationType
     {
-        [Description("alert-success")]
+        [Display(Name = "alert-success")]
         Success,
-        [Description("alert-info")]
+        [Display(Name = "alert-info")]
         Info,
-        [Description("alert-warning")]
+        [Display(Name = "alert-warning")]
         Warning,
-        [Description("alert-danger")]
+        [Display(Name = "alert-danger")]
         Danger
     }
 
@@ -27,14 +28,7 @@ namespace Runtasker.Logic.Entities
         Unseen, Seen
     }
 
-    public static class NotificationEnumExtensions
-    {
-        public static string ToDescriptionString(this NotificationType val)
-        {
-            DescriptionAttribute[] attributes = (DescriptionAttribute[])val.GetType().GetField(val.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false);
-            return attributes.Length > 0 ? attributes[0].Description : string.Empty;
-        }
-    }
+    
 
 
     public class Notification

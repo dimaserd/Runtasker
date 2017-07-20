@@ -1,9 +1,9 @@
-﻿@using Runtasker.Logic
+﻿@using Runtasker.Logic.Entities
 @using Runtasker.Logic.Models
 @model ActionEmailToCustomer
 @{
     ViewBag.Title = "WriteEmail";
-    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+    Layout = Runtasker.Statics.Views.ViewPaths.NewAdminLayoutPath;
 
     ApplicationUser user = ViewData["user"] as ApplicationUser;
 }

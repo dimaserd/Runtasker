@@ -1,4 +1,5 @@
-﻿using HtmlExtensions.HtmlEntities;
+﻿using Extensions.Enumerations;
+using HtmlExtensions.HtmlEntities;
 using Runtasker.Logic.Entities;
 using System.ComponentModel;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Alerts
         public static string BuildAlertFromNotification(Notification N)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"<div class='alert {N.Type.ToDescriptionString()} alert-dismissable'>")
+            sb.Append($"<div class='alert {N.Type.ToDisplayName()} alert-dismissable'>")
                 .Append("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
             if (!string.IsNullOrEmpty(N.Title))
             {

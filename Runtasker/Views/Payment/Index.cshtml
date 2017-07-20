@@ -34,17 +34,17 @@
 <h3>@localeModel["Amount"]:</h3>
 <div class="row">
     <div class="col-md-5">
+        <div id="errorText" class="hidden alert alert-danger">
+            <i class="fa fa-frown-o"></i>
+            <strong>@localeModel["ErrorText"]</strong>
+        </div>
         <div class="input-group input-group-lg">
             <input id="sum" class="form-control" value="@((Model.HasValue) ? Model.Value : 0 )" maxlength="10" type="number" data-type="number">
             <span class="input-group-addon">
                 @HtmlSigns.Rouble.ToHtml()
             </span>
         </div>
-        <div class="row">
-            <h4 id="errorText" class="hidden text-danger">
-                @localeModel["ErrorText"]
-            </h4>
-        </div>
+        
         <style>
             #errorText{
                 padding-left : 15px;

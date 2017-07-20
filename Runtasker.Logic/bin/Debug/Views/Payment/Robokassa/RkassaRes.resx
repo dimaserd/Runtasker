@@ -120,19 +120,28 @@
   <data name="ActionDesc1" xml:space="preserve">
     <value>Topping-up</value>
   </data>
+  <data name="ActionDescFormat" xml:space="preserve">
+    <value>Topping-up {0}{1}</value>
+  </data>
   <data name="ActionDescMini" xml:space="preserve">
     <value>via RoboKassa</value>
   </data>
   <data name="BackToPM" xml:space="preserve">
     <value>Back to payment methods</value>
   </data>
-  <data name="Info1" xml:space="preserve">
-    <value>You are about to top up your balance with RoboKassa. Please be advised that you will pay</value>
+  <data name="InfoFormat" xml:space="preserve">
+    <value>You are about to top up your balance with RoboKassa. Please be advised that you will pay {0}{1} with the commission charged by RoboKassa. We recommend using YandexMoney as it charges no commission. Click “Pay” to continue.</value>
   </data>
-  <data name="Info2" xml:space="preserve">
-    <value>with the commission charged by RoboKassa. We recommend using YandexMoney as it charges no commission. Click “Pay” to continue.</value>
+  <data name="NavActive" xml:space="preserve">
+    <value>Robokassa</value>
   </data>
-  <data name="Title1" xml:space="preserve">
+  <data name="NavHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="NavPayments" xml:space="preserve">
+    <value>Topping up</value>
+  </data>
+  <data name="Title" xml:space="preserve">
     <value>Topping-up your balance</value>
   </data>
 </root>

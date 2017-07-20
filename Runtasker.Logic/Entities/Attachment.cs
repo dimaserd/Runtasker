@@ -180,6 +180,11 @@ namespace Runtasker.Logic.Entities
 
         public static Attachment GetAttachmentFromFile(HttpPostedFileBase file)
         {
+            if(file == null)
+            {
+                return null;
+            }
+
             ClearTempDirectories();
 
             string fileName = $"{TempDirectory}/{file.FileName.LeftJustFileName()}";
@@ -198,7 +203,10 @@ namespace Runtasker.Logic.Entities
                 //записываю все файлы во вторую директорию
                 foreach (HttpPostedFileBase file in files)
                 {
-                    file.SaveAs($"{SecondTempDirectory}/{file.FileName.LeftJustFileName()}");
+                    if(file != null)
+                    {
+                        file.SaveAs($"{SecondTempDirectory}/{file.FileName.LeftJustFileName()}");
+                    }
                 }
 
                 //создаю имя для файла

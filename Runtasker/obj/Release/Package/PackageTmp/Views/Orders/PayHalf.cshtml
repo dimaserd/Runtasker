@@ -7,9 +7,11 @@
 @{
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
     ViewBag.Title = localeModel["Title"];
+
+    string sumId = "halfOfOrderSum";
 }
 
-
+@AlertHelper.GetAlert(localeModel["HelpTextFormat"])
 <!-- PAGE TITLE -->
 <header id="page-title">
     <div class="container">
@@ -35,10 +37,10 @@
                     @Html.TextBoxFor(model => model.Sum,
          htmlAttributes: new
          {
-             id = "halfOfOrderSum",
+             id = sumId,
              @class = "form-control",
              type = "number",
-             value = Model.Sum
+             @Value = Model.Sum
          })
                     <span class="input-group-addon">
                         @FASigns.Rouble.ToHtml()
@@ -63,7 +65,7 @@
 
 @section scripts{
     <script>
-        var halfOfOrderSum = $('#halfOfOrderSum');
+        var halfOfOrderSum = $('#@sumId');
         var Nadezhda = function () {
             halfOfOrderSum.val(@Model.RequiredSum);
         }();

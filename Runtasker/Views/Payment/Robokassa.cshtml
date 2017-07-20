@@ -67,19 +67,33 @@
     string actionDesc = localeModel["ActionDesc"];
 }
 
+@AlertHelper.GetAlert(localeModel["Info"])
+
+
+<!--Navigation-->
+<header id="page-title">
+    <div class="container">
+        <h1>@ViewBag.Title</h1>
+        <ul class="breadcrumb">
+            <li><a href="/Home/Index">@localeModel["NavHome"]</a></li>
+            <li><a href="/Payment">@localeModel["NavPayments"]</a></li>
+            <li class="active">@localeModel["NavActive"]</li>
+        </ul>
+    </div>
+</header>
+<!--/Navigation-->
 
 <div class="page-header">
     <h1>@actionDesc.ToHtml()<small>@localeModel["ActionDescMini"]</small></h1>
 </div>
 
 
-
 <script src="@script_src"></script>
 
-<h5 class="info">
-    @localeModel["Info"].ToHtml()
-</h5>
+<hr  class="half-margins"/>
 
-<a href="@Url.Action("Index", "Payment", new { sumToPay = Model.Amount})" class="btn btn-default">
-    @FASigns.DoubleBack.Lg().ToHtml() @localeModel["BackToPM"]
-</a>
+<div class="row container">
+    <a href="@Url.Action("Index", "Payment", new { sumToPay = Model.Amount})" class="btn btn-default">
+        @FASigns.DoubleBack.Lg().ToHtml() @localeModel["BackToPM"]
+    </a>
+</div>

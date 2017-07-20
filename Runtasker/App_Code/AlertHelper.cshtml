@@ -1,8 +1,11 @@
-﻿@helper GetAlert(string text)
+﻿
+@helper GetAlert(string text)
 {
+
     <div class="alert alert-info fade in">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <p>@text</p>
+         
+        <p>@(new HtmlString(text))</p>
     </div>
 }
 
@@ -10,12 +13,8 @@
 {
     <div class="alert alert-info fade in">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4>@title</h4>
-        <p>@text</p>
-        @*<p>
-            <button type="button" class="btn btn-danger">Выполнить это действие</button>
-            <button type="button" class="btn btn-default">Или сделайте это</button>
-        </p>*@
+        <h4>@(new HtmlString(title))</h4>
+        <p>@(new HtmlString(text))</p>
     </div>
 }
 
@@ -23,14 +22,29 @@
 {
     <div class="alert alert-info fade in">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4>@title</h4>
-        <p>@text</p>
+        <h4>@(new HtmlString(title))</h4>
+        <p>@(new HtmlString(text))</p>
         @if (btnHtml != null)
         {
             <p>
-                @Extensions.String.StringExtension.ToHtml(btnHtml)
+                @(new HtmlString(btnHtml))
             </p>
         }
+    </div>
+}
+
+@using Extensions.Enumerations
+@using Runtasker.Logic.Entities
+@helper GetLittleAlert(string text, NotificationType notType = NotificationType.Danger)
+{
+string _class = notType.ToDisplayName();
+string _faClass = (notType == NotificationType.Danger)? "fa-frown-o" : "fa-smile-o";
+
+    <div id="bigError" class="alert @_class">
+        <i class="fa @_faClass"></i>
+        <strong>
+            @(new HtmlString(text))
+        </strong>
     </div>
 }
 
@@ -56,14 +70,15 @@ if (model != null)
             }
         </style>
     }
-    string _class = $"alert marginFromShadow {Runtasker.Logic.Entities.NotificationEnumExtensions.ToDescriptionString(model.Type)} alert-dismissable";
+    string _class = $"alert marginFromShadow {Extensions.Enumerations.EnumExtensions.ToDisplayName(model.Type)} alert-dismissable";
 
         <div class="row">
             <div class="col-md-12">
                 <div class="@Extensions.String.StringExtension.ToHtml(@_class)">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h4>@model.Title</h4>
-                    <p>@model.Text</p>
+                    <h4>@(new HtmlString(model.Title))</h4>
+                    <p>@(new HtmlString(model.Text))</p>
+                    
                     @if (model.ActionLink != null)
                     {
                         <p>@Extensions.String.StringExtension.ToHtml(model.ActionLink.ToString())</p>

@@ -77,3 +77,7 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\VkNet.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\zh-CN\Runtasker.Resources.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\JetBrains.Annotations.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\JetBrains.Annotations.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\Views\Payment\Robokassa\RkassaRes.resx
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\Views\Payment\Robokassa\RkassaRes.ru-RU.resx
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\Views\Payment\Robokassa\RkassaRes.Designer.cs
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\Views\Payment\Robokassa\RkassaRes.ru-RU.Designer.cs

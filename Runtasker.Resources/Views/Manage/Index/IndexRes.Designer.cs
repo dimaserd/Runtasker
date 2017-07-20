@@ -61,6 +61,15 @@ namespace Runtasker.Resources.Views.Manage.Index {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на In this area you can manage your account settings. You can change or set your password, manage your external logins and configure notification services..
+        /// </summary>
+        public static string AlertInfo {
+            get {
+                return ResourceManager.GetString("AlertInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Change your password.
         /// </summary>
         public static string ChangePassword {

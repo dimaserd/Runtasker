@@ -13,9 +13,6 @@
     
 }
 
-@*
-Можно придумать получение размеров и через него замутить но это дичь ебаная    
-*@
 
 <style>
     .avatar-div
@@ -32,11 +29,25 @@
     
 </style>
 
+@AlertHelper.GetAlert(ProfilePageRes.AlertInfo)
+
+<!--Navigation-->
+<header id="page-title">
+    <div class="container">
+        <h1>@ProfilePageRes.NavActive</h1>
+        <ul class="breadcrumb">
+            <li><a href="/Home/Index">@ProfilePageRes.NavMain</a></li>
+            <li class="active">@ProfilePageRes.NavActive</li>
+        </ul>
+    </div>
+</header>
+<!--/Navigation-->
+
 <!--PageHeader-->
 <div class="page-header">
     <div class="pull-right">
         <div class="btn-group">
-            <a class="btn btn-default btn-lg" href="@Url.Action(actionName, "Manage")">
+            <a class="btn btn-default btn-sm" href="@Url.Action(actionName, "Manage")">
                 <span class="fa fa-lock fa-fw"></span>
                 @actionNameForUser
             </a>

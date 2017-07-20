@@ -4,7 +4,7 @@
 @model List<VkGroup>
 @{
     ViewBag.Title = "Группы";
-    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+    Layout = Runtasker.Statics.Views.ViewPaths.NewAdminLayoutPath;
 }
 
 <h2>Просматриваемые сообщества @GISigns.Count(Model.Count).ToHtml()</h2>

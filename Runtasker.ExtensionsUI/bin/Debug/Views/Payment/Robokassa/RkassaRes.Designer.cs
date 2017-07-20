@@ -70,6 +70,15 @@ namespace Runtasker.Resources.Views.Payment.Robokassa {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Topping-up {0}{1}.
+        /// </summary>
+        public static string ActionDescFormat {
+            get {
+                return ResourceManager.GetString("ActionDescFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на via RoboKassa.
         /// </summary>
         public static string ActionDescMini {
@@ -88,29 +97,47 @@ namespace Runtasker.Resources.Views.Payment.Robokassa {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на You are about to top up your balance with RoboKassa. Please be advised that you will pay.
+        ///   Ищет локализованную строку, похожую на You are about to top up your balance with RoboKassa. Please be advised that you will pay {0}{1} with the commission charged by RoboKassa. We recommend using YandexMoney as it charges no commission. Click “Pay” to continue..
         /// </summary>
-        public static string Info1 {
+        public static string InfoFormat {
             get {
-                return ResourceManager.GetString("Info1", resourceCulture);
+                return ResourceManager.GetString("InfoFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на with the commission charged by RoboKassa. We recommend using YandexMoney as it charges no commission. Click “Pay” to continue..
+        ///   Ищет локализованную строку, похожую на Robokassa.
         /// </summary>
-        public static string Info2 {
+        public static string NavActive {
             get {
-                return ResourceManager.GetString("Info2", resourceCulture);
+                return ResourceManager.GetString("NavActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Home.
+        /// </summary>
+        public static string NavHome {
+            get {
+                return ResourceManager.GetString("NavHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Topping up.
+        /// </summary>
+        public static string NavPayments {
+            get {
+                return ResourceManager.GetString("NavPayments", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на Topping-up your balance.
         /// </summary>
-        public static string Title1 {
+        public static string Title {
             get {
-                return ResourceManager.GetString("Title1", resourceCulture);
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }

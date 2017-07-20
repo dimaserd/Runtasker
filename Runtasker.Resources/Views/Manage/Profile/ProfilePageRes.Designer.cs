@@ -61,6 +61,15 @@ namespace Runtasker.Resources.Views.Manage.Profile {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на In this area you can change or set your password, upload new profile photo, manage your external logins and configure notification services..
+        /// </summary>
+        public static string AlertInfo {
+            get {
+                return ResourceManager.GetString("AlertInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Avatar is uploading....
         /// </summary>
         public static string AvatarUploading {
@@ -138,6 +147,24 @@ namespace Runtasker.Resources.Views.Manage.Profile {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на My profile.
+        /// </summary>
+        public static string NavActive {
+            get {
+                return ResourceManager.GetString("NavActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Home.
+        /// </summary>
+        public static string NavMain {
+            get {
+                return ResourceManager.GetString("NavMain", resourceCulture);
             }
         }
         

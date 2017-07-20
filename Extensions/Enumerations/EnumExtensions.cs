@@ -16,12 +16,7 @@ namespace Extensions.Enumerations
                             .GetCustomAttribute<TAttribute>();
         }
 
-        //public static string ToDisplayName<TAttribute>(this Enum enumValue)
-        //{
-        //    DisplayAttribute displayAttr = enumValue.GetAttribute<DisplayAttribute>();
-
-        //    return displayAttr.GetName();
-        //}
+        
 
         public static string ToDisplayName(this Enum enumValue)
         {

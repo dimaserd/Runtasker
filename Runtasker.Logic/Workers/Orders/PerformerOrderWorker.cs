@@ -9,6 +9,7 @@ using Logic.Extensions.Models;
 using System.Threading.Tasks;
 using Runtasker.Logic.Models.ManageModels;
 using Runtasker.Logic.Enumerations;
+using Runtasker.Logic.Contexts.Interfaces;
 
 namespace Runtasker.Logic.Workers.Orders
 {
@@ -16,7 +17,7 @@ namespace Runtasker.Logic.Workers.Orders
     {
         #region Конструктор
 
-        public PerformerOrderWorker(MyDbContext context, string userGuid) : base(context, userGuid)
+        public PerformerOrderWorker(IMyDbContext context, string userGuid) : base(context, userGuid)
         {
             Construct();
         }

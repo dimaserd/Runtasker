@@ -4,12 +4,13 @@ using Runtasker.Logic.Entities;
 using System.Data.Entity;
 using VkParser.Entities;
 using System;
+using Runtasker.Logic.Entities.News;
 
 namespace Runtasker.Logic
 {
     public class MyDbContext : ApplicationDbContext, IMyDbContext
     {
-        #region Constructors
+        #region Конструкторы
         public MyDbContext() : base()
         {
 
@@ -27,14 +28,17 @@ namespace Runtasker.Logic
         }
         #endregion
 
+        #region Свойства - Таблицы
+
+        #region Новости
+        public DbSet<Article> Articles { get; set; }
+
+        public DbSet<ArticleClarification> ArticleClarifications { get; set; }
+        #endregion
+
         public DbSet<Coupon> Coupons { get; set; }
         
         public DbSet<Order> Orders { get; set; }
-
-        /// <summary>
-        /// Таблица содержащая решения заказов
-        /// </summary>
-        //public DbSet<OrderSolution> OrderSolutions { get; set; }
 
         public DbSet<Message> Messages { get; set; }
 
@@ -50,7 +54,7 @@ namespace Runtasker.Logic
         
        
 
-        #region VkParse
+        #region Таблица VkParse
         public DbSet<VkGroup> VkGroups { get; set; }
 
         public DbSet<VkFoundPost> VkFoundPosts { get; set; }
@@ -59,8 +63,12 @@ namespace Runtasker.Logic
 
         public DbSet<VkPostLookUp> VkPostLookUps { get; set; }
 
-        
+
         #endregion
+
+        #endregion
+
+        #region Методы
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -92,6 +100,8 @@ namespace Runtasker.Logic
         {
             base.SaveChanges();
         }
+        #endregion
+
     }
 
 

@@ -95,7 +95,7 @@ namespace Runtasker.Logic.Workers.Orders
                 RegisteredPass = pass;
 
                 //создаем объект который создаст заказы
-                using (CustomerOrderWorker orderWorker = new CustomerOrderWorker(Db, user.Id))
+                using (CustomerOrderWorker orderWorker = new CustomerOrderWorker(Db, UserManager, user.Id))
                 {
                     OrderCreateModel createModel = model.ToOrderCreateModel();
 

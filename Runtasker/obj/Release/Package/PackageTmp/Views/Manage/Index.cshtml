@@ -4,9 +4,16 @@
     ViewBag.Title = IndexRes.Title;
 }
 
+
+
 <h2>@ViewBag.Title.</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
+@if (!string.IsNullOrEmpty(ViewBag.StatusMessage))
+{
+    @AlertHelper.GetLittleAlert(ViewBag.StatusMessage.ToString(), Runtasker.Logic.Entities.NotificationType.Success)
+}
+
+
 <div>
     <h4>@IndexRes.Header</h4>
     <hr />

@@ -36,7 +36,7 @@ namespace Runtasker.Controllers
             {
                 if(_orderWorker == null)
                 {
-                    _orderWorker = new CustomerOrderWorker(Db, UserGuid);
+                    _orderWorker = new CustomerOrderWorker(Db, UserManager, UserGuid);
                 }
                 return _orderWorker; 
             }

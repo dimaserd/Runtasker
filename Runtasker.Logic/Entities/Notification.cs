@@ -1,14 +1,24 @@
 ﻿
 using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Runtasker.Logic.Entities
 {
+    /// <summary>
+    /// Тип того о чем сообщается в данном уведомлении
+    /// </summary>
     public enum NotificationAboutType
     {
-        Ordinary, Balance
+        /// <summary>
+        /// Обычное уведомление (не требует перелогина пользователя)
+        /// </summary>
+        Ordinary,
+
+        /// <summary>
+        /// Уведомление о балансе (требует перелогина пользователя для изменения баланса в UI)
+        /// </summary>
+        Balance
     }
 
     public enum NotificationType
@@ -23,17 +33,29 @@ namespace Runtasker.Logic.Entities
         Danger
     }
 
+    /// <summary>
+    /// Статус уведомления
+    /// </summary>
     public enum NotificationStatus
     {
-        Unseen, Seen
+        /// <summary>
+        /// Не просмотрено
+        /// </summary>
+        Unseen,
+        /// <summary>
+        /// Просмотрено
+        /// </summary>
+        Seen
     }
 
     
 
-
+    /// <summary>
+    /// Сущность описывающая уведомление
+    /// </summary>
     public class Notification
     {
-        #region Constructors
+        #region Конструктор
 
         public Notification()
         {
@@ -48,7 +70,7 @@ namespace Runtasker.Logic.Entities
 
         #endregion
 
-        #region Properties
+        #region Свойста
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string Id { get; set; }
 
@@ -58,15 +80,29 @@ namespace Runtasker.Logic.Entities
 
         public NotificationType Type { get; set; }
 
+        /// <summary>
+        /// Статус уведомления
+        /// </summary>
         public NotificationStatus Status { get; set; }
 
+        /// <summary>
+        /// О чем сообщается в данном уведомлении
+        /// </summary>
         public NotificationAboutType AboutType { get; set; }
 
+        /// <summary>
+        /// Заголовок новости
+        /// </summary>
         public string Title { get; set; }
 
+        /// <summary>
+        /// Текст уведомления
+        /// </summary>
         public string Text { get; set; }
 
-        //Prepared HtmlLink
+        /// <summary>
+        /// Заготовленная Html ссылка в дальнейшем нужно будет избавляться от этого свойства
+        /// </summary>
         public string Link { get; set; }
         #endregion
     }

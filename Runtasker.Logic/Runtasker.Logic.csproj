@@ -164,9 +164,12 @@
     <Compile Include="Contexts\MyNewDbContext.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Attachment.cs" />
+    <Compile Include="Entities\Base\LanguageClarificationBase.cs" />
     <Compile Include="Entities\Coupon.cs" />
     <Compile Include="Entities\Invitation.cs" />
     <Compile Include="Entities\Message.cs" />
+    <Compile Include="Entities\News\Article.cs" />
+    <Compile Include="Entities\News\ArticleClarification.cs" />
     <Compile Include="Entities\Notification.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderSolution.cs" />
@@ -188,6 +191,10 @@
     <Compile Include="Migrations\201707151322294_rename.cs" />
     <Compile Include="Migrations\201707151322294_rename.Designer.cs">
       <DependentUpon>201707151322294_rename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707242210178_news.cs" />
+    <Compile Include="Migrations\201707242210178_news.Designer.cs">
+      <DependentUpon>201707242210178_news.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
@@ -351,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707151322294_rename.resx">
       <DependentUpon>201707151322294_rename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707242210178_news.resx">
+      <DependentUpon>201707242210178_news.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

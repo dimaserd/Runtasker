@@ -1,6 +1,7 @@
 ﻿using Extensions.String;
 using Logic.Extensions.Models;
 using Logic.Extensions.Namers;
+using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers.Attachments;
@@ -17,17 +18,17 @@ namespace Runtasker.Logic.Workers.Files
     public class CustomerFileMethods : FileWorkerBase
     {
         #region Конструкторы
-        public CustomerFileMethods(string rootDirectory, MyDbContext context = null) : base(rootDirectory)
+        public CustomerFileMethods(string rootDirectory, IMyDbContext context = null) : base(rootDirectory)
         {
             Construct(context);
         }
 
-        public CustomerFileMethods(MyDbContext context)
+        public CustomerFileMethods(IMyDbContext context)
         {
             Construct(context);
         }
 
-        void Construct(MyDbContext context)
+        void Construct(IMyDbContext context)
         {
             Attachmenter = new CustomerAttachmentWorker();
            
@@ -36,7 +37,7 @@ namespace Runtasker.Logic.Workers.Files
         #endregion
 
         #region Поля
-        MyDbContext _context;
+        IMyDbContext _context;
         #endregion
 
         #region Константы
@@ -50,7 +51,7 @@ namespace Runtasker.Logic.Workers.Files
         CustomerAttachmentWorker Attachmenter { get; set; }
 
         
-        MyDbContext Context
+        IMyDbContext Context
         {
             get
             {

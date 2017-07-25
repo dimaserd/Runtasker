@@ -1,6 +1,7 @@
 ﻿using Logic.Extensions.Namers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations;
 using System;
@@ -10,9 +11,10 @@ namespace Runtasker.Logic.Workers.Payments
     public class CustomerOrderPaymentMethods
     {
         #region Constructors
-        public CustomerOrderPaymentMethods(string userGuid, MyDbContext context)
+        public CustomerOrderPaymentMethods(string userGuid, UserManager<ApplicationUser> userManager, IMyDbContext context)
         {
             Construct(userGuid);
+            UserManager = userManager;
             Context = context;
         }
 
@@ -24,15 +26,17 @@ namespace Runtasker.Logic.Workers.Payments
         }
         #endregion
 
-        #region Properties
-        MyDbContext Context { get; set; }
+        #region Свойства
+        IMyDbContext Context { get; set; }
 
         string UserGuid { get; set; }
+
+        UserManager<ApplicationUser> UserManager { get; set; }
 
         PaymentTransactionDescriptionNamer DescNamer { get; set; }
         #endregion
 
-        #region Methods like events
+        #region Методы по событиям
         public void OnCustomerPaidFirstHalfOfAnOrder(Order order, SaveChangesType saveType = SaveChangesType.Now)
         {
             decimal sum = order.PaidSum;
@@ -135,19 +139,23 @@ namespace Runtasker.Logic.Workers.Payments
             ActionWithBalanceSubMethod(sum, userGuid);
         }
 
+        /// <summary>
+        /// Добавляет денег пользователю
+        /// </summary>
+        /// <param name="sum"></param>
+        /// <param name="userGuid"></param>
         void ActionWithBalanceSubMethod(decimal sum, string userGuid = null)
         {
             if(userGuid == null)
             {
                 userGuid = UserGuid;
             }
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(Context));
-            var user = userManager.FindById(userGuid);
+            var user = UserManager.FindById(userGuid);
             if (user != null)
             {
                 user.Balance += sum;
             }
-            userManager.Update(user);
+            
         }
         #endregion
     }

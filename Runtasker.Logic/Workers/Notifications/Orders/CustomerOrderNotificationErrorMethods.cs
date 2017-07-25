@@ -1,6 +1,7 @@
 ﻿using Extensions.Decimal;
 using HtmlExtensions.HtmlEntities;
 using HtmlExtensions.StaticRenderers;
+using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations;
 using Runtasker.Resources.Notifications.CustomerOrderErrorMethods;
@@ -11,7 +12,7 @@ namespace Runtasker.Logic.Workers.Notifications
     public class CustomerOrderNotificationErrorMethods
     {
         #region Конструкторы
-        public CustomerOrderNotificationErrorMethods(string userGuid, MyDbContext context)
+        public CustomerOrderNotificationErrorMethods(string userGuid, IMyDbContext context)
         {
             UserGuid = userGuid;
             Context = context;
@@ -27,7 +28,7 @@ namespace Runtasker.Logic.Workers.Notifications
         #region Свойства
         string UserGuid { get; set; }
 
-        MyDbContext Context { get; set; }
+        IMyDbContext Context { get; set; }
         #endregion
 
         #region Методы по событиям

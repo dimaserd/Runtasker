@@ -11,18 +11,19 @@ using Runtasker.LocaleBuilders.Models;
 using Runtasker.Logic.Enumerations;
 using Runtasker.Settings;
 using Extensions.Enumerations;
+using Runtasker.Logic.Contexts.Interfaces;
 
 namespace Runtasker.Logic.Workers.Notifications
 {
     public class PerformerOrderNotificationMethods
     {
         #region Constructors
-        public PerformerOrderNotificationMethods(MyDbContext context, string userGuid)
+        public PerformerOrderNotificationMethods(IMyDbContext context, string userGuid)
         {
             Construct(Context, null, userGuid);
         }
 
-        void Construct(MyDbContext context = null, PerformerEmailMethods emailer = null, string userGuid = null)
+        void Construct(IMyDbContext context = null, PerformerEmailMethods emailer = null, string userGuid = null)
         {
             Context = context ?? new MyDbContext();
             Emailer = emailer ?? new PerformerEmailMethods();
@@ -33,7 +34,7 @@ namespace Runtasker.Logic.Workers.Notifications
         #endregion
 
         #region Properties
-        MyDbContext Context { get; set; }
+        IMyDbContext Context { get; set; }
         string PerformerGuid { get; set; }
         PerformerEmailMethods Emailer { get; set; }
 
@@ -267,7 +268,7 @@ namespace Runtasker.Logic.Workers.Notifications
 
         #endregion
 
-        #region Private Help Methods
+        #region Вспомогательные методы
         void SetCustomerCulture(Order order)
         {
             string lang = Context.Users.FirstOrDefault(u => u.Id == order.UserGuid).Language;

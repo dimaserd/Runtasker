@@ -1,5 +1,7 @@
 ﻿using HtmlExtensions.StaticRenderers;
 using Logic.Extensions.Models;
+using Microsoft.AspNet.Identity;
+using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations.OrderWorker;
 using Runtasker.Logic.Handlers;
@@ -22,8 +24,9 @@ namespace Runtasker.Logic.Workers.Orders
     public class CustomerOrderWorker : OrdersWorkerBase
     {
         #region Конструктор
-        public CustomerOrderWorker(MyDbContext context, string userGuid) : base(context,userGuid)
+        public CustomerOrderWorker(IMyDbContext context, UserManager<ApplicationUser> userManager, string userGuid) : base(context,userGuid)
         {
+            UserManager = userManager;
             Construct();
         }
 
@@ -34,7 +37,7 @@ namespace Runtasker.Logic.Workers.Orders
             Attachmenter = new CustomerAttachmentWorker();
             
             //здесь все упирается в UserManger
-            Paymenter = new CustomerOrderPaymentMethods(UserGuid, Context);
+            Paymenter = new CustomerOrderPaymentMethods(UserGuid, UserManager, Context);
             ErrorHandler = new CustomerOrderErrorEvents(UserGuid, Context);
             
         }
@@ -46,6 +49,8 @@ namespace Runtasker.Logic.Workers.Orders
 
         #region Свойства
        
+        UserManager<ApplicationUser> UserManager { get; set; }
+
         CustomerOrderNotificationMethods Notificater { get; set; }
 
         CustomerFileMethods Filer { get; set; }
@@ -77,10 +82,7 @@ namespace Runtasker.Logic.Workers.Orders
         #region Публичные методы
 
         #region Создание заказа
-        public Order CreateOrder(OrderCreateModel orderModel)
-        {
-            return CreateOrderSubMethod(OrderCreationType.Ordinary, orderModel);
-        }
+        
 
         public async Task<Order> CreateOrderAsync(OrderCreateModel orderModel)
         {
@@ -615,27 +617,7 @@ namespace Runtasker.Logic.Workers.Orders
         }
 
         #region Создание заказа
-        public Order CreateOrderSubMethod(OrderCreationType creationType, OrderCreateModel orderModel)
-        {
-
-            Order order = orderModel.ToOrder(UserGuid);
-
-            Context.Orders.Add(order);
-            Context.SaveChanges();
-
-            //записываем файлы заказа
-            Filer.OnCustomerCreatedAnOrder(orderModel.FileUpload, order);
-
-            if (creationType == OrderCreationType.Ordinary)
-            {
-                //вызываем класс отвечающий за создание уведомлений
-                Notificater.OnCustomerAddedOrder(order, OrderCreationType.Ordinary);
-            }
-
-
-            return order;
-        }
-
+        
         /// <summary>
         /// Создает заказ асинхронно, первым параметром вы указываете тип создания
         /// заказа, по нему программа выберет какого вида уведомления нужно создать 

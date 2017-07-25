@@ -3,9 +3,13 @@
 @using Extensions.Enumerations
 @model AddErrorToOrderModel
 @{
+
+    Layout = Runtasker.Statics.Views.ViewPaths.NewAdminLayoutPath;
+
+    //может быть переписано через енамдроплист
     List<SelectListItem> errors = new List<SelectListItem>();
 
-    
+
     foreach (OrderErrorType item in Enum.GetValues(typeof(OrderErrorType)))
     {
         errors.Add(new SelectListItem { Value = ((int)item).ToString(), Text = item.ToDisplayName(), Selected = (int)item == 0 });
@@ -16,7 +20,7 @@
 @using (Html.BeginForm("AddError", "Performer", FormMethod.Post))
 {
     <div class="form-horizontal">
-        <h2>Add Order</h2>
+        <h2>Добавить ошибку</h2>
         <hr />
 
         <!--ErrorsList-->

@@ -2,6 +2,7 @@
 using Runtasker.Logic.Entities;
 using System;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Threading.Tasks;
 
 namespace Runtasker.Logic.Contexts.Interfaces
@@ -26,6 +27,9 @@ namespace Runtasker.Logic.Contexts.Interfaces
         DbSet<Invitation> Invitations { get; }
 
         DbSet<PaymentTransaction> PaymentTransactions { get; }
+
+        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
+        DbEntityEntry Entry(object entity);
 
         void SaveChanges();
 

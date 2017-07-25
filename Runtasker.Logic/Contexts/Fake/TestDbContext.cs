@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Threading.Tasks;
 using System;
 using Runtasker.Logic.Models.ManageModels;
+using System.Data.Entity.Infrastructure;
 
 namespace Runtasker.Logic.Contexts.Fake
 {
@@ -189,7 +190,24 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        
+        IDbSet<ApplicationUser> IMyDbContext.Users => throw new NotImplementedException();
+
+        IDbSet<IdentityRole> IMyDbContext.Roles => throw new NotImplementedException();
+
+        DbSet<Order> IMyDbContext.Orders => throw new NotImplementedException();
+
+        DbSet<Message> IMyDbContext.Messages => throw new NotImplementedException();
+
+        DbSet<Attachment> IMyDbContext.Attachments => throw new NotImplementedException();
+
+        DbSet<Payment> IMyDbContext.Payments => throw new NotImplementedException();
+
+        DbSet<Notification> IMyDbContext.Notifications => throw new NotImplementedException();
+
+        DbSet<Invitation> IMyDbContext.Invitations => throw new NotImplementedException();
+
+        DbSet<PaymentTransaction> IMyDbContext.PaymentTransactions => throw new NotImplementedException();
+
         public void SaveChanges()
         {
             CountOfSaveChanges++;
@@ -240,6 +258,31 @@ namespace Runtasker.Logic.Contexts.Fake
             Dispose(true);
             // TODO: раскомментировать следующую строку, если метод завершения переопределен выше.
              GC.SuppressFinalize(this);
+        }
+
+        DbEntityEntry<TEntity> IMyDbContext.Entry<TEntity>(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        DbEntityEntry IMyDbContext.Entry(object entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IMyDbContext.SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<int> IMyDbContext.SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IDisposable.Dispose()
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

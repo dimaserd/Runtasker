@@ -1,4 +1,5 @@
-﻿using Runtasker.Logic.Entities;
+﻿using Runtasker.Logic.Contexts.Interfaces;
+using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers.Notifications;
 using System;
 
@@ -7,7 +8,7 @@ namespace Runtasker.Logic.Workers.Orders
     public class CustomerOrderErrorEvents
     {
         #region Конструктор
-        public CustomerOrderErrorEvents(string userGuid, MyDbContext context)
+        public CustomerOrderErrorEvents(string userGuid, IMyDbContext context)
         {
             UserGuid = userGuid;
             Context = context;
@@ -23,7 +24,7 @@ namespace Runtasker.Logic.Workers.Orders
         #region Свойства
         string UserGuid { get; set; }
 
-        MyDbContext Context { get; set; }
+        IMyDbContext Context { get; set; }
 
         CustomerOrderNotificationErrorMethods Notificater { get; set; }
         #endregion

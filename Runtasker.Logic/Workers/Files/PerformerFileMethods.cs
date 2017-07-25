@@ -1,4 +1,5 @@
 ﻿
+using Runtasker.Logic.Contexts.Interfaces;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Enumerations;
 using Runtasker.Logic.Models;
@@ -9,18 +10,18 @@ namespace Runtasker.Logic.Workers.Files
     public class PerformerFileMethods : FileWorkerBase
     {
         #region Конструкторы
-        public PerformerFileMethods(MyDbContext context) : base()
+        public PerformerFileMethods(IMyDbContext context) : base()
         {
             Construct(context);
         }
 
-        public PerformerFileMethods(MyDbContext context, string rootDirectory) : base(rootDirectory)
+        public PerformerFileMethods(IMyDbContext context, string rootDirectory) : base(rootDirectory)
         {
             Construct(context);
         }
 
         //Construct methods pass MyDbContext to attachmenter
-        void Construct(MyDbContext context)
+        void Construct(IMyDbContext context)
         {
             Context = context;
         }
@@ -28,7 +29,7 @@ namespace Runtasker.Logic.Workers.Files
         #endregion
 
         #region Свойства
-        MyDbContext Context { get; set; }
+        IMyDbContext Context { get; set; }
         #endregion
 
         

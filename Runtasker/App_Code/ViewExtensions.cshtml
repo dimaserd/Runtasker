@@ -34,14 +34,15 @@
     }
 }
 
-
+@using Runtasker.LocaleBuilders.Enumerations
+@using Runtasker.LocaleBuilders.Statics
 @helper GetDateParseScripts()
 {
-Runtasker.LocaleBuilders.Enumerations.Lang lang = Runtasker.LocaleBuilders.Statics.LanguageStatic.Language;
+Lang lang = LanguageStatic.Language;
 
 switch (lang)
 {
-    case Runtasker.LocaleBuilders.Enumerations.Lang.Russian:
+    case Lang.Russian:
     <script>
         function parseDate(str) {
             var dmy = str.split('.');
@@ -63,25 +64,17 @@ switch (lang)
     }
 }
 
-@helper GetDateTimeScriptsAndStyles(string dateTimePickerId = null, bool pickTime = false)
+@helper GetDateTimeScriptsAndStyles(string dateTimePickerId = "dateTimePicker1", bool pickTime = false)
 {
-string langCode = Runtasker.LocaleBuilders.Statics.LanguageStatic.JSLangCode;
-if (string.IsNullOrEmpty(dateTimePickerId))
-{
+    string langCode = Runtasker.LocaleBuilders.Statics.LanguageStatic.JSLangCode;
+
     <script>
-            $("#datetimepicker1").datetimepicker({
+            $("#@dateTimePickerId").datetimepicker({
         pickTime: @pickTime.ToString().ToLower(), defaultDate: new Date(),
                 minDate: new Date(), language: "@langCode"
             })
 
     </script>
-}
-else
-{
-    <script>
-
-    </script>
-}
 
 }
 

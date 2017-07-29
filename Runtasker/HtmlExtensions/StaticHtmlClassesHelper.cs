@@ -24,7 +24,7 @@ namespace Runtasker.HtmlExtensions
 
         public static IEnumerable<SelectListItem> GetSortedSubjectEnumList()
         {
-            List<SelectListItem> subjects = new List<SelectListItem>();
+            List <SelectListItem> subjects = new List<SelectListItem>();
 
             foreach (Subject item in Enum.GetValues(typeof(Subject)))
             {
@@ -33,7 +33,7 @@ namespace Runtasker.HtmlExtensions
                     subjects.Add(new SelectListItem { Value = ((int)item).ToString(), Text = item.ToDisplayName(), Selected = (item == Subject.ForeignLanguage) });
                 }
             }
-            subjects.Add(new SelectListItem { Value = "0", Text = Subject.Other.ToDisplayName(), });
+            subjects.Add(new SelectListItem { Value = "0", Text = Subject.Other.ToDisplayName(), Selected = false });
 
             return subjects;
         }

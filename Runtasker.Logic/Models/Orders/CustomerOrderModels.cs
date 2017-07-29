@@ -6,6 +6,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Web;
 using Runtasker.Resources.Models.CustomerOrderModels;
 using Runtasker.Resources.Models.OrderModels.CreateOrder;
+using Common.JavascriptValidation.Attributes;
+using Extensions.Attributes;
 
 namespace Runtasker.Logic.Models
 {    
@@ -14,6 +16,7 @@ namespace Runtasker.Logic.Models
         [Required(ErrorMessage = "ERROR")]
         [Display(Name = "Subject", ResourceType = typeof(CreateOrder))]
         [PopoverInfo(typeof(CreateOrder), resourceName: "SubjectPopoverInfo")]
+        [JsOnValue(Value = "0", Script = " ShowObject(\"OtherSubjectForm\") ")]
         public Subject Subject { get; set; }
 
         [Required(ErrorMessage = "WORKTYPE ERROR")]
@@ -23,16 +26,22 @@ namespace Runtasker.Logic.Models
         [Required(ErrorMessageResourceType = typeof(CreateOrder), ErrorMessageResourceName = "OtherSubjectError")]
         [PopoverInfo(typeof(CreateOrder), resourceName: "OtherSubjectInfo")]
         [Display(ResourceType = typeof(CreateOrder), Name = "OtherSubject")]
+        [HideByDefault]
         public string OtherSubject { get; set; }
+
 
         [Display(ResourceType = typeof(CreateOrder), Name = "Description")]
         [Required(ErrorMessageResourceType = typeof(CreateOrder), ErrorMessageResourceName = "NeedDescriptionError")]
+        [Placeholder(resourceName: "DescriptionPlaceholder", resourceType: typeof(CreateOrder))]
         public string Description { get; set; }
 
+        [JsNotValidate]
         [Required(ErrorMessageResourceType = typeof(CreateOrder), ErrorMessageResourceName = "FinishDateError")]
         [Display(ResourceType = typeof(CreateOrder), Name = "FinishDate")]
+        [PopoverInfo(resourceType: typeof(CreateOrder), resourceName: "FinishDateInfo")]
         public DateTime FinishDate { get; set; }
 
+        [JsNotValidate]
         [DataType(DataType.Upload, ErrorMessage = "FilesError")]
         [Display(ResourceType = typeof(CreateOrder), Name = "FileUpload")]
         [PopoverInfo(typeof(CreateOrder), resourceName: "FileUploadInfo")]

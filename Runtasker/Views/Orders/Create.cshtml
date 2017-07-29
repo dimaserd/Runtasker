@@ -3,8 +3,9 @@
 @using Extensions.String
 @using Runtasker.LocaleBuilders.Models
 @using Common.JavascriptValidation.Statics
+@using Runtasker.Logic.Models
 
-@model Runtasker.Logic.Models.OrderCreateModel
+@model OrderCreateModel
 @{
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
     ViewBag.Title = localeModel["Title"];
@@ -23,6 +24,8 @@
 
     //for datetime picker
     string langCode = StaticHtmlClassesHelper.GetLangCode();
+
+    string jsObject = JSValidationMaker.GetJSValidationObject(typeof(OrderCreateModel));
 }
 
 
@@ -68,15 +71,8 @@
         
         @Html.LabelAndTextBoxFor(x => x.OtherSubject, showPopover: true)
 
-        <!--DateTime Picker-->
-        <div class="form-group" id="DateForm">
-            @Html.LabelFor(model => model.FinishDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="date col-md-5">
-                <!--input-group date-->
-                <input type="text" class="form-control"  id="datetimepicker1" name="FinishDate" />
-            </div>
-        </div>
-        <!--End of DateTimePicker-->
+        @Html.LabelAndDateTimePickerFor(x => x.FinishDate, showPopover: true)
+        
         
         <!--FilesUpload-->
         <div class="form-group">
@@ -104,23 +100,6 @@
 
         @Html.LabelAndTextAreaFor(x => x.Description)
 
-        <!--Decription-->
-        <div class="form-group" id="DescriptionForm">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                @Html.TextAreaFor(model => model.Description,
-                    htmlAttributes : new { @class = "form-control",
-                        rows = "3",
-                        id = "DescriptionField",
-                        placeholder = localeModel["DescriptionPlaceholder"] } )
-                @Html.ValidationMessageFor(model => model.Description, "", new { id = "descriptionError", @class = "text-danger" })
-                <p id="DescriptionError" class="text-danger">
-
-                </p>
-            </div>
-        </div>
-        <!--/Description-->
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button id="fakeCreate" type="button" class="btn-lg btn btn-primary">
@@ -132,19 +111,8 @@
     </div>
 }
 
-<!--Upload Progress Bar-->
-<div class="row">
-    <div id="uploadProgress" class="hidden col-md-5">
-        <div class="row">
-            <p class="h4">@localeModel["FileUploading"]</p>
-            @FASigns.CircleONotch.X2().Animate().ToHtml()
-        </div>
-    </div>
-</div>
-<!--/Upload Progress Bar-->
-
 <!---->
-<hr/>
+<hr class="half-margins"/>
 <!--Back to List-->
 <div>
     <a href="@Url.Action("Index", "Orders")" class="btn btn-default">
@@ -155,15 +123,10 @@
 
 @section scripts
 {
-    <!--Defaults-->
-    <script>
-        var defaults = function () {
-            console.log($("#subjectList").get(0).selectedIndex);
-            $("#subjectList").get(0).selectedIndex = 0;
-            
-        }();
-    </script>
-    <!--/Defaults-->
+
+    @JSValidationHelper.GetDich(jsObject)
+
+    
 
     <!--Popover activator-->
     <script>
@@ -184,7 +147,7 @@
     
     <!--DateTimePicker-->
     @Html.GetDateTimeScriptsAndStyles()
-    @ViewExtensions.GetDateTimeScriptsAndStyles()
+    @ViewExtensions.GetDateTimeScriptsAndStyles(dateTimePickerId: PropertyNameHelper.GetIdForInput("FinishDate"), pickTime: false)
     <!--/DateTimePicker-->
 
     <!--Other Subject Scripts-->
@@ -202,29 +165,7 @@
     </script>
     <!--/Date Scripts-->
 
-<!--Validation Coloring And Error Showing-->
-@OrderScripts.GetValidationColoringAndErrorShowing()
-<!--/Validation Coloring And Error Showing-->
-
-<!--Big Error Scripts-->
-@OrderScripts.GetBigErrorScripts()
-<!--/Big Error Scripts-->
-
-<!--Подготовительные скрипты по закрашиванию полей-->
-@OrderScripts.GetPreparingScripts()
-<!--/Подготовительные скрипты по закрашиванию полей-->
-
-<!--Обработчики имени и эмейла-->
-@OrderScripts.GetEmailHandler(localeModel)
-<!--/Обработчики имени и эмейла-->
-
-<!--Обработчики даты и типа работы-->
-@OrderScripts.GetDateAndWorkTypeHandlers()
-<!--/Обработчики даты и типа работы-->
-
-<!--Обработчики описания-->
-@OrderScripts.GetDescriptionHandlers(localeModel)
-<!--/Обработчики описания-->
+    
 
     <!--SendOrderScripts-->    
     <script>
@@ -266,28 +207,7 @@
     </script>
     <!--/SendOrderScripts-->
 
-    <!--Files uploading Scripts-->
-    <script>
-        var bar = $('.bar');
-        var percent = $('.percent');
-        var progressBar = $('.progress-bar');
-        var uploadProgress = $('#uploadProgress');
-
-
-
-        function progressBarChanger(percentComplete)
-        {
-            progressBar.attr('aria-valuenow', percentComplete);
-            progressBar.html(percentComplete + '%');
-            progressBar.attr('style', 'width: ' + percentComplete + '%;')
-        }
-
-        function hasFilesToUpload()
-        {
-            return (document.getElementById('fileUpload').files.length > 0);
-        }
-    </script>
-    <!--/Files uploading Scripts-->
+    
 
     <!--Restore Condition Scripts-->
     <script>
@@ -314,7 +234,7 @@
     <!--/Restore Condition Scripts-->
 
     <!--Скрипты по умолчанию для предмета-->
-    @OrderScripts.GetDefaultSubjectScripts()
+    @*@OrderScripts.GetDefaultSubjectScripts()*@
     <!--/Скрипты по умолчанию для предмета-->
     
 }

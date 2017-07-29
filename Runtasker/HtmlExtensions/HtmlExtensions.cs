@@ -84,7 +84,7 @@ namespace Runtasker.HtmlExtensions
            
 
             sb.Append("</div>")
-            .Append("<div/>")
+            .Append("</div>")
             .Append("</div>");
 
 
@@ -141,27 +141,70 @@ namespace Runtasker.HtmlExtensions
 
             sb.Append("<div class=\"col-md-10 col-sm-10\">");
 
-            sb.Append("<div class=\"input-group\">");
-
+            
             //соглашение по именованию для полей для создания джаваскрипт функций
             sb.Append(html.TextAreaFor(expression,
                 new
                 {
                     id = PropertyNameHelper.GetIdForInput(GetNameFromProperty(html, expression)),
                     @class = "form-control",
-                    placehoder = GetPlaceholderValue(html, expression),
+                    placeholder = GetPlaceholderValue(html, expression),
                 }));
 
             
 
             sb.Append(html.GetStrongErrorText(expression));
 
+            
             sb.Append("</div>");
+
 
             sb.Append("</div>");
 
+            return MvcHtmlString.Create(sb.ToString());
+        }
 
-            sb.Append("</div>");
+        public static MvcHtmlString LabelAndDateTimePickerFor<TModel, TValue>(this HtmlHelper<TModel> html,
+            Expression<Func<TModel, TValue>> expression, object htmlAttributes = null, bool showPopover = false)
+        {
+            var member = expression.Body as MemberExpression;
+            var prop = member.Member as PropertyInfo;
+
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(GetNameFromProperty(html, expression))}\" class='form-group {htmlAttributes.GetPropertyValue("class")}' ");
+            if (htmlAttributes != null)
+            {
+                sb.Append(htmlAttributes.RenderAttributesKeyValuePairExcept("class"));
+            }
+            sb.Append(" >");
+
+
+            sb.Append(html.LabelFor(expression).ToString().WrapToHtmlTag("div", new { @class = "control-label col-md-2" }))
+
+            .Append("<div class='col-md-10'>");
+
+            sb.Append("<div class=\"input-group\">");
+
+            sb.Append(html.TextBoxFor(expression, htmlAttributes: new
+            {
+                id = PropertyNameHelper.GetIdForInput(GetNameFromProperty(html, expression)),
+                @class = "form-control",
+                @Value = ""
+            }));
+
+            if (showPopover)
+            {
+                sb.Append(html.PopoverInfoFor(expression).ToString().WrapToHtmlTag("div", new { @class = "input-group-btn" }));
+            }
+
+            sb.Append(GetStrongErrorText(html, expression));
+
+
+            sb.Append("</div>")
+            .Append("</div>")
+            .Append("</div>");
+
 
             return MvcHtmlString.Create(sb.ToString());
         }

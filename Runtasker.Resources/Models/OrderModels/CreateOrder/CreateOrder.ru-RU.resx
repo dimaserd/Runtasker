@@ -120,6 +120,9 @@
   <data name="Description" xml:space="preserve">
     <value>Описание</value>
   </data>
+  <data name="DescriptionPlaceholder" xml:space="preserve">
+    <value>Опишите ваш заказ! Укажите тип работы и все что нам нужно сделать!</value>
+  </data>
   <data name="FileUpload" xml:space="preserve">
     <value>Файлы заказа</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="FinishDateError" xml:space="preserve">
     <value>Укажите дату окончания!</value>
+  </data>
+  <data name="FinishDateInfo" xml:space="preserve">
+    <value>Укажите здесь дату, к который вы хотите получить выполненную работу.</value>
   </data>
   <data name="NeedDescriptionError" xml:space="preserve">
     <value>Заполните поле "Описание". Укажите тип работы и ваши пожелания.</value>

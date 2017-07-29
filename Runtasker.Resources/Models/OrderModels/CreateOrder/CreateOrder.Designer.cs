@@ -70,6 +70,15 @@ namespace Runtasker.Resources.Models.OrderModels.CreateOrder {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Provide description of your order including the type of work and any relevant details..
+        /// </summary>
+        public static string DescriptionPlaceholder {
+            get {
+                return ResourceManager.GetString("DescriptionPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Files.
         /// </summary>
         public static string FileUpload {
@@ -102,6 +111,15 @@ namespace Runtasker.Resources.Models.OrderModels.CreateOrder {
         public static string FinishDateError {
             get {
                 return ResourceManager.GetString("FinishDateError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Please specify here the deadline when you need your work to be done..
+        /// </summary>
+        public static string FinishDateInfo {
+            get {
+                return ResourceManager.GetString("FinishDateInfo", resourceCulture);
             }
         }
         

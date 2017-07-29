@@ -316,6 +316,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common.JavascriptValidation\Common.JavascriptValidation.csproj">
+      <Project>{8732B2ED-C0F9-478E-963D-71235336B4EB}</Project>
+      <Name>Common.JavascriptValidation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Extensions\Extensions.csproj">
       <Project>{22c11b93-35d0-462a-8bde-27c8a8479741}</Project>
       <Name>Extensions</Name>

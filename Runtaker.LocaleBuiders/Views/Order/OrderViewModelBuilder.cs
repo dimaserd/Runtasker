@@ -16,6 +16,8 @@ namespace Runtasker.LocaleBuilders.Views.Order
         {
             LocaleViewModel result = new LocaleViewModel();
 
+            
+
             result.Add("LeaveReviewBtnText", string.Format(RatingRes.LeaveReviewFormat, orderId));
             result.Add("CommentError", RatingRes.CommentError);
             result.Add("RatingError", RatingRes.RatingError);
@@ -38,7 +40,6 @@ namespace Runtasker.LocaleBuilders.Views.Order
             result.Add("CreateNav", Create.CreateNav);
             result.Add("Header", Create.Header);
             result.Add("MiniHeader", Create.MiniHeader);
-            result.Add("DescriptionPlaceholder", Create.DescriptionPlaceholder);
             result.Add("CreateOrder", Create.CreateOrder);
             result.Add("FileUploading", Create.FileUploading);
             result.Add("BackToList", Create.BackToList);

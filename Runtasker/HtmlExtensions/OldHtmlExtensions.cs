@@ -34,35 +34,7 @@ namespace Runtasker.HtmlExtensions
         }
         #endregion
 
-        #region Date Scripts
-        public static MvcHtmlString GetParseDateJSFunction(this HtmlHelper html)
-        {
-            StringBuilder sb = new StringBuilder();
-            Lang lang = Runtasker.LocaleBuilders.Statics.LanguageStatic.Language;
-            switch (lang)
-            {
-                case Lang.Russian:
-                    sb.Append("function parseDate(str){")
-                    .Append("var dmy = str.split('.');\n")
-                    .Append("var date = new Date(20 + dmy[2], dmy[1] - 1, dmy[0])\n")
-                    .Append("return date;}\n");
-                    break;
-
-                default:
-                    sb.Append("function parseDate(str){")
-                    .Append("var dmy = str.split('/');\n")
-                    .Append("var date = new Date(dmy[2], dmy[0] - 1, dmy[1])\n")
-                    .Append("return date;}\n");
-                    break;
-                    
-
-            }
-            
-
-            return MvcHtmlString.Create(sb.ToString());
-
-        }
-        #endregion
+        
 
 
         #endregion

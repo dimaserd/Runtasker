@@ -36,6 +36,8 @@ namespace Common.JavascriptValidation.Attributes
         public string Script { get; set; }
     }
 
+    
+
 
     #region Не реалзованное
     //public class JsOnValuesAttribute : Attribute

@@ -126,9 +126,6 @@
   <data name="CreateOrder" xml:space="preserve">
     <value>Добавить заказ</value>
   </data>
-  <data name="DescriptionPlaceholder" xml:space="preserve">
-    <value>Опишите ваш заказ! Укажите тип работы и все что нам нужно сделать!</value>
-  </data>
   <data name="FileUploading" xml:space="preserve">
     <value>Файлы загружаются на наш сервер</value>
   </data>

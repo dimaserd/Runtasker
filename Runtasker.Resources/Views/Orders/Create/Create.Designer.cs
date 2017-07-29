@@ -88,15 +88,6 @@ namespace Runtasker.Resources.Views.Orders.Create {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Provide description of your order including the type of work and any relevant details..
-        /// </summary>
-        public static string DescriptionPlaceholder {
-            get {
-                return ResourceManager.GetString("DescriptionPlaceholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Files are uploading to our server.
         /// </summary>
         public static string FileUploading {

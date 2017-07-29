@@ -239,3 +239,5 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Debug
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\obj\Debug\Runtasker.ExtensionsUI.csprojResolveAssemblyReference.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\obj\Debug\Runtasker.ExtensionsUI.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\obj\Debug\Runtasker.ExtensionsUI.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Debug\Common.JavascriptValidation.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Debug\Common.JavascriptValidation.pdb

@@ -299,3 +299,5 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtas
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.rename.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.news.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\Common.JavascriptValidation.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\Common.JavascriptValidation.pdb

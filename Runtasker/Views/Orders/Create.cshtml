@@ -61,42 +61,13 @@
             <strong id="bigErrorText"></strong>
         </div>
 
-        <!--WorkTypeList-->
-        @Html.LabelAndDropDownListFor(x => x.WorkType, workTypes, showPopover: true)
-        <!--/WorkTypeList-->
-
-        <!--SubjectsList-->
-        @Html.LabelAndDropDownListFor(x => x.Subject, selectList: subjects, showPopover: true)
-        @*<div id="SubjectForm" class="form-group">
-            @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                <div class="input-group">
-                    @Html.DropDownListFor(m => m.Subject, selectList: subjects, htmlAttributes: new {id = "subjectList", @class = "form-control" })
-                    <div class="input-group-btn">
-                        @Html.PopoverInfoFor(model => model.Subject)
-                    </div>
-                </div>
-            </div>
-        </div>*@
-        <!--/SubjectList-->
-
-        <!--UserSubjectForm-->
-        <div class="form-group" id="OtherSubjectForm">
-            @Html.LabelFor(model => model.OtherSubject, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                <div class="input-group">
-                    @Html.TextBoxFor(m => m.OtherSubject, htmlAttributes: new { id = "OtherSubject", @class = "form-control" })
-                    <div class="input-group-btn">
-                        @Html.PopoverInfoFor(m => m.OtherSubject)
-                    </div>
-                </div>
-                <p id="OtherSubjectError" class="text-danger">
-
-                </p>
-            </div>
-        </div>
-        <!--/UserSubjectForm-->
         
+        @Html.LabelAndDropDownListFor(x => x.WorkType, workTypes, showPopover: true)
+        
+        @Html.LabelAndDropDownListFor(x => x.Subject, selectList: subjects, showPopover: true)
+        
+        @Html.LabelAndTextBoxFor(x => x.OtherSubject, showPopover: true)
+
         <!--DateTime Picker-->
         <div class="form-group" id="DateForm">
             @Html.LabelFor(model => model.FinishDate, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -130,6 +101,8 @@
             </div>
         </div>
         <!--/FilesUpload-->
+
+        @Html.LabelAndTextAreaFor(x => x.Description)
 
         <!--Decription-->
         <div class="form-group" id="DescriptionForm">

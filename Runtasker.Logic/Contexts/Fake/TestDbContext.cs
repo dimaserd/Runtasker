@@ -37,14 +37,25 @@ namespace Runtasker.Logic.Contexts.Fake
 
         #endregion
 
-        #region Properties
+        #region Свойства
+        /// <summary>
+        /// Счетчик вызовов метода SaveChanges
+        /// </summary>
         public int CountOfSaveChanges
         {
             get; private set;
-            
+        }
+
+        /// <summary>
+        /// Счетчик вызовов метода Entry
+        /// </summary>
+        public int CountOfEntries
+        {
+            get;    private set;
         }
 
         #region DbSets
+        #region из AplicationDbContext
         public IDbSet<ApplicationUser> Users
         {
             get
@@ -68,8 +79,8 @@ namespace Runtasker.Logic.Contexts.Fake
                 return _roles;
             }
         }
+        #endregion
 
-        
 
         public DbSet<Order> Orders
         {
@@ -190,23 +201,8 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        IDbSet<ApplicationUser> IMyDbContext.Users => throw new NotImplementedException();
 
-        IDbSet<IdentityRole> IMyDbContext.Roles => throw new NotImplementedException();
-
-        DbSet<Order> IMyDbContext.Orders => throw new NotImplementedException();
-
-        DbSet<Message> IMyDbContext.Messages => throw new NotImplementedException();
-
-        DbSet<Attachment> IMyDbContext.Attachments => throw new NotImplementedException();
-
-        DbSet<Payment> IMyDbContext.Payments => throw new NotImplementedException();
-
-        DbSet<Notification> IMyDbContext.Notifications => throw new NotImplementedException();
-
-        DbSet<Invitation> IMyDbContext.Invitations => throw new NotImplementedException();
-
-        DbSet<PaymentTransaction> IMyDbContext.PaymentTransactions => throw new NotImplementedException();
+        #region Методы
 
         public void SaveChanges()
         {
@@ -220,6 +216,20 @@ namespace Runtasker.Logic.Contexts.Fake
 
             return 0;
         }
+
+        DbEntityEntry<TEntity> IMyDbContext.Entry<TEntity>(TEntity entity)
+        {
+            CountOfEntries++;
+
+            return null;
+        }
+
+        DbEntityEntry IMyDbContext.Entry(object entity)
+        {
+            CountOfEntries++;
+            return null;
+        }
+        #endregion
 
 
         #endregion
@@ -245,12 +255,7 @@ namespace Runtasker.Logic.Contexts.Fake
             }
         }
 
-        // TODO: переопределить метод завершения, только если Dispose(bool disposing) выше включает код для освобождения неуправляемых ресурсов.
-        // ~TestDbContext() {
-        //   // Не изменяйте этот код. Разместите код очистки выше, в методе Dispose(bool disposing).
-        //   Dispose(false);
-        // }
-
+        
         // Этот код добавлен для правильной реализации шаблона высвобождаемого класса.
         public void Dispose()
         {
@@ -260,30 +265,11 @@ namespace Runtasker.Logic.Contexts.Fake
              GC.SuppressFinalize(this);
         }
 
-        DbEntityEntry<TEntity> IMyDbContext.Entry<TEntity>(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
+        
 
-        DbEntityEntry IMyDbContext.Entry(object entity)
-        {
-            throw new NotImplementedException();
-        }
+        
 
-        void IMyDbContext.SaveChanges()
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<int> IMyDbContext.SaveChangesAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        void IDisposable.Dispose()
-        {
-            throw new NotImplementedException();
-        }
+        
         #endregion
     }
 }

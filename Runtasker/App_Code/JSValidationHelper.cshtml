@@ -1,0 +1,238 @@
+﻿@helper TestFunctionEval()
+{
+    <script>
+        var funcText = "{ alert('test'); console.log(3); console.log(3);console.log(3);console.log(3);}";
+
+        var tempFun = new Function(funcText);
+        tempFun();
+    </script>
+}
+
+@using Common.JavascriptValidation.Statics
+@helper GetDich(string jsObject)
+{
+    <script>
+        function WriteError(propName, errorText)
+        {
+            console.log("Записать ошибку", propName, errorText);
+
+            var errorPlace = document.getElementById(propName + "@PropertyNameHelper.ErrorTextAddition");
+            errorPlace.innerText = errorText;
+
+        }
+
+        function MakeFormError(propName) {
+
+            console.log("Показать ошибку", propName);
+
+            ShowObject(propName + "@PropertyNameHelper.ErrorTextAddition");
+
+            var propField = document.getElementById(propName + "@PropertyNameHelper.FormAddition");
+            if (!propField.classList.contains("has-error")) {
+                propField.classList.add("has-error");
+            }
+        }
+
+        function MakeFormSuccess(propName)
+        {
+            HideError(propName);
+
+            var propField = document.getElementById(propName + "@PropertyNameHelper.FormAddition");
+            if (propField.classList.contains("has-error")) {
+                propField.classList.remove("has-error");
+            }
+
+            propField.classList.add("has-success");
+        }
+
+        function MakeFormOrdinary(propName)
+        {
+            HideError(propName);
+
+            var propField = document.getElementById(propName + "@PropertyNameHelper.FormAddition");
+
+            if (propField.classList.contains("has-error")) {
+                propField.classList.remove("has-error");
+            }
+
+            if (propField.classList.contains("has-success")) {
+                propField.classList.remove("has-success");
+            }
+        }
+
+        function HideObject(id)
+        {
+            var element = document.getElementById(id);
+
+            if (!element.classList.contains("hidden")) {
+                element.classList.add("hidden");
+            }
+        }
+
+        function ShowObject(id)
+        {
+            var element = document.getElementById(id);
+
+            if (element.classList.contains("hidden")) {
+                element.classList.remove("hidden");
+            }
+        }
+
+        function HideError(propName) {
+
+            console.log("Скрыть ошибку", propName);
+
+            HideObject(propName + "@PropertyNameHelper.ErrorTextAddition");
+
+        }
+
+
+    </script>
+
+    <script>
+
+
+        var JsModelObject = @(new HtmlString(jsObject));
+
+        console.log(JsModelObject);
+
+        function OnChangeForProperty(jsProp)
+        {
+            var script = new Function(jsProp["OnValueChangedHandler"]);
+
+            script();
+        }
+
+
+        function RunDefaultScripts(modelObject)
+        {
+            var jsObject = GetJsObject(modelObject);
+
+            for (var i = 0; i < jsObject.length; i++)
+            {
+                var jsProp = jsObject[i];
+
+                for (var j = 0; j < jsProp["DefaultScripts"].length; j++)
+                {
+                    var script = new Function(jsProp["DefaultScripts"][j]);
+                    script();
+                }
+            }
+        }
+
+        RunDefaultScripts();
+
+        function GetJsObject(modelObject)
+        {
+            var jsObject = modelObject;
+            if (jsObject == null || jsObject == undefined) {
+                jsObject = JsModelObject;
+            }
+
+            return jsObject;
+        }
+
+        function ValidateModel(modelObject)
+        {
+            var result = true;
+
+            var jsObject = GetJsObject(modelObject);
+
+            for (var i = 0; i < jsObject.length; i++)
+            {
+                console.log("jsProp индекс =", i, jsObject[i]);
+                if (!ValidateProperty(jsObject[i]))
+                {
+                    result = false;
+                    break;
+                }
+            }
+
+            console.log("Модель валидна", result);
+            return result;
+        }
+
+
+
+        function ValidateProperty(jsProp)
+        {
+            var propertyResult = true;
+
+            if (jsProp["CheckingScripts"].length == 0)
+            {
+                return true;
+            }
+
+            for (var i = 0; i < jsProp["CheckingScripts"].length; i++)
+            {
+                var validFunc = new Function(jsProp["CheckingScripts"][i]);
+                if (!validFunc())
+                {
+                    propertyResult = false;
+                    break;
+                }
+            }
+
+            if (!propertyResult) {
+                MakeFormError(jsProp["PropertyName"]);
+            }
+            else {
+                MakeFormSuccess(jsProp["PropertyName"]);
+            }
+
+            console.log("Свойство ", jsProp["PropertyName"], " валидно=", propertyResult);
+
+            return propertyResult;
+        }
+
+        function ClearModelValues(modelObject)
+        {
+            var jsObject = GetJsObject(modelObject);
+
+            for (var i = 0; i < jsObject.length; i++) {
+
+                var propName = jsObject[i]["PropertyName"];
+
+                document.getElementById(propName + "@PropertyNameHelper.InputAddition").value = "";
+
+                MakeFormOrdinary(propName);
+            }
+        }
+
+
+        function EnableOnChangePropertyValidation(propName, modelObject)
+        {
+            var jsPropToFind = null;
+
+            var jsObject = GetJsObject(modelObject);
+
+            for (i = 0; i < jsObject.length; i++) {
+                jsProp = jsObject[i];
+
+                if (jsProp["PropertyName"] == propName)
+                {
+                    jsPropToFind = jsProp;
+                    console.log("jsPropToFind", jsPropToFind);
+                }
+            }
+
+            var elem = document.getElementById(jsPropToFind["PropertyName"] + "@PropertyNameHelper.InputAddition");
+
+            console.log("elem", elem);
+
+            elem.addEventListener('change', function (e) {
+                OnChangeForProperty(jsPropToFind)
+                ValidateProperty(jsPropToFind);
+            }, false);
+
+        }
+
+
+    </script>
+
+
+}
+
+
+
+

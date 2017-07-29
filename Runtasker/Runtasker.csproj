@@ -281,6 +281,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlExtensions\HtmlExtensions.cs" />
+    <Compile Include="HtmlExtensions\OldHtmlExtensions.cs" />
     <Compile Include="HtmlExtensions\StaticHtmlClassesHelper.cs" />
     <Compile Include="Hubs\ChatHubBase.cs" />
     <Compile Include="Hubs\MainChatHub.cs" />
@@ -3369,7 +3370,6 @@
     <Content Include="assets\images\buy.fla" />
     <Content Include="App_Code\PortfolioHelper.cshtml" />
     <Content Include="App_Code\AlertHelper.cshtml" />
-    <Content Include="App_Code\JSProperyValidator.cshtml" />
     <Content Include="App_Code\FooterHelper.cshtml" />
     <Content Include="App_Code\JSHelper.cshtml" />
     <Content Include="App_Code\NavigationHelper.cshtml" />
@@ -3380,6 +3380,7 @@
     <Content Include="App_Code\Metronic\Admin\PageSideBarHelper.cshtml" />
     <Content Include="App_Code\Metronic\Admin\QuickSideBarHelper.cshtml" />
     <Content Include="App_Code\LoadHelper.cshtml" />
+    <Content Include="App_Code\JSValidationHelper.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
@@ -3584,6 +3585,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common.JavascriptValidation\Common.JavascriptValidation.csproj">
+      <Project>{8732b2ed-c0f9-478e-963d-71235336b4eb}</Project>
+      <Name>Common.JavascriptValidation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Extensions\Extensions.csproj">
       <Project>{22c11b93-35d0-462a-8bde-27c8a8479741}</Project>
       <Name>Extensions</Name>

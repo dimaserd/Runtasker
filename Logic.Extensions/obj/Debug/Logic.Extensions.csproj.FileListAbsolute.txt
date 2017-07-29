@@ -80,3 +80,7 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\zh-CN
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\obj\Debug\Logic.Extensions.csprojResolveAssemblyReference.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\obj\Debug\Logic.Extensions.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\obj\Debug\Logic.Extensions.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\Extensions.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\Newtonsoft.Json.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\Extensions.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\Newtonsoft.Json.xml

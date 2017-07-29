@@ -77,7 +77,7 @@ namespace Runtasker.Logic.Workers.Orders
                 ApplicationUser existingUser = await UserManager.FindByEmailAsync(model.Email);
                 if(existingUser != null)
                 {
-                    return new WorkerResult("User with given email is already exist");
+                    return new WorkerResult("User with given email already exists");
                 }
 
                 string pass = new RandomPassword().GetRandomPass();

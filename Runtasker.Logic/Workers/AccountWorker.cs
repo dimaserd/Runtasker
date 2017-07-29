@@ -15,15 +15,27 @@ using System.Threading.Tasks;
 
 namespace Runtasker.Logic.Workers
 {
-
+    /// <summary>
+    /// Описывает тип регистрации пользователя в системе
+    /// </summary>
     public enum RegistrationType
     {
-        WithPassword, WithoutPassword
+        /// <summary>
+        /// Регистрация с паролем
+        /// </summary>
+        WithPassword,
+
+        /// <summary>
+        /// Регистрация без пароля
+        /// </summary>
+        WithoutPassword
     }
-    //For now it contains help methods to AccountController
+    /// <summary>
+    /// Класс инкапуслирующий некоторые методы, которые когда то находились в контроллере Account
+    /// </summary>
     public class AccountWorker : IDisposable
     {
-        #region Constructors
+        #region Конструкторы
         
         public AccountWorker(UserManager<ApplicationUser> userManager, MyDbContext context, string userGuid)
         {
@@ -80,8 +92,7 @@ namespace Runtasker.Logic.Workers
             return user;
         }
 
-        //public async Task<ApplicationUser>RegisterCustomerAsync()
-
+        
         public ApplicationUser RegisterCustomerFromSocialProvider(ExternalLoginConfirmationModel model, 
             ExternalLoginInfo info, out IdentityResult iResult)
         {

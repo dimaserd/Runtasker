@@ -301,12 +301,13 @@
     </script>
 }
 
+@using Common.JavascriptValidation.Statics
 @helper GetDescriptionHandlers(Runtasker.LocaleBuilders.Models.LocaleViewModel localeModel)
 {
     <script>
-        var descriptionForm = $("#DescriptionForm");
-        var descriptionField = $("#DescriptionField");
-        var descriptionError = $("#DescriptionError");
+        var descriptionForm = $("#Description" + "@PropertyNameHelper.FormAddition");
+        var descriptionField = $("#Description" + "@PropertyNameHelper.InputAddition");
+        var descriptionError = $("#Description" + "@PropertyNameHelper.ErrorTextAddition");
 
         descriptionField.change(function (e) {
             CheckDescription();
@@ -334,7 +335,7 @@
 {
     <script>
         var subjectList = $('#subjectList');
-        var otherSubjectForm = $('#OtherSubjectForm');
+        var otherSubjectForm = $('#OtherSubject' + "@PropertyNameHelper.FormAddition");
         var hiddenSubject = $('#hiddenSubject');
         var otherSubject = $('#OtherSubject');
 
@@ -357,8 +358,8 @@
         })
 
         function CheckOtherSubject() {
-            ClearClasses("#OtherSubjectForm");
-            ClearClasses("#SubjectForm")
+            ClearClasses("#OtherSubject" + "@PropertyNameHelper.FormAddition");
+            ClearClasses("#Subject" + "@PropertyNameHelper.FormAddition")
 
             HideError("#OtherSubject");
 
@@ -401,7 +402,7 @@
 
             $("#subjectList").get(0).selectedIndex = 0;
 
-            $("#OtherSubjectForm").hide();
+            $("#OtherSubject" + "@PropertyNameHelper.FormAddition").hide();
         }();
     </script>
 }

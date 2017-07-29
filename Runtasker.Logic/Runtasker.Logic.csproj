@@ -158,7 +158,6 @@
     <Compile Include="Contexts\Fake\FakeMyDbContext.cs" />
     <Compile Include="Contexts\Fake\TestDbContext.cs" />
     <Compile Include="Contexts\Fake\TestDbSet.cs" />
-    <Compile Include="Contexts\Interfaces\IApplicationDbContext.cs" />
     <Compile Include="Contexts\Interfaces\IMyDbContext.cs" />
     <Compile Include="Contexts\Interfaces\IMyDbContextWithDbSet.cs" />
     <Compile Include="Contexts\MyNewDbContext.cs" />

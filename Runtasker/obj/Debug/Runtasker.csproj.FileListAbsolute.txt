@@ -475,3 +475,5 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\ru\Microsoft.Owin.
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\ru\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\obj\Debug\Runtasker.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\obj\Debug\Runtasker.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\Common.JavascriptValidation.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\Common.JavascriptValidation.pdb

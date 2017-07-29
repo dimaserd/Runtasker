@@ -51,4 +51,8 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\HtmlExtensions\bin\Debug\System.
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\HtmlExtensions\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\HtmlExtensions\obj\Debug\HtmlExtensions.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\HtmlExtensions\obj\Debug\HtmlExtensions.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\HtmlExtensions\bin\Debug\Extensions.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\HtmlExtensions\bin\Debug\Newtonsoft.Json.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\HtmlExtensions\bin\Debug\Extensions.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\HtmlExtensions\bin\Debug\Newtonsoft.Json.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\HtmlExtensions\obj\Debug\HtmlExtensions.csprojResolveAssemblyReference.cache

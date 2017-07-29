@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\CustomResourceAttribute.cs" />
+    <Compile Include="Attributes\PlaceholderAttribute.cs" />
     <Compile Include="Boolean\BooleanExtensions.cs" />
     <Compile Include="Date\DateTimeExtensions.cs" />
     <Compile Include="Decimal\DecimalExtensions.cs" />

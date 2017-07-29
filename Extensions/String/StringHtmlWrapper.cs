@@ -1,10 +1,55 @@
 ﻿using Extensions.Reflection;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Text;
 
 namespace Extensions.String
 {
     public static class StringHtmlWrapper
     {
         #region Wrappers
+
+        /// <summary>
+        /// Получает словарь свойств объекта
+        /// </summary>
+        /// <param name="attributes"></param>
+        /// <returns></returns>
+        public static Dictionary<string, object> GetPropertiesDictionary(this object attributes)
+        {
+            Dictionary<string, object> result = new Dictionary<string, object>();
+
+            if (attributes != null)
+            {
+                foreach (var prop in attributes.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
+                {
+                    result.Add(prop.Name, prop.GetValue(attributes, null));
+                }
+            }
+
+            return result;
+        }
+
+        public static string GetAttributesString(this object attributes)
+        {
+            Dictionary<string, object> result = GetPropertiesDictionary(attributes);
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var item in result)
+            {
+                sb.Append($"{item.Key}=\"{item.Value}\" ");
+            }
+
+            return sb.ToString();
+        }
+
+        public static string WrapToHtmlTag(this string s, string tagName, object attributes = null)
+        {
+
+            string attrs_String = attributes.GetAttributesString();
+
+            return $"<{tagName} {attrs_String}>{s}</{tagName}>";
+        }
 
         /// <summary>
         /// Заворачивает входную строку в HTML-тег em

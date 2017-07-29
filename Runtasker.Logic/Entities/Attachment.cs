@@ -196,6 +196,11 @@ namespace Runtasker.Logic.Entities
 
         public static Attachment GetAttachmentFromFiles(this IEnumerable<HttpPostedFileBase> files)
         {
+            if (files == null)
+            {
+                return null;
+            }
+
             ClearTempDirectories();
 
             if(files.Count() > 1)

@@ -47,9 +47,11 @@
   <ItemGroup>
     <Compile Include="Attributes\HideByDefaultAttribute.cs" />
     <Compile Include="Attributes\JsCheckbox.cs" />
+    <Compile Include="Attributes\JsDefaultValueAttribute.cs" />
     <Compile Include="Attributes\JsNotValidateAttribute.cs" />
     <Compile Include="Attributes\JsOnValueAttribute.cs" />
     <Compile Include="Attributes\JsOnValueWithElseAttribute.cs" />
+    <Compile Include="Attributes\JsRequiredAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statics\JavaScriptHelper.cs" />
     <Compile Include="Statics\JSValidationMaker.cs" />

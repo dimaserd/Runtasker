@@ -80,11 +80,13 @@ namespace Runtasker.HtmlExtensions
                 sb.Append(html.PopoverInfoFor(expression).ToString().WrapToHtmlTag("div", new { @class = "input-group-btn" }));
             }
 
-            sb.Append(GetStrongErrorText(html, expression));
+            
            
 
             sb.Append("</div>")
+            .Append(GetStrongErrorText(html, expression).ToString().WrapToHtmlTag("p"))
             .Append("</div>")
+            
             .Append("</div>");
 
 
@@ -119,12 +121,11 @@ namespace Runtasker.HtmlExtensions
 
             sb.Append(html.GetStrongErrorText(expression));
 
-            sb.Append("</div>");
-
-            sb.Append("</div>");
-
-
-            sb.Append("</div>");
+            sb.Append("</div>")
+            .Append(GetStrongErrorText(html, expression).ToString().WrapToHtmlTag("p"))
+            .Append("</div>")
+            
+            .Append("</div>");
 
             return MvcHtmlString.Create(sb.ToString());
         }
@@ -153,13 +154,12 @@ namespace Runtasker.HtmlExtensions
 
             
 
-            sb.Append(html.GetStrongErrorText(expression));
-
             
-            sb.Append("</div>");
+            sb.Append(GetStrongErrorText(html, expression).ToString().WrapToHtmlTag("p"))
+            .Append("</div>")
+            
 
-
-            sb.Append("</div>");
+            .Append("</div>");
 
             return MvcHtmlString.Create(sb.ToString());
         }
@@ -198,11 +198,11 @@ namespace Runtasker.HtmlExtensions
                 sb.Append(html.PopoverInfoFor(expression).ToString().WrapToHtmlTag("div", new { @class = "input-group-btn" }));
             }
 
-            sb.Append(GetStrongErrorText(html, expression));
-
 
             sb.Append("</div>")
+            .Append(GetStrongErrorText(html, expression).ToString().WrapToHtmlTag("p"))
             .Append("</div>")
+            
             .Append("</div>");
 
 

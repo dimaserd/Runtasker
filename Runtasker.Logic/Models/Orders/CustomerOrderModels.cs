@@ -26,14 +26,17 @@ namespace Runtasker.Logic.Models
         public OrderWorkType WorkType { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(CreateOrder), ErrorMessageResourceName = "OtherSubjectError")]
+        [JsRequired(resourceType: typeof(CreateOrder), resourceName: "OtherSubjectError")]
         [PopoverInfo(typeof(CreateOrder), resourceName: "OtherSubjectInfo")]
         [Display(ResourceType = typeof(CreateOrder), Name = "OtherSubject")]
         [HideByDefault]
+        [JsDefaultValue(DefaultValue = "\"selected\"")]
         public string OtherSubject { get; set; }
 
 
         [Display(ResourceType = typeof(CreateOrder), Name = "Description")]
         [Required(ErrorMessageResourceType = typeof(CreateOrder), ErrorMessageResourceName = "NeedDescriptionError")]
+        [JsRequired(resourceType: typeof(CreateOrder), resourceName : "NeedDescriptionError")]
         [Placeholder(resourceName: "DescriptionPlaceholder", resourceType: typeof(CreateOrder))]
         public string Description { get; set; }
 

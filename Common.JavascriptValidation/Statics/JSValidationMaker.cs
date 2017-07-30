@@ -23,19 +23,7 @@ namespace Common.JavascriptValidation.Statics
     }
 
 
-    public class JSCode
-    {
-        /// <summary>
-        /// Cам код проверочной функции
-        /// </summary>
-        public string Code { get; set; }
-
-        /// <summary>
-        /// Флаг указывающий на то надо ли код исполнять сразу
-        /// </summary>
-        public bool IsDefault { get; set; }
-    }
-
+    
     /// <summary>
     /// Свойство со списком 
     /// </summary>
@@ -74,13 +62,18 @@ namespace Common.JavascriptValidation.Statics
             return JsonConvert.SerializeObject(result);
         }
 
+        public static List<JsProperty> GetValidationObject(Type T)
+        {
+            return GetJSValidationFuncsForProperties(T);
+        }
+
 
         /// <summary>
         /// Возвращает словарь имя_свойства -- список из текстов js функций проверок
         /// </summary>
         /// <param name="T"></param>
         /// <returns></returns>
-        public static List<JsProperty> GetJSValidationFuncsForProperties(Type T)
+        private static List<JsProperty> GetJSValidationFuncsForProperties(Type T)
         {
             Dictionary<string, object[]> dict = ReflectionExtensionMethods
                 .GetPropertyAttributesDictionary(T);
@@ -104,7 +97,7 @@ namespace Common.JavascriptValidation.Statics
         }
 
 
-        public static ScriptsForProperty GetJSValidationFuncsForProperty(string propertyName, object[] attrs)
+        private static ScriptsForProperty GetJSValidationFuncsForProperty(string propertyName, object[] attrs)
         {
             List<string> CheckingScripts = new List<string>();
 
@@ -124,9 +117,9 @@ namespace Common.JavascriptValidation.Statics
 
                     continue;
                 }
-                else if(attr is RequiredAttribute)
+                else if(attr is JsRequiredAttribute)
                 {
-                    CheckingScripts.Add(GetRequiredValidationFunc(propertyName, attr as RequiredAttribute));
+                    CheckingScripts.Add(GetRequiredValidationFunc(propertyName, attr as JsRequiredAttribute));
                 }
                 else if (attr is MaxLengthAttribute)
                 {
@@ -147,6 +140,10 @@ namespace Common.JavascriptValidation.Statics
                 else if(attr is JsOnValueBaseAttribute)
                 {
                     OnChangeHalfScripts.Add(GetJsOnValueHalfScript(propertyName, attr as JsOnValueBaseAttribute));
+                }
+                else if(attr is JsDefaultValueAttribute)
+                {
+                    DefaultScripts.Add(GetJsDefaultValueScript(propertyName, attr as JsDefaultValueAttribute));
                 }
                 else if(attr is JsCheckBox)
                 {
@@ -192,6 +189,8 @@ namespace Common.JavascriptValidation.Statics
 
 
         #region Получение функции по атрибуту
+
+
         private static string GetJsOnValueWithElseHalfScript(string propName, JsOnValueWithElseAttribute attr)
         {
             StringBuilder sb = new StringBuilder();
@@ -211,6 +210,20 @@ namespace Common.JavascriptValidation.Statics
             return sb.ToString();
         }
 
+
+        private static string GetJsDefaultValueScript(string propName, JsDefaultValueAttribute attr)
+        {
+            StringBuilder sb = new StringBuilder();
+
+
+            sb.Append(" { " )
+            .Append($" document.getElementById(\"{PropertyNameHelper.GetIdForInput(propName)}\").value = {attr.DefaultValue} ")
+            
+            .Append("}");
+
+
+            return sb.ToString();
+        }
 
 
         /// <summary>
@@ -246,14 +259,14 @@ namespace Common.JavascriptValidation.Statics
             return sb.ToString();
         }
 
-        private static string GetRequiredValidationFunc(string propName, RequiredAttribute attr)
+        private static string GetRequiredValidationFunc(string propName, JsRequiredAttribute attr)
         {
             StringBuilder sb = new StringBuilder();
 
             sb.Append("{");
             sb.Append($" if (document.getElementById('{PropertyNameHelper.GetIdForInput(propName)}').value.length == 0) ")
             .Append(" { ")
-            .Append($" WriteError('{propName}', '{attr.ErrorMessage}'); ")
+            .Append($" WriteError('{propName}', '{attr.ErrorText}'); ")
             .Append(" return false; ")
             .Append(" } ")
             .Append(" else ")

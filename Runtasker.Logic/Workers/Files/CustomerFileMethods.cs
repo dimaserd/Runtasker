@@ -110,10 +110,24 @@ namespace Runtasker.Logic.Workers.Files
             Attachment orderAttachment = Context.Attachments
                 .FirstOrDefault(x => x.OrderId == model.OrderId && x.Type == AttachmentType.OrderFiles);
 
-            orderAttachment.AddFilesToAttachment(goodFiles);
+            //если до этого файлов вложений не было то создаем сущность
+            if(orderAttachment == null)
+            {
+                orderAttachment = AttachmentExtensions.GetAttachmentFromFiles(goodFiles);
+                orderAttachment.OrderId = model.OrderId;
+                orderAttachment.Type = AttachmentType.OrderFiles;
 
-            Context.Attachments.Attach(orderAttachment);
-            Context.Entry(orderAttachment).State = EntityState.Modified;
+                Context.Attachments.Add(orderAttachment);
+            }
+            else
+            {
+                orderAttachment.AddFilesToAttachment(goodFiles);
+                Context.Attachments.Attach(orderAttachment);
+                Context.Entry(orderAttachment).State = EntityState.Modified;
+            }
+            
+
+            //Записываем изменения в базу
             Context.SaveChanges();
             
             return new WorkerResult

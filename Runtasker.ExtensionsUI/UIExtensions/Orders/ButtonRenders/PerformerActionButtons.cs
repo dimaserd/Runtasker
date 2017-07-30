@@ -74,7 +74,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
         string GetButtonForFilesDownloading()
         {
-            if(Order.HasCustomerFiles)
+            if(Order.Attachments.Any(x => x.Type == AttachmentType.OrderFiles))
             {
                 return new HtmlActionButtonLink
                          (

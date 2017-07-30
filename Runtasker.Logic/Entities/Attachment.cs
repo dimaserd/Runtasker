@@ -303,40 +303,47 @@ namespace Runtasker.Logic.Entities
         /// <param name="attachment"></param>
         /// <param name="files"></param>
         /// <returns></returns>
-        public static Attachment AddFilesToAttachment(this Attachment attachment, IEnumerable<HttpPostedFileBase> files)
+        public static Attachment AddFilesToAttachment(this Attachment attachment, IEnumerable<HttpPostedFileBase> files, int? orderId = null)
         {
             ClearTempDirectories();
 
             //записываю все файлы во вторую директорию
             foreach(HttpPostedFileBase file in files)
             {
-                file.SaveAs($"{SecondTempDirectory}/{file.FileName}");
+                if(file != null)
+                {
+                    file.SaveAs($"{SecondTempDirectory}/{file.FileName}");
+                } 
             }
 
-
-            
-            if (attachment == null || !attachment.InnerFileIsArchive())
+            if (attachment == null)
             {
-                string filePath = $"{TempDirectory}/{attachment.FileName}";
+                attachment = GetAttachmentFromDirectoryPath(SecondTempDirectory);
 
-                //записываю файл на диск
-                File.WriteAllBytes(filePath, attachment.FileData);
-
-                //вытаскивыю все файлы из предыдущего архива и засовываю во вторую директорию
-                ZipFile.ExtractToDirectory(filePath, SecondTempDirectory);
-
-                //удаляю старый файл
-                File.Delete(filePath);
-
-                //записываю вместо него новый содержащий еще и новые файлы
-                ZipFile.CreateFromDirectory(SecondTempDirectory, filePath);
-
-                if (attachment == null)
+                if(orderId != null)
                 {
-                    attachment = new Attachment();
+                    attachment.OrderId = orderId.Value;
                 }
 
-                attachment.FileData = File.ReadAllBytes(filePath);
+                return attachment;
+            }
+            else if (attachment.InnerFileIsArchive())
+            {
+                string zipPath = $"{TempDirectory}/{attachment.FileName}";
+
+                //записываю файл на диск
+                File.WriteAllBytes(zipPath, attachment.FileData);
+
+                //вытаскивыю все файлы из предыдущего архива и засовываю во вторую директорию
+                ZipFile.ExtractToDirectory(zipPath, SecondTempDirectory);
+
+                //удаляю старый файл архива
+                File.Delete(zipPath);
+
+                //записываю вместо него новый содержащий еще и новые файлы
+                ZipFile.CreateFromDirectory(SecondTempDirectory, zipPath);
+
+                attachment.FileData = File.ReadAllBytes(zipPath);
 
                 return attachment;
             }

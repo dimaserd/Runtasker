@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\HideByDefaultAttribute.cs" />
+    <Compile Include="Attributes\JsHideByDefaultAttribute.cs" />
     <Compile Include="Attributes\JsCheckbox.cs" />
     <Compile Include="Attributes\JsDefaultValueAttribute.cs" />
     <Compile Include="Attributes\JsNotValidateAttribute.cs" />

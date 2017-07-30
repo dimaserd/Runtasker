@@ -129,9 +129,9 @@ namespace Common.JavascriptValidation.Statics
                 {
                     CheckingScripts.Add(GetMinLengthValidationFunc(propertyName, attr as MinLengthAttribute));
                 }
-                else if(attr is HideByDefaultAttribute)
+                else if(attr is JsHideByDefaultAttribute)
                 {
-                    DefaultScripts.Add(GetHideByDefaultScript(propertyName, attr as HideByDefaultAttribute));
+                    DefaultScripts.Add(GetHideByDefaultScript(propertyName, attr as JsHideByDefaultAttribute));
                 }
                 else if (attr is JsOnValueWithElseAttribute)
                 {
@@ -247,7 +247,7 @@ namespace Common.JavascriptValidation.Statics
             return sb.ToString();
         }
 
-        private static string GetHideByDefaultScript(string propName, HideByDefaultAttribute attr)
+        private static string GetHideByDefaultScript(string propName, JsHideByDefaultAttribute attr)
         {
             StringBuilder sb = new StringBuilder();
 

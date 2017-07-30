@@ -5,7 +5,7 @@ namespace Common.JavascriptValidation.Attributes
     /// <summary>
     /// Атрибут для джаваскриптовой валидации (который скроет форму данного свойства)
     /// </summary>
-    public class HideByDefaultAttribute : Attribute
+    public class JsHideByDefaultAttribute : Attribute
     {
 
     }

@@ -29,7 +29,7 @@ namespace Runtasker.Logic.Models
         [JsRequired(resourceType: typeof(CreateOrder), resourceName: "OtherSubjectError")]
         [PopoverInfo(typeof(CreateOrder), resourceName: "OtherSubjectInfo")]
         [Display(ResourceType = typeof(CreateOrder), Name = "OtherSubject")]
-        [HideByDefault]
+        [JsHideByDefault]
         [JsDefaultValue(DefaultValue = "\"selected\"")]
         public string OtherSubject { get; set; }
 

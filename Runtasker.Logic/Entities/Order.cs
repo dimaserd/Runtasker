@@ -14,27 +14,78 @@ namespace Runtasker.Logic.Entities
 {
     #region Перечисления
     
+    /// <summary>
+    /// Перечисление описывающие текущее состояние заказа
+    /// </summary>
     public enum OrderStatus
     {
+        /// <summary>
+        /// Заказ только что был создан
+        /// </summary>
         [Display(Name = "Новый")]
         New,
+
+        /// <summary>
+        /// Заказ оценен администратором или исполнителем
+        /// </summary>
         [Display(Name = "Оценен")]
         Estimated,
+
+        /// <summary>
+        /// Заказ оплачен наполовину
+        /// </summary>
         [Display(Name = "Оплачен наполовину")]
         HalfPaid,
+
+        /// <summary>
+        /// Заказ выполняется
+        /// </summary>
         [Display(Name = "Выполняется")]
         Executing,
+
+
+        /// <summary>
+        /// Заказ выполнен исполнителем (его решение находится в системе)
+        /// </summary>
         [Display(Name = "Выполнен")]
         Finished,
+
+        /// <summary>
+        /// Заказ полностью оплачен пользователем
+        /// </summary>
         [Display(Name = "Полностью оплачен")]
         FullPaid,
+
+
+        /// <summary>
+        /// Заказ скачан пользователем (но еще не оценен)
+        /// </summary>
         [Display(Name = "Скачан пользователем")]
         Downloaded,
+
+        /// <summary>
+        /// Заказ скачан и ему поставлена оценка
+        /// </summary>
         [Display(Name = "Оценен пользователем")]
         Appreciated,
+
+        /// <summary>
+        /// В заказе обнаружена ошибка
+        /// </summary>
         [Display(Name = "Обнаружена ошибка")]
         HasError,
-        
+
+        /// <summary>
+        /// Удален заказчиком
+        /// </summary>
+        [Display(Name = "Удален пользователем после заврешения")]
+        DeletedByCustomer,
+
+        /// <summary>
+        /// Удален администратором
+        /// </summary>
+        [Display(Name = "Удален администратором")]
+        DeletedByAdmin
     }
 
     public enum OrderErrorType

@@ -554,7 +554,9 @@ namespace Runtasker.Logic.Workers.Orders
 
         public async Task<IEnumerable<Order>> GetMyOrdersAsync()
         {
-                return await Context.Orders.Where(o => o.UserGuid == UserGuid)
+                return await Context.Orders.Where(o => o.UserGuid == UserGuid 
+                && o.Status != OrderStatus.DeletedByCustomer 
+                && o.Status != OrderStatus.DeletedByAdmin)
                     .Include(x => x.Messages).ToListAsync();
         }
         #endregion

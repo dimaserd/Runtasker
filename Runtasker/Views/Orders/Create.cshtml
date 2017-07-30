@@ -59,11 +59,6 @@
         @Html.ValidationErrorsToAlerts()
         @Html.AntiForgeryToken()
 
-        <div id="bigError" class="alert alert-danger">
-            <i class="fa fa-frown-o"></i>
-            <strong id="bigErrorText"></strong>
-        </div>
-
         
         @Html.LabelAndDropDownListFor(x => x.WorkType, workTypes, showPopover: true)
         
@@ -127,8 +122,88 @@
     @JSValidationHelper.GetDich(jsObject)
     <script>
         EnableOnChangePropertyValidation("Subject");
+        EnableOnChangePropertyValidation("Description");
     </script>
     
+<script>
+
+
+        function dateAndWorkTypeCheck()
+        {
+            var days = parseInt(daydiff(parseDate(document.getElementById("@PropertyNameHelper.GetIdForInput("FinishDate")").value)))
+            var workType = parseInt(document.getElementById("@PropertyNameHelper.GetIdForInput("WorkType")").value);
+
+            return CheckDaysForWorkType(days, workType)
+        }
+
+
+        function CheckDaysForWorkType(days, workType)
+        {
+            console.log("days : " + days + " workType : " + workType);
+
+
+                switch (workType) {
+                    case 0:
+                        if (days < 3) {
+                            //ShowBigError("@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary");
+                            WriteError("WorkType", "@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary");
+                            WriteError("FinishDate", "@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary");
+                            ShowError("FinishDate");
+                            ShowError("WorkType");
+
+                            MakeFormError("WorkType");
+                            MakeFormError("FinishDate");
+                            return false;
+                        }
+                        else
+                        {
+                            MakeFormSuccess("WorkType");
+                            MakeFormSuccess("FinishDate");
+                            return true;
+                        }
+                        break;
+                    case 1:
+                        if (days < 7) {
+
+                            WriteError("WorkType", "@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorEssay");
+                            WriteError("FinishDate", "@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorEssay");
+                            ShowError("FinishDate");
+                            ShowError("WorkType");
+                            MakeFormError("WorkType");
+                            MakeFormError("FinishDate");
+                            return false;
+                        }
+                        else
+                        {
+                            MakeFormSuccess("WorkType");
+                            MakeFormSuccess("FinishDate");
+                            return true;
+                        }
+                        break;
+                    case 2:
+                        if (days < 30)
+                        {
+                            
+                            WriteError("WorkType", "@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorCourseWork");
+                            WriteError("FinishDate", "@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorCourseWork");
+                            ShowError("FinishDate");
+                            ShowError("WorkType");
+                            MakeFormError("WorkType");
+                            MakeFormError("FinishDate");
+                            return false;
+                        }
+                        else
+                        {
+                            MakeFormSuccess("WorkType");
+                            MakeFormSuccess("FinishDate");
+                            return true;
+                        }
+                        break;
+                    default:
+                        alert('Я таких значений не знаю');
+                }
+            }
+</script>
 
     <!--Popover activator-->
     <script>
@@ -180,7 +255,10 @@
     <script>
         function CreateBtnHandler()
         {
-            ValidateModel();
+            if (ValidateModel())
+            {
+                CheckDaysForWorkType();
+            }
         }
     </script>
     <!--/SendOrderScripts-->

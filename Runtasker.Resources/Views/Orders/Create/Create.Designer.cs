@@ -97,7 +97,7 @@ namespace Runtasker.Resources.Views.Orders.Create {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Check your Completion Date. We need at least 30 days to complete your task of type &quot;Course Work&quot;..
+        ///   Ищет локализованную строку, похожую на Check your Completion Date. We need at least 30 days to complete your task of type \&quot;Course Work\&quot;..
         /// </summary>
         public static string FinishDateErrorCourseWork {
             get {
@@ -106,7 +106,7 @@ namespace Runtasker.Resources.Views.Orders.Create {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Check your Completion Date. We need at least 7 days to complete your task of type &quot;Essay&quot;..
+        ///   Ищет локализованную строку, похожую на Check your Completion Date. We need at least 7 days to complete your task of type \&quot;Essay\&quot;..
         /// </summary>
         public static string FinishDateErrorEssay {
             get {
@@ -115,7 +115,7 @@ namespace Runtasker.Resources.Views.Orders.Create {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Check your Completion Date. We need at least 3 days to complete your task of type &quot;Ordinary Assignment&quot;..
+        ///   Ищет локализованную строку, похожую на Check your Completion Date. We need at least 3 days to complete your task of type \&quot;Ordinary Assignment\&quot;..
         /// </summary>
         public static string FinishDateErrorOrdinary {
             get {

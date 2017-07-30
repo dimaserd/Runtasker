@@ -313,23 +313,30 @@ namespace Runtasker.Logic.Entities
                 file.SaveAs($"{SecondTempDirectory}/{file.FileName}");
             }
 
-            if (attachment.InnerFileIsArchive())
+
+            
+            if (attachment == null || !attachment.InnerFileIsArchive())
             {
-                string zipPath = $"{TempDirectory}/{attachment.FileName}";
+                string filePath = $"{TempDirectory}/{attachment.FileName}";
 
                 //записываю файл на диск
-                File.WriteAllBytes(zipPath, attachment.FileData);
+                File.WriteAllBytes(filePath, attachment.FileData);
 
                 //вытаскивыю все файлы из предыдущего архива и засовываю во вторую директорию
-                ZipFile.ExtractToDirectory(zipPath, SecondTempDirectory);
+                ZipFile.ExtractToDirectory(filePath, SecondTempDirectory);
 
                 //удаляю старый файл
-                File.Delete(zipPath);
+                File.Delete(filePath);
 
                 //записываю вместо него новый содержащий еще и новые файлы
-                ZipFile.CreateFromDirectory(SecondTempDirectory, zipPath);
+                ZipFile.CreateFromDirectory(SecondTempDirectory, filePath);
 
-                attachment.FileData = File.ReadAllBytes(zipPath);
+                if (attachment == null)
+                {
+                    attachment = new Attachment();
+                }
+
+                attachment.FileData = File.ReadAllBytes(filePath);
 
                 return attachment;
             }

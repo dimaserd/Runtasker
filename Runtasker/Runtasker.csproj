@@ -3381,6 +3381,7 @@
     <Content Include="App_Code\Metronic\Admin\QuickSideBarHelper.cshtml" />
     <Content Include="App_Code\LoadHelper.cshtml" />
     <Content Include="App_Code\JSValidationHelper.cshtml" />
+    <Content Include="App_Code\ModalHelper.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Scripts\bootstrap.js" />

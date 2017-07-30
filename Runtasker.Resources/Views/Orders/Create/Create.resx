@@ -130,13 +130,13 @@
     <value>Files are uploading to our server</value>
   </data>
   <data name="FinishDateErrorCourseWork" xml:space="preserve">
-    <value>Check your Completion Date. We need at least 30 days to complete your task of type "Course Work".</value>
+    <value>Check your Completion Date. We need at least 30 days to complete your task of type \"Course Work\".</value>
   </data>
   <data name="FinishDateErrorEssay" xml:space="preserve">
-    <value>Check your Completion Date. We need at least 7 days to complete your task of type "Essay".</value>
+    <value>Check your Completion Date. We need at least 7 days to complete your task of type \"Essay\".</value>
   </data>
   <data name="FinishDateErrorOrdinary" xml:space="preserve">
-    <value>Check your Completion Date. We need at least 3 days to complete your task of type "Ordinary Assignment".</value>
+    <value>Check your Completion Date. We need at least 3 days to complete your task of type \"Ordinary Assignment\".</value>
   </data>
   <data name="Header" xml:space="preserve">
     <value>Add order</value>

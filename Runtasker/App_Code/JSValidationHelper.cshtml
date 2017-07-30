@@ -21,6 +21,8 @@
 
         }
 
+
+
         function MakeFormError(propName) {
 
             console.log("Показать ошибку", propName);
@@ -83,6 +85,14 @@
             console.log("Скрыть ошибку", propName);
 
             HideObject(propName + "@PropertyNameHelper.ErrorTextAddition");
+
+        }
+
+        function ShowError(propName) {
+
+            console.log("Показать ошибку", propName);
+
+            ShowObject(propName + "@PropertyNameHelper.ErrorTextAddition");
 
         }
 
@@ -168,10 +178,7 @@
         {
             var propertyResult = true;
 
-            if (jsProp["CheckingScripts"].length == 0)
-            {
-                return true;
-            }
+            
 
             for (var i = 0; i < jsProp["CheckingScripts"].length; i++)
             {

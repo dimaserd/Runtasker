@@ -70,12 +70,12 @@
         
         
         <!--FilesUpload-->
-        <div class="form-group">
-            @Html.LabelFor(model => model.FileUpload, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
+        <div id="@PropertyNameHelper.GetIdForForm("FileUpload")" class="form-group">
+            @Html.LabelFor(model => model.FileUpload, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+            <div class="col-md-10 col-sm-10">
                 <p>
                     <div class='input-group'>
-                        @Html.TextBoxFor(model => model.FileUpload, htmlAttributes: new { id = "fileUpload", type = "file", multiple = "" })
+                        @Html.TextBoxFor(model => model.FileUpload, htmlAttributes: new { id = PropertyNameHelper.GetIdForInput("FileUpload"), type = "file", multiple = "" })
                         <div class='input-group-btn'>
                             <div class="pull-right">
                                 @Html.PopoverInfoFor(model => model.FileUpload, htmlAttributes: new {@class = "circle"})
@@ -88,7 +88,8 @@
                             </div>
                         </div>
                         </div>
-                </p>              
+                </p> 
+                <p>@Html.GetStrongErrorText(x => x.FileUpload)</p>
             </div>
         </div>
         <!--/FilesUpload-->
@@ -116,6 +117,8 @@
 </div>
 <!--/Back to List/-->
 
+@ModalHelper.GetLoadingModal()
+
 @section scripts
 {
 
@@ -123,10 +126,18 @@
     <script>
         EnableOnChangePropertyValidation("Subject");
         EnableOnChangePropertyValidation("Description");
+        EnableOnChangePropertyValidation("OtherSubject")
     </script>
     
-<script>
+    <script>
 
+        $("#@PropertyNameHelper.GetIdForInput("FinishDate")").change(function (e) {
+            dateAndWorkTypeCheck()
+        });
+
+        $("#@PropertyNameHelper.GetIdForInput("WorkType")").change(function (e) {
+            dateAndWorkTypeCheck()
+        });
 
         function dateAndWorkTypeCheck()
         {
@@ -146,8 +157,8 @@
                     case 0:
                         if (days < 3) {
                             //ShowBigError("@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary");
-                            WriteError("WorkType", "@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary");
-                            WriteError("FinishDate", "@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary");
+                            WriteError("WorkType", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary))");
+                            WriteError("FinishDate", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary))");
                             ShowError("FinishDate");
                             ShowError("WorkType");
 
@@ -165,8 +176,8 @@
                     case 1:
                         if (days < 7) {
 
-                            WriteError("WorkType", "@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorEssay");
-                            WriteError("FinishDate", "@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorEssay");
+                            WriteError("WorkType", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorEssay))");
+                            WriteError("FinishDate", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorEssay))");
                             ShowError("FinishDate");
                             ShowError("WorkType");
                             MakeFormError("WorkType");
@@ -183,9 +194,9 @@
                     case 2:
                         if (days < 30)
                         {
-                            
-                            WriteError("WorkType", "@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorCourseWork");
-                            WriteError("FinishDate", "@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorCourseWork");
+
+                            WriteError("WorkType", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorCourseWork))");
+                            WriteError("FinishDate", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorCourseWork))");
                             ShowError("FinishDate");
                             ShowError("WorkType");
                             MakeFormError("WorkType");
@@ -203,7 +214,7 @@
                         alert('Я таких значений не знаю');
                 }
             }
-</script>
+    </script>
 
     <!--Popover activator-->
     <script>
@@ -218,10 +229,10 @@
         {
             popoverBtns.popover('hide');
         }
-        
+
     </script>
     <!--/Tooltip activator-->
-    
+
     <!--DateTimePicker-->
     @Html.GetDateTimeScriptsAndStyles()
     @ViewExtensions.GetDateTimeScriptsAndStyles(dateTimePickerId: PropertyNameHelper.GetIdForInput("FinishDate"), pickTime: false)
@@ -249,48 +260,23 @@
     </script>
     <!--/Date Scripts-->
 
-    
 
-    <!--SendOrderScripts-->    
+
+    <!--SendOrderScripts-->
     <script>
         function CreateBtnHandler()
         {
             if (ValidateModel())
             {
-                CheckDaysForWorkType();
+                if (dateAndWorkTypeCheck())
+                {
+                    ShowHideModal();
+                    document.getElementById("realCreate").click();
+                }
             }
         }
     </script>
     <!--/SendOrderScripts-->
 
-    
 
-    <!--Restore Condition Scripts-->
-    <script>
-        console.log("restore");
-
-        var userSubjectForm = $('#userSubjectForm');
-        var subjectList = $("#subjectList");
-
-        var RestoreCondition = function()
-        {
-            console.log(@whichSubject);
-            if(@whichSubject == (0))
-            {
-                ShowObject(userSubjectForm);
-            }
-            if(@whichSubject != -1)
-            {
-                subjectList.get(0).selectedIndex = @whichSubject;
-            }
-
-
-        }();
-    </script>
-    <!--/Restore Condition Scripts-->
-
-    <!--Скрипты по умолчанию для предмета-->
-    @*@OrderScripts.GetDefaultSubjectScripts()*@
-    <!--/Скрипты по умолчанию для предмета-->
-    
 }

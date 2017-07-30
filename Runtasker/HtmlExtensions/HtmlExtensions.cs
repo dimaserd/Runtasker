@@ -100,7 +100,7 @@ namespace Runtasker.HtmlExtensions
 
             sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(GetNameFromProperty(html, expression))}\" class=\"form-group\">");
 
-            sb.Append(html.LabelFor(expression).ToString().WrapToHtmlTag("div", new { @class = "col-md-2 col-sm-2" }));
+            sb.Append(html.LabelFor(expression).ToString().WrapToHtmlTag("div", new { @class = "col-md-2 col-sm-2 control-label" }));
 
             sb.Append("<div class=\"col-md-10 col-sm-10\">");
 
@@ -119,8 +119,7 @@ namespace Runtasker.HtmlExtensions
                 sb.Append(html.PopoverInfoFor(expression).ToString().WrapToHtmlTag("div", new { @class = "input-group-btn"}));
             }
 
-            sb.Append(html.GetStrongErrorText(expression));
-
+            
             sb.Append("</div>")
             .Append(GetStrongErrorText(html, expression).ToString().WrapToHtmlTag("p"))
             .Append("</div>")
@@ -138,7 +137,7 @@ namespace Runtasker.HtmlExtensions
 
             sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(GetNameFromProperty(html, expression))}\" class=\"form-group\">");
 
-            sb.Append(html.LabelFor(expression).ToString().WrapToHtmlTag("div", new { @class = "col-md-2 col-sm-2" }));
+            sb.Append(html.LabelFor(expression).ToString().WrapToHtmlTag("div", new { @class = "col-md-2 col-sm-2 control-label" }));
 
             sb.Append("<div class=\"col-md-10 col-sm-10\">");
 
@@ -180,9 +179,9 @@ namespace Runtasker.HtmlExtensions
             sb.Append(" >");
 
 
-            sb.Append(html.LabelFor(expression).ToString().WrapToHtmlTag("div", new { @class = "control-label col-md-2" }))
+            sb.Append(html.LabelFor(expression).ToString().WrapToHtmlTag("div", new { @class = "control-label col-md-2 col-sm-2" }))
 
-            .Append("<div class='col-md-10'>");
+            .Append("<div class='col-md-10 col-sm-10'>");
 
             sb.Append("<div class=\"input-group\">");
 

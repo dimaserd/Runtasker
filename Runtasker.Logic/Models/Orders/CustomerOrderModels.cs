@@ -65,7 +65,11 @@ namespace Runtasker.Logic.Models
             //получаю вложение для созданного заказа
             Attachment attachment = AttachmentExtensions.GetAttachmentFromFiles(orderModel.FileUpload);
 
-            attachment.Type = AttachmentType.OrderFiles;
+            if(attachment != null)
+            {
+                attachment.Type = AttachmentType.OrderFiles;
+            }
+            
 
             return new Order
             {
@@ -76,7 +80,7 @@ namespace Runtasker.Logic.Models
                 WorkType = orderModel.WorkType,
                 Subject = orderModel.Subject,
                 //вкладываю в заказ вложения
-                Attachments = new List<Attachment> { attachment},
+                Attachments = ( (attachment != null)? new List<Attachment> { attachment} : null),
                 OtherSubject = orderModel.OtherSubject,
                 UserGuid = userGuid,
                 PerformerGuid = userGuid,

@@ -12,7 +12,7 @@ namespace Common.JavascriptValidation.Attributes
         /// <summary>
         /// Скрипт который будет выполнен при значении, указанном в Value
         /// </summary>
-        public string OnVakueScript { get; set; }
+        public string OnValueScript { get; set; }
 
         /// <summary>
         /// Скрипт который будет выполнен в остальных случаях,

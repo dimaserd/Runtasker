@@ -16,7 +16,9 @@ namespace Runtasker.Logic.Models
         [Required(ErrorMessage = "ERROR")]
         [Display(Name = "Subject", ResourceType = typeof(CreateOrder))]
         [PopoverInfo(typeof(CreateOrder), resourceName: "SubjectPopoverInfo")]
-        [JsOnValue(Value = "0", Script = " ShowObject(\"OtherSubjectForm\") ")]
+        [JsOnValueWithElse(Value = "0",
+            OnValueScript = " ClearPropertyInput(\"OtherSubject\"); ShowObject(\"OtherSubjectForm\"); ",
+            OnElseScript = " HideObject(\"OtherSubjectForm\"); SetValueForInput(\"OtherSubject\", \"selected\")")]
         public Subject Subject { get; set; }
 
         [Required(ErrorMessage = "WORKTYPE ERROR")]
@@ -51,7 +53,7 @@ namespace Runtasker.Logic.Models
     }
 
     /// <summary>
-    /// Статический класс инкапсулирующий некоторые методы для работы с сущность заказа
+    /// Статический класс инкапсулирующий некоторые методы для работы с сущностью создания заказа
     /// </summary>
     public static class OrderCreateModelExtensions
     {

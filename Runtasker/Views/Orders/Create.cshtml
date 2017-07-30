@@ -102,7 +102,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button id="fakeCreate" type="button" class="btn-lg btn btn-primary">
+                <button onclick="CreateBtnHandler()" type="button" class="btn-lg btn btn-primary">
                     @localeModel["CreateOrder"]
                 </button>
             </div>
@@ -125,7 +125,9 @@
 {
 
     @JSValidationHelper.GetDich(jsObject)
-
+    <script>
+        EnableOnChangePropertyValidation("Subject");
+    </script>
     
 
     <!--Popover activator-->
@@ -150,9 +152,16 @@
     @ViewExtensions.GetDateTimeScriptsAndStyles(dateTimePickerId: PropertyNameHelper.GetIdForInput("FinishDate"), pickTime: false)
     <!--/DateTimePicker-->
 
-    <!--Other Subject Scripts-->
-    @OrderScripts.GetSubjectCheckers(localeModel)
-    <!--/Other Subject Scripts-->
+    <script>
+        var subjectList = document.getElementById("Subject" + "@PropertyNameHelper.InputAddition");
+        var opts = subjectList.options.length;
+        for (var i = 0; i < opts; i++) {
+            if (subjectList.options[i].value.toString() == "1") {
+                subjectList.options[i].selected = true;
+                break;
+            }
+        }
+    </script>
 
     <!--Date Scripts-->
     @ViewExtensions.GetDateParseScripts()
@@ -169,41 +178,10 @@
 
     <!--SendOrderScripts-->    
     <script>
-        var realCreate = $('#realCreate');
-        var fakeCreate = $('#fakeCreate');
-        var hiddenSubject = $('#hiddenSubject');
-        var otherSubject = $('#OtherSubject');
-        var myForm = $('#myForm');
-        var uploadProgress = $('#uploadProgress');
-
-
-
-        fakeCreate.click(function(){
-
-            if (subjectList.val() != 0)
-            {
-                otherSubject.val("Selected");
-            }
-
-            if(hasFilesToUpload())
-            {
-                console.log("has files");
-                uploadProgress.removeClass('hidden');
-            }
-
-            var count = 0;
-            //logging
-            
-            count = (CheckOtherSubject()) ? count + 1 : count;
-            count = (dateAndWorkTypeCheck()) ? count + 1 : count;
-            count = (CheckDescription()) ? count + 1 : count;
-
-            if (count == 3) {
-                realCreate.click();
-            }
-
-            
-        });
+        function CreateBtnHandler()
+        {
+            ValidateModel();
+        }
     </script>
     <!--/SendOrderScripts-->
 

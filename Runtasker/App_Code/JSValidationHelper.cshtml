@@ -96,6 +96,16 @@
 
         console.log(JsModelObject);
 
+        function ClearPropertyInput(propertyName)
+        {
+            SetValueForInput(propertyName, value);
+        }
+
+        function SetValueForInput(propertyName, value)
+        {
+            document.getElementById(propertyName + "@PropertyNameHelper.InputAddition").value = value;
+        }
+
         function OnChangeForProperty(jsProp)
         {
             var script = new Function(jsProp["OnValueChangedHandler"]);

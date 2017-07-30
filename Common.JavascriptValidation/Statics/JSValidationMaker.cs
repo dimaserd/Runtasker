@@ -140,6 +140,10 @@ namespace Common.JavascriptValidation.Statics
                 {
                     DefaultScripts.Add(GetHideByDefaultScript(propertyName, attr as HideByDefaultAttribute));
                 }
+                else if (attr is JsOnValueWithElseAttribute)
+                {
+                    OnChangeHalfScripts.Add(GetJsOnValueWithElseHalfScript(propertyName, attr as JsOnValueWithElseAttribute));
+                }
                 else if(attr is JsOnValueBaseAttribute)
                 {
                     OnChangeHalfScripts.Add(GetJsOnValueHalfScript(propertyName, attr as JsOnValueBaseAttribute));
@@ -188,6 +192,26 @@ namespace Common.JavascriptValidation.Statics
 
 
         #region Получение функции по атрибуту
+        private static string GetJsOnValueWithElseHalfScript(string propName, JsOnValueWithElseAttribute attr)
+        {
+            StringBuilder sb = new StringBuilder();
+
+
+            sb.Append($" if(value === \"{attr.Value}\")  ")
+            .Append("{")
+            .Append(" console.log(\"Попадание в условие!\"); ")
+            .Append($" {attr.OnValueScript} ")
+            .Append("}")
+            .Append("else")
+            .Append("{")
+            .Append($" {attr.OnElseScript} ")
+            .Append("}");
+
+
+            return sb.ToString();
+        }
+
+
 
         /// <summary>
         /// Часть джаваскрипт функции 

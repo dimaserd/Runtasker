@@ -101,3 +101,8 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Relea
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Release\roslyn\vbc.rsp
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Release\roslyn\VBCSCompiler.exe
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Release\roslyn\VBCSCompiler.exe.config
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Release\ru\System.Web.Mvc.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Release\ru\System.Web.Razor.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Release\ru\System.Web.WebPages.Razor.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Release\ru\System.Web.WebPages.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Release\ru\System.Web.WebPages.Deployment.resources.dll

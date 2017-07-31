@@ -324,3 +324,11 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\JetBrains.Annotati
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\AngleSharp.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\JetBrains.Annotations.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\DocumentFormat.OpenXml.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\Common.JavascriptValidation.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\Common.JavascriptValidation.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\ru\System.Web.Helpers.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\ru\System.Web.Mvc.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\ru\System.Web.Razor.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\ru\System.Web.WebPages.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\ru\System.Web.WebPages.Deployment.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\ru\System.Web.WebPages.Razor.resources.dll

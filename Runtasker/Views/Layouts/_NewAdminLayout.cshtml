@@ -113,7 +113,7 @@
     <!-- WRAPPER -->
     <div id="wrapper">
         <div class="container">
-            <section class="container">
+            <section>
                 @{ Html.RenderAction("Modal", "Message");}
 
                 <div id="notification-wrapper"></div>
@@ -155,7 +155,7 @@
 
                     </div>
                     <!--Конец боковой панели-->
-                    <div class="col-sm-9 col-md-10 main">
+                    <div class="col-sm-9 col-md-10">
                         @RenderBody()
                     </div>
                     

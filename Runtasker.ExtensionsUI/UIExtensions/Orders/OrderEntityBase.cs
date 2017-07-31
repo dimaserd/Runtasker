@@ -35,7 +35,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         
         string GetDataStatus()
         {
-           return $"data-status='{Order.Status.GetActiveStatus()}'";
+           return $"data-status='{Order.Status.GetActiveStatus()}' data-orderstatus='{Order.Status.ToString()}'";
         }
         
 

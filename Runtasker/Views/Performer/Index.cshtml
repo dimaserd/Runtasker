@@ -2,6 +2,7 @@
 @using Runtasker.Logic.Entities
 @using HtmlExtensions.StaticRenderers
 @using Extensions.String
+@using Extensions.Enumerations
 @model List<Order>
 @{
     ViewBag.Title = "Index";
@@ -12,29 +13,36 @@
 <div class="row">
     <h1>Заказы на сайте</h1>
 
-    <!--Sort Panel-->
-    <div class="pull-right">
-        <div class="btn-group">
-            <ul class="pager">
-                <li>
-                    <a href="#" class="btn btn-default btn-filter" data-target="active">
-                        Активные @GISigns.Count(Model.Count(o => o.Status.GetActiveStatus() == "active")).ToHtml()
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="btn btn-default btn-filter" data-target="finished">
-                        Завершенные @GISigns.Count(Model.Count(o => o.Status.GetActiveStatus() == "finished")).ToHtml()
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="btn active btn-default btn-filter" data-target="all">
-                        Все @GISigns.Count(Model.Count()).ToHtml()
-                    </a>
-                </li>
-            </ul>
+    <div class="row">
+        <!--Sort Panel-->
+        <div class="pull-right">
+            <div class="btn-group">
+                <ul class="pager">
+                    @foreach (OrderStatus status in Enum.GetValues(typeof(OrderStatus)))
+                    {
+                        int count = Model.Count(x => x.Status == status);
+
+                        if (count > 0)
+                        {
+                            <li>
+                                <a href="#" class="btn active btn-default btn-filter" data-orderStatus="@status.ToString()">
+                                    @status.ToDisplayName() @GISigns.Count(count).ToHtml()
+                                </a>
+                            </li>
+                        }
+                    }
+
+                    <li>
+                        <a href="#" class="btn active btn-default btn-filter" data-orderStatus="all">
+                            Все @GISigns.Count(Model.Count()).ToHtml()
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
+        <!--/Sort Panel-->
     </div>
-    <!--/Sort Panel-->
+    
 </div>
 
 @Styles.Render("~/OrdersList")
@@ -88,14 +96,14 @@
             var filterBtns = $('.btn-filter');
 
             filterBtns.on('click', function () {
-                var $target = $(this).data('target');
+                var $target = $(this).data('orderstatus');
 
                 filterBtns.removeClass('active');
                 $(this).addClass('active');
 
                 if ($target != 'all') {
                     $('.bs-calltoaction').css('display', 'none');
-                    $('.bs-calltoaction[data-status="' + $target + '"]').fadeIn('slow');
+                    $('.bs-calltoaction[data-orderstatus="' + $target + '"]').fadeIn('slow');
                 } else {
                     $('.bs-calltoaction').css('display', 'none').fadeIn('slow');
                 }

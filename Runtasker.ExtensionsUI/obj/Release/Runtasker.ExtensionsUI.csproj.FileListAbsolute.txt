@@ -200,3 +200,10 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Relea
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\roslyn\System.Xml.XPath.XDocument.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\AngleSharp.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\AngleSharp.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\Common.JavascriptValidation.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\Common.JavascriptValidation.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\ru\System.Web.Mvc.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\ru\System.Web.Razor.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\ru\System.Web.WebPages.Razor.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\ru\System.Web.WebPages.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Release\ru\System.Web.WebPages.Deployment.resources.dll

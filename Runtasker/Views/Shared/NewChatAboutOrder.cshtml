@@ -45,25 +45,33 @@
     string downloadFilesText = "Скачать файлы";
 
     string colorCode = "#334faf";
+
+
+}
+
+@{ 
+    string spanCollapseId = "spanCollapse";
+    string unCollapsedClass = "glyphicon-chevron-down";
+    string collapsedClass = "glyphicon-chevron-up";
 }
 
 @Styles.Render("~/Chat")
 
 <!--Chat Body-->
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style="padding-left:2px!important;padding-right:2px!important">
             <div class="panel panel-primary">
                 <div class="panel-heading" style="background-color:@colorCode" id="accordion">
                     <span class="glyphicon glyphicon-comment"></span> @chatWithAboutOrder.ToHtml()
                     <div class="btn-group pull-right">
                         <button id="chevron-down" class="btn btn-default btn-xs">
-                            <span class="glyphicon glyphicon-chevron-down"></span>
+                            <span id="@spanCollapseId" class="glyphicon glyphicon-chevron-down"></span>
                         </button>
                     </div>
                 </div>
                 <div class="panel-collapse collapse" id="collapseOne">
                     <div id="chatbody" class="chatContent" style="border: @colorCode 2px solid;">
-                        <ul class="chat" id="@chatListId">
+                        <ul class="chat" id="@chatListId" style="padding-left:2px!important;padding-right:2px!important">
                             @if (messages != null)
                             {
                                 foreach (Message m in messages)
@@ -143,13 +151,32 @@
             else {
                 chatHidden = !chatHidden;
             }
+            ShowHideSpanChanger(chatHidden);
+        }
+
+        function ShowHideSpanChanger(isChatHidden)
+        {
+            var span = document.getElementById("@spanCollapseId");
+
+            if (isChatHidden)
+            {
+                span.classList.remove("@collapsedClass");
+                span.classList.add("@unCollapsedClass");
+
+            }
+            else
+            {
+
+                span.classList.remove("@unCollapsedClass");
+                span.classList.add("@collapsedClass");
+            }
         }
 
         $('#chevron-down').on('click', function (e) {
             ShowHideChatBody();
         })
 
-    //проматывает список вниз 
+    //проматывает список вниз
         function scrollDownChatBody(duration) {   //stop()
             $('#chatbody').stop().animate({
                 scrollTop: $('#chatbody')[0].scrollHeight,

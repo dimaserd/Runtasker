@@ -119,3 +119,9 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\roslyn\Sy
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\roslyn\System.Xml.XPath.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\roslyn\System.Xml.XPath.XDocument.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\DocumentFormat.OpenXml.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\ru\System.Web.Helpers.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\ru\System.Web.Mvc.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\ru\System.Web.Razor.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\ru\System.Web.WebPages.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\ru\System.Web.WebPages.Deployment.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Release\ru\System.Web.WebPages.Razor.resources.dll

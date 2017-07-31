@@ -303,7 +303,7 @@ namespace Runtasker.Logic.Entities
         /// <param name="attachment"></param>
         /// <param name="files"></param>
         /// <returns></returns>
-        public static Attachment AddFilesToAttachment(this Attachment attachment, IEnumerable<HttpPostedFileBase> files, int? orderId = null)
+        public static Attachment AddFilesToAttachment(this Attachment attachment, IEnumerable<HttpPostedFileBase> files)
         {
             ClearTempDirectories();
 
@@ -320,10 +320,7 @@ namespace Runtasker.Logic.Entities
             {
                 attachment = GetAttachmentFromDirectoryPath(SecondTempDirectory);
 
-                if(orderId != null)
-                {
-                    attachment.OrderId = orderId.Value;
-                }
+                
 
                 return attachment;
             }

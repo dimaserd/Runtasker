@@ -334,7 +334,7 @@ namespace Runtasker.Controllers
 
             ViewData["receiverName"] = OrderMesWorker.GetChatterName();
             ViewData["toGuid"] = OrderMesWorker.GetUserGuidToChat();
-            ViewData["orderId"] = id.ToString();
+            ViewData["orderId"] = id;
 
             IEnumerable<Message> model = OrderMesWorker.GetMessagesAboutOrder();
 

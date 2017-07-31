@@ -2,8 +2,10 @@
 @using HtmlExtensions.StaticRenderers
 @using Extensions.String
 @using Runtasker.LocaleBuilders.Models
+@using Common.JavascriptValidation.Statics
+@using Runtasker.Logic.Models
 
-@model Runtasker.Logic.Models.OrderCreateModel
+@model OrderCreateModel
 @{
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
     ViewBag.Title = localeModel["Title"];
@@ -22,6 +24,8 @@
 
     //for datetime picker
     string langCode = StaticHtmlClassesHelper.GetLangCode();
+
+    string jsObject = JSValidationMaker.GetJSValidationObject(typeof(OrderCreateModel));
 }
 
 
@@ -55,73 +59,23 @@
         @Html.ValidationErrorsToAlerts()
         @Html.AntiForgeryToken()
 
-        <div id="bigError" class="alert alert-danger">
-            <i class="fa fa-frown-o"></i>
-            <strong id="bigErrorText"></strong>
-        </div>
-
-        <!--WorkTypeList-->
-        <div class="form-group" id="WorkTypeForm">
-            @Html.LabelFor(model => model.WorkType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                <div class="input-group">
-                    @Html.DropDownListFor(m => m.WorkType, workTypes, htmlAttributes: new { id="WorkTypeField",  @class = "form-control" })
-                    <div class="input-group-btn">
-                        @Html.PopoverInfoFor(model => model.WorkType)
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/WorkTypeList-->
-
-        <!--SubjectsList-->
-        <div id="SubjectForm" class="form-group">
-            @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                <div class="input-group">
-                    @Html.DropDownListFor(m => m.Subject, selectList: subjects, htmlAttributes: new {id = "subjectList", @class = "form-control" })
-                    <div class="input-group-btn">
-                        @Html.PopoverInfoFor(model => model.Subject)
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/SubjectList-->
-
-        <!--UserSubjectForm-->
-        <div class="form-group" id="OtherSubjectForm">
-            @Html.LabelFor(model => model.OtherSubject, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                <div class="input-group">
-                    @Html.TextBoxFor(m => m.OtherSubject, htmlAttributes: new { id = "OtherSubject", @class = "form-control" })
-                    <div class="input-group-btn">
-                        @Html.PopoverInfoFor(m => m.OtherSubject)
-                    </div>
-                </div>
-                <p id="OtherSubjectError" class="text-danger">
-
-                </p>
-            </div>
-        </div>
-        <!--/UserSubjectForm-->
         
-        <!--DateTime Picker-->
-        <div class="form-group" id="DateForm">
-            @Html.LabelFor(model => model.FinishDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="date col-md-5">
-                <!--input-group date-->
-                <input type="date" class="form-control"  id="datetimepicker1" name="FinishDate" />
-            </div>
-        </div>
-        <!--End of DateTimePicker-->
+        @Html.LabelAndDropDownListFor(x => x.WorkType, workTypes, showPopover: true)
+        
+        @Html.LabelAndDropDownListFor(x => x.Subject, selectList: subjects, showPopover: true)
+        
+        @Html.LabelAndTextBoxFor(x => x.OtherSubject, showPopover: true)
+
+        @Html.LabelAndDateTimePickerFor(x => x.FinishDate, showPopover: true)
+        
         
         <!--FilesUpload-->
-        <div class="form-group">
-            @Html.LabelFor(model => model.FileUpload, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
+        <div id="@PropertyNameHelper.GetIdForForm("FileUpload")" class="form-group">
+            @Html.LabelFor(model => model.FileUpload, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+            <div class="col-md-10 col-sm-10">
                 <p>
                     <div class='input-group'>
-                        @Html.TextBoxFor(model => model.FileUpload, htmlAttributes: new { id = "fileUpload", type = "file", multiple = "" })
+                        @Html.TextBoxFor(model => model.FileUpload, htmlAttributes: new { id = PropertyNameHelper.GetIdForInput("FileUpload"), type = "file", multiple = "" })
                         <div class='input-group-btn'>
                             <div class="pull-right">
                                 @Html.PopoverInfoFor(model => model.FileUpload, htmlAttributes: new {@class = "circle"})
@@ -134,31 +88,17 @@
                             </div>
                         </div>
                         </div>
-                </p>              
+                </p> 
+                <p>@Html.GetStrongErrorText(x => x.FileUpload)</p>
             </div>
         </div>
         <!--/FilesUpload-->
 
-        <!--Decription-->
-        <div class="form-group" id="DescriptionForm">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                @Html.TextAreaFor(model => model.Description,
-                    htmlAttributes : new { @class = "form-control",
-                        rows = "3",
-                        id = "DescriptionField",
-                        placeholder = localeModel["DescriptionPlaceholder"] } )
-                @Html.ValidationMessageFor(model => model.Description, "", new { id = "descriptionError", @class = "text-danger" })
-                <p id="DescriptionError" class="text-danger">
-
-                </p>
-            </div>
-        </div>
-        <!--/Description-->
+        @Html.LabelAndTextAreaFor(x => x.Description)
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button id="fakeCreate" type="button" class="btn-lg btn btn-primary">
+                <button onclick="CreateBtnHandler()" type="button" class="btn-lg btn btn-primary">
                     @localeModel["CreateOrder"]
                 </button>
             </div>
@@ -167,19 +107,8 @@
     </div>
 }
 
-<!--Upload Progress Bar-->
-<div class="row">
-    <div id="uploadProgress" class="hidden col-md-5">
-        <div class="row">
-            <p class="h4">@localeModel["FileUploading"]</p>
-            @FASigns.CircleONotch.X2().Animate().ToHtml()
-        </div>
-    </div>
-</div>
-<!--/Upload Progress Bar-->
-
 <!---->
-<hr/>
+<hr class="half-margins"/>
 <!--Back to List-->
 <div>
     <a href="@Url.Action("Index", "Orders")" class="btn btn-default">
@@ -188,17 +117,104 @@
 </div>
 <!--/Back to List/-->
 
+@ModalHelper.GetLoadingModal()
+
 @section scripts
 {
-    <!--Defaults-->
+
+    @JSValidationHelper.GetDich(jsObject)
     <script>
-        var defaults = function () {
-            console.log($("#subjectList").get(0).selectedIndex);
-            $("#subjectList").get(0).selectedIndex = 0;
-            
-        }();
+        EnableOnChangePropertyValidation("Subject");
+        EnableOnChangePropertyValidation("Description");
+        EnableOnChangePropertyValidation("OtherSubject")
     </script>
-    <!--/Defaults-->
+    
+    <script>
+
+        $("#@PropertyNameHelper.GetIdForInput("FinishDate")").change(function (e) {
+            dateAndWorkTypeCheck()
+        });
+
+        $("#@PropertyNameHelper.GetIdForInput("WorkType")").change(function (e) {
+            dateAndWorkTypeCheck()
+        });
+
+        function dateAndWorkTypeCheck()
+        {
+            var days = parseInt(daydiff(parseDate(document.getElementById("@PropertyNameHelper.GetIdForInput("FinishDate")").value)))
+            var workType = parseInt(document.getElementById("@PropertyNameHelper.GetIdForInput("WorkType")").value);
+
+            return CheckDaysForWorkType(days, workType)
+        }
+
+
+        function CheckDaysForWorkType(days, workType)
+        {
+            console.log("days : " + days + " workType : " + workType);
+
+
+                switch (workType) {
+                    case 0:
+                        if (days < 3) {
+                            //ShowBigError("@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary");
+                            WriteError("WorkType", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary))");
+                            WriteError("FinishDate", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary))");
+                            ShowError("FinishDate");
+                            ShowError("WorkType");
+
+                            MakeFormError("WorkType");
+                            MakeFormError("FinishDate");
+                            return false;
+                        }
+                        else
+                        {
+                            MakeFormSuccess("WorkType");
+                            MakeFormSuccess("FinishDate");
+                            return true;
+                        }
+                        break;
+                    case 1:
+                        if (days < 7) {
+
+                            WriteError("WorkType", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorEssay))");
+                            WriteError("FinishDate", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorEssay))");
+                            ShowError("FinishDate");
+                            ShowError("WorkType");
+                            MakeFormError("WorkType");
+                            MakeFormError("FinishDate");
+                            return false;
+                        }
+                        else
+                        {
+                            MakeFormSuccess("WorkType");
+                            MakeFormSuccess("FinishDate");
+                            return true;
+                        }
+                        break;
+                    case 2:
+                        if (days < 30)
+                        {
+
+                            WriteError("WorkType", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorCourseWork))");
+                            WriteError("FinishDate", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorCourseWork))");
+                            ShowError("FinishDate");
+                            ShowError("WorkType");
+                            MakeFormError("WorkType");
+                            MakeFormError("FinishDate");
+                            return false;
+                        }
+                        else
+                        {
+                            MakeFormSuccess("WorkType");
+                            MakeFormSuccess("FinishDate");
+                            return true;
+                        }
+                        break;
+                    default:
+                        alert('Я таких значений не знаю');
+                }
+            }
+    </script>
 
     <!--Popover activator-->
     <script>
@@ -213,18 +229,25 @@
         {
             popoverBtns.popover('hide');
         }
-        
+
     </script>
     <!--/Tooltip activator-->
-    
+
     <!--DateTimePicker-->
     @Html.GetDateTimeScriptsAndStyles()
-    @ViewExtensions.GetDateTimeScriptsAndStyles()
+    @ViewExtensions.GetDateTimeScriptsAndStyles(dateTimePickerId: PropertyNameHelper.GetIdForInput("FinishDate"), pickTime: false)
     <!--/DateTimePicker-->
 
-    <!--Other Subject Scripts-->
-    @OrderScripts.GetSubjectCheckers(localeModel)
-    <!--/Other Subject Scripts-->
+    <script>
+        var subjectList = document.getElementById("Subject" + "@PropertyNameHelper.InputAddition");
+        var opts = subjectList.options.length;
+        for (var i = 0; i < opts; i++) {
+            if (subjectList.options[i].value.toString() == "1") {
+                subjectList.options[i].selected = true;
+                break;
+            }
+        }
+    </script>
 
     <!--Date Scripts-->
     @ViewExtensions.GetDateParseScripts()
@@ -237,119 +260,23 @@
     </script>
     <!--/Date Scripts-->
 
-<!--Validation Coloring And Error Showing-->
-@OrderScripts.GetValidationColoringAndErrorShowing()
-<!--/Validation Coloring And Error Showing-->
 
-<!--Big Error Scripts-->
-@OrderScripts.GetBigErrorScripts()
-<!--/Big Error Scripts-->
 
-<!--Подготовительные скрипты по закрашиванию полей-->
-@OrderScripts.GetPreparingScripts()
-<!--/Подготовительные скрипты по закрашиванию полей-->
-
-<!--Обработчики имени и эмейла-->
-@OrderScripts.GetEmailHandler(localeModel)
-<!--/Обработчики имени и эмейла-->
-
-<!--Обработчики даты и типа работы-->
-@OrderScripts.GetDateAndWorkTypeHandlers()
-<!--/Обработчики даты и типа работы-->
-
-<!--Обработчики описания-->
-@OrderScripts.GetDescriptionHandlers(localeModel)
-<!--/Обработчики описания-->
-
-    <!--SendOrderScripts-->    
+    <!--SendOrderScripts-->
     <script>
-        var realCreate = $('#realCreate');
-        var fakeCreate = $('#fakeCreate');
-        var hiddenSubject = $('#hiddenSubject');
-        var otherSubject = $('#OtherSubject');
-        var myForm = $('#myForm');
-        var uploadProgress = $('#uploadProgress');
-
-
-
-        fakeCreate.click(function(){
-
-            if (subjectList.val() != 0)
+        function CreateBtnHandler()
+        {
+            if (ValidateModel())
             {
-                otherSubject.val("Selected");
+                if (dateAndWorkTypeCheck())
+                {
+                    ShowHideModal();
+                    document.getElementById("realCreate").click();
+                }
             }
-
-            if(hasFilesToUpload())
-            {
-                console.log("has files");
-                uploadProgress.removeClass('hidden');
-            }
-
-            var count = 0;
-            //logging
-            
-            count = (CheckOtherSubject()) ? count + 1 : count;
-            count = (dateAndWorkTypeCheck()) ? count + 1 : count;
-            count = (CheckDescription()) ? count + 1 : count;
-
-            if (count == 3) {
-                realCreate.click();
-            }
-
-            
-        });
+        }
     </script>
     <!--/SendOrderScripts-->
 
-    <!--Files uploading Scripts-->
-    <script>
-        var bar = $('.bar');
-        var percent = $('.percent');
-        var progressBar = $('.progress-bar');
-        var uploadProgress = $('#uploadProgress');
 
-
-
-        function progressBarChanger(percentComplete)
-        {
-            progressBar.attr('aria-valuenow', percentComplete);
-            progressBar.html(percentComplete + '%');
-            progressBar.attr('style', 'width: ' + percentComplete + '%;')
-        }
-
-        function hasFilesToUpload()
-        {
-            return (document.getElementById('fileUpload').files.length > 0);
-        }
-    </script>
-    <!--/Files uploading Scripts-->
-
-    <!--Restore Condition Scripts-->
-    <script>
-        console.log("restore");
-
-        var userSubjectForm = $('#userSubjectForm');
-        var subjectList = $("#subjectList");
-
-        var RestoreCondition = function()
-        {
-            console.log(@whichSubject);
-            if(@whichSubject == (0))
-            {
-                ShowObject(userSubjectForm);
-            }
-            if(@whichSubject != -1)
-            {
-                subjectList.get(0).selectedIndex = @whichSubject;
-            }
-
-
-        }();
-    </script>
-    <!--/Restore Condition Scripts-->
-
-    <!--Скрипты по умолчанию для предмета-->
-    @OrderScripts.GetDefaultSubjectScripts()
-    <!--/Скрипты по умолчанию для предмета-->
-    
 }

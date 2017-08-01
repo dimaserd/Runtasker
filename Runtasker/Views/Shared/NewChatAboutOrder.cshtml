@@ -277,165 +277,72 @@
     {
         var li = document.createElement("li");
 
-        li.id = message.MessageId;
+        li.id = message.Id;
 
-        //если сообщение отправленное
-        if (document.getElementById("senderId").value == message.SenderId)
-        {
-            li.className = "@messageClass right clearfix";
-        }
-        else
-        {
-            li.className = "@messageClass left clearfix";
-        }
-
-        li.appendChild(GetAvatarImgInSpan(message));
-
-        li.appendChild(GetMessageDiv(message));
-
-        return li;
-
-    }
-
-    function GetAvatarImgInSpan(message)
-    {
-        var span = document.createElement("span");
-
-        var img = document.createElement("img");
-
-        //если сообщение отправленное
-        if (document.getElementById("senderId").value == message.SenderId) {
-            span.className = "chat-img pull-right";
-
+        if (IsSender(message)) {
+            li.className = "mes right clearfix";
+            li.innerHTML = GetMessageSenderHtml(message);
         }
         else {
-            span.className = "chat-img pull-left";
+            li.className = "mes left clearfix";
+            li.innerHTML = GetMessageReceiverHtml(message);
         }
 
-
-        img.src = "/File/GetAvatar?userGuid=" + message.SenderId;
-        img.className = "img-circle img-50";
-
-        span.appendChild(img);
-
-        return span;
-
+        return li;
     }
 
-    function GetMessageDiv(message)
-    {
-        var div = document.createElement("div");
-
-        div.className = "chat-body clearfix";
-
-        div.appendChild(GetHeaderDiv(message));
-
-        var p = document.createElement("p");
-
-        //если сообщение отправленное
-        if (document.getElementById("senderId").value == message.SenderId)
-        {
-            p.className = "pull-right";
-        }
-        else
-        {
-            p.className = "pull-left";
-        }
-
-        p.innerText = message.Text;
-
-
-
-        div.appendChild(p);
-
-        
-        if  (message.AttachmentId !== null)
-        {
-            div.appendChild(GetFileLinkInP(message));
-        }
-
-        return div;
-
-    }
-
-    function GetFileLinkInP(message)
-    {
-            var pForLink = document.createElement("p");
-
-            //если сообщение отправленное
-            if (document.getElementById("senderId").value == message.SenderId) {
-                pForLink.className = "pull-left";
-            }
-            else {
-                pForLink.className = "pull-right";
-            }
-
-            fileLink = document.createElement("a");
-            fileLink.href = "/File/Download?id=" + message.AttachmentId;
-
-            var i = document.createElement("i");
-            i.className = "@downloadClassName";
-            fileLink.appendChild(i);
-            fileLink.appendChild(document.createTextNode("@downloadFilesText"));
-
-            pForLink.appendChild(fileLink);
-
-            return pForLink;
-    }
-
-    function GetHeaderDiv(message)
-    {
-        var div = document.createElement("div");
-
-        div.className = "header";
-
-        div.appendChild(GetSmallWithDate(message));
-
-        //<strong class="pull-right primary-font">Dmitry</strong>
-
-        var str = document.createElement("strong");
-
-        //если сообщение отправленное
-        if (document.getElementById("senderId").value == message.SenderId) {
-            str.className = "pull-right primary-font";
-        }
-        else
-        {
-            str.className = "pull-left primary-font";
-        }
-
-        str.innerText = message.SenderName;
-
-
-        div.appendChild(str);
-
-        return div;
-    }
-
-    function GetSmallWithDate(message)
-    {
-        //<small class="text-muted timeSpan">
-        //    <span class="glyphicon glyphicon-time"></span>
-        //    NaN/NaN/NaN
-        //    </small>
-
-        var small = document.createElement("small");
-
-        var span = document.createElement("span");
-
-        span.className = "glyphicon glyphicon-time";
-
-        small.appendChild(span);
-
-        var time = document.createTextNode(message.FormattedDate);
-
-        small.appendChild(time);
-
-
-        return small;
-    }
+    
+    
 </script>
 <!--/Построение сообщений-->
+
+<!--Простое построение сообщений-->
+<script>
+    function IsSender(message)
+    {
+        return document.getElementById("senderId").value == message.SenderId;
+    }
+
+    function GetMessageSenderHtml(message) {
+        var html = 
+            `<span class="chat-img pull-right">` +
+            `<img src="/File/GetAvatar?userGuid=${message.SenderId}" alt="User Avatar" class="img-circle img-50">` +
+            `</span>` +
+            `<div class="chat-body clearfix">` + //нет разницы
+            `<div class="header">` +//нет разницы
+            `<small class="text-muted timeSpan">` +
+            `<span class="glyphicon glyphicon-time"></span>${message.FormattedDate}` +
+            `</small>` +
+            `<strong class="pull-right primary-font">${document.getElementById('senderName').value}</strong>` +
+            `</div>` +
+            `<p class="pull-right">${message.Text}</p>` +
+            `</div>`;
+
+        return html;
+    }
+
+    function GetMessageReceiverHtml(message) {
+        var html = 
+            `<span class="chat-img pull-left">` +
+            `<img src="/File/GetAvatar?userGuid=${message.SenderId}" alt="User Avatar" class="img-circle img-50">` +
+            `</span>` +
+            `<div class="chat-body clearfix">` + //нет разницы
+            `<div class="header">` +//нет разницы
+            `<strong class="primary-font">${document.getElementById('receiverName').value}</strong>` +
+            `<small class="pull-right text-muted timeSpan">` +
+            `<span class="glyphicon glyphicon-time"></span>${message.FormattedDate}` +
+            `</small>` +
+            `</div>` +
+            `<p>${message.Text}</p>` +
+            `</div>`;
+
+        return html;
+    }
+
+</script>
+<!--Отправленное-->
+
+<!---->
 
 <!--Мелкие вспомогательные функции-->
 <script>
@@ -464,7 +371,7 @@
     }
 
     chat.client.onNewMessage = function (data) {
-        console.log(data);
+        console.log("Новое сообщение!", data);
         if (document.getElementById(data.MessageId) == undefined )
         {
             document.getElementById("@chatListId").appendChild(buildMessageForChat(data));

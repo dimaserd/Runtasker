@@ -2,6 +2,7 @@
 using Runtasker.Logic.Entities;
 using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Text;
 
 namespace Runtasker.ExtensionsUI.UIExtensions
@@ -74,30 +75,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions
 
         private string GetTime()
         {
-            string time = "";
-            if ((DateTime.Now - Date).TotalMinutes < 2)
-            {
-                time = "Just now";
-            }
-            else if ((DateTime.Now - Date).TotalHours < 1)
-            {
-                time = $"{Math.Round((DateTime.Now - Date).TotalMinutes)} mins ago";
-            }
-            else if (Date.Day != DateTime.Now.Day)
-            {
-                time = $"Yesterday {Date.Hour}:{Date.Minute}";
-            }
-            else if ((DateTime.Now - Date).TotalHours < 24)
-            {
-                time = $"{Math.Round((DateTime.Now - Date).TotalHours)} hours ago";
-            }
-            else
-            {
-                time = $"{Date.Day}/{Date.Month}/{Date.Year}";
-            }
-
-
-            return time;
+            return Date.ToString("G", new CultureInfo("ru-RU"));
         }
 
         private string GetNickandTimeSpan()
@@ -149,9 +127,19 @@ namespace Runtasker.ExtensionsUI.UIExtensions
             sb.Append(GetStarted())
             .Append(GetImage())
             .Append("</span><div class='chat-body clearfix'><div class='header'>")
-            .Append($"{GetNickandTimeSpan()}</div>")
-            .Append($"<p>{Text}</p>")
-            .Append(GetAttachmentsLink())
+            .Append($"{GetNickandTimeSpan()}</div>");
+            
+            if(Destination == DestinationType.From)
+            {
+                sb.Append($"<p class=\"pull-right\">{Text}</p>");
+            }
+            else
+            {
+                sb.Append($"<p>{Text}</p>");
+            }
+            
+
+            sb.Append(GetAttachmentsLink())
             .Append("</div></li>");
             return sb.ToString();
         }

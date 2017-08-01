@@ -2,6 +2,7 @@
 using Microsoft.AspNet.SignalR.Hubs;
 using Runtasker.Logic;
 using Runtasker.Logic.Models.Messages;
+using System.Globalization;
 using System.Linq;
 
 namespace Runtasker.Hubs
@@ -55,7 +56,10 @@ namespace Runtasker.Hubs
         /// <param name="message"></param>
         public void SendMessageAboutOrder(OrderChatMessage message)
         {
-
+            if(string.IsNullOrEmpty(message.Text))
+            {
+                return;
+            }
             
             //Сохраняю сообщение в базе
             SaveMessageInDb(message);
@@ -130,7 +134,7 @@ namespace Runtasker.Hubs
             Db.Messages.Add(mes);
             Db.SaveChanges();
 
-            message.FormattedDate = mes.Date.ToString("G");
+            message.FormattedDate = mes.Date.ToString("G", new CultureInfo("ru-RU"));
             message.MessageId = mes.Id;
         }
         #endregion

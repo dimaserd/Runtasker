@@ -1,7 +1,8 @@
 ﻿@helper GetLogoLink()
 {
+
     <a class="logo" href="/Home/Index">
-        <span class="glyphicon glyphicon-education"></span>RUNTASKER
+        <span class="glyphicon glyphicon-education"></span><span>RUNTASKER</span>
     </a>
 }
 
@@ -24,13 +25,13 @@
             }
         </style>
         <a id="runtaskerLogo" href="/Home/Index">
-            <img height="@pixels" width="@pixels" src="~/assets/logo/logo.png" />RUNTASKER
+            <img height="@pixels" width="@pixels" src="~/assets/logo/logo.png" /><span>RUNTASKER</span>
         </a>
     }
     else
     {
         <a class="logo" href="/Home/Index">
-            <img height="@pixels" width="@pixels" src="~/assets/logo/logo.png" />RUNTASKER
+            <img height="@pixels" width="@pixels" src="~/assets/logo/logo.png" /><span>RUNTASKER</span>
         </a>
     }
 

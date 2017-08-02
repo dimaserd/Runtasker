@@ -46,7 +46,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions
             Id = message.Id;
             Date = message.Date;
             Text = message.Text;
-            FilesUrl = message.AttachmentId;
+            AttachmentId = message.AttachmentId;
             Status = message.Status;
             
         }
@@ -62,7 +62,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions
 
         DateTime Date { get; set; }
         string Text { get; set; }
-        string FilesUrl { get; set; }
+        string AttachmentId { get; set; }
         int Id { get; set; }
         #endregion
         //возможные косяки
@@ -101,24 +101,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions
             return $"<img src='/File/GetAvatar?userGuid={message.SenderId}' alt='User Avatar' class='img-circle img-50'/>";
         }
 
-        private string GetAttachmentsLink()
-        {
-            if (!string.IsNullOrEmpty(FilesUrl))
-            {
-                if(Destination == DestinationType.From)
-                {
-                    return $"<p class='pull-right'><a href='{FilesUrl}'>Download files<span class='glyphicon glyphicon-cloud-download'></span></a></p>";
-                }
-                else
-                {
-                    return $"<p class='pull-left'><a href='{FilesUrl}'>Download files<span class='glyphicon glyphicon-cloud-download'></span></a></p>";
-                }
-            }
-            else
-            {
-                return null;
-            }
-        }
+        
 
         public override string ToString()
         {
@@ -129,18 +112,21 @@ namespace Runtasker.ExtensionsUI.UIExtensions
             .Append("</span><div class='chat-body clearfix'><div class='header'>")
             .Append($"{GetNickandTimeSpan()}</div>");
             
-            if(Destination == DestinationType.From)
-            {
-                sb.Append($"<p class=\"pull-right\">{Text}</p>");
-            }
-            else
-            {
-                sb.Append($"<p>{Text}</p>");
-            }
+            string textAlignClass = (Destination == DestinationType.To)? "text-left" : "text-right";
             
+            sb.Append(Text.WrapToHtmlTag("p", new { @class = textAlignClass })
+                        .WrapToHtmlTag("div", new { @class = "row", style = "margin-right:2px; margin-left:2px;" }));
 
-            sb.Append(GetAttachmentsLink())
-            .Append("</div></li>");
+            if (!string.IsNullOrEmpty(AttachmentId))
+            {
+                sb.Append("[Скачать]".WrapToHtmlTag("a", new { href = $"/File/Download/{AttachmentId}" })
+                    .WrapToHtmlTag("p", new { @class = textAlignClass })
+                    .WrapToHtmlTag("div", new { @class = "row", style = "margin-right:2px; margin-left:2px;" }));
+            }
+
+
+
+            sb.Append("</div></li>");
             return sb.ToString();
         }
 

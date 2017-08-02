@@ -3,6 +3,7 @@
 @using Extensions.String
 @using Runtasker.HtmlExtensions
 @using Runtasker.LocaleBuilders.Models
+@using Extensions.Decimal
 @model PayHalfModel
 @{
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
@@ -11,7 +12,7 @@
     string sumId = "halfOfOrderSum";
 }
 
-@AlertHelper.GetAlert(localeModel["HelpTextFormat"])
+@AlertHelper.GetAlert(string.Format(localeModel["HelpTextFormat"], Model.RequiredSum.ToMoney(), HtmlSigns.Rouble))
 <!-- PAGE TITLE -->
 <header id="page-title">
     <div class="container">

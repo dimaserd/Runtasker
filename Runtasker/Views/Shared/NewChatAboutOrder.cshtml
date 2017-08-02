@@ -277,14 +277,14 @@
     {
         var li = document.createElement("li");
 
-        li.id = message.Id;
+        li.id = message.MessageId;
 
         if (IsSender(message)) {
             li.className = "mes right clearfix";
             li.innerHTML = GetMessageSenderHtml(message);
         }
         else {
-            li.className = "mes left clearfix";
+            li.className = "mes left clearfix unread";
             li.innerHTML = GetMessageReceiverHtml(message);
         }
 
@@ -304,7 +304,7 @@
     }
 
     function GetMessageSenderHtml(message) {
-        var html = 
+        var html =
             `<span class="chat-img pull-right">` +
             `<img src="/File/GetAvatar?userGuid=${message.SenderId}" alt="User Avatar" class="img-circle img-50">` +
             `</span>` +
@@ -315,14 +315,26 @@
             `</small>` +
             `<strong class="pull-right primary-font">${document.getElementById('senderName').value}</strong>` +
             `</div>` +
-            `<p class="pull-right">${message.Text}</p>` +
+            `<div class="row" style="margin-right:2px;margin-left: 2px;">` +
+            `<p class="text-right">${message.Text}</p>` +
             `</div>`;
+
+        if (message.AttachmentId != null) {
+            html += `<div class="row" style="margin-right:2px;margin-left: 2px;">` +
+                `<p class="text-right"><a href="/File/Download/${message.AttachmentId}">[Скачать файлы]</a></p>` +
+                `</div>`;
+        }
+
+
+        html += `</div>`;
+
+
 
         return html;
     }
 
     function GetMessageReceiverHtml(message) {
-        var html = 
+        var html =
             `<span class="chat-img pull-left">` +
             `<img src="/File/GetAvatar?userGuid=${message.SenderId}" alt="User Avatar" class="img-circle img-50">` +
             `</span>` +
@@ -333,8 +345,18 @@
             `<span class="glyphicon glyphicon-time"></span>${message.FormattedDate}` +
             `</small>` +
             `</div>` +
-            `<p>${message.Text}</p>` +
+            `<div class="row" style="margin-right:2px;margin-left: 2px;">` +
+            `<p class="text-left">${message.Text}</p>` +
             `</div>`;
+
+        if (message.AttachmentId != null) {
+            html += `<div class="row" style="margin-right:2px;margin-left: 2px;">` +
+                `<p class="text-left"><a href="/File/Download/${message.AttachmentId}">[Скачать файлы]</a></p>` +
+                `</div>`;
+        }
+
+
+        html += `</div>`;
 
         return html;
     }

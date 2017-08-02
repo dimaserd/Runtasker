@@ -293,6 +293,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Statics\Notifications\UIGuestNotifications.cs" />
     <Compile Include="Statics\Views\ViewPaths.cs" />
+    <Compile Include="UIStatics\UIStaticVariables.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\animate.css" />

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AlertInfo" xml:space="preserve">
-    <value>Данный разде предназначен для настроек вашей учетной записи. Вы можете изменить или установить пароль от вашей учетной записи, настроить внешних провайдеров и информационные сервисы.</value>
+    <value>Данный раздел предназначен для настроек вашей учетной записи. Вы можете изменить или установить пароль, настроить внешних провайдеров и информационные сервисы.</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Изменить пароль</value>

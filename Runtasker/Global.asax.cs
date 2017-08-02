@@ -86,5 +86,13 @@ namespace Runtasker
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
             }
         }
+
+        private void ChangeLayout()
+        {
+            //получаю куку о языке
+            HttpCookie cookie = HttpContext.Current.Request.Cookies["Layout"];
+
+            
+        }
     }
 }

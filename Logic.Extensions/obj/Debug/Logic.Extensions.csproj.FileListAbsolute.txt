@@ -84,3 +84,9 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\Exten
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\Newtonsoft.Json.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\Extensions.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\Newtonsoft.Json.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\ru\System.Web.Helpers.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\ru\System.Web.Mvc.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\ru\System.Web.Razor.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\ru\System.Web.WebPages.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\ru\System.Web.WebPages.Razor.resources.dll

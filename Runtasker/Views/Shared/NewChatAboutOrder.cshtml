@@ -277,11 +277,13 @@
     {
         var li = document.createElement("li");
 
-        li.id = message.MessageId;
+        li.id = "mes" + message.MessageId;
+        li.messageId = message.MessageId;
 
         if (IsSender(message)) {
             li.className = "mes right clearfix";
             li.innerHTML = GetMessageSenderHtml(message);
+            
         }
         else {
             li.className = "mes left clearfix unread";
@@ -394,13 +396,20 @@
 
     chat.client.onNewMessage = function (data) {
         console.log("Новое сообщение!", data);
-        if (document.getElementById(data.MessageId) == undefined )
+        if (document.getElementById("mes"+ data.MessageId) == undefined )
         {
             document.getElementById("@chatListId").appendChild(buildMessageForChat(data));
 
             //если сообщение принято играем музыку
             if (document.getElementById("senderId").value != data.SenderId) {
                 PlayAudio();
+
+                var countSpan = document.getElementById("mesCount@(orderId)");
+
+                console.log("countSpan", countSpan);
+
+                var count = parseInt(countSpan.innerText);
+                countSpan.innerText = (count + 1).toString();
             }
             scrollDownChatBody(900);
         }
@@ -413,10 +422,22 @@
     chat.client.onMessageRead = function (messageId) {
         console.log("onMessageRead", messageId);
 
-        var message = $("#" + messageId);
+
+
+        var message = $("#mes" + messageId);
 
         if (message.hasClass("@unreadClass"))
         {
+            var countSpan = document.getElementById("mesCount@(orderId)");
+
+            console.log("countSpan", countSpan);
+
+            var count = parseInt(countSpan.innerText);
+
+            countSpan.innerText = (count - 1).toString();
+
+            //$(".mesCount" + messageId).val(parseInt($(".mesCount")))
+
             message.removeClass("@unreadClass");
         }
     }
@@ -506,7 +527,7 @@
                 var message = $(this);
 
                 if (message.hasClass("@unreadClass")) {
-                    var id = message.attr('id');
+                    var id = message.attr('messageId');
                     console.log(id);
                     chat.server.readMessageAboutOrder(id, document.getElementById("senderId").value)
                 }

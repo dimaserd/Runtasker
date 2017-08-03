@@ -534,7 +534,7 @@ namespace Runtasker.Controllers
             //}
             
 
-            ViewData["localeModel"] = ViewModelBuilder.ConfirmEmailView(GISigns.Login);
+            ViewData["localeModel"] = ViewModelBuilder.ConfirmEmailView(GISigns.Login.ToString());
             return View();
         }
 

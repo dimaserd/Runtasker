@@ -167,3 +167,9 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\System.Web.
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\obj\Debug\Extensions.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\obj\Debug\Extensions.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\ru\System.Web.Helpers.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\ru\System.Web.Mvc.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\ru\System.Web.Razor.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\ru\System.Web.WebPages.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\ru\System.Web.WebPages.Razor.resources.dll

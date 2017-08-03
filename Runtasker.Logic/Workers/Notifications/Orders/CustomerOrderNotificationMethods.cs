@@ -290,7 +290,7 @@ namespace Runtasker.Logic.Workers.Notifications
 
         public void OnCustomerPaidAnotherHalfOfAnOrder(Order order)
         {
-            ForNotification model = ModelBuilder.PaidSecondHalf(order.Id, GISigns.Save);
+            ForNotification model = ModelBuilder.PaidSecondHalf(order.Id, GISigns.Save.ToString());
 
             Notification customerN = new Notification
             {

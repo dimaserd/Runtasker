@@ -10,6 +10,6 @@ namespace Runtasker.Settings
         /// </summary>
         public const ConnectionType Connection = ConnectionType.Local;
 
-        public const ApplicationSettingType AppSetting = ApplicationSettingType.Debug;
+        public const ApplicationSettingType AppSetting = ApplicationSettingType.Debug; 
     }
 }

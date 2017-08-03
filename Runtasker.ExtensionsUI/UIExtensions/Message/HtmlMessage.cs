@@ -69,7 +69,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions
         private string GetStarted()
         {
             
-            return $"<li id={Id} date={(long)(Date - new DateTime(1970, 1, 1)).TotalMilliseconds} class='mes {((Status == MessageStatus.New && Destination == DestinationType.To)? "unread" : null )} {Destination.ToDescriptionString()} clearfix'>"
+            return $"<li id=\"mes{Id}\" messageId=\"{Id}\" date=\"{(long)(Date - new DateTime(1970, 1, 1)).TotalMilliseconds}\" class='mes {((Status == MessageStatus.New && Destination == DestinationType.To)? "unread" : null )} {Destination.ToDescriptionString()} clearfix'>"
             + $"<span class='chat-img pull-{Destination.ToDescriptionString()}'>";
         }
 

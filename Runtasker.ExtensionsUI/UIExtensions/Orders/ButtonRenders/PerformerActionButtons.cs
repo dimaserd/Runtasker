@@ -53,7 +53,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
             return new HtmlActionButtonLink
                 (
                     buttonLink: $"#",
-                    buttonText: $"Чат по заказу {GISigns.Count(unreadCount)}",
+                    buttonText: $"Чат по заказу {GISigns.Count(unreadCount, $"mesCount{orderId}")}",
                     //for javascript toggler with modal
                     htmlAttributes: new { id = Order.Id, @class = $"{BtnClass} orderChat"  }
                 ).ToString();

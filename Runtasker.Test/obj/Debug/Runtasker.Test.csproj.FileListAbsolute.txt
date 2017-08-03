@@ -274,3 +274,10 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\ru\Micr
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\ru\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\obj\Debug\Runtasker.Test.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\obj\Debug\Runtasker.Test.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Common.JavascriptValidation.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\Common.JavascriptValidation.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\ru\System.Web.Mvc.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\ru\System.Web.WebPages.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\ru\System.Web.Razor.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\ru\System.Web.WebPages.Razor.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Test\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll

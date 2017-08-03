@@ -79,7 +79,7 @@ namespace Runtasker.ExtensionsUI.Statics
             return new HtmlActionButtonLink
                 (
                     buttonLink: "#",
-                    buttonText: string.Format(OrderEntityRes.ChatAboutOrderFormat, GISigns.Envelope, GISigns.Count(unreadCount)),
+                    buttonText: string.Format(OrderEntityRes.ChatAboutOrderFormat, GISigns.Envelope, GISigns.Count(unreadCount, $"mesCount{orderId}")),
                     //для вызова функции javacript которая откроет чат в модале
                     htmlAttributes: new { id = orderId, @class = $"{btnClass} orderChat" }
                 );

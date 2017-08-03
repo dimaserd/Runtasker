@@ -1,97 +1,128 @@
 ﻿
+using System.Web;
+
 namespace HtmlExtensions.StaticRenderers
 {
+    public class GlyphiconEntity
+    {
+        public GlyphiconEntity(string afterGlyphiconClass)
+        {
+            AfterGlyphiconClass = afterGlyphiconClass;
+        }
+
+        public string Id { get; set; }
+
+        public string AfterGlyphiconClass { get; set; }
+
+        public override string ToString()
+        {
+            return $"<span id=\"{Id}\" class=\"glyphicon {AfterGlyphiconClass}\"></span>";
+        }
+
+        public void SetId(string id)
+        {
+            Id = id;
+        }
+
+        public HtmlString ToHtml()
+        {
+            return new HtmlString(this.ToString());
+        }
+    }
+
     public static class GISigns
     {
-        public static string Trash
+        public static GlyphiconEntity Trash
         {
-            get { return "<span class='glyphicon glyphicon-trash'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-trash"); }
         }
 
-        public static string MinusSign
+        public static GlyphiconEntity MinusSign
         {
-            get { return "<span class='glyphicon glyphicon-minus'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-minus"); }
         }
 
-        public static string ListAlt
+        public static GlyphiconEntity ListAlt
         {
-            get { return "<span class='glyphicon glyphicon-list-alt'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-list-alt"); }
         }
 
-        public static string Pencil
+        public static GlyphiconEntity Pencil
         {
-            get { return "<span class='glyphicon glyphicon-pencil'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-pencil"); }
         }
 
-        public static string Send
+        public static GlyphiconEntity Send
         {
-            get { return "<span class='glyphicon glyphicon-send'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-send"); }
         }
 
-        public static string Gift
+        public static GlyphiconEntity Gift
         {
-            get { return "<span class='glyphicon glyphicon-gift'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-gift"); }
         }
 
-        public static string PiggyBank
+        public static GlyphiconEntity PiggyBank
         {
-            get { return "<span class='glyphicon glyphicon-piggy-bank'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-piggy-bank"); }
         }
 
-        public static string Login
+        public static GlyphiconEntity Login
         {
-            get { return "<span class='glyphicon glyphicon-log-in'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-log-in"); }
         }
 
-        public static string Envelope
+        public static GlyphiconEntity Envelope
         {
-            get { return "<span class='glyphicon glyphicon-envelope'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-envelope"); }
         }
 
 
-        public static string User
+        public static GlyphiconEntity User
         {
-            get { return "<span class='glyphicon glyphicon-user'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-user"); }
         }
 
-        public static string Star
+        public static GlyphiconEntity Star
         {
-            get { return "<span class='glyphicon glyphicon-star'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-star"); }
         }
 
-        public static string Save
+        public static GlyphiconEntity Save
         {
-            get { return "<span class='glyphicon glyphicon-save'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-save"); }
         }
 
-        public static string Briefcase
+        public static GlyphiconEntity Briefcase
         {
-            get { return "<span class='glyphicon glyphicon-briefcase'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-briefcase"); }
         }
 
-        public static string PlusSign
+        public static GlyphiconEntity PlusSign
         {
-            get { return "<span class='glyphicon glyphicon-plus'> </span>"; }
+            get { return new GlyphiconEntity("glyphicon-plus"); }
         }
 
-        public static string Count(int count)
+        public static string Count(int count, string id = null)
         {
-            return $"<span class='badge'>{count}</span>";
+            return $"<span id=\"{id}\" class='badge'>{count}</span>";
         }
 
-        public static string Configuration
+        public static GlyphiconEntity Configuration
         {
-            get { return $"<span class='glyphicon glyphicon-cog'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-cog"); }
         }
 
-        public static string Ok
+        public static GlyphiconEntity Ok
         {
-            get { return $"<span class='glyphicon glyphicon-ok'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-ok"); }
         }
 
-        public static string Refresh
+        public static GlyphiconEntity Refresh
         {
-            get { return $"<span class='glyphicon glyphicon-refresh'></span>"; }
+            get { return new GlyphiconEntity("glyphicon-refresh"); }
         }
+
+
     }
 }

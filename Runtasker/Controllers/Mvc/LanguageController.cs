@@ -50,6 +50,23 @@ namespace Runtasker.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult ChangeTheme(string returnUrl)
+        {
+            UIStatics.UIStaticVariables.IsDarkLayout = !UIStatics.UIStaticVariables.IsDarkLayout;
+
+            HttpCookie cookie = new HttpCookie("IsDarkLayout");
+            cookie.Value = UIStatics.UIStaticVariables.IsDarkLayout.ToString().ToLower();
+            Response.Cookies.Add(cookie);
+
+            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
         public string TestLangCodes()
         {
 

@@ -385,6 +385,34 @@
 <script src="~/Scripts/jquery.signalR-2.2.2.js"></script>
 <script src="~/signalr/hubs"></script>
 
+<!--Скрипты для изменения счетчиков-->
+<script>
+    function DecreaseCount() {
+        var countSpan = document.getElementById("mesCount@(orderId)");
+
+        if (countSpan != null)
+        {
+            console.log("countSpan", countSpan);
+
+            var count = parseInt(countSpan.innerText);
+            countSpan.innerText = (count - 1).toString();
+        }
+    }
+
+    function IncreaseCount()
+    {
+        var countSpan = document.getElementById("mesCount@(orderId)");
+
+        if (countSpan != null)
+        {
+            console.log("countSpan", countSpan);
+
+            var count = parseInt(countSpan.innerText);
+            countSpan.innerText = (count + 1).toString();
+        }
+
+    }
+</script>
 
 <script>
     var chat = $.connection.newOrderChatHub;
@@ -403,13 +431,7 @@
             //если сообщение принято играем музыку
             if (document.getElementById("senderId").value != data.SenderId) {
                 PlayAudio();
-
-                var countSpan = document.getElementById("mesCount@(orderId)");
-
-                console.log("countSpan", countSpan);
-
-                var count = parseInt(countSpan.innerText);
-                countSpan.innerText = (count + 1).toString();
+                IncreaseCount(); //увеличиваю счетчик прочитанных сообщений
             }
             scrollDownChatBody(900);
         }
@@ -428,16 +450,7 @@
 
         if (message.hasClass("@unreadClass"))
         {
-            var countSpan = document.getElementById("mesCount@(orderId)");
-
-            console.log("countSpan", countSpan);
-
-            var count = parseInt(countSpan.innerText);
-
-            countSpan.innerText = (count - 1).toString();
-
-            //$(".mesCount" + messageId).val(parseInt($(".mesCount")))
-
+            DecreaseCount();
             message.removeClass("@unreadClass");
         }
     }

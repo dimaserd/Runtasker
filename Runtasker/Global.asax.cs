@@ -90,9 +90,26 @@ namespace Runtasker
         private void ChangeLayout()
         {
             //получаю куку о языке
-            HttpCookie cookie = HttpContext.Current.Request.Cookies["Layout"];
+            HttpCookie cookie = HttpContext.Current.Request.Cookies["IsDarkLayout"];
 
-            
+            if (cookie == null)
+            {
+                HttpCookie newCookie = new HttpCookie("IsDarkLayout");
+                newCookie.Value = false.ToString().ToLower();
+                Response.Cookies.Add(newCookie);
+                return;
+            }
+            else
+            {
+                if(cookie.Value.ToLower().Equals(true.ToString().ToLower()))
+                {
+                    UIStatics.UIStaticVariables.IsDarkLayout = true;
+                }
+                else
+                {
+                    UIStatics.UIStaticVariables.IsDarkLayout = false;
+                }
+            }
         }
     }
 }

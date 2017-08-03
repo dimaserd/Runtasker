@@ -18,8 +18,7 @@
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 
     <!-- WEB FONTS -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet" type="text/css" />
-
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
 
     <!-- CORE CSS -->
     @Styles.Render("~/bootstrap/css")
@@ -39,7 +38,11 @@
     @Styles.Render("~/ColorTheme/darkblue")
 
     <!--Сделай переключение через куки и там придется потрахаться с текстом-->
-    @*@Styles.Render("~/DarkLayout")*@
+    @if (Runtasker.UIStatics.UIStaticVariables.IsDarkLayout)
+    {
+        @Styles.Render("~/DarkLayout")
+    }
+    
     
     <!--VK Scripts-->
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?137"></script>
@@ -72,9 +75,15 @@
             @{Html.RenderAction("Index", "Language");}
             <!-- /LANGUAGE -->
 
+            
+
             <!-- SIGN IN -->
             @{Html.RenderAction("Signin", "Account");}
             <!-- /SIGN IN -->
+
+            <!-- Layout -->
+            @Html.Partial("~/Views/Shared/LayoutChangerPartial.cshtml")
+            <!-- /Layout -->
 
             <!-- LINKS -->
             <div class="pull-right nav hidden-xs">

@@ -3570,6 +3570,7 @@
     <Content Include="Views\Administration\Metronic\Chat\ChatScriptsView.cshtml" />
     <Content Include="Views\Administration\Metronic\Chat\SignalRAdminChatScriptsView.cshtml" />
     <Content Include="Views\Shared\NewChatAboutOrder.cshtml" />
+    <Content Include="Views\Shared\LayoutChangerPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,79 @@
+﻿@using Runtasker.LocaleBuilders.Statics
+@using Runtasker.LocaleBuilders.Enumerations
+@{
+    //Как нибудь засунь эти ифы и это все в форич
+    Layout = null;
+   
+
+    Lang currentLang = LanguageStatic.Language;
+
+    string langBlockId = "langBlock";
+    string userBlockId = "userForm";
+    string layoutBlockId = "layoutForm";
+}
+
+<div id="@layoutBlockId" class="btn-group pull-right">
+    <button id="layoutToogler" onclick="layoutFormMenuHandler()" class="dropdown-toggle language" type="button">
+        @if (Runtasker.UIStatics.UIStaticVariables.IsDarkLayout)
+        {
+            <span>[Dark (Test Mode)]</span>
+            <span class="caret hidden-xs"></span>
+        }
+        else
+        {
+            <span>[White]</span>
+            <span class="caret hidden-xs"></span>
+        }
+        
+
+    </button>
+
+    <ul class="dropdown-menu">
+        @if (Runtasker.UIStatics.UIStaticVariables.IsDarkLayout)
+        {
+            <li>
+                <a href="/Language/ChangeTheme">
+                    White
+                </a>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a href="/Language/ChangeTheme">
+                    Dark [Test Mode]
+                </a>
+            </li>
+        }
+
+    </ul>
+</div>
+
+<!--Скрипт раскрывалки-->
+<script>
+    function layoutFormMenuHandler()
+    {
+        var userBlock = document.getElementById("@userBlockId");
+        if (userBlock.classList.contains("open")) {
+            userBlock.classList.remove("open");
+        }
+
+
+        var langBlock = document.getElementById("@langBlockId");
+
+        if (langBlock.classList.contains("open"))
+        {
+            langBlock.classList.remove("open");
+        }
+
+        var layoutBlock = document.getElementById("@layoutBlockId");
+        if (layoutBlock.classList.contains("open")) {
+            layoutBlock.classList.remove("open");
+        }
+        else
+        {
+            layoutBlock.classList.add("open");
+        }
+    }
+</script>
+<!--/Скрипт раскрывалки-->

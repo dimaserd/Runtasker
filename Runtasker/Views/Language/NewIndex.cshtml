@@ -11,6 +11,7 @@
 
     string langBlockId = "langBlock";
     string userBlockId = "userForm";
+    string layoutBlockId = "layoutForm";
 }
 
 <div id="@langBlockId" class="btn-group pull-right">
@@ -75,6 +76,11 @@
             userBlock.classList.remove("open");
         }
 
+        var layoutBlock = document.getElementById("@layoutBlockId")
+        if (layoutBlock != null && layoutBlock.classList.contains("open"))
+        {
+            layoutBlock.classList.remove("open");
+        }
 
         var langBlock = document.getElementById("@langBlockId");
 

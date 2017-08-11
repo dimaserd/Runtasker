@@ -292,6 +292,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Statics\Notifications\UIGuestNotifications.cs" />
+    <Compile Include="Statics\Settings\UIGlobalSettings.cs" />
     <Compile Include="Statics\Views\ViewPaths.cs" />
     <Compile Include="UIStatics\UIStaticVariables.cs" />
   </ItemGroup>
@@ -3571,6 +3572,7 @@
     <Content Include="Views\Administration\Metronic\Chat\SignalRAdminChatScriptsView.cshtml" />
     <Content Include="Views\Shared\NewChatAboutOrder.cshtml" />
     <Content Include="Views\Shared\LayoutChangerPartial.cshtml" />
+    <Content Include="Views\Payment\YandexPlatezhka.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

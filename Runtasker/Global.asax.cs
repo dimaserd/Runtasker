@@ -7,6 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Http;
 using Runtasker.Logic.Entities;
+using Runtasker.Statics.Settings;
 
 namespace Runtasker
 {
@@ -26,10 +27,13 @@ namespace Runtasker
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
             ChangeThreadLanguage();
+            ChangeLayout();
         }
 
         private void ChangeThreadLanguage()
         {
+            
+
             //получаю куку о языке
             HttpCookie cookie = HttpContext.Current.Request.Cookies["Language"];
 
@@ -89,12 +93,20 @@ namespace Runtasker
 
         private void ChangeLayout()
         {
-            //получаю куку о языке
+            if (!UIGlobalSettings.LayoutSwitchEnabled)
+            {
+                UIStatics.UIStaticVariables.IsDarkLayout = false;
+                return;
+            }
+
+            //получаю куку о фоне
             HttpCookie cookie = HttpContext.Current.Request.Cookies["IsDarkLayout"];
 
             if (cookie == null)
             {
                 HttpCookie newCookie = new HttpCookie("IsDarkLayout");
+                newCookie.Expires = DateTime.Now.AddYears(1);
+
                 newCookie.Value = false.ToString().ToLower();
                 Response.Cookies.Add(newCookie);
                 return;

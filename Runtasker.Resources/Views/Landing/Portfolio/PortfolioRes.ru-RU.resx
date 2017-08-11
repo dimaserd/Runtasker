@@ -121,8 +121,8 @@
     <value>Да, хочу сделать заказ!</value>
   </data>
   <data name="CalloutQuestion1" xml:space="preserve">
-    <value>Нравиться качество наших работ</value>
-    <comment>Нравиться качество наших работ</comment>
+    <value>Нравится качество наших работ</value>
+    <comment>Нравится качество наших работ</comment>
   </data>
   <data name="Header1" xml:space="preserve">
     <value>Примеры выполненных работ на</value>

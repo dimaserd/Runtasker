@@ -81,9 +81,12 @@
             @{Html.RenderAction("Signin", "Account");}
             <!-- /SIGN IN -->
 
-            <!-- Layout -->
-            @Html.Partial("~/Views/Shared/LayoutChangerPartial.cshtml")
-            <!-- /Layout -->
+            @if (Runtasker.Statics.Settings.UIGlobalSettings.LayoutSwitchEnabled)
+            {
+                <!-- Layout -->
+                @Html.Partial("~/Views/Shared/LayoutChangerPartial.cshtml")
+                <!-- /Layout -->
+            } 
 
             <!-- LINKS -->
             <div class="pull-right nav hidden-xs">

@@ -260,6 +260,15 @@ namespace Runtasker.Logic.Entities
 
     }
 
+    public class OrderAndMessageCount
+    {
+        public Order Order { get; set; }
+
+        public int Count { get; set; }
+    }
+
+    
+
     public static class OrderExtensions
     {
         public static bool IsFree(this Order order)

@@ -7,9 +7,10 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
     public class OrderHtmlButtonsBase
     {
         #region Constructors
-        public OrderHtmlButtonsBase(OrderEntityBase orderEntity)
+        public OrderHtmlButtonsBase(OrderEntityBase orderEntity, int unreadMesCount)
         {
             OrderEntity = orderEntity;
+            UnreadMessagesCount = unreadMesCount;
         }
         #endregion
 
@@ -24,6 +25,8 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         {
             get { return OrderEntity.Order; }
         }
+
+        protected int UnreadMessagesCount { get; set; }
 
         protected string BtnClass
         {

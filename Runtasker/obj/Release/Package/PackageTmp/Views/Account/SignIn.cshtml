@@ -10,12 +10,13 @@
     Layout = null;
     string userGuid = User.Identity.GetUserId();
     string imageLink = $"/File/GetAvatar?userGuid={userGuid}";
-    
+
 
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
 
     string langBlockId = "langBlock";
     string userBlockId = "userForm";
+    string layoutBlockId = "layoutForm";
 }
 @if (!Request.IsAuthenticated)
 {
@@ -177,6 +178,12 @@ else
         var langBlock = document.getElementById("@langBlockId");
         if (langBlock.classList.contains("open")) {
             langBlock.classList.remove("open");
+        }
+
+        var layoutBlock = document.getElementById("@layoutBlockId")
+        if (layoutBlock != null && layoutBlock.classList.contains("open"))
+        {
+            layoutBlock.classList.remove("open");
         }
 
         var userBlock = document.getElementById("@userBlockId");

@@ -7,7 +7,8 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
     public class OrderEntityBase
     {
         #region Constructors
-        public OrderEntityBase(Order order)
+        
+        public OrderEntityBase(Order order, int  unreadMesCount)
         {
             Order = order;
         }
@@ -15,6 +16,8 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
         #region Protected Properties
         public Order Order { get; set; }
+
+        public int UnreadMessagesCount { get; set; }
         #endregion
 
         #region Protected Help Building Methods

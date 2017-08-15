@@ -14,7 +14,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
     {
         
         #region Constructors
-        public CustomerOrderActionButtons(CustomerOrderHtmlEntity orderEntity) : base(orderEntity)
+        public CustomerOrderActionButtons(CustomerOrderHtmlEntity orderEntity, int unreadMesCount) : base(orderEntity, unreadMesCount)
         {
             Construct();
         }

@@ -114,7 +114,7 @@ namespace Runtasker.Controllers
         {
             if(Settings.Settings.AppSetting == Settings.Enumerations.ApplicationSettingType.Production)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("YandexKassaTest");
             }
 
 
@@ -151,24 +151,7 @@ namespace Runtasker.Controllers
             string shopId = null, string invoiceId = null, string customerNumber = null,
             string MD5 = null)
         {
-            using (LoggingWorker logger = new LoggingWorker())
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append($"action={action}\n")
-                .Append($"orderSumAmount={orderSumAmount}\n")
-                .Append($"orderSumCurrencyPaycash={orderSumCurrencyPaycash}\n")
-                .Append($"orderSumBankPaycash={orderSumBankPaycash}\n")
-                .Append($"shopId={shopId}\n")
-                .Append($"invoiceId={invoiceId}\n")
-                .Append($"customerNumber={customerNumber}\n")
-                .Append($"MD5={MD5}\n");
-                
-
-                string fileName = "yandexKassaPostTest.txt";
-
-                logger.LogTextToFile(fileName, sb.ToString());
-            }
-
+            
 
             if (Settings.Settings.AppSetting == Settings.Enumerations.ApplicationSettingType.Production)
             {
@@ -206,6 +189,14 @@ namespace Runtasker.Controllers
             
         }
 
+
+        #region Тестовые методы
+        [HttpGet]
+        public ActionResult YandexKassaTest()
+        {
+            return View();
+        }
+        #endregion
         #endregion
 
         #region Старые методы оплаты

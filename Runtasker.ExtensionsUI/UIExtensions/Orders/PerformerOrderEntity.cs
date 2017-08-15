@@ -8,7 +8,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
     public class PerformerOrderHtmlEntity : OrderEntityBase
     {
         #region Конструктор
-        public PerformerOrderHtmlEntity(Order order) : base(order)
+        public PerformerOrderHtmlEntity(Order order, int unreadMesCount) : base(order, unreadMesCount)
         {
         }
         #endregion
@@ -108,7 +108,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("<div class='col-md-3 cta-button'>")
-            .Append(new PerformerActionButtons(this).ToString())
+            .Append(new PerformerActionButtons(this, UnreadMessagesCount).ToString())
             .Append("</div>");
 
             return sb.ToString();

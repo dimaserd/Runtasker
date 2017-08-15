@@ -91,7 +91,7 @@ namespace Runtasker.Controllers
             {
                 return RedirectToAction("Index", "VkOrders");
             }
-            List<Order> orders = await OrdersWorker.GetOrdersAsync();
+            List<OrderAndMessageCount> orders = await OrdersWorker.NewGetOrdersAsync();
 
             return View(orders);
         }

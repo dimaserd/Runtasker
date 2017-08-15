@@ -173,4 +173,3 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\ru\System.W
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\ru\System.Web.WebPages.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\ru\System.Web.WebPages.Razor.resources.dll
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\obj\Debug\Extensions.csprojResolveAssemblyReference.cache

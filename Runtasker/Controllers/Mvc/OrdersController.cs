@@ -72,7 +72,7 @@ namespace Runtasker.Controllers
             {
                 return RedirectToAction("Index", "Performer");
             }
-            return View(model : await OrderWorker.GetMyOrdersAsync());
+            return View(model : await OrderWorker.NewGetMyOrdersAsync());
         }
 
         [AllowAnonymous]

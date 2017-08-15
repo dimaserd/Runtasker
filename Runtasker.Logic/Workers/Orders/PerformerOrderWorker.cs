@@ -246,6 +246,20 @@ namespace Runtasker.Logic.Workers.Orders
         }
         #endregion
 
+        public async Task<List<OrderAndMessageCount>> NewGetOrdersAsync()
+        {
+            OtherUserInfo performerInfo = (await Context.Users.FirstOrDefaultAsync(x => x.Id == UserGuid)).GetOtherInfo();
+            List<OrderAndMessageCount> allOrders = await Context.Orders.Select(x => 
+            new OrderAndMessageCount
+            {
+                Order = x,
+                Count = x.Messages.Count(m => m.ReceiverId == UserGuid && m.Status == MessageStatus.New)
+            }).ToListAsync();
+
+            return performerInfo
+                .GetOrdersBySpecialization(allOrders).ToList();
+        }
+
         public async Task<List<Order>> GetOrdersAsync()
         {
             OtherUserInfo performerInfo = (await Context.Users.FirstOrDefaultAsync(x => x.Id == UserGuid)).GetOtherInfo();

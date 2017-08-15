@@ -141,6 +141,11 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\zh-CN\Runtask
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Debug\VkParser.csprojResolveAssemblyReference.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Debug\VkParser.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Debug\VkParser.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru\System.Web.Mvc.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru\System.Web.Razor.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru\System.Web.WebPages.Razor.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru\System.Web.WebPages.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\roslyn\csc.exe
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\roslyn\csc.exe.config
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\roslyn\csc.rsp
@@ -193,8 +198,3 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Views\Payment
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.resx
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Views\Payment\Robokassa\RkassaRes.Designer.cs
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.Designer.cs
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru\System.Web.Mvc.resources.dll
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru\System.Web.Razor.resources.dll
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru\System.Web.WebPages.Razor.resources.dll
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru\System.Web.WebPages.resources.dll
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll

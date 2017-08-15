@@ -3,7 +3,7 @@
 @using HtmlExtensions.StaticRenderers
 @using Extensions.String
 @using Extensions.Enumerations
-@model List<Order>
+@model List<OrderAndMessageCount>
 @{
     ViewBag.Title = "Index";
     Layout = Runtasker.Statics.Views.ViewPaths.NewAdminLayoutPath;
@@ -20,7 +20,7 @@
                 <ul class="pager">
                     @foreach (OrderStatus status in Enum.GetValues(typeof(OrderStatus)))
                     {
-                        int count = Model.Count(x => x.Status == status);
+                        int count = Model.Count(x => x.Order.Status == status);
 
                         if (count > 0)
                         {
@@ -46,9 +46,9 @@
 </div>
 
 @Styles.Render("~/OrdersList")
-@foreach (Order order in Model)
+@foreach (OrderAndMessageCount order in Model)
 {
-    @MvcHtmlString.Create(new PerformerOrderHtmlEntity(order).ToString())
+    @MvcHtmlString.Create(new PerformerOrderHtmlEntity(order.Order, order.Count).ToString())
 }
 
 @section scripts{

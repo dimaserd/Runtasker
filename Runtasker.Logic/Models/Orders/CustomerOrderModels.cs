@@ -81,6 +81,7 @@ namespace Runtasker.Logic.Models
                 Subject = orderModel.Subject,
                 //вкладываю в заказ вложения
                 Attachments = ( (attachment != null)? new List<Attachment> { attachment} : null),
+                HasCustomerFiles = (attachment != null),
                 OtherSubject = orderModel.OtherSubject,
                 UserGuid = userGuid,
                 PerformerGuid = userGuid,

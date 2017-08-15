@@ -19,7 +19,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
     public class CustomerOrderHtmlEntity : OrderEntityBase
     {
         #region Constructors
-        public CustomerOrderHtmlEntity(Order order) : base(order)
+        public CustomerOrderHtmlEntity(Order order, int unreadMesCount) : base(order, unreadMesCount)
         {
         }
         #endregion
@@ -30,7 +30,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         //We get it throw this class
         string GetButton()
         {
-            return new CustomerOrderActionButtons(this).ToString();
+            return new CustomerOrderActionButtons(this, UnreadMessagesCount).ToString();
         }
         #endregion
 

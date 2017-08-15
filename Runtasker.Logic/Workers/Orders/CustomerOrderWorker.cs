@@ -222,6 +222,7 @@ namespace Runtasker.Logic.Workers.Orders
 
             order.Status = OrderStatus.New;
             order.ErrorType = OrderErrorType.None;
+            order.HasCustomerFiles = true;
 
             Context.SaveChanges();
             //Notification methods
@@ -554,10 +555,35 @@ namespace Runtasker.Logic.Workers.Orders
 
         public async Task<IEnumerable<Order>> GetMyOrdersAsync()
         {
-                return await Context.Orders.Where(o => o.UserGuid == UserGuid 
-                && o.Status != OrderStatus.DeletedByCustomer 
+            var query = Context.Orders.Where(o => o.UserGuid == UserGuid
+                && o.Status != OrderStatus.DeletedByCustomer
                 && o.Status != OrderStatus.DeletedByAdmin)
-                    .Include(x => x.Messages).ToListAsync();
+                    .Include(x => x.Messages);
+
+            
+
+            return await query.ToListAsync();
+        }
+
+        public async Task<IEnumerable<OrderAndMessageCount>> NewGetMyOrdersAsync()
+        {
+            //var query = Context.Orders.Where(o => o.UserGuid == UserGuid
+            //    && o.Status != OrderStatus.DeletedByCustomer
+            //    && o.Status != OrderStatus.DeletedByAdmin)
+            //        .Include(x => x.Messages);
+
+            var query = Context.Orders.Where(o => o.UserGuid == UserGuid
+              && o.Status != OrderStatus.DeletedByCustomer
+                && o.Status != OrderStatus.DeletedByAdmin)
+                .Select(x => new OrderAndMessageCount
+                {
+                    Order = x,
+                    Count = x.Messages.Count(m => m.ReceiverId == UserGuid && m.Status == MessageStatus.New)
+                });
+
+            string s = query.ToString();
+
+            return await query.ToListAsync();
         }
         #endregion
 

@@ -3573,6 +3573,7 @@
     <Content Include="Views\Shared\NewChatAboutOrder.cshtml" />
     <Content Include="Views\Shared\LayoutChangerPartial.cshtml" />
     <Content Include="Views\Payment\YandexPlatezhka.cshtml" />
+    <Content Include="Views\Payment\YandexKassaTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3581,9 +3582,6 @@
     <Folder Include="assets\images\demo\revolution_slider\New folder\" />
     <Folder Include="assets\images\demo\rs5\svg\alert\" />
     <Folder Include="Models\UIModels\" />
-    <Folder Include="Views\BaseMvc\" />
-    <Folder Include="Views\Info\" />
-    <Folder Include="Views\Partial\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -9,7 +9,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
     {
         #region Constructors
 
-        public PerformerActionButtons(PerformerOrderHtmlEntity orderEntity) : base(orderEntity)
+        public PerformerActionButtons(PerformerOrderHtmlEntity orderEntity, int unreadMesCount) : base(orderEntity, unreadMesCount)
         {
             Construct();
         }
@@ -47,13 +47,11 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
         string GetButtonForChatAboutOrder()
         {
-            int unreadCount = Order.Messages
-                .Count(m => m.SenderId == Order.UserGuid
-                && m.Status == MessageStatus.New);
+            
             return new HtmlActionButtonLink
                 (
                     buttonLink: $"#",
-                    buttonText: $"Чат по заказу {GISigns.Count(unreadCount, $"mesCount{Order.Id}")}",
+                    buttonText: $"Чат по заказу {GISigns.Count(UnreadMessagesCount, $"mesCount{Order.Id}")}",
                     //for javascript toggler with modal
                     htmlAttributes: new { id = Order.Id, @class = $"{BtnClass} orderChat"  }
                 ).ToString();

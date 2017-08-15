@@ -88,6 +88,20 @@ namespace Runtasker.Logic.Models.ManageModels
             return result;
         }
 
+        public static IEnumerable<OrderAndMessageCount> GetOrdersBySpecialization(this OtherUserInfo info, IEnumerable<OrderAndMessageCount> orders)
+        {
+            List<OrderAndMessageCount> result = new List<OrderAndMessageCount>();
+
+            foreach (OrderAndMessageCount order in orders)
+            {
+                if (info.Specialization.Contains(((int)order.Order.Subject).ToString()))
+                {
+                    result.Add(order);
+                }
+            }
+            return result;
+        }
+
         #region Вспомогательные методы
         static List<int> GetSubjectInts(this OtherUserInfo info)
         {

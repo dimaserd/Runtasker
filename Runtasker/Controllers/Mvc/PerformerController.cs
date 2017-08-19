@@ -9,6 +9,7 @@ using Runtasker.Logic.Workers.Admin;
 using System.Threading.Tasks;
 using Logic.Extensions.Models;
 using Runtasker.Controllers.Base;
+using System.Linq;
 
 namespace Runtasker.Controllers
 {
@@ -191,10 +192,42 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-       
+
         #endregion
 
         #region Orders methods
+
+        #region Методы удаления заказа
+        [HttpGet]
+        public ActionResult DeleteOrder(int id)
+        {
+            Order order = Db.Orders.FirstOrDefault(x => x.Id == id);
+
+            if(order.Status != OrderStatus.DeletedByCustomer || order.Status != OrderStatus.DeletedByAdmin)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteOrder(int id, string performerId)
+        {
+            Order order = Db.Orders.FirstOrDefault(x => x.Id == id);
+
+            if (order.Status != OrderStatus.DeletedByCustomer || order.Status != OrderStatus.DeletedByAdmin)
+            {
+                order.LastStatus = order.Status;
+                order.Status = OrderStatus.DeletedByAdmin;
+                Db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+        #endregion
 
         #region Value Order Methods
         [HttpGet]

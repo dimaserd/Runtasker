@@ -307,3 +307,4 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\ru\Sys
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\ru\System.Web.WebPages.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\ru\System.Web.WebPages.Razor.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.removal.resources

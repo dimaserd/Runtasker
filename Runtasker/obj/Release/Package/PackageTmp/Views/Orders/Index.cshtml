@@ -3,7 +3,7 @@
 @using HtmlExtensions.StaticRenderers
 @using Extensions.String
 @using Runtasker.Resources.Views.Orders.Index
-@model IEnumerable<Order>
+@model IEnumerable<OrderAndMessageCount>
 
 @{
     ViewBag.Title = Index.Title;
@@ -35,8 +35,8 @@
         </div>
 
         @if (Model.Count() > 0 && 
-            Model.Count(o => o.Status.GetActiveStatus() == "active") > 0 && 
-            Model.Count(o => o.Status.GetActiveStatus() == "finished") > 0)
+            Model.Count(o => o.Order.Status.GetActiveStatus() == "active") > 0 && 
+            Model.Count(o => o.Order.Status.GetActiveStatus() == "finished") > 0)
         {
         <!--Sort Panel-->
         <div class="col-md-6">
@@ -45,12 +45,12 @@
                     <ul class="pager">
                         <li>
                             <a href="#" class="btn btn-default btn-filter" data-target="active">
-                                @Index.Active @GISigns.Count(Model.Count(o => o.Status.GetActiveStatus() == "active")).ToHtml()
+                                @Index.Active @GISigns.Count(Model.Count(o => o.Order.Status.GetActiveStatus() == "active")).ToHtml()
                             </a>
                         </li>
                         <li>
                             <a href="#" class="btn btn-default btn-filter" data-target="finished">
-                                @Index.Finished @GISigns.Count(Model.Count(o => o.Status.GetActiveStatus() == "finished")).ToHtml()
+                                @Index.Finished @GISigns.Count(Model.Count(o => o.Order.Status.GetActiveStatus() == "finished")).ToHtml()
                             </a>
                         </li>
                         <li>
@@ -71,9 +71,9 @@
     {
         @Styles.Render("~/OrdersList")
 
-        foreach (Order order in Model)
+        foreach (OrderAndMessageCount order in Model)
         {
-            @MvcHtmlString.Create(new CustomerOrderHtmlEntity(order).ToString());
+            @MvcHtmlString.Create(new CustomerOrderHtmlEntity(order.Order, order.Count).ToString());
         }
     }
     else

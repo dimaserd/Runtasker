@@ -195,6 +195,10 @@
     <Compile Include="Migrations\201707242210178_news.Designer.cs">
       <DependentUpon>201707242210178_news.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708192036322_removal.cs" />
+    <Compile Include="Migrations\201708192036322_removal.Designer.cs">
+      <DependentUpon>201708192036322_removal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
     <Compile Include="Models\ManageModels\AddVkInfoModel.cs" />
@@ -364,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707242210178_news.resx">
       <DependentUpon>201707242210178_news.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708192036322_removal.resx">
+      <DependentUpon>201708192036322_removal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

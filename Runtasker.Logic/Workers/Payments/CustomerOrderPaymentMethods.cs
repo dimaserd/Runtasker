@@ -155,6 +155,7 @@ namespace Runtasker.Logic.Workers.Payments
             {
                 user.Balance += sum;
             }
+            UserManager.Update(user);
             
         }
         #endregion

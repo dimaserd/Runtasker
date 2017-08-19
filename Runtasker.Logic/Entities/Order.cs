@@ -168,6 +168,11 @@ namespace Runtasker.Logic.Entities
         public OrderStatus Status { get; set; }
 
         /// <summary>
+        /// Статус до удаления заказа из системы
+        /// </summary>
+        public OrderStatus LastStatus { get; set; }
+
+        /// <summary>
         /// Тип ошибки указывается только тогда заказ не принят исполнителем или администратором
         /// и требуются типичные исправления от заказчика
         /// </summary>

@@ -63,6 +63,9 @@ namespace Runtasker.Logic.Workers.Orders
         
 
         #region Внутренние свойства
+        /// <summary>
+        /// Свойство текущего заказчика
+        /// </summary>
         ApplicationUser Customer
         {
             get

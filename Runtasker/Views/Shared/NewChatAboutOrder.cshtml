@@ -134,6 +134,8 @@
 <input id="orderId" type="hidden" value="@orderId"/>
 <!--/Скрытые поля для чата-->
 
+
+
 <!--Функции скролла-->
 <script>
       var chatHidden = true;
@@ -194,91 +196,17 @@
 </script>
 <!--/Функции аудио-->
 
-<!--Message Builder-->
-<script>
-    function buildMessageFromData(Data)
-    {
-        console.log("buildMessageFromData");
-        console.log(Data);
-        buildMessage(Data.Id, Data.Text, Data.Attachmnets, Data.SenderGuid, Data.NickName, Data.Date)
-    }
 
-    function buildMessage(id, text, filesUrl, senderGuid, nickname, date) {
-
-
-        var userGuid = $('#userGuid').val();
-        var toGuid = $('#toGuid').val();
-        var NickName = nickname;
-
-
-        function GetStarted() {
-            var result = `<li id='${id}' date='${date}' class='@messageClass `;
-            if (senderGuid == userGuid) { //сообщение принято?
-                result += "right clearfix'><span class='chat-img pull-right ";
-            }
-            else {
-                $('#audioSound').get(0).play();
-                result += "@unreadClass left clearfix'><span class='chat-img pull-left ";
-            }
-            result += " clearfix'>";
-            return result;
-        }
-
-        function GetNickAndTime() {
-            var time = "Just now"
-            if (senderGuid != userGuid) {
-                return `<strong class='primary-font'>${NickName}</strong>`
-                    + "<small class='pull-right text-muted timeSpan'>"
-                 + `<span class='glyphicon glyphicon-time'></span>${time}</small>`;
-            }
-            else {
-                return "<small class='text-muted timeSpan'>"
-                 + `<span class='glyphicon glyphicon-time'></span>${time}</small>`
-                 + `<strong class='pull-right primary-font'>${NickName}</strong>`;
-            }
-        }
-
-        function GetImage() {
-            return `<img src='/File/GetAvatar?userGuid=${senderGuid}' alt='User Avatar'`
-                + "class='img-circle img-50'/>";
-            
-        }
-
-        function GetAttachmentsLink() {
-            if (filesUrl != "") {
-                if (senderGuid != userGuid) {
-                    return "<p class='pull-right'><a href='"
-                    + filesUrl + "'>@ChatRes.DownloadFiles<span class='glyphicon glyphicon-cloud-download'></span></a></p>";
-                }
-                else {
-                    return "<p class='pull-left'><a href='"
-                     + filesUrl + "'>@ChatRes.DownloadFiles<span class='glyphicon glyphicon-cloud-download'></span></a></p>";
-                }
-            }
-            else {
-                return "";
-            }
-        }
-
-        var result = "";
-
-        result += GetStarted() + GetImage() + "</span><div class='chat-body clearfix'><div class='header'>"
-        + GetNickAndTime() + "</div>" + "<p>" + text + "</p>" + GetAttachmentsLink() + "</div></li>";
-
-        return result;
-
-    }
-</script>
-<!--/Message Builder-->
 
 <!--Построение сообщений-->
 <script>
     function buildMessageForChat(message)
     {
         var li = document.createElement("li");
-
+        //onclick="ReadMessage(${id})" onmouseover="ReadMessage(${id})"
         li.id = "mes" + message.MessageId;
         li.messageId = message.MessageId;
+        
 
         if (IsSender(message)) {
             li.className = "mes right clearfix";
@@ -288,6 +216,8 @@
         else {
             li.className = "mes left clearfix unread";
             li.innerHTML = GetMessageReceiverHtml(message);
+            li.onclick = ReadMessage(`${message.MessageId}`);
+            li.onmouseover = ReadMessage(`${message.MessageId}`);
         }
 
         return li;
@@ -415,6 +345,10 @@
 </script>
 
 <script>
+    
+</script>
+
+<script>
     var chat = $.connection.newOrderChatHub;
 
     chat.client.onAddedToGroup = function (groupName)
@@ -424,7 +358,7 @@
 
     chat.client.onNewMessage = function (data) {
         console.log("Новое сообщение!", data);
-        if (document.getElementById("mes"+ data.MessageId) == undefined )
+        if (data.OrderId == document.getElementById("orderId").value && document.getElementById("mes" + data.MessageId) == undefined )
         {
             document.getElementById("@chatListId").appendChild(buildMessageForChat(data));
 
@@ -455,9 +389,64 @@
         }
     }
 
+    function ReadMessage(messageId) {
+
+        console.log("ReadMessage", messageId);
+
+                var mes = document.getElementById("mes" + messageId);
+
+                if (mes == null) {
+                    return;
+                }
+
+                if (mes.classList.contains("@unreadClass")){
+                    var id = mes.getAttribute('messageid');
+
+                    //ебаная заплатка
+                    if (id == undefined || id == null)
+                    {
+                        console.log("Вход в ебаная заплатка", mes.id.toString().substring(3));
+                        id = mes.id.toString().substring(3);
+                    }
+                    console.log("id сообщения", id);
+                    chat.server.readMessageAboutOrder(id, document.getElementById("senderId").value)
+                }
+    }
+
     $.connection.hub.start()
         .done(function () {
             console.log('Now connected, connection ID=' + $.connection.hub.id);
+
+            //Простое построение сообщений
+
+
+            function buildMessageForChat(message) {
+                console.log("buildMessageForChat", message);
+
+                var li = document.createElement("li");
+                //onclick="ReadMessage(${id})" onmouseover="ReadMessage(${id})"
+                li.id = "mes" + message.MessageId;
+
+                li.messageid = message.MessageId.toString();
+
+                if (IsSender(message)) {
+                    li.className = "mes right clearfix";
+                    li.innerHTML = GetMessageSenderHtml(message);
+
+                }
+                else {
+                    li.className = "mes left clearfix unread";
+                    li.innerHTML = GetMessageReceiverHtml(message);
+                    li.onclick = ReadMessage(`${message.MessageId}`);
+                    li.onmouseover = ReadMessage(`${message.MessageId}`);
+                }
+
+                return li;
+            }
+
+           
+
+            //Простое построение сообщений
 
             //поставлено в надежде вылечить отправку
             chat.server.addToGroup(document.getElementById("senderId").value,
@@ -534,6 +523,8 @@
 
             });
 
+
+
             ///обработчик события когда мышь нахожится на сообщении
             $(document.body).on("mouseenter", ".@messageClass", function () {
 
@@ -552,7 +543,13 @@
                 var message = $(this);
 
                 if (message.hasClass("@unreadClass")) {
-                    var id = message.attr('id');
+                    var id = message.attr('messageid');
+                    
+
+                    if (id == undefined || id == null)
+                    {
+                        id = message.attr('id').toString().substring(3);
+                    }
                     console.log(id);
                     chat.server.readMessageAboutOrder(id, document.getElementById("senderId").value)
                 }
@@ -565,3 +562,6 @@
 <!--/OrderChatHub-->
 
 
+<script>
+    
+</script>

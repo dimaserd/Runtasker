@@ -4,6 +4,7 @@ namespace Runtasker.Settings
 {
     public static class Settings
     {
+
         /// <summary>
         /// Local переключает приложение на локальную базу,
         /// Production на рабочую базу данных

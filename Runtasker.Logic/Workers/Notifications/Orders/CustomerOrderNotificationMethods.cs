@@ -120,7 +120,7 @@ namespace Runtasker.Logic.Workers.Notifications
         {
             //получаем модель для создания специального локализованного 
             //уведомления для заказчика
-            ForNotification model = ModelBuilder.AddedOnlineHelpOrder(order.Subject.ToDisplayName());
+            ForNotification model = ModelBuilder.AddedOnlineHelpOrder((order.Subject == Subject.Other)? order.OtherSubject: order.Subject.ToDisplayName());
 
             //создаем уведоомление для заказчика
             Notification customerN = new Notification

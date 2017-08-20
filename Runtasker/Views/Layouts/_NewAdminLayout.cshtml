@@ -114,8 +114,7 @@
     <div id="wrapper">
         <div class="container">
             <section>
-                @{ Html.RenderAction("Modal", "Message");}
-
+                
                 <div id="notification-wrapper"></div>
 
                 <div style="margin-top:15px;">
@@ -177,8 +176,7 @@
     <script>
             document.addEventListener('DOMContentLoaded', function(){
                 $('#notification-wrapper').load('/Notification/GetNotificationAsync')
-                //$('#ordersMiniPanel').load('/Orders/MiniPanelAsync')
-                //$('#messageMiniPanel').load('/Message/ActivePanelAsync')
+                
             }, false);
     </script>
     <!--/Notification Scrits-->

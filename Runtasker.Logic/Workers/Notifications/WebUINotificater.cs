@@ -35,10 +35,11 @@ namespace Runtasker.Logic.Workers.Notifications
         //returned value could be null
         public Notification GetNotification()
         {
-            Notification Note = Context.Notifications.FirstOrDefault(n => n.UserGuid == UserGuid);
+            Notification Note = Context.Notifications.FirstOrDefault(n => n.UserGuid == UserGuid && n.Status == NotificationStatus.Unseen);
             if (Note != null)
             {
-                Context.Notifications.Remove(Note);
+                Note.Status = NotificationStatus.Seen;
+
                 Context.SaveChanges();
             }
             return Note;
@@ -47,10 +48,11 @@ namespace Runtasker.Logic.Workers.Notifications
         public async Task<Notification> GetNotificationAsync()
         {
 
-            Notification Note = Context.Notifications.FirstOrDefault(n => n.UserGuid == UserGuid);
+            Notification Note = Context.Notifications.FirstOrDefault(n => n.UserGuid == UserGuid && n.Status == NotificationStatus.Unseen);
             if (Note != null)
             {
-                Context.Notifications.Remove(Note);
+                Note.Status = NotificationStatus.Seen;
+
                 await Context.SaveChangesAsync();
             }
             return Note;

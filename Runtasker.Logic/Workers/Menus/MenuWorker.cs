@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Runtasker.Logic.Workers.Menus
 {
     /// <summary>
-    /// Класс инкапсулирующий некоторые запросы к апи контролеру меню
+    /// Класс инкапсулирующий некоторые запросы к апи контролеру меню ()
     /// </summary>
     public class MenuWorker : IDisposable
     {
@@ -29,53 +29,50 @@ namespace Runtasker.Logic.Workers.Menus
         #endregion
 
         #region Методы
+
+       
         public async Task<UserOrdersInfo> GetUserOrdersInfoForCustomerAsync()
         {
-            List<Order> orders = await Db.Orders
-                    .Where(o => o.UserGuid == UserId)
-                    .Include(x => x.Messages).ToListAsync();
+            
+            List<OrderMessagesInfo> infos = (await Db.Orders.Where(o => o.UserGuid == UserId
+             && o.Status != OrderStatus.DeletedByCustomer
+               && o.Status != OrderStatus.DeletedByAdmin).ToListAsync())
+               .Select(x => new OrderMessagesInfo
+               {
+                   Id = x.Id,
+                   ActionLink = CustomerActions.GetActionLinkFromOrder(x),
+                   UnreadCount = x.Messages.Count(m => m.ReceiverId == UserId && m.Status == MessageStatus.New)
+               }).ToList();
 
-            List<Order> unApreciated = orders.Where(o => o.Status != OrderStatus.Appreciated).ToList();
-
-            List<OrderMessagesInfo> infos = unApreciated
-                .Select(x => new OrderMessagesInfo
-                {
-                    Id = x.Id,
-                        //задание ссылки по каждому заказу
-                        ActionLink = CustomerActions.GetActionLinkFromOrder(x),
-                    UnreadCount = x.Messages.Count(m => m.ReceiverId == UserId && m.Status == MessageStatus.New)
-                }).ToList();
+            
 
             return new UserOrdersInfo
             {
-                UnreadCount = unApreciated.SelectMany(x => x.Messages)
-                    .Count(m => m.ReceiverId == UserId && m.Status == MessageStatus.New),
-                HasOrders = orders.Count > 0,
+                UnreadCount = infos.Sum(x => x.UnreadCount),
+                HasOrders = infos.Count > 0,
                 OrderMessageInfos = infos
             };
         }
 
         public async Task<UserOrdersInfo> GetUserOrdersInfoForAdminAsync()
         {
-            List<Order> orders = await Db.Orders
-                    .Include(x => x.Messages).ToListAsync();
+            
 
-            List<Order> unApreciated = orders.Where(o => o.Status != OrderStatus.Appreciated).ToList();
+            List<OrderMessagesInfo> infos = (await Db.Orders.Where(o => o.Status != OrderStatus.DeletedByCustomer
+               && o.Status != OrderStatus.DeletedByAdmin
+               && o.Status != OrderStatus.Appreciated).ToListAsync())
+               .Select(x => new OrderMessagesInfo
+               {
+                   Id = x.Id,
+                   ActionLink = AdminActions.GetActionLinkFromOrder(x),
+                   UnreadCount = x.Messages.Count(m => m.ReceiverId == UserId && m.Status == MessageStatus.New)
+               }).ToList();
 
-            List<OrderMessagesInfo> infos = unApreciated
-                .Select(x => new OrderMessagesInfo
-                {
-                    Id = x.Id,
-                    //задание ссылки по каждому заказу
-                    ActionLink = AdminActions.GetActionLinkFromOrder(x),
-                    UnreadCount = x.Messages.Count(m => m.ReceiverId == UserId && m.Status == MessageStatus.New)
-                }).ToList();
 
             return new UserOrdersInfo
             {
-                UnreadCount = unApreciated.SelectMany(x => x.Messages)
-                    .Count(m => m.ReceiverId == UserId && m.Status == MessageStatus.New),
-                HasOrders = orders.Count > 0,
+                UnreadCount = infos.Sum(x => x.UnreadCount),
+                HasOrders = infos.Count > 0,
                 OrderMessageInfos = infos
             };
         }

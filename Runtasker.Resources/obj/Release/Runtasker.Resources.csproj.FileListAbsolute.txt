@@ -268,3 +268,5 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Landing.AboutUs.AboutUsRes.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Home.News.NewsRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Home.News.NewsRes.ru-RU.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Orders.DeleteOrder.DeleteOrderRes.resources
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Release\Runtasker.Resources.Views.Orders.DeleteOrder.DeleteOrderRes.ru-RU.resources

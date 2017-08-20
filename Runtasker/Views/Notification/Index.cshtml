@@ -2,6 +2,10 @@
 @using Runtasker.ExtensionsUI.UIExtensions.Alerts
 @using Runtasker.Resources.Views.Shared.NewLoginPartial
 @using HtmlExtensions.StaticRenderers
+@using Extensions.Decimal
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.Owin;
+@using Runtasker.Logic
 @model Notification
 @{
     Layout = null;
@@ -14,10 +18,15 @@
 
         { Html.RenderAction("ReSignIn", "Account"); }
 
-        string balance = User.Identity.GetBalance();
-        string newBalance = string.Format(NewLoginPartial.YourBalancePattern, balance, HtmlSigns.Rouble);
+        using (MyDbContext db = new MyDbContext())
+        {
+            string id = User.Identity.GetUserId();
+            string balance = db.Users.FirstOrDefault(x => x.Id == id).Balance.ToMoney();
+            string newBalance = string.Format(NewLoginPartial.YourBalancePattern, balance, HtmlSigns.Rouble);
 
-        @JqueryHelper.ChangeValueByIdExec("balance", newBalance)
+            @JSHelper.SetInnerHtmlToId("balance", newBalance)
+        }
+
     }
 <div class="row">
     <div class="col-md-12">

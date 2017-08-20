@@ -2,6 +2,7 @@
 @using Runtasker.HtmlExtensions;
 @using Runtasker.LocaleBuilders.Models
 @using Runtasker.Logic.Entities
+@using Common.JavascriptValidation.Statics
 @model OnlineOrderRequest
 @{
 
@@ -12,6 +13,8 @@
     ViewBag.Title = localeModel["Title"];
 
     string phoneNumber = User.Identity.GetPhoneNumber();
+
+    string jsObject = JSValidationMaker.GetJSValidationObject(typeof(OnlineOrderRequest));
 }
 
 @AlertHelper.GetAlert(localeModel["HelpAlertTitle"], localeModel["HelpAlertText"])
@@ -34,79 +37,33 @@
         @Html.ValidationErrorsToAlerts()
         @Html.AntiForgeryToken()
 
-        @AlertHelper.GetBigAlert()
-
         @Html.HiddenFor(m => m.OnlineHelpWorkType)
 
         <!--SubjectsList-->
-        <div id="SubjectForm" class="form-group">
-            @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                <div class="input-group">
-                    @Html.DropDownListFor(m => m.Subject, selectList: subjects, htmlAttributes: new { id = "subjectList", @class = "form-control" })
-                    <div class="input-group-btn">
-                        @Html.PopoverInfoFor(model => model.Subject)
-                    </div>
-                </div>
-            </div>
-        </div>
+        @Html.LabelAndDropDownListFor(x => x.Subject, selectList: subjects, showPopover: true)
         <!--/SubjectList-->
 
         <!--UserSubjectForm-->
-        <div class="form-group" id="OtherSubjectForm">
-            @Html.LabelFor(model => model.OtherSubject, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                <div class="input-group">
-                    @Html.TextBoxFor(m => m.OtherSubject, htmlAttributes: new { id = "OtherSubject", @class = "form-control" })
-                    <div class="input-group-btn">
-                        @Html.PopoverInfoFor(m => m.OtherSubject)
-                    </div>
-                </div>
-                <p id="OtherSubjectError" class="text-danger">
-
-                </p>
-            </div>
-        </div>
+        @Html.LabelAndTextBoxFor(x => x.OtherSubject, showPopover: true)
         <!--/UserSubjectForm-->
 
         <!--PhoneNumberForm-->
-        <div class="form-group" id="PhoneNumberForm">
-            @Html.LabelFor(m => m.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                <div class="input-group">
-                    @Html.TextBoxFor(m => m.PhoneNumber, htmlAttributes: new { id = "PhoneNumber", @class = "form-control" })
-                    <div class="input-group-btn">
-                        @Html.PopoverInfoFor(m => m.PhoneNumber)
-                    </div>
-                </div>
-                @Html.ErrorFor(m => m.PhoneNumber)
-            </div>
-        </div>
+        @Html.LabelAndTextBoxFor(x => x.PhoneNumber, showPopover: true)
         <!--/PhoneNumberForm-->
 
         <!--DateTime Picker-->
-        <div class="form-group" id="DateForm">
-            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="date col-md-5">
-                <div class="input-group">
-                    <!--input-group date-->
-                    <input type="text" class="form-control" id="datetimepicker1" name="StartDate" />
-                    <div class="input-group-btn">
-                        @Html.PopoverInfoFor(m => m.StartDate)
-                    </div>
-                </div>
-                
-            </div>
-        </div>         
+        @Html.LabelAndDateTimePickerFor(x => x.StartDate, showPopover: true)         
         <!--End of DateTimePicker-->
 
+        
+
         <!--FilesUpload-->
-        <div class="form-group">
-            @Html.LabelFor(model => model.FileUpload, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
+        <div id="@PropertyNameHelper.GetIdForForm("FileUpload")" class="form-group">
+            @Html.LabelFor(model => model.FileUpload, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+            <div class="col-md-10 col-sm-10">
                 <p>
                     <div class='input-group'>
-                        @Html.TextBoxFor(model => model.FileUpload, htmlAttributes: new { id = "fileUpload", type = "file", multiple = "" })
+                        @Html.TextBoxFor(model => model.FileUpload, htmlAttributes: new { id = PropertyNameHelper.GetIdForInput("FileUpload"), type = "file", multiple = "" })
                         <div class='input-group-btn'>
                             <div class="pull-right">
                                 @Html.PopoverInfoFor(model => model.FileUpload, htmlAttributes: new { @class = "circle" })
@@ -120,26 +77,13 @@
                         </div>
                     </div>
                 </p>
+                <p>@Html.GetStrongErrorText(x => x.FileUpload)</p>
             </div>
         </div>
         <!--/FilesUpload-->
 
         <!--Decription-->
-        <div class="form-group" id="DescriptionForm">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                @Html.TextAreaFor(model => model.Description,
-                    htmlAttributes: new
-                    {
-                        @class = "form-control",
-                        rows = "3",
-                        id = "DescriptionField",
-                        placeholder = localeModel["DescriptionPlaceholder"]
-                    })
-                @Html.ValidationMessageFor(model => model.Description, "", new { id = "descriptionError", @class = "text-danger" })
-                @Html.ErrorFor(m => m.Description)
-            </div>
-        </div>
+        @Html.LabelAndTextAreaFor(x => x.Description)
         <!--/Description-->
 
         <div class="form-group">
@@ -155,50 +99,95 @@
 
 @section scripts{
     
+    @JSValidationHelper.GetDich(jsObject)
+    <script>
+        EnableOnChangePropertyValidation("Subject");
+        EnableOnChangePropertyValidation("Description");
+        EnableOnChangePropertyValidation("OtherSubject")
+    </script>
+
+
+    <!--DateTimePicker-->
+@Html.GetDateTimeScriptsAndStyles()
+@ViewExtensions.GetDateTimeScriptsAndStyles(dateTimePickerId: PropertyNameHelper.GetIdForInput("StartDate"), pickTime: true)
+<!--/DateTimePicker-->
     
+    <!--Активация всплывалок-->
+<script>
+        var popoverBtns = $(".popoverBtn");
 
+        var activator = function () {
+            popoverBtns.popover();
+        }();
 
+        function HidePopovers() {
+            popoverBtns.popover('hide');
+        }
 
-    <!--Validation Coloring And Error Showing-->
-    @OrderScripts.GetValidationColoringAndErrorShowing()
-    <!--/Validation Coloring And Error Showing-->
+</script>
+<!--/Tooltip activator-->
+
+    <!--Скрипты с телефонами-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+
+    <script>
+        $("#" + "@PropertyNameHelper.GetIdForInput("PhoneNumber")").mask("8(999) 999-99-99");
+    </script>
+
+    @if(!string.IsNullOrEmpty(phoneNumber))
+    {
+        <script>
+            document.getElementById("@PropertyNameHelper.GetIdForInput("PhoneNumber")").value = "@phoneNumber";
+        </script>
+    }
+    <!--Скрипты с телефонами-->
 
     <!--Проверка мобильного телефона-->
 <script>
-    var phoneNumberString = "PhoneNumber";
 
-    var phoneNumberCSS_String = "#" + phoneNumberString;
-
-    var phoneNumber = $(phoneNumberCSS_String);
-
-    //устанавливаю телефон
-    phoneNumber.val("@phoneNumber");
-
-    HideError(phoneNumberCSS_String);
-
-
-
-    phoneNumber.change(function () {
-        if (CheckPhoneNumber()) {
-            AddSuccessToForm(phoneNumberCSS_String);
-            HideError(phoneNumberCSS_String);
+        function RemoveMask(number)
+        {
+            return number.toString().replace("(", "")
+                .replace(")", "")
+                .replace(" ", "")
+                .replace("-", "")
+                .replace("-", "");
         }
-        else {
-            AddErrorToForm(phoneNumberCSS_String);
-            ShowError(phoneNumberCSS_String);
+        function ValidateNumber(number)
+        {
+            
+
+            if (CheckPhoneNumber(RemoveMask(number)) && number.length > 11) {
+                HideError("PhoneNumber");
+                MakeFormSuccess("PhoneNumber");
+
+                return true;
+            }
+            else {
+                WriteError("PhoneNumber", "Вы ввели неправильный номер телефона!")
+                ShowError("PhoneNumber");
+                MakeFormError("PhoneNumber");
+
+                return false;
+            }
         }
-    })
 
-    //булева проверка мобильно телефона 
-    function CheckPhoneNumber() {
-        var value = document.getElementById("PhoneNumber").value;
+        $("#" + "@PropertyNameHelper.GetIdForInput("PhoneNumber")").change(function (e) {
+            e.preventDefault();
+            ValidateNumber($(this).val());
+        })
 
+
+    
+
+    //булева проверка мобильно телефона
+    function CheckPhoneNumber(value) {
+        
         var pattern = new RegExp(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im);
 
         return pattern.test(value);
     }
 </script>
-<!--/Проверка мобильного телефона-->
 
     <!--Логика при нажатии клика-->
     <script>
@@ -207,16 +196,9 @@
         var realCreate = $("#realCreate");
 
         fakeCreate.click(function (e) {
-            e.preventDefault();
-
-            var count = 0;
-            //logging
-
-            count = (CheckOtherSubject()) ? count + 1 : count;
-            count = (CheckDescription()) ? count + 1 : count;
-            count = (CheckPhoneNumber()) ? count + 1 : count;
-
-            if (count == 3) {
+            if (ValidateModel() && ValidateNumber(document.getElementById("@PropertyNameHelper.GetIdForInput("PhoneNumber")").value))
+            {
+                console.log("Все условия пройдены!")
                 realCreate.click();
             }
             
@@ -224,44 +206,10 @@
     </script>
     <!--/Логика при нажатии клика-->
 
-    @OrderScripts.GetPreparingScripts()
 
+    
 
-    @OrderScripts.GetDescriptionHandlers(localeModel)
-
-    <!--Big Error Scripts-->
-    @OrderScripts.GetBigErrorScripts()
-    <!--/Big Error Scripts-->
-
-    <!--DateTimePicker-->
-    @Html.GetDateTimeScriptsAndStyles()
-    @ViewExtensions.GetDateTimeScriptsAndStyles(null, true)
-    <!--/DateTimePicker-->
-
-    <!--Скрипты по умолчанию для предмета-->
-    @OrderScripts.GetDefaultSubjectScripts()
-    <!--/Скрипты по умолчанию для предмета-->
-
-    <!--Popover activator-->
-    <script>
-        var popoverBtns = $(".popoverBtn");
-
-        var activator = function()
-        {
-            popoverBtns.popover();
-        }();
-
-        function HidePopovers()
-        {
-            popoverBtns.popover('hide');
-        }
-
-    </script>
-    <!--/Tooltip activator-->
-
-    <!--Other Subject Scripts-->
-    @OrderScripts.GetSubjectCheckers(localeModel)
-    <!--/Other Subject Scripts-->
+    
 
 
 }

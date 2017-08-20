@@ -49,6 +49,7 @@
     <Compile Include="Attributes\JsCheckbox.cs" />
     <Compile Include="Attributes\JsDefaultValueAttribute.cs" />
     <Compile Include="Attributes\JsNotValidateAttribute.cs" />
+    <Compile Include="Attributes\JsOnChange.cs" />
     <Compile Include="Attributes\JsOnValueAttribute.cs" />
     <Compile Include="Attributes\JsOnValueWithElseAttribute.cs" />
     <Compile Include="Attributes\JsRequiredAttribute.cs" />

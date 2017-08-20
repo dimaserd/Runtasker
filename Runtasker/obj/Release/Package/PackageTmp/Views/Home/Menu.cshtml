@@ -81,6 +81,8 @@
 
             function OrdersSetter(data)
             {
+                document.getElementById("unreadCount").innerText = data.UnreadCount;
+
                 var ul = document.getElementById("orderPanelMenu");
 
                 if (data.OrderMessageInfos.length != 0) {

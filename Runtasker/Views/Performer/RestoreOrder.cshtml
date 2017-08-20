@@ -1,0 +1,22 @@
+﻿@using Runtasker.Logic.Entities
+@model Order
+@{
+    ViewBag.Title = "Восстановить заказ";
+}
+
+<h2>Восстановить заказ</h2>
+
+@using (Html.BeginForm("RestoreOrder", "Performer", method: FormMethod.Post, htmlAttributes: new { @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.Status)
+
+    <div class="btn-group" role="group">
+        <button class="btn btn-success" type="submit">
+            Восстановить
+        </button>
+        <a href="@Url.Action("Trash")" class="btn btn-warning">
+            Отмена
+        </a>
+    </div>
+}

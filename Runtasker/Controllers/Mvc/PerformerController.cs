@@ -237,7 +237,43 @@ namespace Runtasker.Controllers
                 .Where(x => x.LastStatus != OrderStatus.Appreciated)
                 .ToList();
 
-            return View(orders);
+            if(User.IsInRole("Admin"))
+            {
+                return View(orders);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult RestoreOrder(int id)
+        {
+            Order order = Db.Orders
+                .FirstOrDefault(x => x.Id == id && (x.Status == OrderStatus.DeletedByAdmin || x.Status == OrderStatus.DeletedByCustomer));
+
+            if(order != null && User.IsInRole("Admin"))
+            {
+                return View(order);
+            }
+
+            return RedirectToAction("Trash");
+        }
+
+        [HttpPost]
+        public ActionResult RestoreOrder(Order order)
+        {
+            Order toRestoreOrder = Db.Orders
+                .FirstOrDefault(x => x.Id == order.Id && (x.Status == OrderStatus.DeletedByAdmin || x.Status == OrderStatus.DeletedByCustomer));
+
+            if (toRestoreOrder != null && User.IsInRole("Admin"))
+            {
+                toRestoreOrder.Status = toRestoreOrder.LastStatus;
+                Db.SaveChanges();
+
+                return RedirectToAction("Trash");
+            }
+
+            return RedirectToAction("Trash");
         }
         #endregion
 

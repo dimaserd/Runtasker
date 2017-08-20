@@ -3409,6 +3409,7 @@
     <Content Include="Views\Orders\DeleteOrder.cshtml" />
     <Content Include="Views\Performer\DeleteOrder.cshtml" />
     <Content Include="Views\Performer\Trash.cshtml" />
+    <Content Include="Views\Performer\RestoreOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

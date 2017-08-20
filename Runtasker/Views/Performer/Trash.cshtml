@@ -1,21 +1,32 @@
 ﻿@using Extensions.Enumerations
-
+@using Runtasker.Statics.Views
 @using Runtasker.Logic.Entities
 @model List<Order>
 @{
-    ViewBag.Title = "Trash";
+    Layout = ViewPaths.NewAdminLayoutPath;
+    ViewBag.Title = "Корзина заказов";
 }
 
 <h2>Корзина заказов</h2>
 
+<hr class="half-margins"/>
+
 @foreach(Order order in Model)
 {
+
+
     <div class="row">
         <div class="col-md-6">
-            Тип работы: @order.WorkType
-            Статус до удаления: @order.LastStatus.ToDisplayName()
-            Дата публикации: @order.PublishDate.ToShortDateString()
-            Дата завершения: @order.FinishDate.ToShortDateString()
+            <div class="row">Тип работы: @order.WorkType.ToDisplayName()</div>
+            <div class="row">Статус до удаления: @order.LastStatus.ToDisplayName()</div>
+            <div class="row">
+                [@order.Status.ToDisplayName()]
+            </div>
+            <div class="row">Дата публикации: @order.PublishDate.ToShortDateString()</div>
+            <div class="row">Дата завершения: @order.FinishDate.ToShortDateString()</div>
+            
+
+
             @if(order.FinishDate < DateTime.Now)
             {
                 <label class="label label-danger">Заказ уже просрочен</label>
@@ -26,9 +37,11 @@
             }
         </div>
         <div class="col-md-6">
-            <a href="/Performer/RestoreOrder/@order.Id">[Восстановить заказ №@order.Id]</a>
+            <a href="/Performer/RestoreOrder/@order.Id" class="btn btn-default">[Восстановить заказ №@order.Id]</a>
         </div>
     </div>
+
+    <hr class="half-margins"/>
     
 }
 

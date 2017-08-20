@@ -5,8 +5,7 @@ using System.Web.Mvc;
 
 namespace HtmlExtensions.StaticRenderers
 {
-    //<i class="fa fa-rub" aria-hidden="true"></i>
-
+    
     public static class FASigns
     {
         #region Свойства
@@ -305,6 +304,31 @@ namespace HtmlExtensions.StaticRenderers
             }
         }
         #endregion
+
+
+        //fa-trash
+
+        /// <summary>
+        /// Иконка с мусорным ведром
+        /// </summary>
+        public static FontAwesomeModel Trash
+        {
+            get
+            {
+                return new FontAwesomeModel("trash");
+            }
+        }
+
+        /// <summary>
+        /// Иконка с мусорным ведром (прозрачная)
+        /// </summary>
+        public static FontAwesomeModel TrashTransparent
+        {
+            get
+            {
+                return new FontAwesomeModel("trash-o");
+            }
+        }
 
         /// <summary>
         /// Иконка с крестиками (используется для показа закрытия) 

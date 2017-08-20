@@ -1,0 +1,40 @@
+﻿@using Runtasker.Logic.Entities
+@using Runtasker.Resources.Views.Orders.DeleteOrder
+@using HtmlExtensions.StaticRenderers
+@model Order
+@{
+    string title = string.Format(DeleteOrderRes.TitleFormat, Model.Id);
+    ViewBag.Title = title;
+}
+
+<header id="page-title">
+    <div class="container">
+        <h1>@title</h1>
+
+        <ul class="breadcrumb">
+            <li><a href="/Home/Index">@DeleteOrderRes.HomeNav</a></li>
+            <li><a href="/Orders">@DeleteOrderRes.MyOrdersNav</a></li>
+            <li class="active">@title</li>
+        </ul>
+    </div>
+</header>
+
+@AlertHelper.GetAlert(text: string.Format(DeleteOrderRes.HelpAlertTextFormat, Model.Id))
+
+@using (Html.BeginForm("DeleteOrder", "Orders", method: FormMethod.Post, htmlAttributes: new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" name="id" value="@Model.Id" />
+    <input type="hidden" name="customerId" value="@Model.UserGuid" />
+    
+    <div class="btn-group" role="group">
+        <button class="btn btn-danger" type="submit">
+            @FASigns.TrashTransparent.ToHtml()@DeleteOrderRes.Remove
+        </button>
+        <a href="@Url.Action("Index")" class="btn btn-warning">
+            @DeleteOrderRes.Cancel
+        </a>
+    </div>
+    
+}

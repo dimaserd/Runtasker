@@ -3406,6 +3406,9 @@
     <Content Include="Views\Shared\LayoutChangerPartial.cshtml" />
     <Content Include="Views\Payment\YandexPlatezhka.cshtml" />
     <Content Include="Views\Payment\YandexKassaTest.cshtml" />
+    <Content Include="Views\Orders\DeleteOrder.cshtml" />
+    <Content Include="Views\Performer\DeleteOrder.cshtml" />
+    <Content Include="Views\Performer\Trash.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

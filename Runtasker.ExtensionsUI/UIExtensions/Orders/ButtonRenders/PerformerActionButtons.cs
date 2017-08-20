@@ -57,6 +57,15 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                 ).ToString();
         }
 
+        string GetButtonForDeletingOrder()
+        {
+            return new HtmlActionButtonLink(
+                buttonLink: $"/Performer/DeleteOrder/{Order.Id}",
+                buttonText: $"{FASigns.TrashTransparent}Удалить заказ",
+                buttonClass: BtnClass
+                ).ToString();
+        }
+
         string GetButtonsForExecutingOrder()
         {
             StringBuilder buttons = new StringBuilder();
@@ -72,7 +81,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
         string GetButtonForFilesDownloading()
         {
-            if(Order.Attachments.Any(x => x.Type == AttachmentType.OrderFiles))
+            if(Order.HasCustomerFiles)
             {
                 return new HtmlActionButtonLink
                          (
@@ -196,7 +205,9 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                     break; 
             }
             return buttons + GetButtonForFilesDownloading()
-                    +  GetButtonForDownloadingSolution() + GetButtonForChatAboutOrder();
+                    +  GetButtonForDownloadingSolution()
+                    + GetButtonForChatAboutOrder()
+                    + GetButtonForDeletingOrder();
         }
         #endregion
     }

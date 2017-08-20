@@ -203,9 +203,9 @@ namespace Runtasker.Controllers
         {
             Order order = Db.Orders.FirstOrDefault(x => x.Id == id);
 
-            if(order.Status != OrderStatus.DeletedByCustomer || order.Status != OrderStatus.DeletedByAdmin)
+            if(order.Status != OrderStatus.DeletedByCustomer && order.Status != OrderStatus.DeletedByAdmin)
             {
-                return View();
+                return View(order);
             }
             else
             {
@@ -218,7 +218,7 @@ namespace Runtasker.Controllers
         {
             Order order = Db.Orders.FirstOrDefault(x => x.Id == id);
 
-            if (order.Status != OrderStatus.DeletedByCustomer || order.Status != OrderStatus.DeletedByAdmin)
+            if (order.Status != OrderStatus.DeletedByCustomer && order.Status != OrderStatus.DeletedByAdmin)
             {
                 order.LastStatus = order.Status;
                 order.Status = OrderStatus.DeletedByAdmin;
@@ -226,6 +226,18 @@ namespace Runtasker.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+        #endregion
+
+        #region Методы Корзины
+        public ActionResult Trash()
+        {
+            List<Order> orders = Db.Orders.Where(x => x.Status == OrderStatus.DeletedByAdmin || x.Status == OrderStatus.DeletedByCustomer)
+                //если заказ был скачан пользователем и оценен его востанавливать нельзя
+                .Where(x => x.LastStatus != OrderStatus.Appreciated)
+                .ToList();
+
+            return View(orders);
         }
         #endregion
 

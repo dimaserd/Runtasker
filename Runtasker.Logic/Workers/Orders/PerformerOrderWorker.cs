@@ -249,7 +249,8 @@ namespace Runtasker.Logic.Workers.Orders
         public async Task<List<OrderAndMessageCount>> NewGetOrdersAsync()
         {
             OtherUserInfo performerInfo = (await Context.Users.FirstOrDefaultAsync(x => x.Id == UserGuid)).GetOtherInfo();
-            List<OrderAndMessageCount> allOrders = await Context.Orders.Select(x => 
+            List<OrderAndMessageCount> allOrders = await Context.Orders
+                .Where(x => x.Status != OrderStatus.DeletedByAdmin && x.Status != OrderStatus.DeletedByCustomer).Select(x => 
             new OrderAndMessageCount
             {
                 Order = x,

@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AClass\SpecClass.cs" />
     <Compile Include="Actions\OrderActions\OrderActionsRes.ru-RU.Designer.cs">
       <DependentUpon>OrderActionsRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -604,6 +603,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Create.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders\DeleteOrder\DeleteOrderRes.ru-RU.Designer.cs">
+      <DependentUpon>DeleteOrderRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Orders\DeleteOrder\DeleteOrderRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeleteOrderRes.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\Orders\Index\Index.ru-RU.Designer.cs">
       <DependentUpon>Index.ru-RU.resx</DependentUpon>
@@ -1224,6 +1233,14 @@
     <EmbeddedResource Include="Views\Orders\Create\Create.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Create.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orders\DeleteOrder\DeleteOrderRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DeleteOrderRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orders\DeleteOrder\DeleteOrderRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DeleteOrderRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orders\Index\Index.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

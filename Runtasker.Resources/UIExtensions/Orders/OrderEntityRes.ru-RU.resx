@@ -127,6 +127,10 @@
     <value>{0} Чат о заказе {1}</value>
     <comment>{знак чата} Чат о заказе {кол-во непрочитанных сообщений}</comment>
   </data>
+  <data name="DeleteFormat" xml:space="preserve">
+    <value>{0} Удалить заказ</value>
+    <comment>{иконка удаления} Удалить заказ</comment>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Описание</value>
   </data>

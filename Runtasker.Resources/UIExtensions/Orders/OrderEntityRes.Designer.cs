@@ -88,6 +88,15 @@ namespace Runtasker.Resources.UIExtensions.Orders {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на {0} Delete order.
+        /// </summary>
+        public static string DeleteFormat {
+            get {
+                return ResourceManager.GetString("DeleteFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Description.
         /// </summary>
         public static string Description {

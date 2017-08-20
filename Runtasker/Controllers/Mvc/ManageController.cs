@@ -17,17 +17,18 @@ using Runtasker.Logic;
 using Runtasker.Logic.Entities;
 using System.Data.Entity;
 using Runtasker.Resources.Views.Manage.Index;
+using Runtasker.Controllers.Base;
+using System.Collections.Generic;
 
 namespace Runtasker.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseMvcController
     {
         #region Поля
 
         #region Мной созданные
-        MyDbContext _db;
-
+        
         InvitationWorker _inviter;
         AvatarWorker _avatar;
         ManageLocaleViewModelBuilder _viewModelBuilder;
@@ -35,10 +36,7 @@ namespace Runtasker.Controllers
         #endregion
 
         #region Стандартные
-
-        ApplicationSignInManager _signInManager;
-        ApplicationUserManager _userManager;
-
+        
         #endregion
 
         #endregion
@@ -48,29 +46,12 @@ namespace Runtasker.Controllers
         {
         }
         
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-        }
         #endregion
 
         #region Свойства
 
         #region Мной созданные
-        string UserGuid { get { return User.Identity.GetUserId(); } }
-
-        MyDbContext Db
-        {
-            get
-            {
-                if(_db == null)
-                {
-                    _db = new MyDbContext();
-                }
-                return _db;
-            }
-        }
+        
 
         AvatarWorker Avatarer
         {
@@ -109,33 +90,7 @@ namespace Runtasker.Controllers
         }
         #endregion
 
-        #region Стандартные
-
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set 
-            { 
-                _signInManager = value; 
-            }
-        }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
-
-        #endregion
+        
 
         #endregion
 
@@ -225,8 +180,10 @@ namespace Runtasker.Controllers
         {
             return View();
         }
-        #endregion
+
         
+        #endregion
+
         [HttpGet]
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
@@ -512,12 +469,6 @@ namespace Runtasker.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && _userManager != null)
-            {
-                _userManager.Dispose();
-                _userManager = null;
-            }
-
             base.Dispose(disposing);
         }
 

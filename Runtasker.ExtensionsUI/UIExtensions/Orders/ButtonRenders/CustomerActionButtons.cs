@@ -1,7 +1,6 @@
 ﻿using Runtasker.Logic.Entities;
 using System.Text;
 using Extensions.Decimal;
-using System.Linq;
 using System;
 using Runtasker.ExtensionsUI.Statics;
 
@@ -27,9 +26,14 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
 
         
 
-        #region Help Methods
+        #region Вспомогательные методы
 
-        #region Buttons parameters
+        #region Генераторы кнопок
+
+        string GetButtonForDeleting()
+        {
+            return CustomerBtns.DeleteBtn(Order.Id, BtnClass).ToString();
+        }
 
         /// <summary>
         /// Возвращает кнопку для чата о заказе. 
@@ -38,12 +42,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         /// <returns></returns>
         string GetButtonForChatAboutOrder()
         {
-            //подсчитываем непрочитанные пользователем сообщения
-            int unreadCount = Order.Messages
-                .Count(m => m.ReceiverId == Order.UserGuid
-                    && m.Status == MessageStatus.New);
-
-            return CustomerBtns.ChatBtn(Order.Id, unreadCount, BtnClass).ToString();
+            return CustomerBtns.ChatBtn(Order.Id, UnreadMessagesCount, BtnClass).ToString();
         }
 
         /// <summary>
@@ -235,7 +234,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
                     buttons = GetButtonsForHasErrorOrder();
                     break;
             }
-            return buttons + GetButtonForChatAboutOrder();
+            return buttons + GetButtonForChatAboutOrder() + GetButtonForDeleting();
         }
 
         #endregion

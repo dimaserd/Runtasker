@@ -1,0 +1,40 @@
+﻿@using Runtasker.Logic.Entities
+@using Runtasker.Resources.Views.Orders.DeleteOrder
+@using HtmlExtensions.StaticRenderers
+@model Order
+@{
+    string title = "Удаление заказа №" + Model.Id;
+    ViewBag.Title = title;
+}
+
+<header id="page-title">
+    <div class="container">
+        <h1>@title</h1>
+
+        <ul class="breadcrumb">
+            <li><a href="/Home/Index">Главная</a></li>
+            <li><a href="/Performer/Index">Заказы</a></li>
+            <li class="active">@title</li>
+        </ul>
+    </div>
+</header>
+
+@AlertHelper.GetAlert(text: $"Вы удаляете заказ №{Model.Id}. ")
+
+@using (Html.BeginForm("DeleteOrder", "Performer", method: FormMethod.Post, htmlAttributes: new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" name="id" value="@Model.Id" />
+    <input type="hidden" name="performerId" value="@Model.PerformerGuid" />
+
+    <div class="btn-group" role="group">
+        <button class="btn btn-danger" type="submit">
+            @FASigns.TrashTransparent.ToHtml()@DeleteOrderRes.Remove
+        </button>
+        <a href="@Url.Action("Index")" class="btn btn-warning">
+            @DeleteOrderRes.Cancel
+        </a>
+    </div>
+
+}

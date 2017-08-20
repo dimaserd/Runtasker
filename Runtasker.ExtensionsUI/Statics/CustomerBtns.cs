@@ -18,6 +18,17 @@ namespace Runtasker.ExtensionsUI.Statics
             );
         }
 
+        public static HtmlActionButtonLink DeleteBtn(int orderId, string btnClass)
+        {
+            return new HtmlActionButtonLink
+            (
+                buttonText: string.Format(OrderEntityRes.DeleteFormat, FASigns.TrashTransparent),
+                buttonLink: $"Orders/DeleteOrder/{orderId}",
+                buttonClass: btnClass
+            );
+        }
+
+
         #region Для заказа с ошибкой
 
         public static HtmlActionButtonLink AddDescriptionBtn(int orderId, string btnClass)

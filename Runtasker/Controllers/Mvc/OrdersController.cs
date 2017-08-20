@@ -16,6 +16,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Runtasker.Logic.Enumerations.Notifications.Anonymous;
 using Extensions.Decimal;
 using Runtasker.Controllers.Base;
+using System.Data.Entity;
 
 namespace Runtasker.Controllers
 {
@@ -466,6 +467,80 @@ namespace Runtasker.Controllers
 
         #endregion
 
+        #region Удаление заказа
+        [HttpGet]
+        public ActionResult DeleteOrder(int id)
+        {
+            Order order = Db.Orders.FirstOrDefault(x => x.Id == id && x.UserGuid == UserGuid);
+
+            if (order.Status != OrderStatus.DeletedByCustomer && order.Status != OrderStatus.DeletedByAdmin)
+            {
+                return View(order);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteOrder(int id, string customerId)
+        {
+            Order order = Db.Orders.FirstOrDefault(x => x.Id == id && x.UserGuid == UserGuid);
+
+            if (order.Status != OrderStatus.DeletedByCustomer && order.Status != OrderStatus.DeletedByAdmin)
+            {
+                order.LastStatus = order.Status;
+                order.Status = OrderStatus.DeletedByCustomer;
+                Db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+        #endregion
+
+
+        #region Методы корзины
+        [HttpGet]
+        public async Task<ActionResult> Trash()
+        {
+            List<Order> ordersInTrash = await
+                Db.Orders
+                .Where(x => x.Status == OrderStatus.DeletedByCustomer || x.Status == OrderStatus.DeletedByAdmin)
+                .ToListAsync();
+
+            return View(ordersInTrash);
+        }
+
+        [HttpGet]
+        public ActionResult Restore(int id)
+        {
+            Order order = Db.Orders.FirstOrDefault(x => x.Id == id && 
+            x.UserGuid == UserGuid &&
+            (x.Status == OrderStatus.DeletedByCustomer || x.Status == OrderStatus.DeletedByAdmin));
+
+            return View(order);
+        }
+
+        [HttpPost]
+        public ActionResult Restore(int id, string customerId)
+        {
+            Order order = Db.Orders.FirstOrDefault(x => x.Id == id &&
+            x.UserGuid == UserGuid &&
+            (x.Status == OrderStatus.DeletedByCustomer || x.Status == OrderStatus.DeletedByAdmin));
+
+            if(order != null)
+            {
+                order.Status = order.LastStatus;
+                Db.SaveChanges();
+
+                return RedirectToAction("Trash");
+            }
+
+
+            return RedirectToAction("Trash");
+        }
+        #endregion
 
         public ActionResult DownloadSolution(int id)
         {

@@ -97,6 +97,8 @@
     </div>
 }
 
+@ModalHelper.GetLoadingModal()
+
 @section scripts{
     
     @JSValidationHelper.GetDich(jsObject)
@@ -193,13 +195,14 @@
     <script>
         var fakeCreate = $("#fakeCreate");
 
-        var realCreate = $("#realCreate");
-
+        
         fakeCreate.click(function (e) {
             if (ValidateModel() && ValidateNumber(document.getElementById("@PropertyNameHelper.GetIdForInput("PhoneNumber")").value))
             {
-                console.log("Все условия пройдены!")
-                realCreate.click();
+                console.log("Все условия пройдены!");
+                ShowHideModal();
+                document.getElementById("realCreate").click();
+                
             }
             
         })

@@ -413,48 +413,9 @@
                 }
     }
 
-    $.connection.hub.start()
-        .done(function () {
-            console.log('Now connected, connection ID=' + $.connection.hub.id);
-
-            //Простое построение сообщений
-
-
-            function buildMessageForChat(message) {
-                console.log("buildMessageForChat", message);
-
-                var li = document.createElement("li");
-                //onclick="ReadMessage(${id})" onmouseover="ReadMessage(${id})"
-                li.id = "mes" + message.MessageId;
-
-                li.messageid = message.MessageId.toString();
-
-                if (IsSender(message)) {
-                    li.className = "mes right clearfix";
-                    li.innerHTML = GetMessageSenderHtml(message);
-
-                }
-                else {
-                    li.className = "mes left clearfix unread";
-                    li.innerHTML = GetMessageReceiverHtml(message);
-                    li.onclick = ReadMessage(`${message.MessageId}`);
-                    li.onmouseover = ReadMessage(`${message.MessageId}`);
-                }
-
-                return li;
-            }
-
-           
-
-            //Простое построение сообщений
-
-            //поставлено в надежде вылечить отправку
-            chat.server.addToGroup(document.getElementById("senderId").value,
-                document.getElementById("receiverId").value);
-
-            //обработчик нажатия кнопки отправить
-            $('#@sendBtnId').click(function (e) {
-                console.log("клик на отправку")
+    function SendMessage()
+    {
+        console.log("клик на отправку")
 
 
 
@@ -520,9 +481,61 @@
                     ClearInputs();
                 }
 
+    }
 
+    $.connection.hub.start()
+        .done(function () {
+            console.log('Now connected, connection ID=' + $.connection.hub.id);
+
+            //Простое построение сообщений
+
+
+            function buildMessageForChat(message) {
+                console.log("buildMessageForChat", message);
+
+                var li = document.createElement("li");
+                //onclick="ReadMessage(${id})" onmouseover="ReadMessage(${id})"
+                li.id = "mes" + message.MessageId;
+
+                li.messageid = message.MessageId.toString();
+
+                if (IsSender(message)) {
+                    li.className = "mes right clearfix";
+                    li.innerHTML = GetMessageSenderHtml(message);
+
+                }
+                else {
+                    li.className = "mes left clearfix unread";
+                    li.innerHTML = GetMessageReceiverHtml(message);
+                    li.onclick = ReadMessage(`${message.MessageId}`);
+                    li.onmouseover = ReadMessage(`${message.MessageId}`);
+                }
+
+                return li;
+            }
+
+
+
+            //Простое построение сообщений
+
+            //поставлено в надежде вылечить отправку
+            chat.server.addToGroup(document.getElementById("senderId").value,
+                document.getElementById("receiverId").value);
+
+            //обработчик нажатия кнопки отправить
+            $('#@sendBtnId').click(function (e) {
+
+                SendMessage();
             });
 
+            //отправка сообщения по нажатию на энтер
+            document.getElementById("@textInputId")
+                .addEventListener("keyup", function (event) {
+                    event.preventDefault();
+                    if (event.keyCode == 13) {
+                        SendMessage();
+                    }
+                });
 
 
             ///обработчик события когда мышь нахожится на сообщении
@@ -544,7 +557,7 @@
 
                 if (message.hasClass("@unreadClass")) {
                     var id = message.attr('messageid');
-                    
+
 
                     if (id == undefined || id == null)
                     {

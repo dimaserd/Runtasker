@@ -146,7 +146,3 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru\System.Web
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru\System.Web.WebPages.Razor.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru\System.Web.WebPages.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Views\Payment\Robokassa\RkassaRes.resx
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.resx
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Views\Payment\Robokassa\RkassaRes.Designer.cs
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.Designer.cs

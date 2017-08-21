@@ -122,7 +122,48 @@
         EnableOnChangePropertyValidation("OtherSubject")
     </script>
 
-   
+   <!--Popover activator-->
+<script>
+        var popoverBtns = $(".popoverBtn");
+
+        var activator = function () {
+            popoverBtns.popover();
+        }();
+
+        function HidePopovers() {
+            popoverBtns.popover('hide');
+        }
+
+</script>
+<!--/Tooltip activator-->
+
+<!--DateTimePicker-->
+@Html.GetDateTimeScriptsAndStyles()
+@ViewExtensions.GetDateTimeScriptsAndStyles(dateTimePickerId: PropertyNameHelper.GetIdForInput("CompletionDate"), pickTime: false)
+<!--/DateTimePicker-->
+
+<script>
+        var subjectList = document.getElementById("Subject" + "@PropertyNameHelper.InputAddition");
+        var opts = subjectList.options.length;
+        for (var i = 0; i < opts; i++) {
+            if (subjectList.options[i].value.toString() == "1") {
+                subjectList.options[i].selected = true;
+                break;
+            }
+        }
+</script>
+
+<!--Date Scripts-->
+@ViewExtensions.GetDateParseScripts()
+
+<script>
+        function daydiff(dateToCompare) {
+            var dateNow = new Date();
+            return Math.round((dateToCompare - dateNow) / (1000 * 60 * 60 * 24)) + 1;
+        }
+</script>
+<!--/Date Scripts-->
+
     
 
     <!--Обработчики перед отправкой-->

@@ -1,4 +1,10 @@
-﻿@using Runtasker.Logic.Models.Orders
+﻿
+@using Runtasker.HtmlExtensions
+@using HtmlExtensions.StaticRenderers
+@using Extensions.String
+@using Runtasker.LocaleBuilders.Models
+@using Common.JavascriptValidation.Statics
+@using Runtasker.Logic.Models.Orders
 @model AnonymousKnowThePrice
 @using Runtasker.HtmlExtensions
 @using Runtasker.LocaleBuilders.Models
@@ -13,9 +19,11 @@
     string langCode = StaticHtmlClassesHelper.GetLangCode();
 
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
-    
-    
+
+
     ViewBag.Title = localeModel["ActionDescMini"];
+
+    string jsObject = JSValidationMaker.GetJSValidationObject(typeof(AnonymousKnowThePrice));
 }
   
 
@@ -34,199 +42,88 @@
         </div>
     </header>
 
-    <section id="contact" class="container">
-        @Html.ValidationErrorsToAlerts()
-        <div class="row">
-            <!-- FORM -->
-            <div class="col-md-12">
-                
-                <h2>@localeModel["ActionDescHtml"].ToHtml()</h2>
+    <div>
 
-                @using (Html.BeginForm("KnowPrice", "Home", FormMethod.Post, htmlAttributes: new { id = "contactForm", @class = "white-row", enctype = "multipart/form-data" }))
-                {
-                    <div class="row">
-                        
-                        @Html.ValidationErrorsToAlerts()
-                        
-                        <div id="bigError" class="alert alert-danger">
-                            <i class="fa fa-frown-o"></i>
-                            <strong id="bigErrorText"></strong>
-                        </div>
+        <h2>@localeModel["ActionDescHtml"].ToHtml()</h2>
 
-                        <div class="form-group">
-                            <div id="NameForm" class="col-md-6">
-                                @Html.LabelFor(m => m.Name)
-                                
-                                @Html.TextBoxFor(m => m.Name, htmlAttributes: new { @class = "form-control", id = "NameField" })
-                                <p id="NameError" class="text-danger">
-                                    Teкст ошибки
-                                </p>
-                            </div>
-                        
-                            <div id="EmailForm" class="col-md-6">
-                                @Html.LabelFor(m => m.Email)
-                                @Html.TextBoxFor(m => m.Email, htmlAttributes: new { @class = "form-control", id = "EmailField" })
-                                <p id="EmailError" class="text-danger">
-                                    Текст ошибки
-                                </p>
-                            </div>
-                        
-                            @*<div class="col-md-4">
-                                @Html.LabelFor(m => m.PhoneNumber)
-                                @Html.TextBoxFor(m => m.PhoneNumber, htmlAttributes: new { @class = "form-control", type = "tel", id = "PhoneNumber" })
-                            </div>*@
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <div id="WorkTypeForm" class="col-md-6">
-                                @Html.LabelFor(m => m.WorkType)
-                                @Html.DropDownListFor(m => m.WorkType, selectList: workTypesList, htmlAttributes: new { @class = "form-control", id = "WorkTypeField" })
-                                
-                            </div>
+        @using (Html.BeginForm("KnowPrice", "Home", FormMethod.Post, htmlAttributes: new { id = "contactForm", @class = "form-horizontal", enctype = "multipart/form-data" }))
+        {
+            
+            @Html.ValidationErrorsToAlerts()
 
-                            <div id="SubjectForm" class="col-md-6">
-                                @Html.LabelFor(m => m.Subject)
-                                @Html.DropDownListFor(m => m.Subject, selectList: subjectsList, htmlAttributes: new { @class = "form-control", id = "subjectList" })
-                            </div>
-                        </div>
-                    </div>
+            @Html.LabelAndTextBoxFor(x => x.Name, showPopover: true)
 
+            @Html.LabelAndTextBoxFor(x => x.Email, showPopover: true)
 
+            @Html.LabelAndDropDownListFor(x => x.WorkType, selectList: workTypesList)
 
-                    <div id="OtherSubjectForm" class="form-group">
-                        <div class="col-md-12">
-                            @Html.LabelFor(m => m.OtherSubject)
-                            @Html.TextBoxFor(m => m.OtherSubject, htmlAttributes: new { id = "OtherSubject", @class = "form-control" })
-                            <p id="OtherSubjectError" class="text-danger">
+            @Html.LabelAndDropDownListFor(x => x.Subject, selectList: subjectsList, showPopover: true)
 
-                            </p>
-                        </div>
-                    </div>
+            @Html.LabelAndTextBoxFor(x => x.OtherSubject, showPopover: true)
 
+            @Html.LabelAndDateTimePickerFor(x => x.CompletionDate, showPopover: true)
 
-
-
-                    <div class="row">
-                        <div class="form-group">
-                            <!--DateTime Picker-->
-                            <div id="DateForm" class="col-md-6">
-                                @Html.LabelFor(model => model.CompletionDate )
-                                <div class="date">
-                                    <!--input-group date-->
-                                    <input type="text" class="form-control" id="datetimepicker1" name="CompletionDate" />
+            <!--FilesUpload-->
+            <div id="@PropertyNameHelper.GetIdForForm("Files")" class="form-group">
+                @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+                <div class="col-md-10 col-sm-10">
+                    <p>
+                        <div class='input-group'>
+                            @Html.TextBoxFor(model => model.Files, htmlAttributes: new { id = PropertyNameHelper.GetIdForInput("FileUpload"), type = "file", multiple = "" })
+                            <div class='input-group-btn'>
+                                <div class="pull-right">
+                                    @Html.PopoverInfoFor(model => model.Files, htmlAttributes: new { @class = "circle" })
+                                    <style>
+                                        .circle {
+                                            border: solid 1px #000;
+                                            border-radius: 45%;
+                                        }
+                                    </style>
                                 </div>
                             </div>
-                            <!--End of DateTimePicker-->
-                            <style>
-                                #FilesForm{
-                                    padding-top: 15px;
-                                }
-                            </style>
-
-                            <div id="FilesForm" class="col-md-6">
-                                @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label" })
-                                @Html.TextBoxFor(model => model.Files, htmlAttributes: new { id = "fileUpload", type = "file", multiple = "" })
-                                
-
-                            </div>
                         </div>
-                    </div>
-                    
-
-                    <div class="row">
-                        <div class="form-group">
-                            <div id="DescriptionForm" class="col-md-12">
-                                @Html.LabelFor(m => m.Description)
-                                @Html.TextAreaFor(m => m.Description,
-                                htmlAttributes: new
-                                {
-                                    maxlength = "5000",
-                                    rows = "10",
-                                    @class = "form-control",
-                                    placeholder = localeModel["DescriptionPlaceholder"],
-                                    id = "DescriptionField"
-                                })
-                                <p id="DescriptionError" class="text-danger">
-                                    Текст ошибки
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <input id="realSubmit" class="hidden" type="submit" />
-                    <br />
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="pull-right">
-                                <!-- captcha -->
-                            </span>
-                            <div id="fakeSendBtn" class="btn btn-info">
-                                @GISigns.PlusSign.ToHtml() @localeModel["BtnText"]
-                            </div>
-                        </div>
-                    </div>
-                }
-
+                    </p>
+                    <p>@Html.GetStrongErrorText(x => x.Files)</p>
+                </div>
             </div>
-            <!-- /FORM -->
-        </div>
-    </section>
+            <!--/FilesUpload-->
+
+            @Html.LabelAndTextAreaFor(x => x.Description)
+
+            <input id="realSubmit" class="hidden" type="submit" />
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="pull-right">
+                        <!-- captcha -->
+                    </span>
+                    <div id="fakeSendBtn" class="btn btn-info">
+                        @GISigns.PlusSign.ToHtml() @localeModel["BtnText"]
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
 </div>
+
+
+            
 <!-- /WRAPPER -->
 
 @section scripts{
-    @Html.GetDateTimeScriptsAndStyles()
-
-    @ViewExtensions.GetDateTimeScriptsAndStyles(null)
-                                    
     
-
-    <!--Defaults Subject Scripts-->
-    @OrderScripts.GetDefaultSubjectScripts()
-    <!--/Defaults Subject Scripts-->
-
-    <!--Date Scripts-->
-    @ViewExtensions.GetDateParseScripts()
-
+    @JSValidationHelper.GetDich(jsObject)
     <script>
-        function daydiff(dateToCompare)
-        {
-            var dateNow = new Date();
-            return Math.round((dateToCompare - dateNow) / (1000 * 60 * 60 * 24)) + 1;
-        }
+        EnableOnChangePropertyValidation("Subject");
+        EnableOnChangePropertyValidation("Description");
+        EnableOnChangePropertyValidation("OtherSubject")
     </script>
-    <!--/Date Scripts-->
+
+   
     
-
-    <!--Обработчики предмета-->
-    @OrderScripts.GetSubjectCheckers(localeModel)
-    <!--/Обработчики предмета-->
-
-    <!--Validation Coloring And Error Showing-->
-    @OrderScripts.GetValidationColoringAndErrorShowing()
-    <!--/Validation Coloring And Error Showing-->
-
-    <!--Big Error Scripts-->
-    @OrderScripts.GetBigErrorScripts()
-    <!--/Big Error Scripts-->
-
-    <!--Подготовительные скрипты по закрашиванию полей-->
-    @OrderScripts.GetPreparingScripts()
-    <!--/Подготовительные скрипты по закрашиванию полей-->
-
-    <!--Обработчики имени и эмейла-->
-    @OrderScripts.GetNameAndEmailHandlers(localeModel)
-    <!--/Обработчики имени и эмейла-->
-
-    <!--Обработчики даты и типа работы-->
-    @OrderScripts.GetDateAndWorkTypeHandlers()
-    <!--/Обработчики даты и типа работы-->
-
-    <!--Обработчики Описания заказа-->
-    @OrderScripts.GetDescriptionHandlers(localeModel)
-    <!--/Обработчики Описания заказа-->
 
     <!--Обработчики перед отправкой-->
     <script>

@@ -62,9 +62,9 @@ namespace Runtasker.HtmlExtensions
             sb.Append(" >");
 
             
-            sb.Append(html.LabelFor(expression).ToString().WrapToHtmlTag("div", new { @class = "control-label col-md-2" }))
+            sb.Append(html.LabelFor(expression).ToString().WrapToHtmlTag("div", new { @class = "control-label col-md-2 col-sm-2" }))
 
-            .Append("<div class='col-md-10'>");
+            .Append("<div class='col-md-10 col-sm-10'>");
 
             sb.Append("<div class=\"input-group\">");
 

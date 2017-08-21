@@ -66,6 +66,7 @@ namespace Runtasker.Logic.Entities
         {
             Id = Guid.NewGuid().ToString();
             Status = NotificationStatus.Unseen;
+            CreationDate = DateTime.Now;
         }
 
         #endregion
@@ -99,6 +100,11 @@ namespace Runtasker.Logic.Entities
         /// Текст уведомления
         /// </summary>
         public string Text { get; set; }
+
+        /// <summary>
+        /// Дата создания 
+        /// </summary>
+        public DateTime CreationDate { get; set; }
 
         /// <summary>
         /// Заготовленная Html ссылка в дальнейшем нужно будет избавляться от этого свойства

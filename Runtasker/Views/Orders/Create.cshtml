@@ -13,17 +13,9 @@
     //получаем листы по перечислениям
     List<SelectListItem> subjects = StaticHtmlClassesHelper.GetSortedSubjectEnumList().ToList();
     List<SelectListItem> workTypes = StaticHtmlClassesHelper.GetWorkTypeEnumList().ToList();
-
-
-    int count = subjects.Count - 1;
-    int whichSubject = (int)Model.Subject - 1;
-
-    whichSubject = (whichSubject == 0) ? count : whichSubject;
+  
 
     
-
-    //for datetime picker
-    string langCode = StaticHtmlClassesHelper.GetLangCode();
 
     string jsObject = JSValidationMaker.GetJSValidationObject(typeof(OrderCreateModel));
 }

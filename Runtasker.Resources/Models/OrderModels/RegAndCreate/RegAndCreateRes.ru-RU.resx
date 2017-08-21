@@ -126,11 +126,17 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="EmailPopoverInfo" xml:space="preserve">
+    <value>Ваш Email будет использован для подтверждения вашей учетной записи в системе.</value>
+  </data>
   <data name="Files" xml:space="preserve">
     <value>Файлы</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
+  </data>
+  <data name="NamePopoverInfo" xml:space="preserve">
+    <value>Ваше имя будет использовано для регистрации вас в системе.</value>
   </data>
   <data name="OtherSubject" xml:space="preserve">
     <value>Другой предмет</value>

@@ -5,6 +5,9 @@ using Runtasker.Logic.Models;
 using Runtasker.Logic.Workers.Info;
 using Runtasker.Logic.Workers.Notifications;
 using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -53,6 +56,14 @@ namespace Runtasker.Controllers
         {
             Notification model = await Notificater.GetNotificationAsync();
             return PartialView(viewName: "Index", model: model);
+        }
+
+        public async Task<ActionResult> History()
+        {
+            List<Notification> model = await Db.Notifications.Where(x => x.UserGuid == UserGuid)
+                .OrderBy(x => x.CreationDate).ToListAsync();
+
+            return View(model);
         }
 
         public ActionResult Info(InfoModelType? infoType = null)

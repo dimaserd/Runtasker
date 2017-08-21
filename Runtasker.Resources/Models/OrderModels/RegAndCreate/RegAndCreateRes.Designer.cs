@@ -88,6 +88,15 @@ namespace Runtasker.Resources.Models.OrderModels.RegAndCreate {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Your Email will be used for confirmation of your registration. .
+        /// </summary>
+        public static string EmailPopoverInfo {
+            get {
+                return ResourceManager.GetString("EmailPopoverInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Files.
         /// </summary>
         public static string Files {
@@ -102,6 +111,15 @@ namespace Runtasker.Resources.Models.OrderModels.RegAndCreate {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Your name will be used for registration..
+        /// </summary>
+        public static string NamePopoverInfo {
+            get {
+                return ResourceManager.GetString("NamePopoverInfo", resourceCulture);
             }
         }
         

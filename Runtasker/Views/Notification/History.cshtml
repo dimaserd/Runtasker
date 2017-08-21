@@ -1,0 +1,17 @@
+﻿@using Runtasker.Logic.Entities
+@using Runtasker.ExtensionsUI.UIExtensions.Alerts
+@model List<Notification>
+@{
+    ViewBag.Title = "History";
+}
+
+<h2>History</h2>
+
+@foreach (Notification note in Model)
+{
+    <div class="row">
+        <div class="col-md-12">
+            @MvcHtmlString.Create(AlertBuilder.BuildAlertFromNotification(note))
+        </div>
+    </div>
+}

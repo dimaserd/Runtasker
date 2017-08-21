@@ -1,4 +1,8 @@
-﻿using Runtasker.Logic.Entities;
+﻿using Common.JavascriptValidation.Attributes;
+using Extensions.Attributes;
+using Runtasker.Logic.Attributes;
+using Runtasker.Logic.Entities;
+using Runtasker.Resources.Models.OrderModels.CreateOrder;
 using Runtasker.Resources.Models.OrderModels.RegAndCreate;
 using System;
 using System.Collections.Generic;
@@ -10,11 +14,13 @@ namespace Runtasker.Logic.Models.Orders
     public class AnonymousKnowThePrice
     {
         [Display(Name = "Name", ResourceType = typeof(RegAndCreateRes))]
+        [PopoverInfo(resourceType: typeof(RegAndCreateRes), resourceName: "NamePopoverInfo")]
         public string Name { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email", ResourceType = typeof(RegAndCreateRes))]
+        [PopoverInfo(resourceType: typeof(RegAndCreateRes), resourceName: "EmailPopoverInfo")]
         public string Email { get; set; }
 
         [DataType(DataType.PhoneNumber)]
@@ -26,19 +32,36 @@ namespace Runtasker.Logic.Models.Orders
         public OrderWorkType WorkType { get; set; }
 
         [Required]
-        [Display(Name = "Subject", ResourceType = typeof(RegAndCreateRes))]
+        [Display(Name = "Subject", ResourceType = typeof(CreateOrder))]
+        [PopoverInfo(typeof(CreateOrder), resourceName: "SubjectPopoverInfo")]
+        [JsOnValueWithElse(Value = "0",
+            OnValueScript = " ClearPropertyInput(\"OtherSubject\"); ShowObject(\"OtherSubjectForm\"); ",
+            OnElseScript = " HideObject(\"OtherSubjectForm\"); SetValueForInput(\"OtherSubject\", \"selected\")")]
         public Subject Subject { get; set; }
 
-        [Display(Name = "OtherSubject", ResourceType = typeof(RegAndCreateRes))]
+        [Required(ErrorMessageResourceType = typeof(CreateOrder), ErrorMessageResourceName = "OtherSubjectError")]
+        [JsRequired(resourceType: typeof(CreateOrder), resourceName: "OtherSubjectError")]
+        [PopoverInfo(typeof(CreateOrder), resourceName: "OtherSubjectInfo")]
+        [Display(ResourceType = typeof(CreateOrder), Name = "OtherSubject")]
+        [JsHideByDefault]
+        [JsDefaultValue(DefaultValue = "\"selected\"")]
         public string OtherSubject { get; set; }
 
         [Display(Name = "CompletionDate", ResourceType = typeof(RegAndCreateRes))]
+        [JsNotValidate]
+        [Required(ErrorMessageResourceType = typeof(CreateOrder), ErrorMessageResourceName = "FinishDateError")]
+        [PopoverInfo(resourceType: typeof(CreateOrder), resourceName: "FinishDateInfo")]
         public DateTime CompletionDate { get; set; }
 
+        [JsNotValidate]
         [Display(Name = "Files", ResourceType = typeof(RegAndCreateRes))]
+        [PopoverInfo(typeof(CreateOrder), resourceName: "FileUploadInfo")]
         public IEnumerable<HttpPostedFileBase> Files { get; set; }
 
-        [Display(Name = "Description", ResourceType = typeof(RegAndCreateRes))]
+        [Display(ResourceType = typeof(CreateOrder), Name = "Description")]
+        [Required(ErrorMessageResourceType = typeof(CreateOrder), ErrorMessageResourceName = "NeedDescriptionError")]
+        [JsRequired(resourceType: typeof(CreateOrder), resourceName: "NeedDescriptionError")]
+        [Placeholder(resourceName: "DescriptionPlaceholder", resourceType: typeof(CreateOrder))]
         public string Description { get; set; }
     }
 

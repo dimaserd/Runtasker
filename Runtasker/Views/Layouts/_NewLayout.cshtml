@@ -96,6 +96,20 @@
                 </a>
 
             </div>
+            @{
+                bool faqEnabled = false;
+            }
+            
+            @if (faqEnabled)
+            {
+                <div class="pull-right nav">
+                    <a href="/Questions" alt="Часто задаваемые вопросы">
+                        @FASigns.QuestionCircle.ToHtml()
+                    </a>
+
+                </div>
+            }
+            
             <!-- /LINKS -->
 
         </div>

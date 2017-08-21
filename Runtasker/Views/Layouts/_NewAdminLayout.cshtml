@@ -142,7 +142,7 @@
                             }
 
                         </ul>
-                        <hr />
+                        <hr class="half-margins" />
                         @if (User.IsInRole("Admin"))
                         {
                             <ul class="nav nav-sidebar">
@@ -151,7 +151,7 @@
                                 <li><a href="@Url.Action("Performers", "Administration")">Исполнители сайта</a></li>
                             </ul>
                         }
-                        <hr />
+                        <hr class="half-margins" />
                         <ul class="nav nav-sidebar">
                             <li><a href="@Url.Action("Trash", "Performer")">Удаленные</a></li>
                             

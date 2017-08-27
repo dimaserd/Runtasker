@@ -23,6 +23,7 @@ namespace Runtasker.Logic.Models
 
         [Required(ErrorMessage = "WORKTYPE ERROR")]
         [Display(Name = "WorkType", ResourceType = typeof(CreateOrder))]
+        [PopoverInfo(resourceName: "WorkTypePopoverInfo", resourceType: typeof(CreateOrder))]
         public OrderWorkType WorkType { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(CreateOrder), ErrorMessageResourceName = "OtherSubjectError")]

@@ -185,5 +185,14 @@ namespace Runtasker.Resources.Models.OrderModels.CreateOrder {
                 return ResourceManager.GetString("WorkType", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Field work type is used for setting deadlines..
+        /// </summary>
+        public static string WorkTypePopoverInfo {
+            get {
+                return ResourceManager.GetString("WorkTypePopoverInfo", resourceCulture);
+            }
+        }
     }
 }

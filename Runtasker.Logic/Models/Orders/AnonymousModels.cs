@@ -29,6 +29,7 @@ namespace Runtasker.Logic.Models.Orders
 
         [Required]
         [Display(Name = "WorkType", ResourceType = typeof(RegAndCreateRes))]
+        [PopoverInfo(resourceName: "WorkTypePopoverInfo", resourceType: typeof(RegAndCreateRes))]
         public OrderWorkType WorkType { get; set; }
 
         [Required]

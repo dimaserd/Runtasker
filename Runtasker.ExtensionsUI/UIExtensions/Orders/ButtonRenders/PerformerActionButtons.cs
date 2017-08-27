@@ -60,7 +60,7 @@ namespace Runtasker.ExtensionsUI.UIExtensions.Orders
         string GetButtonForDeletingOrder()
         {
             return new HtmlActionButtonLink(
-                buttonLink: $"/Performer/DeleteOrder/{Order.Id}",
+                buttonLink: $"Performer/DeleteOrder/{Order.Id}",
                 buttonText: $"{FASigns.TrashTransparent}Удалить заказ",
                 buttonClass: BtnClass
                 ).ToString();

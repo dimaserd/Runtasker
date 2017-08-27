@@ -55,7 +55,7 @@
 
             @Html.LabelAndTextBoxFor(x => x.Email, showPopover: true)
 
-            @Html.LabelAndDropDownListFor(x => x.WorkType, selectList: workTypesList)
+            @Html.LabelAndDropDownListFor(x => x.WorkType, selectList: workTypesList, showPopover: true)
 
             @Html.LabelAndDropDownListFor(x => x.Subject, selectList: subjectsList, showPopover: true)
 
@@ -164,7 +164,92 @@
 </script>
 <!--/Date Scripts-->
 
-    
+    <script>
+
+        $("#@PropertyNameHelper.GetIdForInput("FinishDate")").change(function (e) {
+            dateAndWorkTypeCheck()
+        });
+
+        $("#@PropertyNameHelper.GetIdForInput("WorkType")").change(function (e) {
+            dateAndWorkTypeCheck()
+        });
+
+        function dateAndWorkTypeCheck()
+        {
+            var days = parseInt(daydiff(parseDate(document.getElementById("@PropertyNameHelper.GetIdForInput("FinishDate")").value)))
+            var workType = parseInt(document.getElementById("@PropertyNameHelper.GetIdForInput("WorkType")").value);
+
+            return CheckDaysForWorkType(days, workType)
+        }
+
+
+        function CheckDaysForWorkType(days, workType)
+        {
+            console.log("days : " + days + " workType : " + workType);
+
+
+                switch (workType) {
+                    case 0:
+                        if (days < 3) {
+                            //ShowBigError("@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary");
+                            WriteError("WorkType", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary))");
+                            WriteError("FinishDate", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary))");
+                            ShowError("FinishDate");
+                            ShowError("WorkType");
+
+                            MakeFormError("WorkType");
+                            MakeFormError("FinishDate");
+                            return false;
+                        }
+                        else
+                        {
+                            MakeFormSuccess("WorkType");
+                            MakeFormSuccess("FinishDate");
+                            return true;
+                        }
+                        break;
+                    case 1:
+                        if (days < 7) {
+
+                            WriteError("WorkType", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorEssay))");
+                            WriteError("FinishDate", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorEssay))");
+                            ShowError("FinishDate");
+                            ShowError("WorkType");
+                            MakeFormError("WorkType");
+                            MakeFormError("FinishDate");
+                            return false;
+                        }
+                        else
+                        {
+                            MakeFormSuccess("WorkType");
+                            MakeFormSuccess("FinishDate");
+                            return true;
+                        }
+                        break;
+                    case 2:
+                        if (days < 30)
+                        {
+
+                            WriteError("WorkType", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorCourseWork))");
+                            WriteError("FinishDate", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorCourseWork))");
+                            ShowError("FinishDate");
+                            ShowError("WorkType");
+                            MakeFormError("WorkType");
+                            MakeFormError("FinishDate");
+                            return false;
+                        }
+                        else
+                        {
+                            MakeFormSuccess("WorkType");
+                            MakeFormSuccess("FinishDate");
+                            return true;
+                        }
+                        break;
+                    default:
+                        alert('Я таких значений не знаю');
+                }
+            }
+</script>
 
     <!--Обработчики перед отправкой-->
     <script>
@@ -174,28 +259,9 @@
         fakeSendBtn.click(function (e) {
             e.preventDefault();
 
-            console.log("fakeBtn clicked");
-
-            var count = 0;
-            
-            //isOk = CheckOtherSubject();
-            
-            console.log("Email " + CheckEmailField())
-            console.log("OtherSubject " + CheckOtherSubject())
-            console.log("date and workType " + dateAndWorkTypeCheck())
-            console.log("description " + CheckDescription())
-
-
-            //logging
-            
-            count = (CheckEmailField()) ? count + 1 : count;
-            count = (CheckOtherSubject()) ? count + 1 : count;
-            count = (dateAndWorkTypeCheck()) ? count + 1 : count;
-            count = (CheckDescription()) ? count + 1 : count;
-
-            if(count == 4)
+            if (ValidateModel())
             {
-                realSubmit.click();
+
             }
         })
 

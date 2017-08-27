@@ -22,5 +22,27 @@ namespace Common.JavascriptValidation.Attributes
                 return Text;
             }
         }
+
+        public static string GetRequiredValidationFunc(string propName, JsRequiredAttribute attr)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("{");
+            sb.Append($" if (document.getElementById('{PropertyNameHelper.GetIdForInput(propName)}').value.length == 0) ")
+            .Append(" { ")
+            .Append(JavaScriptHelper.WriteError(propName, attr.ErrorText))
+
+            .Append(JavaScriptHelper.ReturnFalse)
+            .Append(" } ")
+            .Append(" else ")
+            .Append(" { ")
+            .Append(JavaScriptHelper.HideError(propName))
+            .Append(JavaScriptHelper.ReturnTrue)
+            .Append(" } ")
+            .Append("}");
+
+            return sb.ToString();
+        }
+
     }
 }

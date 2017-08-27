@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Common.JavascriptValidation.Attributes
 {
@@ -19,5 +20,25 @@ namespace Common.JavascriptValidation.Attributes
         /// когда значение не будет равно указанному в Value
         /// </summary>
         public string OnElseScript { get; set; }
+
+        public static string GetJsOnValueWithElseHalfScript(string propName, JsOnValueWithElseAttribute attr)
+        {
+            StringBuilder sb = new StringBuilder();
+
+
+            sb.Append($" if(value === \"{attr.Value}\")  ")
+            .Append("{")
+            .Append(" console.log(\"Попадание в условие!\"); ")
+            .Append($" {attr.OnValueScript} ")
+            .Append("}")
+            .Append("else")
+            .Append("{")
+            .Append($" {attr.OnElseScript} ")
+            .Append("}");
+
+
+            return sb.ToString();
+        }
+
     }
 }

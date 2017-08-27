@@ -150,4 +150,7 @@
   <data name="WorkType" xml:space="preserve">
     <value>Тип работы</value>
   </data>
+  <data name="WorkTypePopoverInfo" xml:space="preserve">
+    <value>Поле тип работы используется для установки сроков выполнения работы.</value>
+  </data>
 </root>

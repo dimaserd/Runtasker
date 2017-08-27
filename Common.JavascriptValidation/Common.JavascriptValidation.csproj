@@ -45,14 +45,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\JsCompareAttribute.cs" />
+    <Compile Include="Attributes\JsEmailAttribute.cs" />
     <Compile Include="Attributes\JsHideByDefaultAttribute.cs" />
-    <Compile Include="Attributes\JsCheckbox.cs" />
     <Compile Include="Attributes\JsDefaultValueAttribute.cs" />
+    <Compile Include="Attributes\JsHtmlDataTypeAttribute.cs" />
+    <Compile Include="Attributes\JsMaxLengthAttribute.cs" />
+    <Compile Include="Attributes\JsMinLengthAttribute.cs" />
     <Compile Include="Attributes\JsNotValidateAttribute.cs" />
     <Compile Include="Attributes\JsOnChange.cs" />
     <Compile Include="Attributes\JsOnValueAttribute.cs" />
     <Compile Include="Attributes\JsOnValueWithElseAttribute.cs" />
     <Compile Include="Attributes\JsRequiredAttribute.cs" />
+    <Compile Include="Entities\JsModelWithLabels.cs" />
+    <Compile Include="Entities\JsProperty.cs" />
+    <Compile Include="Entities\JsPropertyWithLabel.cs" />
+    <Compile Include="Enumerations\JsHtmlDataType.cs" />
+    <Compile Include="Enumerations\JsInputDataType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statics\JavaScriptHelper.cs" />
     <Compile Include="Statics\JSValidationMaker.cs" />

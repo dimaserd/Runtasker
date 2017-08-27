@@ -150,4 +150,7 @@
   <data name="WorkType" xml:space="preserve">
     <value>Work Type</value>
   </data>
+  <data name="WorkTypePopoverInfo" xml:space="preserve">
+    <value>Field work type is used for setting deadlines.</value>
+  </data>
 </root>

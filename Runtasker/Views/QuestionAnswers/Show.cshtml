@@ -1,0 +1,17 @@
+﻿@using Runtasker.Logic.Entities
+@model List<QuestionAnswerLangClarification>
+
+@foreach (QuestionAnswerLangClarification q in Model)
+{
+    <div class="toggle">
+        <label>@q.Question</label>
+        <div class="toggle-content">
+            <p>
+                @q.Answer
+            </p>
+        </div>
+    </div>
+
+}    
+
+    

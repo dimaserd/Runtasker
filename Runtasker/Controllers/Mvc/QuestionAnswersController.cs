@@ -6,6 +6,7 @@ using Runtasker.Logic;
 using Runtasker.Logic.Entities;
 using Runtasker.Controllers.Base;
 using System.Linq;
+using Runtasker.LocaleBuilders.Enumerations;
 
 namespace Runtasker.Controllers.Mvc
 {
@@ -17,6 +18,17 @@ namespace Runtasker.Controllers.Mvc
         public async Task<ActionResult> Index()
         {
             var model = await db.QuestionAnswers.Include(x => x.Clarifications).ToListAsync();
+            return View(model);
+        }
+
+        public async Task<ActionResult> Show()
+        {
+            Lang currentLang = CurrentLang;
+
+            var model = await (from q in db.QuestionAnswerLangClarifications
+                         where q.LanguageCode == currentLang && q.IsVisible
+                         select q).ToListAsync();
+
             return View(model);
         }
 

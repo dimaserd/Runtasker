@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Runtasker.LocaleBuilders.Enumerations;
+using Runtasker.LocaleBuilders.Statics;
 using Runtasker.Logic;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,13 @@ namespace Runtasker.Controllers.Base
         #endregion
 
         #region Свойства
+        protected Lang CurrentLang
+        {
+            get
+            {
+                return LanguageStatic.Language;
+            }
+        }
 
         protected MyDbContext Db
         {

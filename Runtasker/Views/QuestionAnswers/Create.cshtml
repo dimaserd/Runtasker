@@ -23,6 +23,7 @@
                     <th>Язык</th>
                     <th>Вопрос</th>
                     <th>Ответ</th>
+                    <th>Показывать</th>
                 </tr>
             </thead>
 
@@ -44,6 +45,9 @@
                         </td>
                         <td>
                             @Html.TextBox($"{nestedProp}[{i}].Answer")
+                        </td>
+                        <td>
+                            @Html.CheckBox($"{nestedProp}[{i}].IsVisible")
                         </td>
                     </tr>
                 }

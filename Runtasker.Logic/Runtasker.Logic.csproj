@@ -208,6 +208,14 @@
     <Compile Include="Migrations\201708270913428_quest.Designer.cs">
       <DependentUpon>201708270913428_quest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708271016394_fd.cs" />
+    <Compile Include="Migrations\201708271016394_fd.Designer.cs">
+      <DependentUpon>201708271016394_fd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708271017503_visible.cs" />
+    <Compile Include="Migrations\201708271017503_visible.Designer.cs">
+      <DependentUpon>201708271017503_visible.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
     <Compile Include="Models\ManageModels\AddVkInfoModel.cs" />
@@ -386,6 +394,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708270913428_quest.resx">
       <DependentUpon>201708270913428_quest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708271016394_fd.resx">
+      <DependentUpon>201708271016394_fd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708271017503_visible.resx">
+      <DependentUpon>201708271017503_visible.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

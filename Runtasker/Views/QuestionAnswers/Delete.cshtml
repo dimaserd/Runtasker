@@ -1,0 +1,56 @@
+﻿@using Runtasker.Logic.Entities
+@model QuestionAnswer
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы действительно хотите удалить этот вопрос-ответ?</h3>
+<div>
+    
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Язык</th>
+                    <th>Вопрос</th>
+                    <th>Ответ</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (int i = 0; i < Model.Clarifications.Count; i++)
+                {
+                    List<QuestionAnswerLangClarification> modelList = Model.Clarifications.ToList();
+
+                    string nestedProp = "Clarifications";
+
+                    <tr>
+                        <td>
+                            @Html.Hidden($"{nestedProp}[{i}].Id", modelList[i].Id)
+                            @Html.Hidden($"{nestedProp}[{i}].LanguageCode", modelList[i].LanguageCode.ToString())
+                            @modelList[i].LanguageCode.ToString()
+                        </td>
+                        <td>
+                            
+                            @Html.TextBox($"{nestedProp}[{i}].Question", modelList[i].Question, new { @readonly = "true" })
+                        </td>
+                        <td>
+                            @Html.TextBox($"{nestedProp}[{i}].Answer", modelList[i].Answer, new { @readonly = "true" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("[Назад к списку]", "Index")
+        </div>
+    }
+</div>

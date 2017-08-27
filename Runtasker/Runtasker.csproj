@@ -275,6 +275,7 @@
     <Compile Include="Controllers\Mvc\OrdersController.cs" />
     <Compile Include="Controllers\Mvc\PaymentController.cs" />
     <Compile Include="Controllers\Mvc\PerformerController.cs" />
+    <Compile Include="Controllers\Mvc\QuestionAnswersController.cs" />
     <Compile Include="Controllers\Mvc\RestoreDataController.cs" />
     <Compile Include="Controllers\Mvc\VkOrdersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -3334,6 +3335,11 @@
     <Content Include="Views\Performer\Trash.cshtml" />
     <Content Include="Views\Performer\RestoreOrder.cshtml" />
     <Content Include="Views\Notification\History.cshtml" />
+    <Content Include="Views\QuestionAnswers\Create.cshtml" />
+    <Content Include="Views\QuestionAnswers\Delete.cshtml" />
+    <Content Include="Views\QuestionAnswers\Details.cshtml" />
+    <Content Include="Views\QuestionAnswers\Edit.cshtml" />
+    <Content Include="Views\QuestionAnswers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

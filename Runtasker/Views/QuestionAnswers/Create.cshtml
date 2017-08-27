@@ -1,0 +1,64 @@
+﻿@using Runtasker.LocaleBuilders.Enumerations
+@model Runtasker.Logic.Entities.QuestionAnswer
+
+@{
+    ViewBag.Title = "Create";
+
+    Lang[] langs = (Enum.GetValues(typeof(Lang)) as Lang[]);
+}
+
+<h2>Создание вопроса ответа</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Язык</th>
+                    <th>Вопрос</th>
+                    <th>Ответ</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for(int i = 0; i < langs.Length; i++)
+                {
+                    Lang lang = langs[i];
+
+                    string nestedProp = "Clarifications";
+
+                    <tr>
+                        <td>
+                            @Html.Hidden($"{nestedProp}[{i}].Id", i)
+                            @lang.ToString()
+                        </td>
+                        <td>
+                            @Html.Hidden($"{nestedProp}[{i}].LanguageCode", lang.ToString())
+                            @Html.TextBox($"{nestedProp}[{i}].Question")
+                        </td>
+                        <td>
+                            @Html.TextBox($"{nestedProp}[{i}].Answer")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -36,6 +36,11 @@ namespace Runtasker.Logic
         public DbSet<ArticleClarification> ArticleClarifications { get; set; }
         #endregion
 
+        #region Вопросы-Ответы
+        public DbSet<QuestionAnswer> QuestionAnswers { get; set; }
+
+        public DbSet<QuestionAnswerLangClarification> QuestionAnswerLangClarifications { get; set; }
+        #endregion
         public DbSet<Coupon> Coupons { get; set; }
         
         public DbSet<Order> Orders { get; set; }

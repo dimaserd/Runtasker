@@ -1,6 +1,23 @@
 ﻿
 //Функции для динамического изменения временной отметки
+function T()
+{
+    {
+        var email = document.getElementById("EmailInput").value;
+        var re = /^ (([^<> ()[\]\.,;:\s@"]+(\.[^<>()[\]\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+        if (!re.test(email))
+        {
+            WriteError('Email', 'Данное поле не является электронным адресом!');
+            return false;
+        }
+        else
+        {
+            HideError('Email');
+            return true;
+        }
+    }
+}
 function DateCarer()
 {
     var messages = $('li .mes');

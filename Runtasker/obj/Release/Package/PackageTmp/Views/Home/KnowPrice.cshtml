@@ -31,6 +31,8 @@
 <!-- WRAPPER -->
 <div>
 
+    @AlertHelper.GetAlert(localeModel["InfoText"])
+
     <!-- PAGE TITLE -->
     <header id="page-title">
         <div class="container">
@@ -55,7 +57,7 @@
 
             @Html.LabelAndTextBoxFor(x => x.Email, showPopover: true)
 
-            @Html.LabelAndDropDownListFor(x => x.WorkType, selectList: workTypesList)
+            @Html.LabelAndDropDownListFor(x => x.WorkType, selectList: workTypesList, showPopover: true)
 
             @Html.LabelAndDropDownListFor(x => x.Subject, selectList: subjectsList, showPopover: true)
 
@@ -107,11 +109,10 @@
 
     </div>
 
-</div>
-
-
-            
+</div>           
 <!-- /WRAPPER -->
+
+@ModalHelper.GetLoadingModal()
 
 @section scripts{
     
@@ -119,7 +120,9 @@
     <script>
         EnableOnChangePropertyValidation("Subject");
         EnableOnChangePropertyValidation("Description");
-        EnableOnChangePropertyValidation("OtherSubject")
+        EnableOnChangePropertyValidation("OtherSubject");
+        EnableOnChangePropertyValidation("Email");
+        EnableOnChangePropertyValidation("Name")
     </script>
 
    <!--Popover activator-->
@@ -153,49 +156,121 @@
         }
 </script>
 
-<!--Date Scripts-->
-@ViewExtensions.GetDateParseScripts()
+
+ @ViewExtensions.GetDateParseScripts()
 
 <script>
         function daydiff(dateToCompare) {
             var dateNow = new Date();
             return Math.round((dateToCompare - dateNow) / (1000 * 60 * 60 * 24)) + 1;
         }
-</script>
-<!--/Date Scripts-->
+</script>  
 
-    
+<!--Скрипты с датой-->
+<script>
+
+        $("#@PropertyNameHelper.GetIdForInput("CompletionDate")").change(function (e) {
+            dateAndWorkTypeCheck()
+        });
+
+        $("#@PropertyNameHelper.GetIdForInput("WorkType")").change(function (e) {
+            dateAndWorkTypeCheck()
+        });
+
+        function dateAndWorkTypeCheck()
+        {
+            var days = parseInt(daydiff(parseDate(document.getElementById("@PropertyNameHelper.GetIdForInput("CompletionDate")").value)))
+            var workType = parseInt(document.getElementById("@PropertyNameHelper.GetIdForInput("WorkType")").value);
+
+            return CheckDaysForWorkType(days, workType)
+        }
+
+
+        function CheckDaysForWorkType(days, workType)
+        {
+            console.log("days : " + days + " workType : " + workType);
+
+
+                switch (workType) {
+                    case 0:
+                        if (days < 3) {
+                            //ShowBigError("@Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary");
+                            WriteError("WorkType", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary))");
+                            WriteError("CompletionDate", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorOrdinary))");
+                            ShowError("CompletionDate");
+                            ShowError("WorkType");
+
+                            MakeFormError("WorkType");
+                            MakeFormError("CompletionDate");
+                            return false;
+                        }
+                        else
+                        {
+                            MakeFormSuccess("WorkType");
+                            MakeFormSuccess("CompletionDate");
+                            return true;
+                        }
+                        break;
+                    case 1:
+                        if (days < 7) {
+
+                            WriteError("WorkType", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorEssay))");
+                            WriteError("CompletionDate", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorEssay))");
+                            ShowError("CompletionDate");
+                            ShowError("WorkType");
+                            MakeFormError("WorkType");
+                            MakeFormError("CompletionDate");
+                            return false;
+                        }
+                        else
+                        {
+                            MakeFormSuccess("WorkType");
+                            MakeFormSuccess("FinishDate");
+                            return true;
+                        }
+                        break;
+                    case 2:
+                        if (days < 30)
+                        {
+
+                            WriteError("WorkType", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorCourseWork))");
+                            WriteError("FinishDate", "@(new HtmlString(Runtasker.Resources.Views.Orders.Create.Create.FinishDateErrorCourseWork))");
+                            ShowError("FinishDate");
+                            ShowError("WorkType");
+                            MakeFormError("WorkType");
+                            MakeFormError("FinishDate");
+                            return false;
+                        }
+                        else
+                        {
+                            MakeFormSuccess("WorkType");
+                            MakeFormSuccess("FinishDate");
+                            return true;
+                        }
+                        break;
+                    default:
+                        alert('Я таких значений не знаю');
+                }
+            }
+</script>
+<!--/Скрипты с датой-->
+
+
+
 
     <!--Обработчики перед отправкой-->
     <script>
         var fakeSendBtn = $("#fakeSendBtn");
-        var realSubmit = $("#realSubmit");
-
+        
         fakeSendBtn.click(function (e) {
             e.preventDefault();
 
-            console.log("fakeBtn clicked");
-
-            var count = 0;
-            
-            //isOk = CheckOtherSubject();
-            
-            console.log("Email " + CheckEmailField())
-            console.log("OtherSubject " + CheckOtherSubject())
-            console.log("date and workType " + dateAndWorkTypeCheck())
-            console.log("description " + CheckDescription())
-
-
-            //logging
-            
-            count = (CheckEmailField()) ? count + 1 : count;
-            count = (CheckOtherSubject()) ? count + 1 : count;
-            count = (dateAndWorkTypeCheck()) ? count + 1 : count;
-            count = (CheckDescription()) ? count + 1 : count;
-
-            if(count == 4)
+            if (ValidateModel())
             {
-                realSubmit.click();
+                if (dateAndWorkTypeCheck()) {
+                    ShowHideModal();
+                    document.getElementById("realSubmit").click();
+                }
             }
         })
 

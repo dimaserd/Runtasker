@@ -10,6 +10,7 @@ using Runtasker.LocaleBuilders.Enumerations;
 
 namespace Runtasker.Controllers.Mvc
 {
+    [Authorize(Roles = "Admin")]
     public class QuestionAnswersController : BaseMvcController
     {
         private MyDbContext db = new MyDbContext();

@@ -63,7 +63,15 @@ namespace Runtasker.Logic.Workers.Developer
             Context.Notifications.RemoveRange(Context.Notifications.Where(n => n.UserGuid == testUser.Id));
             Context.SaveChanges();
 
-            Context.Orders.RemoveRange(Context.Orders.Include(x => x.Attachments).Where(o => o.UserGuid == testUser.Id));
+            List<Order> orders = Context.Orders.Include(x => x.Attachments).Where(o => o.UserGuid == testUser.Id).ToList();
+
+            orders.ForEach(x =>
+            {
+                Context.Attachments.RemoveRange(x.Attachments);
+                
+                Context.Orders.Remove(x);
+            });
+            
             Context.SaveChanges();
 
             Context.Users.Remove(testUser);

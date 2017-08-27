@@ -129,14 +129,23 @@
   <data name="EmailPopoverInfo" xml:space="preserve">
     <value>Ваш Email будет использован для подтверждения вашей учетной записи в системе.</value>
   </data>
+  <data name="EmailRequiredError" xml:space="preserve">
+    <value>Необходимо указать поле \"Email\"!</value>
+  </data>
   <data name="Files" xml:space="preserve">
     <value>Файлы</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
   </data>
+  <data name="NameLengthError" xml:space="preserve">
+    <value>Поле \"Имя\" должно быть не менее 2 символов</value>
+  </data>
   <data name="NamePopoverInfo" xml:space="preserve">
     <value>Ваше имя будет использовано для регистрации вас в системе.</value>
+  </data>
+  <data name="NameRequiredError" xml:space="preserve">
+    <value>Необходимо указать ваше имя!</value>
   </data>
   <data name="OtherSubject" xml:space="preserve">
     <value>Другой предмет</value>

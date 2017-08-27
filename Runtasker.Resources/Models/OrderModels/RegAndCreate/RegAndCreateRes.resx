@@ -129,14 +129,23 @@
   <data name="EmailPopoverInfo" xml:space="preserve">
     <value>Your Email will be used for confirmation of your registration. </value>
   </data>
+  <data name="EmailRequiredError" xml:space="preserve">
+    <value>Please input your email!</value>
+  </data>
   <data name="Files" xml:space="preserve">
     <value>Files</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="NameLengthError" xml:space="preserve">
+    <value>Field \"Name\" must be at least 2 symbols length.</value>
+  </data>
   <data name="NamePopoverInfo" xml:space="preserve">
     <value>Your name will be used for registration.</value>
+  </data>
+  <data name="NameRequiredError" xml:space="preserve">
+    <value>Please input your name!</value>
   </data>
   <data name="OtherSubject" xml:space="preserve">
     <value>Other Subject</value>

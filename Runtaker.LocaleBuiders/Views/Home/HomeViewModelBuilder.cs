@@ -38,7 +38,7 @@ namespace Runtasker.LocaleBuilders.Views.Home
             result.Add("DescriptionPlaceholder", KnowPriceRes.DescriptionPlaceholder);
             result.Add("ActionDescHtml", string.Format(KnowPriceRes.ActionDescFormat, KnowPriceRes.ActionDescToMark.WrapToEm().WrapToStrong()));
 
-            
+            result.Add("InfoText", KnowPriceRes.InfoText);
 
             return result;
         }

@@ -10,10 +10,19 @@ namespace Common.JavascriptValidation.Attributes
 {
     public class JsEmailAttribute : CustomResourceAttribute
     {
+
+        #region Конструкторы
         public JsEmailAttribute() : base("Данное поле не является электронным адресом!")
         {
 
         }
+
+        public JsEmailAttribute(string resourceName, Type resourceType) : base(resourceType, resourceName)
+        {
+
+        }
+        #endregion
+
 
         public static string GetCheckingFunction(string propName, JsEmailAttribute attr)
         {

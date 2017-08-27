@@ -97,6 +97,15 @@ namespace Runtasker.Resources.Models.OrderModels.RegAndCreate {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Please input your email!.
+        /// </summary>
+        public static string EmailRequiredError {
+            get {
+                return ResourceManager.GetString("EmailRequiredError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Files.
         /// </summary>
         public static string Files {
@@ -115,11 +124,29 @@ namespace Runtasker.Resources.Models.OrderModels.RegAndCreate {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Field \&quot;Name\&quot; must be at least 2 symbols length..
+        /// </summary>
+        public static string NameLengthError {
+            get {
+                return ResourceManager.GetString("NameLengthError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Your name will be used for registration..
         /// </summary>
         public static string NamePopoverInfo {
             get {
                 return ResourceManager.GetString("NamePopoverInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Please input your name!.
+        /// </summary>
+        public static string NameRequiredError {
+            get {
+                return ResourceManager.GetString("NameRequiredError", resourceCulture);
             }
         }
         

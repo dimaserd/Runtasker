@@ -14,15 +14,15 @@ namespace Runtasker.Logic.Models.Orders
     public class AnonymousKnowThePrice
     {
         [Required]
-        [JsRequired(ErrorText: "Необходимо указать ваше имя!")]
-        [JsMinLength(minLength: 2, errorText: "Поле \"Имя\" не должно быть менее 2 символов")]
+        [JsRequired(resourceName: "NameRequiredError", resourceType: typeof(RegAndCreateRes))]
+        [JsMinLength(minLength: 2, resourceType: typeof(RegAndCreateRes), resourceName: "NameLengthError")]
         [Display(Name = "Name", ResourceType = typeof(RegAndCreateRes))]
         [PopoverInfo(resourceType: typeof(RegAndCreateRes), resourceName: "NamePopoverInfo")]
         public string Name { get; set; }
 
         [Required]
         [JsRequired(ErrorText: "Необходимо указать поле \"Email\"!")]
-        [JsEmail]
+        [JsEmail(resourceType: typeof(RegAndCreateRes), resourceName: "EmailRequiredError")]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email", ResourceType = typeof(RegAndCreateRes))]
         [PopoverInfo(resourceType: typeof(RegAndCreateRes), resourceName: "EmailPopoverInfo")]

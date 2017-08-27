@@ -148,6 +148,9 @@
   <data name="HomeNav" xml:space="preserve">
     <value>Главная</value>
   </data>
+  <data name="InfoText" xml:space="preserve">
+    <value>Если у вас уже есть учетная запись, пожалуйста авторизуйтесь. Данная страница предназначена для регистрации и одновременного создания заказа.</value>
+  </data>
   <data name="NameError" xml:space="preserve">
     <value>Слишком короткое имя, пожалуйста, введите свое полное имя или псевдоним!</value>
   </data>

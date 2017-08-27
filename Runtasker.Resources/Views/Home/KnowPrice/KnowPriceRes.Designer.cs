@@ -142,6 +142,15 @@ namespace Runtasker.Resources.Views.Home.KnowPrice {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на If you already have an account, please sign in. This page is for creating an order and simultaneous registration..
+        /// </summary>
+        public static string InfoText {
+            get {
+                return ResourceManager.GetString("InfoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Your name is too short, please enter your full name or nickname!.
         /// </summary>
         public static string NameError {

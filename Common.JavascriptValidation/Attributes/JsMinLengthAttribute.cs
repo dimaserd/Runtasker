@@ -32,7 +32,7 @@ namespace Common.JavascriptValidation.Attributes
             StringBuilder sb = new StringBuilder();
 
             sb.Append(" { ")
-            .Append($" if (document.getElementById('{PropertyNameHelper.GetIdForInput(propName)}').value > {attr.MinLength})  ")
+            .Append($" if (document.getElementById('{PropertyNameHelper.GetIdForInput(propName)}').value.length < {attr.MinLength})  ")
             .Append("{")
             .Append(JavaScriptHelper.WriteError(propName, attr.ErrorText))
             .Append(JavaScriptHelper.ReturnFalse)

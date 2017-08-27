@@ -142,6 +142,15 @@ namespace Runtasker.Resources.Models.OrderModels.RegAndCreate {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Your phone number is used only for details of &apos;Online-Help&apos;..
+        /// </summary>
+        public static string PhoneNumberPopoverInfo {
+            get {
+                return ResourceManager.GetString("PhoneNumberPopoverInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Subject.
         /// </summary>
         public static string Subject {

@@ -21,6 +21,7 @@ namespace Runtasker.Logic.Models
             OnElseScript = " HideObject(\"OtherSubjectForm\"); SetValueForInput(\"OtherSubject\", \"selected\")")]
         public Subject Subject { get; set; }
 
+        [JsNotValidate]
         [Required(ErrorMessage = "WORKTYPE ERROR")]
         [Display(Name = "WorkType", ResourceType = typeof(CreateOrder))]
         [PopoverInfo(resourceName: "WorkTypePopoverInfo", resourceType: typeof(CreateOrder))]

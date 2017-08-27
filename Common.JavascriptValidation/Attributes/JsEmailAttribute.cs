@@ -17,22 +17,34 @@ namespace Common.JavascriptValidation.Attributes
 
         public static string GetCheckingFunction(string propName, JsEmailAttribute attr)
         {
+            string regex = "/\\S+@\\S+\\.\\S+/";
+
             StringBuilder sb = new StringBuilder();
 
             sb.Append("{");
-            sb.Append($" var email = document.getElementById(\"{PropertyNameHelper.GetIdForInput(propName)}\"); ");
-            sb.Append(" var re = /^ (([^<> ()[\\]\\.,;:\\s@\"]+(\\.[^<>()[\\]\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/; ");
-            sb.Append(" if !( re.test(email) ) ");
-            sb.Append("{")
+            sb.Append($" var email = document.getElementById(\"{PropertyNameHelper.GetIdForInput(propName)}\").value; ");
+            sb.Append($" var re = {regex};");
+            sb.Append(" if (!re.test(email) ) ");
+            sb.Append(" { ")
             .Append(JavaScriptHelper.WriteError(propName, attr.ErrorText))
             .Append(JavaScriptHelper.ReturnFalse)
-            .Append("}")
+            .Append(" } ")
+            .Append(" else ")
+            .Append(" { ")
             .Append(JavaScriptHelper.HideError(propName))
             .Append(JavaScriptHelper.ReturnTrue)
-            .Append("}")
-            .Append("}");
+            .Append(" } ")
+            .Append(" } ");
 
             return sb.ToString();
+
+            //StringBuilder sb = new StringBuilder();
+
+            //sb.Append(" { ")
+            //.Append($"return CheckEmail('{propName}');")
+            //.Append(" } ");
+
+            //return sb.ToString();
         }
 
         public string ErrorText

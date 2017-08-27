@@ -13,20 +13,27 @@ namespace Runtasker.Logic.Models.Orders
 {
     public class AnonymousKnowThePrice
     {
+        [Required]
+        [JsRequired(ErrorText: "Необходимо указать ваше имя!")]
+        [JsMinLength(minLength: 2, errorText: "Поле \"Имя\" не должно быть менее 2 символов")]
         [Display(Name = "Name", ResourceType = typeof(RegAndCreateRes))]
         [PopoverInfo(resourceType: typeof(RegAndCreateRes), resourceName: "NamePopoverInfo")]
         public string Name { get; set; }
 
         [Required]
+        [JsRequired(ErrorText: "Необходимо указать поле \"Email\"!")]
+        [JsEmail]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email", ResourceType = typeof(RegAndCreateRes))]
         [PopoverInfo(resourceType: typeof(RegAndCreateRes), resourceName: "EmailPopoverInfo")]
         public string Email { get; set; }
 
-        [DataType(DataType.PhoneNumber)]
-        [Display(Name = "PhoneNumber", ResourceType = typeof(RegAndCreateRes))]
-        public string PhoneNumber { get; set; }
+        //[DataType(DataType.PhoneNumber)]
+        //[Display(Name = "PhoneNumber", ResourceType = typeof(RegAndCreateRes))]
+        //[PopoverInfo(resourceName: "PhoneNumberPopoverInfo", resourceType: typeof(RegAndCreateRes))]
+        //public string PhoneNumber { get; set; }
 
+        [JsNotValidate]
         [Required]
         [Display(Name = "WorkType", ResourceType = typeof(RegAndCreateRes))]
         [PopoverInfo(resourceName: "WorkTypePopoverInfo", resourceType: typeof(RegAndCreateRes))]
@@ -48,8 +55,9 @@ namespace Runtasker.Logic.Models.Orders
         [JsDefaultValue(DefaultValue = "\"selected\"")]
         public string OtherSubject { get; set; }
 
-        [Display(Name = "CompletionDate", ResourceType = typeof(RegAndCreateRes))]
+
         [JsNotValidate]
+        [Display(Name = "CompletionDate", ResourceType = typeof(RegAndCreateRes))]
         [Required(ErrorMessageResourceType = typeof(CreateOrder), ErrorMessageResourceName = "FinishDateError")]
         [PopoverInfo(resourceType: typeof(CreateOrder), resourceName: "FinishDateInfo")]
         public DateTime CompletionDate { get; set; }

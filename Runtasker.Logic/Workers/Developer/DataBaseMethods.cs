@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Data.Entity;
 
 namespace Runtasker.Logic.Workers.Developer
 {
@@ -62,7 +63,7 @@ namespace Runtasker.Logic.Workers.Developer
             Context.Notifications.RemoveRange(Context.Notifications.Where(n => n.UserGuid == testUser.Id));
             Context.SaveChanges();
 
-            Context.Orders.RemoveRange(Context.Orders.Where(o => o.UserGuid == testUser.Id));
+            Context.Orders.RemoveRange(Context.Orders.Include(x => x.Attachments).Where(o => o.UserGuid == testUser.Id));
             Context.SaveChanges();
 
             Context.Users.Remove(testUser);

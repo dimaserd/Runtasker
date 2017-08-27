@@ -1,5 +1,7 @@
-﻿using Extensions.Attributes;
+﻿using Common.JavascriptValidation.Statics;
+using Extensions.Attributes;
 using System;
+using System.Text;
 
 namespace Common.JavascriptValidation.Attributes
 {

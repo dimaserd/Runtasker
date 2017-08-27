@@ -144,6 +144,9 @@
   <data name="PhoneNumber" xml:space="preserve">
     <value>Phone</value>
   </data>
+  <data name="PhoneNumberPopoverInfo" xml:space="preserve">
+    <value>Your phone number is used only for details of 'Online-Help'.</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>Subject</value>
   </data>

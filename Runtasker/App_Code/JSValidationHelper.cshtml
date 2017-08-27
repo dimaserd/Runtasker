@@ -8,10 +8,31 @@
     </script>
 }
 
-@using Common.JavascriptValidation.Statics
-@helper GetDich(string jsObject)
+@helper GetApiFuncs()
 {
     <script>
+        //Находит позицию объекта
+        function findPos(obj) {
+            var curtop = 0;
+            if (obj.offsetParent) {
+                do {
+                    curtop += obj.offsetTop;
+                } while (obj = obj.offsetParent);
+                return [curtop];
+            }
+        }
+
+        function ScrollToForm(propName)
+        {
+
+            var position = findPos(document.getElementById(propName + "@PropertyNameHelper.FormAddition"))
+
+            //125 input
+            window.scroll(0, position - 105);
+        }
+
+
+
         function WriteError(propName, errorText)
         {
             console.log("Записать ошибку", propName, errorText);
@@ -98,6 +119,36 @@
 
 
     </script>
+}
+
+@helper GetCheckingFuncs()
+{
+    <script>
+        function CheckEmail(property) {
+            var email = document.getElementById(property + "Input").value;
+            var re = /\S+@@\S+\.\S+/;
+            if (!re.test(email)) {
+                WriteError(property, 'Данное поле не является электронным адресом!');
+
+                return false;
+            }
+            else {
+                HideError(property);
+                return true;
+            }
+
+
+        }
+
+    </script>
+}
+
+@using Common.JavascriptValidation.Statics
+@helper GetDich(string jsObject)
+{
+    @GetApiFuncs()
+
+    @GetCheckingFuncs()
 
     <script>
 
@@ -164,6 +215,7 @@
                 if (!ValidateProperty(jsObject[i]))
                 {
                     result = false;
+                    ScrollToForm(jsObject[i].PropertyName)
                     break;
                 }
             }

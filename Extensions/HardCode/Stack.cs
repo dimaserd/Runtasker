@@ -23,11 +23,11 @@ namespace Extensions.HardCode
                 PropertyInfo property = resourceType.GetProperty(resourceName, BindingFlags.Public | BindingFlags.Static);
                 if (property == null)
                 {
-                    throw new InvalidOperationException(string.Format("Resource Type Does Not Have Property"));
+                    throw new InvalidOperationException($"Тип ресурса {resourceType.FullName} не содержит свойста {resourceName}");
                 }
                 if (property.PropertyType != typeof(string))
                 {
-                    throw new InvalidOperationException(string.Format("Resource Property is Not String Type"));
+                    throw new InvalidOperationException($"Свойство ресурса {resourceName} не является строкой!");
                 }
                 return (string)property.GetValue(null, null);
             }

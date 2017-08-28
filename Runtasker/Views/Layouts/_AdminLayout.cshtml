@@ -79,13 +79,21 @@
                         }
                         
                     </ul>
-                    <hr />
+                    <hr class="half-margins" />
                     @if (User.IsInRole("Admin"))
                     {
                         <ul class="nav nav-sidebar">
-                            <li><a href="@Url.Action("Users", "Administration")">Пользователи сайта</a></li>
+                            @*<li><a href="@Url.Action("Users", "Administration")">Пользователи сайта</a></li>*@
                             <li><a href="@Url.Action("Customers", "Administration")">Заказчики сайта</a></li>
                             <li><a href="@Url.Action("Performers", "Administration")">Исполнители сайта</a></li>
+                        </ul>
+
+                        <hr class="half-margins" />
+
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("Index", "QuestionsAnswers")">Вопросы-Ответы</a>
+                            </li>
                         </ul>
                     }
                     

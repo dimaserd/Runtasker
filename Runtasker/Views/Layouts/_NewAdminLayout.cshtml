@@ -146,14 +146,22 @@
                         @if (User.IsInRole("Admin"))
                         {
                             <ul class="nav nav-sidebar">
-                                <li><a href="@Url.Action("Users", "Administration")">Пользователи сайта</a></li>
+                                @*<li><a href="@Url.Action("Users", "Administration")">Пользователи сайта</a></li>*@
                                 <li><a href="@Url.Action("Customers", "Administration")">Заказчики сайта</a></li>
                                 <li><a href="@Url.Action("Performers", "Administration")">Исполнители сайта</a></li>
+                            </ul>
+
+                            <hr class="half-margins" />
+
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("Index", "QuestionAnswers")">Вопросы-Ответы</a>
+                                </li>
                             </ul>
                         }
                         <hr class="half-margins" />
                         <ul class="nav nav-sidebar">
-                            <li><a href="@Url.Action("Trash", "Performer")">Удаленные</a></li>
+                            <li><a href="@Url.Action("Trash", "Performer")">Удаленные заказы</a></li>
                             
                         </ul>
                     </div>
@@ -161,9 +169,7 @@
                     <div class="col-sm-9 col-md-10">
                         @RenderBody()
                     </div>
-                    
 
-                    
                 </div>
 
             </section>

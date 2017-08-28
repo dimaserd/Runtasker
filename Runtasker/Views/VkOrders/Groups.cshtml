@@ -9,6 +9,13 @@
 
 <h2>Просматриваемые сообщества @GISigns.Count(Model.Count).ToHtml()</h2>
 
+@if(Model.Count == 0)
+{
+    <div class="row">
+        <a href="@Url.Action("GroupsRecovery")">Восстановить группы</a>
+    </div>
+}
+
 <div class="row">
     <div class="col-md-6">
         <a href="@Url.Action("AddGroup", "VkOrders")" class="btn btn-default">

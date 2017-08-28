@@ -13,7 +13,7 @@
 <h2>Найденные посты из сообществ</h2>
 
 @{ 
-    
+
 
     List<VkGroup> uniqueGroups = new List<VkGroup>();
 
@@ -25,9 +25,10 @@
         }
     }
 
+    
     Dictionary<WordType,int> subjectInts = new Dictionary<WordType, int>();
 
-    foreach(WordType subj in Enum.GetValues(typeof(WordType)))
+    foreach (WordType subj in Enum.GetValues(typeof(WordType)))
     {
         subjectInts.Add(subj, Model.Count(p => p.Subject == subj));
     }
@@ -180,7 +181,7 @@
                         }
                     
                         <td>
-                            <a title="Перейти к посту" class="icon" href="@linkToPost">
+                            <a title="Перейти к посту" class="icon" target="_blank" href="@linkToPost">
                                 @GISigns.Login.ToHtml()
                             </a>
                             @{ 
@@ -188,7 +189,7 @@
                             }
                             @if (hasOwner)
                             {
-                                <a title="Найти человека в вк" class="icon" href="@link">
+                                <a title="Найти человека в вк" target="_blank" class="icon" href="@link">
                                     @GISigns.User.ToHtml()
                                 </a>
                             }

@@ -233,6 +233,7 @@
     <Compile Include="Models\Orders\Pay\PayHalfModel.cs" />
     <Compile Include="Models\Orders\Pay\PayOnlineHelp.cs" />
     <Compile Include="Models\Orders\Pay\PayOrderBase.cs" />
+    <Compile Include="Models\Payments\Admin\MakePaymentForUser.cs" />
     <Compile Include="Models\Payments\YandexKassa\YandexKassaPaymentResponse.cs" />
     <Compile Include="Models\Users\ApplicationUserInfo.cs" />
     <Compile Include="Models\VkNotificater\VkUserInfo.cs" />

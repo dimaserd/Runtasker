@@ -3,9 +3,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Runtasker.Logic.Entities;
 using Runtasker.Logic.Workers.Notifications;
 using Runtasker.Logic.Workers.PaymentTransactions;
-using System;
-using System.IO;
-using System.Security.Cryptography;
 using System.Text;
 
 namespace Runtasker.Logic.Workers.Payments.PaymentGetters

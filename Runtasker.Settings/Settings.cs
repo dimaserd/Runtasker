@@ -8,8 +8,8 @@ namespace Runtasker.Settings
         /// Local переключает приложение на локальную базу,
         /// Production на рабочую базу данных
         /// </summary>
-        public const ConnectionType Connection = ConnectionType.Production;
+        public const ConnectionType Connection = ConnectionType.Local;
 
-        public const ApplicationSettingType AppSetting = ApplicationSettingType.Production; 
+        public const ApplicationSettingType AppSetting = ApplicationSettingType.Debug; 
     }
 }

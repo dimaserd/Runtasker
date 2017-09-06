@@ -7,7 +7,7 @@ namespace Runtasker.Logic.Entities
 {
     public enum PaymentViaType
     {
-        YandexMoney, Robokassa, YandexKassa
+        YandexMoney, Robokassa, YandexKassa, Administration
     }
 
     public class Payment

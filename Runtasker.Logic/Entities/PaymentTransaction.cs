@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Runtasker.Logic.Entities
 {
+    
+
     public enum TransactionType
     {
         Spending, Recharging, RuntaskerBounty

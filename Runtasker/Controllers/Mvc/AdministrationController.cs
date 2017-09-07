@@ -91,6 +91,15 @@ namespace Runtasker.Controllers
             return View();
         }
 
+        #region Редактирование таблицы пользователя
+        public ActionResult EditUser(string userId)
+        {
+            ApplicationUser user = Db.Users.Include(x => x.Roles).FirstOrDefault(x => x.Id == userId);
+
+            return View(user);
+        }
+        #endregion
+
         #region OtherInfo Methods
 
         #region UpdatePerformerInfo methods

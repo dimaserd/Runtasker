@@ -60,7 +60,7 @@ namespace Runtasker.Controllers
 
         public async Task<ActionResult> History()
         {
-            List<Notification> model = await Db.Notifications.Where(x => x.UserGuid == UserGuid)
+            List<Notification> model = await Db.Notifications.Where(x => x.UserGuid == UserGuid && x.AboutType != NotificationAboutType.EmptyForRefresh)
                 .OrderBy(x => x.CreationDate).ToListAsync();
 
             return View(model);

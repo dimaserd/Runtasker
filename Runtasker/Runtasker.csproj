@@ -3342,6 +3342,7 @@
     <Content Include="Views\QuestionAnswers\Index.cshtml" />
     <Content Include="Views\QuestionAnswers\Show.cshtml" />
     <Content Include="Views\Payment\MakePaymentForUser.cshtml" />
+    <Content Include="Views\Administration\EditUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

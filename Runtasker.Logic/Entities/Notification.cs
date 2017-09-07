@@ -18,7 +18,12 @@ namespace Runtasker.Logic.Entities
         /// <summary>
         /// Уведомление о балансе (требует перелогина пользователя для изменения баланса в UI)
         /// </summary>
-        Balance
+        Balance,
+
+        /// <summary>
+        /// Пустой для обновления куков для пользователя
+        /// </summary>
+        EmptyForRefresh,
     }
 
     public enum NotificationType

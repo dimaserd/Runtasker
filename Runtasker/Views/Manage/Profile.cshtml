@@ -99,6 +99,13 @@
         <h3 title="@ProfilePageRes.Email">
             <span class="fa fa-envelope-o fa-fw"></span> [@ProfilePageRes.NoNewMessages]
         </h3>
+
+        <h3>
+            <a href="@Url.Action("Profile", "Manage")" class="btn btn-info" >
+                Добавить
+            </a>
+        </h3>
+
         <h3>
             @ProfilePageRes.Balance: @User.Identity.GetBalance()<span class="fa fa-rub"></span>
             <a href="@Url.Action("Index", "Payment")">[@ProfilePageRes.Recharge]</a>

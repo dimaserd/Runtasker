@@ -63,7 +63,8 @@ namespace Runtasker.Logic.Workers.Payments.PaymentGetters
             if (compareResult)
             {
                 //получаю существующий платеж по идентификатору системы яндексКасса
-                Payment existingPayment = await Context.Payments.Include(x => x.User).FirstOrDefaultAsync(x => x.PaymentServiceId == invoiceId);
+                Payment existingPayment = await Context.Payments.Include(x => x.User)
+                    .FirstOrDefaultAsync(x => x.PaymentServiceId == invoiceId);
 
                 //если платежа не существует выходим из метода
                 if(existingPayment == null)

@@ -3341,6 +3341,7 @@
     <Content Include="Views\QuestionAnswers\Edit.cshtml" />
     <Content Include="Views\QuestionAnswers\Index.cshtml" />
     <Content Include="Views\QuestionAnswers\Show.cshtml" />
+    <Content Include="Views\Payment\MakePaymentForUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3355,6 +3356,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Documents\TFS\OkWebPlatformV.2.0\OkWebPlatform v.2.0\Libraries\oksoft.Common.HtmlExtensions\oksoft.Common.HtmlExtensions.csproj">
+      <Project>{53096172-b653-45d5-b72a-02712daf88c4}</Project>
+      <Name>oksoft.Common.HtmlExtensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common.JavascriptValidation\Common.JavascriptValidation.csproj">
       <Project>{8732b2ed-c0f9-478e-963d-71235336b4eb}</Project>
       <Name>Common.JavascriptValidation</Name>

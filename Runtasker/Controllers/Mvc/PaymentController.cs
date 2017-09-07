@@ -10,6 +10,7 @@ using Runtasker.Logic.Models.Payments.Admin;
 using Runtasker.Logic.Models.Payments.YandexKassa;
 using Runtasker.Logic.Workers;
 using Runtasker.Logic.Workers.Logging;
+using Runtasker.Logic.Workers.Notifications;
 using Runtasker.Logic.Workers.Payments;
 using Runtasker.Logic.Workers.Payments.PaymentGetters;
 using Runtasker.Logic.Workers.PaymentTransactions;
@@ -111,33 +112,39 @@ namespace Runtasker.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult MakePaymentForUser(MakePaymentForUser model)
         {
-            Payment payment = new Payment
+            using (PaymentNotificationMethods ptNotificater = new PaymentNotificationMethods(Db))
             {
-                Id = 0,
-                Date = DateTime.Now,
-                Amount = model.Amount,
-                Confirmed = true,
-                Description = model.Description,
-                Hash = Guid.NewGuid().ToString(),
-                PaymentServiceId = Guid.NewGuid().ToString(),
-                UserGuid = model.UserId,
-                ViaType = PaymentViaType.Administration
-            };
+                Payment payment = new Payment
+                {
+                    Id = 0,
+                    Date = DateTime.Now,
+                    Amount = model.Amount,
+                    Confirmed = true,
+                    Description = model.Description,
+                    Hash = Guid.NewGuid().ToString(),
+                    PaymentServiceId = Guid.NewGuid().ToString(),
+                    UserGuid = model.UserId,
+                    ViaType = PaymentViaType.Administration
+                };
 
-            PaymentTransaction pt = new PaymentTransaction
-            {
-                Id = 0,
-                Date = DateTime.Now,
-                Description = model.Description,
-                Sum = model.Amount,
-                Type = TransactionType.Recharging,
-                UserGuid = model.UserId
-            };
+                PaymentTransaction pt = new PaymentTransaction
+                {
+                    Id = 0,
+                    Date = DateTime.Now,
+                    Description = model.Description,
+                    Sum = model.Amount,
+                    Type = TransactionType.Recharging,
+                    UserGuid = model.UserId
+                };
 
-            Db.Payments.Add(payment);
-            Db.PaymentTransactions.Add(pt);
+                ptNotificater.OnUserPaid(payment, Logic.Enumerations.SaveChangesType.Handled);
 
-            Db.SaveChanges();
+                Db.Payments.Add(payment);
+                Db.PaymentTransactions.Add(pt);
+                Db.SaveChanges();
+            }
+
+            
 
             return View();
         }

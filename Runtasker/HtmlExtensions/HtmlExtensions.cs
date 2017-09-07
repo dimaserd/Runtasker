@@ -275,11 +275,7 @@ namespace Runtasker.HtmlExtensions
         #endregion
 
 
-        #region Перевод ошибок в html
-       
-
         
-        #endregion
 
         /// <summary>
         /// Возвращает строку html строку 

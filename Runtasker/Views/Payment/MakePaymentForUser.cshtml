@@ -1,8 +1,24 @@
 ﻿@using Runtasker.Logic.Models.Payments.Admin
+@model MakePaymentForUser
 
 @{
     ViewBag.Title = "MakePaymentForUser";
 }
 
 <h2>MakePaymentForUser</h2>
+
+@using (Html.BeginForm(actionName: "MakePaymentForUser", controllerName: "Payment", method: FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.UserId)
+
+    @Html.LabelAndTextBoxFor(x => x.Amount)
+
+    @Html.LabelAndTextAreaFor(x => x.Description)
+
+    <button class="btn btn-success">
+        Сохранить
+    </button>
+}
+
+
 

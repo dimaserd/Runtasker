@@ -26,9 +26,14 @@ using System.Web.Mvc;
 namespace Runtasker.Controllers
 {
     [EnableCors("*", "*", "*")]
-    [Authorize(Roles = "Customer")]
+    [Authorize(Roles = "Customer,Admin")]
     public class PaymentController : BaseMvcController
     {
+        public PaymentController()
+        {
+            var t = User;
+        }
+
         #region Поля
         YandexPaymentWorker _paymentWorker;
 
@@ -105,15 +110,24 @@ namespace Runtasker.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult MakePaymentForUser(string userId)
         {
-            return View();
+            return View(new MakePaymentForUser { UserId = userId });
         }
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public ActionResult MakePaymentForUser(MakePaymentForUser model)
         {
+
+
             using (PaymentNotificationMethods ptNotificater = new PaymentNotificationMethods(Db))
             {
+                ApplicationUser user = UserManager.FindById(model.UserId);
+
+                if(user == null)
+                {
+                    return RedirectToAction("Index", "Administration");
+                }
+
                 Payment payment = new Payment
                 {
                     Id = 0,
@@ -139,20 +153,26 @@ namespace Runtasker.Controllers
 
                 ptNotificater.OnUserPaid(payment, Logic.Enumerations.SaveChangesType.Handled);
 
+                
+
                 Db.Payments.Add(payment);
                 Db.PaymentTransactions.Add(pt);
                 Db.SaveChanges();
+
+                
+                user.Balance += payment.Amount;
+                UserManager.Update(user);
             }
 
             
 
-            return View();
+            return RedirectToAction("Index", "Administration");
         }
         #endregion
 
         //Здесь пользователь может выбрать каким способом оплачивать
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Customer")]
         public ActionResult Index(decimal? sumToPay)
         {
             ViewData["localeModel"] = ViewsHelper.Index();
@@ -161,7 +181,7 @@ namespace Runtasker.Controllers
 
         #region ЯндексКасса
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Customer")]
         public ActionResult YandexKassa(decimal? sumToPay)
         {
             if(Settings.Settings.AppSetting == Settings.Enumerations.ApplicationSettingType.Production)

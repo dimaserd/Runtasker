@@ -151,17 +151,16 @@ namespace Runtasker.Controllers
                     UserGuid = model.UserId
                 };
 
+                user.Balance += payment.Amount;
+                UserManager.Update(user);
+
                 ptNotificater.OnUserPaid(payment, Logic.Enumerations.SaveChangesType.Handled);
 
                 
 
                 Db.Payments.Add(payment);
                 Db.PaymentTransactions.Add(pt);
-                Db.SaveChanges();
-
-                
-                user.Balance += payment.Amount;
-                UserManager.Update(user);
+                Db.SaveChanges(); 
             }
 
             

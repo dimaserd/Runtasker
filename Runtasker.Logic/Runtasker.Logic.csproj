@@ -218,6 +218,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
+    <Compile Include="Models\AdministrationUsers\EditCustomerModel.cs" />
     <Compile Include="Models\ManageModels\AddVkInfoModel.cs" />
     <Compile Include="Models\ManageModels\OtherUserInfo.cs" />
     <Compile Include="Models\Messages\ChatMessage.cs" />

@@ -6,17 +6,53 @@
 
 <h2>EditUser</h2>
 
-<div class="table-responsive">
-    <table>
-        <thead>
-            <tr>
-                <td>
-                    @Model.Email
-                </td>
-                <td>
-                    @Model.EmailConfirmed
-                </td>
-            </tr>
-        </thead>
-    </table>
-</div>
+@using (Html.BeginForm())
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-condensed table-striped">
+            <thead>
+                <tr>
+                    <td>
+                        <strong>
+                            @Html.DisplayNameFor(x => x.Email)
+                        </strong> 
+                    </td>
+                    <td>
+                        <strong>
+                            @Html.DisplayNameFor(x => x.EmailConfirmed)
+                        </strong>  
+                    </td>
+                    <td>
+                        <strong>
+                            @Html.DisplayNameFor(x => x.VkDomain)
+                        </strong> 
+                    </td>
+                    <td>
+                        <strong>
+                            @Html.DisplayNameFor(x => x.VkId)
+                        </strong>
+                    </td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(x => x.Email)
+                    </td>
+                    <td>
+                        @Html.CheckBoxFor(x => x.EmailConfirmed)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(x => x.VkDomain)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(x => x.VkId)
+                    </td>
+                </tr>
+
+                
+            </tbody>
+        </table>
+    </div>
+}

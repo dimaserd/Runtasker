@@ -13,6 +13,7 @@ using Runtasker.Logic.Workers.Admin;
 using Logic.Extensions.Models;
 using Runtasker.Logic.Workers.Admin.Users;
 using Runtasker.Logic.Models.ManageModels;
+using Runtasker.Controllers.Base;
 
 namespace Runtasker.Controllers
 {
@@ -24,7 +25,7 @@ namespace Runtasker.Controllers
     ///для отслеживания деятельности исполнителей
     /// </summary>
     [Authorize(Roles = "Admin")]
-    public class AdministrationController : Controller
+    public class AdministrationController : BaseMvcController
     {
         #region Поля
         static MyDbContext _db;
@@ -92,11 +93,19 @@ namespace Runtasker.Controllers
         }
 
         #region Редактирование таблицы пользователя
+        [HttpGet]
         public ActionResult EditUser(string userId)
         {
             ApplicationUser user = Db.Users.Include(x => x.Roles).FirstOrDefault(x => x.Id == userId);
 
             return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult EditUser(ApplicationUser model)
+        {
+            
+            return View(model);
         }
         #endregion
 

@@ -27,6 +27,8 @@ namespace Runtasker.Logic.Entities
         public string VkDomain { get; set; }
 
         public string VkId { get; set; }
+
+        public bool ShouldBeNotifictedInVk { get; set; }
         #endregion
 
         public string Specialization { get; set; }

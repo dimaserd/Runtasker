@@ -52,6 +52,11 @@
                                         Пополнить баланс
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="@Url.Action("EditUser", "Administration", new { userId = Model.User.Id})">
+                                        Редактировать пользователя
+                                    </a>
+                                </li>
                                 <li><a href="@Url.Action("DeleteFinishedOrders", "Administration", new { id = Model.User.Id})">Удалить завершенные заказы</a></li>
                                 <li><a href="/Administration/DeleteAllOrders/@Model.User.Id">Удалить все заказы</a></li>
                                 <li class="divider"></li>

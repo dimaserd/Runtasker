@@ -7,6 +7,25 @@ namespace Extensions.String
 {
     public static class StringHtmlWrapper
     {
+        public static string ReplaceFirst(this string text, string search, string replace)
+        {
+            int pos = text.IndexOf(search);
+            if (pos < 0)
+            {
+                return text;
+            }
+            return text.Substring(0, pos) + replace + text.Substring(pos + search.Length);
+        }
+
+        public static string ReplaceFirstHtmlTag(this string s, string tagName, object attributes = null)
+        {
+
+            string attrs_String = attributes.GetAttributesString();
+
+            
+            return s.ReplaceFirst("<tag>", $"<{tagName} {attrs_String}>").ReplaceFirst("</tag>", $"</{tagName}>");
+        }
+
         #region Wrappers
 
         /// <summary>

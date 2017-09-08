@@ -30,6 +30,8 @@
         public static int DaysForCourseWorkTask = 30;
         #endregion
 
+        public static string VkGroupLink = "https://vk.com/runtasker";
+
         public static int CompanyStartYear = 2014;
     }
 }

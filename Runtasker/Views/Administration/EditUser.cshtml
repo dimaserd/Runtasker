@@ -1,5 +1,5 @@
-﻿@using Runtasker.Logic.Entities
-@model ApplicationUser
+﻿@using Runtasker.Logic.Models.AdministrationUsers
+@model EditCustomerModel
 @{
     ViewBag.Title = "EditUser";
 }
@@ -14,6 +14,12 @@
                 <tr>
                     <td>
                         <strong>
+                            @Html.DisplayNameFor(x => x.Name)
+                        </strong>
+                    </td>
+
+                    <td>
+                        <strong>
                             @Html.DisplayNameFor(x => x.Email)
                         </strong> 
                     </td>
@@ -21,6 +27,11 @@
                         <strong>
                             @Html.DisplayNameFor(x => x.EmailConfirmed)
                         </strong>  
+                    </td>
+                    <td>
+                        <strong>
+                            @Html.DisplayNameFor(x => x.ShouldBeNotifictedInVk)
+                        </strong>
                     </td>
                     <td>
                         <strong>
@@ -38,10 +49,16 @@
             <tbody>
                 <tr>
                     <td>
+                        @Html.TextBoxFor(x => x.Name)
+                    </td>
+                    <td>
                         @Html.TextBoxFor(x => x.Email)
                     </td>
                     <td>
                         @Html.CheckBoxFor(x => x.EmailConfirmed)
+                    </td>
+                    <td>
+                        @Html.CheckBoxFor(x => x.ShouldBeNotifictedInVk)
                     </td>
                     <td>
                         @Html.TextBoxFor(x => x.VkDomain)
@@ -55,4 +72,8 @@
             </tbody>
         </table>
     </div>
+
+    <button class="btn btn-success" type="submit">
+        Сохранить изменеия
+    </button>
 }

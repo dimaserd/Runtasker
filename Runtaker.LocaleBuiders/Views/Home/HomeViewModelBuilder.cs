@@ -3,6 +3,7 @@ using Runtasker.LocaleBuilders.Models;
 using Runtasker.Resources.Views.Home.Contact;
 using Runtasker.Resources.Views.Home.Index;
 using Runtasker.Resources.Views.Home.KnowPrice;
+using Runtasker.Settings;
 
 namespace Runtasker.LocaleBuilders.Views.Home
 {
@@ -19,7 +20,9 @@ namespace Runtasker.LocaleBuilders.Views.Home
             result.Add("Header", ContactViewRes.ContactUs);
             result.Add("AlertTextHtml", string.Format(ContactViewRes.AlertFormat, ContactViewRes.AlertToMark.WrapToStrong()));
             result.Add("MessagePlaceholderText", ContactViewRes.MessagePlaceholder);
-            
+            result.Add("InfoTextHtml", ContactViewRes.InfoText.ReplaceFirstHtmlTag("a", new { target = "_blank", href = UISettings.VkGroupLink }));
+
+
             return result;
         }
 

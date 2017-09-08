@@ -98,7 +98,7 @@ else
                 <div class="row">
                     <div class="col-md-12">
                         <span>@User.Identity.GetName()</span>
-                        <p class="text-muted small">
+                        <p class="text-muted small low-marg">
                             @User.Identity.GetEmail()
                         </p>
                         <div class="divider">
@@ -106,15 +106,42 @@ else
                         <p id="balance" class="text-muted small low-marg">
                             @localeModel["YourBalanceHtml"].ToHtml()
                         </p>
-
+                        
                         @if (User.IsInRole("Customer"))
                         {
-                            <p>
+                            <p class="low-marg">
                                 <a href="@Url.Action("Index", "Payment")">
                                     [@localeModel["Recharge"]]
                                 </a>
                             </p>
                         }
+
+                        @{ 
+                            string vkDomain = User.Identity.GetVkDomain();
+
+                            string vkId = User.Identity.GetVkId();
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(vkDomain))
+                        {
+                            <div class="divider">
+                            </div>
+                            <p class="text-muted small low-marg">
+                                <span><a target="_blank" href="https://vk.com/@(vkDomain)"> <i class="fa fa-vk"></i> @vkDomain</a></span>
+                            </p>
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrWhiteSpace(vkId))
+                            {
+                                <p class="text-muted small low-marg">
+                                    Vk : <a href="https://vk.com/id@(vkId)">@vkId</a>
+                                </p>
+                            }
+                        }
+
+
+                        
 
 
 

@@ -79,6 +79,10 @@
       <Project>{575b4616-8bfd-424b-b3fb-517aa4e86d17}</Project>
       <Name>Runtasker.Resources</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Runtasker.Settings\Runtasker.Settings.csproj">
+      <Project>{70630F62-8278-44C2-B24A-089356EEEB8A}</Project>
+      <Name>Runtasker.Settings</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

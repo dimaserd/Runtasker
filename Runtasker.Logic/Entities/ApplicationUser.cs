@@ -54,17 +54,20 @@ namespace Runtasker.Logic.Entities
             // Обратите внимание, что authenticationType должен совпадать с типом, определенным в CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here => this.OrganizationId is a value stored in database against the user
-            userIdentity.AddClaim(new Claim("Name", this.Name.ToString()));
+            userIdentity.AddClaim(new Claim("Name", this.Name));
             userIdentity.AddClaim(new Claim("Balance", Balance.ToString()));
             userIdentity.AddClaim(new Claim("Email", Email.ToString()));
-            userIdentity.AddClaim(new Claim("Password", PasswordHash == null ? "" : PasswordHash.ToString()));
-            userIdentity.AddClaim(new Claim("EmailConfirmed", EmailConfirmed == true ? "true" : "false"));
+            userIdentity.AddClaim(new Claim("Password", PasswordHash == null ? "" : PasswordHash));
+            userIdentity.AddClaim(new Claim("EmailConfirmed", EmailConfirmed.ToString().ToLower()));
             userIdentity.AddClaim(new Claim("Language", Language));
-            userIdentity.AddClaim(new Claim("PhoneNumber", PhoneNumber == null ? string.Empty : PhoneNumber.ToString()));
+            userIdentity.AddClaim(new Claim("PhoneNumber", PhoneNumber == null ? string.Empty : PhoneNumber));
 
-            userIdentity.AddClaim(new Claim("Specialization", Specialization == null? string.Empty : Specialization.ToString()));
-            userIdentity.AddClaim(new Claim("VkDomain", VkDomain == null ? string.Empty : VkDomain.ToString()));
-            userIdentity.AddClaim(new Claim("VkId", VkId == null ? string.Empty : VkId.ToString()));
+            userIdentity.AddClaim(new Claim("Specialization", Specialization == null? string.Empty : Specialization));
+
+            //Vk
+            userIdentity.AddClaim(new Claim("ShouldBeNotifictedInVk", ShouldBeNotifictedInVk.ToString().ToLower()));
+            userIdentity.AddClaim(new Claim("VkDomain", VkDomain == null ? string.Empty : VkDomain));
+            userIdentity.AddClaim(new Claim("VkId", VkId == null ? string.Empty : VkId));
 
             // Здесь добавьте утверждения пользователя
             return userIdentity;
@@ -142,6 +145,17 @@ namespace Runtasker.Logic.Entities
             return false;
         }
 
+        public static bool ShouldBeNotifictedInVk(this IIdentity identity)
+        {
+            string claimValue = GetClaimValueByName(identity, "ShouldBeNotifictedInVk");
+            if (claimValue != null && claimValue == "true")
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public static bool HasPassword(this IIdentity identity)
         {
             string pass = GetClaimValueByName(identity, "Password");
@@ -158,7 +172,16 @@ namespace Runtasker.Logic.Entities
             return GetClaimValueByName(identity, "Email");
         }
 
-        
+        public static string GetVkDomain(this IIdentity identity)
+        {
+            return GetClaimValueByName(identity, "VkDomain");
+        }
+
+        public static string GetVkId(this IIdentity identity)
+        {
+            return GetClaimValueByName(identity, "VkId");
+        }
+
         #endregion
 
         #region Вспомогательные методы

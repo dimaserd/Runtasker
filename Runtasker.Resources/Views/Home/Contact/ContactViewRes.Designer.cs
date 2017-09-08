@@ -106,6 +106,15 @@ namespace Runtasker.Resources.Views.Home.Contact {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Here you can ask any question about Runtasker. But we reccomend to use chat in our &lt;tag&gt;vkontakte group&lt;/tag&gt;..
+        /// </summary>
+        public static string InfoText {
+            get {
+                return ResourceManager.GetString("InfoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Please enter your message here....
         /// </summary>
         public static string MessagePlaceholder {

@@ -145,4 +145,7 @@
   <data name="AlertToMark" xml:space="preserve">
     <value>Спасибо вам!</value>
   </data>
+  <data name="InfoText" xml:space="preserve">
+    <value>На данной странице вы можете задать любой интересующий вас вопрос о Рантаскер. Но мы рекомендуем вам воспользоваться чатом в нашей &lt;tag&gt;группе вконтакте&lt;/tag&gt;.</value>
+  </data>
 </root>

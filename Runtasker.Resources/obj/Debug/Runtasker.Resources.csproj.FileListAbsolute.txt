@@ -540,3 +540,4 @@ C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\ru-RU
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\zh-CN\Runtasker.Resources.resources.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.csprojResolveAssemblyReference.cache

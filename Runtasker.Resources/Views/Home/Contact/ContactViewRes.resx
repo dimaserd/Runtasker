@@ -145,4 +145,7 @@
   <data name="AlertToMark" xml:space="preserve">
     <value>Thank you!</value>
   </data>
+  <data name="InfoText" xml:space="preserve">
+    <value>Here you can ask any question about Runtasker. But we reccomend to use chat in our &lt;tag&gt;vkontakte group&lt;/tag&gt;.</value>
+  </data>
 </root>

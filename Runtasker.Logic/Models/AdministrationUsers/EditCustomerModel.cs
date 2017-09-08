@@ -1,5 +1,6 @@
 ﻿using Runtasker.Logic.Entities;
 using Runtasker.Logic.Interfaces.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Runtasker.Logic.Models.AdministrationUsers
 {
@@ -7,16 +8,20 @@ namespace Runtasker.Logic.Models.AdministrationUsers
     {
         public string UserId { get; set; }
 
+        
         public string Email { get; set; }
 
+        [Display(Name = "Почта подтверждена")]
         public bool EmailConfirmed { get; set; }
 
+        [Display(Name = "Имя")]
         public string Name { get; set; }
 
         public string VkDomain { get; set; }
 
         public string VkId { get; set; }
 
+        [Display(Name = "Уведомлять в вк")]
         public bool ShouldBeNotifictedInVk { get; set; }
 
         
@@ -33,7 +38,8 @@ namespace Runtasker.Logic.Models.AdministrationUsers
                 EmailConfirmed = user.EmailConfirmed,
                 VkDomain = user.VkDomain,
                 VkId = user.VkId,
-                ShouldBeNotifictedInVk = user.ShouldBeNotifictedInVk
+                ShouldBeNotifictedInVk = user.ShouldBeNotifictedInVk,
+                Name = user.Name
             };
         }
 

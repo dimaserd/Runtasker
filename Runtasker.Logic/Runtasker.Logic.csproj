@@ -216,6 +216,10 @@
     <Compile Include="Migrations\201708271017503_visible.Designer.cs">
       <DependentUpon>201708271017503_visible.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709081244564_users.cs" />
+    <Compile Include="Migrations\201709081244564_users.Designer.cs">
+      <DependentUpon>201709081244564_users.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
     <Compile Include="Models\AdministrationUsers\EditCustomerModel.cs" />
@@ -402,6 +406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708271017503_visible.resx">
       <DependentUpon>201708271017503_visible.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709081244564_users.resx">
+      <DependentUpon>201709081244564_users.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,6 +14,7 @@ using Logic.Extensions.Models;
 using Runtasker.Logic.Workers.Admin.Users;
 using Runtasker.Logic.Models.ManageModels;
 using Runtasker.Controllers.Base;
+using Runtasker.Logic.Models.AdministrationUsers;
 
 namespace Runtasker.Controllers
 {
@@ -96,16 +97,32 @@ namespace Runtasker.Controllers
         [HttpGet]
         public ActionResult EditUser(string userId)
         {
-            ApplicationUser user = Db.Users.Include(x => x.Roles).FirstOrDefault(x => x.Id == userId);
+            EditCustomerModel model = Db.Users.Include(x => x.Roles).FirstOrDefault(x => x.Id == userId).ToEditCustomerModel();
 
-            return View(user);
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult EditUser(ApplicationUser model)
+        public ActionResult EditUser(EditCustomerModel model)
         {
-            
-            return View(model);
+            ApplicationUser user = Db.Users.Include(x => x.Roles).FirstOrDefault(x => x.Id == model.UserId);
+
+            ApplicationUser updatedUser = model.RenderApplicationUser(user);
+
+            UserManager.Update(updatedUser);
+
+            Notification not = new Notification
+            {
+                CreationDate = DateTime.Now,
+                Status = NotificationStatus.Unseen,
+                UserGuid = model.UserId,
+                AboutType = NotificationAboutType.EmptyForRefresh
+            };
+
+            Db.Notifications.Add(not);
+            Db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
         #endregion
 

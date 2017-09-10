@@ -1,0 +1,38 @@
+﻿@using Runtasker.Logic.Models.Attachments
+@model List<AttachmentLightModel>
+@{
+    ViewBag.Title = "Файлы загруженные администраторами";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>
+                    <strong>Имя файла</strong>
+                </td>
+                <td>
+                    <strong>Действия</strong>
+                </td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (AttachmentLightModel at in Model)
+            {
+                <tr>
+                    <td>
+                        <strong>@at.FileName</strong>
+                    </td>
+                    <td>
+                        <strong>
+                            <a href="/File/DownloadById?id=@at.Id"></a>
+                        </strong>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

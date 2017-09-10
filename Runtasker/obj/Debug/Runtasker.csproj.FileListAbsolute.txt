@@ -669,3 +669,4 @@ C:\Users\developer100\Source\Repos\Runtasker\Runtasker\bin\ru\System.Web.WebPage
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker\obj\Debug\Runtasker.csprojResolveAssemblyReference.cache
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker\obj\Debug\Runtasker.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker\obj\Debug\Runtasker.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\obj\Debug\Runtasker.csproj.CoreCompileInputs.cache

@@ -224,3 +224,4 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\rosly
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\roslyn\vbc.rsp
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\roslyn\VBCSCompiler.exe
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\roslyn\VBCSCompiler.exe.config
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\obj\Debug\Logic.Extensions.csproj.CoreCompileInputs.cache

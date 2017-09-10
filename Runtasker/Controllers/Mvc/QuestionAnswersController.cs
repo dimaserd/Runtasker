@@ -61,6 +61,7 @@ namespace Runtasker.Controllers.Mvc
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(enableValidation: false)]
         public async Task<ActionResult> Create(QuestionAnswer questionAnswer)
         {
             if (ModelState.IsValid)
@@ -97,6 +98,7 @@ namespace Runtasker.Controllers.Mvc
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(enableValidation: false)]
         public async Task<ActionResult> Edit(QuestionAnswer questionAnswer)
         {
             if (ModelState.IsValid)

@@ -360,3 +360,4 @@ C:\Users\developer100\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Debug\ru
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.ExtensionsUI\obj\Debug\Runtasker.ExtensionsUI.csprojResolveAssemblyReference.cache
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.ExtensionsUI\obj\Debug\Runtasker.ExtensionsUI.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.ExtensionsUI\obj\Debug\Runtasker.ExtensionsUI.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\obj\Debug\Runtasker.ExtensionsUI.csproj.CoreCompileInputs.cache

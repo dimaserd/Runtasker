@@ -33,6 +33,7 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -3343,6 +3344,7 @@
     <Content Include="Views\QuestionAnswers\Show.cshtml" />
     <Content Include="Views\Payment\MakePaymentForUser.cshtml" />
     <Content Include="Views\Administration\EditUser.cshtml" />
+    <Content Include="Views\File\ShowAdminFiles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

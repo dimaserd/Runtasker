@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity;
 using Runtasker.Controllers.Base;
 using Runtasker.Logic;
 using Runtasker.Logic.Entities;
+using Runtasker.Logic.Models.Attachments;
 using Runtasker.Logic.Workers;
 using Runtasker.Logic.Workers.Files;
 using Runtasker.Settings.Files;
@@ -168,6 +169,29 @@ namespace Runtasker.Controllers
                 return Json(at.Id);
             }
         }
+
+
+        #region Админ методы
+        [HttpGet]
+        public async Task<ActionResult> ShowAdminFiles()
+        {
+            var query = Db.Attachments.Where(x => x.Type == AttachmentType.AdminFile)
+                .Select(x => new AttachmentLightModel
+                {
+                    Id = x.Id,
+                    FileName = x.FileName
+                });
+
+            
+            return View(await query.ToListAsync());
+        }
+
+        [HttpPost]
+        public ActionResult UploadAdminFiles()
+        {
+            return View();
+        }
+        #endregion
 
         #region Методы скачивания
         [HttpGet]

@@ -186,3 +186,4 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\HtmlExtensions\bin\Debug\roslyn\
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\HtmlExtensions\bin\Debug\roslyn\vbc.rsp
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\HtmlExtensions\bin\Debug\roslyn\VBCSCompiler.exe
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\HtmlExtensions\bin\Debug\roslyn\VBCSCompiler.exe.config
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\HtmlExtensions\obj\Debug\HtmlExtensions.csproj.CoreCompileInputs.cache

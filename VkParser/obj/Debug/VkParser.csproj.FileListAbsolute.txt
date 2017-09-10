@@ -244,3 +244,4 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\roslyn\vbc.ex
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\roslyn\vbc.rsp
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\roslyn\VBCSCompiler.exe
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\roslyn\VBCSCompiler.exe.config
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Debug\VkParser.csproj.CoreCompileInputs.cache

@@ -242,3 +242,4 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Debug
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Debug\roslyn\VBCSCompiler.exe.config
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Debug\Runtasker.Settings.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Debug\Runtasker.Settings.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\obj\Debug\Runtasker.LocaleBuilders.csproj.CoreCompileInputs.cache

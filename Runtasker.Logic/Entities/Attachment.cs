@@ -32,7 +32,12 @@ namespace Runtasker.Logic.Entities
         /// <summary>
         /// Решение заказа
         /// </summary>
-        OrderSolution
+        OrderSolution,
+
+        /// <summary>
+        /// Файл загруженный администратором (например для редактирования Html страниц)
+        /// </summary>
+        AdminFile,
     }
     #endregion
 

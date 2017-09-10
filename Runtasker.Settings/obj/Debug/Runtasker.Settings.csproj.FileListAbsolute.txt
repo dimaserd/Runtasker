@@ -16,3 +16,4 @@ C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Settings\obj\Debug\Runtas
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Settings\obj\Debug\Runtasker.Settings.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Settings\obj\Debug\Runtasker.Settings.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Settings\obj\Debug\Runtasker.Settings.csprojResolveAssemblyReference.cache
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Settings\obj\Debug\Runtasker.Settings.csproj.CoreCompileInputs.cache

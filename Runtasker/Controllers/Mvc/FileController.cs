@@ -175,6 +175,11 @@ namespace Runtasker.Controllers
         [HttpGet]
         public async Task<ActionResult> ShowAdminFiles()
         {
+            if(!User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index");
+            }
+
             var query = Db.Attachments.Where(x => x.Type == AttachmentType.AdminFile)
                 .Select(x => new AttachmentLightModel
                 {

@@ -39,6 +39,8 @@ namespace Runtasker.Controllers
         #endregion
 
         #region Http обработчики
+
+        #region Получение уведомлений
         // GET: Notification
         public ActionResult Index()
         {
@@ -57,6 +59,16 @@ namespace Runtasker.Controllers
             Notification model = await Notificater.GetNotificationAsync();
             return PartialView(viewName: "Index", model: model);
         }
+
+        #endregion
+
+        #region Администрирование
+        public ActionResult ConfigureNotifications()
+        {
+            return View();
+        }
+        #endregion
+
 
         public async Task<ActionResult> History()
         {

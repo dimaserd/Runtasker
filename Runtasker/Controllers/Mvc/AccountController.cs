@@ -438,8 +438,6 @@ namespace Runtasker.Controllers
             ViewData["viewModel"] = ViewModelBuilder.RegisterView();
             if (ModelState.IsValid)
             {
-                
-                
                 ApplicationUser user = AccountWorker.RegisterCustomer(model, out IdentityResult result);
                 
                 if(!result.Succeeded)

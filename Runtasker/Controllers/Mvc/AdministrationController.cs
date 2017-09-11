@@ -374,6 +374,7 @@ namespace Runtasker.Controllers
             return View("~/Views/Administration/Metronic/QuickSideBar.cshtml");
         }
         #endregion
+
         public ActionResult Test()
         {
             return View();

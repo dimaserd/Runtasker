@@ -11,10 +11,12 @@
 
         CheckBox,
 
+        Password,
+
+        Email,
+
         DateTime,
 
-        Number,
-
-        Files
+        Number
     }
 }

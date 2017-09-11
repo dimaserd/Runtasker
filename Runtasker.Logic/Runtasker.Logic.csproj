@@ -169,11 +169,12 @@
     <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\News\Article.cs" />
     <Compile Include="Entities\News\ArticleClarification.cs" />
-    <Compile Include="Entities\Notification.cs" />
+    <Compile Include="Entities\Notifications\CustomerSystemNotification.cs" />
+    <Compile Include="Entities\Notifications\OrderSystemNotification.cs" />
+    <Compile Include="Entities\Notifications\Notification.cs" />
     <Compile Include="Entities\Order.cs" />
-    <Compile Include="Entities\OrderSolution.cs" />
-    <Compile Include="Entities\Payment.cs" />
-    <Compile Include="Entities\PaymentTransaction.cs" />
+    <Compile Include="Entities\Payments\Payment.cs" />
+    <Compile Include="Entities\Payments\PaymentTransaction.cs" />
     <Compile Include="Entities\QuestionAnswer.cs" />
     <Compile Include="Enumerations\ActionTypes\OrderActionType.cs" />
     <Compile Include="Enumerations\DisposingInternalObjectsSetting.cs" />

@@ -72,7 +72,7 @@ namespace Runtasker.Logic.Workers.Notifications
                 Title = CustOrderErrorRes.PayWithoutMoneyTitle,
 
                 Text = string.Format(CustOrderErrorRes.PayWithoutMoneyTextFormat, balanceString, HtmlSigns.Rouble, orderId, orderHalfPriceString, sumToPay),
-                //format                0                 1               2           3                    4
+                //                                        format                       0                1              2             3                 4
                 Link = new HtmlLink
                 (
                     hrefParam: $"/Payment/Index?sumToPay={sumToPay}",

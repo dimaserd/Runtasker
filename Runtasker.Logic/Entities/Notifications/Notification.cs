@@ -97,7 +97,7 @@ namespace Runtasker.Logic.Entities
         public NotificationAboutType AboutType { get; set; }
 
         /// <summary>
-        /// Заголовок новости
+        /// Заголовок уведомления
         /// </summary>
         public string Title { get; set; }
 

@@ -3,8 +3,6 @@ using Common.JavascriptValidation.Statics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Common.JavascriptValidation.Entities
 {
@@ -46,11 +44,29 @@ namespace Common.JavascriptValidation.Entities
             Construct(jsProp, labelText);
         }
 
+
+
+        public JsPropertyWithLabel(string labelText, string propName, string placeholderValue, JsHtmlDataType dataType, params Attribute[] jsAttributes)
+        {
+            JsProperty jsProp = JSValidationMaker.GetJsProperty(propName, dataType, jsAttributes);
+
+            Construct(jsProp, labelText, placeholderValue);
+        }
+
         public JsPropertyWithLabel(string labelText, string propName, JsHtmlDataType dataType, IEnumerable<Attribute> jsAttributes)
         {
             JsProperty jsProp = JSValidationMaker.GetJsProperty(propName, dataType, jsAttributes.ToArray());
 
             Construct(jsProp, labelText);
+        }
+
+        public JsPropertyWithLabel(string labelText, string propName, string placeholderValue, JsHtmlDataType dataType, IEnumerable<Attribute> jsAttributes)
+        {
+            JsProperty jsProp = JSValidationMaker.GetJsProperty(propName, dataType, jsAttributes.ToArray());
+
+            Construct(jsProp, labelText, placeholderValue);
+
+            HtmlDataType = dataType;
         }
 
 
@@ -63,6 +79,14 @@ namespace Common.JavascriptValidation.Entities
             Construct(jsProp, labelText);
         }
 
+        public JsPropertyWithLabel(string labelText, string propName, string placeholderValue, JsHtmlDataType dataType, JsInputDataType inputType, IEnumerable<Attribute> jsAttributes)
+        {
+            JsProperty jsProp = JSValidationMaker.GetJsProperty(propName, dataType, jsAttributes.ToArray());
+
+            InputType = inputType;
+
+            Construct(jsProp, labelText, placeholderValue);
+        }
 
         void Construct(JsProperty jsProp, string labelText)
         {
@@ -72,12 +96,23 @@ namespace Common.JavascriptValidation.Entities
             PropertyName = jsProp.PropertyName;
             CheckingScripts = jsProp.CheckingScripts;
         }
+
+        void Construct(JsProperty jsProp, string labelText, string placeholderValue)
+        {
+            Construct(jsProp: jsProp, labelText: labelText);
+            PlaceholderValue = placeholderValue;
+        }
         #endregion
 
         /// <summary>
         /// Текст лейбла
         /// </summary>
         public string LabelText { get; set; }
+
+        /// <summary>
+        /// Плейсхолдер (предзаполненное значение)
+        /// </summary>
+        public string PlaceholderValue { get; set; }
 
         public JsInputDataType InputType { get; set; }
     }

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Runtasker.Logic.Entities.ClickLinks.CountingClickLinkModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Список контроллеров-кликов</h2>
+
+<p>
+    @Html.ActionLink("[Создать]", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClickName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            Счетчик переходов
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClickName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClicksCount)
+        </td>
+        <td>
+            @Html.ActionLink("[Редактировать]", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("[Детали]", "Details", new { id=item.Id }) |
+            @Html.ActionLink("[Удалить]", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

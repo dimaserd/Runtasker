@@ -454,3 +454,4 @@ C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.users.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.users.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.csproj.CoreCompileInputs.cache
+C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.clicks.resources

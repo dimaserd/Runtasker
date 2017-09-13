@@ -252,3 +252,4 @@ C:\Users\developer100\Source\Repos\Runtasker\Extensions\bin\Debug\ru\System.Web.
 C:\Users\developer100\Source\Repos\Runtasker\Extensions\obj\Debug\Extensions.dll
 C:\Users\developer100\Source\Repos\Runtasker\Extensions\obj\Debug\Extensions.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\obj\Debug\Extensions.csproj.CoreCompileInputs.cache
+C:\Users\developer100\Source\Repos\Runtasker\Extensions\obj\Debug\Extensions.csprojResolveAssemblyReference.cache

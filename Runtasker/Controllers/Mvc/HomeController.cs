@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using Runtasker.LocaleBuilders.Views.Home;
 using Runtasker.Logic;
 using Runtasker.Logic.Entities;
+using Runtasker.Logic.Entities.ClickLinks;
 using Runtasker.Logic.Enumerations.Notifications.Anonymous;
 using Runtasker.Logic.Models;
 using Runtasker.Logic.Models.Orders;
@@ -13,6 +14,7 @@ using Runtasker.Logic.Workers.Email;
 using Runtasker.Logic.Workers.Orders;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
@@ -132,9 +134,39 @@ namespace Runtasker.Controllers
         #region HttpController methods
 
         //Get Home/Index
-        public ActionResult Index(AnonymousNotificationType? notType = null)
-        { 
-            if(!Request.IsAuthenticated)
+        public async Task<ActionResult> Index(string id, AnonymousNotificationType? notType = null)
+        {
+            if(id != null)
+            {
+                CountingClickLink clickLink = Db.CountingClickLinks.FirstOrDefault(x => x.ClickName == id);
+
+                if (clickLink != null)
+                {
+                    var browser = Request.Browser;
+                    string info = "Информация о браузере \n"
+                        + "Тип = " + browser.Type + "\n"
+                        + "Название = " + browser.Browser + "\n"
+                        + "Версия = " + browser.Version + "\n"
+                        + "Major Version = " + browser.MajorVersion + "\n"
+                        + "Minor Version = " + browser.MinorVersion + "\n"
+                        + "Платформа = " + browser.Platform + "\n";
+
+                    Click click = new Logic.Entities.ClickLinks.Click
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        ClickDate = DateTime.Now,
+                        CountingClickLinkId = clickLink.Id,
+                        PreviousUrl = (Request.UrlReferrer != null)? Request.UrlReferrer.ToString() : string.Empty,
+                        Info = info
+                    };
+
+                    Db.Clicks.Add(click);
+                    await Db.SaveChangesAsync();
+                }
+            }
+            
+
+            if (!Request.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Landing");
             }
@@ -167,6 +199,8 @@ namespace Runtasker.Controllers
             ViewData["localeModel"] = ModelBuilder.CommentsView();
             return View();
         }
+
+        
 
         #region Landing
         public ActionResult Landing()

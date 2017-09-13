@@ -5,6 +5,7 @@ using System.Data.Entity;
 using VkParser.Entities;
 using System;
 using Runtasker.Logic.Entities.News;
+using Runtasker.Logic.Entities.ClickLinks;
 
 namespace Runtasker.Logic
 {
@@ -41,6 +42,14 @@ namespace Runtasker.Logic
 
         public DbSet<QuestionAnswerLangClarification> QuestionAnswerLangClarifications { get; set; }
         #endregion
+
+        #region Клики
+        public DbSet<CountingClickLink> CountingClickLinks { get; set; }
+
+        public DbSet<Click> Clicks { get; set; }
+        #endregion
+
+
         public DbSet<Coupon> Coupons { get; set; }
         
         public DbSet<Order> Orders { get; set; }
@@ -49,15 +58,15 @@ namespace Runtasker.Logic
 
         public DbSet<Attachment> Attachments { get; set; }
 
-        public DbSet<Payment> Payments { get; set; }
-
         public DbSet<Notification> Notifications { get; set; }
 
         public DbSet<Invitation> Invitations { get; set; }
 
+        #region Оплата
+        public DbSet<Payment> Payments { get; set; }
+
         public DbSet<PaymentTransaction> PaymentTransactions { get; set; }
-        
-       
+        #endregion
 
         #region Таблица VkParse
         public DbSet<VkGroup> VkGroups { get; set; }

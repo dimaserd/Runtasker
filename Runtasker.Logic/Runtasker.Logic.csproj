@@ -164,6 +164,8 @@
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Attachment.cs" />
     <Compile Include="Entities\Base\LanguageClarificationBase.cs" />
+    <Compile Include="Entities\ClickLinks\Click.cs" />
+    <Compile Include="Entities\ClickLinks\CountingClickLink.cs" />
     <Compile Include="Entities\Coupon.cs" />
     <Compile Include="Entities\Invitation.cs" />
     <Compile Include="Entities\Message.cs" />
@@ -220,6 +222,10 @@
     <Compile Include="Migrations\201709081244564_users.cs" />
     <Compile Include="Migrations\201709081244564_users.Designer.cs">
       <DependentUpon>201709081244564_users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131007084_clicks.cs" />
+    <Compile Include="Migrations\201709131007084_clicks.Designer.cs">
+      <DependentUpon>201709131007084_clicks.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
@@ -411,6 +417,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709081244564_users.resx">
       <DependentUpon>201709081244564_users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131007084_clicks.resx">
+      <DependentUpon>201709131007084_clicks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

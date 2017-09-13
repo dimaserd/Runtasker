@@ -265,6 +265,7 @@
     <Compile Include="Controllers\Api\ApiMenuController.cs" />
     <Compile Include="Controllers\Api\ApiMessageController.cs" />
     <Compile Include="Controllers\Mvc\BugBountyController.cs" />
+    <Compile Include="Controllers\Mvc\ClicksController.cs" />
     <Compile Include="Controllers\Mvc\DevController.cs" />
     <Compile Include="Controllers\Mvc\FileController.cs" />
     <Compile Include="Controllers\Mvc\HomeController.cs" />
@@ -3345,6 +3346,11 @@
     <Content Include="Views\Payment\MakePaymentForUser.cshtml" />
     <Content Include="Views\Administration\EditUser.cshtml" />
     <Content Include="Views\File\ShowAdminFiles.cshtml" />
+    <Content Include="Views\Clicks\Create.cshtml" />
+    <Content Include="Views\Clicks\Delete.cshtml" />
+    <Content Include="Views\Clicks\Details.cshtml" />
+    <Content Include="Views\Clicks\Edit.cshtml" />
+    <Content Include="Views\Clicks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

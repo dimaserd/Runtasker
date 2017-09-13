@@ -1,0 +1,70 @@
+﻿@model Runtasker.Logic.Entities.ClickLinks.CountingClickLink
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Подробнее о кликбейте</h2>
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClickName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClickName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+
+<table class=" table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td>
+                Дата Перехода
+            </td>
+            <td>
+                Со ссылки
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var d in Model.Clicks)
+        {
+            <tr>
+                <td>
+                    @d.ClickDate.ToShortDateString()
+                </td>
+                <td>
+                    @if(!string.IsNullOrEmpty(d.PreviousUrl))
+                    {
+                        <a href="@d.PreviousUrl">Предыдущая ссылка</a>
+                    }
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

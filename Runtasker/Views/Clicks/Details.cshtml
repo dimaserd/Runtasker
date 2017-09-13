@@ -32,10 +32,12 @@
     <thead>
         <tr>
             <td>
-                Дата Перехода
+                <strong>Дата Перехода</strong>
+                
             </td>
             <td>
-                Со ссылки
+                <strong>Со ссылки</strong>
+                
             </td>
             <td>
 
@@ -48,7 +50,7 @@
         {
             <tr>
                 <td>
-                    @d.ClickDate.ToShortDateString()
+                    @d.ClickDate.ToLongDateString() @d.ClickDate.ToLongTimeString()
                 </td>
                 <td>
                     @if(!string.IsNullOrEmpty(d.PreviousUrl))

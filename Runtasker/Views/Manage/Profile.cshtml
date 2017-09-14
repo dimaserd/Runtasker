@@ -101,10 +101,12 @@
         </h3>
 
         <h3>
-            <a href="@Url.Action("Profile", "Manage")" class="btn btn-info" >
-                Добавить
+            <a class="btn btn-default" href="@Url.Action(actionName, "Manage")">
+                <span class="fa fa-lock fa-fw"></span>
+                <strong>@actionNameForUser</strong> 
             </a>
         </h3>
+        
 
         <h3>
             @ProfilePageRes.Balance: @User.Identity.GetBalance()<span class="fa fa-rub"></span>

@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Resources;
 
 namespace Runtaker.LocaleBuiders.Workers
@@ -93,8 +94,9 @@ namespace Runtaker.LocaleBuiders.Workers
             {
                 return null;
             }
+            
 
-            ResourceReader reader = new ResourceReader(resxPath);
+            ResXResourceReader reader = new ResXResourceReader(resxPath);
 
             List<ResourceString> result = new List<ResourceString>();
 

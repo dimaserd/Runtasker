@@ -175,13 +175,22 @@ namespace Runtasker.Controllers
             return View();
         }
 
+        #region Обновление данных
         [HttpGet]
-        public ActionResult Update()
+        public async Task<ActionResult> Update()
+        {
+            string userId = UserGuid;
+            ApplicationUser currentUser = await Db.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
+            return View(currentUser);
+        }
+
+        [HttpPost]
+        public ActionResult Update(string d)
         {
             return View();
         }
 
-        
         #endregion
 
         [HttpGet]

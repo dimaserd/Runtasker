@@ -1,4 +1,4 @@
-﻿using oksoft.Common.Extensions.String;
+﻿using Extensions.String;
 using oksoft.Common.HtmlExtensions.Entities;
 using System.Linq;
 using System.Web;

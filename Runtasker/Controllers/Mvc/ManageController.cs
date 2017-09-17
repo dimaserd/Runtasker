@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Runtasker.Models;
 using Runtasker.Logic.Workers;
@@ -13,12 +12,10 @@ using Logic.Extensions.Models;
 using Runtasker.LocaleBuilders.Views.Manage;
 using Runtasker.Settings.Enumerations;
 using Runtasker.Logic.Models.ManageModels;
-using Runtasker.Logic;
 using Runtasker.Logic.Entities;
 using System.Data.Entity;
 using Runtasker.Resources.Views.Manage.Index;
 using Runtasker.Controllers.Base;
-using System.Collections.Generic;
 
 namespace Runtasker.Controllers
 {
@@ -475,6 +472,7 @@ namespace Runtasker.Controllers
 
         #endregion
 
+        #endregion
 
         protected override void Dispose(bool disposing)
         {
@@ -533,5 +531,6 @@ namespace Runtasker.Controllers
         }
 
 #endregion
+
     }
 }

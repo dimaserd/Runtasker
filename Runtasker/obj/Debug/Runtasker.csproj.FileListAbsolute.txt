@@ -670,3 +670,7 @@ C:\Users\developer100\Source\Repos\Runtasker\Runtasker\obj\Debug\Runtasker.cspro
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker\obj\Debug\Runtasker.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker\obj\Debug\Runtasker.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\obj\Debug\Runtasker.csproj.CoreCompileInputs.cache
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\Common.HtmlExtensions.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\UI.Settings.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\Common.HtmlExtensions.pdb
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\UI.Settings.pdb

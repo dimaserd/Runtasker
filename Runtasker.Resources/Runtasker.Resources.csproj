@@ -689,13 +689,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RkassaRes.resx</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Views\Payment\Robokassa\RkassaRes.ru-RU.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RkassaRes.ru-RU.resx</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Views\Payment\Succeeded\SucceededRes.ru-RU.Designer.cs">
       <DependentUpon>SucceededRes.ru-RU.resx</DependentUpon>
@@ -1302,12 +1300,10 @@
     <EmbeddedResource Include="Views\Payment\Robokassa\RkassaRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RkassaRes.Designer.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Payment\Robokassa\RkassaRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RkassaRes.ru-RU.Designer.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Payment\Succeeded\SucceededRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

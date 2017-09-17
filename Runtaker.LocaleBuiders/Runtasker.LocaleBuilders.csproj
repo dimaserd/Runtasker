@@ -39,7 +39,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\Runtasker.Test\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,9 +53,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contexts\ResourceContext.cs" />
     <Compile Include="Email\CallToAction\AccounEmailCallToActionModelBuilder.cs" />
     <Compile Include="Email\CallToAction\CustomerEmailCallToActionModelBuilder.cs" />
+    <Compile Include="Entities\ResourceString.cs" />
+    <Compile Include="Entities\ResourceFileModel.cs" />
     <Compile Include="Enumerations\Lang.cs" />
+    <Compile Include="Interfaces\IResourceContext.cs" />
     <Compile Include="Models\UICultureSwitcher.cs" />
     <Compile Include="Email\CallToAction\PerformerEmailCallToActionModelBuilder.cs" />
     <Compile Include="Models\BuilderModels.cs" />
@@ -70,6 +78,7 @@
     <Compile Include="Views\Manage\ManageLocaleViewModel.cs" />
     <Compile Include="Views\Order\OrderViewModelBuilder.cs" />
     <Compile Include="Views\Payment\PaymentViewModelBuilder.cs" />
+    <Compile Include="Workers\ResourceModelCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Extensions\Extensions.csproj">

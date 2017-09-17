@@ -6,10 +6,12 @@ using VkParser.Entities;
 using System;
 using Runtasker.Logic.Entities.News;
 using Runtasker.Logic.Entities.ClickLinks;
+using Runtaker.LocaleBuiders.Interfaces;
+using Runtaker.LocaleBuiders.Entities;
 
 namespace Runtasker.Logic
 {
-    public class MyDbContext : ApplicationDbContext, IMyDbContext
+    public class MyDbContext : ApplicationDbContext, IMyDbContext, IResourceContext
     {
         #region Конструкторы
         public MyDbContext() : base()
@@ -49,6 +51,11 @@ namespace Runtasker.Logic
         public DbSet<Click> Clicks { get; set; }
         #endregion
 
+        #region Ресурсы
+        public DbSet<ResourceFileModel> ResourceFileModels { get; set; }
+
+        public DbSet<ResourceString> ResourceStrings { get; set; }
+        #endregion
 
         public DbSet<Coupon> Coupons { get; set; }
         

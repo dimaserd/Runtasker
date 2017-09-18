@@ -1,6 +1,5 @@
 ﻿using Extensions.String;
 using Logic.Extensions.Models;
-using Microsoft.AspNet.Identity;
 using Runtasker.Controllers.Base;
 using Runtasker.Logic;
 using Runtasker.Logic.Entities;
@@ -219,32 +218,30 @@ namespace Runtasker.Controllers
         [Authorize(Roles = "Admin,Performer,Customer")]
         public ActionResult DownloadByKey(string key)
         {
-            using (MyDbContext context = new MyDbContext())
-            {
-                Attachment a = context.Attachments.FirstOrDefault(t => t.Id == key);
+            
+                Attachment a = Db.Attachments.FirstOrDefault(t => t.Id == key);
                 if (a == null || !System.IO.File.Exists(a.FilePath))
                 {
                     return new HttpStatusCodeResult(404);
                 }
 
                 return File(a.FilePath, MimeMapping.GetMimeMapping(a.FilePath), a.FileName);
-            }
+            
         }
 
         [HttpGet]
         [Authorize(Roles = "Admin,Performer,Customer")]
         public async Task<ActionResult> GetCustomerFiles(int orderId)
         {
-            using (MyDbContext context = new MyDbContext())
-            {
-                Attachment a = await context.Attachments.FirstOrDefaultAsync(t => t.OrderId == orderId);
+            
+                Attachment a = await Db.Attachments.FirstOrDefaultAsync(t => t.OrderId == orderId);
                 if (a == null && a.FileData != null)
                 {
                     return new HttpStatusCodeResult(404);
                 }
 
                 return File(a.FileData, MimeMapping.GetMimeMapping(a.FileName), a.FileName);
-            }
+            
         }
 
         [HttpGet]

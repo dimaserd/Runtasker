@@ -313,19 +313,19 @@ namespace Runtasker.Logic.Entities
             ClearTempDirectories();
 
             //записываю все файлы во вторую директорию
-            foreach(HttpPostedFileBase file in files)
+            files.ToList().ForEach(x =>
             {
-                if(file != null)
+                if (x != null)
                 {
-                    file.SaveAs($"{SecondTempDirectory}/{file.FileName}");
-                } 
-            }
+                    x.SaveAs($"{SecondTempDirectory}/{x.FileName}");
+                }
+            });
+            
+            
 
             if (attachment == null)
             {
                 attachment = GetAttachmentFromDirectoryPath(SecondTempDirectory);
-
-                
 
                 return attachment;
             }

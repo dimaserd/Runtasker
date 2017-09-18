@@ -223,10 +223,6 @@ C:\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.pdb
 \\Mac\Home\Desktop\Runtasker\Runtasker.Resources\obj\Debug\ru-RU\Runtasker.Resources.resources.dll
 \\Mac\Home\Desktop\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.dll
 \\Mac\Home\Desktop\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.pdb
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Views\Payment\Robokassa\RkassaRes.resx
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.resx
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Views\Payment\Robokassa\RkassaRes.Designer.cs
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.Designer.cs
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Runtasker.Resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Runtasker.Resources.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\ru-RU\Runtasker.Resources.resources.dll
@@ -540,5 +536,5 @@ C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\ru-RU
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\zh-CN\Runtasker.Resources.resources.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.pdb
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.csprojResolveAssemblyReference.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.csproj.CoreCompileInputs.cache
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.csprojResolveAssemblyReference.cache

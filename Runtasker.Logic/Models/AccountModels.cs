@@ -85,6 +85,7 @@ namespace Runtasker.Logic.Models
         [Display(Name = "RememberMe", ResourceType = typeof(AccountRes))]
         public bool RememberMe { get; set; }
     }
+
     #region Register Models
 
     public class RegisterModel

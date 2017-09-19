@@ -221,10 +221,6 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\roslyn
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\roslyn\vbc.rsp
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\roslyn\VBCSCompiler.exe
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\roslyn\VBCSCompiler.exe.config
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\Views\Payment\Robokassa\RkassaRes.resx
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.resx
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\Views\Payment\Robokassa\RkassaRes.Designer.cs
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.Designer.cs
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\Runtasker.Logic.dll.config
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\Runtasker.Logic.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\Runtasker.Logic.pdb

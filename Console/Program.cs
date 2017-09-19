@@ -13,13 +13,15 @@ namespace TestingConsole
     {
         static void Main(string[] args)
         {
-            List<ResourceFileModel> rus = ResourceModelCreator.GetModels(Lang.Russian).ToList();
+            List<ResourceFileModel> rus = ResourceModelCreator.GetModelsByLang(Lang.Russian).ToList();
 
-            List<ResourceString> rusStrings = ResourceModelCreator.GetStringsFromResxFile(rus.First());
+            List<ResourceFileModel> eng = ResourceModelCreator.GetModelsByLang(Lang.English).ToList();
 
-            List<ResourceFileModel> eng = ResourceModelCreator.GetModels(Lang.English).ToList();
+            List<ResourceFileModel> ch = ResourceModelCreator.GetModelsByLang(Lang.Chinese).ToList();
 
-            List<ResourceFileModel> ch = ResourceModelCreator.GetModels(Lang.Chinese).ToList();
+            List<ResourceFileModel> all = ResourceModelCreator.GetModels().ToList();
+
+            bool res = all.Count == (rus.Count + eng.Count + ch.Count);
 
             Console.ReadLine();
         }

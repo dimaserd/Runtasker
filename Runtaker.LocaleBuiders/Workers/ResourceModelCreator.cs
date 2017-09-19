@@ -26,7 +26,15 @@ namespace Runtaker.LocaleBuiders.Workers
             return runtaskerDirs.ToList().FirstOrDefault(x => x.Name == "Runtasker.Resources").FullName;
         }
 
-        public static IEnumerable<ResourceFileModel> GetModels(Lang lang = Lang.English)
+        public static IEnumerable<ResourceFileModel> GetModels()
+        {
+            List<Lang> langs = Enum.GetValues(typeof(Lang)).Cast<Lang>().ToList();
+
+            return langs.SelectMany(x => GetModelsByLang(x));
+        }
+
+
+        public static IEnumerable<ResourceFileModel> GetModelsByLang(Lang lang = Lang.English)
         {
             DirectoryInfo resDir = new DirectoryInfo(GetResourcesDir());
 
@@ -39,8 +47,10 @@ namespace Runtaker.LocaleBuiders.Workers
             {
                 result.AddRange(GetResxFilesDromDirectory(dir, lang).ToList());
             }
-            return GetResourceFileModels(result).ToList();
+            return GetResourceFileModels(result, lang).ToList();
         }
+
+
 
         public static void UpdateResourceFile(Hashtable data, string path)
         {
@@ -86,15 +96,21 @@ namespace Runtaker.LocaleBuiders.Workers
 
         }
 
-        public static List<ResourceString> GetStringsFromResxFile(ResourceFileModel fileModel)
+        private static List<ResourceString> GetStringsFromResxFile(ResourceFileModel fileModel)
         {
             string resxPath = $"{GetResourcesDir()}{fileModel.ResourcePath}";
 
-            if(!File.Exists(resxPath))
+            return GetStringsFromResxFilePath(resxPath);
+        }
+
+        private static List<ResourceString> GetStringsFromResxFilePath(string resxPath)
+        {
+            
+            if (!File.Exists(resxPath))
             {
                 return null;
             }
-            
+
 
             ResXResourceReader reader = new ResXResourceReader(resxPath);
 
@@ -102,7 +118,7 @@ namespace Runtaker.LocaleBuiders.Workers
 
             Dictionary<string, string> dict = new Dictionary<string, string>();
 
-            if(reader != null)
+            if (reader != null)
             {
                 IDictionaryEnumerator id = reader.GetEnumerator();
                 foreach (DictionaryEntry d in reader)
@@ -112,8 +128,8 @@ namespace Runtaker.LocaleBuiders.Workers
                         Id = Guid.NewGuid().ToString(),
                         LastEditedDate = DateTime.Now,
                         ResourceKey = d.Key.ToString(),
-                        ResourceValue = (d.Value == null)? "" : d.Value.ToString(),
-                    });      
+                        ResourceValue = (d.Value == null) ? "" : d.Value.ToString(),
+                    });
                 }
                 reader.Close();
             }
@@ -122,7 +138,7 @@ namespace Runtaker.LocaleBuiders.Workers
         }
 
         #region Вспомогательные методы
-        private static IEnumerable<ResourceFileModel> GetResourceFileModels(IEnumerable<FileInfo> files)
+        private static IEnumerable<ResourceFileModel> GetResourceFileModels(IEnumerable<FileInfo> files, Lang lang)
         {
             string sep = "Runtasker.Resources";
 
@@ -131,7 +147,8 @@ namespace Runtaker.LocaleBuiders.Workers
                 Id = Guid.NewGuid().ToString(),
                 CreateDate = x.CreationTime,
                 ResourcePath = x.FullName.Split(separator: new string[] { sep }, options: StringSplitOptions.None).Last(),
-
+                LangCode = lang,
+                ResourceStrings = GetStringsFromResxFilePath(x.FullName)
             });
 
         }

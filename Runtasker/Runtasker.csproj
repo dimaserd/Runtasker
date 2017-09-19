@@ -3366,6 +3366,7 @@
     <Content Include="Views\Resource\Details.cshtml" />
     <Content Include="Views\Resource\Edit.cshtml" />
     <Content Include="Views\Resource\Index.cshtml" />
+    <Content Include="Views\Resource\Translate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -377,15 +377,10 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Ru
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Orders.DeleteOrder.DeleteOrderRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Orders.DeleteOrder.DeleteOrderRes.ru-RU.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Views\Payment\Robokassa\RkassaRes.resx
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.resx
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Views\Payment\Robokassa\RkassaRes.Designer.cs
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Views\Payment\Robokassa\RkassaRes.ru-RU.Designer.cs
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Runtasker.Resources.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\Runtasker.Resources.pdb
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\ru-RU\Runtasker.Resources.resources.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\zh-CN\Runtasker.Resources.resources.dll
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.csprojResolveAssemblyReference.cache
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Actions.OrderActions.OrderActionsRes.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Controllers.Account.AccountRes.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Email.Account.AccountEmRes.resources

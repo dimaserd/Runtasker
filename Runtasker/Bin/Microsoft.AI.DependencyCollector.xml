@@ -4,16 +4,96 @@
         <name>Microsoft.AI.DependencyCollector</name>
     </assembly>
     <members>
-        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer">
+        <member name="P:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpCoreDiagnosticSourceListener.PendingDependencyTelemetry">
             <summary>
-            Telemetry Initializer that parses http dependencies into well-known types like Azure Storage.
+            Get the DependencyTelemetry objects that are still waiting for a response from the dependency. This will most likely only be used for testing purposes.
             </summary>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer.Initialize(Microsoft.ApplicationInsights.Channel.ITelemetry)">
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpCoreDiagnosticSourceListener.OnCompleted">
             <summary>
-            If telemetry item is http dependency - converts it to the well-known type of the dependency.
+            Notifies the observer that the provider has finished sending push-based notifications.
+            <seealso cref="M:System.IObserver`1.OnCompleted"/>
             </summary>
-            <param name="telemetry">Telemetry item to convert.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpCoreDiagnosticSourceListener.OnError(System.Exception)">
+            <summary>
+            Notifies the observer that the provider has experienced an error condition.
+            <seealso cref="M:System.IObserver`1.OnError(System.Exception)"/>
+            </summary>
+            <param name="error">An object that provides additional information about the error.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpCoreDiagnosticSourceListener.OnException(System.Exception,System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Handler for Exception event, it is sent when request processing cause an exception (e.g. because of DNS or network issues)
+            Stop event will be sent anyway with null response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpCoreDiagnosticSourceListener.OnActivityStart(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Handler for Activity start event (outgoing request is about to be sent).
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpCoreDiagnosticSourceListener.OnActivityStop(System.Net.Http.HttpResponseMessage,System.Net.Http.HttpRequestMessage,System.Threading.Tasks.TaskStatus)">
+            <summary>
+            Handler for Activity stop event (response is received for the outgoing request).
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpCoreDiagnosticSourceListener.OnRequest(System.Net.Http.HttpRequestMessage,System.Guid)">
+            <summary>
+            Diagnostic event handler method for 'System.Net.Http.Request' event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpCoreDiagnosticSourceListener.OnResponse(System.Net.Http.HttpResponseMessage,System.Guid)">
+            <summary>
+            Diagnostic event handler method for 'System.Net.Http.Response' event.
+            This event will be fired only if response was received (and not called for faulted or cancelled requests).
+            </summary>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpCoreDiagnosticSourceListener.HttpCoreDiagnosticSourceSubscriber">
+            <summary>
+            Diagnostic listener implementation that listens for events specific to outgoing dependency requests.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpCoreDiagnosticSourceListener.HttpCoreDiagnosticSourceSubscriber.OnNext(System.Diagnostics.DiagnosticListener)">
+            <summary>
+            This method gets called once for each existing DiagnosticListener when this
+            DiagnosticListener is added to the list of DiagnosticListeners
+            (<see cref="P:System.Diagnostics.DiagnosticListener.AllListeners"/>). This method will
+            also be called for each subsequent DiagnosticListener that is added to the list of
+            DiagnosticListeners.
+            <seealso cref="M:System.IObserver`1.OnNext(`0)"/>
+            </summary>
+            <param name="value">The DiagnosticListener that exists when this listener was added to
+            the list, or a DiagnosticListener that got added after this listener was added.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpCoreDiagnosticSourceListener.HttpCoreDiagnosticSourceSubscriber.OnCompleted">
+            <summary>
+            Notifies the observer that the provider has finished sending push-based notifications.
+            <seealso cref="M:System.IObserver`1.OnCompleted"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpCoreDiagnosticSourceListener.HttpCoreDiagnosticSourceSubscriber.OnError(System.Exception)">
+            <summary>
+            Notifies the observer that the provider has experienced an error condition.
+            <seealso cref="M:System.IObserver`1.OnError(System.Exception)"/>
+            </summary>
+            <param name="error">An object that provides additional information about the error.</param>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.PropertyFetcher">
+            <summary>
+            Efficient implementation of fetching properties of anonymous types with reflection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.PropertyFetcher.PropertyFetch.FetcherForProperty(System.Reflection.PropertyInfo)">
+            <summary>
+            Create a property fetcher from a .NET Reflection PropertyInfo class that
+            represents a property of a particular type.  
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.PropertyFetcher.PropertyFetch.Fetch(System.Object)">
+            <summary>
+            Given an object, fetch the property that this propertyFetch represents. 
+            </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ClientServerDependencyTracker.PretendProfilerIsAttached">
             <summary>
@@ -33,6 +113,12 @@
             </summary>
             <param name="telemetryClient">Telemetry client object to track the telemetry item.</param>
             <param name="telemetry">Telemetry item to compute the duration and track.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ClientServerDependencyTracker.EndOperation(Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry)">
+            <summary>
+            Stops telemetry operation. Doesn't track the telemetry item.
+            </summary>
+            <param name="telemetry">Telemetry item to stop.</param>
         </member>
         <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ClientServerDependencyTracker.GetTupleForWebDependencies(System.Net.WebRequest)">
             <summary>
@@ -76,6 +162,183 @@
             </summary>
             <param name="uri">Dependency uri from which target is to be extracted.</param>        
             <returns>Dependency target name.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.DesktopDiagnosticSourceHttpProcessing">
+            <summary>
+            Concrete class with all processing logic to generate RDD data from the callbacks received from HttpDesktopDiagnosticSourceListener.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.DesktopDiagnosticSourceHttpProcessing.AddTupleForWebDependencies(System.Net.WebRequest,Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry,System.Boolean)">
+            <summary>
+            Implemented by the derived class for adding the tuple to its specific cache.
+            </summary>
+            <param name="webRequest">The request which acts the key.</param>
+            <param name="telemetry">The dependency telemetry for the tuple.</param>
+            <param name="isCustomCreated">Boolean value that tells if the current telemetry item is being added by the customer or not.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.DesktopDiagnosticSourceHttpProcessing.GetTupleForWebDependencies(System.Net.WebRequest)">
+            <summary>
+            Implemented by the derived class for getting the tuple from its specific cache.
+            </summary>
+            <param name="webRequest">The request which acts as the key.</param>
+            <returns>The tuple for the given request.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.DesktopDiagnosticSourceHttpProcessing.RemoveTupleForWebDependencies(System.Net.WebRequest)">
+            <summary>
+            Implemented by the derived class for removing the tuple from its specific cache.
+            </summary>
+            <param name="webRequest">The request which acts as the key.</param>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.AzureBlobHttpParser">
+            <summary>
+            HTTP Dependency parser that attempts to parse dependency as Azure Blob call.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.AzureBlobHttpParser.TryParse(Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry@)">
+            <summary>
+            Tries parsing given dependency telemetry item. 
+            </summary>
+            <param name="httpDependency">Dependency item to parse. It is expected to be of HTTP type.</param>
+            <returns><code>true</code> if successfully parsed dependency.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.AzureQueueHttpParser">
+            <summary>
+            HTTP Dependency parser that attempts to parse dependency as Azure Queue call.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.AzureQueueHttpParser.TryParse(Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry@)">
+            <summary>
+            Tries parsing given dependency telemetry item. 
+            </summary>
+            <param name="httpDependency">Dependency item to parse. It is expected to be of HTTP type.</param>
+            <returns><code>true</code> if successfully parsed dependency.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.AzureIotHubHttpParser">
+            <summary>
+            HTTP Dependency parser that attempts to parse dependency as Azure IoT Hub call.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.AzureIotHubHttpParser.TryParse(Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry@)">
+            <summary>
+            Tries parsing given dependency telemetry item. 
+            </summary>
+            <param name="httpDependency">Dependency item to parse. It is expected to be of HTTP type.</param>
+            <returns><code>true</code> if successfully parsed dependency.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.AzureTableHttpParser">
+            <summary>
+            HTTP Dependency parser that attempts to parse dependency as Azure Table call.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.AzureTableHttpParser.TryParse(Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry@)">
+            <summary>
+            Tries parsing given dependency telemetry item. 
+            </summary>
+            <param name="httpDependency">Dependency item to parse. It is expected to be of HTTP type.</param>
+            <returns><code>true</code> if successfully parsed dependency.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.AzureServiceBusHttpParser">
+            <summary>
+            HTTP Dependency parser that attempts to parse dependency as Azure Service Bus call.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.AzureServiceBusHttpParser.TryParse(Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry@)">
+            <summary>
+            Tries parsing given dependency telemetry item. 
+            </summary>
+            <param name="httpDependency">Dependency item to parse. It is expected to be of HTTP type.</param>
+            <returns><code>true</code> if successfully parsed dependency.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.DocumentDbHttpParser">
+            <summary>
+            HTTP Dependency parser that attempts to parse dependency as Azure DocumentDB call.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.DocumentDbHttpParser.TryParse(Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry@)">
+            <summary>
+            Tries parsing given dependency telemetry item. 
+            </summary>
+            <param name="httpDependency">Dependency item to parse. It is expected to be of HTTP type.</param>
+            <returns><code>true</code> if successfully parsed dependency.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.GenericServiceHttpParser">
+            <summary>
+            HTTP Dependency parser that attempts to parse dependency as generic WCF or Web Service call.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.GenericServiceHttpParser.TryParse(Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry@)">
+            <summary>
+            Tries parsing given dependency telemetry item. 
+            </summary>
+            <param name="httpDependency">Dependency item to parse. It is expected to be of HTTP type.</param>
+            <returns><code>true</code> if successfully parsed dependency.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.HttpParsingHelper.BuildOperationMoniker(System.String,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Builds a resource operation moniker in the format of "VERB /a/*/b/*/c".
+            </summary>
+            <param name="verb">The HTTP verb.</param>
+            <param name="resourcePath">The resource path represented as a list of resource type and resource ID pairs.</param>
+            <returns>Operation moniker string.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.HttpParsingHelper.ParseResourcePath(System.String)">
+            <summary>
+            Parses request path into REST resource path represented as a list of resource type and resource ID pairs.
+            </summary>
+            <param name="requestPath">The request path.</param>
+            <returns>A list of resource type and resource ID pairs.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.HttpParsingHelper.TokenizeRequestPath(System.String)">
+            <summary>
+            Tokenizes request path.
+            E.g. the string <code>"/a/b/c/d?e=f"</code> will be tokenized into <code>[ "a", "b", "c", "d" ]</code>.
+            </summary>
+            <param name="requestPath">The request path.</param>
+            <returns>List of tokens.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.HttpParsingHelper.ExtractQuryParameters(System.String)">
+            <summary>
+            Extracts parameters from query string.
+            </summary>
+            <param name="requestPath">The request path.</param>
+            <returns>
+            Dictionary of query parameters. 
+            If parameter is specified more than once then the last value is returned.
+            </returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.HttpParsingHelper.ExtractVerb(System.String,System.String@,System.String@,System.String[])">
+            <summary>
+            Extracts the HTTP verb from dependency name.
+            </summary>
+            <param name="name">The dependency name.</param>
+            <param name="verb">The extracted verb (<code>null</code> if not matched).</param>
+            <param name="nameWithoutVerb">The dependency name sans the extracted verb.</param>
+            <param name="supportedVerbs">List of supported verbs to extract.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.HttpParsingHelper.Split(System.String,System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Splits substring by given delimiters.
+            </summary>
+            <param name="str">The string to split.</param>
+            <param name="delimiters">The delimiters.</param>
+            <param name="startIdx">
+            The index at which splitting will start. 
+            This is not validated and expected to be within input string range.
+            </param>
+            <param name="endIdx">
+            The index at which splitting will end. 
+            If -1 then string will be split till it's end.
+            This is not validated and expected to be less than string length.
+            </param>
+            <returns>A list of substrings.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpParsers.HttpParsingHelper.EndsWithAny(System.String,System.String[])">
+            <summary>
+            Checks if a string ends with any of the specified suffixes.
+            </summary>
+            <param name="str">The string to check.</param>
+            <param name="suffixes">The suffixes.</param>
+            <returns><code>true</code> if string ends with any of the suffixes.</returns>
         </member>
         <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerSqlConnectionProcessing">
             <summary>
@@ -211,6 +474,85 @@
             Key word for resource discovery module failures.
             </summary>
         </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpDesktopDiagnosticSourceListener">
+            <summary>
+            Diagnostic listener implementation that listens for Http DiagnosticSource to see all outgoing HTTP dependency requests.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpDesktopDiagnosticSourceListener.Dispose">
+            <summary>
+            IDisposable implementation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpDesktopDiagnosticSourceListener.OnNext(System.Collections.Generic.KeyValuePair{System.String,System.Object})">
+            <summary>
+            This method gets called once for each event from the Http DiagnosticSource.
+            </summary>
+            <param name="value">The pair containing the event name, and an object representing the payload. The payload
+            is essentially a dynamic object that contain different properties depending on the event.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpDesktopDiagnosticSourceListener.OnCompleted">
+            <summary>
+            Notifies the observer that the provider has finished sending push-based notifications.
+            <seealso cref="M:System.IObserver`1.OnCompleted"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpDesktopDiagnosticSourceListener.OnError(System.Exception)">
+            <summary>
+            Notifies the observer that the provider has experienced an error condition.
+            <seealso cref="M:System.IObserver`1.OnError(System.Exception)"/>
+            </summary>
+            <param name="error">An object that provides additional information about the error.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpDesktopDiagnosticSourceListener.Dispose(System.Boolean)">
+            <summary>
+            IDisposable implementation.
+            </summary>
+            <param name="disposing">The method has been called directly or indirectly by a user's code.</param>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpDesktopDiagnosticSourceSubscriber">
+            <summary>
+            A helper subscriber class helping the parent object, which is a HttpDiagnosticSourceListener, to subscribe
+            to the Http DiagnosticSource. That way the parent object can subscribe to the DiagnosticSource without worry
+            about the details around subscription.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpDesktopDiagnosticSourceSubscriber.Dispose">
+            <summary>
+            IDisposable implementation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpDesktopDiagnosticSourceSubscriber.OnNext(System.Diagnostics.DiagnosticListener)">
+            <summary>
+            This method gets called once for each existing DiagnosticListener when this
+            DiagnosticListener is added to the list of DiagnosticListeners
+            (<see cref="P:System.Diagnostics.DiagnosticListener.AllListeners"/>). This method
+            will also be called for each subsequent DiagnosticListener that is added to
+            the list of DiagnosticListeners.
+            <seealso cref="M:System.IObserver`1.OnNext(`0)"/>
+            </summary>
+            <param name="value">The DiagnosticListener that exists when this listener was added to
+            the list, or a DiagnosticListener that got added after this listener was added.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpDesktopDiagnosticSourceSubscriber.OnCompleted">
+            <summary>
+            Notifies the observer that the provider has finished sending push-based notifications.
+            <seealso cref="M:System.IObserver`1.OnCompleted"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpDesktopDiagnosticSourceSubscriber.OnError(System.Exception)">
+            <summary>
+            Notifies the observer that the provider has experienced an error condition.
+            <seealso cref="M:System.IObserver`1.OnError(System.Exception)"/>
+            </summary>
+            <param name="error">An object that provides additional information about the error.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpDesktopDiagnosticSourceSubscriber.Dispose(System.Boolean)">
+            <summary>
+            IDisposable implementation.
+            </summary>
+            <param name="disposing">The method has been called directly or indirectly by a user's code.</param>
+        </member>
         <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.FrameworkHttpEventListener">
             <summary>
             Provides methods for listening to events from FrameworkEventSource for HTTP.
@@ -276,6 +618,73 @@
             </summary>
             <param name="eventData">The event arguments that describe the event.</param>
         </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpProcessing">
+            <summary>
+            Concrete class with all processing logic to generate RDD data from the callbacks
+            received from Profiler instrumentation for HTTP or HTTP EventSource/DiagnosticSource events.   
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpProcessing.#ctor(Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration,System.String,System.String,System.Boolean,System.Collections.Generic.ICollection{System.String},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpProcessing"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpProcessing.GetUrl(System.Net.WebRequest)">
+            <summary>
+            Gets HTTP request url.
+            </summary>
+            <param name="webRequest">Represents web request.</param>
+            <returns>The url if possible otherwise empty string.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpProcessing.OverrideCorrelationIdLookupHelper(Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper)">
+            <summary>
+            Simple test hook, that allows for using a stub rather than the implementation that calls the original service.
+            </summary>
+            <param name="correlationIdLookupHelper">Lookup header to use.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpProcessing.OnBegin(System.Object,System.Boolean)">
+            <summary>
+            Common helper for all Begin Callbacks.
+            </summary>
+            <param name="thisObj">This object.</param>
+            <param name="injectCorrelationHeaders">Flag that enables Request-Id and Correlation-Context headers injection.
+            Should be set to true only for profiler and old versions of DiagnosticSource Http hook events.</param>
+            <returns>Null object as all context is maintained in this class via weak tables.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpProcessing.OnEnd(System.Object,System.Object,System.Object)">
+            <summary>
+            Common helper for all End Callbacks.
+            </summary>        
+            <param name="exception">The exception object if any.</param>
+            <param name="thisObj">This object.</param>                
+            <param name="returnValue">Return value of the function if any.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpProcessing.AddTupleForWebDependencies(System.Net.WebRequest,Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry,System.Boolean)">
+            <summary>
+            Implemented by the derived class for adding the tuple to its specific cache.
+            </summary>
+            <param name="webRequest">The request which acts the key.</param>
+            <param name="telemetry">The dependency telemetry for the tuple.</param>
+            <param name="isCustomCreated">Boolean value that tells if the current telemetry item is being added by the customer or not.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpProcessing.GetTupleForWebDependencies(System.Net.WebRequest)">
+            <summary>
+            Implemented by the derived class for getting the tuple from its specific cache.
+            </summary>
+            <param name="webRequest">The request which acts as the key.</param>
+            <returns>The tuple for the given request.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.HttpProcessing.RemoveTupleForWebDependencies(System.Net.WebRequest)">
+            <summary>
+            Implemented by the derived class for removing the tuple from its specific cache.
+            </summary>
+            <param name="webRequest">The request which acts as the key.</param>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.FrameworkHttpProcessing">
+            <summary>
+            Concrete class with all processing logic to generate RDD data from the callbacks received from FrameworkHttpEventListener.
+            </summary>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.FrameworkHttpProcessing.OnBeginHttpCallback(System.Int64,System.String)">
             <summary>
             On begin callback from Framework event source.
@@ -292,9 +701,30 @@
             <param name="synchronous">The synchronous flag to indicate if the dependency call was synchronous or not.</param>
             <param name="statusCode">The HTTP status code of the response.</param>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.FrameworkHttpProcessing.AddTupleForWebDependencies(System.Net.WebRequest,Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry,System.Boolean)">
+            <summary>
+            Implemented by the derived class for adding the tuple to its specific cache.
+            </summary>
+            <param name="webRequest">The request which acts the key.</param>
+            <param name="telemetry">The dependency telemetry for the tuple.</param>
+            <param name="isCustomCreated">Boolean value that tells if the current telemetry item is being added by the customer or not.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.FrameworkHttpProcessing.GetTupleForWebDependencies(System.Net.WebRequest)">
+            <summary>
+            Implemented by the derived class for getting the tuple from its specific cache.
+            </summary>
+            <param name="webRequest">The request which acts as the key.</param>
+            <returns>The tuple for the given request.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.FrameworkHttpProcessing.RemoveTupleForWebDependencies(System.Net.WebRequest)">
+            <summary>
+            Implemented by the derived class for removing the tuple from its specific cache.
+            </summary>
+            <param name="webRequest">The request which acts as the key.</param>
+        </member>
         <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerHttpProcessing">
             <summary>
-            Concrete class with all processing logic to generate RDD data from the calls backs
+            Concrete class with all processing logic to generate RDD data from the callbacks
             received from Profiler instrumentation for HTTP .   
             </summary>
         </member>
@@ -393,34 +823,26 @@
             <param name="asyncResult">The asyncResult parameter.</param>
             <param name="transportContext">The transportContext parameter.</param>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerHttpProcessing.GetUrl(System.Net.WebRequest)">
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerHttpProcessing.AddTupleForWebDependencies(System.Net.WebRequest,Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry,System.Boolean)">
             <summary>
-            Gets HTTP request url.
+            Implemented by the derived class for adding the tuple to its specific cache.
             </summary>
-            <param name="webRequest">Represents web request.</param>
-            <returns>The url if possible otherwise empty string.</returns>
+            <param name="webRequest">The request which acts the key.</param>
+            <param name="telemetry">The dependency telemetry for the tuple.</param>
+            <param name="isCustomCreated">Boolean value that tells if the current telemetry item is being added by the customer or not.</param>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerHttpProcessing.OverrideCorrelationIdLookupHelper(Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper)">
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerHttpProcessing.GetTupleForWebDependencies(System.Net.WebRequest)">
             <summary>
-            Simple test hook, that allows for using a stub rather than the implementation that calls the original service.
+            Implemented by the derived class for getting the tuple from its specific cache.
             </summary>
-            <param name="correlationIdLookupHelper">Lookup header to use.</param>
+            <param name="webRequest">The request which acts as the key.</param>
+            <returns>The tuple for the given request.</returns>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerHttpProcessing.OnBegin(System.Object,System.Boolean)">
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerHttpProcessing.RemoveTupleForWebDependencies(System.Net.WebRequest)">
             <summary>
-            Common helper for all Begin Callbacks.
+            Implemented by the derived class for removing the tuple from its specific cache.
             </summary>
-            <param name="thisObj">This object.</param>        
-            <param name="isAsyncCall">Indicates if the method used is async or not.</param>        
-            <returns>Null object as all context is maintained in this class via weak tables.</returns>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerHttpProcessing.OnEnd(System.Object,System.Object,System.Object)">
-            <summary>
-            Common helper for all End Callbacks.
-            </summary>        
-            <param name="exception">The exception object if any.</param>
-            <param name="thisObj">This object.</param>                
-            <param name="returnValue">Return value of the function if any.</param>
+            <param name="webRequest">The request which acts as the key.</param>
         </member>
         <member name="F:Microsoft.ApplicationInsights.DependencyCollector.Implementation.Operation.CacheBasedOperationHolder.memoryCache">
             <summary>
@@ -431,6 +853,13 @@
         <member name="F:Microsoft.ApplicationInsights.DependencyCollector.Implementation.Operation.CacheBasedOperationHolder.cacheItemPolicy">
             <summary>
             The cache item policy which identifies the expiration time.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.Operation.CacheBasedOperationHolder.Store(System.Int64,System.Tuple{Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry,System.Boolean})">
+            <summary>
+            Adds telemetry tuple to MemoryCache. DO NOT call it for the id that already exists in the cache.
+            This is a known Memory Cache race-condition issue when items with same id are added concurrently
+            and MemoryCache leaks memory. It should be fixed sometime AFTER .NET 4.7.1.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.DependencyCollector.Implementation.Operation.OperationWatch">
@@ -472,6 +901,13 @@
             </summary>
             <param name="elapsedTicks">Ticks elapsed according to operation watch.</param>
             <returns>Date time structure representing the date and time that corresponds to the operation clock reading.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ApplicationInsightsUrlFilter.IsApplicationInsightsUrl(System.Uri)">
+            <summary>
+            Determines whether an URL is application insights URL.
+            </summary>
+            <param name="url">HTTP URL.</param>
+            <returns>True if URL is application insights url, otherwise false.</returns>
         </member>
         <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ApplicationInsightsUrlFilter.IsApplicationInsightsUrl(System.String)">
             <summary>
@@ -596,6 +1032,11 @@
             On end callback for methods with 1 parameter.
             </summary>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerSqlProcessingBase.OnEndStopActivityOnlyForOneParameter(System.Object,System.Object,System.Object)">
+            <summary>
+            On end callback for methods with 1 parameter. Doesn't track the telemetry item, just stops activity and removes object from the table.
+            </summary>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerSqlProcessingBase.OnEndAsyncForOneParameter(System.Object,System.Object,System.Object)">
             <summary>
             On end async callback for methods with 1 parameter.
@@ -683,19 +1124,32 @@
             <param name="taskObj">Returned task by the async method.</param>
             <param name="thisObj">This object.</param>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerSqlProcessingBase.OnEnd(System.Object,System.Object)">
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerSqlProcessingBase.OnEnd(System.Object,System.Object,System.Boolean)">
             <summary>
              Common helper for all End Callbacks.
             </summary>
             <param name="exceptionObj">The exception object if any.</param>
             <param name="thisObj">This object.</param>
+            <param name="sendTelemetryItem">True if telemetry item should be sent, otherwise it only stops the telemetry item.</param>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerSqlProcessingBase.OnEndInternal(System.Object,System.Object)">
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.Implementation.ProfilerSqlProcessingBase.OnEndInternal(System.Object,System.Object,System.Boolean)">
             <summary>
              Common helper for all End Callbacks.
             </summary>
             <param name="exceptionObj">The exception object if any.</param>
             <param name="thisObj">This object.</param>
+            <param name="sendTelemetryItem">True if telemetry item should be sent, otherwise it only stops the telemetry item.</param>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer">
+            <summary>
+            Telemetry Initializer that parses http dependencies into well-known types like Azure Storage.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer.Initialize(Microsoft.ApplicationInsights.Channel.ITelemetry)">
+            <summary>
+            If telemetry item is http dependency - converts it to the well-known type of the dependency.
+            </summary>
+            <param name="telemetry">Telemetry item to convert.</param>
         </member>
         <member name="T:Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule">
             <summary>
@@ -705,6 +1159,11 @@
         <member name="P:Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule.DisableRuntimeInstrumentation">
             <summary>
             Gets or sets a value indicating whether to disable runtime instrumentation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule.DisableDiagnosticSourceInstrumentation">
+            <summary>
+            Gets or sets a value indicating whether to disable Http Desktop DiagnosticSource instrumentation.
             </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule.ExcludeComponentCorrelationHttpHeadersOnDomains">
@@ -738,7 +1197,7 @@
             </summary>
             <param name="disposing">The method has been called directly or indirectly by a user's code.</param>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule.InitializeForFrameworkEventSource">
+        <member name="M:Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule.InitializeForDiagnosticAndFrameworkEventSource">
             <summary>
             Initialize for framework event source (not supported for Net40).
             </summary>
@@ -784,25 +1243,79 @@
             <param name="sqlRequest">SQL request object which is used as a key to store in the tables.</param>
             <returns>Dependency telemetry item with an associated dependency telemetry item.</returns>
         </member>
-        <member name="T:Microsoft.ApplicationInsights.Common.CrossComponentCorrelationEventSource">
+        <member name="T:Microsoft.ApplicationInsights.Common.AppMapCorrelationEventSource">
+            <summary>
+            ETW EventSource tracing class.
+            </summary>
             <summary>
             ETW EventSource tracing class.
             </summary>
         </member>
-        <member name="T:Microsoft.ApplicationInsights.Common.CrossComponentCorrelationEventSource.Keywords">
+        <member name="T:Microsoft.ApplicationInsights.Common.AppMapCorrelationEventSource.Keywords">
             <summary>
-            Keywords for the <see cref="T:Microsoft.ApplicationInsights.Common.CrossComponentCorrelationEventSource"/>.
+            Keywords for the <see cref="T:Microsoft.ApplicationInsights.Common.AppMapCorrelationEventSource"/>.
             </summary>
         </member>
-        <member name="F:Microsoft.ApplicationInsights.Common.CrossComponentCorrelationEventSource.Keywords.UserActionable">
+        <member name="F:Microsoft.ApplicationInsights.Common.AppMapCorrelationEventSource.Keywords.UserActionable">
             <summary>
             Key word for user actionable events.
             </summary>
         </member>
-        <member name="F:Microsoft.ApplicationInsights.Common.CrossComponentCorrelationEventSource.Keywords.Diagnostics">
+        <member name="F:Microsoft.ApplicationInsights.Common.AppMapCorrelationEventSource.Keywords.Diagnostics">
             <summary>
             Key word for diagnostics events.
             </summary>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Common.ExceptionUtilities">
+            <summary>
+            Utility functions for dealing with exceptions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.ExceptionUtilities.GetExceptionDetailString(System.Exception)">
+            <summary>
+            Get the string representation of this Exception with special handling for AggregateExceptions.
+            </summary>
+            <param name="ex">The exception to convert to a string.</param>
+            <returns>The detailed string version of the provided exception.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Common.HeadersUtilities">
+            <summary>
+            Generic functions that can be used to get and set Http headers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.HeadersUtilities.GetHeaderKeyValue(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Get the key value from the provided HttpHeader value that is set up as a comma-separated list of key value pairs. Each key value pair is formatted like (key)=(value).
+            </summary>
+            <param name="headerValues">The header values that may contain key name/value pairs.</param>
+            <param name="keyName">The name of the key value to find in the provided header values.</param>
+            <returns>The first key value, if it is found. If it is not found, then null.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.HeadersUtilities.UpdateHeaderWithKeyValue(System.Collections.Generic.IEnumerable{System.String},System.String,System.String)">
+            <summary>
+            Given the provided list of header value strings, return a list of key name/value pairs
+            with the provided keyName and keyValue. If the initial header value strings contains
+            the key name, then the original key value should be replaced with the provided key
+            value. If the initial header value strings don't contain the key name, then the key
+            name/value pair should be added to the list and returned.
+            </summary>
+            <param name="headerValues">The existing header values that the key/value pair should be added to.</param>
+            <param name="keyName">The name of the key to add.</param>
+            <param name="keyValue">The value of the key to add.</param>
+            <returns>The result of setting the provided key name/value pair into the provided headerValues.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Common.ICorrelationIdLookupHelper">
+            <summary>
+            An interface for getting a correlation id from a provided instrumentation key.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.ICorrelationIdLookupHelper.TryGetXComponentCorrelationId(System.String,System.String@)">
+            <summary>
+            Retrieves the correlation id corresponding to a given instrumentation key.
+            </summary>
+            <param name="instrumentationKey">Instrumentation key string.</param>
+            <param name="correlationId">AppId corresponding to the provided instrumentation key.</param>
+            <returns>true if correlationId was successfully retrieved; false otherwise.</returns>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Common.RequestResponseHeaders">
             <summary>
@@ -814,24 +1327,44 @@
             Request-Context header.
             </summary>
         </member>
-        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.RequestContextSourceKey">
+        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.RequestContextCorrelationSourceKey">
             <summary>
             Source key in the request context header that is added by an application while making http requests and retrieved by the other application when processing incoming requests.
             </summary>
         </member>
-        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.RequestContextTargetKey">
+        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.RequestContextCorrelationTargetKey">
             <summary>
             Target key in the request context header that is added to the response and retrieved by the calling application when processing incoming responses.
             </summary>
         </member>
+        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.RequestContextSourceRoleNameKey">
+            <summary>
+            Source-RoleName key in the request context header that is added by an application while making http requests and retrieved by the other application when processing incoming requests.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.RequestContextTargetRoleNameKey">
+            <summary>
+            Target-RoleName key in the request context header that is added to the response and retrieved by the calling application when processing incoming responses.
+            </summary>
+        </member>
         <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.StandardParentIdHeader">
             <summary>
-            Standard parent Id header.
+            Legacy parent Id header.
             </summary>
         </member>
         <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.StandardRootIdHeader">
             <summary>
-            Standard root id header.
+            Legacy root id header.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.RequestIdHeader">
+            <summary>
+            Standard Request-Id Id header.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.CorrelationContextHeader">
+            <summary>
+            Standard Correlation-Context header.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper">
@@ -850,6 +1383,12 @@
             </summary>
             <param name="appIdProviderMethod">The delegate to be called to fetch the appId.</param>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper" /> class mostly to be used by the test classes to seed the instrumentation key -> app Id relationship.
+            </summary>
+            <param name="mapSeed">A dictionary that contains known instrumentation key - app id relationship.</param>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.#ctor(System.String)">
             <summary>
             Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper" /> class.
@@ -863,6 +1402,12 @@
             <param name="instrumentationKey">Instrumentation key string.</param>
             <param name="correlationId">AppId corresponding to the provided instrumentation key.</param>
             <returns>true if correlationId was successfully retrieved; false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.IsFetchAppInProgress(System.String)">
+            <summary>
+            This method is purely a test helper at this point. It checks whether the task to get app ID is still running.
+            </summary>
+            <returns>True if fetch task is still in progress, false otherwise.</returns>
         </member>
         <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FetchAppIdFromService(System.String)">
             <summary>
@@ -932,14 +1477,30 @@
             <param name="keyName">Desired key of the key-value list.</param>
             <returns>Value against the given parameters.</returns>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.WebHeaderCollectionExtensions.GetNameValueCollectionFromHeader(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            For the given header collection, for a given header of name-value type, return list of KeyValuePairs.
+            </summary>
+            <param name="headers">Header collection.</param>
+            <param name="headerName">Name of the header in the collection.</param>
+            <returns>List of KeyValuePairs in the given header.</returns>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.Common.WebHeaderCollectionExtensions.SetNameValueHeaderValue(System.Collections.Specialized.NameValueCollection,System.String,System.String,System.String)">
             <summary>
-            For the given header collection, sets the header value based on the name value format.
+            For the given header collection, adds KeyValuePair to header.
             </summary>
             <param name="headers">Header collection.</param>
             <param name="headerName">Name of the header that is to contain the name-value pair.</param>
             <param name="keyName">Name in the name value pair.</param>
             <param name="value">Value in the name value pair.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.WebHeaderCollectionExtensions.SetHeaderFromNameValueCollection(System.Collections.Specialized.NameValueCollection,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            For the given header collection, sets the header value based on the name value format.
+            </summary>
+            <param name="headers">Header collection.</param>
+            <param name="headerName">Name of the header that is to contain the name-value pair.</param>
+            <param name="keyValuePairs">List of KeyValuePairs to format into header.</param>
         </member>
     </members>
 </doc>

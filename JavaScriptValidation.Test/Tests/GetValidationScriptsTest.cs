@@ -11,7 +11,7 @@ namespace JavaScriptValidation.Test.Tests
         [TestMethod]
         public void TestRequiredGetErrorText()
         {
-            List<JsProperty> jsObect = JSValidationMaker.GetValidationObject(typeof(TestModel));
+            //List<JsProperty> jsObect = JSValidationMaker.GetValidationObject(typeof(TestModel));
 
             //Assert.IsTrue(string.IsNullOrEmpty(jsObect.First().))
         }

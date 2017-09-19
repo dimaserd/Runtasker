@@ -55,6 +55,8 @@ namespace Runtasker.Logic
         public DbSet<ResourceFileModel> ResourceFileModels { get; set; }
 
         public DbSet<ResourceString> ResourceStrings { get; set; }
+
+        public DbSet<ResourceStringType> ResourceStringTypes { get; set; }
         #endregion
 
         public DbSet<Coupon> Coupons { get; set; }

@@ -9,11 +9,13 @@ using Runtasker.Logic.Models;
 using Runtasker.Logic.Models.Payments.Admin;
 using Runtasker.Logic.Models.Payments.YandexKassa;
 using Runtasker.Logic.Workers;
+using Runtasker.Logic.Workers.Email;
 using Runtasker.Logic.Workers.Logging;
 using Runtasker.Logic.Workers.Notifications;
 using Runtasker.Logic.Workers.Payments;
 using Runtasker.Logic.Workers.Payments.PaymentGetters;
 using Runtasker.Logic.Workers.PaymentTransactions;
+using Runtasker.Settings;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -22,6 +24,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Cors;
 using System.Web.Mvc;
+using VkParser.MessageSenders;
+using VkParser.Models.MessageSenderModels;
 
 namespace Runtasker.Controllers
 {
@@ -268,14 +272,14 @@ namespace Runtasker.Controllers
         #region Временные решения
         [HttpGet]
         [Authorize(Roles = "Customer")]
-        public ActionResult YandexInvoice(decimal? sumToPay)
+        public ActionResult YandexInvoice(int sumToPay = 0)
         {
             return View(
                 new YandexInvoiceModel
                 {
                     UserId = UserGuid,
                     Email = User.Identity.GetEmail(),
-                    Amount = (sumToPay.HasValue)? (int)sumToPay.Value : 0
+                    Amount = sumToPay
                 });
         }
 
@@ -283,7 +287,33 @@ namespace Runtasker.Controllers
         [Authorize(Roles = "Customer")]
         public ActionResult YandexInvoice(YandexInvoiceModel model)
         {
-            return View();
+
+            string text = $"Пользователь {User.Identity.GetName()} оставил заявку на выставление счета через" +
+                    $" Email : {model.Email}  Сумма : {model.Amount}";
+            using (VkMessageSender sender = new VkMessageSender())
+            {
+                VkMessage mes = new VkMessage
+                {
+                    Text = text,
+                    UserDomain = AdminSettings.VkDomain
+                };
+
+                sender.SendMessageToVkUser(mes);
+            }
+
+            using (EmailWorkerBase emailer = new EmailWorkerBase())
+            {
+                IdentityMessage m = new IdentityMessage
+                {
+                    Body = text,
+                    Destination = AdminSettings.AdminEmail,
+                    Subject = "Заявка на пополнение"
+                };
+
+                emailer.SendEmail(m);
+            }
+
+            return View(viewName: "YandexInvoiceSent", model: model);
         }
         #endregion
 

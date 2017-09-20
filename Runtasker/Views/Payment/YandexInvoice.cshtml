@@ -11,7 +11,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm(actionName : "", controllerName: "", method: FormMethod.Post, htmlAttributes: new { @class = _class }))
+@using (Html.BeginForm(actionName : "YandexInvoice", controllerName: "Payment", method: FormMethod.Post, htmlAttributes: new { @class = _class }))
 {
     @Html.HiddenFor(x => x.UserId)
 
@@ -19,8 +19,25 @@
 
     @Html.LabelAndTextBoxFor(x => x.Amount)
 
-    <div class="btn btn-success" onclick()>
+    <input id="hiddenSubmit" type="submit" class="hidden" />
+
+    <div class="btn btn-success" onclick="ClickHandler()">
         @YaInvoiceRes.Текст_Кнопки
     </div>
+}
+
+@using Common.JavascriptValidation.Statics
+@{ 
+    string jsObject = JSValidationMaker.GetJSValidationObject(typeof(YandexInvoiceModel));
+}
+@section Scripts{
+    
+
+
+    <script>
+        function ClickHandler() {
+            document.getElementById("hiddenSubmit").click();
+        }
+    </script>
 }
 

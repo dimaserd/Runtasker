@@ -118,63 +118,63 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdvancedMathematics" xml:space="preserve">
-    <value>Advanced Mathematics</value>
+    <value>Высшая математика</value>
   </data>
   <data name="Chemistry" xml:space="preserve">
-    <value>Chemistry</value>
+    <value>Химия</value>
   </data>
   <data name="CourseWork" xml:space="preserve">
-    <value>Course Work</value>
+    <value>Курсовая</value>
   </data>
   <data name="ErrorTypeNeedDesc" xml:space="preserve">
-    <value>needs more description</value>
+    <value>недостаточно описания</value>
   </data>
   <data name="ErrorTypeNeedFiles" xml:space="preserve">
-    <value>needs more attached files</value>
+    <value>недостаточно файлов</value>
   </data>
   <data name="ErrorTypeNone" xml:space="preserve">
-    <value>no errors</value>
+    <value>Нет ошибок</value>
   </data>
   <data name="Essay" xml:space="preserve">
-    <value>Essay</value>
+    <value>Эссе/Реферат</value>
   </data>
   <data name="Informatics" xml:space="preserve">
-    <value>Informatics</value>
+    <value>Информатика</value>
   </data>
   <data name="LangDropdownParams" xml:space="preserve">
-    <value />
+    <value>Английский язык,Французский язык,Итальянский язык,Испанский язык</value>
   </data>
   <data name="LangLabel" xml:space="preserve">
-    <value />
+    <value>Выберите язык</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Russian Language</value>
+    <value>Иностранный язык</value>
   </data>
   <data name="LanguagePopover" xml:space="preserve">
-    <value />
+    <value>Укажите иностранный язык в этом списке</value>
   </data>
   <data name="OnlineHelp" xml:space="preserve">
-    <value>Online Help</value>
+    <value>Онлайн-помощь</value>
   </data>
   <data name="Ordinary" xml:space="preserve">
-    <value>Ordinary assignment</value>
+    <value>Обычное задание</value>
   </data>
   <data name="Other" xml:space="preserve">
-    <value>Other</value>
+    <value>Другой предмет</value>
   </data>
   <data name="Physics" xml:space="preserve">
-    <value>Physics</value>
+    <value>Физика</value>
   </data>
   <data name="Programming" xml:space="preserve">
-    <value>Programming</value>
+    <value>Программирование</value>
   </data>
   <data name="Projecting" xml:space="preserve">
-    <value>Projecting</value>
+    <value>Проектирование</value>
   </data>
   <data name="StrengthOfMaterials" xml:space="preserve">
-    <value>Strength Of Materials</value>
+    <value>Сопротивление материалов</value>
   </data>
   <data name="TheoreticalMechanics" xml:space="preserve">
-    <value>Theoretical Mechanics</value>
+    <value>Теоретическая механика</value>
   </data>
 </root>

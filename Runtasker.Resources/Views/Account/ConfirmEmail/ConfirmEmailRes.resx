@@ -118,33 +118,32 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ContinueWorkTextFormat" xml:space="preserve">
-    <value>Now you have an access to all functions of {0}.</value>
+    <value>Теперь вам доступны все функции приложения {0}.</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Home</value>
-    <comment>Главная</comment>
+    <value>Главная</value>
   </data>
   <data name="LoginBtnText" xml:space="preserve">
-    <value>Click here to Log in</value>
+    <value>Нажмите сюда чтобы войти</value>
   </data>
   <data name="LoginBtnTextFormat" xml:space="preserve">
-    <value>{0} Click here to Log in</value>
-    <comment>{значок входа} Click here to Log in</comment>
+    <value>{0} Нажмите сюда чтобы войти</value>
+    <comment>{значок входа} Нажмите сюда чтобы войти</comment>
   </data>
   <data name="Please" xml:space="preserve">
-    <value>Please</value>
+    <value>Пожалуйста</value>
   </data>
   <data name="PleaseClickToLoginWithBtnFormat" xml:space="preserve">
-    <value>Please {0}</value>
-    <comment>Please {кнопка для входа}</comment>
+    <value>Пожалуйста, {0}</value>
+    <comment>Пожалуйста, {кнопка входа с текстом}</comment>
   </data>
   <data name="Runtasker" xml:space="preserve">
     <value>Runtasker</value>
   </data>
   <data name="Thanks" xml:space="preserve">
-    <value>Thank you for confirming your email!</value>
+    <value>Спасибо, за подтверждение адреса электронной почты!</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Confirm Email</value>
+    <value>Подтверждение Email</value>
   </data>
 </root>

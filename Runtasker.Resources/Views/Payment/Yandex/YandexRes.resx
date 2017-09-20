@@ -118,48 +118,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActionDesc" xml:space="preserve">
-    <value>Topping up your balance on Runtasker</value>
+    <value>Пополнение баланса на Runtasker</value>
   </data>
   <data name="ActionDescMini" xml:space="preserve">
-    <value>via YandexMoney</value>
+    <value>через ЯндексДеньги</value>
   </data>
   <data name="Amount" xml:space="preserve">
-    <value>Amount</value>
+    <value>Сумма оплаты</value>
   </data>
   <data name="AmountErrorText" xml:space="preserve">
-    <value>Amount must be greater than 0!</value>
+    <value>Сумма оплаты должны быть больше 0!</value>
   </data>
   <data name="BackToPM" xml:space="preserve">
-    <value>Back to payment methods</value>
+    <value>Назад к способам оплаты</value>
   </data>
   <data name="BankingCardPM" xml:space="preserve">
-    <value>Banking card</value>
+    <value>Банковской картой</value>
   </data>
   <data name="InfoText" xml:space="preserve">
-    <value>Please be advised that if you pay with a banking card, no commission is charged. But if you pay using YandexMoney wallet 0.5% commission will be added.</value>
+    <value>Будьте внимательны, Если вы оплачиваете банковской картой, то оплата произойдет без дополнительной комиссии! Но если вы хотите оплатить кошельком Яндекс Денег, то с вас снимут комиссию в размере 0.5%!</value>
   </data>
   <data name="NavActive" xml:space="preserve">
-    <value>YandexMoney</value>
+    <value>Яндекс Деньгами</value>
   </data>
   <data name="NavHome" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="NavPayment" xml:space="preserve">
-    <value>Payment methods</value>
+    <value>Способы оплаты</value>
   </data>
   <data name="Pay" xml:space="preserve">
-    <value>Pay</value>
+    <value>Оплатить</value>
   </data>
   <data name="PaymentMethod" xml:space="preserve">
-    <value>Payment method</value>
+    <value>Выберите cпособ оплаты</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Payment Page</value>
+    <value>Страница оплаты</value>
   </data>
   <data name="YandexDesc" xml:space="preserve">
-    <value>Balance recharging on RUNTASKER.RU</value>
+    <value>Пополнение баланса на RUNTASKER.RU</value>
   </data>
   <data name="YandexMoneyPM" xml:space="preserve">
-    <value>YandexMoney</value>
+    <value>через Яндекс Деньги</value>
   </data>
 </root>

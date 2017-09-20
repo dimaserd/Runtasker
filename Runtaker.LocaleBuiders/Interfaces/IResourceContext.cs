@@ -8,5 +8,7 @@ namespace Runtaker.LocaleBuiders.Interfaces
         DbSet<ResourceFileModel> ResourceFileModels { get; }
 
         DbSet<ResourceString> ResourceStrings { get; }
+
+        DbSet<ResourceStringType> ResourceStringTypes { get; }
     }
 }

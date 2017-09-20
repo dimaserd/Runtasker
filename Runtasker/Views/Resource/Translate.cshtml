@@ -1,0 +1,38 @@
+﻿@using Runtaker.LocaleBuiders.Entities
+@model ResourceFileModel
+@{
+    ViewBag.Title = "Translate";
+}
+
+<h2>Translate</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>
+                    Русский вариант
+                </td>
+                <td>
+                    Ваш вариант
+                </td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (ResourceString rs in Model.ResourceStrings)
+            {
+                <tr>
+                    <td>
+                        @rs.
+                    </td>
+
+                    <td>
+                        <input type="text"
+                    </td>
+                </tr>
+            }
+        </tbody>
+        
+    </table>
+</div>

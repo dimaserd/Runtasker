@@ -118,86 +118,83 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AlreadyHaveAc" xml:space="preserve">
-    <value>Already have an account?</value>
+    <value>У вас уже есть учетная запись?</value>
   </data>
   <data name="ClickToSI" xml:space="preserve">
-    <value>Click to Sign In</value>
+    <value>Нажмите чтобы войти</value>
   </data>
   <data name="ContactLinkText" xml:space="preserve">
-    <value>contact us</value>
+    <value>свяжитесь с нами</value>
   </data>
   <data name="ContCustSup" xml:space="preserve">
-    <value>Contact Customer Support</value>
+    <value>Связаться с службой поддержки</value>
+  </data>
+  <data name="htmlHeader1" xml:space="preserve">
+    <value>Создать</value>
+  </data>
+  <data name="htmlHeader2" xml:space="preserve">
+    <value>учетную запись</value>
   </data>
   <data name="HomeNav" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>Register</value>
+    <value>Зарегистрироваться</value>
   </data>
   <data name="RegisterNew" xml:space="preserve">
-    <value>Register new account.</value>
+    <value>Зарегистрировать новую учетную запись</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Sign Up</value>
+    <value>Создать учетную запись</value>
   </data>
   <data name="ActiveNav" xml:space="preserve">
-    <value>Sign Up</value>
+    <value>Зарегистрироваться</value>
   </data>
   <data name="RegPlus1" xml:space="preserve">
-    <value>Join the Runtasker community</value>
-    <comment>Присоединиться к сообществу Runtasker</comment>
+    <value>Присоединиться к сообществу Runtasker</value>
   </data>
   <data name="RegPlus2" xml:space="preserve">
-    <value>Get free and fast help in the chatroom</value>
-    <comment>Получать поддержку в сообществе Runtasker</comment>
+    <value>Получать поддержку в сообществе Runtasker</value>
   </data>
   <data name="RegPlus3" xml:space="preserve">
-    <value>Place your assignments on Runtasker</value>
-    <comment>Заказывать работы на  Runtasker</comment>
+    <value>Заказывать работы на Runtasker</value>
   </data>
   <data name="RegPlus4" xml:space="preserve">
-    <value>Get discounts on Runtasker</value>
-    <comment>Получать скидки на Runtasker</comment>
+    <value>Получать скидки на Runtasker</value>
   </data>
   <data name="RegPlusesHeader" xml:space="preserve">
-    <value>Once you're registered, you can:</value>
+    <value>Зарегистрированные пользователи могут:</value>
   </data>
   <data name="WhyToReg" xml:space="preserve">
-    <value>Why to register?</value>
-    <comment>Какие плюсы Вам даёт регистрация?</comment>
+    <value>Какие плюсы Вам даёт регистрация?</value>
   </data>
   <data name="WhyToRegDesc" xml:space="preserve">
-    <value>Registration is fast, easy, and free.</value>
-    <comment>Регистрация на Runtasker –это просто, быстро и полезно.</comment>
+    <value>Регистрация на Runtasker –это просто, быстро и полезно.</value>
   </data>
   <data name="RegPlus5" xml:space="preserve">
-    <value>Get detailed consultation on Runtasker</value>
-    <comment>Получить подробную консультацию на Runtasker</comment>
+    <value>Получить подробную консультацию на Runtasker</value>
   </data>
   <data name="RegPlus6" xml:space="preserve">
-    <value>Get 300 bonus roubles on Runtasker</value>
-    <comment>Получить бонусные 300 рублей на Runtasker</comment>
+    <value>Получить бонусные 300 рублей на Runtasker</value>
   </data>
   <data name="ContactTextPattern" xml:space="preserve">
-    <value>If you're looking for more help or have a question to ask, please {0}.</value>
+    <value>Если вам нужна помощь или у вас возникли вопросы,  пожалуйста {0}.</value>
   </data>
   <data name="HeaderFormat" xml:space="preserve">
-    <value>Create {0}</value>
-    <comment>Create {account}</comment>
+    <value>Создать {0}</value>
   </data>
   <data name="HeaderToMark" xml:space="preserve">
-    <value>account</value>
+    <value>учетную запись</value>
   </data>
   <data name="RegisterViaSocialFormat" xml:space="preserve">
-    <value>Register via {0}</value>
+    <value>Зарегистрироваться через {0}</value>
     <comment>Зарегистрироваться через {Google}</comment>
   </data>
   <data name="RegisterViaSocialsHeaderFormat" xml:space="preserve">
-    <value>Register {0}</value>
-    <comment>Register &lt;mark&gt;via social providers&lt;/mark&gt;</comment>
+    <value>Зарегистрироваться {0}</value>
+    <comment>Войти &lt;mark&gt;через аккаунты в социальных сетях&lt;/mark&gt;</comment>
   </data>
   <data name="RegisterViaSocialsHeaderToMark" xml:space="preserve">
-    <value>via social providers</value>
+    <value>через аккаунты в социальных сетях</value>
   </data>
 </root>

@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Отменить</value>
   </data>
   <data name="CommentError" xml:space="preserve">
-    <value>You can not leave an empty comment! Please, write sometthing!</value>
+    <value>Вы не можете оставить отзыв пустым. Пожалуйста, напишите что-нибудь!</value>
   </data>
   <data name="LeaveReviewFormat" xml:space="preserve">
-    <value>Leave a Review about order #{0}</value>
-    <comment>Leave a Review about order #{номер заказа}</comment>
+    <value>Поделиться мнением о заказе №{0}</value>
+    <comment>Поделиться мнением о заказе №{номер заказа}</comment>
   </data>
   <data name="PlaceHolder" xml:space="preserve">
-    <value>Enter your review here...</value>
+    <value>Оставьте комментарий здесь...</value>
   </data>
   <data name="RatingError" xml:space="preserve">
-    <value>Please, evaluate our work by clicking stars!</value>
+    <value>Пожалуйста, оцените выполненную работу, кликнув на зведочки!</value>
   </data>
   <data name="Send" xml:space="preserve">
-    <value>Send</value>
+    <value>Отправить</value>
   </data>
 </root>

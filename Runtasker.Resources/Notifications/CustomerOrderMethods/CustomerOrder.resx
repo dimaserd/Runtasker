@@ -118,80 +118,80 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddDescriptionText" xml:space="preserve">
-    <value>Thank you, for your corrections! We will check this out and inform you about result!</value>
+    <value>Спасибо, за ваши исправления! Мы проверим ваш заказ и сообщим вам о результате!</value>
   </data>
   <data name="AddDescriptionTitleFormat" xml:space="preserve">
-    <value>You have changed description in order #{0}.</value>
+    <value>Вы поменяли описание в заказе №{0}.</value>
+    <comment>Вы поменяли описание в заказе №{номер заказа}.</comment>
   </data>
   <data name="AddFilesText" xml:space="preserve">
-    <value>Our team will check this out, we will send you the price of your order by email! Best wishes from Runtasker team!</value>
+    <value>Наша команда проверит ваш заказ, мы сообщим вам о цене вашего заказа по электронной почте! С наилучшими пожеланиями от Runtasker!</value>
   </data>
   <data name="AddFilesTitleFormat" xml:space="preserve">
-    <value>Thank you for adding new files to order #{0}.</value>
-    <comment>Thank you for adding new files to order #{номер заказа}.</comment>
+    <value>Спасибо, что добавили файлы в заказ №{0}.</value>
+    <comment>Спасибо, что добавили файлы в заказ №{номер заказа}.</comment>
   </data>
   <data name="AddOrderText" xml:space="preserve">
-    <value>We will send you the price of your order by email! Best wishes from the Runtasker team!</value>
+    <value>Наша команда проверит ваш заказ, мы сообщим вам о цене вашего заказа по электронной почте! С наилучшими пожеланиями от Runtasker!</value>
   </data>
   <data name="AddOrderTitleFormat" xml:space="preserve">
-    <value>Order #{0} successfully added!</value>
-    <comment>Order #{номер заказа} successfully added!</comment>
+    <value>Заказ №{0} успешно добавлен.</value>
+    <comment>Заказ №{номер заказа} успешно добавлен.</comment>
   </data>
   <data name="BadRatingText1" xml:space="preserve">
-    <value>We will improve our services!</value>
+    <value>Мы будем работать над нашим сервисом!</value>
   </data>
   <data name="GoodRatingText1" xml:space="preserve">
-    <value>We love that you like what we do!</value>
+    <value>Спасибо, что по достоинству оценили наши услуги!</value>
   </data>
   <data name="InviterRatingButtonText" xml:space="preserve">
-    <value>Invite User</value>
+    <value>Пригласить пользователя</value>
   </data>
   <data name="InviterRatingTextFormat" xml:space="preserve">
-    <value>You have invited him/her! That's why you get your {0}{1}! You can also invite another one!</value>
-    <comment>You have invited him/her! That's why you get your {сумма}{знак рубля}! You can also invite another one!</comment>
+    <value>Вы пригласили его/ee! Поэтому вы получаете {0}{1}! Также вы можете пригласить еще друзей!</value>
   </data>
   <data name="InviterRatingTitleFormat" xml:space="preserve">
-    <value>User {0} has completed his order.</value>
+    <value>Пользователь {0} завершил свой заказ!.</value>
+    <comment>Пользователь {еmail приглашенного} завершил свой заказ!.</comment>
   </data>
   <data name="OnlineHelpPaidText" xml:space="preserve">
-    <value>Please wait a little, we will contact you soon.</value>
+    <value>Пожалуйста, ожидайте. Мы скоро с вами свяжемся.</value>
   </data>
   <data name="OnlineHelpPaidTitleFormat" xml:space="preserve">
-    <value>You have paid an online help for order #{0}.</value>
-    <comment>You have paid an online help for order #{номер заказа}.</comment>
+    <value>Вы оплатили онлайн помощь, заказ №{0}.</value>
+    <comment>Вы оплатили онлайн помощь, заказ №{номер заказа}.</comment>
   </data>
   <data name="OnlineOrderCreatedText" xml:space="preserve">
-    <value>Our team will consider your application within minutes. We will provide you information on the result.</value>
+    <value>Наша команда в течение нескольких минут рассмотрит ее. Мы сообщим вам о результате.</value>
   </data>
   <data name="OnlineOrderCreatedTitleFormat" xml:space="preserve">
-    <value>You've aplied for Online-help for {0}.</value>
-    <comment>You've aplied for Online-help for {название предмета}.</comment>
+    <value>Вы подали заявку на онлайн помощь по предмету {0}.</value>
+    <comment>Вы подали заявку на онлайн помощь по предмету {название предмета}.</comment>
   </data>
   <data name="PaidAnotherHalfButtonText" xml:space="preserve">
-    <value>Download Solution</value>
+    <value>Скачать решение</value>
   </data>
   <data name="PaidAnotherHalfText" xml:space="preserve">
-    <value>We'd like to see your comments about this work!</value>
+    <value>Нам бы хотелось узнать ваше мнение о выполненной работе!</value>
   </data>
   <data name="PaidAnotherHalfTitleFormat" xml:space="preserve">
-    <value>Now you can download order #{0} solution.</value>
-    <comment>Now you can download order #{номер заказа} solution.</comment>
+    <value>Теперь вы можете скачать решение заказа №{0}.</value>
   </data>
   <data name="PaidFirstHalfTextFormat" xml:space="preserve">
-    <value>Our team is about to start working on your order. You will have received the solution by {0} at the latest.</value>
-    <comment>Our team is about to start working on your order. You will have received the solution by {дата завершения} at the latest.</comment>
+    <value>Наша команда вскоре приступит к выполнению вашего заказа!  Вы получите решение заказа к {0} или ранее.</value>
+    <comment>Наша команда вскоре приступит к выполнению вашего заказа!  Вы получите решение заказа к {дата завершения} или ранее.</comment>
   </data>
   <data name="PaidFirstHalfTitleFormat" xml:space="preserve">
-    <value>You have paid a half of order #{0}.</value>
-    <comment>You have paid a half of order #{номер заказа}.</comment>
+    <value>Вы оплатили половину стоимости заказа №{0}.</value>
+    <comment>Вы оплатили половину стоимости заказа №{номер заказа}.</comment>
   </data>
   <data name="RatingText2" xml:space="preserve">
-    <value>Hope to see you again!</value>
+    <value>Надеемся, что увидим вас снова!</value>
   </data>
   <data name="RatingTitle" xml:space="preserve">
-    <value>Thank you for your rating!</value>
+    <value>Спасибо, за вашу оценку!</value>
   </data>
   <data name="RuntaskerWish" xml:space="preserve">
-    <value>Best wishes from the Runtasker team!</value>
+    <value>С наилучшими пожеланиями от Runtasker!</value>
   </data>
 </root>

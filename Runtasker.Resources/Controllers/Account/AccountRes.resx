@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EmailNotConfirmed" xml:space="preserve">
-    <value>You must have a confirmed email to log on.</value>
+    <value>Чтобы войти, у  вас должен быть подтвержден адрес электронной почты.</value>
   </data>
   <data name="RegisteredInfo" xml:space="preserve">
-    <value>Check your email and confirm your account, you must be confirmed to create orders.</value>
+    <value>На ваш электронный адрес было васлано письмо для подтверждения подлинности вашей учетной записи. Пожалуйста, пройдите по ссылке.</value>
   </data>
   <data name="WrongInput" xml:space="preserve">
-    <value>You have input wrong Email or Password!</value>
+    <value>Вы ввели неверные данные!</value>
   </data>
 </root>

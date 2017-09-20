@@ -118,63 +118,62 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ForgotYourPass" xml:space="preserve">
-    <value>Forgot your password?</value>
+    <value>Забыли ваш пароль?</value>
   </data>
   <data name="HomeNav" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="KeepMeSignedIn" xml:space="preserve">
-    <value>Keep me signed in</value>
+    <value>Запомнить меня</value>
   </data>
   <data name="RegisterNew" xml:space="preserve">
-    <value>Register new account</value>
+    <value>Зарегистрировать новый</value>
   </data>
   <data name="SignIn" xml:space="preserve">
-    <value>Sign in</value>
+    <value>Войти</value>
   </data>
   <data name="TakesSeconds" xml:space="preserve">
-    <value>It only takes 8 seconds</value>
+    <value>это займет всего несколько секунд</value>
   </data>
   <data name="VerbWith" xml:space="preserve">
-    <value>Login with</value>
+    <value>Войти с</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
-    <value>Remember Me</value>
+    <value>Запомнить меня</value>
   </data>
   <data name="Runtasker" xml:space="preserve">
     <value>Runtasker</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Sign in</value>
-    <comment>Войти на сайт</comment>
+    <value>Войти на сайт</value>
   </data>
   <data name="ViaSocialsPattern" xml:space="preserve">
-    <value>Sign in {0}</value>
-    <comment>Sign in {via social providers}</comment>
+    <value>Войти {0}</value>
+    <comment>Войти {через аккаунты в социальных сетях}</comment>
   </data>
   <data name="WelcomeTitlePattern" xml:space="preserve">
-    <value>Welcome to {0}</value>
-    <comment>Welcome to {Runtasker}</comment>
+    <value>Добро пожаловать на {0}</value>
+    <comment>Добро пожаловать на {Runtasker}</comment>
   </data>
   <data name="HeaderFormat" xml:space="preserve">
-    <value>Sign {0}</value>
-    <comment>Sign {in}</comment>
+    <value>Войти {0}</value>
+    <comment>Войти {на сайт}</comment>
   </data>
   <data name="HeaderToMark" xml:space="preserve">
-    <value>in</value>
+    <value>на сайт</value>
   </data>
   <data name="SocialSignInFormat" xml:space="preserve">
-    <value>Sign in {0}</value>
-    <comment>Sign in {via social providers}</comment>
+    <value>Войти {0}</value>
+    <comment>Войти {через аккаунты в социальных сетях}</comment>
   </data>
   <data name="SocialSignInToMark" xml:space="preserve">
-    <value>via social providers</value>
+    <value>через аккаунты в социальных сетях</value>
   </data>
   <data name="WithoutAccountFormat" xml:space="preserve">
-    <value>Don't have an account yet? {0} it's free!</value>
-    <comment>Don't have an account yet? {Click to create one} it's free!</comment>
+    <value>Еще не зарегистрированы? {0} это бесплатно!</value>
+    <comment>Еще не зарегистрированы? {нажмите, чтобы зарегистрироваться} это бесплатно!</comment>
   </data>
   <data name="WithoutAccountLinkText" xml:space="preserve">
-    <value>Click to create one</value>
+    <value>Нажмите, чтобы зарегистрироваться</value>
   </data>
 </root>

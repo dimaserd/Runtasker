@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ChatLinkTextFormat" xml:space="preserve">
-    <value>Order #{0} Inbox</value>
-    <comment>Order #{номер заказа} Inbox</comment>
+    <value>Чат о заказе №{0}</value>
+    <comment>Чат о заказе №{номер заказа}</comment>
   </data>
   <data name="CreateNewOrder" xml:space="preserve">
-    <value>Create new order</value>
+    <value>Создать новый заказ</value>
   </data>
   <data name="GoToMyOrders" xml:space="preserve">
-    <value>Go to my orders</value>
+    <value>Перейти к моим заказам</value>
   </data>
   <data name="Inbox" xml:space="preserve">
-    <value>Inbox</value>
+    <value>Сообщения</value>
   </data>
   <data name="NoNewMessages" xml:space="preserve">
-    <value>No new messages</value>
+    <value>Нет новых сообщений</value>
   </data>
   <data name="OnlineHelpApplication" xml:space="preserve">
-    <value>Online-Help application</value>
+    <value>Заявка на Онлайн-Помощь</value>
   </data>
 </root>

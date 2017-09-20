@@ -1,5 +1,6 @@
 ﻿using Runtaker.LocaleBuiders.Entities;
 using Runtaker.LocaleBuiders.Interfaces;
+using Runtaker.LocaleBuiders.Settings;
 using Runtasker.LocaleBuilders.Enumerations;
 using System;
 using System.Collections;
@@ -13,8 +14,13 @@ namespace Runtaker.LocaleBuiders.Workers
 {
     public static class ResourceModelCreator
     {
-        private static string GetResourcesDir()
+        public static string GetResourcesDir()
         {
+            if(LocaleBuilderSettings.UseCustomPath)
+            {
+                return LocaleBuilderSettings.CustomPath;
+            }
+
             //C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Console\bin\Debug
             DirectoryInfo projDir = new DirectoryInfo(Directory.GetCurrentDirectory());
 
@@ -49,8 +55,6 @@ namespace Runtaker.LocaleBuiders.Workers
             }
             return GetResourceFileModels(result, lang).ToList();
         }
-
-
 
         public static void UpdateResourceFile(Hashtable data, string path)
         {

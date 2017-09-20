@@ -118,35 +118,35 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="HomeNav" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="MyOrdersNav" xml:space="preserve">
-    <value>My Orders</value>
+    <value>Мои заказы</value>
   </data>
   <data name="Pay" xml:space="preserve">
-    <value>Pay</value>
+    <value>Оплатить</value>
   </data>
   <data name="PayBtnFormat" xml:space="preserve">
-    <value>{0} Pay</value>
-    <comment>{знак оплаты} Pay</comment>
+    <value>{0} Оплатить</value>
+    <comment>{знак оплаты} Оплатить</comment>
   </data>
   <data name="PayHalfFormat" xml:space="preserve">
-    <value>Pay half price of order #{0}</value>
-    <comment>Pay half price of order #{номер заказа}</comment>
+    <value>Оплатить половину суммы заказа №{0}</value>
+    <comment>Оплатить половину суммы заказа №{номер заказа}</comment>
   </data>
   <data name="PayHelpTextFormat" xml:space="preserve">
-    <value>On this page you're paying a first half of your order's cost. When you're done with this, the performer starts executing your work. {0}{1} will be debited from your account.</value>
+    <value>На данной странице вы оплачиваете половину стоимости вашего заказа. После того как вы это сделаете, исполнитель приступает к выполнению вашей работы. С вашего счета будет списано {0}{1}.</value>
+    <comment>На данной странице вы оплачиваете половину стоимости вашего заказа. После того как вы это сделаете, исполнитель приступает к выполнению вашей работы. С вашего счета будет списано {0}{1}.</comment>
   </data>
   <data name="PayOnlineHelpTitle" xml:space="preserve">
-    <value>Pay Online-Help</value>
-    <comment>Оплата Онлайн-Помощи</comment>
+    <value>Оплата Онлайн-Помощи</value>
   </data>
   <data name="PayRoublesFormat" xml:space="preserve">
-    <value>Pay {0}{1}</value>
-    <comment>Pay {сумма к оплате}{знак рубля}</comment>
+    <value>Оплатить {0}{1}</value>
+    <comment>Оплатить {сумма к оплате}{знак рубля}</comment>
   </data>
   <data name="PaySecondHalfFormat" xml:space="preserve">
-    <value>Pay second half of order #{0}</value>
-    <comment>Pay second half of order #{номер заказа}</comment>
+    <value>Оплата второй половины суммы заказа №{0}</value>
+    <comment>Оплата второй половины суммы заказа №{номер заказа}</comment>
   </data>
 </root>

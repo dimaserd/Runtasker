@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ForMainHeader" xml:space="preserve">
-    <value>service for students</value>
+    <value>сервис помощи студентам</value>
   </data>
   <data name="MainHeader" xml:space="preserve">
-    <value>The First International Russian</value>
+    <value>Первый Международный Российский</value>
   </data>
   <data name="Slogan" xml:space="preserve">
-    <value>Fast, Affordable and of good quality</value>
+    <value>БЫСТРО. КАЧЕСТВЕННО. ДОСТУПНО.</value>
   </data>
 </root>

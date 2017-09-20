@@ -61,8 +61,10 @@
     <Compile Include="Email\CallToAction\CustomerEmailCallToActionModelBuilder.cs" />
     <Compile Include="Entities\ResourceString.cs" />
     <Compile Include="Entities\ResourceFileModel.cs" />
+    <Compile Include="Entities\ResourceStringType.cs" />
     <Compile Include="Enumerations\Lang.cs" />
     <Compile Include="Interfaces\IResourceContext.cs" />
+    <Compile Include="Models\Translations\TranslationModel.cs" />
     <Compile Include="Models\UICultureSwitcher.cs" />
     <Compile Include="Email\CallToAction\PerformerEmailCallToActionModelBuilder.cs" />
     <Compile Include="Models\BuilderModels.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Notification\GuestNotificationBuilder.cs" />
     <Compile Include="Notification\PerformerOrderNotificationBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\LocaleBuilderSettings.cs" />
     <Compile Include="Statics\LanguageStatic.cs" />
     <Compile Include="Views\Account\AccountViewModelBuilder.cs" />
     <Compile Include="Views\Account\OrderNotifications.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="Views\Manage\ManageLocaleViewModel.cs" />
     <Compile Include="Views\Order\OrderViewModelBuilder.cs" />
     <Compile Include="Views\Payment\PaymentViewModelBuilder.cs" />
+    <Compile Include="Workers\ResourceCopyWorker.cs" />
     <Compile Include="Workers\ResourceModelCreator.cs" />
   </ItemGroup>
   <ItemGroup>

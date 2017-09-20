@@ -117,41 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActionDesc3" xml:space="preserve">
+    <value>на Runtasker</value>
+  </data>
   <data name="ActionDescFormat" xml:space="preserve">
-    <value>Here you can create your first {0} on Runtasker!</value>
-    <comment>Here you can create your first {order} on Runtasker!</comment>
+    <value>Здесь вы можете сделать свой первый {0} на Runtasker!</value>
+    <comment>Здесь вы можете сделать свой первый {заказ} на Runtasker!</comment>
   </data>
   <data name="ActionDescMini" xml:space="preserve">
-    <value>Creating an order</value>
+    <value>Создание заказа</value>
   </data>
   <data name="ActionDescToMark" xml:space="preserve">
-    <value>order</value>
+    <value>заказ</value>
   </data>
   <data name="ActiveNav" xml:space="preserve">
-    <value>Create Order</value>
+    <value>Создать заказ</value>
   </data>
   <data name="BtnText" xml:space="preserve">
-    <value>Create Order</value>
+    <value>Создать заказ</value>
   </data>
   <data name="DescriptionError" xml:space="preserve">
-    <value>Describe your order, please!</value>
+    <value>Пожалуйста, опишите ваш заказ!</value>
   </data>
   <data name="DescriptionPlaceholder" xml:space="preserve">
-    <value>Describe your order here</value>
+    <value>Опишите ваш заказ здесь</value>
   </data>
   <data name="EmailError" xml:space="preserve">
-    <value>Check your email address, please!</value>
+    <value>Пожалуйста, проверьте введенный вами электронный адрес!</value>
   </data>
   <data name="HomeNav" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="InfoText" xml:space="preserve">
-    <value>If you already have an account, please sign in. This page is for creating an order and simultaneous registration.</value>
+    <value>Если у вас уже есть учетная запись, пожалуйста авторизуйтесь. Данная страница предназначена для регистрации и одновременного создания заказа.</value>
   </data>
   <data name="NameError" xml:space="preserve">
-    <value>Your name is too short, please enter your full name or nickname!</value>
+    <value>Слишком короткое имя, пожалуйста, введите свое полное имя или псевдоним!</value>
   </data>
   <data name="OtherSubjectError" xml:space="preserve">
-    <value>Please enter your subject or select an existing one from the list!</value>
+    <value>Пожалуйста, укажите ваш предмет, или выберите существующий из списка!</value>
   </data>
 </root>

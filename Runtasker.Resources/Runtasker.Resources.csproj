@@ -49,55 +49,85 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\OrderActions\OrderActionsRes.Designer.cs">
+      <DependentUpon>OrderActionsRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Actions\OrderActions\OrderActionsRes.ru-RU.Designer.cs">
       <DependentUpon>OrderActionsRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Actions\OrderActions\OrderActionsRes.Designer.cs">
+    <Compile Include="Actions\OrderActions\OrderActionsRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OrderActionsRes.resx</DependentUpon>
+      <DependentUpon>OrderActionsRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Account\AccountRes.Designer.cs">
+      <DependentUpon>AccountRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Controllers\Account\AccountRes.ru-RU.Designer.cs">
       <DependentUpon>AccountRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Controllers\Account\AccountRes.Designer.cs">
+    <Compile Include="Controllers\Account\AccountRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AccountRes.resx</DependentUpon>
+      <DependentUpon>AccountRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Email\Account\AccountEmRes.Designer.cs">
+      <DependentUpon>AccountEmRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Email\Account\AccountEmRes.ru-RU.Designer.cs">
       <DependentUpon>AccountEmRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Email\Account\AccountEmRes.Designer.cs">
+    <Compile Include="Email\Account\AccountEmRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AccountEmRes.resx</DependentUpon>
+      <DependentUpon>AccountEmRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Email\OrderCustomer\CustEmailNotRes.Designer.cs">
+      <DependentUpon>CustEmailNotRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Email\OrderCustomer\CustEmailNotRes.ru-RU.Designer.cs">
       <DependentUpon>CustEmailNotRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Email\OrderCustomer\CustEmailNotRes.Designer.cs">
+    <Compile Include="Email\OrderCustomer\CustEmailNotRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CustEmailNotRes.resx</DependentUpon>
+      <DependentUpon>CustEmailNotRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Email\OrderPerformer\PerformerOrderEmRes.Designer.cs">
+      <DependentUpon>PerformerOrderEmRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Email\OrderPerformer\PerformerOrderEmRes.ru-RU.Designer.cs">
       <DependentUpon>PerformerOrderEmRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Email\OrderPerformer\PerformerOrderEmRes.Designer.cs">
+    <Compile Include="Email\OrderPerformer\PerformerOrderEmRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PerformerOrderEmRes.resx</DependentUpon>
+      <DependentUpon>PerformerOrderEmRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Order\OrderResource.en-GB.Designer.cs">
+      <DependentUpon>OrderResource.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Entities\Order\OrderResource.Designer.cs">
       <DependentUpon>OrderResource.resx</DependentUpon>
@@ -114,28 +144,53 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OrderResource.zh-CN.resx</DependentUpon>
     </Compile>
+    <Compile Include="Enumerations\OrderActionType\OrderActionTypeRes.en-GB.Designer.cs">
+      <DependentUpon>OrderActionTypeRes.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Enumerations\OrderActionType\OrderActionTypeRes.ru-RU.Designer.cs">
+      <DependentUpon>OrderActionTypeRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Enumerations\OrderActionType\OrderActionTypeRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>OrderActionTypeRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="HtmlEmail\SocialAndContact\SocContactRes.Designer.cs">
+      <DependentUpon>SocContactRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="HtmlEmail\SocialAndContact\SocContactRes.ru-RU.Designer.cs">
       <DependentUpon>SocContactRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="HtmlEmail\SocialAndContact\SocContactRes.Designer.cs">
+    <Compile Include="HtmlEmail\SocialAndContact\SocContactRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SocContactRes.resx</DependentUpon>
+      <DependentUpon>SocContactRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="InfoModel\InfoModelRes.Designer.cs">
+      <DependentUpon>InfoModelRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="InfoModel\InfoModelRes.ru-RU.Designer.cs">
       <DependentUpon>InfoModelRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="InfoModel\InfoModelRes.Designer.cs">
-      <DependentUpon>InfoModelRes.resx</DependentUpon>
+    <Compile Include="InfoModel\InfoModelRes.en-GB.Designer.cs">
+      <DependentUpon>InfoModelRes.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\Account\LoginModel\AccountRes.Designer.cs">
+      <DependentUpon>AccountRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -144,60 +199,90 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Models\Account\LoginModel\AccountRes.Designer.cs">
+    <Compile Include="Models\Account\LoginModel\AccountRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AccountRes.resx</DependentUpon>
+      <DependentUpon>AccountRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerOrderModels\CustOrderModelsRes.Designer.cs">
+      <DependentUpon>CustOrderModelsRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Models\CustomerOrderModels\CustOrderModelsRes.ru-RU.Designer.cs">
       <DependentUpon>CustOrderModelsRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Models\CustomerOrderModels\CustOrderModelsRes.Designer.cs">
+    <Compile Include="Models\CustomerOrderModels\CustOrderModelsRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CustOrderModelsRes.resx</DependentUpon>
+      <DependentUpon>CustOrderModelsRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeModels\Contact\ContactRes.en-GB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactRes.en-GB.resx</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeModels\Contact\ContactRes.Designer.cs">
+      <DependentUpon>ContactRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ContactRes.resx</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeModels\Contact\ContactRes.ru-RU.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ContactRes.ru-RU.resx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ManageModels\ManageModelRes.Designer.cs">
+      <DependentUpon>ManageModelRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Models\ManageModels\ManageModelRes.ru-RU.Designer.cs">
       <DependentUpon>ManageModelRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Models\ManageModels\ManageModelRes.Designer.cs">
+    <Compile Include="Models\ManageModels\ManageModelRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ManageModelRes.resx</DependentUpon>
+      <DependentUpon>ManageModelRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderModels\CreateOrder\CreateOrder.Designer.cs">
+      <DependentUpon>CreateOrder.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Models\OrderModels\CreateOrder\CreateOrder.ru-RU.Designer.cs">
       <DependentUpon>CreateOrder.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Models\OrderModels\CreateOrder\CreateOrder.Designer.cs">
+    <Compile Include="Models\OrderModels\CreateOrder\CreateOrder.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CreateOrder.resx</DependentUpon>
+      <DependentUpon>CreateOrder.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderModels\OnlineOrder\OnlineOrderRes.Designer.cs">
+      <DependentUpon>OnlineOrderRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Models\OrderModels\OnlineOrder\OnlineOrderRes.ru-RU.Designer.cs">
       <DependentUpon>OnlineOrderRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Models\OrderModels\OnlineOrder\OnlineOrderRes.Designer.cs">
+    <Compile Include="Models\OrderModels\OnlineOrder\OnlineOrderRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OnlineOrderRes.resx</DependentUpon>
+      <DependentUpon>OnlineOrderRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderModels\RegAndCreate\RegAndCreateRes.Designer.cs">
+      <DependentUpon>RegAndCreateRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Models\OrderModels\RegAndCreate\RegAndCreateRes.zh-CN.Designer.cs">
       <DependentUpon>RegAndCreateRes.zh-CN.resx</DependentUpon>
@@ -209,191 +294,281 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Models\OrderModels\RegAndCreate\RegAndCreateRes.Designer.cs">
+    <Compile Include="Models\OrderModels\RegAndCreate\RegAndCreateRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RegAndCreateRes.resx</DependentUpon>
+      <DependentUpon>RegAndCreateRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Namers\Payment\PaymentNamerRes.Designer.cs">
+      <DependentUpon>PaymentNamerRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Namers\Payment\PaymentNamerRes.ru-RU.Designer.cs">
       <DependentUpon>PaymentNamerRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Namers\Payment\PaymentNamerRes.Designer.cs">
+    <Compile Include="Namers\Payment\PaymentNamerRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PaymentNamerRes.resx</DependentUpon>
+      <DependentUpon>PaymentNamerRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\AccountMethods\AccountRes.Designer.cs">
+      <DependentUpon>AccountRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Notifications\AccountMethods\AccountRes.ru-RU.Designer.cs">
       <DependentUpon>AccountRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Notifications\AccountMethods\AccountRes.Designer.cs">
+    <Compile Include="Notifications\AccountMethods\AccountRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AccountRes.resx</DependentUpon>
+      <DependentUpon>AccountRes.en-GB.resx</DependentUpon>
     </Compile>
     <Compile Include="Notifications\Anonymous\AnonNotRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AnonNotRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Notifications\CustomerOrderErrorMethods\CustOrderErrorRes.Designer.cs">
+      <DependentUpon>CustOrderErrorRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Notifications\CustomerOrderErrorMethods\CustOrderErrorRes.ru-RU.Designer.cs">
       <DependentUpon>CustOrderErrorRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Notifications\CustomerOrderErrorMethods\CustOrderErrorRes.Designer.cs">
+    <Compile Include="Notifications\CustomerOrderErrorMethods\CustOrderErrorRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CustOrderErrorRes.resx</DependentUpon>
+      <DependentUpon>CustOrderErrorRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\CustomerOrderMethods\CustomerOrder.Designer.cs">
+      <DependentUpon>CustomerOrder.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Notifications\CustomerOrderMethods\CustomerOrder.ru-RU.Designer.cs">
       <DependentUpon>CustomerOrder.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Notifications\CustomerOrderMethods\CustomerOrder.Designer.cs">
+    <Compile Include="Notifications\CustomerOrderMethods\CustomerOrder.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CustomerOrder.resx</DependentUpon>
+      <DependentUpon>CustomerOrder.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\FileMethods\FileNotRes.Designer.cs">
+      <DependentUpon>FileNotRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Notifications\FileMethods\FileNotRes.ru-RU.Designer.cs">
       <DependentUpon>FileNotRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Notifications\FileMethods\FileNotRes.Designer.cs">
+    <Compile Include="Notifications\FileMethods\FileNotRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FileNotRes.resx</DependentUpon>
+      <DependentUpon>FileNotRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\GuestNotifications\GuestNotRes.Designer.cs">
+      <DependentUpon>GuestNotRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Notifications\GuestNotifications\GuestNotRes.ru-RU.Designer.cs">
       <DependentUpon>GuestNotRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Notifications\GuestNotifications\GuestNotRes.Designer.cs">
+    <Compile Include="Notifications\GuestNotifications\GuestNotRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GuestNotRes.resx</DependentUpon>
+      <DependentUpon>GuestNotRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\PaymentMethods\PaymentNotRes.Designer.cs">
+      <DependentUpon>PaymentNotRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Notifications\PaymentMethods\PaymentNotRes.ru-RU.Designer.cs">
       <DependentUpon>PaymentNotRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Notifications\PaymentMethods\PaymentNotRes.Designer.cs">
+    <Compile Include="Notifications\PaymentMethods\PaymentNotRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PaymentNotRes.resx</DependentUpon>
+      <DependentUpon>PaymentNotRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\PerformerOrderMethods\PerformerOrderNotRes.Designer.cs">
+      <DependentUpon>PerformerOrderNotRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Notifications\PerformerOrderMethods\PerformerOrderNotRes.ru-RU.Designer.cs">
       <DependentUpon>PerformerOrderNotRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Notifications\PerformerOrderMethods\PerformerOrderNotRes.Designer.cs">
+    <Compile Include="Notifications\PerformerOrderMethods\PerformerOrderNotRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PerformerOrderNotRes.resx</DependentUpon>
+      <DependentUpon>PerformerOrderNotRes.en-GB.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIExtensions\Orders\OrderEntityRes.Designer.cs">
+      <DependentUpon>OrderEntityRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="UIExtensions\Orders\OrderEntityRes.ru-RU.Designer.cs">
       <DependentUpon>OrderEntityRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="UIExtensions\Orders\OrderEntityRes.Designer.cs">
+    <Compile Include="UIExtensions\Orders\OrderEntityRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OrderEntityRes.resx</DependentUpon>
+      <DependentUpon>OrderEntityRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\ConfirmEmail\ConfirmEmailRes.Designer.cs">
+      <DependentUpon>ConfirmEmailRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Account\ConfirmEmail\ConfirmEmailRes.ru-RU.Designer.cs">
       <DependentUpon>ConfirmEmailRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Account\ConfirmEmail\ConfirmEmailRes.Designer.cs">
+    <Compile Include="Views\Account\ConfirmEmail\ConfirmEmailRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConfirmEmailRes.resx</DependentUpon>
+      <DependentUpon>ConfirmEmailRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\ExternalLoginConfirmation\ExtLoginConfirm.Designer.cs">
+      <DependentUpon>ExtLoginConfirm.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Account\ExternalLoginConfirmation\ExtLoginConfirm.ru-RU.Designer.cs">
       <DependentUpon>ExtLoginConfirm.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Account\ExternalLoginConfirmation\ExtLoginConfirm.Designer.cs">
+    <Compile Include="Views\Account\ExternalLoginConfirmation\ExtLoginConfirm.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ExtLoginConfirm.resx</DependentUpon>
+      <DependentUpon>ExtLoginConfirm.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\ForgotPassword\ForgotPassRes.Designer.cs">
+      <DependentUpon>ForgotPassRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Account\ForgotPassword\ForgotPassRes.ru-RU.Designer.cs">
       <DependentUpon>ForgotPassRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Account\ForgotPassword\ForgotPassRes.Designer.cs">
+    <Compile Include="Views\Account\ForgotPassword\ForgotPassRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ForgotPassRes.resx</DependentUpon>
+      <DependentUpon>ForgotPassRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\LoginList\LoginListRes.Designer.cs">
+      <DependentUpon>LoginListRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Account\LoginList\LoginListRes.ru-RU.Designer.cs">
       <DependentUpon>LoginListRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Account\LoginList\LoginListRes.Designer.cs">
+    <Compile Include="Views\Account\LoginList\LoginListRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LoginListRes.resx</DependentUpon>
+      <DependentUpon>LoginListRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Login\Login.Designer.cs">
+      <DependentUpon>Login.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Account\Login\Login.ru-RU.Designer.cs">
       <DependentUpon>Login.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Account\Login\Login.Designer.cs">
+    <Compile Include="Views\Account\Login\Login.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Login.resx</DependentUpon>
+      <DependentUpon>Login.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Register\RegisterRes.Designer.cs">
+      <DependentUpon>RegisterRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Account\Register\RegisterRes.ru-RU.Designer.cs">
       <DependentUpon>RegisterRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Account\Register\RegisterRes.Designer.cs">
+    <Compile Include="Views\Account\Register\RegisterRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RegisterRes.resx</DependentUpon>
+      <DependentUpon>RegisterRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\ResetPasswordConfirmation\ResetPassConfRes.Designer.cs">
+      <DependentUpon>ResetPassConfRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Account\ResetPasswordConfirmation\ResetPassConfRes.ru-RU.Designer.cs">
       <DependentUpon>ResetPassConfRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Account\ResetPasswordConfirmation\ResetPassConfRes.Designer.cs">
+    <Compile Include="Views\Account\ResetPasswordConfirmation\ResetPassConfRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ResetPassConfRes.resx</DependentUpon>
+      <DependentUpon>ResetPassConfRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\ResetPassword\ResetPassRes.Designer.cs">
+      <DependentUpon>ResetPassRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Account\ResetPassword\ResetPassRes.ru-RU.Designer.cs">
       <DependentUpon>ResetPassRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Account\ResetPassword\ResetPassRes.Designer.cs">
+    <Compile Include="Views\Account\ResetPassword\ResetPassRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ResetPassRes.resx</DependentUpon>
+      <DependentUpon>ResetPassRes.en-GB.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\Home\AboutUs\AboutUsRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AboutUsRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Comments\CommentsRes.Designer.cs">
+      <DependentUpon>CommentsRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Home\Comments\CommentsRes.zh-CN.Designer.cs">
       <DependentUpon>CommentsRes.zh-CN.resx</DependentUpon>
@@ -405,20 +580,30 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Home\Comments\CommentsRes.Designer.cs">
+    <Compile Include="Views\Home\Comments\CommentsRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CommentsRes.resx</DependentUpon>
+      <DependentUpon>CommentsRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Contact\ContactViewRes.Designer.cs">
+      <DependentUpon>ContactViewRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Home\Contact\ContactViewRes.ru-RU.Designer.cs">
       <DependentUpon>ContactViewRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Home\Contact\ContactViewRes.Designer.cs">
+    <Compile Include="Views\Home\Contact\ContactViewRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ContactViewRes.resx</DependentUpon>
+      <DependentUpon>ContactViewRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Index\Index.en-GB.Designer.cs">
+      <DependentUpon>Index.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Home\Index\Index.Designer.cs">
       <DependentUpon>Index.resx</DependentUpon>
@@ -435,133 +620,203 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.ru-RU.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Home\KnowPrice\KnowPriceRes.Designer.cs">
+      <DependentUpon>KnowPriceRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Home\KnowPrice\KnowPriceRes.ru-RU.Designer.cs">
       <DependentUpon>KnowPriceRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Home\KnowPrice\KnowPriceRes.Designer.cs">
+    <Compile Include="Views\Home\KnowPrice\KnowPriceRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KnowPriceRes.resx</DependentUpon>
+      <DependentUpon>KnowPriceRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\News\NewsRes.Designer.cs">
+      <DependentUpon>NewsRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Home\News\NewsRes.ru-RU.Designer.cs">
       <DependentUpon>NewsRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Home\News\NewsRes.Designer.cs">
+    <Compile Include="Views\Home\News\NewsRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NewsRes.resx</DependentUpon>
+      <DependentUpon>NewsRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Landing\AboutUs\AboutUsRes.Designer.cs">
+      <DependentUpon>AboutUsRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Landing\AboutUs\AboutUsRes.ru-RU.Designer.cs">
       <DependentUpon>AboutUsRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Landing\AboutUs\AboutUsRes.Designer.cs">
+    <Compile Include="Views\Landing\AboutUs\AboutUsRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AboutUsRes.resx</DependentUpon>
+      <DependentUpon>AboutUsRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Landing\Counters\CountersRes.Designer.cs">
+      <DependentUpon>CountersRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Landing\Counters\CountersRes.ru-RU.Designer.cs">
       <DependentUpon>CountersRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Landing\Counters\CountersRes.Designer.cs">
+    <Compile Include="Views\Landing\Counters\CountersRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CountersRes.resx</DependentUpon>
+      <DependentUpon>CountersRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Landing\Index\Index.Designer.cs">
+      <DependentUpon>Index.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Landing\Index\Index.ru-RU.Designer.cs">
       <DependentUpon>Index.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Landing\Index\Index.Designer.cs">
+    <Compile Include="Views\Landing\Index\Index.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Index.resx</DependentUpon>
+      <DependentUpon>Index.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Landing\Portfolio\PortfolioRes.Designer.cs">
+      <DependentUpon>PortfolioRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Landing\Portfolio\PortfolioRes.ru-RU.Designer.cs">
       <DependentUpon>PortfolioRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Landing\Portfolio\PortfolioRes.Designer.cs">
+    <Compile Include="Views\Landing\Portfolio\PortfolioRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PortfolioRes.resx</DependentUpon>
+      <DependentUpon>PortfolioRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Landing\Pricing\PricingRes.Designer.cs">
+      <DependentUpon>PricingRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Landing\Pricing\PricingRes.ru-RU.Designer.cs">
       <DependentUpon>PricingRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Landing\Pricing\PricingRes.Designer.cs">
+    <Compile Include="Views\Landing\Pricing\PricingRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PricingRes.resx</DependentUpon>
+      <DependentUpon>PricingRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Landing\Slider\SliderRes.Designer.cs">
+      <DependentUpon>SliderRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Landing\Slider\SliderRes.ru-RU.Designer.cs">
       <DependentUpon>SliderRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Landing\Slider\SliderRes.Designer.cs">
+    <Compile Include="Views\Landing\Slider\SliderRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SliderRes.resx</DependentUpon>
+      <DependentUpon>SliderRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manage\ChangePassword\ChangePassRes.Designer.cs">
+      <DependentUpon>ChangePassRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Manage\ChangePassword\ChangePassRes.ru-RU.Designer.cs">
       <DependentUpon>ChangePassRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Manage\ChangePassword\ChangePassRes.Designer.cs">
+    <Compile Include="Views\Manage\ChangePassword\ChangePassRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ChangePassRes.resx</DependentUpon>
+      <DependentUpon>ChangePassRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manage\Index\IndexRes.Designer.cs">
+      <DependentUpon>IndexRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Manage\Index\IndexRes.ru-RU.Designer.cs">
       <DependentUpon>IndexRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Manage\Index\IndexRes.Designer.cs">
+    <Compile Include="Views\Manage\Index\IndexRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IndexRes.resx</DependentUpon>
+      <DependentUpon>IndexRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manage\ManageLogins\ManageLoginsRes.Designer.cs">
+      <DependentUpon>ManageLoginsRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Manage\ManageLogins\ManageLoginsRes.ru-RU.Designer.cs">
       <DependentUpon>ManageLoginsRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Manage\ManageLogins\ManageLoginsRes.Designer.cs">
+    <Compile Include="Views\Manage\ManageLogins\ManageLoginsRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ManageLoginsRes.resx</DependentUpon>
+      <DependentUpon>ManageLoginsRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manage\Profile\ProfilePageRes.Designer.cs">
+      <DependentUpon>ProfilePageRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Manage\Profile\ProfilePageRes.ru-RU.Designer.cs">
       <DependentUpon>ProfilePageRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Manage\Profile\ProfilePageRes.Designer.cs">
+    <Compile Include="Views\Manage\Profile\ProfilePageRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ProfilePageRes.resx</DependentUpon>
+      <DependentUpon>ProfilePageRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manage\SetPassword\SetPassRes.en-GB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SetPassRes.en-GB.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\Manage\SetPassword\SetPassRes.Designer.cs">
+      <DependentUpon>SetPassRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SetPassRes.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\Manage\SetPassword\SetPassRes.ru-RU.Designer.cs">
       <DependentUpon>SetPassRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Message\ActivePanel\ActivePanel.Designer.cs">
+      <DependentUpon>ActivePanel.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -570,140 +825,225 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Message\ActivePanel\ActivePanel.Designer.cs">
+    <Compile Include="Views\Message\ActivePanel\ActivePanel.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ActivePanel.resx</DependentUpon>
+      <DependentUpon>ActivePanel.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders\AddDescription\AddDescriptionRes.Designer.cs">
+      <DependentUpon>AddDescriptionRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Orders\AddDescription\AddDescriptionRes.ru-RU.Designer.cs">
       <DependentUpon>AddDescriptionRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Orders\AddDescription\AddDescriptionRes.Designer.cs">
+    <Compile Include="Views\Orders\AddDescription\AddDescriptionRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AddDescriptionRes.resx</DependentUpon>
+      <DependentUpon>AddDescriptionRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders\AddFiles\AddFilesRes.Designer.cs">
+      <DependentUpon>AddFilesRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Orders\AddFiles\AddFilesRes.ru-RU.Designer.cs">
       <DependentUpon>AddFilesRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Orders\AddFiles\AddFilesRes.Designer.cs">
+    <Compile Include="Views\Orders\AddFiles\AddFilesRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AddFilesRes.resx</DependentUpon>
+      <DependentUpon>AddFilesRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders\Create\Create.Designer.cs">
+      <DependentUpon>Create.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Orders\Create\Create.ru-RU.Designer.cs">
       <DependentUpon>Create.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Orders\Create\Create.Designer.cs">
+    <Compile Include="Views\Orders\Create\Create.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Create.resx</DependentUpon>
+      <DependentUpon>Create.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders\DeleteOrder\DeleteOrderRes.Designer.cs">
+      <DependentUpon>DeleteOrderRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Orders\DeleteOrder\DeleteOrderRes.ru-RU.Designer.cs">
       <DependentUpon>DeleteOrderRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Orders\DeleteOrder\DeleteOrderRes.Designer.cs">
+    <Compile Include="Views\Orders\DeleteOrder\DeleteOrderRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DeleteOrderRes.resx</DependentUpon>
+      <DependentUpon>DeleteOrderRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders\Index\Index.Designer.cs">
+      <DependentUpon>Index.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Orders\Index\Index.ru-RU.Designer.cs">
       <DependentUpon>Index.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Orders\Index\Index.Designer.cs">
+    <Compile Include="Views\Orders\Index\Index.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Index.resx</DependentUpon>
+      <DependentUpon>Index.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders\MiniPanel\MiniPanelRes.Designer.cs">
+      <DependentUpon>MiniPanelRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Orders\MiniPanel\MiniPanelRes.ru-RU.Designer.cs">
       <DependentUpon>MiniPanelRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Orders\MiniPanel\MiniPanelRes.Designer.cs">
+    <Compile Include="Views\Orders\MiniPanel\MiniPanelRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MiniPanelRes.resx</DependentUpon>
+      <DependentUpon>MiniPanelRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders\OnlineHelp\OnlineHelp.Designer.cs">
+      <DependentUpon>OnlineHelp.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Orders\OnlineHelp\OnlineHelp.ru-RU.Designer.cs">
       <DependentUpon>OnlineHelp.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Orders\OnlineHelp\OnlineHelp.Designer.cs">
+    <Compile Include="Views\Orders\OnlineHelp\OnlineHelp.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OnlineHelp.resx</DependentUpon>
+      <DependentUpon>OnlineHelp.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders\Pay\PayRes.Designer.cs">
+      <DependentUpon>PayRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Orders\Pay\PayRes.ru-RU.Designer.cs">
       <DependentUpon>PayRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Orders\Pay\PayRes.Designer.cs">
+    <Compile Include="Views\Orders\Pay\PayRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PayRes.resx</DependentUpon>
+      <DependentUpon>PayRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders\Rating\RatingRes.Designer.cs">
+      <DependentUpon>RatingRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Orders\Rating\RatingRes.ru-RU.Designer.cs">
       <DependentUpon>RatingRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Orders\Rating\RatingRes.Designer.cs">
+    <Compile Include="Views\Orders\Rating\RatingRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RatingRes.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Payment\Failed\FailedRes.ru-Ru.Designer.cs">
-      <DependentUpon>FailedRes.ru-Ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
+      <DependentUpon>RatingRes.en-GB.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\Payment\Failed\FailedRes.Designer.cs">
+      <DependentUpon>FailedRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FailedRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Payment\Failed\FailedRes.ru-RU1.Designer.cs">
+      <DependentUpon>FailedRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Payment\Failed\FailedRes.en-GB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FailedRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Payment\Index\IndexRes.Designer.cs">
+      <DependentUpon>IndexRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Payment\Index\IndexRes.ru-RU.Designer.cs">
       <DependentUpon>IndexRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Payment\Index\IndexRes.Designer.cs">
+    <Compile Include="Views\Payment\Index\IndexRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IndexRes.resx</DependentUpon>
+      <DependentUpon>IndexRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Payment\Robokassa\RkassaRes.en-GB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RkassaRes.en-GB.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\Payment\Robokassa\RkassaRes.Designer.cs">
+      <DependentUpon>RkassaRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RkassaRes.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\Payment\Robokassa\RkassaRes.ru-RU.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RkassaRes.ru-RU.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Payment\Succeeded\SucceededRes.Designer.cs">
+      <DependentUpon>SucceededRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Payment\Succeeded\SucceededRes.ru-RU.Designer.cs">
       <DependentUpon>SucceededRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Payment\Succeeded\SucceededRes.Designer.cs">
+    <Compile Include="Views\Payment\Succeeded\SucceededRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SucceededRes.resx</DependentUpon>
+      <DependentUpon>SucceededRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Payment\YandexInvoice\YaInvoiceRes.en-GB.Designer.cs">
+      <DependentUpon>YaInvoiceRes.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Payment\YandexInvoice\YaInvoiceRes.ru-RU.Designer.cs">
+      <DependentUpon>YaInvoiceRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Payment\YandexInvoice\YaInvoiceRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YaInvoiceRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Payment\YandexKassa\YandexKassaRes.en-GB.Designer.cs">
+      <DependentUpon>YandexKassaRes.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Payment\YandexKassa\YandexKassaRes.Designer.cs">
       <DependentUpon>YandexKassaRes.resx</DependentUpon>
@@ -715,45 +1055,70 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Views\Payment\Yandex\YandexRes.Designer.cs">
+      <DependentUpon>YandexRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Payment\Yandex\YandexRes.ru-RU.Designer.cs">
       <DependentUpon>YandexRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Payment\Yandex\YandexRes.Designer.cs">
+    <Compile Include="Views\Payment\Yandex\YandexRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>YandexRes.resx</DependentUpon>
+      <DependentUpon>YandexRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Chat\ChatRes.Designer.cs">
+      <DependentUpon>ChatRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Shared\Chat\ChatRes.ru-RU.Designer.cs">
       <DependentUpon>ChatRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Shared\Chat\ChatRes.Designer.cs">
+    <Compile Include="Views\Shared\Chat\ChatRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ChatRes.resx</DependentUpon>
+      <DependentUpon>ChatRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Layout\Layout.Designer.cs">
+      <DependentUpon>Layout.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Shared\Layout\Layout.ru-RU.Designer.cs">
       <DependentUpon>Layout.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Shared\Layout\Layout.Designer.cs">
+    <Compile Include="Views\Shared\Layout\Layout.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Layout.resx</DependentUpon>
+      <DependentUpon>Layout.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\ModalLayout\ModalRes.Designer.cs">
+      <DependentUpon>ModalRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Shared\ModalLayout\ModalRes.ru-RU.Designer.cs">
       <DependentUpon>ModalRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Shared\ModalLayout\ModalRes.Designer.cs">
+    <Compile Include="Views\Shared\ModalLayout\ModalRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModalRes.resx</DependentUpon>
+      <DependentUpon>ModalRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\NewLayout\NewLayoutRes.Designer.cs">
+      <DependentUpon>NewLayoutRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Shared\NewLayout\NewLayoutRes.zh-CN.Designer.cs">
       <DependentUpon>NewLayoutRes.zh-CN.resx</DependentUpon>
@@ -765,10 +1130,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Shared\NewLayout\NewLayoutRes.Designer.cs">
+    <Compile Include="Views\Shared\NewLayout\NewLayoutRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NewLayoutRes.resx</DependentUpon>
+      <DependentUpon>NewLayoutRes.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\NewLoginPartial\NewLoginPartial.Designer.cs">
+      <DependentUpon>NewLoginPartial.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Shared\NewLoginPartial\NewLoginPartial.zh-CN.Designer.cs">
       <DependentUpon>NewLoginPartial.zh-CN.resx</DependentUpon>
@@ -780,52 +1150,76 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Shared\NewLoginPartial\NewLoginPartial.Designer.cs">
+    <Compile Include="Views\Shared\NewLoginPartial\NewLoginPartial.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NewLoginPartial.resx</DependentUpon>
+      <DependentUpon>NewLoginPartial.en-GB.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Actions\OrderActions\OrderActionsRes.ru-RU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>OrderActionsRes.ru-RU.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Actions\OrderActions\OrderActionsRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OrderActionsRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controllers\Account\AccountRes.ru-RU.resx">
+    <EmbeddedResource Include="Actions\OrderActions\OrderActionsRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AccountRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>OrderActionsRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Actions\OrderActions\OrderActionsRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrderActionsRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Controllers\Account\AccountRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Email\Account\AccountEmRes.ru-RU.resx">
+    <EmbeddedResource Include="Controllers\Account\AccountRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AccountEmRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>AccountRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Account\AccountRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Email\Account\AccountEmRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountEmRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Email\OrderCustomer\CustEmailNotRes.ru-RU.resx">
+    <EmbeddedResource Include="Email\Account\AccountEmRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>CustEmailNotRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>AccountEmRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Email\Account\AccountEmRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountEmRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Email\OrderCustomer\CustEmailNotRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CustEmailNotRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Email\OrderPerformer\PerformerOrderEmRes.ru-RU.resx">
+    <EmbeddedResource Include="Email\OrderCustomer\CustEmailNotRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>PerformerOrderEmRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>CustEmailNotRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Email\OrderCustomer\CustEmailNotRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CustEmailNotRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Email\OrderPerformer\PerformerOrderEmRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PerformerOrderEmRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Email\OrderPerformer\PerformerOrderEmRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PerformerOrderEmRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Email\OrderPerformer\PerformerOrderEmRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PerformerOrderEmRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Order\OrderResource.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrderResource.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Entities\Order\OrderResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -839,41 +1233,69 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OrderResource.zh-CN.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Enumerations\OrderActionType\OrderActionTypeRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrderActionTypeRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enumerations\OrderActionType\OrderActionTypeRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrderActionTypeRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Enumerations\OrderActionType\OrderActionTypeRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OrderActionTypeRes.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HtmlEmail\SocialAndContact\SocContactRes.ru-RU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SocContactRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="HtmlEmail\SocialAndContact\SocContactRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SocContactRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="InfoModel\InfoModelRes.ru-RU.resx">
+    <EmbeddedResource Include="HtmlEmail\SocialAndContact\SocContactRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>InfoModelRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>SocContactRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HtmlEmail\SocialAndContact\SocContactRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SocContactRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="InfoModel\InfoModelRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>InfoModelRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\Account\LoginModel\AccountRes.ru-RU.resx">
+    <EmbeddedResource Include="InfoModel\InfoModelRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AccountRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>InfoModelRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoModel\InfoModelRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InfoModelRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Account\LoginModel\AccountRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\CustomerOrderModels\CustOrderModelsRes.ru-RU.resx">
+    <EmbeddedResource Include="Models\Account\LoginModel\AccountRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>CustOrderModelsRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>AccountRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Account\LoginModel\AccountRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\CustomerOrderModels\CustOrderModelsRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CustOrderModelsRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\CustomerOrderModels\CustOrderModelsRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CustOrderModelsRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\CustomerOrderModels\CustOrderModelsRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CustOrderModelsRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\HomeModels\Contact\ContactRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContactRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\HomeModels\Contact\ContactRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -883,38 +1305,54 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ContactRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\ManageModels\ManageModelRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ManageModelRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\ManageModels\ManageModelRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ManageModelRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\ManageModels\ManageModelRes.resx">
+    <EmbeddedResource Include="Models\ManageModels\ManageModelRes.en-GB.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ManageModelRes.Designer.cs</LastGenOutput>
+      <LastGenOutput>ManageModelRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\OrderModels\CreateOrder\CreateOrder.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateOrder.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\OrderModels\CreateOrder\CreateOrder.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CreateOrder.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\OrderModels\CreateOrder\CreateOrder.resx">
+    <EmbeddedResource Include="Models\OrderModels\CreateOrder\CreateOrder.en-GB.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>CreateOrder.Designer.cs</LastGenOutput>
+      <LastGenOutput>CreateOrder.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Notifications\AccountMethods\AccountRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountRes.ru-RU.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Notifications\AccountMethods\AccountRes.resx">
+    <None Include="Notifications\AccountMethods\AccountRes.en-GB.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AccountRes.Designer.cs</LastGenOutput>
+      <LastGenOutput>AccountRes.en-GB.Designer.cs</LastGenOutput>
     </None>
+    <EmbeddedResource Include="Models\OrderModels\OnlineOrder\OnlineOrderRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OnlineOrderRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\OrderModels\OnlineOrder\OnlineOrderRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OnlineOrderRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\OrderModels\OnlineOrder\OnlineOrderRes.resx">
+    <EmbeddedResource Include="Models\OrderModels\OnlineOrder\OnlineOrderRes.en-GB.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>OnlineOrderRes.Designer.cs</LastGenOutput>
+      <LastGenOutput>OnlineOrderRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\OrderModels\RegAndCreate\RegAndCreateRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegAndCreateRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\OrderModels\RegAndCreate\RegAndCreateRes.zh-CN.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -924,145 +1362,218 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RegAndCreateRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\OrderModels\RegAndCreate\RegAndCreateRes.resx">
+    <EmbeddedResource Include="Models\OrderModels\RegAndCreate\RegAndCreateRes.en-GB.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>RegAndCreateRes.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Namers\Payment\PaymentNamerRes.ru-RU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>PaymentNamerRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>RegAndCreateRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Namers\Payment\PaymentNamerRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PaymentNamerRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Namers\Payment\PaymentNamerRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PaymentNamerRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Namers\Payment\PaymentNamerRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PaymentNamerRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Notifications\AccountMethods\AccountRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountRes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <EmbeddedResource Include="Notifications\Anonymous\AnonNotRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AnonNotRes.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Notifications\CustomerOrderErrorMethods\CustOrderErrorRes.ru-RU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>CustOrderErrorRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Notifications\CustomerOrderErrorMethods\CustOrderErrorRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CustOrderErrorRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Notifications\CustomerOrderMethods\CustomerOrder.ru-RU.resx">
+    <EmbeddedResource Include="Notifications\CustomerOrderErrorMethods\CustOrderErrorRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>CustomerOrder.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>CustOrderErrorRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notifications\CustomerOrderErrorMethods\CustOrderErrorRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CustOrderErrorRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Notifications\CustomerOrderMethods\CustomerOrder.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CustomerOrder.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Notifications\FileMethods\FileNotRes.ru-RU.resx">
+    <EmbeddedResource Include="Notifications\CustomerOrderMethods\CustomerOrder.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>FileNotRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>CustomerOrder.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notifications\CustomerOrderMethods\CustomerOrder.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CustomerOrder.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Notifications\FileMethods\FileNotRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FileNotRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Notifications\GuestNotifications\GuestNotRes.ru-RU.resx">
+    <EmbeddedResource Include="Notifications\FileMethods\FileNotRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>GuestNotRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>FileNotRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notifications\FileMethods\FileNotRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FileNotRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Notifications\GuestNotifications\GuestNotRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GuestNotRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Notifications\PaymentMethods\PaymentNotRes.ru-RU.resx">
+    <EmbeddedResource Include="Notifications\GuestNotifications\GuestNotRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>PaymentNotRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>GuestNotRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notifications\GuestNotifications\GuestNotRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GuestNotRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Notifications\PaymentMethods\PaymentNotRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PaymentNotRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Notifications\PerformerOrderMethods\PerformerOrderNotRes.ru-RU.resx">
+    <EmbeddedResource Include="Notifications\PaymentMethods\PaymentNotRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>PerformerOrderNotRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>PaymentNotRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notifications\PaymentMethods\PaymentNotRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PaymentNotRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Notifications\PerformerOrderMethods\PerformerOrderNotRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PerformerOrderNotRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIExtensions\Orders\OrderEntityRes.ru-RU.resx">
+    <EmbeddedResource Include="Notifications\PerformerOrderMethods\PerformerOrderNotRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>OrderEntityRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>PerformerOrderNotRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notifications\PerformerOrderMethods\PerformerOrderNotRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PerformerOrderNotRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UIExtensions\Orders\OrderEntityRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OrderEntityRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Account\ConfirmEmail\ConfirmEmailRes.ru-RU.resx">
+    <EmbeddedResource Include="UIExtensions\Orders\OrderEntityRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ConfirmEmailRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>OrderEntityRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIExtensions\Orders\OrderEntityRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrderEntityRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Account\ConfirmEmail\ConfirmEmailRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ConfirmEmailRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Account\ExternalLoginConfirmation\ExtLoginConfirm.ru-RU.resx">
+    <EmbeddedResource Include="Views\Account\ConfirmEmail\ConfirmEmailRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ExtLoginConfirm.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>ConfirmEmailRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\ConfirmEmail\ConfirmEmailRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfirmEmailRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Account\ExternalLoginConfirmation\ExtLoginConfirm.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ExtLoginConfirm.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Account\ForgotPassword\ForgotPassRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Account\ExternalLoginConfirmation\ExtLoginConfirm.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ForgotPassRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>ExtLoginConfirm.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\ExternalLoginConfirmation\ExtLoginConfirm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExtLoginConfirm.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Account\ForgotPassword\ForgotPassRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ForgotPassRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Account\LoginList\LoginListRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Account\ForgotPassword\ForgotPassRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>LoginListRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>ForgotPassRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\ForgotPassword\ForgotPassRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ForgotPassRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Account\LoginList\LoginListRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LoginListRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Account\Login\Login.ru-RU.resx">
+    <EmbeddedResource Include="Views\Account\LoginList\LoginListRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Login.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>LoginListRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\LoginList\LoginListRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginListRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Account\Login\Login.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Login.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Account\Register\RegisterRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Account\Login\Login.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>RegisterRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>Login.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\Login\Login.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Account\Register\RegisterRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RegisterRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Account\ResetPasswordConfirmation\ResetPassConfRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Account\Register\RegisterRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResetPassConfRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>RegisterRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\Register\RegisterRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegisterRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Account\ResetPasswordConfirmation\ResetPassConfRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResetPassConfRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Account\ResetPassword\ResetPassRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Account\ResetPasswordConfirmation\ResetPassConfRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResetPassRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>ResetPassConfRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\ResetPasswordConfirmation\ResetPassConfRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPassConfRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Account\ResetPassword\ResetPassRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResetPassRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\ResetPassword\ResetPassRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPassRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\ResetPassword\ResetPassRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPassRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\AboutUs\AboutUsRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AboutUsRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\Comments\CommentsRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommentsRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\Comments\CommentsRes.zh-CN.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -1072,17 +1583,25 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CommentsRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Home\Comments\CommentsRes.resx">
+    <EmbeddedResource Include="Views\Home\Comments\CommentsRes.en-GB.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>CommentsRes.Designer.cs</LastGenOutput>
+      <LastGenOutput>CommentsRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\Contact\ContactViewRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContactViewRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\Contact\ContactViewRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ContactViewRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Home\Contact\ContactViewRes.resx">
+    <EmbeddedResource Include="Views\Home\Contact\ContactViewRes.en-GB.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ContactViewRes.Designer.cs</LastGenOutput>
+      <LastGenOutput>ContactViewRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\Index\Index.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\Index\Index.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -1096,101 +1615,153 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Home\KnowPrice\KnowPriceRes.ru-RU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>KnowPriceRes.ru-RU.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\KnowPrice\KnowPriceRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>KnowPriceRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Home\News\NewsRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Home\KnowPrice\KnowPriceRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewsRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>KnowPriceRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\KnowPrice\KnowPriceRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>KnowPriceRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\News\NewsRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>NewsRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Landing\AboutUs\AboutUsRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Home\News\NewsRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AboutUsRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>NewsRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home\News\NewsRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NewsRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Landing\AboutUs\AboutUsRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AboutUsRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Landing\Counters\CountersRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Landing\AboutUs\AboutUsRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>CountersRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>AboutUsRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\AboutUs\AboutUsRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutUsRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Landing\Counters\CountersRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CountersRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Landing\Index\Index.ru-RU.resx">
+    <EmbeddedResource Include="Views\Landing\Counters\CountersRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Index.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>CountersRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Counters\CountersRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CountersRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Landing\Index\Index.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Landing\Portfolio\PortfolioRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Landing\Index\Index.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>PortfolioRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>Index.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Index\Index.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Landing\Portfolio\PortfolioRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PortfolioRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Landing\Pricing\PricingRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Landing\Portfolio\PortfolioRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>PricingRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>PortfolioRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Portfolio\PortfolioRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PortfolioRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Landing\Pricing\PricingRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PricingRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Landing\Slider\SliderRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Landing\Pricing\PricingRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SliderRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>PricingRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Pricing\PricingRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PricingRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Landing\Slider\SliderRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SliderRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Manage\ChangePassword\ChangePassRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Landing\Slider\SliderRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ChangePassRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>SliderRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Landing\Slider\SliderRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SliderRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\ChangePassword\ChangePassRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ChangePassRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Manage\Index\IndexRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Manage\ChangePassword\ChangePassRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>IndexRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>ChangePassRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Manage\ChangePassword\ChangePassRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChangePassRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\Index\IndexRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>IndexRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Manage\ManageLogins\ManageLoginsRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Manage\Index\IndexRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ManageLoginsRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>IndexRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Manage\Index\IndexRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>IndexRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\ManageLogins\ManageLoginsRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ManageLoginsRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Manage\Profile\ProfilePageRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Manage\ManageLogins\ManageLoginsRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ProfilePageRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>ManageLoginsRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Manage\ManageLogins\ManageLoginsRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ManageLoginsRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\Profile\ProfilePageRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ProfilePageRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Manage\Profile\ProfilePageRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfilePageRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Manage\Profile\ProfilePageRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfilePageRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Manage\SetPassword\SetPassRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SetPassRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\SetPassword\SetPassRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -1200,102 +1771,155 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SetPassRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Message\ActivePanel\ActivePanel.ru-RU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ActivePanel.ru-RU.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Message\ActivePanel\ActivePanel.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ActivePanel.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Orders\AddDescription\AddDescriptionRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Message\ActivePanel\ActivePanel.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AddDescriptionRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>ActivePanel.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Message\ActivePanel\ActivePanel.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ActivePanel.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orders\AddDescription\AddDescriptionRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AddDescriptionRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Orders\AddFiles\AddFilesRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Orders\AddDescription\AddDescriptionRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AddFilesRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>AddDescriptionRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orders\AddDescription\AddDescriptionRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddDescriptionRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orders\AddFiles\AddFilesRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AddFilesRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orders\AddFiles\AddFilesRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddFilesRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orders\AddFiles\AddFilesRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddFilesRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orders\Create\Create.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Create.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orders\Create\Create.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Create.ru-RU.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Orders\Create\Create.resx">
+    <EmbeddedResource Include="Views\Orders\Create\Create.en-GB.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Create.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Orders\DeleteOrder\DeleteOrderRes.ru-RU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>DeleteOrderRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>Create.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orders\DeleteOrder\DeleteOrderRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DeleteOrderRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Orders\Index\Index.ru-RU.resx">
+    <EmbeddedResource Include="Views\Orders\DeleteOrder\DeleteOrderRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Index.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>DeleteOrderRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orders\DeleteOrder\DeleteOrderRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DeleteOrderRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orders\Index\Index.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Orders\MiniPanel\MiniPanelRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Orders\Index\Index.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>MiniPanelRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>Index.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orders\Index\Index.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orders\MiniPanel\MiniPanelRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MiniPanelRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Orders\OnlineHelp\OnlineHelp.ru-RU.resx">
+    <EmbeddedResource Include="Views\Orders\MiniPanel\MiniPanelRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>OnlineHelp.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>MiniPanelRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orders\MiniPanel\MiniPanelRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MiniPanelRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orders\OnlineHelp\OnlineHelp.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OnlineHelp.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Orders\Pay\PayRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Orders\OnlineHelp\OnlineHelp.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>PayRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>OnlineHelp.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orders\OnlineHelp\OnlineHelp.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OnlineHelp.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orders\Pay\PayRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PayRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Orders\Rating\RatingRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Orders\Pay\PayRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>RatingRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>PayRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orders\Pay\PayRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PayRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orders\Rating\RatingRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RatingRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Payment\Failed\FailedRes.ru-Ru.resx">
+    <EmbeddedResource Include="Views\Orders\Rating\RatingRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>FailedRes.ru-Ru.Designer.cs</LastGenOutput>
+      <LastGenOutput>RatingRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orders\Rating\RatingRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RatingRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Payment\Failed\FailedRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FailedRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Payment\Index\IndexRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Payment\Failed\FailedRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>IndexRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>FailedRes.ru-RU1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\Failed\FailedRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FailedRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Payment\Index\IndexRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>IndexRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\Index\IndexRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>IndexRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\Index\IndexRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>IndexRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\Robokassa\RkassaRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RkassaRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Payment\Robokassa\RkassaRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -1305,13 +1929,33 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RkassaRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\Succeeded\SucceededRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SucceededRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Payment\Succeeded\SucceededRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SucceededRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Payment\Succeeded\SucceededRes.resx">
+    <EmbeddedResource Include="Views\Payment\Succeeded\SucceededRes.en-GB.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SucceededRes.Designer.cs</LastGenOutput>
+      <LastGenOutput>SucceededRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\YandexInvoice\YaInvoiceRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>YaInvoiceRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\YandexInvoice\YaInvoiceRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>YaInvoiceRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\YandexInvoice\YaInvoiceRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>YaInvoiceRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\YandexKassa\YandexKassaRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>YandexKassaRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Payment\YandexKassa\YandexKassaRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -1321,37 +1965,57 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>YandexKassaRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Payment\Yandex\YandexRes.ru-RU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>YandexRes.ru-RU.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Payment\Yandex\YandexRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>YandexRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Shared\Chat\ChatRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Payment\Yandex\YandexRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ChatRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>YandexRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\Yandex\YandexRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>YandexRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Shared\Chat\ChatRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ChatRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Shared\Layout\Layout.ru-RU.resx">
+    <EmbeddedResource Include="Views\Shared\Chat\ChatRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Layout.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>ChatRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\Chat\ChatRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChatRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Shared\Layout\Layout.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Layout.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Shared\ModalLayout\ModalRes.ru-RU.resx">
+    <EmbeddedResource Include="Views\Shared\Layout\Layout.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ModalRes.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>Layout.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\Layout\Layout.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Layout.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Shared\ModalLayout\ModalRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ModalRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\ModalLayout\ModalRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModalRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\ModalLayout\ModalRes.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModalRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\NewLayout\NewLayoutRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NewLayoutRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Shared\NewLayout\NewLayoutRes.zh-CN.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -1361,9 +2025,13 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>NewLayoutRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Shared\NewLayout\NewLayoutRes.resx">
+    <EmbeddedResource Include="Views\Shared\NewLayout\NewLayoutRes.en-GB.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewLayoutRes.Designer.cs</LastGenOutput>
+      <LastGenOutput>NewLayoutRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\NewLoginPartial\NewLoginPartial.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NewLoginPartial.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Shared\NewLoginPartial\NewLoginPartial.zh-CN.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -1373,9 +2041,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>NewLoginPartial.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Shared\NewLoginPartial\NewLoginPartial.resx">
+    <EmbeddedResource Include="Views\Shared\NewLoginPartial\NewLoginPartial.en-GB.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewLoginPartial.Designer.cs</LastGenOutput>
+      <LastGenOutput>NewLoginPartial.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

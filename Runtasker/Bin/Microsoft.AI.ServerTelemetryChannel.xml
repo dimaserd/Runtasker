@@ -319,7 +319,7 @@
         </member>
         <member name="P:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.TransmissionSender.Capacity">
             <summary>
-            Gets or sets the the maximum number of <see cref="T:Microsoft.ApplicationInsights.Channel.Transmission"/> objects that can be sent simultaneously.
+            Gets or sets the maximum number of <see cref="T:Microsoft.ApplicationInsights.Channel.Transmission"/> objects that can be sent simultaneously.
             </summary>
             <remarks>
             Use this property to limit the number of concurrent HTTP connections. Once the maximum number of 

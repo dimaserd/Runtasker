@@ -118,20 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddDescription" xml:space="preserve">
-    <value>Add Description</value>
+    <value>Добавить описание</value>
   </data>
   <data name="AddFiles" xml:space="preserve">
-    <value>Add Files</value>
+    <value>Добавить файлы</value>
   </data>
   <data name="DownloadSolutionFormat" xml:space="preserve">
-    <value>Download solution #{0}</value>
+    <value>Загрузить решение №{0}</value>
     <comment>Download solution #{номер заказа}</comment>
   </data>
   <data name="OnlineHelpFormat" xml:space="preserve">
-    <value>Online-Help #{0}</value>
+    <value>Онлайн-помощь №{0}</value>
   </data>
   <data name="OrderFormat" xml:space="preserve">
-    <value>Order #{0}</value>
+    <value>Заказ №{0}</value>
     <comment>Order #{номер заказа}</comment>
   </data>
   <data name="PayAnotherHalfFormat" xml:space="preserve">
@@ -141,11 +141,11 @@
     <value />
   </data>
   <data name="PayFormat" xml:space="preserve">
-    <value>Pay {0}{1}</value>
+    <value>Оплатить {0}{1}</value>
     <comment>Pay {сумма к оплате}{знак рубля}</comment>
   </data>
   <data name="RatingFormat" xml:space="preserve">
-    <value>Rating Order Solution #{0}</value>
+    <value>Оценить решение заказа №{0}</value>
     <comment>Rating Order#{номер заказа}</comment>
   </data>
 </root>

@@ -32,8 +32,43 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,11 +82,64 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Extensions\Extensions.csproj">
+      <Project>{22c11b93-35d0-462a-8bde-27c8a8479741}</Project>
+      <Name>Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HtmlExtensions\HtmlExtensions.csproj">
+      <Project>{9b995fdd-54bd-444d-b54d-dddcf305ed0d}</Project>
+      <Name>HtmlExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JavaScriptValidation.Test\JavaScriptValidation.Test.csproj">
+      <Project>{c37ecc96-7a8b-4137-8593-f1fcb975f2d1}</Project>
+      <Name>JavaScriptValidation.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logic.Extensions\Logic.Extensions.csproj">
+      <Project>{56e8aac3-927b-469d-8c78-cb0d74209018}</Project>
+      <Name>Logic.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logic.Tests\Logic.Tests.csproj">
+      <Project>{b369d78c-e022-4fc5-a841-7db7a4bb7016}</Project>
+      <Name>Logic.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Messaging\Messaging.csproj">
+      <Project>{d8ef5db5-8cfb-4fa6-850a-5095f64ad5db}</Project>
+      <Name>Messaging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Runtaker.LocaleBuiders\Runtasker.LocaleBuilders.csproj">
       <Project>{0FA9116E-7F85-41EC-ADCA-ACF122E0EF21}</Project>
       <Name>Runtasker.LocaleBuilders</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Runtasker.ExtensionsUI\Runtasker.ExtensionsUI.csproj">
+      <Project>{779df539-2ca9-4b94-b9d0-eac4a57afaaf}</Project>
+      <Name>Runtasker.ExtensionsUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Runtasker.Logic\Runtasker.Logic.csproj">
+      <Project>{8F9A8021-202A-4FDB-8377-AB6F9F605CF1}</Project>
+      <Name>Runtasker.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Runtasker.Resources\Runtasker.Resources.csproj">
+      <Project>{575b4616-8bfd-424b-b3fb-517aa4e86d17}</Project>
+      <Name>Runtasker.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Runtasker.Settings\Runtasker.Settings.csproj">
+      <Project>{70630f62-8278-44c2-b24a-089356eeeb8a}</Project>
+      <Name>Runtasker.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Runtasker.Test\Runtasker.Test.csproj">
+      <Project>{b33dd23e-2d06-4527-a93b-8ec12e5433c2}</Project>
+      <Name>Runtasker.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Runtasker\Runtasker.csproj">
+      <Project>{d161bdf2-0cec-4b51-a6dd-da7c1e8a32ab}</Project>
+      <Name>Runtasker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UI.Settings\UI.Settings.csproj">
+      <Project>{0e07f147-2880-40c9-a59c-4405912f3184}</Project>
+      <Name>UI.Settings</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

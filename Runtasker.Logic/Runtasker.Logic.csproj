@@ -227,6 +227,14 @@
     <Compile Include="Migrations\201709131007084_clicks.Designer.cs">
       <DependentUpon>201709131007084_clicks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709190843496_gs.cs" />
+    <Compile Include="Migrations\201709190843496_gs.Designer.cs">
+      <DependentUpon>201709190843496_gs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709191023425_fd1.cs" />
+    <Compile Include="Migrations\201709191023425_fd1.Designer.cs">
+      <DependentUpon>201709191023425_fd1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
     <Compile Include="Models\AdministrationUsers\EditCustomerModel.cs" />
@@ -247,6 +255,7 @@
     <Compile Include="Models\Orders\Pay\PayOnlineHelp.cs" />
     <Compile Include="Models\Orders\Pay\PayOrderBase.cs" />
     <Compile Include="Models\Payments\Admin\MakePaymentForUser.cs" />
+    <Compile Include="Models\Payments\YandexKassa\YandexInvoiceModel.cs" />
     <Compile Include="Models\Payments\YandexKassa\YandexKassaPaymentResponse.cs" />
     <Compile Include="Models\Users\ApplicationUserInfo.cs" />
     <Compile Include="Models\VkNotificater\VkUserInfo.cs" />
@@ -385,6 +394,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Entities\Settings\" />
     <Folder Include="Enumerations\Notifications\Customer\Local\" />
     <Folder Include="Models\Menu\" />
     <Folder Include="Workers\Logging\Statics\" />
@@ -420,6 +430,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709131007084_clicks.resx">
       <DependentUpon>201709131007084_clicks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709190843496_gs.resx">
+      <DependentUpon>201709190843496_gs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709191023425_fd1.resx">
+      <DependentUpon>201709191023425_fd1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

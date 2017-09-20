@@ -118,17 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ExecutedWorks" xml:space="preserve">
-    <value>Executed works</value>
+    <value>Выполненных заказа</value>
     <comment>Выполненных заказа</comment>
   </data>
   <data name="HappyClients" xml:space="preserve">
-    <value>HappyClients</value>
+    <value>Счастливых клиентов</value>
     <comment>Довольных клиентов</comment>
   </data>
   <data name="Performers" xml:space="preserve">
-    <value>Performers</value>
+    <value>Исполнителей</value>
   </data>
   <data name="YearsInBusiness" xml:space="preserve">
-    <value>Years in business</value>
+    <value>Года работы</value>
   </data>
 </root>

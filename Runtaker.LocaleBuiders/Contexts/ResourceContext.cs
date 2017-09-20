@@ -9,5 +9,7 @@ namespace Runtaker.LocaleBuiders.Contexts
         public DbSet<ResourceFileModel> ResourceFileModels { get; set; }
 
         public DbSet<ResourceString> ResourceStrings { get; set; }
+
+        public DbSet<ResourceStringType> ResourceStringTypes { get; set; }
     }
 }

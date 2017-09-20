@@ -118,18 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutUs" xml:space="preserve">
-    <value>About Us</value>
+    <value>О нас</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="OurNews" xml:space="preserve">
-    <value>Our news</value>
+    <value>Наши новости</value>
   </data>
   <data name="Portfolio" xml:space="preserve">
-    <value>Portfolio</value>
+    <value>Примеры работ</value>
   </data>
   <data name="Pricing" xml:space="preserve">
-    <value>Pricing</value>
+    <value>Наши цены</value>
   </data>
 </root>

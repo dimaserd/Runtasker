@@ -118,43 +118,44 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddedSubjectFormat" xml:space="preserve">
-    <value>about order #{0}</value>
-    <comment>about order #{номер заказа}</comment>
+    <value>о заказе №{0}.</value>
+    <comment>о заказе №{номер заказа}.</comment>
   </data>
   <data name="AddedTextFormat" xml:space="preserve">
-    <value>Dear {0}, we have received your order #{1}. Our administrators will process it and get back to you with the price.</value>
-    <comment>Dear {имя пользователя}, we have received your order #{номер заказа}. Our administrators will process it and get back to you with the price.</comment>
+    <value>Уважаемый/ая, {0}, вы создали заказ №{1}. Мы его получили, наши администраторы уже проверяют его, мы сообщим вам цену по электронной почте.</value>
+    <comment>Уважаемый, {имя пользователя}, вы создали заказ №{0}. Мы его получили, наши администраторы уже проверяют его, мы сообщим вам цену по электронной почте.</comment>
   </data>
   <data name="Dear" xml:space="preserve">
-    <value>Dear</value>
+    <value>Уважаемый/ая</value>
   </data>
   <data name="DownloadedBtnText" xml:space="preserve">
-    <value>Go to my orders!</value>
+    <value>Перейти к моим заказам!</value>
   </data>
   <data name="DownloadedSubjectFormat" xml:space="preserve">
-    <value>You just downloaded the order #{0} solution.</value>
-    <comment>You just downloaded the order #{номер заказа} solution.</comment>
+    <value>Вы только что скачали решение заказа {0}.</value>
+    <comment>Вы только что скачали решение заказа {номер заказа}.</comment>
   </data>
   <data name="DownloadedTextFormat" xml:space="preserve">
-    <value>Dear {0}, you downloaded your order #{1} solution. Tell us about the result of our work. We're not hurring you up with that. Do that any time you want. Hope to see you again on Runtasker!</value>
-    <comment>Dear {имя пользователя}, you downloaded your order #{номер заказа} solution. Tell us about the result of our work. We're not hurring you up with that. Do that any time you want. Hope to see you again on Runtasker!</comment>
+    <value>Уважаемый/ая, {0}, вы скачали решение заказа №{1}. ! Расскажите нам о результате. Мы не торопим вас с этим. Сделайте это тогда, когда вам удобно. Надеемся увидеть вас снова на Runtasker!</value>
+    <comment>Уважаемый/ая, {имя пользователя}, вы скачали решение заказа №{номер заказа}. ! Расскажите нам о результате. Мы не торопим вас с этим. Сделайте это тогда, когда вам удобно. Надеемся увидеть вас снова на Runtasker!</comment>
   </data>
   <data name="FirstPaidSubjectFormat" xml:space="preserve">
-    <value>You paid a half of an order #{0}</value>
+    <value>Вы оплатили половину заказа №{0}</value>
+    <comment>Вы оплатили половину заказа №{номер заказа}</comment>
   </data>
   <data name="FirstPaidTextFormat" xml:space="preserve">
-    <value>Dear {0}, you paid a half of an order #{1}. Our team will start executing it immediately. You'll get the solution till {2} or earlier. We will inform you by email when it's done.</value>
-    <comment>Dear {имя пользователя}, you paid a half of an order #{номер заказа}. Our team will start executing it immediately. You'll get the solution till {дата заказа} or earlier. We will inform you by email when it's done.</comment>
+    <value>Уважаемый/ая, {0}, вы оплатили половину заказа №{1}. Наша команда скоро начнет выполнять его! Вы получите решение к {2} или ранее. Мы сообщим вам, как только закончим!</value>
+    <comment>Уважаемый, {имя пользователя}, вы оплатили половину заказа №{номер заказа}. Наша команда скоро начнет выполнять его! Вы получите решение к {дата завершения} или ранее. Мы сообщим вам, как только закончим!</comment>
   </data>
   <data name="HelloFormat" xml:space="preserve">
-    <value>Hello, {0}.</value>
-    <comment>Hello, {имя пользователя}.</comment>
+    <value>Здравствуйте, {0}.</value>
+    <comment>Здравствуйте, {имя пользователя}.</comment>
   </data>
   <data name="OnlineHelpAppliedTextFormat" xml:space="preserve">
-    <value>Dear {0}, we have received your application for online-help for {1}. Our administrators will process it and get you the response.</value>
-    <comment>Dear {имя пользователя}, we have received your application for online-help for {название предмета}. Our administrators will process it and get you the response.</comment>
+    <value>Уважаемый/ая, {0}, вы подали заявку на онлайн помощь по предмету {1}. Мы ее получили, наши администраторы уже проверяют вашу заявку, мы сообщим вам о результате по электронной почте.</value>
+    <comment>Уважаемый/ая, {имя пользователя}, вы подали заявку на онлайн помощь по предмету {название предмета}. Мы ее получили, наши администраторы уже проверяют вашу заявку, мы сообщим вам о результате по электронной почте.</comment>
   </data>
   <data name="RuntaskerWish" xml:space="preserve">
-    <value>Best wishes from the Runtasker team!</value>
+    <value>С наилучшими пожеланиями от Runtasker!</value>
   </data>
 </root>

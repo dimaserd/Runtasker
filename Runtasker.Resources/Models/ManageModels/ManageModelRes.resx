@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConfirmPass" xml:space="preserve">
-    <value>Confirm your password</value>
+    <value>Подтверждение пароля</value>
   </data>
   <data name="ConfirmPassError" xml:space="preserve">
-    <value>New password and it's confirmation do not match.</value>
+    <value>Новый пароль и его подтверждение не совпадают.</value>
   </data>
   <data name="NewPass" xml:space="preserve">
-    <value>New password</value>
+    <value>Новый пароль</value>
   </data>
   <data name="OldPass" xml:space="preserve">
-    <value>Old Password</value>
+    <value>Старый пароль</value>
   </data>
 </root>

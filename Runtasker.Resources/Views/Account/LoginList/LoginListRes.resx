@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConnectWithFormat" xml:space="preserve">
-    <value>Connect With {0}</value>
-    <comment>Connect With {имя соцсети}</comment>
+    <value>Авторизоваться через {0}</value>
+    <comment>Авторизоваться через {имя соцсети}</comment>
   </data>
   <data name="RegisterWithFormat" xml:space="preserve">
-    <value>Register With {0}</value>
-    <comment>Register With {имя соцсети}</comment>
+    <value>Зарегистрироваться через {0}</value>
+    <comment>Зарегистрироваться через {имя соцсети}</comment>
   </data>
   <data name="SignInWithFormat" xml:space="preserve">
-    <value>Sign in With {0}</value>
-    <comment>Sign in With {имя соцсети}</comment>
+    <value>Войти через {0}</value>
+    <comment>Войти через {имя соцсети}</comment>
   </data>
 </root>

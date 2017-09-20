@@ -118,61 +118,61 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AlertInfo" xml:space="preserve">
-    <value>In this area you can change or set your password, upload new profile photo, manage your external logins and configure notification services.</value>
+    <value>Данный раздел предназначен для настроек вашей учетной записи. Вы можете изменить или установить пароль от вашей учетной записи, загрузить новое фото профиля и настроить внешних провайдеров и информационные сервисы.</value>
   </data>
   <data name="AvatarUploading" xml:space="preserve">
-    <value>Avatar is uploading...</value>
+    <value>Фотография загружается...</value>
   </data>
   <data name="Balance" xml:space="preserve">
-    <value>Balance</value>
+    <value>Баланс</value>
   </data>
   <data name="Change" xml:space="preserve">
-    <value>Change</value>
+    <value>Изменить</value>
   </data>
   <data name="ChangePass" xml:space="preserve">
-    <value>Change Password</value>
+    <value>Изменить пароль</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>Редактировать</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
   <data name="HaveQuestions" xml:space="preserve">
-    <value>Have any questions?</value>
+    <value>Возникли вопросы?</value>
   </data>
   <data name="ManageLogins" xml:space="preserve">
-    <value>Manage logins</value>
+    <value>Управление внешними логинами</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Name</value>
+    <value>Имя</value>
   </data>
   <data name="NavActive" xml:space="preserve">
-    <value>My profile</value>
+    <value>Мой профиль</value>
   </data>
   <data name="NavMain" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="NoNewMessages" xml:space="preserve">
-    <value>No new messages</value>
+    <value>Нет новых сообщений</value>
   </data>
   <data name="Recharge" xml:space="preserve">
-    <value>Recharge</value>
+    <value>Пополнить</value>
   </data>
   <data name="Remove" xml:space="preserve">
-    <value>Remove</value>
+    <value>Удалить</value>
   </data>
   <data name="SaveNewAvatar" xml:space="preserve">
-    <value>Save New AVATAR</value>
+    <value>Сохранить новый аватар</value>
   </data>
   <data name="SelectNewAvatar" xml:space="preserve">
-    <value>Select new avatar</value>
+    <value>Выбрать новое фото</value>
   </data>
   <data name="SetPass" xml:space="preserve">
-    <value>Set Password</value>
+    <value>Установить пароль</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Your Profile</value>
+    <value>Ваш профиль</value>
   </data>
   <data name="UserName" xml:space="preserve">
     <value>Username</value>

@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActionDesc" xml:space="preserve">
-    <value>Here you can change your password</value>
+    <value>Здесь вы можете изменить ваш пароль</value>
   </data>
   <data name="ChangePass" xml:space="preserve">
-    <value>Change password</value>
+    <value>Изменить пароль</value>
   </data>
   <data name="Header" xml:space="preserve">
-    <value>Change Password Form</value>
+    <value>Форма для изменения пароля</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Change Password</value>
+    <value>Изменение пароля</value>
   </data>
 </root>

@@ -4,6 +4,44 @@
         <name>Microsoft.AI.Web</name>
     </assembly>
     <members>
+        <member name="T:Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule">
+            <summary>
+            Listens to ASP.NET DiagnosticSource and enables instrumentation with Activity: let ASP.NET create root Activity for the request.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule.isEnabled">
+            <summary>
+            Indicates if module initialized successfully.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule.Initialize(Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration)">
+            <summary>
+            Initializes the telemetry module.
+            </summary>
+            <param name="configuration">Telemetry configuration to use for initialization.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule.OnNext(System.Diagnostics.DiagnosticListener)">
+            <summary>
+            Implements IObserver OnNext callback, subscribes to AspNet DiagnosticSource.
+            </summary>
+            <param name="value">DiagnosticListener value.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule.Dispose">
+            <summary>
+            Disposes all subscriptions to DiagnosticSources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule.OnError(System.Exception)">
+            <summary>
+            IObserver OnError callback.
+            </summary>
+            <param name="error">Exception instance.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule.OnCompleted">
+            <summary>
+            IObserver OnCompleted callback.
+            </summary>
+        </member>
         <member name="T:Microsoft.ApplicationInsights.Web.Implementation.HttpRequestExtensions">
             <summary>
             HttpRequest Extensions.
@@ -190,6 +228,12 @@
             When sending the response headers, allow request module to add the IKey's target hash.
             </summary>
             <param name="httpApplication">HttpApplication instance.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule.CreateOpenDelegate(System.Reflection.MethodInfo)">
+            <summary>
+            Creates open delegate for faster invocation than regular Invoke.        
+            </summary>
+            <param name="mi">MethodInfo for which open delegate is to be created.</param>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Web.AuthenticatedUserIdTelemetryInitializer">
             <summary>
@@ -418,25 +462,86 @@
             <param name="requestTelemetry">Request telemetry object associated with the current request.</param>
             <param name="telemetry">Telemetry item to initialize.</param>
         </member>
-        <member name="T:Microsoft.ApplicationInsights.Common.CrossComponentCorrelationEventSource">
+        <member name="M:Microsoft.ApplicationInsights.Common.ActivityHelpers.IsHierarchicalRequestId(System.String)">
+            <summary> 
+            Checks if given RequestId is hierarchical.
+            </summary>
+            <param name="requestId">Request id.</param>
+            <returns>True if requestId is hierarchical false otherwise.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Common.AppMapCorrelationEventSource">
+            <summary>
+            ETW EventSource tracing class.
+            </summary>
             <summary>
             ETW EventSource tracing class.
             </summary>
         </member>
-        <member name="T:Microsoft.ApplicationInsights.Common.CrossComponentCorrelationEventSource.Keywords">
+        <member name="T:Microsoft.ApplicationInsights.Common.AppMapCorrelationEventSource.Keywords">
             <summary>
-            Keywords for the <see cref="T:Microsoft.ApplicationInsights.Common.CrossComponentCorrelationEventSource"/>.
+            Keywords for the <see cref="T:Microsoft.ApplicationInsights.Common.AppMapCorrelationEventSource"/>.
             </summary>
         </member>
-        <member name="F:Microsoft.ApplicationInsights.Common.CrossComponentCorrelationEventSource.Keywords.UserActionable">
+        <member name="F:Microsoft.ApplicationInsights.Common.AppMapCorrelationEventSource.Keywords.UserActionable">
             <summary>
             Key word for user actionable events.
             </summary>
         </member>
-        <member name="F:Microsoft.ApplicationInsights.Common.CrossComponentCorrelationEventSource.Keywords.Diagnostics">
+        <member name="F:Microsoft.ApplicationInsights.Common.AppMapCorrelationEventSource.Keywords.Diagnostics">
             <summary>
             Key word for diagnostics events.
             </summary>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Common.ExceptionUtilities">
+            <summary>
+            Utility functions for dealing with exceptions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.ExceptionUtilities.GetExceptionDetailString(System.Exception)">
+            <summary>
+            Get the string representation of this Exception with special handling for AggregateExceptions.
+            </summary>
+            <param name="ex">The exception to convert to a string.</param>
+            <returns>The detailed string version of the provided exception.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Common.HeadersUtilities">
+            <summary>
+            Generic functions that can be used to get and set Http headers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.HeadersUtilities.GetHeaderKeyValue(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Get the key value from the provided HttpHeader value that is set up as a comma-separated list of key value pairs. Each key value pair is formatted like (key)=(value).
+            </summary>
+            <param name="headerValues">The header values that may contain key name/value pairs.</param>
+            <param name="keyName">The name of the key value to find in the provided header values.</param>
+            <returns>The first key value, if it is found. If it is not found, then null.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.HeadersUtilities.UpdateHeaderWithKeyValue(System.Collections.Generic.IEnumerable{System.String},System.String,System.String)">
+            <summary>
+            Given the provided list of header value strings, return a list of key name/value pairs
+            with the provided keyName and keyValue. If the initial header value strings contains
+            the key name, then the original key value should be replaced with the provided key
+            value. If the initial header value strings don't contain the key name, then the key
+            name/value pair should be added to the list and returned.
+            </summary>
+            <param name="headerValues">The existing header values that the key/value pair should be added to.</param>
+            <param name="keyName">The name of the key to add.</param>
+            <param name="keyValue">The value of the key to add.</param>
+            <returns>The result of setting the provided key name/value pair into the provided headerValues.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Common.ICorrelationIdLookupHelper">
+            <summary>
+            An interface for getting a correlation id from a provided instrumentation key.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.ICorrelationIdLookupHelper.TryGetXComponentCorrelationId(System.String,System.String@)">
+            <summary>
+            Retrieves the correlation id corresponding to a given instrumentation key.
+            </summary>
+            <param name="instrumentationKey">Instrumentation key string.</param>
+            <param name="correlationId">AppId corresponding to the provided instrumentation key.</param>
+            <returns>true if correlationId was successfully retrieved; false otherwise.</returns>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Common.RequestResponseHeaders">
             <summary>
@@ -448,24 +553,44 @@
             Request-Context header.
             </summary>
         </member>
-        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.RequestContextSourceKey">
+        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.RequestContextCorrelationSourceKey">
             <summary>
             Source key in the request context header that is added by an application while making http requests and retrieved by the other application when processing incoming requests.
             </summary>
         </member>
-        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.RequestContextTargetKey">
+        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.RequestContextCorrelationTargetKey">
             <summary>
             Target key in the request context header that is added to the response and retrieved by the calling application when processing incoming responses.
             </summary>
         </member>
+        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.RequestContextSourceRoleNameKey">
+            <summary>
+            Source-RoleName key in the request context header that is added by an application while making http requests and retrieved by the other application when processing incoming requests.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.RequestContextTargetRoleNameKey">
+            <summary>
+            Target-RoleName key in the request context header that is added to the response and retrieved by the calling application when processing incoming responses.
+            </summary>
+        </member>
         <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.StandardParentIdHeader">
             <summary>
-            Standard parent Id header.
+            Legacy parent Id header.
             </summary>
         </member>
         <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.StandardRootIdHeader">
             <summary>
-            Standard root id header.
+            Legacy root id header.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.RequestIdHeader">
+            <summary>
+            Standard Request-Id Id header.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ApplicationInsights.Common.RequestResponseHeaders.CorrelationContextHeader">
+            <summary>
+            Standard Correlation-Context header.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper">
@@ -484,6 +609,12 @@
             </summary>
             <param name="appIdProviderMethod">The delegate to be called to fetch the appId.</param>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper" /> class mostly to be used by the test classes to seed the instrumentation key -> app Id relationship.
+            </summary>
+            <param name="mapSeed">A dictionary that contains known instrumentation key - app id relationship.</param>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.#ctor(System.String)">
             <summary>
             Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper" /> class.
@@ -497,6 +628,12 @@
             <param name="instrumentationKey">Instrumentation key string.</param>
             <param name="correlationId">AppId corresponding to the provided instrumentation key.</param>
             <returns>true if correlationId was successfully retrieved; false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.IsFetchAppInProgress(System.String)">
+            <summary>
+            This method is purely a test helper at this point. It checks whether the task to get app ID is still running.
+            </summary>
+            <returns>True if fetch task is still in progress, false otherwise.</returns>
         </member>
         <member name="M:Microsoft.ApplicationInsights.Common.CorrelationIdLookupHelper.FetchAppIdFromService(System.String)">
             <summary>
@@ -566,14 +703,42 @@
             <param name="keyName">Desired key of the key-value list.</param>
             <returns>Value against the given parameters.</returns>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.WebHeaderCollectionExtensions.GetNameValueCollectionFromHeader(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            For the given header collection, for a given header of name-value type, return list of KeyValuePairs.
+            </summary>
+            <param name="headers">Header collection.</param>
+            <param name="headerName">Name of the header in the collection.</param>
+            <returns>List of KeyValuePairs in the given header.</returns>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.Common.WebHeaderCollectionExtensions.SetNameValueHeaderValue(System.Collections.Specialized.NameValueCollection,System.String,System.String,System.String)">
             <summary>
-            For the given header collection, sets the header value based on the name value format.
+            For the given header collection, adds KeyValuePair to header.
             </summary>
             <param name="headers">Header collection.</param>
             <param name="headerName">Name of the header that is to contain the name-value pair.</param>
             <param name="keyName">Name in the name value pair.</param>
             <param name="value">Value in the name value pair.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Common.WebHeaderCollectionExtensions.SetHeaderFromNameValueCollection(System.Collections.Specialized.NameValueCollection,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            For the given header collection, sets the header value based on the name value format.
+            </summary>
+            <param name="headers">Header collection.</param>
+            <param name="headerName">Name of the header that is to contain the name-value pair.</param>
+            <param name="keyValuePairs">List of KeyValuePairs to format into header.</param>
+        </member>
+        <member name="T:System.Web.HttpContextBaseExtension">
+            <summary>
+            HttpContextBaseExtension class provides extensions methods for accessing Web Application Insights objects.
+            </summary>
+        </member>
+        <member name="M:System.Web.HttpContextBaseExtension.GetRequestTelemetry(System.Web.HttpContextBase)">
+            <summary>
+            Provide access to request generated by Web Application Insights SDK.
+            </summary>
+            <param name="context">HttpContextBase instance.</param>
+            <returns>Request telemetry instance or null.</returns>
         </member>
         <member name="T:System.Web.HttpContextExtension">
             <summary>

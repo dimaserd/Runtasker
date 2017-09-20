@@ -118,36 +118,36 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActiveNav" xml:space="preserve">
-    <value>Forgot Password</value>
+    <value>Забыли пароль</value>
   </data>
   <data name="Header1" xml:space="preserve">
-    <value>Forgot</value>
+    <value>Забыли</value>
   </data>
   <data name="Header2" xml:space="preserve">
-    <value>Password</value>
+    <value>пароль</value>
   </data>
   <data name="HomeNav" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="Instruction" xml:space="preserve">
-    <value>Input your email, we will send you a link, by clicking that you can restore your password.</value>
+    <value>Введите ваш адрес электронной почты, мы вышлем вам на почту ссылку, пройдя по которой вы сможете восстановить ваш пароль.</value>
   </data>
   <data name="SendLink" xml:space="preserve">
-    <value>Send Link</value>
+    <value>Восстановить</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Forgot your password?</value>
+    <value>Забыли ваш пароль?</value>
   </data>
   <data name="AlertFormat" xml:space="preserve">
-    <value>{0} Check your E-mail Address!</value>
+    <value>{0} Проверьте вашу почту!</value>
   </data>
   <data name="AlertToMark" xml:space="preserve">
-    <value>We've sent you a link!</value>
+    <value>Мы отправили вам ссылку!</value>
   </data>
   <data name="HeaderFormat" xml:space="preserve">
-    <value>Forgot {0}?</value>
+    <value>Забыли {0}?</value>
   </data>
   <data name="HeaderToMark" xml:space="preserve">
-    <value>password</value>
+    <value>пароль</value>
   </data>
 </root>

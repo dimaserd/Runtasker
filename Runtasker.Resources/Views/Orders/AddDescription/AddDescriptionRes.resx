@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActiveNav" xml:space="preserve">
-    <value>Add Description</value>
+    <value>Добавить описание</value>
   </data>
   <data name="ChangeDescription" xml:space="preserve">
-    <value>Change Description</value>
+    <value>Поменять описание</value>
   </data>
   <data name="ErrorText" xml:space="preserve">
-    <value>Please provide a description of your order</value>
+    <value>Пожалуйста, предоставьте описание вашего заказа</value>
   </data>
   <data name="HomeNav" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="OrdersNav" xml:space="preserve">
-    <value>My Orders</value>
+    <value>Мои заказы</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Add Description</value>
+    <value>Добавить описание</value>
   </data>
 </root>

@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutOrder" xml:space="preserve">
-    <value>about order</value>
+    <value>о заказе</value>
   </data>
   <data name="AboutOrderFormat" xml:space="preserve">
-    <value>about order #{0}</value>
+    <value>о заказе №{0}</value>
   </data>
   <data name="ChatWith" xml:space="preserve">
-    <value>Chat with</value>
+    <value>Диалог с</value>
   </data>
   <data name="ChatWithFormat" xml:space="preserve">
-    <value>Chat with {0}</value>
+    <value>Диалог с {0}</value>
   </data>
   <data name="DownloadFiles" xml:space="preserve">
-    <value>Download files</value>
+    <value>Скачать файлы</value>
   </data>
   <data name="PlaceHolder" xml:space="preserve">
-    <value>Type your message here...</value>
+    <value>Введите текст сообщения здесь...</value>
   </data>
   <data name="Send" xml:space="preserve">
-    <value>Send</value>
+    <value>Отправить</value>
   </data>
 </root>

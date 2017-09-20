@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CommentText1" xml:space="preserve">
-    <value>I place orders for my homework here and they are always on time, which is really important to me. And you can always write your questions in the chatroom where you will be assisted by the friendly admin staff.</value>
+    <value>Я заказываю здесь домашние работы, которые выполняются точно в срок, что для меня очень важно. А по любым вопросам всегда можно обратиться в чат, где вам помогут дружелюбные администраторы.</value>
   </data>
   <data name="CommentText2" xml:space="preserve">
-    <value>I used to spend a ridiculous amount of time doing my maths assignments. Now I just send them to Runtasker!</value>
+    <value>Раньше домашние задания по математике занимали у меня кучу времени. Сейчас я просто отправляю их на Runtasker!</value>
   </data>
   <data name="CommentText3" xml:space="preserve">
-    <value>Fast, affordable and of good quality - highly recommended to everyone!</value>
+    <value>Быстро, качественно и по доступной цене - всем советую!</value>
   </data>
   <data name="DerekName" xml:space="preserve">
-    <value>Lwagula Derrick</value>
+    <value>Деррик Лвагула</value>
   </data>
   <data name="Header" xml:space="preserve">
-    <value>Our happy clients comments</value>
+    <value>Комментарии наших клиентов</value>
   </data>
   <data name="JerryName" xml:space="preserve">
-    <value>Jeremiah Disemoah</value>
+    <value>Джеремиа Дисемо</value>
   </data>
   <data name="ThirdName" xml:space="preserve">
-    <value>Alina Kiseleva</value>
+    <value>Алина Киселева</value>
   </data>
 </root>

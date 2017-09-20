@@ -1,25 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Runtaker.LocaleBuiders.Entities;
-using Runtasker.Logic;
+using Runtaker.LocaleBuiders.Workers;
+using Runtasker.Controllers.Base;
 
 namespace Runtasker.Controllers.Mvc
 {
-    public class ResourceController : Controller
+    public class ResourceController : BaseMvcController
     {
-        private MyDbContext db = new MyDbContext();
+        
+        public async Task<ActionResult> Ged()
+        {
+            List<ResourceFileModel> all = ResourceModelCreator.GetModelsByLang(lang: LocaleBuilders.Enumerations.Lang.English).ToList();
+
+            Db.ResourceStringTypes.RemoveRange(Db.ResourceStringTypes);
+            Db.ResourceStrings.RemoveRange(Db.ResourceStrings);
+            Db.ResourceFileModels.RemoveRange(Db.ResourceFileModels);
+
+            Db.ResourceFileModels.AddRange(all);
+
+            await Db.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
 
         // GET: Resource
         public async Task<ActionResult> Index()
         {
-            return View(await db.ResourceFileModels.ToListAsync());
+            return View(await Db.ResourceFileModels.ToListAsync());
         }
 
         // GET: Resource/Details/5
@@ -29,7 +41,7 @@ namespace Runtasker.Controllers.Mvc
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ResourceFileModel resourceFileModel = await db.ResourceFileModels.FindAsync(id);
+            ResourceFileModel resourceFileModel = await Db.ResourceFileModels.FindAsync(id);
             if (resourceFileModel == null)
             {
                 return HttpNotFound();
@@ -37,6 +49,7 @@ namespace Runtasker.Controllers.Mvc
             return View(resourceFileModel);
         }
 
+        #region Create
         // GET: Resource/Create
         public ActionResult Create()
         {
@@ -48,18 +61,33 @@ namespace Runtasker.Controllers.Mvc
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,ResourcePath,CreateDate,LangCode")] ResourceFileModel resourceFileModel)
+        public async Task<ActionResult> Create(ResourceFileModel resourceFileModel)
         {
             if (ModelState.IsValid)
             {
-                db.ResourceFileModels.Add(resourceFileModel);
-                await db.SaveChangesAsync();
+                Db.ResourceFileModels.Add(resourceFileModel);
+                await Db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
             return View(resourceFileModel);
         }
 
+        #endregion
+
+        #region Переводческие методы
+        [HttpGet]
+        public ActionResult Translate(string name)
+        {
+            ResourceFileModel resModel = Db.ResourceFileModels.Include(t => t.ResourceStrings.Select(x => x.ResourceStringTypes))
+                .FirstOrDefault(t => t.ResourcePath == name);
+
+
+            return View(resModel);
+        }
+
+
+        #endregion
         // GET: Resource/Edit/5
         public async Task<ActionResult> Edit(string id)
         {
@@ -67,7 +95,7 @@ namespace Runtasker.Controllers.Mvc
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ResourceFileModel resourceFileModel = await db.ResourceFileModels.FindAsync(id);
+            ResourceFileModel resourceFileModel = await Db.ResourceFileModels.FindAsync(id);
             if (resourceFileModel == null)
             {
                 return HttpNotFound();
@@ -80,12 +108,12 @@ namespace Runtasker.Controllers.Mvc
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,ResourcePath,CreateDate,LangCode")] ResourceFileModel resourceFileModel)
+        public async Task<ActionResult> Edit(ResourceFileModel resourceFileModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(resourceFileModel).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                Db.Entry(resourceFileModel).State = EntityState.Modified;
+                await Db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(resourceFileModel);
@@ -98,7 +126,7 @@ namespace Runtasker.Controllers.Mvc
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ResourceFileModel resourceFileModel = await db.ResourceFileModels.FindAsync(id);
+            ResourceFileModel resourceFileModel = await Db.ResourceFileModels.FindAsync(id);
             if (resourceFileModel == null)
             {
                 return HttpNotFound();
@@ -111,19 +139,12 @@ namespace Runtasker.Controllers.Mvc
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            ResourceFileModel resourceFileModel = await db.ResourceFileModels.FindAsync(id);
-            db.ResourceFileModels.Remove(resourceFileModel);
-            await db.SaveChangesAsync();
+            ResourceFileModel resourceFileModel = await Db.ResourceFileModels.FindAsync(id);
+            Db.ResourceFileModels.Remove(resourceFileModel);
+            await Db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }

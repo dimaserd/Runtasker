@@ -118,30 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BalanceRechargingViaServiceFormat" xml:space="preserve">
-    <value>Balance recharging via {0}.</value>
-    <comment>Balance recharging via {Robokassa}.</comment>
+    <value>Пополнение баланса через {0}.</value>
+    <comment>Пополнение баланса через {Robokassa}.</comment>
   </data>
   <data name="ForInvitedUserFormat" xml:space="preserve">
-    <value>For inviting user {0}.</value>
-    <comment>For inviting user {email}.</comment>
+    <value>За приглашение пользователя {0}.</value>
+    <comment>За приглашение пользователя {email приглашенного}.</comment>
   </data>
   <data name="OnlineOrderPaidFormat" xml:space="preserve">
-    <value>An advance payment of Online-Help #{0} paid.</value>
-    <comment>An advance payment of Online-Help #{номер заказа} paid.</comment>
+    <value>Оплата Онлайн-помощи №{0}.</value>
+    <comment>Оплата Онлайн-помощи №{номер заказа}.</comment>
   </data>
   <data name="OrderFirstHalfPaidFormat" xml:space="preserve">
-    <value>First half of an Order #{0} paid.</value>
-    <comment>First half of an Order #{номер заказа} paid.</comment>
+    <value>Оплата первой половины стоимости заказа №{0}.</value>
+    <comment>Оплата первой половины стоимости заказа №{номер заказа}.</comment>
   </data>
   <data name="OrderSecondHalfPaidFormat" xml:space="preserve">
-    <value>Second half of an Order #{0} paid.</value>
-    <comment>Second half of an Order #{orderId} paid.</comment>
+    <value>Оплата второй половины стоимости заказа №{0}.</value>
+    <comment>Оплата второй половины стоимости заказа №{номер заказа}.</comment>
   </data>
   <data name="RegistrationBonus" xml:space="preserve">
-    <value>Registration Bonus.</value>
+    <value>Бонус при регистрации.</value>
+    <comment>Бонус при регистрации.</comment>
   </data>
   <data name="RevealedFeatureFormat" xml:space="preserve">
-    <value>Revealed feature : [{0}].</value>
-    <comment>Revealed feature : [{featureName}].</comment>
+    <value>Раскрытая фишка сайта : [{0}].</value>
+    <comment>Раскрытая фишка сайта : [{название фишки}].</comment>
   </data>
 </root>

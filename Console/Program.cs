@@ -1,6 +1,7 @@
 ﻿using Runtaker.LocaleBuiders.Entities;
 using Runtaker.LocaleBuiders.Workers;
 using Runtasker.LocaleBuilders.Enumerations;
+using Runtasker.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +14,27 @@ namespace TestingConsole
     {
         static void Main(string[] args)
         {
-            List<ResourceFileModel> rus = ResourceModelCreator.GetModelsByLang(Lang.Russian).ToList();
 
-            List<ResourceFileModel> eng = ResourceModelCreator.GetModelsByLang(Lang.English).ToList();
+            ResourceCopyWorker.DoJob();
 
-            List<ResourceFileModel> ch = ResourceModelCreator.GetModelsByLang(Lang.Chinese).ToList();
+            
+            //List<ResourceFileModel> rus = ResourceModelCreator.GetModelsByLang(Lang.Russian).ToList();
 
-            List<ResourceFileModel> all = ResourceModelCreator.GetModels().ToList();
+            //List<ResourceFileModel> eng = ResourceModelCreator.GetModelsByLang(Lang.English).ToList();
 
-            bool res = all.Count == (rus.Count + eng.Count + ch.Count);
+            //List<ResourceFileModel> ch = ResourceModelCreator.GetModelsByLang(Lang.Chinese).ToList();
 
-            Console.ReadLine();
+            //List<ResourceFileModel> all = ResourceModelCreator.GetModels().ToList();
+
+            //bool res = all.Count == (rus.Count + eng.Count + ch.Count);
+
+            //MyDbContext context = new MyDbContext();
+
+            //context.ResourceFileModels.AddRange(all);
+
+            //context.SaveChanges();
+
+            //Console.ReadLine();
         }
     }
 }

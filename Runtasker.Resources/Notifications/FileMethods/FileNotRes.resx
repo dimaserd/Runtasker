@@ -118,18 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BestWishes" xml:space="preserve">
-    <value>Best wishes from the Runtasker team!</value>
+    <value>С наилучшими пожеланиями от команды Runtasker!</value>
   </data>
   <data name="DownloadErrorTitle1" xml:space="preserve">
-    <value>You tried to download order solution!</value>
+    <value>Вы попытались скачать решение заказа!</value>
   </data>
   <data name="DownloadSolutionText1" xml:space="preserve">
-    <value>We're hoping you will get back soon!</value>
+    <value>Надеемся вы вернетесь к нам снова!</value>
   </data>
   <data name="DownloadSolutionTitle1" xml:space="preserve">
-    <value>We were happy to work with you!</value>
+    <value>Мы были рады с вами работать!</value>
   </data>
   <data name="OrderNotExecutedText1" xml:space="preserve">
-    <value>Order which solution you attempted to download not found!</value>
+    <value>Заказ, решение которого вы попытались загрузить не найден!</value>
   </data>
 </root>

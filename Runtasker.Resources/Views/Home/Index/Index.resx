@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Greeting" xml:space="preserve">
-    <value>RUNTASKER.RU is an excellent service that helps international students with their home assignments. Our work is of high quality and perfectly on time. You can count on us!</value>
+    <value>RUNTASKER.RU это прекрасный сервис который помогает студентам с  домашними заданиями. Мы делаем это качественно и всегда вовремя! Вы полностью можете положиться на нас!</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Home Page</value>
+    <value>Главная</value>
   </data>
   <data name="TryOurServicesMini" xml:space="preserve">
-    <value>our sevices</value>
+    <value>наши услуги</value>
   </data>
   <data name="TryOurServicesPattern" xml:space="preserve">
-    <value>Try {0} {1}</value>
+    <value>Попробуйте {0} {1}</value>
   </data>
 </root>

@@ -118,48 +118,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BackToList" xml:space="preserve">
-    <value>Back to List</value>
+    <value>Вернуться к моим заказам</value>
   </data>
   <data name="CreateNav" xml:space="preserve">
-    <value>Create new</value>
+    <value>Создать новый</value>
   </data>
   <data name="CreateOrder" xml:space="preserve">
-    <value>Create</value>
+    <value>Добавить заказ</value>
   </data>
   <data name="FileUploading" xml:space="preserve">
-    <value>Files are uploading to our server</value>
+    <value>Файлы загружаются на наш сервер</value>
   </data>
   <data name="FinishDateErrorCourseWork" xml:space="preserve">
-    <value>Check your Completion Date. We need at least 30 days to complete your task of type \"Course Work\".</value>
+    <value>Обратите внимание на поле \"Дата окончания\". На выполнение работ типа  \"Курсовая работа\" отводится минимум 30 дней.</value>
   </data>
   <data name="FinishDateErrorEssay" xml:space="preserve">
-    <value>Check your Completion Date. We need at least 7 days to complete your task of type \"Essay\".</value>
+    <value>Обратите внимание на поле \"Дата окончания\". На выполнение работ типа  \"Эссе/Реферат\" отводится минимум 7 дней.</value>
   </data>
   <data name="FinishDateErrorOrdinary" xml:space="preserve">
-    <value>Check your Completion Date. We need at least 3 days to complete your task of type \"Ordinary Assignment\".</value>
+    <value>Обратите внимание на поле \"Дата окончания\". На выполнение работ типа  \"Обычное задание\" отводится минимум 3 дня.</value>
   </data>
   <data name="Header" xml:space="preserve">
-    <value>Add order</value>
+    <value>Добавьте заказ</value>
   </data>
   <data name="HomeNav" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="MiniHeader" xml:space="preserve">
-    <value>Be attentive please</value>
+    <value>Будьте внимательны</value>
   </data>
   <data name="MyOrdersNav" xml:space="preserve">
-    <value>My Orders</value>
+    <value>Мои заказы</value>
   </data>
   <data name="OnlineHelpAlertText" xml:space="preserve">
-    <value>If you want to get an online-help, you can submit an application by clicking this button.</value>
+    <value>Если вы хотите получить помощь онлайн, то можете оставить заявку, кликнув по кнопке.</value>
   </data>
   <data name="OnlineHelpAlertTitle" xml:space="preserve">
-    <value>Attention, you can order online-help.</value>
+    <value>Внимание, мы оказываем онлайн помощь!</value>
   </data>
   <data name="OnlineHelpBtnText" xml:space="preserve">
-    <value>Online-Help</value>
+    <value>Онлайн-помощь</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Create new order</value>
+    <value>Создать новый заказ</value>
   </data>
 </root>

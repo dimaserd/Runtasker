@@ -118,48 +118,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Описание</value>
   </data>
   <data name="DescriptionPlaceholder" xml:space="preserve">
-    <value>Provide description of your order including the type of work and any relevant details.</value>
+    <value>Опишите ваш заказ! Укажите тип работы и все что нам нужно сделать!</value>
   </data>
   <data name="FileUpload" xml:space="preserve">
-    <value>Files</value>
+    <value>Файлы заказа</value>
   </data>
   <data name="FileUploadInfo" xml:space="preserve">
-    <value>At this area you can attach files providing description of your work or any relevant materials!</value>
+    <value>В данном разделе вы можете прикрепить фаилы с описанием работы или другими материалами необходимыми для её выполнения.</value>
   </data>
   <data name="FinishDate" xml:space="preserve">
-    <value>Completion Date</value>
+    <value>Дата окончания</value>
   </data>
   <data name="FinishDateError" xml:space="preserve">
-    <value>Specify Finish Date please!</value>
+    <value>Укажите дату окончания!</value>
   </data>
   <data name="FinishDateInfo" xml:space="preserve">
-    <value>Please specify here the deadline when you need your work to be done.</value>
+    <value>Укажите здесь дату, к который вы хотите получить выполненную работу.</value>
   </data>
   <data name="NeedDescriptionError" xml:space="preserve">
-    <value>Field Decription required!</value>
+    <value>Заполните поле "Описание". Укажите тип работы и ваши пожелания.</value>
   </data>
   <data name="OtherSubject" xml:space="preserve">
-    <value>Other Subject</value>
+    <value>Другой предмет</value>
   </data>
   <data name="OtherSubjectError" xml:space="preserve">
-    <value>Specify your subject or select from existing list!</value>
+    <value>Укажите ваш другой предмет: или выберите существующий из списка выше!</value>
   </data>
   <data name="OtherSubjectInfo" xml:space="preserve">
-    <value>Specify your subject here, if you can't find yours from the dropdown list</value>
+    <value>Укажите ваш предмет здесь, если вы не можете найти нужный из выпадающего списка выше</value>
   </data>
   <data name="Subject" xml:space="preserve">
-    <value>Subject</value>
+    <value>Предмет</value>
   </data>
   <data name="SubjectPopoverInfo" xml:space="preserve">
-    <value>Select a subject. If your subject is not listed in the dropdown menu, select ‘Other’ at the end of the list.</value>
+    <value>Выберите ваш предмет из выпадающего списка, если вы не можете найти нужный вам предмет, выберите опцию 'Другой предмет' в конце списка!</value>
   </data>
   <data name="WorkType" xml:space="preserve">
-    <value>Type of work</value>
+    <value>Тип работы</value>
   </data>
   <data name="WorkTypePopoverInfo" xml:space="preserve">
-    <value>Field work type is used for setting deadlines.</value>
+    <value>Поле тип работы используется для установки сроков выполнения работы.</value>
   </data>
 </root>

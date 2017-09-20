@@ -118,51 +118,51 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActionDesc" xml:space="preserve">
-    <value>Topping up your balance on Runtasker</value>
+    <value>Пополнение баланса на Runtasker</value>
   </data>
   <data name="ActionDescMini" xml:space="preserve">
-    <value>choose payment method</value>
+    <value>выберите сервис для оплаты</value>
   </data>
   <data name="Amount" xml:space="preserve">
-    <value>Amount</value>
+    <value>Сумма</value>
   </data>
   <data name="ErrorText" xml:space="preserve">
-    <value>Sum must be greater than 0!</value>
+    <value>Сумма оплаты должна быть больше 0!</value>
   </data>
   <data name="InfoText" xml:space="preserve">
-    <value>You are about to top up your balance. Select a payment method. Please be advised that RoboKassa charges 6% commission but it allows to make payments via WebMoney, QIWI and banking cards. YandexMoney does not charge commission and also allows to make payments with banking cards. In addition, you can pay with your YandexMoney online wallet.</value>
+    <value>Вы собираетесь пополнить баланс на Runtasker. Выберите нужный сервис для оплаты! Будьте внимательны, Robokassa имеет коммиссию 7 процентов, но позволяет проводить оплтау через WebMoney, QIWI и банковские карты. Другой сервис - YandexMoney не имеет комиссии, и также поддерживает оплату через банковские карты, вдобавок вы можете оплатить используя ваш личный онлайн кошелек YandexMoney.</value>
   </data>
   <data name="NavActive" xml:space="preserve">
-    <value>Topping up</value>
+    <value>Оплата</value>
   </data>
   <data name="NavHome" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="NewInfoText" xml:space="preserve">
-    <value>You are about to top up your balance. Select a payment method. We strongly reccomend you to use YandexKassa service. It supports all popular payment methods and does not charge commission. Please be advised that RoboKassa charges 6% commission.</value>
+    <value>Вы собираетесь пополнить баланс на Runtasker. Выберите нужный сервис для оплаты. Мы настоятельно рекомендуем вам использовать сервис ЯндексКасса. Он поддерживает все популярные способы оплаты и не имеет комиссии. Будьте внимательны, Robokassa удержит с вас коммиссию в размере 6 процентов.</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Balance Recharging</value>
+    <value>Пополнение баланса</value>
   </data>
   <data name="TopUp" xml:space="preserve">
-    <value>Top up</value>
+    <value>Пополнить</value>
   </data>
   <data name="TopUpFormat" xml:space="preserve">
     <value>{0} {1}</value>
-    <comment>{Top up(будет скрываться)} {via smth(не будет скрываться)}</comment>
+    <comment>{Пополнить(будет скрываться)} {через ЯндексКассу(не будет скрываться)}</comment>
   </data>
   <data name="TopUpToHide" xml:space="preserve">
-    <value>Top up</value>
-    <comment>эта часть будет скрываться</comment>
+    <value>Пополнить</value>
+    <comment>Эта часть будет скрываься</comment>
   </data>
   <data name="ViaRobokassa" xml:space="preserve">
-    <value>via Robokassa</value>
+    <value>через Робокассу</value>
   </data>
   <data name="ViaYandexKassa" xml:space="preserve">
-    <value>via YandexKassa</value>
+    <value>через ЯндексКассу</value>
   </data>
   <data name="ViaYandexMoney" xml:space="preserve">
-    <value>via YandexMoney</value>
+    <value>через ЯндексДеньги</value>
     <comment>пополнить через</comment>
   </data>
 </root>

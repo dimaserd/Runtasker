@@ -118,28 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ViaRoboKassa" xml:space="preserve">
-    <value>via RoboKassa service</value>
-  </data>
-  <data name="ViaYandexMoney" xml:space="preserve">
-    <value>via YandexMoney service</value>
+    <value>через Робокассу</value>
   </data>
   <data name="CreateOrderFormat" xml:space="preserve">
-    <value>{0}Create Order</value>
-    <comment>{значок создания} Create Order</comment>
+    <value>{0}Создать заказ</value>
+    <comment>{значок создания} Создать заказ</comment>
   </data>
   <data name="PaymentReceivedTitleFormat" xml:space="preserve">
-    <value>We have received your payment {0}{1} {2}.</value>
-    <comment>We have received your payment {сумма оплаты}{знак рубля} {способ оплаты}. We have received your payment 300Р via YandexMoney service.</comment>
+    <value>Мы получили вашу оплату {0}{1} {2}.</value>
+    <comment>Мы получили вашу оплату {сумма заказа}{знак рубля} {способ получения}. Мы получили вашу оплату 300Р через Робокассу.</comment>
   </data>
   <data name="PayOrderFormat" xml:space="preserve">
-    <value>{0}Pay Order #{1}</value>
-    <comment>{значок для оплаты} Pay Order #{номер заказа}</comment>
+    <value>{0}Оплатить заказ №{1}</value>
+    <comment>{значок для оплаты} Оплатить заказ №{номер заказа}</comment>
+  </data>
+  <data name="ViaYandexMoney" xml:space="preserve">
+    <value>через ЯндексДеньги</value>
   </data>
   <data name="YourBalanceFormat" xml:space="preserve">
-    <value>Your balance is {0}{1}.</value>
-    <comment>Your balance is {сумма на счете}{знак рубля}.</comment>
+    <value>Ваш баланс : {0}{1}.</value>
+    <comment>Ваш баланс : {сумма на счете}{знак рубля}.</comment>
   </data>
   <data name="ViaYandexKassa" xml:space="preserve">
-    <value>via YandexKassa service</value>
+    <value>через ЯндексКассу</value>
   </data>
 </root>

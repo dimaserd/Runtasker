@@ -111,7 +111,6 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\JetBrains.Ann
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Logic.Extensions.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Newtonsoft.Json.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Runtasker.Settings.dll
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\VkNet.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\System.Web.Mvc.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\HtmlExtensions.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Runtasker.Resources.dll
@@ -128,7 +127,6 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\EntityFramewo
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\JetBrains.Annotations.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Newtonsoft.Json.xml
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\VkNet.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\System.Web.Mvc.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\HtmlExtensions.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\Runtasker.Resources.pdb
@@ -193,3 +191,6 @@ C:\Users\developer100\Source\Repos\Runtasker\VkParser\obj\Debug\VkParser.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Debug\VkParser.csproj.CoreCompileInputs.cache
 C:\Users\developer100\Source\Repos\Runtasker\VkParser\bin\Debug\VkNet.UWP.dll
 C:\Users\developer100\Source\Repos\Runtasker\VkParser\bin\Debug\VkNet.UWP.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\VkNet.UWP.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\VkNet.UWP.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\en-GB\Runtasker.Resources.resources.dll

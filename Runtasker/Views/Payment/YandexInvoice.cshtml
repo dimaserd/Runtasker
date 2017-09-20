@@ -1,8 +1,20 @@
 ﻿@using Runtasker.Logic.Models.Payments.YandexKassa
+@using Runtasker.Resources.Views.Payment.YandexInvoice
 @model YandexInvoiceModel
 @{
-    ViewBag.Title = "YandexInvoice";
+    ViewBag.Title = YaInvoiceRes.Title;
+
+    string _class = "form-horizontal";
 }
 
-<h2>YandexInvoice</h2>
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName : "", controllerName: "", method: FormMethod.Post, htmlAttributes: new { @class = _class }))
+{
+    @Html.HiddenFor(x => x.UserId)
+
+    @Html.LabelAndTextBoxFor(x => x.Email)
+
+    @Html.LabelAndTextBoxFor(x => x.Amount)
+}
 

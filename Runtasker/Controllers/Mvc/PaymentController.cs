@@ -31,7 +31,7 @@ namespace Runtasker.Controllers
     {
         public PaymentController()
         {
-            var t = User;
+            
         }
 
         #region Поля

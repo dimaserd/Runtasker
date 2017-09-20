@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="RegisterTextFormat" xml:space="preserve">
-    <value>Please check your email, we have sent you a confirmation email. {0} We are waiting for your account confirmation on {1}.</value>
-    <comment>Please check your email, we have sent you a confirmation email. {ToMark} We are waiting for your account confirmation on {Runtasker}.</comment>
+    <value>Пожалуйста, проверьте вашу электронную почту, мы отправили вам подтверждающие письмо. {0} Ждем подтверждения вашей учетной записи на {1}.</value>
+    <comment>Пожалуйста, проверьте вашу электронную почту, мы отправили вам подтверждающие письмо. {ToMark} Ждем подтверждения вашей учетной записи на {Runtasker}.</comment>
   </data>
   <data name="RegisterTextToMark" xml:space="preserve">
-    <value>So we have prepared a little surprise for you!</value>
+    <value>Так же мы приготовили для вас небольшой сюрприз!</value>
   </data>
   <data name="RegisterTitleFormat" xml:space="preserve">
-    <value>There is one little step and you will join the {0} community</value>
-    <comment>There is one little step and you will join the {Runtasker} community</comment>
+    <value>Остался последний шаг, и вы станете частью сообщества {0}</value>
+    <comment>Остался последний шаг, и вы станете частью сообщества {Runtasker}</comment>
   </data>
   <data name="Runtasker" xml:space="preserve">
     <value>Runtasker</value>

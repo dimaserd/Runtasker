@@ -118,26 +118,26 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="PayWithoutMoneyTextFormat" xml:space="preserve">
-    <value>Your Balance : {0}{1}. Paying order #{2} requires {3}{1}. You need to top up your balance by {4}{1}.</value>
-    <comment>Your Balance : {баланс}{знак рубля}. Half price of order #{номер заказа} costs {половина стоимости заказа}{знак рубля}. You need to top up your balance by {сумма к оплате}{знак рубля}.</comment>
+    <value>Ваш Баланс : {0}{1}. Для оплаты заказа №{2} требуется {3}{1}. Вам необходимо пополнить ваш счет на {4}{1}.</value>
+    <comment>Ваш Баланс : {0=баланс}{1=знак рубля}. Половина стоимости заказа №{2=номер заказа} стоит {3=половина стоимости заказа}{1=знак рубля}. Вам необходимо пополнить ваш счет на {4=сколько нужно денег}{1=знак рубля}. </comment>
   </data>
   <data name="PayWithoutMoneyTitle" xml:space="preserve">
-    <value>You don't have enough money on your account!</value>
+    <value>У вас недостаточно средств!</value>
   </data>
   <data name="TopUpBalanceFormat" xml:space="preserve">
-    <value>Top up by {0}{1}</value>
-    <comment>Top up by {сумма к оплате}{знак рубля}</comment>
+    <value>Пополнить счет на {0}{1}</value>
+    <comment>Пополнить счет на {сумма к оплате}{знак рубля}</comment>
   </data>
   <data name="UnconfirmedAttemptText" xml:space="preserve">
-    <value>Wait for a confirmation email. You can not make an order while you're not confirmed!</value>
+    <value>Проверьте вашу почту, вам должно прийти электронное письмо. Вы не можете делать заказы, пока вы не подтвердили свою электронную почту!</value>
   </data>
   <data name="UnconfirmedAttemptTitle" xml:space="preserve">
-    <value>You have not confirmed your email!</value>
+    <value>У вас не подтвержден адрес электронной почты!</value>
   </data>
   <data name="YourBalance" xml:space="preserve">
-    <value>Your Balance</value>
+    <value>Ваш Баланс</value>
   </data>
   <data name="YourBalanceFormat" xml:space="preserve">
-    <value>Your Balance : {0}{1}.</value>
+    <value>Ваш Баланс : {0}{1}.</value>
   </data>
 </root>

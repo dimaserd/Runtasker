@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Описание</value>
   </data>
   <data name="DescriptionError" xml:space="preserve">
-    <value>Provide new Description!</value>
+    <value>Опишите ваш заказ!</value>
   </data>
   <data name="Files" xml:space="preserve">
-    <value>Files</value>
+    <value>Файлы</value>
   </data>
   <data name="FilesError" xml:space="preserve">
-    <value>Attach new files please!</value>
+    <value>Пожалуйста, прикрепите новые файлы!</value>
   </data>
   <data name="Sum" xml:space="preserve">
-    <value>Sum</value>
+    <value>Сумма</value>
   </data>
   <data name="WorkType" xml:space="preserve">
-    <value>Type of work</value>
+    <value>Тип работы</value>
   </data>
 </root>

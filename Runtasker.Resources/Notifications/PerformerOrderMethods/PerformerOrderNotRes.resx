@@ -118,60 +118,62 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddDescBtnText" xml:space="preserve">
-    <value>Add Description</value>
+    <value>Добавить описание</value>
   </data>
   <data name="AddedErrorText" xml:space="preserve">
-    <value>Please correct it!</value>
+    <value>Пожалуйста, исправьте!</value>
   </data>
   <data name="AddFilesBtnText" xml:space="preserve">
-    <value>Add Files</value>
+    <value>Добавить файлы</value>
   </data>
   <data name="RuntaskerWishes" xml:space="preserve">
-    <value>Best wishes from the Runtasker team!</value>
+    <value>С наилучшими пожеланиями от Runtasker!</value>
   </data>
   <data name="AddedErrorTitleFormat" xml:space="preserve">
-    <value>We have found some errors! Your order #{0} {1}.</value>
-    <comment>We have found some errors! Your order #{номер заказа} {описание ошибки}.</comment>
+    <value>Мы обнаружили некоторые ошибки! В вашем заказе №{0} {1}.</value>
+    <comment>Мы обнаружили некоторые ошибки! В вашем заказе №{номер заказа} {описание ошибки}.</comment>
   </data>
   <data name="EstimatedBtnTextFormat" xml:space="preserve">
-    <value>Pay {0}{1}.</value>
-    <comment>Pay {сумма к оплате}{знак рубля}.</comment>
+    <value>Оплатить {0}{1}.</value>
+    <comment>Оплатить {сумма к оплате}{знак рубля}.</comment>
   </data>
   <data name="EstimatedTextFormat" xml:space="preserve">
-    <value>Your order #{0} costs {1}{2}. Please, pay half of the sum now.</value>
-    <comment>Your order #{номер заказа} costs {стоимость заказа}{знак рубля}. Please, pay half of the sum now.</comment>
+    <value>Ваш заказ №{0} стоит {1}{2}. Вам нужно оплатить первую половину суммы сейчас.</value>
+    <comment>Ваш заказ №{номер заказа} стоит {стоимость заказа}{знак рубля}. Вам нужно оплатить первую половину суммы сейчас.</comment>
   </data>
   <data name="EstimatedTitleFormat" xml:space="preserve">
-    <value>Your order #{0} has been estimated.</value>
-    <comment>Your order #{номер заказа} has been estimated.</comment>
-  </data>
-  <data name="ExecutedBtnTextFormat" xml:space="preserve">
-    <value>Pay {0}{1}</value>
-    <comment>Pay {сумма}{знак рубля}</comment>
+    <value>Ваш заказ №{0} оценен.</value>
+    <comment>Ваш заказ №{номер заказа} оценен.</comment>
   </data>
   <data name="ExecutedTextFormat" xml:space="preserve">
-    <value>Pay the rest of the sum {0}{1} and get the solution.</value>
-    <comment>Pay the rest of the sum sum {сумма}{знак рубля} and get the solution.</comment>
+    <value>Оплатите оставшуюся сумму {0}{1} и получите решение.</value>
+    <comment>Оплатите оставшуюся сумму {оставшаяся стоимость}{знак рубля} и получите решение.</comment>
   </data>
   <data name="ExecutedTitleFormat" xml:space="preserve">
-    <value>We have completed working on your order #{0}.</value>
-    <comment>We have completed working on your order #{номер заказа}.</comment>
+    <value>Мы закончили работу по вашему заказу №{0}.</value>
+    <comment>Мы закончили работу по вашему заказу №{номер заказа}.</comment>
   </data>
   <data name="StartedExecutingTextFormat" xml:space="preserve">
-    <value>Our team have started working on your order. You will have received the solution by {0} at the latest.</value>
-    <comment>Our team have started working on your order. You will have received the solution by {дата завершения} at the latest.</comment>
+    <value>Наша команда приступила к выполнению вашего заказа! Вы получите решение к {0} или раньше.</value>
+    <comment>Наша команда приступила к выполнению вашего заказа! Вы получите решение к {дата завершения} или раньше.</comment>
   </data>
   <data name="StartedExecutingTitleFormat" xml:space="preserve">
-    <value>Your order #{0} is being carried out.</value>
-    <comment>Your order #{номер заказа} is being carried out.</comment>
+    <value>Ваш заказ №{0} выполняется.</value>
+    <comment>Ваш заказ №{номер заказа} выполняется.</comment>
   </data>
   <data name="OnlineHelpEstimatedBtnText" xml:space="preserve">
-    <value>Pay Online-Help</value>
+    <value>Оплатить Онлайн-Помощь</value>
   </data>
   <data name="OnlineHelpEstimatedTextFormat" xml:space="preserve">
-    <value>Our Online-Help on {0} for subject {1} costs {2}{3}. You need to pay the whole sum now.</value>
+    <value>Наша Онлайн-Помощь на {0} по предмету {1} стоит {2}{3}. Полную стоимость данной услуги нужно оплатить сейчас.</value>
+    <comment>Наша Онлайн-Помощь на {дата онлайн помощи} по предмету {название предмета} стоит {стоимость}{знак рубля}. Полную стоимость данной услугу нужно оплатить сейчас.</comment>
   </data>
   <data name="OnlineHelpEstimatedTitleFormat" xml:space="preserve">
-    <value>Online-Help #{0} has been estimated.</value>
+    <value>Мы оценили стоимость Онлайн-Помощи №{0}.</value>
+    <comment>Мы оценили стоимость Онлайн-Помощи №{номер заказа}.</comment>
+  </data>
+  <data name="ExecutedBtnTextFormat" xml:space="preserve">
+    <value>Оплатить {0}{1}</value>
+    <comment>Оплатить {сумма к оплате}{знак рубля}</comment>
   </data>
 </root>

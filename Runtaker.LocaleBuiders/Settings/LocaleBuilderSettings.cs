@@ -8,7 +8,7 @@ namespace Runtaker.LocaleBuiders.Settings
 {
     public static class LocaleBuilderSettings
     {
-        public static bool UseCustomPath = true;
+        public static bool UseCustomPath = false;
 
         public static string CustomPath = "C:\\Users\\developer100\\Source\\Repos\\Runtasker\\Runtasker.Resources";
     }

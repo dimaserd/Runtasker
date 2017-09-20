@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="PayFormat" xml:space="preserve">
-    <value>Pay {0}{1}</value>
+    <value>Оплатить {0}{1}</value>
     <comment>Pay {сумма к оплате}{знак рубля}</comment>
   </data>
   <data name="PayOnlineHelp" xml:space="preserve">
-    <value>Pay Online-Help</value>
+    <value>Оплить онлайн-помощь</value>
   </data>
 </root>

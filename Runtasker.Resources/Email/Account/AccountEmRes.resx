@@ -118,60 +118,60 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="HowToLoginViaProvider" xml:space="preserve">
-    <value>To log on the site use the button</value>
+    <value>Чтобы войти на сайт, используйте кнопку</value>
   </data>
   <data name="RegistrationButtonText" xml:space="preserve">
-    <value>Click here!</value>
+    <value>Нажмите сюда!</value>
   </data>
   <data name="RegistrationSubject" xml:space="preserve">
-    <value>Confirm your account</value>
+    <value>Подтвердите свою учетную запись</value>
   </data>
   <data name="RegWithOrderBtnText" xml:space="preserve">
-    <value>Confirm your account</value>
+    <value>Подтвердите вашу учетную запись</value>
   </data>
   <data name="RegWithOrderHeader1" xml:space="preserve">
     <value />
   </data>
   <data name="RegWithOrderSubject1" xml:space="preserve">
-    <value>Registration on Runtasker</value>
+    <value>Регистрация</value>
   </data>
   <data name="RegWithOrdertText1" xml:space="preserve">
-    <value>Thank you for registration on Runtasker.ru!</value>
+    <value>Вы зарегистрировались на сайте Runtasker.ru.</value>
   </data>
   <data name="RegWithOrdertText2" xml:space="preserve">
-    <value>Your account details</value>
+    <value>Данные вашей учетной записи</value>
   </data>
   <data name="RegWithOrdertText3" xml:space="preserve">
-    <value>Login</value>
+    <value>Логин</value>
   </data>
   <data name="RegWithOrdertText4" xml:space="preserve">
-    <value>Password</value>
+    <value>Пароль</value>
   </data>
   <data name="ResetPassSubject" xml:space="preserve">
-    <value>Reset password</value>
+    <value>Сброс пароля</value>
   </data>
   <data name="ResetPassText1" xml:space="preserve">
-    <value>Reset your password, by clicking</value>
+    <value>Чтобы сбросить ваш пароль,  нажмите</value>
   </data>
   <data name="ResetPassText2" xml:space="preserve">
-    <value>here</value>
+    <value>здесь</value>
   </data>
   <data name="RuntaskerWish" xml:space="preserve">
-    <value>Best wishes from the Runtasker team!</value>
+    <value>С наилучшими пожеланиями от Runtasker!</value>
   </data>
   <data name="GreetingFormat" xml:space="preserve">
-    <value>Hello {0}!</value>
-    <comment>Hello {name}!</comment>
+    <value>Здравствуйте, {0}!</value>
+    <comment>Здравствуйте, {имя пользователя}!</comment>
   </data>
   <data name="LoginViaProviderFormat" xml:space="preserve">
-    <value>To log on the site use {0} button.</value>
-    <comment>To log on the site use {имя соцсети} button.</comment>
+    <value>Чтобы войти на сайт, используйте кнопку {0}.</value>
+    <comment>Чтобы войти на сайт, используйте кнопку {имя соцсети}.</comment>
   </data>
   <data name="RegistrationTextFormat" xml:space="preserve">
-    <value>Thank you for registration on Runtasker! We hope you will love our services! So, after you click a button you will get {0}{1} which you can spend on your first order.</value>
-    <comment>Thank you for registration on Runtasker! We hope you will love our services! So, after you click a button you will get {bonus}{знак рубля} which you can spend on your first order.</comment>
+    <value>Спасибо, за регистрацию на Runtasker! Мы надеемся, вам понравится наш сервис! После того как вы нажмете на кнопку, вы получите {0}{1}, которые вы cможете потратить на свой первый заказ.</value>
+    <comment>Спасибо, за регистрацию на Runtasker! Мы надеемся, вам понравится наш сервис! После того как вы нажмете на кнопку, вы получите {сумма}{знак рубля}, которые вы cможете потратить на свой первый заказ.</comment>
   </data>
   <data name="SocialRegistrationTextFormat" xml:space="preserve">
-    <value>Thank you for registration on Runtasker! We hope you will love our services! So, after you click a button you will get {0}{1} which you can spend on your first order.</value>
+    <value>Спасибо, за регистрацию на Runtasker! Мы надеемся, вам понравится наш сервис! После того как вы нажмете на кнопку, вы получите {0}{1}, которые вы cможете потратить на свой первый заказ.</value>
   </data>
 </root>

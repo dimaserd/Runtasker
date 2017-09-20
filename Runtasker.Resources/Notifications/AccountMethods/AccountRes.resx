@@ -118,27 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="FromInvitationText1" xml:space="preserve">
-    <value>We will gift you</value>
+    <value>Мы подарим вам</value>
   </data>
   <data name="FromInvitationText2" xml:space="preserve">
-    <value>after he/she got his first order finished! Thank you for a new client!</value>
+    <value>после того как, он/она завершит свой первый заказ! Спасибо, за нового клиента!</value>
   </data>
   <data name="FromInvitationTitle1" xml:space="preserve">
-    <value>Congratulations! Invited user</value>
+    <value>Поздравляем! Приглашенный вам пользователь</value>
   </data>
   <data name="FromInvitationTitle2" xml:space="preserve">
-    <value>registered!</value>
+    <value>зарегистрировался!</value>
   </data>
   <data name="RegisteredButtonText" xml:space="preserve">
-    <value>Create Order</value>
+    <value>Создать Заказ</value>
   </data>
   <data name="RegisteredTextFormat" xml:space="preserve">
-    <value>We gift you {0}{1}! Go and create your first order!</value>
+    <value>Мы дарим вам {0}{1}! Вперед, создайте свой первый заказ!</value>
+    <comment>Мы дарим вам {сумма}{знак рубля}! Вперед, создайте свой первый заказ!</comment>
   </data>
   <data name="RegisteredTitle" xml:space="preserve">
-    <value>Congratulations! You have registered on Runtasker!</value>
+    <value>Поздравляем! Вы зарегистрировались на Runtasker!</value>
   </data>
   <data name="RuntaskerWish" xml:space="preserve">
-    <value>Best wishes from the Runtasker team!</value>
+    <value>С наилучшими пожеланиями от Runtasker!</value>
   </data>
 </root>

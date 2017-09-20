@@ -14,7 +14,7 @@ namespace Runtaker.LocaleBuiders.Workers
 {
     public static class ResourceModelCreator
     {
-        private static string GetResourcesDir()
+        public static string GetResourcesDir()
         {
             if(LocaleBuilderSettings.UseCustomPath)
             {

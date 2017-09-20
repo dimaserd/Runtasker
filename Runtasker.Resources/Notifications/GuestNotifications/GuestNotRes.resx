@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="UserTriedToOrderOnlineHelpBtnText" xml:space="preserve">
-    <value>Register on Runtasker</value>
+    <value>Зарегистрироваться на Рантаскер</value>
   </data>
   <data name="UserTriedToOrderOnlineHelpText" xml:space="preserve">
-    <value>Before you can submit an application, you should be registered on Runtasker. </value>
+    <value>Прежде чем оставить заявку на Онлайн-Помощь вы должны пройти регистрацию на Рантаскер.</value>
   </data>
   <data name="UserTriedToOrderOnlineHelpTitle" xml:space="preserve">
-    <value>You can't submit an application for Online-Help.</value>
+    <value>Вы не можете оставить заявку на Онлайн-Помощь</value>
   </data>
 </root>

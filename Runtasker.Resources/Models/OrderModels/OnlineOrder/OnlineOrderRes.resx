@@ -118,30 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Описание</value>
   </data>
   <data name="FilesUploadInfo" xml:space="preserve">
-    <value>Here you can upload examples of task which you want us to help you with.</value>
+    <value>Здесь вы можете загрузить примерные задания, той работы с которой вам требуется помощь.</value>
   </data>
   <data name="FileUpload" xml:space="preserve">
-    <value>Files</value>
+    <value>Файлы с заданиями</value>
   </data>
   <data name="StartDate" xml:space="preserve">
-    <value>Start Date</value>
+    <value>Дата начала</value>
   </data>
   <data name="StartDatePopoverInfo" xml:space="preserve">
-    <value>Please, specify an exact time by Moscow when you need our help.</value>
+    <value>Пожалуйста, укажите точное время начала контрольной работы или экзамена (Время указывайте по Москве).</value>
   </data>
   <data name="Subject" xml:space="preserve">
-    <value>Subject</value>
+    <value>Предмет</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
-    <value>Phone Number</value>
+    <value>Номер телефона</value>
   </data>
   <data name="PhoneNumberErrorText" xml:space="preserve">
-    <value>You've input a wrong phone number!</value>
+    <value>Вы указали неверный номер телефона!</value>
   </data>
   <data name="PhoneNumberInfo" xml:space="preserve">
-    <value>We will contact you to discuss all the details about your application.</value>
+    <value>Мы c вами свяжемся для уточнения деталей касательно вашей заявки.</value>
   </data>
 </root>

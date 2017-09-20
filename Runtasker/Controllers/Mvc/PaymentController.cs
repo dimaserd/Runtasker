@@ -281,9 +281,9 @@ namespace Runtasker.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Customer")]
-        public ActionResult YandexInvoice(decimal? sumToPay)
+        public ActionResult YandexInvoice(YandexInvoiceModel model)
         {
-
+            return View();
         }
         #endregion
 

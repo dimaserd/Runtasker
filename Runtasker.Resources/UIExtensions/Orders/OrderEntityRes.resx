@@ -118,62 +118,62 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddDescription" xml:space="preserve">
-    <value>Add Description</value>
+    <value>Добавьте описание</value>
   </data>
   <data name="AddFiles" xml:space="preserve">
-    <value>Add Files</value>
+    <value>Загрузите файлы</value>
   </data>
   <data name="ChatAboutOrderFormat" xml:space="preserve">
-    <value>{0} Chat about order {1}</value>
-    <comment>{знак чата} Chat about order {кол-во непрочитанных сообщений}</comment>
+    <value>{0} Чат о заказе {1}</value>
+    <comment>{знак чата} Чат о заказе {кол-во непрочитанных сообщений}</comment>
   </data>
   <data name="DeleteFormat" xml:space="preserve">
-    <value>{0} Delete order</value>
+    <value>{0} Удалить заказ</value>
     <comment>{иконка удаления} Удалить заказ</comment>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Описание</value>
   </data>
   <data name="DownloadSolutionFormat" xml:space="preserve">
-    <value>{0} Download Solution</value>
-    <comment>{знак загрузки} Download Solution</comment>
+    <value>{0} Загрузить Решение</value>
+    <comment>{знак загрузки} Загрузить Решение</comment>
   </data>
   <data name="Estimation" xml:space="preserve">
-    <value>Waiting for estimation!</value>
+    <value>Заказ проверяется!</value>
   </data>
   <data name="Executing" xml:space="preserve">
-    <value>We're executing it!</value>
+    <value>Заказ выполняется!</value>
   </data>
   <data name="FinishedFormat" xml:space="preserve">
-    <value>{0} Finished</value>
-    <comment>{знак финиша} Finished</comment>
+    <value>{0} Завершен</value>
+    <comment>{знак финиша} Завершен</comment>
   </data>
   <data name="OrderFormat" xml:space="preserve">
-    <value>Order #{0}</value>
-    <comment>Order #{номер заказа}</comment>
+    <value>Заказ №{0}</value>
+    <comment>Заказ №{номер заказа}</comment>
   </data>
   <data name="PayFormat" xml:space="preserve">
-    <value>{0} Pay {1}{2}</value>
-    <comment>{знак оплаты} Pay {сумма оплаты}{знак рубля}</comment>
+    <value>{0} Оплатить {1}{2}</value>
+    <comment>{знак оплаты} Оплатить {сумма оплаты}{знак рубля}.</comment>
   </data>
   <data name="RatingWorkFormat" xml:space="preserve">
-    <value>{0} Rating our work</value>
-    <comment>{знак рейтинга} Rating our work</comment>
+    <value>{0} Оценить работу</value>
+    <comment>{знак рейтинга} Оценить работу</comment>
   </data>
   <data name="SubjectFormat" xml:space="preserve">
-    <value>Subject: {0}</value>
-    <comment>Subject: {название предмета}</comment>
+    <value>Предмет: {0}</value>
+    <comment>Предмет: {название предмета}</comment>
   </data>
   <data name="SumFormat" xml:space="preserve">
-    <value>Sum: {0}{1}</value>
-    <comment>Sum: {стоимость заказа}{знак рубля}</comment>
+    <value>Сумма: {0}{1} </value>
+    <comment>Сумма: {стоимость заказа}{знак рубля}</comment>
   </data>
   <data name="WaitingForHelpEventFormat" xml:space="preserve">
-    <value>Waiting for {0}</value>
-    <comment>Waiting for {дата помощи}</comment>
+    <value>Ожидаем {0}</value>
+    <comment>Ожидаем {дата помощи}</comment>
   </data>
   <data name="WorkTypeFormat" xml:space="preserve">
-    <value>Type of work: {0}</value>
-    <comment>Type of work: {тип работы}</comment>
+    <value>Тип работы: {0}</value>
+    <comment>Тип работы: {тип работы}</comment>
   </data>
 </root>

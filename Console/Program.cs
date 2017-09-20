@@ -14,23 +14,27 @@ namespace TestingConsole
     {
         static void Main(string[] args)
         {
-            List<ResourceFileModel> rus = ResourceModelCreator.GetModelsByLang(Lang.Russian).ToList();
 
-            List<ResourceFileModel> eng = ResourceModelCreator.GetModelsByLang(Lang.English).ToList();
+            ResourceCopyWorker.DoJob();
 
-            List<ResourceFileModel> ch = ResourceModelCreator.GetModelsByLang(Lang.Chinese).ToList();
+            
+            //List<ResourceFileModel> rus = ResourceModelCreator.GetModelsByLang(Lang.Russian).ToList();
 
-            List<ResourceFileModel> all = ResourceModelCreator.GetModels().ToList();
+            //List<ResourceFileModel> eng = ResourceModelCreator.GetModelsByLang(Lang.English).ToList();
 
-            bool res = all.Count == (rus.Count + eng.Count + ch.Count);
+            //List<ResourceFileModel> ch = ResourceModelCreator.GetModelsByLang(Lang.Chinese).ToList();
 
-            MyDbContext context = new MyDbContext();
+            //List<ResourceFileModel> all = ResourceModelCreator.GetModels().ToList();
 
-            context.ResourceFileModels.AddRange(all);
+            //bool res = all.Count == (rus.Count + eng.Count + ch.Count);
 
-            context.SaveChanges();
+            //MyDbContext context = new MyDbContext();
 
-            Console.ReadLine();
+            //context.ResourceFileModels.AddRange(all);
+
+            //context.SaveChanges();
+
+            //Console.ReadLine();
         }
     }
 }

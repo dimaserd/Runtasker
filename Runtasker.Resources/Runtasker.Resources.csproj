@@ -705,6 +705,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SucceededRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Payment\YandexInvoice\YaInvoiceRes.ru-RU.Designer.cs">
+      <DependentUpon>YaInvoiceRes.ru-RU.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Payment\YandexInvoice\YaInvoiceRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YaInvoiceRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Payment\YandexKassa\YandexKassaRes.Designer.cs">
       <DependentUpon>YandexKassaRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1312,6 +1322,14 @@
     <EmbeddedResource Include="Views\Payment\Succeeded\SucceededRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SucceededRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\YandexInvoice\YaInvoiceRes.ru-RU.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>YaInvoiceRes.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Payment\YandexInvoice\YaInvoiceRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>YaInvoiceRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Payment\YandexKassa\YandexKassaRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

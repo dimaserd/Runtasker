@@ -138,7 +138,7 @@ namespace Runtasker.Controllers
                     Hash = Guid.NewGuid().ToString(),
                     PaymentServiceId = Guid.NewGuid().ToString(),
                     UserGuid = model.UserId,
-                    ViaType = PaymentViaType.Administration
+                    ViaType = PaymentViaType.YandexKassa
                 };
 
                 PaymentTransaction pt = new PaymentTransaction
@@ -179,6 +179,8 @@ namespace Runtasker.Controllers
         }
 
         #region ЯндексКасса
+
+        #region Основные методы
         [HttpGet]
         [Authorize(Roles = "Customer")]
         public ActionResult YandexKassa(decimal? sumToPay)
@@ -260,6 +262,30 @@ namespace Runtasker.Controllers
             
         }
 
+
+        #endregion
+
+        #region Временные решения
+        [HttpGet]
+        [Authorize(Roles = "Customer")]
+        public ActionResult YandexInvoice(decimal? sumToPay)
+        {
+            return View(
+                new YandexInvoiceModel
+                {
+                    UserId = UserGuid,
+                    Email = User.Identity.GetEmail(),
+                    Amount = (sumToPay.HasValue)? (int)sumToPay.Value : 0
+                });
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Customer")]
+        public ActionResult YandexInvoice(decimal? sumToPay)
+        {
+
+        }
+        #endregion
 
         #region Тестовые методы
         [HttpGet]

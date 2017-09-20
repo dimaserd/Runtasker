@@ -53,6 +53,7 @@
     <Compile Include="AdminSettings.cs" />
     <Compile Include="Controllers\FileControllerSettings.cs" />
     <Compile Include="DevSettings.cs" />
+    <Compile Include="Entities\SettingEntity.cs" />
     <Compile Include="Enumerations\ApplicationSettingType.cs" />
     <Compile Include="Enumerations\ConnectionType.cs" />
     <Compile Include="Files\FilesSettings.cs" />

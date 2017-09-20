@@ -15,8 +15,12 @@ namespace Runtasker.Controllers.Mvc
         
         public async Task<ActionResult> Ged()
         {
-            List<ResourceFileModel> all = ResourceModelCreator.GetModels().ToList();
-            
+            List<ResourceFileModel> all = ResourceModelCreator.GetModelsByLang(lang: LocaleBuilders.Enumerations.Lang.English).ToList();
+
+            Db.ResourceStringTypes.RemoveRange(Db.ResourceStringTypes);
+            Db.ResourceStrings.RemoveRange(Db.ResourceStrings);
+            Db.ResourceFileModels.RemoveRange(Db.ResourceFileModels);
+
             Db.ResourceFileModels.AddRange(all);
 
             await Db.SaveChangesAsync();

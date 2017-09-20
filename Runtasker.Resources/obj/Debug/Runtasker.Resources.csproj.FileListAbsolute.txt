@@ -533,3 +533,6 @@ C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runta
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.csproj.CoreCompileInputs.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.csprojResolveAssemblyReference.cache
+C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.csprojResolveAssemblyReference.cache
+C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Payment.YandexInvoice.YaInvoiceRes.resources
+C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Payment.YandexInvoice.YaInvoiceRes.ru-RU.resources

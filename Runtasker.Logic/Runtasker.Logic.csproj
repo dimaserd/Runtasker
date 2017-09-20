@@ -255,6 +255,7 @@
     <Compile Include="Models\Orders\Pay\PayOnlineHelp.cs" />
     <Compile Include="Models\Orders\Pay\PayOrderBase.cs" />
     <Compile Include="Models\Payments\Admin\MakePaymentForUser.cs" />
+    <Compile Include="Models\Payments\YandexKassa\YandexInvoiceModel.cs" />
     <Compile Include="Models\Payments\YandexKassa\YandexKassaPaymentResponse.cs" />
     <Compile Include="Models\Users\ApplicationUserInfo.cs" />
     <Compile Include="Models\VkNotificater\VkUserInfo.cs" />
@@ -393,6 +394,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Entities\Settings\" />
     <Folder Include="Enumerations\Notifications\Customer\Local\" />
     <Folder Include="Models\Menu\" />
     <Folder Include="Workers\Logging\Statics\" />

@@ -118,37 +118,35 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Callout1" xml:space="preserve">
-    <value>Yeah, I want to make an order!</value>
-    <comment>Да, хочу сделать заказ!</comment>
+    <value>Да, хочу сделать заказ!</value>
   </data>
   <data name="CalloutQuestion1" xml:space="preserve">
-    <value>Do you like our works</value>
-    <comment>Нравиться качество наших работ</comment>
+    <value>Нравится качество наших работ</value>
+    <comment>Нравится качество наших работ</comment>
   </data>
   <data name="Header1" xml:space="preserve">
-    <value>Executed works examples on</value>
+    <value>Примеры выполненных работ на</value>
     <comment>Примеры выполненных работ на Runtasker</comment>
   </data>
   <data name="Mathematics" xml:space="preserve">
-    <value>Mathematics</value>
+    <value>Математика</value>
   </data>
   <data name="Physics" xml:space="preserve">
-    <value>Physics</value>
+    <value>Физика</value>
   </data>
   <data name="Programming" xml:space="preserve">
-    <value>Programming</value>
+    <value>Программирование</value>
   </data>
   <data name="Runtasker" xml:space="preserve">
     <value>Runtasker</value>
   </data>
   <data name="ShowAll" xml:space="preserve">
-    <value>Show all</value>
+    <value>Показать все</value>
   </data>
   <data name="ViewImage1" xml:space="preserve">
-    <value>VIEW</value>
+    <value>ПОКАЗАТЬ</value>
   </data>
   <data name="ViewImage2" xml:space="preserve">
-    <value>IMAGE</value>
-    <comment>VIEW IMAGE</comment>
+    <value>ИЗОБРАЖЕНИЕ</value>
   </data>
 </root>

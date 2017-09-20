@@ -118,18 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>About</value>
+    <value>О нас</value>
   </data>
   <data name="AllRightsRes" xml:space="preserve">
-    <value>ALL RIGHTS RESERVED</value>
+    <value>Все права защищены</value>
   </data>
   <data name="BackToTop" xml:space="preserve">
-    <value>BACK TO TOP</value>
+    <value>Наверх</value>
   </data>
   <data name="Contact" xml:space="preserve">
-    <value>Contact</value>
+    <value>Обратная связь</value>
   </data>
   <data name="HaveQuestions" xml:space="preserve">
-    <value>Have any questions</value>
+    <value>Есть вопросы</value>
   </data>
 </root>

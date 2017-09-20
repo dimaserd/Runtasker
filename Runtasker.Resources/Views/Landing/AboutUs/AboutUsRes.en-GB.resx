@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EditingAndFinilizing" xml:space="preserve">
+    <value>Free corrections </value>
+    <comment>Правки и доработки</comment>
+  </data>
+  <data name="EditingAndFinilizingText" xml:space="preserve">
+    <value>Runtasker cares a lot about his customers, that's why any maintenance is free while executing your order.</value>
+    <comment>Runtasker заботиться о своих клиентах, поэтому сопровождение ваших работ осуществляются бесплатно во время ее выполнения.</comment>
+  </data>
+  <data name="HeaderFormat" xml:space="preserve">
+    <value>Welcome to {0}</value>
+    <comment>Welcome to {Runtasker}</comment>
+  </data>
+  <data name="MiniDescription" xml:space="preserve">
+    <value>Runtasker – is  multilingual web application, created for students. We see it as an obligation to help any student, that's why we continue adding new language support. It is important for us to know that our cusomers feel maximum comfort working with Runtasker. And what could be more comfortable than communication in your native language?</value>
+  </data>
+  <data name="OrderFromUsToMark" xml:space="preserve">
+    <value>Runtasker?</value>
+  </data>
+  <data name="Runtasker" xml:space="preserve">
+    <value>Runtasker</value>
+  </data>
+  <data name="Slogan" xml:space="preserve">
+    <value>Runtasker : created to help</value>
+  </data>
+  <data name="StrictTimetables" xml:space="preserve">
+    <value>Strict with the deadlines</value>
+  </data>
+  <data name="StrictTimetablesText" xml:space="preserve">
+    <value>Runtasker meeting deadlines well. Our reputation is important for us.</value>
+  </data>
+  <data name="TechnicalSupport" xml:space="preserve">
+    <value>Technical support</value>
+  </data>
+  <data name="TechnicalSupportText" xml:space="preserve">
+    <value>Runtasker cares about you and your free time, becauase of that you're always welcomed at our technical support.</value>
+  </data>
+  <data name="TextParagraph" xml:space="preserve">
+    <value>You must be having thoughts, a lot of your free time wastes on performing routine tasks, similar essays and other works just needed for formal reasons? We are also having those thoughts! In Runtasker we consider this time-wasting unaccectable! We are taking the charge to handle your routine. But what about the course works and diplomas – those enormous boring projects, which make you feel sleep? These we can handle too! You don't have to waste your precious time anymore! All you need - is describe the work you need, the topic and tell us your desires about the work, and we we will do it for you! Runtasker - your time is our priority!</value>
+  </data>
+  <data name="WhyOrderFromUsFormat" xml:space="preserve">
+    <value>Why it's better to order at {0}</value>
+    <comment>Почему лучше заказывать на {Runtasker?}</comment>
+  </data>
+  <data name="WorksQuality" xml:space="preserve">
+    <value>Works quality</value>
+  </data>
+  <data name="WorksQualityText" xml:space="preserve">
+    <value>Runtasker executes works of a high quality. Your works are handled by the true masters of the business, taking their responsibilities seriously.</value>
+  </data>
+</root>

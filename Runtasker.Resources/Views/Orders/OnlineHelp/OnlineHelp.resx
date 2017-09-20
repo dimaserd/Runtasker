@@ -118,30 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActiveNav" xml:space="preserve">
-    <value>Online Help</value>
+    <value>Онлайн-помощь</value>
   </data>
   <data name="DescriptionPlaceholder" xml:space="preserve">
-    <value>Please describe here anything in detail. How long will it take? </value>
+    <value>Пожалуйста, опишите все очень подробно. Например, как долго продлится контрольная?</value>
   </data>
   <data name="Header" xml:space="preserve">
-    <value>An application for online-help</value>
+    <value>Заявка на онлайн-помощь</value>
   </data>
   <data name="HelpAlertText" xml:space="preserve">
-    <value>After you submit this application, we will tell you the price of our help. Notice that you must pay full price before.</value>
+    <value>После того как вы отправите заявку, Мы сообщим вам сколько будет стоить наша помощь. Помните, что онлайн-помощь оплачивается заранее и в полном размере.</value>
   </data>
   <data name="HelpAlertTitle" xml:space="preserve">
-    <value>Attention, please.</value>
+    <value>Обратите, пожалуйста, ваше внимание.</value>
   </data>
   <data name="HomeNav" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="MyOrdersNav" xml:space="preserve">
-    <value>My Orders</value>
+    <value>Мои заказы</value>
   </data>
   <data name="SubmitBtnText" xml:space="preserve">
-    <value>Submit your application</value>
+    <value>Оставить заявку</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Online-Help</value>
+    <value>Онлайн-помощь</value>
   </data>
 </root>

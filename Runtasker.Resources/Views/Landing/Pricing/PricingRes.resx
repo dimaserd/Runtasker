@@ -118,37 +118,37 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AnyTypeOfConnection" xml:space="preserve">
-    <value>Connecting with a performer by the most convenient way</value>
+    <value>Связь с исполнителем любым удобным способом</value>
   </data>
   <data name="DiscussWithPerformer" xml:space="preserve">
-    <value>You can discuss your work directly with a performer</value>
+    <value>Возможность обсудить работу напрямую с исполнителем</value>
   </data>
   <data name="FindOutThePrice" xml:space="preserve">
-    <value>Find out the price of my work</value>
+    <value>Узнать цену моей работы</value>
   </data>
   <data name="FreeCorrections" xml:space="preserve">
-    <value>Free corrections</value>
+    <value>Бесплатные доработки</value>
   </data>
   <data name="FreeUniqueTextUpgrade" xml:space="preserve">
-    <value>Free text uniqueness upgrade </value>
+    <value>Бесплатное повышение уникальности текста</value>
   </data>
   <data name="FromPriceFormat" xml:space="preserve">
-    <value>from {0}{1}</value>
-    <comment>from {цена}{знак рубля}</comment>
+    <value>от {0}{1}</value>
+    <comment>от {цена}{знак рубаса}</comment>
   </data>
   <data name="OrderOnlineHelp" xml:space="preserve">
-    <value>Order Online-Help</value>
+    <value>Заказать Онлайн-Помощь</value>
   </data>
   <data name="PayWithBonusMoney" xml:space="preserve">
-    <value>You can pay using your bonus money</value>
+    <value>Возможность оплатить бонусными деньгами</value>
   </data>
   <data name="ReturningFundsWarranty" xml:space="preserve">
-    <value>We guarantee returnig funds if performer fails</value>
+    <value>Гарантия возврата средств при неудаче исполнителя</value>
   </data>
   <data name="ShortTimeExecution" xml:space="preserve">
-    <value>Short time execution of your order</value>
+    <value>Выполнение вашего заказа в очень сжатые сроки</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Pricing</value>
+    <value>Наши цены</value>
   </data>
 </root>

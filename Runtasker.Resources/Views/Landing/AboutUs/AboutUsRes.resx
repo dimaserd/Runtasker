@@ -118,19 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EditingAndFinilizing" xml:space="preserve">
-    <value>Free corrections </value>
-    <comment>Правки и доработки</comment>
+    <value>Правки и доработки</value>
   </data>
   <data name="EditingAndFinilizingText" xml:space="preserve">
-    <value>Runtasker cares a lot about his customers, that's why any maintenance is free while executing your order.</value>
-    <comment>Runtasker заботиться о своих клиентах, поэтому сопровождение ваших работ осуществляются бесплатно во время ее выполнения.</comment>
+    <value>Runtasker заботиться о своих клиентах, поэтому сопровождение ваших работ осуществляются бесплатно во время ее выполнения.</value>
   </data>
   <data name="HeaderFormat" xml:space="preserve">
-    <value>Welcome to {0}</value>
+    <value>Добро пожаловать на {0}</value>
     <comment>Welcome to {Runtasker}</comment>
   </data>
   <data name="MiniDescription" xml:space="preserve">
-    <value>Runtasker – is  multilingual web application, created for students. We see it as an obligation to help any student, that's why we continue adding new language support. It is important for us to know that our cusomers feel maximum comfort working with Runtasker. And what could be more comfortable than communication in your native language?</value>
+    <value>Runtasker – это мультиязычное веб-приложение, созданное для студентов. Мы считаем своим долгом помочь всем студентам, поэтому мы будем продолжать добавлять новые языки в Runtasker. Для нас важно, чтобы наши заказчики при взаимодействии с нами чувствовали себя максимально комфортно. А что может быть более удобным, чем общение на родном языке?</value>
   </data>
   <data name="OrderFromUsToMark" xml:space="preserve">
     <value>Runtasker?</value>
@@ -139,31 +137,31 @@
     <value>Runtasker</value>
   </data>
   <data name="Slogan" xml:space="preserve">
-    <value>Runtasker : created to help</value>
+    <value>Runtasker : создан чтобы помогать</value>
   </data>
   <data name="StrictTimetables" xml:space="preserve">
-    <value>Strict with the deadlines</value>
+    <value>Строгие сроки выполнения</value>
   </data>
   <data name="StrictTimetablesText" xml:space="preserve">
-    <value>Runtasker meeting deadlines well. Our reputation is important for us.</value>
+    <value>Runtasker вовремя выполняет взятые на себя обязательства. Для нас важна наша репутация.</value>
   </data>
   <data name="TechnicalSupport" xml:space="preserve">
-    <value>Technical support</value>
+    <value>Техническая поддержка</value>
   </data>
   <data name="TechnicalSupportText" xml:space="preserve">
-    <value>Runtasker cares about you and your free time, becauase of that you're always welcomed at our technical support.</value>
+    <value>Компания Runtasker, думает о вас и вашем времени, поэтому, наша техподдержка, всегда готова вам помочь.</value>
   </data>
   <data name="TextParagraph" xml:space="preserve">
-    <value>You must be having thoughts, a lot of your free time wastes on performing routine tasks, similar essays and other works just needed for formal reasons? We are also having those thoughts! In Runtasker we consider this time-wasting unaccectable! We are taking the charge to handle your routine. But what about the course works and diplomas – those enormous boring projects, which make you feel sleep? These we can handle too! You don't have to waste your precious time anymore! All you need - is describe the work you need, the topic and tell us your desires about the work, and we we will do it for you! Runtasker - your time is our priority!</value>
+    <value>Наверняка вы задумывались, что куча времени уходит на выполнение рутинных заданий, однотипных рефератов и прочих работ которые нужны только для «галочки»? МЫ ТОЖЕ! В Runtasker считают это недопустимой тратой времени! Поэтому всю вашу рутину мы берём на себя. НО! Как же курсовые и дипломные – это громоздкие, нудные проекты, от которых часто хочется спать? ЭТО МЫ ТОЖЕ БЕРЁМ НА СЕБЯ! Вам больше не надо тратить на это время!  Всё что вам нужно - это написать нам тему и описать ваши пожелания, и мы сделаем всё за вас! Runtasker - ваше время важно для нас!</value>
   </data>
   <data name="WhyOrderFromUsFormat" xml:space="preserve">
-    <value>Why it's better to order at {0}</value>
+    <value>Почему лучше заказывать на {0}</value>
     <comment>Почему лучше заказывать на {Runtasker?}</comment>
   </data>
   <data name="WorksQuality" xml:space="preserve">
-    <value>Works quality</value>
+    <value>Качество работ</value>
   </data>
   <data name="WorksQualityText" xml:space="preserve">
-    <value>Runtasker executes works of a high quality. Your works are handled by the true masters of the business, taking their responsibilities seriously.</value>
+    <value>Компания Runtasker выполняет работы высочайшего качества. Обеспечивается это за счёт того, что над вашими заданиями трудятся настоящие профессионалы своего дела, серьезно относящиеся к своим обязанностям.</value>
   </data>
 </root>

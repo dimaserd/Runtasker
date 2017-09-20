@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BonusMoneyTextFormat" xml:space="preserve">
-    <value>Runtasker gives {0}{1} to his customers. This money you can use to pay any order or even many orders on Runtasker.</value>
+    <value>Runtasker дарит своим заказчикам {0}{1}. Эти деньги вы можете использовать для любого или даже нескольких заказов на Runtasker.</value>
   </data>
   <data name="BonusMoneyTitle" xml:space="preserve">
-    <value>"Bonus money" action!</value>
+    <value>Акция "Бонусные деньги"!</value>
   </data>
   <data name="NewSiteText" xml:space="preserve">
-    <value>Here we got our new site. Now it's multilingual, mobile freindly and much more convenient than previous version.</value>
+    <value>Вы сейчас находитесь на новом сайте. Теперь он мультиязычный, хорошо смотриться на вашем мобильном устройстве и гораздо удобней и функциональней по сравнению с предыдущей версией.</value>
   </data>
   <data name="NewSiteTitle" xml:space="preserve">
-    <value>New Site!</value>
+    <value>Новый сайт!</value>
   </data>
   <data name="OnlineHelpText" xml:space="preserve">
-    <value>Now we can handle online orders. For now we help only with technical subjects like physics, advanced mathematics, programming, informatics. In the future we are planning to increase the number of subjects we can help you with.</value>
+    <value>Теперь мы выполняем заказы онлайн. На данный момент мы оказываем помощь только по техническим дисциплинам таким как физика, высшая математика, программирование и информатика. В будущем мы увеличим число предметов, по которым мы сможем оказать вам помощь.</value>
   </data>
   <data name="OnlineHelpTitle" xml:space="preserve">
-    <value>Online-Help!</value>
+    <value>Онлайн-Помощь!</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Project News</value>
+    <value>Новости проекта</value>
   </data>
 </root>

@@ -118,34 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ContactUs" xml:space="preserve">
-    <value>Contact us</value>
+    <value>Связаться с нами</value>
   </data>
   <data name="EmailPlaceholder" xml:space="preserve">
-    <value>Input your email</value>
+    <value>Введите ваш Email</value>
   </data>
   <data name="HomeNav" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="MessagePlaceholder" xml:space="preserve">
-    <value>Please enter your message here...</value>
+    <value>Введите текст вашего сообщения здесь...</value>
   </data>
   <data name="NamePlaceholder" xml:space="preserve">
-    <value>Your name</value>
+    <value>Ваше имя</value>
   </data>
   <data name="SendMessage" xml:space="preserve">
-    <value>Send Message</value>
+    <value>Отправить сообщение</value>
   </data>
-  <data name="ThankYou" xml:space="preserve">
-    <value>Thank you</value>
+  <data name="YourMessage" xml:space="preserve">
+    <value>Ваше сообщение</value>
   </data>
   <data name="AlertFormat" xml:space="preserve">
-    <value>{0} Your message successfully sent.</value>
-    <comment>{Thank you!} Your message successfully sent.</comment>
+    <value>{0} Ваше сообщение отправлено.</value>
+    <comment>{Спасибо вам!} Ваше сообщение отправлено.</comment>
   </data>
   <data name="AlertToMark" xml:space="preserve">
-    <value>Thank you!</value>
+    <value>Спасибо вам!</value>
   </data>
   <data name="InfoText" xml:space="preserve">
-    <value>Here you can ask any question about Runtasker. But we reccomend to use chat in our &lt;tag&gt;vkontakte group&lt;/tag&gt;.</value>
+    <value>На данной странице вы можете задать любой интересующий вас вопрос о Рантаскер. Но мы рекомендуем вам воспользоваться чатом в нашей &lt;tag&gt;группе вконтакте&lt;/tag&gt;.</value>
   </data>
 </root>

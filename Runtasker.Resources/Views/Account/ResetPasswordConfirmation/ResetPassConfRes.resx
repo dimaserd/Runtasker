@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConfirmationText" xml:space="preserve">
-    <value>Your password was reset.</value>
+    <value>Ваш пароль изменен.</value>
   </data>
   <data name="LoginLinkText" xml:space="preserve">
-    <value>Click here to log in</value>
+    <value>Нажмите здесь, чтобы войти</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Confirmation of resetting password</value>
+    <value>Подтверждение сброса пароля</value>
   </data>
 </root>

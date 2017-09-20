@@ -70,7 +70,7 @@ namespace Runtasker.Resources.Views.Payment.YandexInvoice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yandex Invoice.
+        ///   Looks up a localized string similar to Выставление счета.
         /// </summary>
         public static string Title {
             get {

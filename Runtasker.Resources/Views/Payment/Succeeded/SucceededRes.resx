@@ -118,27 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CreateOrderText" xml:space="preserve">
-    <value>Create order</value>
+    <value>Создать заказ</value>
   </data>
   <data name="PaymentDescTextFormat" xml:space="preserve">
-    <value>Your account has been credited with {0}{1}.</value>
-    <comment>Your account has been credited with {сумма}{знак рубля}.</comment>
+    <value>На ваш счет зачислено {0}{1}.</value>
+    <comment>На ваш счет зачислено {сумма}{знак рубля}.</comment>
   </data>
   <data name="PayOrderTexFormat" xml:space="preserve">
-    <value>Pay order #{0}.</value>
-    <comment>Pay order #{номер заказа}.</comment>
+    <value>Оплатить заказ #{0}.</value>
+    <comment>Оплатить заказ  #{номер заказа}.</comment>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Payment succeded</value>
+    <value>Успешная оплата</value>
     <comment>Успешная оплата</comment>
   </data>
   <data name="GoToMyOrders" xml:space="preserve">
-    <value>Go to My Orders</value>
+    <value>Перейти к моим заказам</value>
   </data>
   <data name="HomeNav" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="ToppingUpNav" xml:space="preserve">
-    <value>Topping up</value>
+    <value>Пополнение баланса</value>
   </data>
 </root>

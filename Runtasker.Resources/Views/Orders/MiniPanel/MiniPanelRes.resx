@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="GoToOrders" xml:space="preserve">
-    <value>Go to my orders</value>
+    <value>Перейти к моим заказам</value>
   </data>
   <data name="MyOrders" xml:space="preserve">
-    <value>My Orders</value>
+    <value>Мои заказы</value>
   </data>
   <data name="NoOrdersMes" xml:space="preserve">
-    <value>Create your first order.</value>
+    <value>Создайте свой первый заказ.</value>
   </data>
 </root>

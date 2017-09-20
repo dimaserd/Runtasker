@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActiveNav" xml:space="preserve">
-    <value>Add Files</value>
+    <value>Добавить файлы</value>
   </data>
   <data name="FormTitle" xml:space="preserve">
-    <value>Attach new files</value>
+    <value>Прикрепите новые файлы</value>
   </data>
   <data name="HomeNav" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="NullFilesError" xml:space="preserve">
-    <value>Please, attach files containing description of your order or any materials we need to execute your work!</value>
+    <value>Пожалуйста, прикрепите фаилы с описанием работы или другими материалами необходимыми для её выполнения.</value>
   </data>
   <data name="OrdersNav" xml:space="preserve">
-    <value>My Orders</value>
+    <value>Мои заказы</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Add Files</value>
+    <value>Добавить Файлы</value>
   </data>
 </root>

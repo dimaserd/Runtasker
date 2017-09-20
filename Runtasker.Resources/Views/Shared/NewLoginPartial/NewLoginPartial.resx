@@ -118,52 +118,56 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CreateAccount" xml:space="preserve">
-    <value>Create account</value>
+    <value>Зарегистрироваться</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
   <data name="ForgotPass" xml:space="preserve">
-    <value>Forgot Password?</value>
+    <value>Забыли пароль?</value>
   </data>
   <data name="HelloUserPattern" xml:space="preserve">
-    <value>Hello, {0}!</value>
+    <value>Здравствуйте, {0}!</value>
+    <comment>Здравствуйте, {имя пользователя}!</comment>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Login</value>
+    <value>Войти</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Password</value>
+    <value>Пароль</value>
   </data>
   <data name="Pattern" xml:space="preserve">
-    <value>Sign in with {0}</value>
+    <value>Войти с {0}</value>
   </data>
   <data name="Recharge" xml:space="preserve">
-    <value>Top up balance</value>
+    <value>Пополнить</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>Register</value>
+    <value>Зарегистрироваться</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
-    <value>Remember me</value>
+    <value>Запомнить меня</value>
   </data>
   <data name="SetPassword" xml:space="preserve">
-    <value>Set Password</value>
+    <value>Установить пароль</value>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Настройки</value>
   </data>
   <data name="SignIn" xml:space="preserve">
-    <value>Sign In</value>
+    <value>Войти</value>
   </data>
   <data name="SignOut" xml:space="preserve">
-    <value>Sign Out</value>
+    <value>Выйти</value>
+  </data>
+  <data name="VerbWith" xml:space="preserve">
+    <value>Войти с</value>
   </data>
   <data name="ViewProfile" xml:space="preserve">
-    <value>View Profile</value>
+    <value>Просмотреть профиль</value>
   </data>
   <data name="YourBalancePattern" xml:space="preserve">
-    <value>Your balance is {0}{1}</value>
-    <comment>Your balance is {сумма}{знак рубля}</comment>
+    <value>Ваш баланс {0}{1}</value>
+    <comment>Ваш баланс {сумма}{знак рубля}</comment>
   </data>
 </root>

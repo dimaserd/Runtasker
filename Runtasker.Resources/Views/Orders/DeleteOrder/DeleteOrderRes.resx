@@ -118,25 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Отмена</value>
   </data>
   <data name="HelpAlertTextFormat" xml:space="preserve">
-    <value>You're about to delete your order #{0}. After clicking a button bellow, it wil no longer appear in the list of your orders. But you are always free to restore it from the trash.</value>
+    <value>Вы удаляете заказ №{0}. После того, как вы подтвердите удаление, данный заказ больше не появится в списке. Но вы всегда сможете восстановить его из корзины.</value>
   </data>
   <data name="HomeNav" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="MyOrdersNav" xml:space="preserve">
-    <value>My Orders</value>
+    <value>Мои заказы</value>
   </data>
   <data name="Remove" xml:space="preserve">
-    <value>Remove</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value />
+    <value>Удалить</value>
   </data>
   <data name="TitleFormat" xml:space="preserve">
-    <value>Delete order #{0}</value>
+    <value>Удаление заказа №{0}</value>
     <comment>Удаление заказа №{номер заказа}</comment>
   </data>
 </root>

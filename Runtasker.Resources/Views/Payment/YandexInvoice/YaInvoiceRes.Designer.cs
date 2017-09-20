@@ -77,5 +77,14 @@ namespace Runtasker.Resources.Views.Payment.YandexInvoice {
                 return ResourceManager.GetString("Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выставить счет.
+        /// </summary>
+        public static string Текст_Кнопки {
+            get {
+                return ResourceManager.GetString("Текст_Кнопки", resourceCulture);
+            }
+        }
     }
 }

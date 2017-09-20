@@ -7,6 +7,8 @@
     string _class = "form-horizontal";
 }
 
+@AlertHelper.GetAlert(YaInvoiceRes.InfoText)
+
 <h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm(actionName : "", controllerName: "", method: FormMethod.Post, htmlAttributes: new { @class = _class }))
@@ -16,5 +18,9 @@
     @Html.LabelAndTextBoxFor(x => x.Email)
 
     @Html.LabelAndTextBoxFor(x => x.Amount)
+
+    <div class="btn btn-success" onclick()>
+        @YaInvoiceRes.Текст_Кнопки
+    </div>
 }
 

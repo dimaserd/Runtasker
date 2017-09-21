@@ -108,6 +108,7 @@
     <Compile Include="Boolean\BooleanExtensions.cs" />
     <Compile Include="Date\DateTimeExtensions.cs" />
     <Compile Include="Decimal\DecimalExtensions.cs" />
+    <Compile Include="Dictionary\DicitionaryExtensions.cs" />
     <Compile Include="Enumerations\EnumExtensions.cs" />
     <Compile Include="File\MicrosoftWord\MicrosoftWordReader.cs" />
     <Compile Include="HardCode\Stack.cs" />

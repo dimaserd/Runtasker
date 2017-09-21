@@ -665,7 +665,6 @@ namespace oksoft.Common.HtmlExtensions.Static
                         return FASigns.File;
                     }
             }
-            //if(mimeType.StartsWith(""))
         }
 
         public static MvcHtmlString WrapToSquare(this FontAwesomeModel model)
@@ -682,7 +681,6 @@ namespace oksoft.Common.HtmlExtensions.Static
 
 
             return new MvcHtmlString($"{squareO}{model}".WrapToHtmlTag("span", attributes: new { @class = "fa-stack fa-lg" }));
-            
         }
 
         /// <summary>

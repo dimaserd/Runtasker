@@ -1,5 +1,6 @@
 ﻿using Common.JavascriptValidation.Statics;
 using Extensions.String;
+using oksoft.Common.HtmlExtensions.Entities;
 using oksoft.Common.HtmlExtensions.Enumerations;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,44 @@ namespace oksoft.Common.HtmlExtensions.Extensions
     public static partial class HtmlExtensions
     {
         #region TextBox
+        public static MvcHtmlString LabelAndTextBox(this HtmlHelper html, string propertyName, string value, string labelText, string placeholderValue = "", UIFormType formType = UIFormType.Ordinary, string type = "text")
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (string.IsNullOrWhiteSpace(placeholderValue))
+            {
+                placeholderValue = labelText;
+            }
+
+            if (formType == UIFormType.Ordinary)
+            {
+                sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group\">");
+
+                sb.Append(html.Label(expression: propertyName, labelText: labelText).ToString().WrapToHtmlTag("div", new { @class = "control-label col-md-2 col-sm-2" }));
+
+                sb.Append((html.TextBox(name: propertyName, value: value, htmlAttributes: new { id = PropertyNameHelper.GetIdForInput(propertyName), placeholder = placeholderValue, @class = "form-control", type = type })
+                    .ToString() + GetStrongErrorText(propertyName))
+                    .WrapToHtmlTag("div", new { @class = "col-md-10 col-sm-10" }));
+
+                sb.Append("</div>");
+            }
+            else if (formType == UIFormType.FloatLabel)
+            {
+                sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group has-float-label\">")
+
+                .Append(html.TextBox(name: propertyName, value: value, htmlAttributes: new { id = PropertyNameHelper.GetIdForInput(propertyName), placeholder = placeholderValue, @class = "form-control", type = type }))
+
+                .Append(html.Label(expression: propertyName, labelText: labelText, htmlAttributes: new { onclick = GetLabelJsFocucFunc(propertyName) }))
+
+                .Append(GetStrongErrorText(propertyName))
+
+                .Append("</div>");
+            }
+
+
+            return MvcHtmlString.Create(sb.ToString());
+        }
+
         public static MvcHtmlString LabelAndTextBox(this HtmlHelper html, string propertyName, string labelText, string placeholderValue = "", UIFormType formType = UIFormType.Ordinary, string type = "text")
         {
             StringBuilder sb = new StringBuilder();
@@ -209,6 +248,9 @@ namespace oksoft.Common.HtmlExtensions.Extensions
         #endregion
 
         #region DropDownList
+
+
+        #region Обычный список
         public static MvcHtmlString LabelAndDropDownList(this HtmlHelper html, string propertyName, string labelText, IEnumerable<SelectListItem> selectItems, UIFormType formType = UIFormType.Ordinary)
         {
             StringBuilder sb = new StringBuilder();
@@ -242,6 +284,85 @@ namespace oksoft.Common.HtmlExtensions.Extensions
             return MvcHtmlString.Create(sb.ToString());
         }
 
+        public static MvcHtmlString LabelAndDropDownList(this HtmlHelper html, string propertyName, string labelText, IEnumerable<SelectListItem> selectItems, object htmlAttributes, UIFormType formType = UIFormType.Ordinary)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            Dictionary<string, object> dict = htmlAttributes.GetPropertiesDictionary();
+
+            dict.Add("id", PropertyNameHelper.GetIdForInput(propertyName));
+            dict.Add("class", "form-control");
+
+
+            if (formType == UIFormType.Ordinary)
+            {
+                sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group\">");
+
+                sb.Append(html.Label(expression: propertyName, labelText: labelText).ToString().WrapToHtmlTag("div", new { @class = "control-label col-md-2 col-sm-2" }));
+
+                sb.Append((html.DropDownList(name: propertyName, selectList: selectItems, htmlAttributes: dict)
+                    .ToString() + GetStrongErrorText(propertyName))
+                    .WrapToHtmlTag("div", new { @class = "col-md-10 col-sm-10" }));
+
+                sb.Append("</div>");
+            }
+            else if (formType == UIFormType.FloatLabel)
+            {
+                sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group has-float-label\">")
+
+                .Append(html.DropDownList(name: propertyName, selectList: selectItems, htmlAttributes: dict))
+
+                .Append(html.Label(expression: propertyName, labelText: labelText))
+
+                .Append(GetStrongErrorText(propertyName))
+
+                .Append("</div>");
+            }
+
+
+            return MvcHtmlString.Create(sb.ToString());
+        }
+
+        public static MvcHtmlString LabelAndDropDownList(this HtmlHelper html, string propertyName, string labelText, IEnumerable<SelectListItem> selectItems, Dictionary<string, object> htmlAttributes, UIFormType formType = UIFormType.Ordinary)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            Dictionary<string, object> dict = htmlAttributes;
+
+            dict.Add("id", PropertyNameHelper.GetIdForInput(propertyName));
+            dict.Add("class", "form-control");
+
+
+            if (formType == UIFormType.Ordinary)
+            {
+                sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group\">");
+
+                sb.Append(html.Label(expression: propertyName, labelText: labelText).ToString().WrapToHtmlTag("div", new { @class = "control-label col-md-2 col-sm-2" }));
+
+                sb.Append((html.DropDownList(name: propertyName, selectList: selectItems, htmlAttributes: dict)
+                    .ToString() + GetStrongErrorText(propertyName))
+                    .WrapToHtmlTag("div", new { @class = "col-md-10 col-sm-10" }));
+
+                sb.Append("</div>");
+            }
+            else if (formType == UIFormType.FloatLabel)
+            {
+                sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group has-float-label\">")
+
+                .Append(html.DropDownList(name: propertyName, selectList: selectItems, htmlAttributes: dict))
+
+                .Append(html.Label(expression: propertyName, labelText: labelText))
+
+                .Append(GetStrongErrorText(propertyName))
+
+                .Append("</div>");
+            }
+
+
+            return MvcHtmlString.Create(sb.ToString());
+        }
+
+        #region С подсказочкой
         public static MvcHtmlString LabelAndDropDownListWithTooltip(this HtmlHelper html, string propertyName, string labelText, string tooltipText, TooltipPlacementType placementType, IEnumerable<SelectListItem> selectItems, UIFormType formType = UIFormType.Ordinary)
         {
             StringBuilder sb = new StringBuilder();
@@ -285,6 +406,181 @@ namespace oksoft.Common.HtmlExtensions.Extensions
 
             return MvcHtmlString.Create(sb.ToString());
         }
+
+        public static MvcHtmlString LabelAndDropDownListWithTooltip(this HtmlHelper html, string propertyName, string labelText, string tooltipText, TooltipPlacementType placementType, IEnumerable<SelectListItem> selectItems, object htmlAttributes, UIFormType formType = UIFormType.Ordinary)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            Dictionary<string, object> dict = htmlAttributes.GetPropertiesDictionary();
+
+            dict.Add("data-toggle", "tooltip");
+            dict.Add("data-placement", placementType.ToString().ToLower());
+            dict.Add("title", tooltipText);
+            dict.Add("id", PropertyNameHelper.GetIdForInput(propertyName));
+            dict.Add("class", "form-control");
+            
+
+            if (formType == UIFormType.Ordinary)
+            {
+                sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group\">");
+
+                sb.Append(html.Label(expression: propertyName, labelText: labelText).ToString().WrapToHtmlTag("div", new { @class = "control-label col-md-2 col-sm-2" }));
+
+                sb.Append((html.DropDownList(name: propertyName, selectList: selectItems,
+                    htmlAttributes: dict)
+                    .ToString() + GetStrongErrorText(propertyName))
+                    .WrapToHtmlTag("div", new { @class = "col-md-10 col-sm-10" }));
+
+                sb.Append("</div>");
+            }
+            else if (formType == UIFormType.FloatLabel)
+            {
+                sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group has-float-label\">")
+
+                .Append(html.DropDownList(name: propertyName, selectList: selectItems, htmlAttributes: dict)
+                .ToString())
+
+                .Append(html.Label(expression: propertyName, labelText: labelText))
+
+                .Append(GetStrongErrorText(propertyName))
+
+                .Append("</div>");
+            }
+
+
+            return MvcHtmlString.Create(sb.ToString());
+        }
+
+        public static MvcHtmlString LabelAndDropDownListWithTooltip(this HtmlHelper html, string propertyName, string labelText, string tooltipText, TooltipPlacementType placementType, IEnumerable<SelectListItem> selectItems, Dictionary<string, object> htmlAttributes, UIFormType formType = UIFormType.Ordinary)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            Dictionary<string, object> dict = htmlAttributes;
+
+            dict.Add("data-toggle", "tooltip");
+            dict.Add("data-placement", placementType.ToString().ToLower());
+            dict.Add("title", tooltipText);
+            dict.Add("id", PropertyNameHelper.GetIdForInput(propertyName));
+            dict.Add("class", "form-control");
+
+
+            if (formType == UIFormType.Ordinary)
+            {
+                sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group\">");
+
+                sb.Append(html.Label(expression: propertyName, labelText: labelText).ToString().WrapToHtmlTag("div", new { @class = "control-label col-md-2 col-sm-2" }));
+
+                sb.Append((html.DropDownList(name: propertyName, selectList: selectItems,
+                    htmlAttributes: dict)
+                    .ToString() + GetStrongErrorText(propertyName))
+                    .WrapToHtmlTag("div", new { @class = "col-md-10 col-sm-10" }));
+
+                sb.Append("</div>");
+            }
+            else if (formType == UIFormType.FloatLabel)
+            {
+                sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group has-float-label\">")
+
+                .Append(html.DropDownList(name: propertyName, selectList: selectItems, htmlAttributes: dict)
+                .ToString())
+
+                .Append(html.Label(expression: propertyName, labelText: labelText))
+
+                .Append(GetStrongErrorText(propertyName))
+
+                .Append("</div>");
+            }
+
+
+            return MvcHtmlString.Create(sb.ToString());
+        }
+        
+        #endregion
+
+        #endregion
+
+        #region Расширенный список
+        public static MvcHtmlString LabelAndExtendedDropDownList(this HtmlHelper html, string propertyName, string labelText, IEnumerable<ExtendedSelectListItem> selectItems, UIFormType formType = UIFormType.Ordinary)
+        {
+            StringBuilder sb = new StringBuilder();
+
+
+            Dictionary<string, object> dict = new Dictionary<string, object>()
+            {
+                {"id", PropertyNameHelper.GetIdForInput(propertyName)},
+                {"class", "form-control"}
+            };
+
+            if (formType == UIFormType.Ordinary)
+            {
+                sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group\">");
+
+                sb.Append(html.Label(expression: propertyName, labelText: labelText).ToString().WrapToHtmlTag("div", new { @class = "control-label col-md-2 col-sm-2" }));
+
+                sb.Append((html.ExtendedDropdownList(propName: propertyName, selectList: selectItems, htmlAttributes: dict)
+                    .ToString() + GetStrongErrorText(propertyName))
+                    .WrapToHtmlTag("div", new { @class = "col-md-10 col-sm-10" }));
+
+                sb.Append("</div>");
+            }
+            else if (formType == UIFormType.FloatLabel)
+            {
+                sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group has-float-label\">")
+
+                .Append(html.ExtendedDropdownList(propName: propertyName, selectList: selectItems, htmlAttributes: dict))
+
+                .Append(html.Label(expression: propertyName, labelText: labelText))
+
+                .Append(GetStrongErrorText(propertyName))
+
+                .Append("</div>");
+            }
+
+
+            return MvcHtmlString.Create(sb.ToString());
+        }
+
+        public static MvcHtmlString LabelAndExtendedDropDownList(this HtmlHelper html, string propertyName, string labelText, IEnumerable<ExtendedSelectListItem> selectItems, object htmlAttributes = null, UIFormType formType = UIFormType.Ordinary)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            Dictionary<string, object> dict = htmlAttributes.GetPropertiesDictionary();
+
+            dict.Add("id", PropertyNameHelper.GetIdForInput(propertyName));
+            dict.Add("class", "form-control");
+            
+
+            
+
+            if (formType == UIFormType.Ordinary)
+            {
+                sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group\">");
+
+                sb.Append(html.Label(expression: propertyName, labelText: labelText).ToString().WrapToHtmlTag("div", new { @class = "control-label col-md-2 col-sm-2" }));
+
+                sb.Append((html.ExtendedDropdownList(propName: propertyName, selectList: selectItems, htmlAttributes: dict)
+                    .ToString() + GetStrongErrorText(propertyName))
+                    .WrapToHtmlTag("div", new { @class = "col-md-10 col-sm-10" }));
+
+                sb.Append("</div>");
+            }
+            else if (formType == UIFormType.FloatLabel)
+            {
+                sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group has-float-label\">")
+
+                .Append(html.ExtendedDropdownList(propName: propertyName, selectList: selectItems, htmlAttributes: dict))
+
+                .Append(html.Label(expression: propertyName, labelText: labelText))
+
+                .Append(GetStrongErrorText(propertyName))
+
+                .Append("</div>");
+            }
+
+
+            return MvcHtmlString.Create(sb.ToString());
+        }
+        #endregion
 
         #endregion
 

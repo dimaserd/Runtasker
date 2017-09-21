@@ -34,6 +34,13 @@ namespace oksoft.Common.HtmlExtensions.Extensions
             return LabelAndTextBox(html, propertyName: jsProp.PropertyName, labelText: jsProp.LabelText, placeholderValue: jsProp.PlaceholderValue, formType: AtroposSettings.FormType, type: type);
         }
 
+        public static MvcHtmlString LabelAndTextBox(this HtmlHelper html, JsPropertyWithLabel jsProp, string value)
+        {
+            string type = (jsProp.HtmlDataType == JsHtmlDataType.Email) ? "email" : "text";
+
+            return LabelAndTextBox(html, propertyName: jsProp.PropertyName, value: value, labelText: jsProp.LabelText, placeholderValue: jsProp.PlaceholderValue, formType: AtroposSettings.FormType, type: type);
+        }
+
         public static MvcHtmlString LabelAndTextBoxWithTooltip(this HtmlHelper html, JsPropertyWithLabel jsProp, string tooltipText, TooltipPlacementType placementType)
         {
             return LabelAndTextBoxWithTooltip(html: html, propertyName: jsProp.PropertyName, labelText: jsProp.LabelText,

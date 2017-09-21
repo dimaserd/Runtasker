@@ -1,4 +1,4 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations;
 using UI.Settings.Entities;
 using UI.Settings.Enumerations;
 using UI.Settings.Settings.Enumerations;
@@ -28,6 +28,10 @@ namespace UI.Settings
 
         public static bool IsMultiLang = false;
 
+        public static bool IsShopEnabled = false;
+
+        public static bool IsRegistrationEnabled = false;
+
         public static bool WarehousesChangeEnabled = false;
 
         public static int WrapperPaddingTop = 85;
@@ -45,7 +49,8 @@ namespace UI.Settings
             Layout = model.Layout;
             IsMultiLang = model.IsMultiLang;
             WrapperPaddingTop = model.WrapperPaddingTop;
-
+            IsShopEnabled = model.IsShopEnabled;
+            IsRegistrationEnabled = model.IsRegistrationEnabled;
         }
 
         public static AtroposSettingsModel GetSettings()
@@ -61,7 +66,14 @@ namespace UI.Settings
                 Layout = Layout,
                 IsMultiLang = IsMultiLang,
                 WrapperPaddingTop = WrapperPaddingTop,
+                IsShopEnabled = IsShopEnabled,
+                IsRegistrationEnabled = IsRegistrationEnabled
             };
+        }
+
+        public static string GetFormClass()
+        {
+            return (FormType == UIFormType.Ordinary) ? "form-horizontal" : "well center-block";
         }
 
         public static string GetStylesString()
@@ -85,8 +97,10 @@ namespace UI.Settings
 
     public class AtroposSettingsModel
     {
+        [Display(Name = "На всю ширину")]
         public bool IsFullWidth { get; set; }
 
+        [Display(Name = "Сделать темным")]
         public bool IsDarkLayout { get; set; }
 
         public AtroposColorScheme ColorScheme { get; set; }
@@ -101,10 +115,19 @@ namespace UI.Settings
 
         public LayoutType Layout { get; set; }
 
+        [Display(Name = "Использовать переключение языков")]
         public bool IsMultiLang { get; set; }
 
+        [Display(Name = "Магазин включен")]
+        public bool IsShopEnabled { get; set; }
+
+        [Display(Name = "Включено переключение складов")]
         public bool WarehousesChangeEnabled { get; set; }
 
+        [Display(Name = "Отступ сверху")]
         public int WrapperPaddingTop { get; set; }
+
+        [Display(Name = "Включена регистрация")]
+        public bool IsRegistrationEnabled { get; set; }
     }
 }

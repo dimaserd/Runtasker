@@ -1,4 +1,5 @@
-﻿using UI.Settings.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+using UI.Settings.Entities;
 
 namespace UI.Settings
 {
@@ -17,6 +18,18 @@ namespace UI.Settings
         public static RGBAColor HeaderColor = null;
 
         public static bool HasFirstLine = true;
+
+        
+        public static bool UseLeftLineHtml = false;
+
+       
+        public static string LeftLineHtml = "";
+
+        
+        public static bool UseRightLineHtml = false;
+
+        
+        public static string RightLineHtml = "";
         #endregion
 
         #region Методы
@@ -27,6 +40,11 @@ namespace UI.Settings
             HeaderColor = model.HeaderColor;
             HeaderHeight = model.HeaderHeight;
             HasFirstLine = model.HasFirstLine;
+            UseLeftLineHtml = model.UseLeftLineHtml;
+            LeftLineHtml = model.LeftLineHtml;
+
+            UseRightLineHtml = model.UseRightLineHtml;
+            RightLineHtml = model.RightLineHtml;
         }
 
         public static AtroposHeaderSettingsModel GetSettings()
@@ -35,8 +53,15 @@ namespace UI.Settings
             {
                 HeaderHeight = HeaderHeight,
                 UseMyColor = UseMyColor,
+
                 HeaderColor = HeaderColor,
-                HasFirstLine = HasFirstLine
+                HasFirstLine = HasFirstLine,
+
+                LeftLineHtml = LeftLineHtml,
+                UseLeftLineHtml = UseLeftLineHtml,
+
+                UseRightLineHtml = UseRightLineHtml,
+                RightLineHtml = RightLineHtml
             }; 
         }
 
@@ -57,12 +82,26 @@ namespace UI.Settings
 
     public class AtroposHeaderSettingsModel
     {
+        [Display(Name = "Высота шапки")]
         public int HeaderHeight { get; set; }
 
         public bool UseMyColor { get; set; }
 
         public RGBAColor HeaderColor { get; set; }
 
+        [Display(Name = "Показывать верхний кусок")]
         public bool HasFirstLine { get; set; }
+
+        [Display(Name = "Использовать свой HTML слева")]
+        public bool UseLeftLineHtml { get; set; }
+
+        [Display(Name = "HTML слева")]
+        public string LeftLineHtml { get; set; }
+
+        [Display(Name = "Использовать свой HTML справа")]
+        public bool UseRightLineHtml { get; set; }
+
+        [Display(Name = "HTML справа")]
+        public string RightLineHtml { get; set; }
     }
 }

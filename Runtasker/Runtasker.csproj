@@ -3369,6 +3369,7 @@
     <Content Include="Views\Resource\Translate.cshtml" />
     <Content Include="Views\Payment\YandexInvoice.cshtml" />
     <Content Include="Views\Payment\YandexInvoiceSent.cshtml" />
+    <Content Include="Views\AtroposPartials\FloatStyles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

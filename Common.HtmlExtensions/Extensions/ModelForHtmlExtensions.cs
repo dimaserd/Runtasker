@@ -2,7 +2,7 @@
 using Extensions.Attributes;
 using Extensions.Reflection;
 using Extensions.String;
-
+using oksoft.Common.HtmlExtensions.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,6 +12,7 @@ using System.Text;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using UI.Settings;
+using UI.Settings.Enumerations;
 
 namespace oksoft.Common.HtmlExtensions.Extensions
 {
@@ -36,6 +37,25 @@ namespace oksoft.Common.HtmlExtensions.Extensions
             return LabelAndTextBox(html: html, propertyName: propName, labelText: displayName, placeholderValue: placeholderValue, formType: AtroposSettings.FormType);
         }
 
+        public static MvcHtmlString LabelAndTextBoxWithTooltipFor<TModel, TValue>(this HtmlHelper<TModel> html,
+           Expression<Func<TModel, TValue>> expression)
+        {
+
+            MemberExpression member = expression.Body as MemberExpression;
+
+            string propName = GetNameFromMemberExpression(member);
+
+            string displayName = GetDisplayName(member);
+
+            string placeholderValue = GetPlaceholderValue(member);
+
+            string tooltipValue = GetTooltipValue(member);
+
+            return LabelAndTextBoxWithTooltip(html: html, propertyName: propName, labelText: displayName, tooltipText: tooltipValue, 
+                placementType: Enumerations.TooltipPlacementType.Top, placeholderValue: placeholderValue, formType: AtroposSettings.FormType);
+        }
+
+        #region Пароли
         public static MvcHtmlString LabelAndPasswordFor<TModel, TValue>(this HtmlHelper<TModel> html,
            Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
         {
@@ -51,6 +71,42 @@ namespace oksoft.Common.HtmlExtensions.Extensions
 
         #endregion
 
+        #region Файлы
+        public static MvcHtmlString LabelAndFileInputFor<TModel, TValue>(this HtmlHelper<TModel> html,
+           Expression<Func<TModel, TValue>> expression, bool multiple = false)
+        {
+            MemberExpression member = expression.Body as MemberExpression;
+
+            string propName = GetNameFromMemberExpression(member);
+
+            string displayName = GetDisplayName(member);
+
+            return html.LabelAndFileInput(propertyName: propName, labelText: displayName, multiple: multiple, formType: AtroposSettings.FormType);
+        }
+
+
+        public static MvcHtmlString LabelAndFileInputWithTooltipFor<TModel, TValue>(this HtmlHelper<TModel> html,
+           Expression<Func<TModel, TValue>> expression, bool multiple = false)
+        {
+            //this HtmlHelper<TModel> html, string propertyName, string labelText, string tooltipText, TooltipPlacementType placementType, bool multiple = false, UIFormType formType = UIFormType.Ordinary)
+            MemberExpression member = expression.Body as MemberExpression;
+
+            string propName = GetNameFromMemberExpression(member);
+
+            string displayName = GetDisplayName(member);
+
+            string placeholderValue = GetPlaceholderValue(member);
+
+            string tooltipValue = GetTooltipValue(member);
+
+            return html.LabelAndFileInputWithTooltip(propertyName: propName, labelText: displayName, tooltipText: tooltipValue,
+                multiple: multiple, placementType: TooltipPlacementType.Top, formType: AtroposSettings.FormType);
+        }
+
+        #endregion
+
+        #endregion
+
         #region Выпадающие списки
         public static MvcHtmlString LabelAndDropDownListFor<TModel, TValue>(this HtmlHelper<TModel> html,
             Expression<Func<TModel, TValue>> expression, IEnumerable<SelectListItem> selectList, object htmlAttributes = null)
@@ -62,6 +118,22 @@ namespace oksoft.Common.HtmlExtensions.Extensions
             string displayName = GetDisplayName(member);
 
             return LabelAndDropDownList(html: html, propertyName: propName, labelText: displayName, selectItems: selectList, formType: AtroposSettings.FormType);
+        }
+
+        public static MvcHtmlString LabelAndDropDownListWithTooltipFor<TModel, TValue>(this HtmlHelper<TModel> html,
+            Expression<Func<TModel, TValue>> expression, IEnumerable<SelectListItem> selectList, object htmlAttributes = null)
+        {
+            MemberExpression member = expression.Body as MemberExpression;
+
+            string propName = GetNameFromMemberExpression(member);
+
+            string displayName = GetDisplayName(member);
+
+            string tooltipValue = GetTooltipValue(member);
+
+
+            return html.LabelAndDropDownListWithTooltip(propertyName: propName, labelText: displayName, 
+                tooltipText: tooltipValue, placementType: TooltipPlacementType.Top, selectItems: selectList, formType: AtroposSettings.FormType);
         }
 
         #endregion
@@ -82,9 +154,23 @@ namespace oksoft.Common.HtmlExtensions.Extensions
             //string propertyName, string labelText, string placeholderValue = "", UIFormType formType = UIFormType.Ordinary)
             return html.LabelAndTextArea(propertyName: propName, labelText: displayName, placeholderValue: placeholderValue, formType: AtroposSettings.FormType);
         }
+
+        public static MvcHtmlString LabelAndTextAreaWithTooltipFor<TModel, TValue>(this HtmlHelper<TModel> html,
+            Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
+        {
+            MemberExpression member = expression.Body as MemberExpression;
+
+            string propName = GetNameFromMemberExpression(member);
+
+            string displayName = GetDisplayName(member);
+
+            string placeholderValue = GetPlaceholderValue(member);
+
+            string tooltipValue = GetTooltipValue(member);
+
+            return html.LabelAndTextAreaWithTooltip(propertyName: propName, labelText: displayName,tooltipText: tooltipValue, placementType: TooltipPlacementType.Top, placeholderValue: placeholderValue, formType: AtroposSettings.FormType);
+        }
         #endregion
-
-
 
 
         #region Вспомогательные методы
@@ -94,6 +180,13 @@ namespace oksoft.Common.HtmlExtensions.Extensions
             PlaceholderAttribute attr = memberExpression.Member.GetAttribute<PlaceholderAttribute>(isRequired: false);
 
             return (attr != null) ? attr.Text : "";
+        }
+
+        private static string GetTooltipValue(MemberExpression memberExpression)
+        {
+            TooltipAttribute attr = memberExpression.Member.GetAttribute<TooltipAttribute>(isRequired: true);
+
+            return attr.TooltipText;
         }
 
         /// <summary>

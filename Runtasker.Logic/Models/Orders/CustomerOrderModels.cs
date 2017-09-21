@@ -51,6 +51,7 @@ namespace Runtasker.Logic.Models
         [JsNotValidate]
         [DataType(DataType.Upload, ErrorMessage = "FilesError")]
         [Display(ResourceType = typeof(CreateOrder), Name = "FileUpload")]
+        [Tooltip(resourceType: typeof(CreateOrder), resourceName: "FileUploadInfo"))]
         [PopoverInfo(typeof(CreateOrder), resourceName: "FileUploadInfo")]
         public IEnumerable<HttpPostedFileBase> FileUpload { get; set; }
 

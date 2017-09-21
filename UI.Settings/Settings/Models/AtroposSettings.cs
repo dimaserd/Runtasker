@@ -22,7 +22,7 @@ namespace UI.Settings
 
         public static JqeryType Jquery = JqeryType.Cdn;
 
-        public static UIFormType FormType = UIFormType.Ordinary;
+        public static UIFormType FormType = UIFormType.FloatLabel;
 
         public static LayoutType Layout = LayoutType.AtroposStandard;
 

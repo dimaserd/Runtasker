@@ -158,3 +158,4 @@ C:\Users\developer100\Source\Repos\Runtasker\Extensions\obj\Debug\Extensions.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\obj\Debug\Extensions.csproj.CoreCompileInputs.cache
 C:\Users\developer100\Source\Repos\Runtasker\Extensions\bin\Debug\System.IO.Packaging.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Extensions\bin\Debug\System.IO.Packaging.dll
+C:\Users\developer100\Source\Repos\Runtasker\Extensions\obj\Debug\Extensions.csprojResolveAssemblyReference.cache

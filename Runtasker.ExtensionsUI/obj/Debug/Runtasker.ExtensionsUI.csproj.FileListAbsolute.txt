@@ -258,3 +258,4 @@ C:\Users\developer100\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Debug\Vk
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Debug\VkNet.UWP.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Debug\VkNet.UWP.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Debug\en-GB\Runtasker.Resources.resources.dll
+C:\Users\developer100\Source\Repos\Runtasker\Runtasker.ExtensionsUI\bin\Debug\en-GB\Runtasker.Resources.resources.dll

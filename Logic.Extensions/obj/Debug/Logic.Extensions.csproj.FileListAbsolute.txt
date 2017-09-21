@@ -122,3 +122,4 @@ C:\Users\developer100\Source\Repos\Runtasker\Logic.Extensions\obj\Debug\Logic.Ex
 C:\Users\developer100\Source\Repos\Runtasker\Logic.Extensions\obj\Debug\Logic.Extensions.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\obj\Debug\Logic.Extensions.csproj.CoreCompileInputs.cache
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\en-GB\Runtasker.Resources.resources.dll
+C:\Users\developer100\Source\Repos\Runtasker\Logic.Extensions\bin\Debug\en-GB\Runtasker.Resources.resources.dll

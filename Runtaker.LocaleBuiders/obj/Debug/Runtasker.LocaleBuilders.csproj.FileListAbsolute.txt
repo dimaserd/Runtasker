@@ -144,3 +144,4 @@ C:\Users\developer100\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Debug\Ru
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Debug\EntityFramework.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Debug\EntityFramework.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Debug\en-GB\Runtasker.Resources.resources.dll
+C:\Users\developer100\Source\Repos\Runtasker\Runtaker.LocaleBuiders\bin\Debug\en-GB\Runtasker.Resources.resources.dll

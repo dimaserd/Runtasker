@@ -585,3 +585,4 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\Microsoft.AspNet.T
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\VkNet.UWP.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker\bin\en-GB\Runtasker.Resources.resources.dll
+C:\Users\developer100\Source\Repos\Runtasker\Runtasker\bin\en-GB\Runtasker.Resources.resources.dll

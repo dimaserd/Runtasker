@@ -194,3 +194,4 @@ C:\Users\developer100\Source\Repos\Runtasker\VkParser\bin\Debug\VkNet.UWP.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\VkNet.UWP.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\VkNet.UWP.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Debug\en-GB\Runtasker.Resources.resources.dll
+C:\Users\developer100\Source\Repos\Runtasker\VkParser\bin\Debug\en-GB\Runtasker.Resources.resources.dll

@@ -16,6 +16,7 @@ namespace Runtasker.Logic.Models
         [Required(ErrorMessage = "ERROR")]
         [Display(Name = "Subject", ResourceType = typeof(CreateOrder))]
         [PopoverInfo(typeof(CreateOrder), resourceName: "SubjectPopoverInfo")]
+        [Tooltip(typeof(CreateOrder), resourceName: "SubjectPopoverInfo")]
         [JsOnValueWithElse(Value = "0",
             OnValueScript = " ClearPropertyInput(\"OtherSubject\"); ShowObject(\"OtherSubjectForm\"); ",
             OnElseScript = " HideObject(\"OtherSubjectForm\"); SetValueForInput(\"OtherSubject\", \"selected\")")]
@@ -25,11 +26,13 @@ namespace Runtasker.Logic.Models
         [Required(ErrorMessage = "WORKTYPE ERROR")]
         [Display(Name = "WorkType", ResourceType = typeof(CreateOrder))]
         [PopoverInfo(resourceName: "WorkTypePopoverInfo", resourceType: typeof(CreateOrder))]
+        [Tooltip(resourceName: "WorkTypePopoverInfo", resourceType: typeof(CreateOrder))]
         public OrderWorkType WorkType { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(CreateOrder), ErrorMessageResourceName = "OtherSubjectError")]
         [JsRequired(resourceType: typeof(CreateOrder), resourceName: "OtherSubjectError")]
         [PopoverInfo(typeof(CreateOrder), resourceName: "OtherSubjectInfo")]
+        [Tooltip(typeof(CreateOrder), resourceName: "OtherSubjectInfo")]
         [Display(ResourceType = typeof(CreateOrder), Name = "OtherSubject")]
         [JsHideByDefault]
         [JsDefaultValue(DefaultValue = "\"selected\"")]
@@ -40,6 +43,7 @@ namespace Runtasker.Logic.Models
         [Required(ErrorMessageResourceType = typeof(CreateOrder), ErrorMessageResourceName = "NeedDescriptionError")]
         [JsRequired(resourceType: typeof(CreateOrder), resourceName : "NeedDescriptionError")]
         [Placeholder(resourceName: "DescriptionPlaceholder", resourceType: typeof(CreateOrder))]
+        [Tooltip(resourceName: "DescriptionPlaceholder", resourceType: typeof(CreateOrder))]
         public string Description { get; set; }
 
         [JsNotValidate]
@@ -51,7 +55,7 @@ namespace Runtasker.Logic.Models
         [JsNotValidate]
         [DataType(DataType.Upload, ErrorMessage = "FilesError")]
         [Display(ResourceType = typeof(CreateOrder), Name = "FileUpload")]
-        [Tooltip(resourceType: typeof(CreateOrder), resourceName: "FileUploadInfo"))]
+        [Tooltip(resourceType: typeof(CreateOrder), resourceName: "FileUploadInfo")]
         [PopoverInfo(typeof(CreateOrder), resourceName: "FileUploadInfo")]
         public IEnumerable<HttpPostedFileBase> FileUpload { get; set; }
 

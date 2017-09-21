@@ -142,8 +142,6 @@ namespace oksoft.Common.HtmlExtensions.Extensions
             return (attr != null) ? attr.Text : string.Empty;
         }
 
-
-
         public static string GetDisplayValue<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
         {
             MemberExpression body = expression.Body as MemberExpression;

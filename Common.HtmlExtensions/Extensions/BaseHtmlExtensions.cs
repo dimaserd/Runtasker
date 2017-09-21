@@ -72,6 +72,7 @@ namespace oksoft.Common.HtmlExtensions.Extensions
 
                 sb.Append("</div>");
             }
+
             else if(formType == UIFormType.FloatLabel)
             {
                 sb.Append($"<div id=\"{PropertyNameHelper.GetIdForForm(propertyName)}\" class=\"form-group has-float-label\">")

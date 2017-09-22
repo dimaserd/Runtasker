@@ -32,6 +32,8 @@
     @Styles.Render("~/animate/css", "~/magnific-popup/css", "~/superslides/css")
 
 
+
+
     <!-- THEME CSS -->
     @Styles.Render("~/NewDesign/Essentials")
 
@@ -214,6 +216,13 @@
     
     @RenderSection("scripts", required: false)
 
+    <script>
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+    </script>
+
     @JSHelper.GetBlinkFunction()
+
 </body>
 </html>

@@ -3,6 +3,8 @@
 @using Runtasker.LocaleBuilders.Models
 @using Runtasker.Logic.Entities
 @using Common.JavascriptValidation.Statics
+@using oksoft.Common.HtmlExtensions.Extensions
+@using UI.Settings
 @model OnlineOrderRequest
 @{
 
@@ -33,61 +35,40 @@
 
 @using (Html.BeginForm("OnlineHelp", "Orders", FormMethod.Post, htmlAttributes: new { id = "myForm", enctype = "multipart/form-data" }))
 {
-    <div class="form-horizontal">
+    <div class="@AtroposSettings.GetFormClass()">
         @Html.ValidationErrorsToAlerts()
         @Html.AntiForgeryToken()
 
         @Html.HiddenFor(m => m.OnlineHelpWorkType)
 
         <!--SubjectsList-->
-        @Html.LabelAndDropDownListFor(x => x.Subject, selectList: subjects, showPopover: true)
+        @Html.LabelAndDropDownListWithTooltipFor(x => x.Subject, subjects)
         <!--/SubjectList-->
 
         <!--UserSubjectForm-->
-        @Html.LabelAndTextBoxFor(x => x.OtherSubject, showPopover: true)
+        @Html.LabelAndTextBoxWithTooltipFor(x => x.OtherSubject)
         <!--/UserSubjectForm-->
 
         <!--PhoneNumberForm-->
-        @Html.LabelAndTextBoxFor(x => x.PhoneNumber, showPopover: true)
+        @Html.LabelAndTextBoxWithTooltipFor(x => x.PhoneNumber)
         <!--/PhoneNumberForm-->
 
         <!--DateTime Picker-->
-        @Html.LabelAndDateTimePickerFor(x => x.StartDate, showPopover: true)         
+        @Html.LabelAndTextBoxWithTooltipFor(x => x.StartDate)      
         <!--End of DateTimePicker-->
 
         
 
         <!--FilesUpload-->
-        <div id="@PropertyNameHelper.GetIdForForm("FileUpload")" class="form-group">
-            @Html.LabelFor(model => model.FileUpload, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
-            <div class="col-md-10 col-sm-10">
-                <p>
-                    <div class='input-group'>
-                        @Html.TextBoxFor(model => model.FileUpload, htmlAttributes: new { id = PropertyNameHelper.GetIdForInput("FileUpload"), type = "file", multiple = "" })
-                        <div class='input-group-btn'>
-                            <div class="pull-right">
-                                @Html.PopoverInfoFor(model => model.FileUpload, htmlAttributes: new { @class = "circle" })
-                                <style>
-                                    .circle {
-                                        border: solid 1px #000;
-                                        border-radius: 45%;
-                                    }
-                                </style>
-                            </div>
-                        </div>
-                    </div>
-                </p>
-                <p>@Html.GetStrongErrorText(x => x.FileUpload)</p>
-            </div>
-        </div>
+        @Html.LabelAndFileInputWithTooltipFor(x => x.FileUpload, multiple: true)
         <!--/FilesUpload-->
 
         <!--Decription-->
-        @Html.LabelAndTextAreaFor(x => x.Description)
+        @Html.LabelAndTextAreaWithTooltipFor(x => x.Description)
         <!--/Description-->
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="">
                 <button id="fakeCreate" type="button" class="btn-lg btn btn-primary">
                     @localeModel["SubmitBtnText"]
                 </button>

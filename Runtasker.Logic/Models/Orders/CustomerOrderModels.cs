@@ -30,10 +30,11 @@ namespace Runtasker.Logic.Models
         public OrderWorkType WorkType { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(CreateOrder), ErrorMessageResourceName = "OtherSubjectError")]
-        [JsRequired(resourceType: typeof(CreateOrder), resourceName: "OtherSubjectError")]
         [PopoverInfo(typeof(CreateOrder), resourceName: "OtherSubjectInfo")]
         [Tooltip(typeof(CreateOrder), resourceName: "OtherSubjectInfo")]
+        [Placeholder(typeof(CreateOrder), resourceName: "OtherSubjectPlaceholder")]
         [Display(ResourceType = typeof(CreateOrder), Name = "OtherSubject")]
+        [JsRequired(resourceType: typeof(CreateOrder), resourceName: "OtherSubjectError")]
         [JsHideByDefault]
         [JsDefaultValue(DefaultValue = "\"selected\"")]
         public string OtherSubject { get; set; }
@@ -50,6 +51,7 @@ namespace Runtasker.Logic.Models
         [Required(ErrorMessageResourceType = typeof(CreateOrder), ErrorMessageResourceName = "FinishDateError")]
         [Display(ResourceType = typeof(CreateOrder), Name = "FinishDate")]
         [PopoverInfo(resourceType: typeof(CreateOrder), resourceName: "FinishDateInfo")]
+        [Tooltip(resourceType: typeof(CreateOrder), resourceName: "FinishDateInfo")]
         public DateTime FinishDate { get; set; }
 
         [JsNotValidate]

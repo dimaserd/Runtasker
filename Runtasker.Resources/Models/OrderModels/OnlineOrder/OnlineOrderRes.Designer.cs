@@ -115,6 +115,15 @@ namespace Runtasker.Resources.Models.OrderModels.OnlineOrder {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Телефон.
+        /// </summary>
+        public static string PhoneNumberPlaceholder {
+            get {
+                return ResourceManager.GetString("PhoneNumberPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Дата начала.
         /// </summary>
         public static string StartDate {

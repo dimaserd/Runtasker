@@ -160,6 +160,15 @@ namespace Runtasker.Resources.Models.OrderModels.CreateOrder {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ваш другой предмет.
+        /// </summary>
+        public static string OtherSubjectPlaceholder {
+            get {
+                return ResourceManager.GetString("OtherSubjectPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Предмет.
         /// </summary>
         public static string Subject {

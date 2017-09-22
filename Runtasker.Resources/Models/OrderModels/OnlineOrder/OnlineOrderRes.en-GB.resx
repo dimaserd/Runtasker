@@ -144,4 +144,7 @@
   <data name="PhoneNumberInfo" xml:space="preserve">
     <value>We will contact you to discuss all the details about your application.</value>
   </data>
+  <data name="PhoneNumberPlaceholder" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
 </root>

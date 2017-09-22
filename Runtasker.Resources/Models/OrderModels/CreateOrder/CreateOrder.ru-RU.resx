@@ -150,6 +150,9 @@
   <data name="OtherSubjectInfo" xml:space="preserve">
     <value>Укажите ваш предмет здесь, если вы не можете найти нужный из выпадающего списка выше</value>
   </data>
+  <data name="OtherSubjectPlaceholder" xml:space="preserve">
+    <value>Ваш другой предмет</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>Предмет</value>
   </data>

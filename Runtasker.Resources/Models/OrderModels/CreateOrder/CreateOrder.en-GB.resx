@@ -150,6 +150,9 @@
   <data name="OtherSubjectInfo" xml:space="preserve">
     <value>Specify your subject here, if you can't find yours from the dropdown list</value>
   </data>
+  <data name="OtherSubjectPlaceholder" xml:space="preserve">
+    <value>Your other subject</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>Subject</value>
   </data>

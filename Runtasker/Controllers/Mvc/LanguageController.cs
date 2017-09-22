@@ -11,7 +11,7 @@ namespace Runtasker.Controllers
         #region Constants
         string[] langs = new string[]
         {
-            "ru-RU", "en", "zh-CN"
+            "ru-RU", "en-GB", "zh-CN"
         };
 
         #endregion

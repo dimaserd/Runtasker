@@ -129,11 +129,17 @@
   <data name="EmailRequired" xml:space="preserve">
     <value>Поле Email обязательно</value>
   </data>
+  <data name="EmailTooltipText" xml:space="preserve">
+    <value>Ваш Email будет использован системой для рассылки уведомлений связанных с работой на Runtasker.</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
   </data>
   <data name="NameRequired" xml:space="preserve">
     <value>Пожалуйста, укажите ваше имя</value>
+  </data>
+  <data name="NameTooltipText" xml:space="preserve">
+    <value>Укажите, пожалуйста, ваше имя или псевдоним</value>
   </data>
   <data name="PassMatchError" xml:space="preserve">
     <value>Пароль и его подтверждение не совпадают</value>

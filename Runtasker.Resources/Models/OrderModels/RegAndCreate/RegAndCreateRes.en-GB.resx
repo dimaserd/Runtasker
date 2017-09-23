@@ -126,6 +126,9 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="EmailPlaceholder" xml:space="preserve">
+    <value>bob@mail.com</value>
+  </data>
   <data name="EmailPopoverInfo" xml:space="preserve">
     <value>Your Email will be used for confirmation of your registration. </value>
   </data>
@@ -141,11 +144,17 @@
   <data name="NameLengthError" xml:space="preserve">
     <value>Field \"Name\" must be at least 2 symbols length.</value>
   </data>
+  <data name="NamePlaceholder" xml:space="preserve">
+    <value>Bob</value>
+  </data>
   <data name="NamePopoverInfo" xml:space="preserve">
     <value>Your name will be used for registration.</value>
   </data>
   <data name="NameRequiredError" xml:space="preserve">
     <value>Please input your name!</value>
+  </data>
+  <data name="NotValidEmailError" xml:space="preserve">
+    <value>Please correct your email!</value>
   </data>
   <data name="OtherSubject" xml:space="preserve">
     <value>Other Subject</value>

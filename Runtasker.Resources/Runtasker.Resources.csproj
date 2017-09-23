@@ -1135,25 +1135,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NewLayoutRes.en-GB.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Shared\NewLoginPartial\NewLoginPartial.Designer.cs">
-      <DependentUpon>NewLoginPartial.resx</DependentUpon>
+    <Compile Include="Views\Shared\NewLoginPartial\NewLoginPartialRes.Designer.cs">
+      <DependentUpon>NewLoginPartialRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Shared\NewLoginPartial\NewLoginPartial.zh-CN.Designer.cs">
-      <DependentUpon>NewLoginPartial.zh-CN.resx</DependentUpon>
+    <Compile Include="Views\Shared\NewLoginPartial\NewLoginPartialRes.zh-CN.Designer.cs">
+      <DependentUpon>NewLoginPartialRes.zh-CN.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Shared\NewLoginPartial\NewLoginPartial.ru-RU.Designer.cs">
-      <DependentUpon>NewLoginPartial.ru-RU.resx</DependentUpon>
+    <Compile Include="Views\Shared\NewLoginPartial\NewLoginPartialRes.ru-RU.Designer.cs">
+      <DependentUpon>NewLoginPartialRes.ru-RU.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Views\Shared\NewLoginPartial\NewLoginPartial.en-GB.Designer.cs">
+    <Compile Include="Views\Shared\NewLoginPartial\NewLoginPartialRes.en-GB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NewLoginPartial.en-GB.resx</DependentUpon>
+      <DependentUpon>NewLoginPartialRes.en-GB.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -2029,21 +2029,21 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>NewLayoutRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Shared\NewLoginPartial\NewLoginPartial.resx">
+    <EmbeddedResource Include="Views\Shared\NewLoginPartial\NewLoginPartialRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewLoginPartial.Designer.cs</LastGenOutput>
+      <LastGenOutput>NewLoginPartialRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Shared\NewLoginPartial\NewLoginPartial.zh-CN.resx">
+    <EmbeddedResource Include="Views\Shared\NewLoginPartial\NewLoginPartialRes.zh-CN.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewLoginPartial.zh-CN.Designer.cs</LastGenOutput>
+      <LastGenOutput>NewLoginPartialRes.zh-CN.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Shared\NewLoginPartial\NewLoginPartial.ru-RU.resx">
+    <EmbeddedResource Include="Views\Shared\NewLoginPartial\NewLoginPartialRes.ru-RU.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewLoginPartial.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>NewLoginPartialRes.ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Shared\NewLoginPartial\NewLoginPartial.en-GB.resx">
+    <EmbeddedResource Include="Views\Shared\NewLoginPartial\NewLoginPartialRes.en-GB.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewLoginPartial.en-GB.Designer.cs</LastGenOutput>
+      <LastGenOutput>NewLoginPartialRes.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

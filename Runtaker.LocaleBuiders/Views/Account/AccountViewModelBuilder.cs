@@ -11,9 +11,9 @@ using Runtasker.Resources.Views.Account.ResetPasswordConfirmation;
 
 namespace Runtasker.LocaleBuilders.Views.Account
 {
-    public class AccountViewModelBuilder : UICultureSwitcher
+    public static class AccountViewModelBuilder
     {
-        public LocaleViewModel ResetPasswordConfirmationView()
+        public static  LocaleViewModel ResetPasswordConfirmationView()
         {
             LocaleViewModel result = new LocaleViewModel();
 
@@ -26,7 +26,7 @@ namespace Runtasker.LocaleBuilders.Views.Account
             return result;
         }
 
-        public LocaleViewModel ResetPasswordView()
+        public static LocaleViewModel ResetPasswordView()
         {
             LocaleViewModel result = new LocaleViewModel();
 
@@ -37,7 +37,7 @@ namespace Runtasker.LocaleBuilders.Views.Account
             return result;
         }
 
-        public LocaleViewModel ForgotPasswordView()
+        public static LocaleViewModel ForgotPasswordView()
         {
             LocaleViewModel result = new LocaleViewModel();
 
@@ -52,7 +52,7 @@ namespace Runtasker.LocaleBuilders.Views.Account
             return result;
         }
 
-        public LocaleViewModel ExternalLoginConfirmationView(string loginProvider)
+        public static LocaleViewModel ExternalLoginConfirmationView(string loginProvider)
         {
             LocaleViewModel result = new LocaleViewModel();
             result.Add("Title", ExtLoginConfirm.Register);
@@ -63,7 +63,7 @@ namespace Runtasker.LocaleBuilders.Views.Account
             return result;
         }
 
-        public LocaleViewModel ConfirmEmailView(string loginSign)
+        public static LocaleViewModel ConfirmEmailView(string loginSign)
         {
             LocaleViewModel result = new LocaleViewModel();
 
@@ -86,7 +86,7 @@ namespace Runtasker.LocaleBuilders.Views.Account
             return result;
         }
 
-        public LocaleViewModel LoginView()
+        public static LocaleViewModel LoginView()
         {
             LocaleViewModel result = new LocaleViewModel();
 
@@ -96,7 +96,7 @@ namespace Runtasker.LocaleBuilders.Views.Account
             result.Add("RememberMe", Login.RememberMe);
             result.Add("SignIn", Login.SignIn);
             result.Add("ForgotYourPass", Login.ForgotYourPass);
-            result.Add("Pattern", NewLoginPartial.Pattern);
+            result.Add("Pattern", NewLoginPartialRes.Pattern);
             result.Add("WelcomeHtml", string.Format(Login.WelcomeTitlePattern, Login.Runtasker.WrapToStrong().WrapToEm()) );
             result.Add("htmlHeader", string.Format(Login.HeaderFormat, Login.HeaderToMark.WrapToStrong().WrapToEm())
                 .WrapToH2());
@@ -115,25 +115,25 @@ namespace Runtasker.LocaleBuilders.Views.Account
         /// <param name="balance"></param>
         /// <param name="roubleSign"></param>
         /// <returns></returns>
-        public LocaleViewModel SignInView(string userName, string balance, string roubleSign)
+        public static LocaleViewModel SignInView(string userName, string balance, string roubleSign)
         {
             LocaleViewModel result = new LocaleViewModel();
 
             //общие 
-            result.Add("SignIn", NewLoginPartial.SignIn);
-            result.Add("Email", NewLoginPartial.Email);
-            result.Add("Password", NewLoginPartial.Password);
-            result.Add("Recharge", NewLoginPartial.Recharge);
-            result.Add("ViewProfile", NewLoginPartial.ViewProfile);
-            result.Add("SignOut", NewLoginPartial.SignOut);
-            result.Add("RememberMe", NewLoginPartial.RememberMe);
-            result.Add("CreateAccount", NewLoginPartial.CreateAccount);
-            result.Add("SetPassword", NewLoginPartial.SetPassword);
-            result.Add("Pattern", NewLoginPartial.Pattern);
-            result.Add("HelloUser", string.Format(NewLoginPartial.HelloUserPattern, userName));
-            result.Add("ForgotPass", NewLoginPartial.ForgotPass);
-            result.Add("YourBalanceHtml", string.Format(NewLoginPartial.YourBalancePattern, balance, roubleSign));
-
+            result.Add("SignIn", NewLoginPartialRes.SignIn);
+            result.Add("Email", NewLoginPartialRes.Email);
+            result.Add("Password", NewLoginPartialRes.Password);
+            result.Add("Recharge", NewLoginPartialRes.Recharge);
+            result.Add("ViewProfile", NewLoginPartialRes.ViewProfile);
+            result.Add("SignOut", NewLoginPartialRes.SignOut);
+            result.Add("RememberMe", NewLoginPartialRes.RememberMe);
+            result.Add("CreateAccount", NewLoginPartialRes.CreateAccount);
+            result.Add("SetPassword", NewLoginPartialRes.SetPassword);
+            result.Add("Pattern", NewLoginPartialRes.Pattern);
+            result.Add("HelloUser", string.Format(NewLoginPartialRes.HelloUserPattern, userName));
+            result.Add("ForgotPass", NewLoginPartialRes.ForgotPass);
+            result.Add("YourBalanceHtml", string.Format(NewLoginPartialRes.YourBalancePattern, balance, roubleSign));
+            result.Add("SyncWithFormat", NewLoginPartialRes.SyncWithFormat);
             
             return result;
         }
@@ -142,7 +142,7 @@ namespace Runtasker.LocaleBuilders.Views.Account
         /// Завершенный метод
         /// </summary>
         /// <returns></returns>
-        public LocaleViewModel RegisterView()
+        public static LocaleViewModel RegisterView()
         {
             LocaleViewModel result = new LocaleViewModel();
 

@@ -5,6 +5,10 @@ using Runtasker.Settings;
 using System;
 using System.Threading;
 using Runtasker.Logic.Entities;
+using Common.JavascriptValidation.Attributes;
+using Runtasker.Resources.Models.OrderModels;
+using Runtasker.Resources.Models.OrderModels.RegAndCreate;
+using Extensions.Attributes;
 
 namespace Runtasker.Logic.Models
 {
@@ -93,6 +97,10 @@ namespace Runtasker.Logic.Models
         [Required(ErrorMessageResourceName = "EmailRequired", ErrorMessageResourceType = typeof(AccountRes))]
         [EmailAddress]
         [Display(Name = "Email", ResourceType = typeof(AccountRes))]
+        [Placeholder(resourceName: "EmailPlaceholder", resourceType: typeof(RegAndCreateRes))]
+        [Tooltip(resourceName: "EmailTooltipText", resourceType: typeof(AccountRes))]
+        [JsEmail(resourceName: "NotValidEmailError", resourceType: typeof(RegAndCreateRes))]
+        [JsRequired(resourceName: "EmailRequiredError", resourceType: typeof(RegAndCreateRes))]
         public string Email { get; set; }
 
         [Required(ErrorMessageResourceName = "PassRequired", ErrorMessageResourceType = typeof(AccountRes))]
@@ -103,10 +111,13 @@ namespace Runtasker.Logic.Models
 
         [Required(ErrorMessageResourceName = "NameRequired", ErrorMessageResourceType = typeof(AccountRes))]
         [Display(Name = "Name", ResourceType = typeof(AccountRes))]
+        [Placeholder(resourceName: "NamePlaceholder", resourceType: typeof(RegAndCreateRes))]
+        [Tooltip(resourceType: typeof(AccountRes), resourceName: "NameTooltipText")]
         public string Name { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "ConfirmPass", ResourceType = typeof(AccountRes))]
+        [JsCompare(comparingPropName: "Password", resourceType: typeof(AccountRes), resourceName: "PassMatchError")]
         [Compare("Password", ErrorMessageResourceName = "PassMatchError", ErrorMessageResourceType = typeof(AccountRes))]
         public string ConfirmPassword { get; set; }
     }

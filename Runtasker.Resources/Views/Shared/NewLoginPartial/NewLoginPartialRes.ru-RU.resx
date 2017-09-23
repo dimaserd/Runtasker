@@ -160,6 +160,9 @@
   <data name="SignOut" xml:space="preserve">
     <value>Выйти</value>
   </data>
+  <data name="SyncWithFormat" xml:space="preserve">
+    <value>Синхронизировать с {0}</value>
+  </data>
   <data name="VerbWith" xml:space="preserve">
     <value>Войти с</value>
   </data>

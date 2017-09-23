@@ -1,6 +1,7 @@
 ﻿using Logic.Extensions.Models;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using VkParser.Enumerations;
 using VkParser.Models.MessageSenderModels;
@@ -31,6 +32,11 @@ namespace VkParser.MessageSenders
             }
             JObject response = Request(method, paramsString, VkTokenType.RuntaskerGroup);
 
+            if(response["error"] != null)
+            {
+                return new WorkerResult("Произошла ошибка");
+                
+            }
             return new WorkerResult
             {
                 Succeeded = true

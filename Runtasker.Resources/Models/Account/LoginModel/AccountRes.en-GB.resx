@@ -129,11 +129,17 @@
   <data name="EmailRequired" xml:space="preserve">
     <value>Field Email required</value>
   </data>
+  <data name="EmailTooltipText" xml:space="preserve">
+    <value>Your Email will be used only for notification purposes.</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="NameRequired" xml:space="preserve">
     <value>Please specify your name</value>
+  </data>
+  <data name="NameTooltipText" xml:space="preserve">
+    <value>Please, input your real name or nickname.</value>
   </data>
   <data name="PassMatchError" xml:space="preserve">
     <value>Password and it's confirmation do not match</value>

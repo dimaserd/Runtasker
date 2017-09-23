@@ -1,22 +1,68 @@
 ﻿@using Runtasker.Logic.Models.ManageModels
 @using Runtasker.HtmlExtensions
+@using UI.Settings
+@using oksoft.Common.HtmlExtensions.Extensions
+@using Extensions.String
 @model AddVkInfoModel
 @{
     ViewBag.Title = "Добавление вк-инфо";
+
+    string linktoVk = $"vk.com/{Model.VkDomain}".WrapToHtmlTag("a", attributes: new { href = $"https://vk.com/{Model.VkDomain}", target = "_blank" });
+
+    bool hasError = (ViewData["HasError"] as bool?).Value;
 }
 
-<h2>@ViewBag.Title</h2>
-
-@using (Html.BeginForm())
+@if (Model.IsSet)
 {
-    @Html.LabelAndEditorFor(x => x.VkId)
+    @AlertHelper.GetAlert(text: "У вас уже настроена служба уведомлений в социальной сети вконтакте " +
+    $"для страницы {linktoVk}. Вы можете сменить страницу для рассылки уведомлений.")
 
-    @Html.LabelAndEditorFor(x => x.VkDomain)
-
-    <input type="submit" class="btn btn-success" value="Сохранить изменения"/>
 }
 
 
+@if(hasError)
+{
+    @AlertHelper.GetAlert("Произошла ошибка при отправлении сообщения. Чтобы мы могли отправлять вам сообщения вы " +
+    "должны написать нашему клиенту в ВК (синяя кнопка в правом нижнем углу) первым. Если вы уже написали, но сайт все равно" +
+    " выдает ошибку проверьте правильность введенной вами ссылки.", Runtasker.Logic.Entities.NotificationType.Danger)
+}
+else
+{
+    @AlertHelper.GetAlert("На данной странице вы можете добавить ссылку на свою страницу, чтобы мы отправляли вам уведомления не по электронной почте, " +
+    "а сразу в вк. Прежде чем указать ссылку на свою страницу, и сохранить изменения," +
+    " напишите любое сообщение нашему клиенту в ВК. (синяя кнопка в правом нижнем углу)")
+
+}
+
+<div class="col-lg-3 col-md-2 col-sm-2 hidden-xs">
+
+</div>
+
+
+<div class="col-lg-6 col-md-8 col-sm-8 col-xs-12">
+    
+
+    @using (Html.BeginForm(actionName: "AddVkInfo", controllerName: "Manage", method: FormMethod.Post, htmlAttributes: new { @class = AtroposSettings.GetFormClass() }))
+    {
+        @Html.LabelAndTextBoxWithTooltipFor(x => x.VkLink)
+
+        <input type="submit" class="btn btn-success btn-block" value="Сохранить изменения" />
+    }
+
+</div>
+
+
+<div class="col-lg-3 col-md-2 col-sm-2 hidden-xs">
+
+</div>
+
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <script>
+        $("#VkLinkInput").mask("vk.com/?*************************");
+    </script>
+}
 
 
 

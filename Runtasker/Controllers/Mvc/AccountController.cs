@@ -37,7 +37,7 @@ namespace Runtasker.Controllers
         InvitationWorker _invitater;
         AccountWorker _accountWorker;
         KnowPriceWorker _knowPriceWorker;
-        AccountViewModelBuilder _viewModelBuilder;
+        
         private AccountNotificationMethods _notificater;
 
         #endregion
@@ -147,17 +147,7 @@ namespace Runtasker.Controllers
             }
         }
 
-        AccountViewModelBuilder ViewModelBuilder
-        {
-            get
-            {
-                if (_viewModelBuilder == null)
-                {
-                    _viewModelBuilder = new AccountViewModelBuilder();
-                }
-                return _viewModelBuilder;
-            }
-        }
+        
 
         KnowPriceWorker KnowPricer
         {
@@ -303,7 +293,7 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult Signin()
         {
-            ViewData["localeModel"] = ViewModelBuilder
+            ViewData["localeModel"] = AccountViewModelBuilder
                 .SignInView(
                 userName: User.Identity.GetName(),
                 balance: User.Identity.GetBalance(), 
@@ -322,7 +312,7 @@ namespace Runtasker.Controllers
             }
 
             ViewBag.ReturnUrl = returnUrl;
-            ViewData["viewModel"] = ViewModelBuilder.LoginView();
+            ViewData["viewModel"] = AccountViewModelBuilder.LoginView();
 
             
             return View();
@@ -332,7 +322,7 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Login(LoginModel model, string returnUrl)
         {
-            ViewData["viewModel"] = ViewModelBuilder.LoginView();
+            ViewData["viewModel"] = AccountViewModelBuilder.LoginView();
             if (Request.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
@@ -425,7 +415,7 @@ namespace Runtasker.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            ViewData["viewModel"] = ViewModelBuilder.RegisterView();
+            ViewData["viewModel"] = AccountViewModelBuilder.RegisterView();
             return View();
         }
 
@@ -435,7 +425,7 @@ namespace Runtasker.Controllers
         public async Task<ActionResult> Register(RegisterModel model)
         {
 
-            ViewData["viewModel"] = ViewModelBuilder.RegisterView();
+            ViewData["viewModel"] = AccountViewModelBuilder.RegisterView();
             if (ModelState.IsValid)
             {
                 ApplicationUser user = AccountWorker.RegisterCustomer(model, out IdentityResult result);
@@ -532,7 +522,7 @@ namespace Runtasker.Controllers
             //}
             
 
-            ViewData["localeModel"] = ViewModelBuilder.ConfirmEmailView(GISigns.Login.ToString());
+            ViewData["localeModel"] = AccountViewModelBuilder.ConfirmEmailView(GISigns.Login.ToString());
             return View();
         }
 
@@ -543,7 +533,7 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPassword(bool? emailSent)
         {
-            ViewData["localeModel"] = ViewModelBuilder.ForgotPasswordView();
+            ViewData["localeModel"] = AccountViewModelBuilder.ForgotPasswordView();
             ViewData["emailSent"] = emailSent;
             return View();
         }
@@ -552,7 +542,7 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordModel model)
         {
-            ViewData["localeModel"] = ViewModelBuilder.ForgotPasswordView();
+            ViewData["localeModel"] = AccountViewModelBuilder.ForgotPasswordView();
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
@@ -598,7 +588,7 @@ namespace Runtasker.Controllers
             }
             else
             {
-                ViewData["localeModel"] = ViewModelBuilder.ResetPasswordView();
+                ViewData["localeModel"] = AccountViewModelBuilder.ResetPasswordView();
                 return View();
             }
             
@@ -612,7 +602,7 @@ namespace Runtasker.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewData["localeModel"] = ViewModelBuilder.ResetPasswordView();
+                ViewData["localeModel"] = AccountViewModelBuilder.ResetPasswordView();
                 return View(model);
             }
             var user = await UserManager.FindByNameAsync(model.Email);
@@ -628,7 +618,7 @@ namespace Runtasker.Controllers
             }
 
             AddErrors(result);
-            ViewData["localeModel"] = ViewModelBuilder.ResetPasswordView();
+            ViewData["localeModel"] = AccountViewModelBuilder.ResetPasswordView();
             return View();
         }
 
@@ -636,7 +626,7 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
-            ViewData["localeModel"] = ViewModelBuilder.ResetPasswordConfirmationView();
+            ViewData["localeModel"] = AccountViewModelBuilder.ResetPasswordConfirmationView();
             return View();
         }
         #endregion
@@ -711,7 +701,7 @@ namespace Runtasker.Controllers
                     // Если у пользователя нет учетной записи, то ему предлагается создать ее
                     ViewBag.ReturnUrl = returnUrl;
 
-                    ViewData["localeModel"] = ViewModelBuilder.ExternalLoginConfirmationView(loginInfo.Login.LoginProvider);
+                    ViewData["localeModel"] = AccountViewModelBuilder.ExternalLoginConfirmationView(loginInfo.Login.LoginProvider);
                     return View("ExternalLoginConfirmation", 
                         new ExternalLoginConfirmationModel
                         {
@@ -726,7 +716,7 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationModel model, string returnUrl)
         {
-            ViewData["localeModel"] = ViewModelBuilder.ExternalLoginConfirmationView(model.ProviderName);
+            ViewData["localeModel"] = AccountViewModelBuilder.ExternalLoginConfirmationView(model.ProviderName);
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Manage");

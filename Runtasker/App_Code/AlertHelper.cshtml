@@ -1,26 +1,31 @@
 ﻿
-@helper GetAlert(string text)
+@helper GetAlert(string text, NotificationType notType = NotificationType.Info)
 {
+string _class = notType.ToDisplayName();
 
-    <div class="alert alert-info fade in">
+    <div class="alert @_class fade in">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
          
         <p>@(new HtmlString(text))</p>
     </div>
 }
 
-@helper GetAlert(string title, string text)
+@helper GetAlert(string title, string text, NotificationType notType = NotificationType.Info)
 {
-    <div class="alert alert-info fade in">
+string _class = notType.ToDisplayName();
+    <div class="alert @_class fade in">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <h4>@(new HtmlString(title))</h4>
         <p>@(new HtmlString(text))</p>
     </div>
 }
 
-@helper GetAlertWithActionBtn(string title, string text, string btnHtml = null)
+@helper GetAlertWithActionBtn(string title, string text, string btnHtml = null, NotificationType notType = NotificationType.Info)
 {
-    <div class="alert alert-info fade in">
+string _class = notType.ToDisplayName();
+
+
+    <div class="alert @_class fade in">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <h4>@(new HtmlString(title))</h4>
         <p>@(new HtmlString(text))</p>

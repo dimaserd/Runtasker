@@ -16,6 +16,8 @@ using Runtasker.Logic.Entities;
 using System.Data.Entity;
 using Runtasker.Resources.Views.Manage.Index;
 using Runtasker.Controllers.Base;
+using VkParser.MessageSenders;
+using VkParser.Models.MessageSenderModels;
 
 namespace Runtasker.Controllers
 {
@@ -98,8 +100,10 @@ namespace Runtasker.Controllers
         #region Добавление ВкИнфо
 
         [HttpGet]
-        public async Task<ActionResult> AddVkInfo()
+        public async Task<ActionResult> AddVkInfo(bool hasError = false)
         {
+            ViewData["HasError"] = hasError;
+
             if(Settings.Settings.AppSetting == ApplicationSettingType.Production)
             {
                 return RedirectToAction("Index", "Home");
@@ -109,8 +113,10 @@ namespace Runtasker.Controllers
 
             return View(new AddVkInfoModel
             {
+                VkLink = $"vk.com/{customer.VkDomain}",
                 VkDomain = customer.VkDomain,
-                VkId = customer.VkId
+                VkId = customer.VkId,
+                IsSet = customer.ShouldBeNotifictedInVk,
             });
         }
 
@@ -119,13 +125,50 @@ namespace Runtasker.Controllers
         {
             if(ModelState.IsValid)
             {
-                ApplicationUser customer = await Db.Users.FirstOrDefaultAsync(x => x.Id == UserGuid);
+                
 
-                customer.VkDomain = model.VkDomain;
-                customer.VkId = model.VkId;
+                using (VkMessageSender sender = new VkMessageSender())
+                {
+                    string vkDomain = model.VkLink.Split(separator: new string[] { "/" }, options: System.StringSplitOptions.RemoveEmptyEntries).Last();
 
-                Db.Entry(customer).State = EntityState.Modified;
-                await Db.SaveChangesAsync();
+                    VkMessage mes = new VkMessage
+                    {
+                        Text = "Синхронизация с вашей учетной записью в ВК настроена успешно!",
+                        UserDomain = vkDomain,
+                    };
+
+                    WorkerResult res = sender.SendMessageToVkUser(mes);
+
+                    if(!res.Succeeded)
+                    {
+                        ViewData["HasError"] = true;
+                        return View(model);
+                    }
+
+
+                    ApplicationUser customer = await Db.Users.FirstOrDefaultAsync(x => x.Id == UserGuid);
+
+                    customer.ShouldBeNotifictedInVk = true;
+                    customer.VkDomain = vkDomain;
+                    customer.VkId = model.VkId;
+
+                    Db.Entry(customer).State = EntityState.Modified;
+
+                    Notification not = new Notification
+                    {
+                        AboutType = NotificationAboutType.Balance,
+                        Text = "Вы настроили систему уведомлений через социальную сеть вконтакте, проверьте ваши личные сообщения. " +
+                        "Вам будет отправлено автоматическое письмо. Если сообщение не пришло, напишите нашему клиенту в правом нижнем углу " +
+                        "любое сообщение. И запросите тестовое сообщение еще раз.",
+                        Title = "Успешно!",
+                        UserGuid = UserGuid,
+                        Type = NotificationType.Success
+                    };
+                    Db.Notifications.Add(not);
+
+                    await Db.SaveChangesAsync();
+
+                }
 
                 return RedirectToAction("Index");
             }
@@ -166,9 +209,20 @@ namespace Runtasker.Controllers
         #endregion
 
         [HttpGet, ActionName("Profile")]
-        public ActionResult ViewProfile()
+        public ActionResult ViewProfile(ManageMessageId? message = null)
         {
+            ViewBag.StatusMessage =
+                message == ManageMessageId.ChangePasswordSuccess ? IndexRes.ChangePasswordSuccess
+                : message == ManageMessageId.SetPasswordSuccess ? IndexRes.SetPasswordSuccess
+                : message == ManageMessageId.SetTwoFactorSuccess ? "Настроен поставщик двухфакторной проверки подлинности."
+                : message == ManageMessageId.Error ? IndexRes.Error
+                : message == ManageMessageId.AddPhoneSuccess ? "Ваш номер телефона добавлен."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Ваш номер телефона удален."
+                : "";
+
             ViewBag.avatarPath = Avatarer.GetAvatarPath();
+
+
             return View();
         }
 
@@ -193,6 +247,8 @@ namespace Runtasker.Controllers
         [HttpGet]
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
+            return RedirectToAction("Profile");
+
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? IndexRes.ChangePasswordSuccess
                 : message == ManageMessageId.SetPasswordSuccess ? IndexRes.SetPasswordSuccess

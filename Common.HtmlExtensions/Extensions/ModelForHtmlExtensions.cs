@@ -69,6 +69,21 @@ namespace oksoft.Common.HtmlExtensions.Extensions
             return LabelAndPassword(html: html, propertyName: propName, labelText: displayName, formType: AtroposSettings.FormType);
         }
 
+        public static MvcHtmlString LabelAndPasswordWithTooltipFor<TModel, TValue>(this HtmlHelper<TModel> html,
+           Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
+        {
+
+            MemberExpression member = expression.Body as MemberExpression;
+
+            string propName = GetNameFromMemberExpression(member);
+
+            string displayName = GetDisplayName(member);
+
+            string tooltipText = GetTooltipValue(member);
+
+            return html.LabelAndPasswordWithTooltip(propertyName: propName, labelText: displayName, tooltipText: tooltipText, placementType: TooltipPlacementType.Top,  formType: AtroposSettings.FormType);
+        }
+
         #endregion
 
         #region Файлы

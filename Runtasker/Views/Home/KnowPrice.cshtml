@@ -10,6 +10,8 @@
 @using Runtasker.LocaleBuilders.Models
 @using HtmlExtensions.StaticRenderers
 @using Extensions.String
+@using oksoft.Common.HtmlExtensions.Extensions
+@using UI.Settings
 @{ 
     //получаем списки для выпадающих меню
     List<SelectListItem> subjectsList = StaticHtmlClassesHelper.GetSortedSubjectEnumList().ToList();
@@ -48,62 +50,34 @@
 
         <h2>@localeModel["ActionDescHtml"].ToHtml()</h2>
 
-        @using (Html.BeginForm("KnowPrice", "Home", FormMethod.Post, htmlAttributes: new { id = "contactForm", @class = "form-horizontal", enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("KnowPrice", "Home", FormMethod.Post, htmlAttributes: new { id = "contactForm", @class = AtroposSettings.GetFormClass(), enctype = "multipart/form-data" }))
         {
             
             @Html.ValidationErrorsToAlerts()
 
-            @Html.LabelAndTextBoxFor(x => x.Name, showPopover: true)
+            @Html.LabelAndTextBoxWithTooltipFor(x => x.Name)
 
-            @Html.LabelAndTextBoxFor(x => x.Email, showPopover: true)
+            @Html.LabelAndTextBoxWithTooltipFor(x => x.Email)
 
-            @Html.LabelAndDropDownListFor(x => x.WorkType, selectList: workTypesList, showPopover: true)
+            @Html.LabelAndDropDownListWithTooltipFor(x => x.WorkType, selectList: workTypesList)
 
-            @Html.LabelAndDropDownListFor(x => x.Subject, selectList: subjectsList, showPopover: true)
+            @Html.LabelAndDropDownListWithTooltipFor(x => x.Subject, selectList: subjectsList)
 
-            @Html.LabelAndTextBoxFor(x => x.OtherSubject, showPopover: true)
+            @Html.LabelAndTextBoxWithTooltipFor(x => x.OtherSubject)
 
-            @Html.LabelAndDateTimePickerFor(x => x.CompletionDate, showPopover: true)
+            @Html.LabelAndTextBoxWithTooltipFor(x => x.CompletionDate)
 
-            <!--FilesUpload-->
-            <div id="@PropertyNameHelper.GetIdForForm("Files")" class="form-group">
-                @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
-                <div class="col-md-10 col-sm-10">
-                    <p>
-                        <div class='input-group'>
-                            @Html.TextBoxFor(model => model.Files, htmlAttributes: new { id = PropertyNameHelper.GetIdForInput("FileUpload"), type = "file", multiple = "" })
-                            <div class='input-group-btn'>
-                                <div class="pull-right">
-                                    @Html.PopoverInfoFor(model => model.Files, htmlAttributes: new { @class = "circle" })
-                                    <style>
-                                        .circle {
-                                            border: solid 1px #000;
-                                            border-radius: 45%;
-                                        }
-                                    </style>
-                                </div>
-                            </div>
-                        </div>
-                    </p>
-                    <p>@Html.GetStrongErrorText(x => x.Files)</p>
-                </div>
-            </div>
-            <!--/FilesUpload-->
+            @Html.LabelAndFileInputWithTooltipFor(x => x.Files, multiple: true)
+            
 
-            @Html.LabelAndTextAreaFor(x => x.Description)
+            @Html.LabelAndTextAreaWithTooltipFor(x => x.Description)
 
             <input id="realSubmit" class="hidden" type="submit" />
 
 
-            <div class="row">
-                <div class="col-md-12">
-                    <span class="pull-right">
-                        <!-- captcha -->
-                    </span>
-                    <div id="fakeSendBtn" class="btn btn-info">
-                        @GISigns.PlusSign.ToHtml() @localeModel["BtnText"]
-                    </div>
-                </div>
+
+            <div id="fakeSendBtn" class="btn btn-info btn-block">
+                @GISigns.PlusSign.ToHtml() @localeModel["BtnText"]
             </div>
         }
 
@@ -225,7 +199,7 @@
                         else
                         {
                             MakeFormSuccess("WorkType");
-                            MakeFormSuccess("FinishDate");
+                            MakeFormSuccess("CompletionDate");
                             return true;
                         }
                         break;
@@ -244,7 +218,7 @@
                         else
                         {
                             MakeFormSuccess("WorkType");
-                            MakeFormSuccess("FinishDate");
+                            MakeFormSuccess("CompletionDate");
                             return true;
                         }
                         break;

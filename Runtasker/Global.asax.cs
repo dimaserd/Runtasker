@@ -8,6 +8,7 @@ using System.Web.Routing;
 using System.Web.Http;
 using Runtasker.Logic.Entities;
 using Runtasker.Statics.Settings;
+using Runtasker.Controllers.Mvc;
 
 namespace Runtasker
 {
@@ -29,8 +30,8 @@ namespace Runtasker
             Exception exception = Server.GetLastError();
             // Log the exception.
 
-            ILogger logger = Container.Resolve<ILogger>();
-            logger.Error(exception);
+            //ILogger logger = Container.Resolve<ILogger>();
+            //logger.Error(exception);
 
             Response.Clear();
 
@@ -76,7 +77,7 @@ namespace Runtasker
             // Call target Controller and pass the routeData.
             IController errorController = new ErrorController();
             errorController.Execute(new RequestContext(
-                 new HttpContextWrapper(Context), routeData));
+            new HttpContextWrapper(Context), routeData));
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

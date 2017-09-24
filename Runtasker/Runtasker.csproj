@@ -275,6 +275,7 @@
     <Compile Include="Controllers\Mvc\BugBountyController.cs" />
     <Compile Include="Controllers\Mvc\ClicksController.cs" />
     <Compile Include="Controllers\Mvc\DevController.cs" />
+    <Compile Include="Controllers\Mvc\ErrorController.cs" />
     <Compile Include="Controllers\Mvc\FileController.cs" />
     <Compile Include="Controllers\Mvc\HomeController.cs" />
     <Compile Include="Controllers\Mvc\LandingController.cs" />
@@ -3378,6 +3379,7 @@
     <Folder Include="assets\images\demo\revolution_slider\New folder\" />
     <Folder Include="assets\images\demo\rs5\svg\alert\" />
     <Folder Include="Models\UIModels\" />
+    <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

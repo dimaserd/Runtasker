@@ -1,10 +1,17 @@
 ﻿@using Runtasker.Logic.Models.Payments.YandexKassa
 @using Runtasker.Resources.Views.Payment.YandexInvoice
+@using UI.Settings
+@using oksoft.Common.HtmlExtensions.Extensions
+@using Runtasker.Logic.Entities
 @model YandexInvoiceModel
 @{
     ViewBag.Title = YaInvoiceRes.Title;
 
     string _class = "form-horizontal";
+
+    _class = AtroposSettings.GetFormClass();
+
+    string email = User.Identity.GetEmail();
 }
 
 @AlertHelper.GetAlert(YaInvoiceRes.InfoText)
@@ -15,13 +22,13 @@
 {
     @Html.HiddenFor(x => x.UserId)
 
-    @Html.LabelAndTextBoxFor(x => x.Email)
+    @Html.LabelAndTextBoxWithTooltipFor(x => x.Email)
 
-    @Html.LabelAndTextBoxFor(x => x.Amount)
+    @Html.LabelAndTextBoxWithTooltipFor(x => x.Amount)
 
     <input id="hiddenSubmit" type="submit" class="hidden" />
 
-    <div class="btn btn-success" onclick="ClickHandler()">
+    <div class="btn btn-success btn-block" onclick="ClickHandler()">
         @YaInvoiceRes.Текст_Кнопки
     </div>
 }
@@ -32,7 +39,13 @@
 }
 @section Scripts{
     
+    @JSValidationHelper.GetDich(jsObject)
 
+    <script>
+        document.getElementById("@Html.GetIdForInput(x => x.Email)").value = "@email";
+
+        document.getElementById("@Html.GetIdForInput(x => x.Amount)").value = "@Model.Amount";
+    </script>
 
     <script>
         function ClickHandler() {

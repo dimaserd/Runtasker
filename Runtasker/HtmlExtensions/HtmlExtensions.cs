@@ -15,10 +15,20 @@ namespace Runtasker.HtmlExtensions
 {
     public static partial class HtmlExtensions
     {
+        public static string GetIdForInput<TModel, TValue>(this HtmlHelper<TModel> html,
+            Expression<Func<TModel, TValue>> expression)
+        {
 
-        #region Лейбл с чем-то там
-        
-        public static MvcHtmlString LabelAndPasswordFor<TModel, TValue>(this HtmlHelper<TModel> html,
+            var member = expression.Body as MemberExpression;
+            var prop = member.Member as PropertyInfo;
+
+            return PropertyNameHelper.GetIdForInput(prop.Name);
+        }
+
+
+            #region Лейбл с чем-то там
+
+            public static MvcHtmlString LabelAndPasswordFor<TModel, TValue>(this HtmlHelper<TModel> html,
            Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
         {
 

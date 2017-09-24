@@ -11,7 +11,7 @@
 
     string userGuid = ViewData["userGuid"] as string;
     string userEmail = ViewData["userEmail"] as string;
-    decimal? sumToPay = ViewData["sumToPay"] as decimal?;
+    int sumToPay = (ViewData["sumToPay"] as int?).Value;
 }
 
 <!--Navigation-->
@@ -50,7 +50,7 @@
                 <div class="col-md-5">
                     <div class="input-group input-group-lg">
 
-                        <input id="sum" class="form-control" name="sum" value="@((sumToPay.HasValue) ? sumToPay.Value : 0 )" maxlength="10" type="number" data-type="number">
+                        <input id="sum" class="form-control" name="sum" value="@sumToPay" maxlength="10" type="number" data-type="number">
                         <span class="input-group-addon">
                             @HtmlSigns.Rouble.ToHtml()
                         </span>

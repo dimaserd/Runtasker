@@ -180,6 +180,10 @@ namespace Common.JavascriptValidation.Statics
                 {
                     CheckingScripts.Add(JsEmailAttribute.GetCheckingFunction(propertyName, attr as JsEmailAttribute));
                 }
+                else if(attr is JsDefaultScriptAttribute)
+                {
+                    DefaultScripts.Add(JsDefaultScriptAttribute.GetDefaulScript(attr as JsDefaultScriptAttribute));
+                }
 
             }
 

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\JsCompareAttribute.cs" />
+    <Compile Include="Attributes\JsDefaultScriptAttribute.cs" />
     <Compile Include="Attributes\JsEmailAttribute.cs" />
     <Compile Include="Attributes\JsHideByDefaultAttribute.cs" />
     <Compile Include="Attributes\JsDefaultValueAttribute.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Attributes\JsOnValueAttribute.cs" />
     <Compile Include="Attributes\JsOnValueWithElseAttribute.cs" />
     <Compile Include="Attributes\JsRequiredAttribute.cs" />
+    <Compile Include="Attributes\JsSetDataType.cs" />
     <Compile Include="Entities\JsModelWithLabels.cs" />
     <Compile Include="Entities\JsProperty.cs" />
     <Compile Include="Entities\JsPropertyWithLabel.cs" />

@@ -176,7 +176,7 @@ namespace Runtasker.Controllers
         //Здесь пользователь может выбрать каким способом оплачивать
         [HttpGet]
         [Authorize(Roles = "Customer")]
-        public ActionResult Index(decimal? sumToPay)
+        public ActionResult Index(int sumToPay = 0)
         {
             ViewData["localeModel"] = ViewsHelper.Index();
             return View(model: sumToPay);
@@ -187,15 +187,15 @@ namespace Runtasker.Controllers
         #region Основные методы
         [HttpGet]
         [Authorize(Roles = "Customer")]
-        public ActionResult YandexKassa(decimal? sumToPay)
+        public ActionResult YandexKassa(int sumToPay = 0)
         {
-            if(Settings.Settings.AppSetting == Settings.Enumerations.ApplicationSettingType.Production)
+            if(!Settings.Payments.PaymentSettings.YandexKassaEnabled)
             {
-                return RedirectToAction("YandexKassaTest");
+                return RedirectToAction("YandexInvoice");
             }
 
 
-            if (sumToPay.HasValue && sumToPay.Value <= 0)
+            if (sumToPay <= 0)
             {
                 RedirectToAction("Index");
             }
@@ -329,23 +329,24 @@ namespace Runtasker.Controllers
         #region Старые методы оплаты
         [HttpGet]
         [Authorize]
-        public ActionResult Yandex(decimal? sumToPay)
+        public ActionResult Yandex(int sumToPay = 0)
         {
-            if(sumToPay.HasValue && sumToPay.Value <= 0)
+            if(!Runtasker.Settings.Payments.PaymentSettings.YandexMoneyEnabled)
             {
-                RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
+            
             ViewData["localeModel"] = ViewsHelper.Yandex();
 
             ViewData["sumToPay"] = sumToPay;
             ViewData["userGuid"] = UserGuid;
 
-            return View();
+            return View(sumToPay);
         }
 
         [HttpGet]
         [Authorize]
-        public ActionResult Robokassa(decimal sumToPay)
+        public ActionResult Robokassa(int sumToPay = 0)
         {
             if (sumToPay <= 0)
             {

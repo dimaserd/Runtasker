@@ -560,6 +560,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResetPassRes.en-GB.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Error\HttpError404\NotFoundRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NotFoundRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Error\HttpError500\ServerErrorRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServerErrorRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home\AboutUs\AboutUsRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1566,6 +1576,14 @@
     <EmbeddedResource Include="Views\Account\ResetPassword\ResetPassRes.en-GB.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResetPassRes.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Error\HttpError404\NotFoundRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NotFoundRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Error\HttpError500\ServerErrorRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ServerErrorRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\AboutUs\AboutUsRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

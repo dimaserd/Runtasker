@@ -3371,6 +3371,8 @@
     <Content Include="Views\Payment\YandexInvoice.cshtml" />
     <Content Include="Views\Payment\YandexInvoiceSent.cshtml" />
     <Content Include="Views\AtroposPartials\FloatStyles.cshtml" />
+    <Content Include="Views\Error\HttpError404.cshtml" />
+    <Content Include="Views\Error\HttpError500.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3379,7 +3381,6 @@
     <Folder Include="assets\images\demo\revolution_slider\New folder\" />
     <Folder Include="assets\images\demo\rs5\svg\alert\" />
     <Folder Include="Models\UIModels\" />
-    <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

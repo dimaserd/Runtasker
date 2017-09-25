@@ -1,0 +1,24 @@
+﻿@using Runtasker.Resources.Views.Error.HttpError404
+@{
+    ViewBag.Title = NotFoundRes.Заголовок;
+}
+
+@AlertHelper.GetAlert(NotFoundRes.Инфо)
+
+<h2>@ViewBag.Title</h2>
+
+<h4>@NotFoundRes.МиниЗаголовок</h4>
+
+<div >
+    <a class="btn btn-success btn-lg" href="@Url.Action("Index", "Home")">
+        <strong>
+            <span class="fa fa-home"></span>@NotFoundRes.НаГлавную
+        </strong>
+    </a>
+</div>
+
+@section Scripts{
+    <script>
+        setTimeout(function () { window.location.href = "/Home/Index";}, 10000);
+    </script>
+}

@@ -11,7 +11,9 @@ namespace Runtasker.Controllers.Mvc
         // GET: Error
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Home");
+
+            //return View();
         }
 
 

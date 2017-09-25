@@ -1,0 +1,26 @@
+﻿@using Runtasker.Resources.Views.Error.HttpError500
+
+@{
+    ViewBag.Title = ServerErrorRes.Заголовок;
+}
+
+@AlertHelper.GetAlert(ServerErrorRes.Инфо)
+
+<h2>@ServerErrorRes.Заголовок</h2>
+
+<h4>@ServerErrorRes.МиниЗаголовок</h4>
+
+
+    <a class="btn btn-success btn-lg" href="@Url.Action("Index", "Home")">
+        <strong>
+            <span class="fa fa-home"></span>@ServerErrorRes.НаГлавную
+        </strong>
+    </a>
+
+
+@section Scripts{
+    <script>
+        setTimeout(function () { window.location.href = "/Home/Index";}, 10000);
+    </script>
+}
+

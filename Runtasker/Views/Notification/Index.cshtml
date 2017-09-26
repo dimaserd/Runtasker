@@ -22,7 +22,7 @@
         {
             string id = User.Identity.GetUserId();
             string balance = db.Users.FirstOrDefault(x => x.Id == id).Balance.ToMoney();
-            string newBalance = string.Format(NewLoginPartial.YourBalancePattern, balance, HtmlSigns.Rouble);
+            string newBalance = string.Format(NewLoginPartialRes.YourBalancePattern, balance, HtmlSigns.Rouble);
 
             @JSHelper.SetInnerHtmlToId("balance", newBalance)
         }

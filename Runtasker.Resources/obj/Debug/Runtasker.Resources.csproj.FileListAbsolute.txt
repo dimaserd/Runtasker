@@ -448,7 +448,6 @@ C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runta
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.Layout.Layout.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.ModalLayout.ModalRes.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLayout.NewLayoutRes.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLoginPartial.NewLoginPartial.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Actions.OrderActions.OrderActionsRes.ru-RU.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Controllers.Account.AccountRes.ru-RU.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Email.Account.AccountEmRes.ru-RU.resources
@@ -521,15 +520,12 @@ C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runta
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.ModalLayout.ModalRes.ru-RU.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLayout.NewLayoutRes.zh-CN.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLayout.NewLayoutRes.ru-RU.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLoginPartial.NewLoginPartial.zh-CN.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLoginPartial.NewLoginPartial.ru-RU.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.csproj.GenerateResource.Cache
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\ru-RU\Runtasker.Resources.resources.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\zh-CN\Runtasker.Resources.resources.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.csproj.CoreCompileInputs.cache
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.csprojResolveAssemblyReference.cache
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Payment.YandexInvoice.YaInvoiceRes.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Payment.YandexInvoice.YaInvoiceRes.ru-RU.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\bin\Debug\en-GB\Runtasker.Resources.resources.dll
@@ -678,7 +674,6 @@ C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runta
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.Layout.Layout.en-GB.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.ModalLayout.ModalRes.en-GB.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLayout.NewLayoutRes.en-GB.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLoginPartial.NewLoginPartial.en-GB.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\en-GB\Runtasker.Resources.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLoginPartial.NewLoginPartialRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLoginPartial.NewLoginPartialRes.zh-CN.resources
@@ -686,3 +681,9 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Ru
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLoginPartial.NewLoginPartialRes.en-GB.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Error.HttpError404.NotFoundRes.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Error.HttpError500.ServerErrorRes.resources
+C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Error.HttpError404.NotFoundRes.resources
+C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Error.HttpError500.ServerErrorRes.resources
+C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLoginPartial.NewLoginPartialRes.resources
+C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLoginPartial.NewLoginPartialRes.zh-CN.resources
+C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLoginPartial.NewLoginPartialRes.ru-RU.resources
+C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Resources\obj\Debug\Runtasker.Resources.Views.Shared.NewLoginPartial.NewLoginPartialRes.en-GB.resources

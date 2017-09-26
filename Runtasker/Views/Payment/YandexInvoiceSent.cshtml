@@ -10,12 +10,10 @@
 @AlertHelper.GetAlert(string.Format(YaInvoiceRes.Отправлено_Формат, Model.Email, Model.Amount, HtmlSigns.Rouble))
 
 <div class="btn-group-lg">
-    <div class="btn">
-        <a href="@Url.Action("Index", "Orders")" class="btn btn-warning">
+        <a href="@Url.Action("Index", "Home")" class="btn btn-warning">
             @YaInvoiceRes.На_Главную
         </a>
         <a href="@Url.Action("Index", "Orders")" class="btn btn-success">
             @YaInvoiceRes.К_Моим_Заказам
         </a>
-    </div>
 </div>

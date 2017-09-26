@@ -293,12 +293,7 @@ namespace Runtasker.Controllers
         [AllowAnonymous]
         public ActionResult Signin()
         {
-            ViewData["localeModel"] = AccountViewModelBuilder
-                .SignInView(
-                userName: User.Identity.GetName(),
-                balance: User.Identity.GetBalance(), 
-                roubleSign: HtmlSigns.Rouble
-                );
+            
             return PartialView();
         }
 

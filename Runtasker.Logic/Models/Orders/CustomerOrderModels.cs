@@ -10,7 +10,8 @@ using Common.JavascriptValidation.Attributes;
 using Extensions.Attributes;
 
 namespace Runtasker.Logic.Models
-{    
+{
+    
     public class OrderCreateModel
     {
         [Required(ErrorMessage = "ERROR")]
@@ -60,8 +61,6 @@ namespace Runtasker.Logic.Models
         [Tooltip(resourceType: typeof(CreateOrder), resourceName: "FileUploadInfo")]
         [PopoverInfo(typeof(CreateOrder), resourceName: "FileUploadInfo")]
         public IEnumerable<HttpPostedFileBase> FileUpload { get; set; }
-
-
     }
 
     /// <summary>

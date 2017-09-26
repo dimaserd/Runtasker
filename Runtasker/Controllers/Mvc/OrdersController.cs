@@ -359,7 +359,7 @@ namespace Runtasker.Controllers
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Subject,WorkType,Description,FinishDate,FileUpload,Attachments,OtherSubject")] OrderCreateModel createOrder)
+        public async Task<ActionResult> Create(OrderCreateModel createOrder)
         {    
             //для каждого задания свои сроки выполнения
             switch (createOrder.WorkType)

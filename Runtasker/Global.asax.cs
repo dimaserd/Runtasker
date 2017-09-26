@@ -9,9 +9,55 @@ using System.Web.Http;
 using Runtasker.Logic.Entities;
 using Runtasker.Statics.Settings;
 using Runtasker.Controllers.Mvc;
+using Runtasker.LocaleBuilders.Statics;
 
 namespace Runtasker
 {
+    public class MyDateTimeBinder : IModelBinder
+    {
+        public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
+        {
+            var value = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
+            var date = value.ConvertTo(typeof(DateTime), CultureInfo.CurrentCulture);
+
+            return date;
+        }
+    }
+
+    public class CustomDateBinder : IModelBinder
+    {
+        public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
+        {
+            if (controllerContext == null)
+                throw new ArgumentNullException("controllerContext", "controllerContext is null.");
+            if (bindingContext == null)
+                throw new ArgumentNullException("bindingContext", "bindingContext is null.");
+
+            var value = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
+
+            if (value == null)
+                throw new ArgumentNullException(bindingContext.ModelName);
+
+            CultureInfo cultureInf = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+
+            cultureInf.DateTimeFormat.ShortDatePattern = LanguageStatic.GetDateFormat();
+
+            bindingContext.ModelState.SetModelValue(bindingContext.ModelName, value);
+
+            try
+            {
+                var date = value.ConvertTo(typeof(DateTime), cultureInf);
+
+                return date;
+            }
+            catch (Exception ex)
+            {
+                bindingContext.ModelState.AddModelError(bindingContext.ModelName, ex);
+                return null;
+            }
+        }
+    }
+
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
@@ -22,7 +68,9 @@ namespace Runtasker
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            
+
+            ModelBinders.Binders.Add(typeof(DateTime), new CustomDateBinder());
+
         }
 
         protected void Application_Error(object sender, EventArgs e)
@@ -101,12 +149,12 @@ namespace Runtasker
 
                 if (languages == null)
                 {
-                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en");
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-GB");
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-GB");
                     return;
                 }
                 //обход фишки с сафари браузерами
-                string lang = (languages[0].ToLower().Contains("ru")) ? "ru-RU" : "en";
+                string lang = (languages[0].ToLower().Contains("ru")) ? "ru-RU" : "en-GB";
 
 
                 //создаю куку с настройками языка и добавляю в пользовательские куки
@@ -142,8 +190,8 @@ namespace Runtasker
             }
             else
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("en");
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-GB");
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-GB");
             }
         }
 

@@ -67,5 +67,19 @@ namespace Runtasker.LocaleBuilders.Statics
                 }
             }  
         }
+
+        public static string GetDateFormat()
+        {
+            Lang lang = Language;
+
+            if(lang == Lang.English)
+            {
+                return "MM/dd/yyyy";
+            }
+            else
+            {
+                return "dd/MM/yyyy";
+            }
+        }
     }
 }

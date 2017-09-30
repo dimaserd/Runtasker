@@ -1,9 +1,8 @@
-﻿
+﻿@using oksoft.Common.HtmlExtensions.Extensions
+@using Runtasker.Logic.Entities
+@model ApplicationUser
 @{
     
 }
 
-<div class="input-group input-group-lg">
-    <span class="input-group-addon"></span>
-    <input type="text" class="form-control" placeholder="Username">
-</div>
+@Html.LabelAndTextBoxFor(x => x.ShouldBeNotifictedInVk)

@@ -3150,6 +3150,7 @@
     <Content Include="App_Code\LoadHelper.cshtml" />
     <Content Include="App_Code\JSValidationHelper.cshtml" />
     <Content Include="App_Code\ModalHelper.cshtml" />
+    <Content Include="App_Code\JivoSiteHelper.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Scripts\ai.1.0.12-build04187.js" />

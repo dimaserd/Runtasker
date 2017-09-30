@@ -7,3 +7,4 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Settings\bin\Release\R
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Settings\obj\Release\Runtasker.Settings.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Settings\obj\Release\Runtasker.Settings.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Settings\obj\Release\Runtasker.Settings.csprojResolveAssemblyReference.cache
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Settings\obj\Release\Runtasker.Settings.csproj.CoreCompileInputs.cache

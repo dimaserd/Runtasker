@@ -47,7 +47,16 @@
                                 <span class="caret"></span><span class="sr-only"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Twitter</a></li>
+                                <li>
+                                    <a href="@Url.Action("MakePaymentForUser", "Payment", new { userId = Model.User.Id})">
+                                        Пополнить баланс
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("EditUser", "Administration", new { userId = Model.User.Id})">
+                                        Редактировать пользователя
+                                    </a>
+                                </li>
                                 <li><a href="@Url.Action("DeleteFinishedOrders", "Administration", new { id = Model.User.Id})">Удалить завершенные заказы</a></li>
                                 <li><a href="/Administration/DeleteAllOrders/@Model.User.Id">Удалить все заказы</a></li>
                                 <li class="divider"></li>

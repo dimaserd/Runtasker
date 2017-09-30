@@ -1,16 +1,12 @@
 ﻿@using HtmlExtensions.StaticRenderers
-@using HtmlExtensions.Renderers
 @using Extensions.String
 @using Runtasker.LocaleBuilders.Models
 @using Runtasker.Settings
+@model int
 @{
     LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
     ViewBag.Title = localeModel["Title"];
-
-    
-
     string userGuid = ViewData["userGuid"] as string;
-    decimal? sumToPay = ViewData["sumToPay"] as decimal?;
 }
 <!--Navigation-->
 <header id="page-title">
@@ -24,6 +20,8 @@
     </div>
 </header>
 <!--/Navigation-->
+
+@AlertHelper.GetAlert(localeModel["InfoText"])
 
 <div class="page-header">
     <h1>@localeModel["ActionDesc"] <small>@localeModel["ActionDescMini"]</small></h1>
@@ -43,8 +41,7 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="input-group input-group-lg">
-
-                    <input id="sum" class="form-control" name="sum" value="@((sumToPay.HasValue) ? sumToPay.Value : 0 )" maxlength="10" type="number" data-type="number">
+                    <input id="sum" class="form-control" name="sum" value="@Model" maxlength="10" type="number" data-type="number">
                     <span class="input-group-addon">
                         @HtmlSigns.Rouble.ToHtml()
                     </span>
@@ -82,15 +79,6 @@
      </button>
 </div>
 
-
-
-<!--Explantion-->
-<div class="row">
-    <h4 class="text-info paddingLeft">
-        @localeModel["InfoText"]
-    </h4>
-</div>
-<!--/Explanation-->
 
 <hr/>
 

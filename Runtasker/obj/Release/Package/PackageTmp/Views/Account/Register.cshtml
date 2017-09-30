@@ -2,6 +2,8 @@
 @using Runtasker.HtmlExtensions
 @using Runtasker.LocaleBuilders.Models
 @using Extensions.String
+@using oksoft.Common.HtmlExtensions.Extensions
+@using UI.Settings
 @model RegisterModel
 @{ 
     LocaleViewModel viewModel = ViewData["viewModel"] as LocaleViewModel;
@@ -19,6 +21,10 @@
     </div>
 </header>
 
+@{ 
+    string _formClass = "white-row";
+    //string _formClass = AtroposSettings.GetFormClass();
+}
 
 <section class="container">
     <div class="row">
@@ -26,38 +32,23 @@
         <div class="col-md-6">
             @viewModel["htmlHeader"].ToHtml()
 
-            @using (Html.BeginForm("Register", "Account", FormMethod.Post, htmlAttributes: new { @class = "white-row" }))
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, htmlAttributes: new { @class = _formClass }))
             {
                 @Html.ValidationErrorsToAlerts()
 
+                @Html.LabelAndTextBoxWithTooltipFor(x => x.Email)
+
+                @Html.LabelAndTextBoxWithTooltipFor(x => x.Name)
+                
                 <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.LabelFor(model => model.Email)
-                            @Html.TextBoxFor(model => model.Email, htmlAttributes: new { @class = "form-control" })
-                        </div>
+                    <div class="col-md-6">
+                        @oksoft.Common.HtmlExtensions.Extensions.HtmlExtensions.LabelAndPasswordFor(Html, t => t.Password)
+                    </div>
+                    <div class="col-md-6">
+                        @oksoft.Common.HtmlExtensions.Extensions.HtmlExtensions.LabelAndPasswordFor(Html, t => t.ConfirmPassword)
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.LabelFor(model => model.Name)
-                            @Html.TextBoxFor(model => model.Name, htmlAttributes: new { @class = "form-control" })
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-6">
-                            @Html.LabelFor(model => model.Password)
-                            @Html.PasswordFor(model => model.Password, htmlAttributes: new { @class = "form-control" })
-                        </div>
-                        <div class="col-md-6">
-                            @Html.LabelFor(m => m.ConfirmPassword)
-                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                        </div>
-                    </div>
-                </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <input type="submit" value="@viewModel["registerBtn"]" class="btn btn-primary pull-right push-bottom" data-loading-text="Loading...">

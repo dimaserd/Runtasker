@@ -71,9 +71,7 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Release\VkParser.cs
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Release\VkParser.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Release\VkParser.pdb
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\AngleSharp.dll
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\VkNet.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\AngleSharp.xml
-C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\VkNet.xml
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\zh-CN\Runtasker.Resources.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\JetBrains.Annotations.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\JetBrains.Annotations.xml
@@ -82,3 +80,7 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\ru\System.W
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\ru\System.Web.WebPages.Razor.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\ru\System.Web.WebPages.resources.dll
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\ru\System.Web.WebPages.Deployment.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\VkNet.UWP.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\VkNet.UWP.xml
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\bin\Release\en-GB\Runtasker.Resources.resources.dll
+C:\Users\dmitryserdyukov\Source\Repos\Runtasker\VkParser\obj\Release\VkParser.csproj.CoreCompileInputs.cache

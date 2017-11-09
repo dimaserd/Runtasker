@@ -8,6 +8,7 @@ using Runtasker.Logic.Entities.News;
 using Runtasker.Logic.Entities.ClickLinks;
 using Runtaker.LocaleBuiders.Interfaces;
 using Runtaker.LocaleBuiders.Entities;
+using VkParser.Entities.Spam;
 
 namespace Runtasker.Logic
 {
@@ -86,6 +87,13 @@ namespace Runtasker.Logic
 
         public DbSet<VkPostLookUp> VkPostLookUps { get; set; }
 
+        #region Спамирование
+
+        public DbSet<VkGroupMember> VkGroupMembers { get; set; }
+
+        public DbSet<VkMan> VkMen { get; set; }
+
+        #endregion
 
         #endregion
 
@@ -95,6 +103,8 @@ namespace Runtasker.Logic
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<VkGroupMember>().HasKey(e => new { e.VkManId, e.VkGroupId });
+
             modelBuilder.Entity<VkKeyWord>()
                 .HasMany(t => t.VkFoundPosts)
                 .WithMany(t => t.VkKeyWords)
@@ -126,6 +136,4 @@ namespace Runtasker.Logic
         #endregion
 
     }
-
-
 }

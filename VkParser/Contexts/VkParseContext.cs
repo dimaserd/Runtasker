@@ -1,6 +1,7 @@
 ﻿using VkParser.Entities;
 using Runtasker.Settings.Statics;
 using System.Data.Entity;
+using VkParser.Entities.Spam;
 
 namespace VkParser.Contexts
 {
@@ -19,10 +20,21 @@ namespace VkParser.Contexts
 
         public DbSet<VkPostLookUp> VkPostLookUps { get; set; }
 
+        #region Спамирование
+
+        public DbSet<VkGroupMember> VkGroupMembers { get; set; }
+
+        public DbSet<VkMan> VkMans { get; set; }
+
+        
+        #endregion
+
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<VkGroupMember>().HasKey(e => new { e.VkManId, e.VkGroupId });
+
             modelBuilder.Entity<VkKeyWord>()
                 .HasMany(t => t.VkFoundPosts)
                 .WithMany(t => t.VkKeyWords)

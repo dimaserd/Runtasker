@@ -1,7 +1,7 @@
 ﻿@using HtmlExtensions.StaticRenderers
 @using Extensions.String
 @using Runtasker.LocaleBuilders.Models
-@model decimal?
+@model int
 
 @{ 
 
@@ -39,7 +39,7 @@
             <strong>@localeModel["ErrorText"]</strong>
         </div>
         <div class="input-group input-group-lg">
-            <input id="sum" class="form-control" value="@((Model.HasValue) ? Model.Value : 0 )" maxlength="10" type="number" data-type="number">
+            <input id="sum" class="form-control" value="@Model" maxlength="10" type="number" data-type="number">
             <span class="input-group-addon">
                 @HtmlSigns.Rouble.ToHtml()
             </span>

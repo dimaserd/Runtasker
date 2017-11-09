@@ -19,8 +19,6 @@ namespace VkParser.Entities
         [Key]
         public int Id { get; set; }
 
-        
-
         public string ScreenName { get; set; }
 
         public string Name { get; set; }

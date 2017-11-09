@@ -290,6 +290,7 @@
     <Compile Include="Controllers\Mvc\ResourceController.cs" />
     <Compile Include="Controllers\Mvc\RestoreDataController.cs" />
     <Compile Include="Controllers\Mvc\VkOrdersController.cs" />
+    <Compile Include="Controllers\Mvc\VkSpamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2660,8 +2661,6 @@
     <Content Include="assets\plugins\bootstrap\js\bootstrap.js" />
     <Content Include="assets\plugins\bootstrap\js\bootstrap.min.js" />
     <Content Include="assets\plugins\bootstrap\js\npm.js" />
-    <Content Include="assets\plugins\egorkhmelev-jslider\bin\jquery.slider.min.css" />
-    <Content Include="assets\plugins\egorkhmelev-jslider\bin\jquery.slider.min.js" />
     <Content Include="assets\plugins\egorkhmelev-jslider\css\jslider.blue.css" />
     <Content Include="assets\plugins\egorkhmelev-jslider\css\jslider.css" />
     <Content Include="assets\plugins\egorkhmelev-jslider\css\jslider.plastic.css" />
@@ -3380,7 +3379,9 @@
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="assets\images\demo\revolution_slider\New folder\" />
     <Folder Include="assets\images\demo\rs5\svg\alert\" />
+    <Folder Include="assets\plugins\egorkhmelev-jslider\bin\" />
     <Folder Include="Models\UIModels\" />
+    <Folder Include="Views\VkSpam\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

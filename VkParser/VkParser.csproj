@@ -75,6 +75,8 @@
   <ItemGroup>
     <Compile Include="Constants\VkConstants.cs" />
     <Compile Include="Contexts\VkParseContext.cs" />
+    <Compile Include="Entities\Spam\VkGroupMember.cs" />
+    <Compile Include="Entities\Spam\VkMan.cs" />
     <Compile Include="Entities\VkFoundPost.cs" />
     <Compile Include="Entities\VkGroup.cs" />
     <Compile Include="Entities\VkKeyWord.cs" />

@@ -4,6 +4,8 @@
 @using Runtasker.LocaleBuilders.Models
 @using Runtasker.Logic.Entities
 @using HtmlExtensions.StaticRenderers
+@using Runtasker.LocaleBuilders.Views.Account
+@using Runtasker.Resources.Views.Shared.NewLoginPartial
 
 @model LoginModel
 @{
@@ -12,7 +14,12 @@
     string imageLink = $"/File/GetAvatar?userGuid={userGuid}";
 
 
-    LocaleViewModel localeModel = ViewData["localeModel"] as LocaleViewModel;
+    LocaleViewModel localeModel = AccountViewModelBuilder
+                .SignInView(
+                userName: User.Identity.GetName(),
+                balance: User.Identity.GetBalance(),
+                roubleSign: HtmlSigns.Rouble
+                ); ;
 
     string langBlockId = "langBlock";
     string userBlockId = "userForm";
@@ -98,7 +105,7 @@ else
                 <div class="row">
                     <div class="col-md-12">
                         <span>@User.Identity.GetName()</span>
-                        <p class="text-muted small">
+                        <p class="text-muted small low-marg">
                             @User.Identity.GetEmail()
                         </p>
                         <div class="divider">
@@ -106,15 +113,55 @@ else
                         <p id="balance" class="text-muted small low-marg">
                             @localeModel["YourBalanceHtml"].ToHtml()
                         </p>
-
+                        
                         @if (User.IsInRole("Customer"))
                         {
-                            <p>
+                            <p class="low-marg">
                                 <a href="@Url.Action("Index", "Payment")">
                                     [@localeModel["Recharge"]]
                                 </a>
                             </p>
                         }
+
+                        @{ 
+
+                            bool t = User.Identity.ShouldBeNotifictedInVk();
+                            string vkDomain = User.Identity.GetVkDomain();
+
+                            string vkId = User.Identity.GetVkId();
+                        }
+
+                        @if (t)
+                        {
+                            if (!string.IsNullOrWhiteSpace(vkDomain))
+                            {
+                                <div class="divider">
+                                </div>
+                                <p class="text-muted small low-marg">
+                                    <span><a target="_blank" href="https://vk.com/@(vkDomain)"> <i class="fa fa-vk"></i> @vkDomain</a></span>
+                                </p>
+                            }
+
+                        }
+                        else
+                        {
+                            string vkSyncLinkHtml = string.Format(NewLoginPartialRes.SyncWithFormat, "<i class=\"fa fa-vk\"></i>");
+
+                            <div class="divider">
+                            </div>
+                                <p class="text-muted small low-marg">
+                                    <span>
+                                        <a href="@Url.Action("AddVkInfo", "Manage")">
+                                            @(new HtmlString($"[{vkSyncLinkHtml}]"))
+                                        </a>
+                                    </span>
+                                </p>
+                        }
+
+
+
+
+
 
 
 

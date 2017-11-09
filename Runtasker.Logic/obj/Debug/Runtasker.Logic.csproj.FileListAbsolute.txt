@@ -358,3 +358,5 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\en-GB\
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.gs.resources
 C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.fd1.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\en-GB\Runtasker.Resources.resources.dll
+C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.vkSpam.resources
+C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.vkSpam2.resources

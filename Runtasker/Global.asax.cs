@@ -58,6 +58,8 @@ namespace Runtasker
         }
     }
 
+
+
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
@@ -226,6 +228,11 @@ namespace Runtasker
                     UIStatics.UIStaticVariables.IsDarkLayout = false;
                 }
             }
+        }
+
+        private void CheckAuth()
+        {
+            //if(!Request.IsAuthenticated)
         }
     }
 }

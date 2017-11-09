@@ -235,6 +235,14 @@
     <Compile Include="Migrations\201709191023425_fd1.Designer.cs">
       <DependentUpon>201709191023425_fd1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711090839350_vkSpam.cs" />
+    <Compile Include="Migrations\201711090839350_vkSpam.Designer.cs">
+      <DependentUpon>201711090839350_vkSpam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711090845382_vkSpam2.cs" />
+    <Compile Include="Migrations\201711090845382_vkSpam2.Designer.cs">
+      <DependentUpon>201711090845382_vkSpam2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
     <Compile Include="Models\AdministrationUsers\EditCustomerModel.cs" />
@@ -436,6 +444,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709191023425_fd1.resx">
       <DependentUpon>201709191023425_fd1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711090839350_vkSpam.resx">
+      <DependentUpon>201711090839350_vkSpam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711090845382_vkSpam2.resx">
+      <DependentUpon>201711090845382_vkSpam2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

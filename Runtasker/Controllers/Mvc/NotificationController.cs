@@ -56,8 +56,17 @@ namespace Runtasker.Controllers
 
         public async Task<ActionResult> GetNotificationAsync()
         {
-            Notification model = await Notificater.GetNotificationAsync();
-            return PartialView(viewName: "Index", model: model);
+            try
+            {
+                Notification model = await Notificater.GetNotificationAsync();
+                return PartialView(viewName: "Index", model: model);
+            }
+            catch (Exception ex)
+            {
+                return PartialView(viewName: "Index", model: null);
+            }
+            
+            
         }
 
         #endregion

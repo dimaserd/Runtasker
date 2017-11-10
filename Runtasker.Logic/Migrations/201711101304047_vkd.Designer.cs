@@ -7,13 +7,13 @@ namespace Runtasker.Logic.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class news : IMigrationMetadata
+    public sealed partial class vkd : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(news));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(vkd));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707242210178_news"; }
+            get { return "201711101304047_vkd"; }
         }
         
         string IMigrationMetadata.Source

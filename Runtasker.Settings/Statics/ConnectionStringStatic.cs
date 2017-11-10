@@ -22,7 +22,7 @@ namespace Runtasker.Settings.Statics
                 switch(conType)
                 {
                     case ConnectionType.Local:
-                        result = "LocalTestConnection";
+                        result = "LocalTestConnection2";
                         break;
 
                     case ConnectionType.Production:

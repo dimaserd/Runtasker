@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using VkParser.Entities.Spam;
 using VkParser.Models;
 
 namespace VkParser.Entities
@@ -13,6 +14,7 @@ namespace VkParser.Entities
         public VkGroup()
         {
             Posts = new List<VkFoundPost>();
+            VkGroupMembers = new List<VkGroupMember>();
         }
         #endregion
 
@@ -34,6 +36,9 @@ namespace VkParser.Entities
 
 
         public virtual ICollection<VkFoundPost> Posts { get; set; }
+
+        public virtual ICollection<VkGroupMember> VkGroupMembers { get; set; }
+        
     }
 
     public static class VkGroupExtensions

@@ -1,0 +1,30 @@
+﻿@using VkParser.Entities
+@model VkGroup
+@{
+    ViewBag.Title = "GroupMembers";
+}
+
+<h2>Участники группы</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in Model.VkGroupMembers)
+            {
+                <tr>
+                    <td>
+                        @t.Man.VkLink
+                    </td>
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+</div>

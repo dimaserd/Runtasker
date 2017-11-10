@@ -8,6 +8,31 @@ namespace Runtasker.Logic.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.ArticleClarifications",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Header = c.String(),
+                        Text = c.String(),
+                        ArticleId = c.String(nullable: false, maxLength: 128),
+                        LanguageCode = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Articles", t => t.ArticleId, cascadeDelete: true)
+                .Index(t => t.ArticleId);
+            
+            CreateTable(
+                "dbo.Articles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        ToShow = c.Boolean(nullable: false),
+                        CreationDate = c.DateTime(nullable: false),
+                        ImageCaptionHtml = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Attachments",
                 c => new
                     {
@@ -32,6 +57,7 @@ namespace Runtasker.Logic.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Status = c.Int(nullable: false),
+                        LastStatus = c.Int(nullable: false),
                         ErrorType = c.Int(nullable: false),
                         WorkType = c.Int(nullable: false),
                         HasCustomerFiles = c.Boolean(nullable: false),
@@ -60,6 +86,7 @@ namespace Runtasker.Logic.Migrations
                         Id = c.String(nullable: false, maxLength: 128),
                         VkDomain = c.String(),
                         VkId = c.String(),
+                        ShouldBeNotifictedInVk = c.Boolean(nullable: false),
                         Specialization = c.String(),
                         Language = c.String(),
                         Name = c.String(),
@@ -168,8 +195,8 @@ namespace Runtasker.Logic.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        SenderGuid = c.String(nullable: false, maxLength: 128),
-                        ReceiverGuid = c.String(nullable: false, maxLength: 128),
+                        SenderId = c.String(nullable: false, maxLength: 128),
+                        ReceiverId = c.String(nullable: false, maxLength: 128),
                         Status = c.Int(nullable: false),
                         Type = c.Int(nullable: false),
                         Mark = c.String(),
@@ -180,11 +207,35 @@ namespace Runtasker.Logic.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Orders", t => t.OrderId)
-                .ForeignKey("dbo.AspNetUsers", t => t.ReceiverGuid, cascadeDelete: false)
-                .ForeignKey("dbo.AspNetUsers", t => t.SenderGuid, cascadeDelete: false)
-                .Index(t => t.SenderGuid)
-                .Index(t => t.ReceiverGuid)
+                .ForeignKey("dbo.AspNetUsers", t => t.ReceiverId, cascadeDelete: false)
+                .ForeignKey("dbo.AspNetUsers", t => t.SenderId, cascadeDelete: false)
+                .Index(t => t.SenderId)
+                .Index(t => t.ReceiverId)
                 .Index(t => t.OrderId);
+            
+            CreateTable(
+                "dbo.Clicks",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        PreviousUrl = c.String(),
+                        Info = c.String(),
+                        ClickDate = c.DateTime(nullable: false),
+                        CountingClickLinkId = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.CountingClickLinks", t => t.CountingClickLinkId)
+                .Index(t => t.CountingClickLinkId);
+            
+            CreateTable(
+                "dbo.CountingClickLinks",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        ClickName = c.String(),
+                        Description = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Invitations",
@@ -210,9 +261,71 @@ namespace Runtasker.Logic.Migrations
                         AboutType = c.Int(nullable: false),
                         Title = c.String(),
                         Text = c.String(),
+                        CreationDate = c.DateTime(nullable: false),
                         Link = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.QuestionAnswerLangClarifications",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Question = c.String(),
+                        Answer = c.String(),
+                        IsVisible = c.Boolean(nullable: false),
+                        LanguageCode = c.Int(nullable: false),
+                        QuestionAnswer_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.QuestionAnswers", t => t.QuestionAnswer_Id)
+                .Index(t => t.QuestionAnswer_Id);
+            
+            CreateTable(
+                "dbo.QuestionAnswers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.ResourceFileModels",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        ResourcePath = c.String(),
+                        CreateDate = c.DateTime(nullable: false),
+                        LangCode = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.ResourceStrings",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        ResourceKey = c.String(),
+                        ResourceValue = c.String(),
+                        LastEditedDate = c.DateTime(nullable: false),
+                        ResourceFileId = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.ResourceFileModels", t => t.ResourceFileId)
+                .Index(t => t.ResourceFileId);
+            
+            CreateTable(
+                "dbo.ResourceStringTypes",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        ResourceValue = c.String(),
+                        LangCode = c.Int(nullable: false),
+                        ResourceStringId = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.ResourceStrings", t => t.ResourceStringId)
+                .Index(t => t.ResourceStringId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -240,7 +353,7 @@ namespace Runtasker.Logic.Migrations
                         Subject = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.VkGroups", t => t.VkGroupId, cascadeDelete: false)
+                .ForeignKey("dbo.VkGroups", t => t.VkGroupId, cascadeDelete: true)
                 .Index(t => t.VkGroupId);
             
             CreateTable(
@@ -282,6 +395,30 @@ namespace Runtasker.Logic.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.VkGroupMembers",
+                c => new
+                    {
+                        VkManId = c.String(nullable: false, maxLength: 128),
+                        VkGroupId = c.String(nullable: false, maxLength: 128),
+                        Group_Id = c.Int(),
+                    })
+                .PrimaryKey(t => new { t.VkManId, t.VkGroupId })
+                .ForeignKey("dbo.VkGroups", t => t.Group_Id)
+                .ForeignKey("dbo.VkMen", t => t.VkManId, cascadeDelete: false)
+                .Index(t => t.VkManId)
+                .Index(t => t.Group_Id);
+            
+            CreateTable(
+                "dbo.VkMen",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        VkLink = c.String(),
+                        IsInformed = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.UserCoupons",
                 c => new
                     {
@@ -311,16 +448,22 @@ namespace Runtasker.Logic.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.VkGroupMembers", "VkManId", "dbo.VkMen");
+            DropForeignKey("dbo.VkGroupMembers", "Group_Id", "dbo.VkGroups");
             DropForeignKey("dbo.VkKeyWordFoundPosts", "VkFoundPostId", "dbo.VkFoundPosts");
             DropForeignKey("dbo.VkKeyWordFoundPosts", "VkKeyWordId", "dbo.VkKeyWords");
             DropForeignKey("dbo.VkPostLookUps", "VkFoundPostId", "dbo.VkFoundPosts");
             DropForeignKey("dbo.VkFoundPosts", "VkGroupId", "dbo.VkGroups");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.ResourceStringTypes", "ResourceStringId", "dbo.ResourceStrings");
+            DropForeignKey("dbo.ResourceStrings", "ResourceFileId", "dbo.ResourceFileModels");
+            DropForeignKey("dbo.QuestionAnswerLangClarifications", "QuestionAnswer_Id", "dbo.QuestionAnswers");
+            DropForeignKey("dbo.Clicks", "CountingClickLinkId", "dbo.CountingClickLinks");
             DropForeignKey("dbo.Attachments", "MessageId", "dbo.Messages");
             DropForeignKey("dbo.Attachments", "OrderId", "dbo.Orders");
             DropForeignKey("dbo.Orders", "PerformerGuid", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Messages", "SenderGuid", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Messages", "ReceiverGuid", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Messages", "SenderId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Messages", "ReceiverId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Messages", "OrderId", "dbo.Orders");
             DropForeignKey("dbo.Orders", "UserGuid", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
@@ -330,16 +473,23 @@ namespace Runtasker.Logic.Migrations
             DropForeignKey("dbo.UserCoupons", "CouponId", "dbo.Coupons");
             DropForeignKey("dbo.UserCoupons", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.ArticleClarifications", "ArticleId", "dbo.Articles");
             DropIndex("dbo.VkKeyWordFoundPosts", new[] { "VkFoundPostId" });
             DropIndex("dbo.VkKeyWordFoundPosts", new[] { "VkKeyWordId" });
             DropIndex("dbo.UserCoupons", new[] { "CouponId" });
             DropIndex("dbo.UserCoupons", new[] { "UserId" });
+            DropIndex("dbo.VkGroupMembers", new[] { "Group_Id" });
+            DropIndex("dbo.VkGroupMembers", new[] { "VkManId" });
             DropIndex("dbo.VkPostLookUps", new[] { "VkFoundPostId" });
             DropIndex("dbo.VkFoundPosts", new[] { "VkGroupId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.ResourceStringTypes", new[] { "ResourceStringId" });
+            DropIndex("dbo.ResourceStrings", new[] { "ResourceFileId" });
+            DropIndex("dbo.QuestionAnswerLangClarifications", new[] { "QuestionAnswer_Id" });
+            DropIndex("dbo.Clicks", new[] { "CountingClickLinkId" });
             DropIndex("dbo.Messages", new[] { "OrderId" });
-            DropIndex("dbo.Messages", new[] { "ReceiverGuid" });
-            DropIndex("dbo.Messages", new[] { "SenderGuid" });
+            DropIndex("dbo.Messages", new[] { "ReceiverId" });
+            DropIndex("dbo.Messages", new[] { "SenderId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.PaymentTransactions", new[] { "UserGuid" });
@@ -351,15 +501,25 @@ namespace Runtasker.Logic.Migrations
             DropIndex("dbo.Orders", new[] { "UserGuid" });
             DropIndex("dbo.Attachments", new[] { "OrderId" });
             DropIndex("dbo.Attachments", new[] { "MessageId" });
+            DropIndex("dbo.ArticleClarifications", new[] { "ArticleId" });
             DropTable("dbo.VkKeyWordFoundPosts");
             DropTable("dbo.UserCoupons");
+            DropTable("dbo.VkMen");
+            DropTable("dbo.VkGroupMembers");
             DropTable("dbo.VkKeyWords");
             DropTable("dbo.VkPostLookUps");
             DropTable("dbo.VkGroups");
             DropTable("dbo.VkFoundPosts");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.ResourceStringTypes");
+            DropTable("dbo.ResourceStrings");
+            DropTable("dbo.ResourceFileModels");
+            DropTable("dbo.QuestionAnswers");
+            DropTable("dbo.QuestionAnswerLangClarifications");
             DropTable("dbo.Notifications");
             DropTable("dbo.Invitations");
+            DropTable("dbo.CountingClickLinks");
+            DropTable("dbo.Clicks");
             DropTable("dbo.Messages");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.PaymentTransactions");
@@ -370,6 +530,8 @@ namespace Runtasker.Logic.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Orders");
             DropTable("dbo.Attachments");
+            DropTable("dbo.Articles");
+            DropTable("dbo.ArticleClarifications");
         }
     }
 }

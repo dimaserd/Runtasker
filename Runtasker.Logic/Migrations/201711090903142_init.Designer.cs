@@ -13,7 +13,7 @@ namespace Runtasker.Logic.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201707091837226_init"; }
+            get { return "201711090903142_init"; }
         }
         
         string IMigrationMetadata.Source

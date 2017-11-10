@@ -187,61 +187,25 @@
     <Compile Include="Enumerations\SaveChangesType.cs" />
     <Compile Include="Handlers\DbEntityValidationExceptionHandler.cs" />
     <Compile Include="Interfaces\Identity\IVkUser.cs" />
-    <Compile Include="Migrations\201707091837226_init.cs" />
-    <Compile Include="Migrations\201707091837226_init.Designer.cs">
-      <DependentUpon>201707091837226_init.cs</DependentUpon>
+    <Compile Include="Migrations\201711090903142_init.cs" />
+    <Compile Include="Migrations\201711090903142_init.Designer.cs">
+      <DependentUpon>201711090903142_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707151322294_rename.cs" />
-    <Compile Include="Migrations\201707151322294_rename.Designer.cs">
-      <DependentUpon>201707151322294_rename.cs</DependentUpon>
+    <Compile Include="Migrations\201711101118497_t.cs" />
+    <Compile Include="Migrations\201711101118497_t.Designer.cs">
+      <DependentUpon>201711101118497_t.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707242210178_news.cs" />
-    <Compile Include="Migrations\201707242210178_news.Designer.cs">
-      <DependentUpon>201707242210178_news.cs</DependentUpon>
+    <Compile Include="Migrations\201711101230396_names.cs" />
+    <Compile Include="Migrations\201711101230396_names.Designer.cs">
+      <DependentUpon>201711101230396_names.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708192036322_removal.cs" />
-    <Compile Include="Migrations\201708192036322_removal.Designer.cs">
-      <DependentUpon>201708192036322_removal.cs</DependentUpon>
+    <Compile Include="Migrations\201711101304047_vkd.cs" />
+    <Compile Include="Migrations\201711101304047_vkd.Designer.cs">
+      <DependentUpon>201711101304047_vkd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708210745097_not.cs" />
-    <Compile Include="Migrations\201708210745097_not.Designer.cs">
-      <DependentUpon>201708210745097_not.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708270913428_quest.cs" />
-    <Compile Include="Migrations\201708270913428_quest.Designer.cs">
-      <DependentUpon>201708270913428_quest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708271016394_fd.cs" />
-    <Compile Include="Migrations\201708271016394_fd.Designer.cs">
-      <DependentUpon>201708271016394_fd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708271017503_visible.cs" />
-    <Compile Include="Migrations\201708271017503_visible.Designer.cs">
-      <DependentUpon>201708271017503_visible.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709081244564_users.cs" />
-    <Compile Include="Migrations\201709081244564_users.Designer.cs">
-      <DependentUpon>201709081244564_users.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709131007084_clicks.cs" />
-    <Compile Include="Migrations\201709131007084_clicks.Designer.cs">
-      <DependentUpon>201709131007084_clicks.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709190843496_gs.cs" />
-    <Compile Include="Migrations\201709190843496_gs.Designer.cs">
-      <DependentUpon>201709190843496_gs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709191023425_fd1.cs" />
-    <Compile Include="Migrations\201709191023425_fd1.Designer.cs">
-      <DependentUpon>201709191023425_fd1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711090839350_vkSpam.cs" />
-    <Compile Include="Migrations\201711090839350_vkSpam.Designer.cs">
-      <DependentUpon>201711090839350_vkSpam.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711090845382_vkSpam2.cs" />
-    <Compile Include="Migrations\201711090845382_vkSpam2.Designer.cs">
-      <DependentUpon>201711090845382_vkSpam2.cs</DependentUpon>
+    <Compile Include="Migrations\201711101333240_stf.cs" />
+    <Compile Include="Migrations\201711101333240_stf.Designer.cs">
+      <DependentUpon>201711101333240_stf.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
@@ -409,47 +373,20 @@
     <Folder Include="Workers\RestoreData\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707091837226_init.resx">
-      <DependentUpon>201707091837226_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711090903142_init.resx">
+      <DependentUpon>201711090903142_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707151322294_rename.resx">
-      <DependentUpon>201707151322294_rename.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711101118497_t.resx">
+      <DependentUpon>201711101118497_t.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707242210178_news.resx">
-      <DependentUpon>201707242210178_news.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711101230396_names.resx">
+      <DependentUpon>201711101230396_names.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708192036322_removal.resx">
-      <DependentUpon>201708192036322_removal.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711101304047_vkd.resx">
+      <DependentUpon>201711101304047_vkd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708210745097_not.resx">
-      <DependentUpon>201708210745097_not.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708270913428_quest.resx">
-      <DependentUpon>201708270913428_quest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708271016394_fd.resx">
-      <DependentUpon>201708271016394_fd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708271017503_visible.resx">
-      <DependentUpon>201708271017503_visible.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709081244564_users.resx">
-      <DependentUpon>201709081244564_users.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709131007084_clicks.resx">
-      <DependentUpon>201709131007084_clicks.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709190843496_gs.resx">
-      <DependentUpon>201709190843496_gs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709191023425_fd1.resx">
-      <DependentUpon>201709191023425_fd1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711090839350_vkSpam.resx">
-      <DependentUpon>201711090839350_vkSpam.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711090845382_vkSpam2.resx">
-      <DependentUpon>201711090845382_vkSpam2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711101333240_stf.resx">
+      <DependentUpon>201711101333240_stf.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

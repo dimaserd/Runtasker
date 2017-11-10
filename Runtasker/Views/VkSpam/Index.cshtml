@@ -1,0 +1,45 @@
+﻿@using VkParser.Entities
+@model List<VkGroup>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>
+                    Название группы
+                </td>
+                <td>
+                    Ссылка
+                </td>
+                <td>
+                    Действия
+                </td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (VkGroup group in Model)
+            {
+                <tr>
+                    <td>
+                        @group.ScreenName
+                    </td>
+                    <td>
+                        <a href="https://vk.com/@group.ScreenName" target="_blank">В группу</a>
+                    </td>
+                    <td>
+                        <a href="/VkSpam/GetAllVkMenFromGroup?id=@group.Id">
+                            [Получить пользователей]
+                        </a>
+                    </td>
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+</div>

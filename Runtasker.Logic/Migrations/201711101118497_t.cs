@@ -3,16 +3,16 @@ namespace Runtasker.Logic.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class fd : DbMigration
+    public partial class t : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.QuestionAnswerLangClarifications", "Show", c => c.Boolean(nullable: false));
+            AddColumn("dbo.VkMen", "Name", c => c.String());
         }
         
         public override void Down()
         {
-            DropColumn("dbo.QuestionAnswerLangClarifications", "Show");
+            DropColumn("dbo.VkMen", "Name");
         }
     }
 }

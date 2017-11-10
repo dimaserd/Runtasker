@@ -3372,6 +3372,8 @@
     <Content Include="Views\AtroposPartials\FloatStyles.cshtml" />
     <Content Include="Views\Error\HttpError404.cshtml" />
     <Content Include="Views\Error\HttpError500.cshtml" />
+    <Content Include="Views\VkSpam\Index.cshtml" />
+    <Content Include="Views\VkSpam\GroupMembers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3381,7 +3383,6 @@
     <Folder Include="assets\images\demo\rs5\svg\alert\" />
     <Folder Include="assets\plugins\egorkhmelev-jslider\bin\" />
     <Folder Include="Models\UIModels\" />
-    <Folder Include="Views\VkSpam\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

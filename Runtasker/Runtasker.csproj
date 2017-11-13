@@ -3375,6 +3375,7 @@
     <Content Include="Views\Error\HttpError500.cshtml" />
     <Content Include="Views\VkSpam\Index.cshtml" />
     <Content Include="Views\VkSpam\GroupMembers.cshtml" />
+    <Content Include="Views\VkSpam\VkMenList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

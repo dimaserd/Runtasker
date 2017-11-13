@@ -44,7 +44,9 @@ namespace VkParser.Entities.Spam
                 FirstName = model["first_name"].ToString(),
                 LastName = model["last_name"].ToString(),
                 IsInformed = false,
-                VkLink = "https://vk.com/" + model["domain"]
+                VkLink = "https://vk.com/" + model["domain"],
+                //VkGroupMembers = new List<VkGroupMember>
+
             };
         }
     }

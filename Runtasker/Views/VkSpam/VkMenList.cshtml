@@ -1,0 +1,39 @@
+﻿@using VkParser.Entities.Spam
+@model List<VkMan>
+@{
+    ViewBag.Title = "VkMen";
+}
+
+<h2>VkMen</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Имя
+                </th>
+                <th>
+                    Ссылка
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (VkMan vkMan in Model)
+            {
+                <tr>
+                    <td>
+                        @vkMan.FirstName
+                    </td>
+                    <td>
+                        <a href="@vkMan.VkLink">[Ссылка на вк]</a>
+                    </td>
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+
+</div>
+

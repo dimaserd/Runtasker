@@ -313,17 +313,6 @@ C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\bin\Release\ru\Syst
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\bin\Release\ru\System.Web.WebPages.Razor.resources.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.csprojResolveAssemblyReference.cache
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.init.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.rename.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.news.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.removal.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.not.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.quest.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.fd.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.visible.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.users.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.clicks.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.gs.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.Migrations.fd1.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.csproj.GenerateResource.Cache
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Release\Runtasker.Logic.pdb

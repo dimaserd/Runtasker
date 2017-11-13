@@ -2,29 +2,59 @@
 @model VkGroup
 @{
     ViewBag.Title = "GroupMembers";
+
+    bool searchMore = (bool)ViewData["searchMore"];
+
+    int offsetParam = (int)ViewData["offsetParam"];
 }
 
 <h2>Участники группы</h2>
+
+<div class="row">
+    <strong>
+        <a href="/VkSpam/GetAllVkMenFromGroup?id=@Model.Id">
+            [Получить людей из группы]
+        </a>
+    </strong>
+</div>
 
 <div class="table-responsive">
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>
-
+                    Ссылка на человека
                 </th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var t in Model.VkGroupMembers)
+            @if (Model.VkGroupMembers.Count > 0)
             {
-                <tr>
-                    <td>
-                        @t.Man.VkLink
-                    </td>
-                </tr>
+                foreach (var t in Model.VkGroupMembers)
+                {
+                    <tr>
+                        <td>
+                            @t.Man.VkLink
+                        </td>
+                    </tr>
+                }
             }
-            
+            else
+            {
+
+            }
+
+
         </tbody>
     </table>
 </div>
+
+@section Scripts{
+    @if (searchMore)
+    {
+        <script>
+            window.location.href = "/VkSpam/GetAllVkMenFromGroup?id=@Model.Id&offset=@offsetParam";
+        </script>
+    }
+    
+}

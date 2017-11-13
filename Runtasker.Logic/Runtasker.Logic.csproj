@@ -187,25 +187,9 @@
     <Compile Include="Enumerations\SaveChangesType.cs" />
     <Compile Include="Handlers\DbEntityValidationExceptionHandler.cs" />
     <Compile Include="Interfaces\Identity\IVkUser.cs" />
-    <Compile Include="Migrations\201711090903142_init.cs" />
-    <Compile Include="Migrations\201711090903142_init.Designer.cs">
-      <DependentUpon>201711090903142_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711101118497_t.cs" />
-    <Compile Include="Migrations\201711101118497_t.Designer.cs">
-      <DependentUpon>201711101118497_t.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711101230396_names.cs" />
-    <Compile Include="Migrations\201711101230396_names.Designer.cs">
-      <DependentUpon>201711101230396_names.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711101304047_vkd.cs" />
-    <Compile Include="Migrations\201711101304047_vkd.Designer.cs">
-      <DependentUpon>201711101304047_vkd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711101333240_stf.cs" />
-    <Compile Include="Migrations\201711101333240_stf.Designer.cs">
-      <DependentUpon>201711101333240_stf.cs</DependentUpon>
+    <Compile Include="Migrations\201711131020069_init.cs" />
+    <Compile Include="Migrations\201711131020069_init.Designer.cs">
+      <DependentUpon>201711131020069_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdministrationUsers\AdministrationModels.cs" />
@@ -373,20 +357,8 @@
     <Folder Include="Workers\RestoreData\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711090903142_init.resx">
-      <DependentUpon>201711090903142_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711101118497_t.resx">
-      <DependentUpon>201711101118497_t.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711101230396_names.resx">
-      <DependentUpon>201711101230396_names.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711101304047_vkd.resx">
-      <DependentUpon>201711101304047_vkd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711101333240_stf.resx">
-      <DependentUpon>201711101333240_stf.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711131020069_init.resx">
+      <DependentUpon>201711131020069_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

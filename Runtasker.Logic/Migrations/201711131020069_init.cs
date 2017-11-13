@@ -371,6 +371,33 @@ namespace Runtasker.Logic.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.VkGroupMembers",
+                c => new
+                    {
+                        VkManId = c.String(nullable: false, maxLength: 128),
+                        VkGroupId = c.String(nullable: false, maxLength: 128),
+                        Group_Id = c.Int(),
+                    })
+                .PrimaryKey(t => new { t.VkManId, t.VkGroupId })
+                .ForeignKey("dbo.VkGroups", t => t.Group_Id)
+                .ForeignKey("dbo.VkMen", t => t.VkManId, cascadeDelete: false)
+                .Index(t => t.VkManId)
+                .Index(t => t.Group_Id);
+            
+            CreateTable(
+                "dbo.VkMen",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        VkId = c.Int(nullable: false),
+                        VkLink = c.String(),
+                        IsInformed = c.Boolean(nullable: false),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.VkPostLookUps",
                 c => new
                     {
@@ -395,30 +422,6 @@ namespace Runtasker.Logic.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.VkGroupMembers",
-                c => new
-                    {
-                        VkManId = c.String(nullable: false, maxLength: 128),
-                        VkGroupId = c.String(nullable: false, maxLength: 128),
-                        Group_Id = c.Int(),
-                    })
-                .PrimaryKey(t => new { t.VkManId, t.VkGroupId })
-                .ForeignKey("dbo.VkGroups", t => t.Group_Id)
-                .ForeignKey("dbo.VkMen", t => t.VkManId, cascadeDelete: false)
-                .Index(t => t.VkManId)
-                .Index(t => t.Group_Id);
-            
-            CreateTable(
-                "dbo.VkMen",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        VkLink = c.String(),
-                        IsInformed = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "dbo.UserCoupons",
                 c => new
                     {
@@ -426,8 +429,8 @@ namespace Runtasker.Logic.Migrations
                         CouponId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.UserId, t.CouponId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .ForeignKey("dbo.Coupons", t => t.CouponId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: false)
+                .ForeignKey("dbo.Coupons", t => t.CouponId, cascadeDelete: false)
                 .Index(t => t.UserId)
                 .Index(t => t.CouponId);
             
@@ -439,8 +442,8 @@ namespace Runtasker.Logic.Migrations
                         VkFoundPostId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.VkKeyWordId, t.VkFoundPostId })
-                .ForeignKey("dbo.VkKeyWords", t => t.VkKeyWordId, cascadeDelete: true)
-                .ForeignKey("dbo.VkFoundPosts", t => t.VkFoundPostId, cascadeDelete: true)
+                .ForeignKey("dbo.VkKeyWords", t => t.VkKeyWordId, cascadeDelete: false)
+                .ForeignKey("dbo.VkFoundPosts", t => t.VkFoundPostId, cascadeDelete: false)
                 .Index(t => t.VkKeyWordId)
                 .Index(t => t.VkFoundPostId);
             
@@ -448,12 +451,12 @@ namespace Runtasker.Logic.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.VkGroupMembers", "VkManId", "dbo.VkMen");
-            DropForeignKey("dbo.VkGroupMembers", "Group_Id", "dbo.VkGroups");
             DropForeignKey("dbo.VkKeyWordFoundPosts", "VkFoundPostId", "dbo.VkFoundPosts");
             DropForeignKey("dbo.VkKeyWordFoundPosts", "VkKeyWordId", "dbo.VkKeyWords");
             DropForeignKey("dbo.VkPostLookUps", "VkFoundPostId", "dbo.VkFoundPosts");
             DropForeignKey("dbo.VkFoundPosts", "VkGroupId", "dbo.VkGroups");
+            DropForeignKey("dbo.VkGroupMembers", "VkManId", "dbo.VkMen");
+            DropForeignKey("dbo.VkGroupMembers", "Group_Id", "dbo.VkGroups");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.ResourceStringTypes", "ResourceStringId", "dbo.ResourceStrings");
             DropForeignKey("dbo.ResourceStrings", "ResourceFileId", "dbo.ResourceFileModels");
@@ -478,9 +481,9 @@ namespace Runtasker.Logic.Migrations
             DropIndex("dbo.VkKeyWordFoundPosts", new[] { "VkKeyWordId" });
             DropIndex("dbo.UserCoupons", new[] { "CouponId" });
             DropIndex("dbo.UserCoupons", new[] { "UserId" });
+            DropIndex("dbo.VkPostLookUps", new[] { "VkFoundPostId" });
             DropIndex("dbo.VkGroupMembers", new[] { "Group_Id" });
             DropIndex("dbo.VkGroupMembers", new[] { "VkManId" });
-            DropIndex("dbo.VkPostLookUps", new[] { "VkFoundPostId" });
             DropIndex("dbo.VkFoundPosts", new[] { "VkGroupId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.ResourceStringTypes", new[] { "ResourceStringId" });
@@ -504,10 +507,10 @@ namespace Runtasker.Logic.Migrations
             DropIndex("dbo.ArticleClarifications", new[] { "ArticleId" });
             DropTable("dbo.VkKeyWordFoundPosts");
             DropTable("dbo.UserCoupons");
-            DropTable("dbo.VkMen");
-            DropTable("dbo.VkGroupMembers");
             DropTable("dbo.VkKeyWords");
             DropTable("dbo.VkPostLookUps");
+            DropTable("dbo.VkMen");
+            DropTable("dbo.VkGroupMembers");
             DropTable("dbo.VkGroups");
             DropTable("dbo.VkFoundPosts");
             DropTable("dbo.AspNetRoles");

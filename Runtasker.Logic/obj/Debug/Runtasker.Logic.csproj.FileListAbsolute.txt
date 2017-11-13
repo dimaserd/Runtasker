@@ -347,7 +347,3 @@ C:\Users\dmitryserdyukov\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtas
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\bin\Debug\en-GB\Runtasker.Resources.resources.dll
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.init.resources
 C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.csproj.GenerateResource.Cache
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.t.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.names.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.vkd.resources
-C:\Users\developer100\Source\Repos\Runtasker\Runtasker.Logic\obj\Debug\Runtasker.Logic.Migrations.stf.resources
